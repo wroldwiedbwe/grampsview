@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="GrampsView.UserControls.ListLineCardLarge"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ucon="clr-namespace:GrampsView.UserControls"
+    MinimumHeightRequest="{StaticResource GVDetailCardHeightLarge}"
+    Style="{StaticResource FrameLargeVariableCardStyleNS}">
+
+    <Frame.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Frame
+                x:Name="LLCardLargeFrame"
+                Padding="0"
+                BackgroundColor="Accent"
+                CornerRadius="3">
+                <Label
+                    x:Name="LLCardLargeTitle"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Style="{StaticResource GVHeaderStyleLarge}" />
+            </Frame>
+
+            <ucon:BindableStackLayout
+                x:Name="largeDetailList"
+                Grid.Row="1"
+                Grid.Column="0"
+                ItemDataTemplate="{StaticResource GVCardListLineLarge}" />
+        </Grid>
+    </Frame.Content>
+</Frame>

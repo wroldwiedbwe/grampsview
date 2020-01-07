@@ -1,0 +1,14 @@
+﻿<ResourceDictionary
+    x:Class="GrampsView.Assets.Styles.LargeRefCardTemplates"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:common="using:GrampsView.Common"
+    xmlns:model="using:GrampsView.Data.Model"
+    xmlns:userControls="using:GrampsView.UserControls">
+
+    <!--<common:CardGroupTemplateSelectorRefLarge x:Key="LargeRefCardTemplateSelector" RepositoryRefTemplate="{StaticResource RepositoryRefCardLarge}" />
+
+    <DataTemplate x:Name="RepositoryRefCardLarge" x:DataType="model:HLinkRepositoryModel">
+        <userControls:RepositoryRefCardLarge />
+    </DataTemplate>-->
+</ResourceDictionary>

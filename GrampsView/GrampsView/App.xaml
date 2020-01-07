@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication
+    x:Class="GrampsView.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:conv="clr-namespace:GrampsView.Converters"
+    xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms">
+
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <conv:IconPath x:Key="IconPath" />
+        </ResourceDictionary>
+
+        <ResourceDictionary Source="Assets/Styles/_Glyphs.xaml" />
+
+        <ResourceDictionary Source="Assets/Styles/_Thickness.xaml" />
+
+        <ResourceDictionary Source="Assets/Styles/AppDataTemplates.xaml" />
+
+        <ResourceDictionary Source="Assets/Styles/AppViewDictionary.xaml" />
+
+        <ResourceDictionary Source="Assets/Styles/ControlTemplates.xaml" />
+
+        <ResourceDictionary Source="Assets/Styles/_Colors.xaml" />
+
+        <ResourceDictionary Source="Assets/Styles/_Sizes.xaml" />
+
+        <ResourceDictionary Source="Assets/Styles/_FontSizes.xaml" />
+
+        <ResourceDictionary Source="Assets/Styles/_GenericOverride.xaml" />
+
+        <ResourceDictionary Source="Assets/Styles/SmallCardTemplates.xaml" />
+
+        <ResourceDictionary Source="Assets/Styles/LargeCardDictionary.xaml" />
+    </Application.Resources>
+</prism:PrismApplication>

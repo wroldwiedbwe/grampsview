@@ -1,0 +1,88 @@
+﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!--  DataLog data template Large  -->
+    <DataTemplate x:Key="DataLogEntryLarge" x:Name="DataLogEntryLarge">
+        <ViewCell>
+
+            <Frame
+                Margin="1"
+                Padding="1"
+                BorderColor="{StaticResource CardNotSelectable}"
+                CornerRadius="0">
+                <Grid BackgroundColor="{StaticResource CardBackGround}">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Grid.Column="0"
+                        FontSize="{StaticResource FontSizeSmall}"
+                        Text="{Binding Label}"
+                        TextColor="{StaticResource TextDarkColor}" />
+                    <Label
+                        Grid.Column="1"
+                        Text="{Binding Text}"
+                        TextColor="{StaticResource TextLightColor}" />
+                </Grid>
+            </Frame>
+        </ViewCell>
+    </DataTemplate>
+
+    <!--  FlexMulti data template Large  -->
+    <DataTemplate x:Key="CardGroupTemplate" x:Name="CardGroupTemplate">
+
+        <Frame IsEnabled="{Binding CardGroupVisible}" Style="{StaticResource CardGroupStyle}">
+            <Grid x:Name="daGrid">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Text="{Binding Title}"
+                    TextColor="{StaticResource TextDarkColor}" />
+
+                <FlexLayout
+                    x:Name="flexer"
+                    Grid.Row="1"
+                    BindableLayout.ItemTemplateSelector="{StaticResource CardGroupTemplateSelectorSmall}"
+                    BindableLayout.ItemsSource="{Binding Cards, Mode=OneWay}"
+                    Style="{StaticResource FlexLayoutCards}" />
+            </Grid>
+        </Frame>
+    </DataTemplate>
+
+    <!--  Item Detail data template  large  -->
+    <DataTemplate x:Key="GVCardListLineLarge" x:Name="GVCardListLineLarge">
+
+        <Grid BackgroundColor="{StaticResource CardBackGround}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Column="0"
+                FontSize="{StaticResource FontSizeSmall}"
+                Text="{Binding Label}"
+                TextColor="{StaticResource TextDarkColor}" />
+            <Label
+                Grid.Column="1"
+                HorizontalTextAlignment="End"
+                Text="{Binding Value}"
+                TextColor="{StaticResource TextLightColor}" />
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

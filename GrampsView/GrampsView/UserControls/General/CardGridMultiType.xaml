@@ -1,0 +1,83 @@
+﻿<ContentPage
+    x:Class="GrampsView.UserControls.CardGridMultiType"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:designtime="using:GrampsView.DesignTime"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tkControls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:tkConverters="using:Microsoft.Toolkit.Uwp.UI.Converters"
+    x:Name="CardGridMultiTypeRoot"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
+
+    <!--<ContentPage.Resources>
+        <CollectionViewSource
+            x:Name="groupedItemsViewSource"
+            d:Source="{Binding Source={d:DesignInstance Type=designtime:CardGridMultiTypeData, IsDesignTimeCreatable=True}}"
+            IsSourceGrouped="true"
+            ItemsPath="Cards"
+            Source="{x:Bind ControlItemSource}" />
+        <tkConverters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </ContentPage.Resources>
+
+    <GridView
+        x:Name="ListV"
+        HorizontalAlignment="Stretch"
+        BorderThickness="0"
+        IsItemClickEnabled="True"
+        ItemTemplateSelector="{x:Bind ControlItemSelectorTemplate, Mode=OneWay}"
+        ItemsSource="{Binding Source={StaticResource groupedItemsViewSource}}"
+        ScrollViewer.IsVerticalRailEnabled="True"
+        ScrollViewer.VerticalScrollBarVisibility="Auto"
+        SelectionMode="Single"
+        Visibility="{x:Bind ControlItemSource.ControlVisible}">
+
+        <GridView.GroupStyle>
+            <GroupStyle>
+                <GroupStyle.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid
+                            MinWidth="300"
+                            Margin="5,3,0,3"
+                            Padding="3,3,0,0"
+                            HorizontalAlignment="Stretch"
+                            Visibility="{Binding HeaderVisible}">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="0"
+                                Style="{StaticResource GVLabelStyleLarge}"
+                                Text="{Binding Title}" />
+
+                            <Rectangle
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Height="1"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Bottom"
+                                Stroke="{StaticResource GridViewHeaderItemDividerStroke}"
+                                StrokeThickness="0.5" />
+                        </Grid>
+                    </DataTemplate>
+                </GroupStyle.HeaderTemplate>
+                <GroupStyle.Panel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid Margin="0,0,0,0" />
+                    </ItemsPanelTemplate>
+                </GroupStyle.Panel>
+            </GroupStyle>
+        </GridView.GroupStyle>
+    </GridView>-->
+</ContentPage>

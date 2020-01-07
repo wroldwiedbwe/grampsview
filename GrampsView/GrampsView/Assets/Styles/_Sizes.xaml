@@ -1,0 +1,99 @@
+﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!--
+        ******************************************************
+        Theme Dictionaries
+        ******************************************************
+    -->
+
+    <x:Double x:Key="GVMarginDSmall">
+        1
+    </x:Double>
+    <x:Double x:Key="GVMarginDMedium">
+        3
+    </x:Double>
+    <x:Double x:Key="GVMarginDLarge">
+        5
+    </x:Double>
+
+    <x:Double x:Key="GVThemeTextSizeVerySmall">
+        8
+    </x:Double>
+    <!--<x:Double x:Key="GVThemeTextSizeSmall">12</x:Double>-->
+    <!--<x:Double x:Key="GVThemeTextSizeMedium">13</x:Double>-->
+    <!--<x:Double x:Key="GVThemeTextSizeLarge">15</x:Double>-->
+
+    <!--  Ration of Height to width is 3 times  -->
+    <x:Double x:Key="GVDetailCardHeightSmall">
+        90
+    </x:Double>
+
+    <x:Double x:Key="GVDetailCardHeightMedium">
+        100
+    </x:Double>
+
+    <!--<x:Double
+        x:Key="GVDetailCardHeightLarge">
+        150
+    </x:Double>-->
+
+    <OnIdiom
+        x:Key="GVDetailCardHeightLarge"
+        x:TypeArguments="x:Double"
+        Default="150"
+        Desktop="150"
+        Phone="150"
+        Tablet="150" />
+
+    <!--  Ration of Height to width is 3 times  -->
+    <OnIdiom
+        x:Key="GVDetailCardWidthSmall"
+        x:TypeArguments="x:Double"
+        Default="270"
+        Desktop="270"
+        Phone="300"
+        Tablet="270" />
+
+    <!--<x:Double
+        x:Key="GVDetailCardWidthSmall">
+        210
+    </x:Double>-->
+
+    <x:Double x:Key="GVDetailCardWidthMedium">
+        300
+    </x:Double>
+
+    <OnIdiom
+        x:Key="GVDetailCardWidthLarge"
+        x:TypeArguments="x:Double"
+        Default="400"
+        Desktop="400"
+        Phone="300"
+        Tablet="400" />
+
+    <!--  Ration of Height to width is 4 times  -->
+    <x:Double x:Key="GVModelControlHeightSmall">
+        40
+    </x:Double>
+
+    <x:Double x:Key="GVModelControlHeightMedium">
+        50
+    </x:Double>
+
+    <x:Double x:Key="GVModelControlHeightLarge">
+        65
+    </x:Double>
+
+    <!--  Ration of Height to width is 4 times  -->
+    <x:Double x:Key="GVModelControlWidthSmall">
+        160
+    </x:Double>
+
+    <x:Double x:Key="GVModelControlWidthMedium">
+        200
+    </x:Double>
+
+    <x:Double x:Key="GVModelControlWidthLarge">
+        240
+    </x:Double>
+</ResourceDictionary>

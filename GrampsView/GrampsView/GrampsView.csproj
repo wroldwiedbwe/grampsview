@@ -1,0 +1,227 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyVersion>1.15.229.206</AssemblyVersion>
+    <FileVersion>1.15.229.206</FileVersion>
+
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <ShouldCreateLogs>True</ShouldCreateLogs>
+    <AdvancedSettingsExpanded>True</AdvancedSettingsExpanded>
+    <UpdateAssemblyVersion>False</UpdateAssemblyVersion>
+    <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
+    <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
+    <UpdatePackageVersion>False</UpdatePackageVersion>
+    <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
+    <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Common\ExtDLL\**" />
+    <Compile Remove="Data\External\StoreCache\**" />
+    <Compile Remove="UserControls\Handy Controls\**" />
+    <EmbeddedResource Remove="Common\ExtDLL\**" />
+    <EmbeddedResource Remove="Data\External\StoreCache\**" />
+    <EmbeddedResource Remove="UserControls\Handy Controls\**" />
+    <None Remove="Common\ExtDLL\**" />
+    <None Remove="Data\External\StoreCache\**" />
+    <None Remove="UserControls\Handy Controls\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Behaviours\ListViewAutoSizeBehaviour.cs" />
+    <Compile Remove="Common\AppExtension.cs" />
+    <Compile Remove="Common\CommonCropBitmap.cs" />
+    <Compile Remove="Common\CommonLogCircular.cs" />
+    <Compile Remove="Common\CommonPropertyDebug.xaml.cs" />
+    <Compile Remove="Common\CustomClasses\CustomCacheKeyFactory .cs" />
+    <Compile Remove="Common\CustomClasses\CustomImageStreamSource.cs" />
+    <Compile Remove="Common\CustomClasses\FlexLayoutVirtual.cs" />
+    <Compile Remove="Common\CustomClasses\NavCommand.cs" />
+    <Compile Remove="Common\CustomClasses\ObservableCollectionEx.cs" />
+    <Compile Remove="Common\CustomClasses\PlatformSpecific.cs" />
+    <Compile Remove="Common\CustomClasses\ScollViewInfinite.cs" />
+    <Compile Remove="Common\External\BindableValidator.cs" />
+    <Compile Remove="Common\External\ContinuationManager.cs" />
+    <Compile Remove="Common\External\DebugListView.cs" />
+    <Compile Remove="Common\External\DependencyPropertyChangedHelper.cs" />
+    <Compile Remove="Common\External\HashedBindableCollection.cs" />
+    <Compile Remove="Common\External\IRange.cs" />
+    <Compile Remove="Common\External\IValidatableBindableBase.cs" />
+    <Compile Remove="Common\External\MimeType.cs" />
+    <Compile Remove="Common\External\ObservableCollectionVector.cs" />
+    <Compile Remove="Common\External\PluginStorage.cs" />
+    <Compile Remove="Common\External\PluginStorageFolder.cs" />
+    <Compile Remove="Common\External\ScrollViewerUtilities.cs" />
+    <Compile Remove="Common\External\SuspensionManager.cs" />
+    <Compile Remove="Common\External\ValidatableBindableBase.cs" />
+    <Compile Remove="Common\Interfaces\ICommonCircularLog.cs" />
+    <Compile Remove="Common\NavigationHelper.cs" />
+    <Compile Remove="Converters\GetGyyph.cs" />
+    <Compile Remove="Data\External\StoreFile\IStoreFileDirectory.cs" />
+    <Compile Remove="Data\External\StorePostLoad\GrampsStorePostLoadClippedBM.cs" />
+    <Compile Remove="Data\External\StorePostLoad\StorePostLoadImageSource.cs" />
+    <Compile Remove="Data\PluginStorageFile.cs" />
+    <Compile Remove="Data\PluginStorageFileSystem.cs" />
+    <Compile Remove="Data\PluginStorageFolder.cs" />
+    <Compile Remove="Events\DataLoadSerialEvent.cs" />
+    <Compile Remove="Events\PageMenuPanelOpenEvent.cs" />
+    <Compile Remove="Events\PageTitleChangedEvent.cs" />
+    <Compile Remove="Events\PageTitleChangedEventArgs.cs" />
+    <Compile Remove="UserControls\General\FlexSingleCardGroup.xaml.cs" />
+    <Compile Remove="UserControls\TestControl.xaml.cs" />
+    <Compile Remove="ViewModels\AboutViewModel.cs" />
+    <Compile Remove="ViewModels\BaseViewModel.cs" />
+    <Compile Remove="ViewModels\IBaseViewModel.cs" />
+    <Compile Remove="ViewModels\ItemDetailViewModel.cs" />
+    <Compile Remove="ViewModels\ItemsViewModel.cs" />
+    <Compile Remove="ViewModels\MinorPages\AppShellMessages.cs" />
+    <Compile Remove="ViewModels\MinorPages\AppShellNavigation.cs" />
+    <Compile Remove="ViewModels\MinorPages\AppShellViewModel.cs" />
+    <Compile Remove="ViewModels\MinorPages\NavigationPageViewModel.cs" />
+    <Compile Remove="ViewModels\MinorPages\SerialLoadViewModel.cs" />
+    <Compile Remove="ViewModels\MinorPages\SettingsViewModel.cs" />
+    <Compile Remove="ViewModels\Person\Interfaces\IPersonHourGlassPageViewModel.cs" />
+    <Compile Remove="ViewModels\Person\Interfaces\IPersonSummaryPageViewModel.cs" />
+    <Compile Remove="Views\AboutPage.xaml.cs" />
+    <Compile Remove="Views\BaseViewList.xaml.cs" />
+    <Compile Remove="Views\ItemDetailPage.xaml.cs" />
+    <Compile Remove="Views\ItemsPage.xaml.cs" />
+    <Compile Remove="Views\Media\MediaDisplayPage.xaml.cs" />
+    <Compile Remove="Views\MinorPages\AppShellView.xaml.cs" />
+    <Compile Remove="Views\MinorPages\NavigationPage.xaml.cs" />
+    <Compile Remove="Views\MinorPages\SerialLoadPage.xaml.cs" />
+    <Compile Remove="Views\NewItemPage.xaml.cs" />
+    <Compile Remove="Views\Person\PersonListViewDesktop.xaml.cs" />
+    <Compile Remove="Views\Person\PersonListViewPhone.xaml.cs" />
+    <Compile Remove="Views\StartupPages\ExtendedSplashScreen.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Common\CommonPropertyDebug.xaml" />
+    <EmbeddedResource Remove="UserControls\General\FlexSingleCardGroup.xaml" />
+    <EmbeddedResource Remove="UserControls\TestControl.xaml" />
+    <EmbeddedResource Remove="Views\AboutPage.xaml" />
+    <EmbeddedResource Remove="Views\BaseViewList.xaml" />
+    <EmbeddedResource Remove="Views\ItemDetailPage.xaml" />
+    <EmbeddedResource Remove="Views\ItemsPage.xaml" />
+    <EmbeddedResource Remove="Views\Media\MediaDisplayPage.xaml" />
+    <EmbeddedResource Remove="Views\MinorPages\AppShellView.xaml" />
+    <EmbeddedResource Remove="Views\MinorPages\NavigationPage.xaml" />
+    <EmbeddedResource Remove="Views\MinorPages\SerialLoadPage.xaml" />
+    <EmbeddedResource Remove="Views\NewItemPage.xaml" />
+    <EmbeddedResource Remove="Views\Person\PersonListViewDesktop.xaml" />
+    <EmbeddedResource Remove="Views\Person\PersonListViewPhone.xaml" />
+    <EmbeddedResource Remove="Views\StartupPages\ExtendedSplashScreen.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="AnythingElse\DeploymentTools\releasenotes.md" />
+    <None Remove="UserControls\CardListLineCollectionLarge.xaml.cs.OLD" />
+    <None Remove="UserControls\CardListLineCollectionLarge.xaml.OLD" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="releasenotes.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="2.6.4" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="2.6.4" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="2.6.4" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeQuality.Analyzers" Version="2.9.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.7.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Nito.AsyncEx" Version="5.0.0" />
+    <PackageReference Include="Prism.Unity.Forms" Version="7.2.0.1422" />
+    <PackageReference Include="SharpZipLib.Portable" Version="0.86.0.3" />
+    <PackageReference Include="SkiaSharp" Version="1.68.1.1" />
+    <PackageReference Include="Xam.Forms.MarkdownView" Version="0.6.1-pre" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
+    <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.34" />  
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="UserControls\General\FlexMultiCardType.xaml.cs">
+      <DependentUpon>FlexMultiCardType.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\General\FlexSingleCardTypeA.xaml.cs">
+      <DependentUpon>FlexSingleCardTypeA.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\General\FlexSingleCardType.xaml.cs">
+      <DependentUpon>FlexSingleCardType.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\General\BottomMenu.xaml.cs">
+      <DependentUpon>BottomMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\ListLineCardSmall.xaml.cs">
+      <DependentUpon>ListLineCardSmall.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\ListLineCardLarge.xaml.cs">
+      <DependentUpon>ListLineCardLarge.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\MediaImageFullCard.xaml.cs">
+      <DependentUpon>MediaImageFullCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\HeaderCardLarge.xaml.cs">
+      <DependentUpon>HeaderCardLarge.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\NoteCardFull.xaml.cs">
+      <DependentUpon>NoteCardFull.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MinorPages\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MinorPages\ErrorDIalog.xaml.cs">
+      <DependentUpon>ErrorDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MinorPages\HubPage.xaml.cs">
+      <DependentUpon>HubPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MinorPages\MessageLogPage.xaml.cs">
+      <DependentUpon>MessageLogPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MinorPages\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Person\PersonListView.xaml.cs">
+      <DependentUpon>PersonListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StartupPages\FileInputHandlerPage.xaml.cs">
+      <DependentUpon>FileInputHandlerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StartupPages\WhatsNewPage.xaml.cs">
+      <DependentUpon>WhatsNewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Test\CropTransformationPage.xaml.cs">
+      <DependentUpon>CropTransformationPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Assets\Strings\AppResources.resx">
+      <Generator>ResXFileCodeGenerator.</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UserControls\ListLineCardLarge.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MinorPages\ErrorDialog.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

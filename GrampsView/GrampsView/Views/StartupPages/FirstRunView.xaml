@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GrampsView.Views.FirstRunPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:GrampsView.ViewModels"
+    Title="{Binding BaseTitle}"
+    mc:Ignorable="d">
+
+    <!--<Grid x:Name="rootGrid" Style="{StaticResource GridPageStyleMedium}">
+    -->
+    <!--  The StackPanel(s) below defines individual content sections  -->
+    <!--
+        <RelativePanel x:Name="contentRegion" Style="{StaticResource RelativePanelPage}">
+
+            <TextBlock
+                x:Name="FirstRun_IntroductionText"
+                x:Uid="FirstRun_IntroductionText"
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.AlignTopWithPanel="True"
+                Style="{StaticResource GVTextBlockStyleInstructions}"
+                Text="FirstRun_IntroductionText" />
+
+            <Button
+                x:Name="buttonFirstRunLoadSample"
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.Below="FirstRun_IntroductionText"
+                Style="{StaticResource GVButtonMenu}">
+                <TextBlock
+                    x:Name="FirstRun_SampleButton"
+                    x:Uid="FirstRun_SampleButton"
+                    Text="FirstRun_SampleButton"
+                    TextTrimming="None"
+                    TextWrapping="WrapWholeWords" />
+                <interactivity:Interaction.Behaviors>
+                    <interactivityCore:EventTriggerBehavior EventName="Click">
+                        <interactivityCore:CallMethodAction MethodName="LoadSampleFileButton" TargetObject="{Binding}" />
+                    </interactivityCore:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </Button>
+
+            <Button
+                x:Name="buttonFirstRunLoadAFile"
+                Margin="10,10,10,10"
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.Below="buttonFirstRunLoadSample"
+                Style="{StaticResource GVButtonMenu}">
+                <TextBlock
+                    x:Name="FirstRun_LoadAFileButton"
+                    x:Uid="FirstRun_LoadAFileButton"
+                    Text="FirstRun_LoadAFileButton"
+                    TextTrimming="None"
+                    TextWrapping="WrapWholeWords" />
+                <interactivity:Interaction.Behaviors>
+                    <interactivityCore:EventTriggerBehavior EventName="Click">
+                        <interactivityCore:CallMethodAction MethodName="FirstRunLoadAFileButton" TargetObject="{Binding}" />
+                    </interactivityCore:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </Button>
+        </RelativePanel>
+    </Grid>-->
+</ContentPage>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage
+    x:Class="GrampsView.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <MasterDetailPage.Master>
+
+        <ContentPage Title="Menu">
+
+            <ScrollView Orientation="Vertical">
+                <StackLayout
+                    x:Name="List"
+                    Margin="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    BindableLayout.ItemsSource="{Binding MainMenuItems}"
+                    HorizontalOptions="Start">
+
+                    <BindableLayout.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <StackLayout
+                                BackgroundColor="{StaticResource CardBackGround}"
+                                HorizontalOptions="StartAndExpand"
+                                Orientation="Horizontal">
+
+                                <Image HeightRequest="40" Style="{StaticResource GVSymbolcon}">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="{DynamicResource MaterialFontFamily}"
+                                            Glyph="{Binding Icon}"
+                                            Size="40" />
+                                    </Image.Source>
+                                </Image>
+                                <Button
+                                    Command="{Binding Path=BindingContext.NavigateCommand, Source={x:Reference Name=List}}"
+                                    CommandParameter="{Binding TargetType}"
+                                    Style="{StaticResource GVButtonMenu}"
+                                    Text="{Binding Title}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

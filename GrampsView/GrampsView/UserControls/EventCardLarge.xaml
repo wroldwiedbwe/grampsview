@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="GrampsView.UserControls.EventCardLarge"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
+    x:Name="PersonCardSmallRoot"
+    BackgroundColor="{StaticResource CardBackGroundEvent}"
+    Style="{StaticResource FrameLargeFixedCardStyle}">
+    <Frame.Content>
+
+        <Grid
+            x:Name="controlRoot"
+            FlexLayout.AlignSelf="Start"
+            FlexLayout.Basis="{OnIdiom Phone='50%',
+                                       Tablet='33%',
+                                       Desktop='33%'}">
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{prism:NavigateTo 'EventDetailPage'}">
+                    <TapGestureRecognizer.CommandParameter>
+                        <prism:NavigationParameter
+                            Key="hlink"
+                            Value="{Binding GetHLink}" />
+                    </TapGestureRecognizer.CommandParameter>
+                </TapGestureRecognizer>
+            </Grid.GestureRecognizers>
+
+            <BoxView
+                BackgroundColor="Pink"
+                HorizontalOptions="CenterAndExpand" />
+        </Grid>
+    </Frame.Content>
+
+    <!--<Border
+        Style="{StaticResource GVBorderSelectableItem}">
+        <interactivity:Interaction.Behaviors>
+            <interactivityCore:EventTriggerBehavior
+                EventName="PointerReleased">
+                <pbehav:PrismNavigateBehavior
+                    TargetParams="{x:Bind ViewModel.HLinkKey, Mode=OneWay}"
+                    TargetView="EventDetailView" />
+            </interactivityCore:EventTriggerBehavior>
+        </interactivity:Interaction.Behaviors>
+
+        <Grid
+            x:Name="controlRoot"
+            Visibility="{x:Bind ViewModel.ModelPopulated, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="1*" />
+                <ColumnDefinition
+                    Width="2*" />
+                <ColumnDefinition
+                    Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="*" />
+            </Grid.RowDefinitions>
+
+            <userControls:MediaImage
+                x:Name="AnchorImage"
+                Grid.Row="0"
+                Grid.Column="0"
+                DataContext="{x:Bind ViewModel.HomeImageHLink}"
+                Style="{StaticResource MediaImageDataModel}" />
+
+            <ItemsControl
+                x:Name="largeDetailList"
+                Grid.Row="0"
+                Grid.Column="1"
+                ItemTemplate="{StaticResource ItemDetailLarge}"
+                ItemsSource="{x:Bind EventDetailsList}"
+                Style="{StaticResource ItemControlDetailsListStyle}" />
+            <Viewbox
+                Grid.Row="1"
+                Grid.Column="3"
+                Style="{StaticResource GVViewBoxStyleSymbolconLargeCardType}">
+                <SymbolIcon
+                    x:Name="SourceImage"
+                    Foreground="{x:Bind ViewModel.HomeImageHLink.GetColourAsBrush}"
+                    Symbol="Clock" />
+            </Viewbox>
+        </Grid>
+    </Border>-->
+</Frame>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="GrampsView.UserControls.FamilyCardLarge"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
+    x:Name="PersonCardSmallRoot"
+    BackgroundColor="{StaticResource CardBackGroundFamily}"
+    Style="{StaticResource FrameLargeFixedCardStyle}">
+    <Frame.Content>
+
+        <Grid
+            x:Name="controlRoot"
+            FlexLayout.AlignSelf="Start"
+            FlexLayout.Basis="{OnIdiom Phone='50%',
+                                       Tablet='33%',
+                                       Desktop='33%'}">
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{prism:NavigateTo 'FamilyDetailPage'}">
+                    <TapGestureRecognizer.CommandParameter>
+                        <prism:NavigationParameter Key="hlink" Value="{Binding GetHLink}" />
+                    </TapGestureRecognizer.CommandParameter>
+                </TapGestureRecognizer>
+            </Grid.GestureRecognizers>
+
+            <BoxView BackgroundColor="Pink" HorizontalOptions="CenterAndExpand" />
+        </Grid>
+    </Frame.Content>
+
+    <!--
+    -->
+
+    <!--<Border Style="{StaticResource GVBorderSelectableItem}">
+        <interactivity:Interaction.Behaviors>
+            <interactivityCore:EventTriggerBehavior EventName="PointerReleased">
+                <pbehav:PrismNavigateBehavior TargetParams="{x:Bind ViewModel.HLinkKey, Mode=OneWay}" TargetView="FamilyDetailView" />
+            </interactivityCore:EventTriggerBehavior>
+        </interactivity:Interaction.Behaviors>
+
+        <Grid x:Name="controlRoot" Visibility="{x:Bind ViewModel.ModelPopulated, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <userControls:MediaImage
+                x:Name="AnchorImage"
+                Grid.Row="0"
+                Grid.Column="0"
+                DataContext="{x:Bind ViewModel.HomeImageHLink}"
+                IsHitTestVisible="False"
+                Style="{StaticResource MediaImageDataModel}" />
+
+            <ItemsControl
+                x:Name="largeDetailList"
+                Grid.Row="0"
+                Grid.Column="1"
+                ItemTemplate="{StaticResource ItemDetailLarge}"
+                ItemsSource="{x:Bind FamilyDetailsList}"
+                Style="{StaticResource ItemControlDetailsListStyle}" />
+
+            <Viewbox
+                Grid.Row="0"
+                Grid.Column="2"
+                Style="{StaticResource GVViewBoxStyleSymbolconLargeCardType}">
+                <SymbolIcon
+                    x:Name="SourceImage"
+                    Foreground="{x:Bind ViewModel.HomeImageHLink.GetColourAsBrush}"
+                    Symbol="People" />
+            </Viewbox>
+        </Grid>
+    </Border>-->
+</Frame>

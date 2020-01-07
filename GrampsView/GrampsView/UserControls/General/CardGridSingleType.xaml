@@ -1,0 +1,56 @@
+﻿<ContentPage
+    x:Class="GrampsView.UserControls.CardGridSingleType"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tkControls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:tkConverters="using:Microsoft.Toolkit.Uwp.UI.Converters"
+    x:Name="CardGridSingleTypeRoot"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
+
+    <!--  HorizontalAlignment="Stretch"  -->
+
+    <!--<ContentPage.Resources>
+        <tkConverters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </ContentPage.Resources>
+
+    <tkControls:HeaderedContentControl HorizontalAlignment="Stretch" Visibility="{x:Bind ControlVisible, Mode=OneWay}">
+
+        <tkControls:HeaderedContentControl.HeaderTemplate>
+            <DataTemplate>
+                <StackPanel
+                    MinWidth="200"
+                    Margin="5,3,0,3"
+                    Padding="3,3,0,0"
+                    HorizontalAlignment="Stretch"
+                    Visibility="{Binding ControlHeaderTextVisible, Mode=OneWay, ElementName=CardGridSingleTypeRoot}">
+                    <TextBlock
+                        Margin="0"
+                        Style="{StaticResource GVLabelStyleLarge}"
+                        Text="{Binding ControlHeaderText, ElementName=CardGridSingleTypeRoot}" />
+                    <Rectangle
+                        Height="1"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Bottom"
+                        Stroke="{StaticResource GridViewHeaderItemDividerStroke}"
+                        StrokeThickness="0.5" />
+                </StackPanel>
+            </DataTemplate>
+        </tkControls:HeaderedContentControl.HeaderTemplate>
+
+        <GridView
+            x:Name="ListV"
+            BorderThickness="0"
+            IsItemClickEnabled="True"
+            ItemContainerStyle="{StaticResource CardGridSingleType}"
+            ItemTemplate="{x:Bind ControlItemTemplate, Mode=OneWay}"
+            ItemsSource="{x:Bind ControlItemSource, Mode=OneWay}"
+            ScrollViewer.IsVerticalRailEnabled="True"
+            ScrollViewer.VerticalScrollBarVisibility="Visible"
+            ShowsScrollingPlaceholders="True"
+            Visibility="{x:Bind ControlVisible, Mode=OneWay}" />
+    </tkControls:HeaderedContentControl>-->
+</ContentPage>

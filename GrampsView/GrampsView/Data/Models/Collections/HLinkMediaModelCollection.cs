@@ -1,0 +1,86 @@
+﻿// <copyright file="HLinkMediaModelCollection.cs" company="PlaceholderCompany">
+//     Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+/// <summary>
+/// </summary>
+namespace GrampsView.Data.Collections
+{
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using System.Runtime.Serialization;
+
+    using GrampsView.Common;
+    using GrampsView.Data.DataView;
+    using GrampsView.Data.Model;
+
+    /// <summary>
+    /// </summary>
+    [CollectionDataContract]
+    [KnownType(typeof(ObservableCollection<HLinkMediaModel>))]
+    public class HLinkMediaModelCollection : HLinkBaseCollection<HLinkMediaModel>
+    {
+        public new CardGroup GetCardGroup
+        {
+            get
+            {
+                CardGroup t = new CardGroup
+                {
+                    Title = "Media Collection",
+                };
+
+                foreach (var item in Items)
+                {
+                    t.Cards.Add(item.DeRef);
+                }
+
+                return t;
+            }
+        }
+
+        /// <summary>
+        /// Helper method to sort and set the firt image link.
+        /// </summary>
+        /// <param name="collectionArg">
+        /// The collection argument.
+        /// </param>
+        public void SortAndSetFirst()
+        {
+            // Return if null
+            if (this == null)
+            {
+                return;
+            }
+
+            // Set the first image link. Assumes main image is manually set to the first image in
+            // Gramps if we need it to be, e.g. Citations.
+            MediaModel tempMediaModel = new MediaModel();
+
+            if (Count > 0)
+            {
+                // Step through each mediamodel hlink in the collection
+                for (int i = 0; i < Count; i++)
+                {
+                    tempMediaModel = DV.MediaDV.MediaData.GetModelFromHLink(this[i]);
+
+                    if (tempMediaModel.IsMediaFile)
+                    {
+                        FirstHLink = this[i];
+                        break;
+                    }
+                }
+
+                // Sort the collection
+                List<HLinkMediaModel> t = this.OrderBy(hLinkMediaModel => hLinkMediaModel.DeRef.GDescription).ToList();
+
+                Items.Clear();
+
+                foreach (HLinkMediaModel item in t)
+                {
+                    Items.Add(item);
+                }
+            }
+        }
+    }
+}

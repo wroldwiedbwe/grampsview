@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GrampsView.Views.AboutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i18n="clr-namespace:GrampsView.Common"
+    xmlns:markdown="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prismnav="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
+    xmlns:ucon="clr-namespace:GrampsView.UserControls"
+    Title="{Binding BaseTitle}"
+    ControlTemplate="{StaticResource DetailPageTemplate}"
+    Icon="{Binding BaseIcon, Converter={StaticResource IconPath}, Mode=OneWay}"
+    Style="{StaticResource GVBaseContentPage}"
+    mc:Ignorable="d">
+
+    <!--  Content  -->
+    <Grid FlexLayout.Grow="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0" BackgroundColor="{StaticResource CardBackGround}">
+            <StackLayout
+                HorizontalOptions="Start"
+                Orientation="Horizontal"
+                VerticalOptions="Center">
+
+                <Image
+                    BackgroundColor="White"
+                    HeightRequest="64"
+                    Source="ic_launcher.png"
+                    VerticalOptions="Start" />
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    Style="{StaticResource GVLabelStyleLarge}"
+                    Text="{Binding AppName}"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+            </StackLayout>
+        </StackLayout>
+
+        <ScrollView Grid.Row="1">
+
+            <StackLayout>
+
+                <ucon:ListLineCardLarge UCCardListLineCol="{Binding ApplicationVersionList, Mode=OneWay}" />
+
+                <ucon:HeaderCardLarge BindingContext="{Binding HeaderData, Mode=OneWay}" />
+
+                <StackLayout x:Name="Attribution">
+
+                    <Frame Style="{StaticResource FrameLargeFixedCardStyle}">
+                        <Label Style="{StaticResource GVLabelStyleInstructions}" Text="{i18n:Translate AboutPage_PrivacyPolicy}" />
+                    </Frame>
+
+                    <Frame Style="{StaticResource FrameLargeFixedCardStyle}">
+                        <Label Style="{StaticResource GVLabelStyleInstructions}" Text="{i18n:Translate AboutPage_AttributionText}" />
+                    </Frame>
+
+                    <Frame Style="{StaticResource FrameLargeVariableCardStyle}">
+                        <markdown:MarkdownView
+                            x:Name="mdview"
+                            Grid.Row="0"
+                            FlexLayout.Basis="75"
+                            Markdown="{Binding DaText}" />
+                    </Frame>
+                </StackLayout>
+
+                <Button
+                    Command="{prismnav:NavigateTo 'MessageLogPage',
+                                                  Animated=True}"
+                    Style="{StaticResource GVButtonStyle}"
+                    Text="Go To MessageLog" />
+
+                <Button
+                    Command="{Binding TestPageCommand}"
+                    Style="{StaticResource GVButtonStyle}"
+                    Text="Test Page" />
+
+                <Button
+                    Command="{prismnav:NavigateTo 'CropTransformationPage',
+                                                  Animated=True}"
+                    Style="{StaticResource GVButtonStyle}"
+                    Text="Go To CropTransformationPage" />
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

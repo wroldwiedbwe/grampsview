@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="GrampsView.UserControls.GenTextCardLarge"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ucon="clr-namespace:GrampsView.UserControls"
+    MinimumHeightRequest="{StaticResource GVDetailCardHeightLarge}"
+    Style="{StaticResource FrameLargeFixedCardStyle}"
+    WidthRequest="{StaticResource GVDetailCardWidthLarge}">
+    <Frame.Content>
+
+        <BoxView BackgroundColor="Pink" HorizontalOptions="CenterAndExpand" />
+    </Frame.Content>
+
+    <!--<Grid
+        x:Name="Grid"
+        IsHitTestVisible="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition
+                Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="0"
+            Grid.Column="0"
+            Style="{StaticResource GVBorderNonSelectableItem}">
+
+            <TextBlock
+                x:Name="largeDetailList"
+                Padding="5"
+                Style="{StaticResource GVTextBlockDataModelLarge}"
+                Text="{x:Bind ViewModel.TextDetails}" />
+        </Border>
+    </Grid>-->
+</Frame>

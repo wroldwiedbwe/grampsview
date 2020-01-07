@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="GrampsView.UserControls.PersonLink"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
+    xmlns:ucon="clr-namespace:GrampsView.UserControls"
+    BackgroundColor="{StaticResource CardBackGroundPerson}"
+    BorderColor="{StaticResource CardBackGround}"
+    Style="{StaticResource FrameCardStyle}"
+    WidthRequest="100">
+
+    <Frame.Content>
+
+        <Grid
+            x:Name="controlRoot"
+            FlexLayout.AlignSelf="Start"
+            FlexLayout.Basis="{OnIdiom Phone='50%',
+                                       Tablet='33%',
+                                       Desktop='33%'}"
+            IsEnabled="{Binding IsValid, Mode=OneWay}">
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer prism:Navigation.CanNavigate="{Binding IsValid, Mode=OneWay}" Command="{prism:NavigateTo 'PersonDetailPage'}">
+                    <TapGestureRecognizer.CommandParameter>
+                        <prism:NavigationParameter Key="hlink" Value="{Binding GetHLink, Mode=OneWay}" />
+                    </TapGestureRecognizer.CommandParameter>
+                </TapGestureRecognizer>
+            </Grid.GestureRecognizers>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ucon:MediaImage
+                x:Name="AnchorImage1"
+                Grid.Row="0"
+                Grid.Column="0"
+                BindingContext="{Binding HomeImageHLink, Mode=OneWay}"
+                Style="{StaticResource MediaImageStyle}" />
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource GVCardLabelStyleSmall}"
+                Text="{Binding GetDefaultText}" />
+        </Grid>
+    </Frame.Content>
+</Frame>

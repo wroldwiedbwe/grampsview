@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="GrampsView.UserControls.ParentLinkCardLarge"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ucon="clr-namespace:GrampsView.UserControls"
+    Style="{StaticResource FrameLargeFixedCardStyle}">
+
+    <Frame.Content>
+
+        <Grid
+            x:Name="controlRoot"
+            FlexLayout.AlignSelf="Start"
+            FlexLayout.Basis="{OnIdiom Phone='50%',
+                                       Tablet='33%',
+                                       Desktop='33%'}">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <ucon:PersonLink
+                x:Name="AnchorImage1"
+                Grid.Row="0"
+                Grid.Column="0"
+                BindingContext="{Binding Parents.GFather.DeRef, Mode=OneWay}" />
+
+            <ucon:PersonLink
+                x:Name="AnchorImage2"
+                Grid.Row="0"
+                Grid.Column="1"
+                BindingContext="{Binding Parents.GMother.DeRef, Mode=OneWay}" />
+        </Grid>
+    </Frame.Content>
+</Frame>

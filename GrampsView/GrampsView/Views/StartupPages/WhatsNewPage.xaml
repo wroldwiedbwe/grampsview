@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GrampsView.Views.WhatsNewPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:markdown="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{Binding BaseTitle}"
+    Style="{StaticResource GVBaseContentPage}"
+    mc:Ignorable="d">
+
+    <ScrollView>
+        <FlexLayout
+            Direction="Column">
+            <Frame
+                Style="{StaticResource FrameLargeVariableCardStyle}">
+
+                <markdown:MarkdownView
+                    x:Name="mdview"
+                    Grid.Row="0"
+                    FlexLayout.Basis="75"
+                    Markdown="{Binding WhatsNewText}" />
+            </Frame>
+            <Button
+                Command="{Binding LoadDataCommand}"
+                Style="{StaticResource GVButtonStyle}"
+                Text="Load Data" />
+        </FlexLayout>
+    </ScrollView>
+</ContentPage>

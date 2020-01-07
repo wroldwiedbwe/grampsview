@@ -1,0 +1,79 @@
+﻿<Frame
+    x:Class="GrampsView.UserControls.EventCardSmall"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
+    xmlns:ucon="clr-namespace:GrampsView.UserControls"
+    BackgroundColor="{StaticResource CardBackGroundEvent}"
+    Style="{StaticResource FrameSmallFixedCardStyle}">
+    <Frame.Content>
+
+        <Grid x:Name="controlRoot" RowSpacing="3">
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{prism:NavigateTo 'EventDetailPage'}">
+                    <TapGestureRecognizer.CommandParameter>
+                        <prism:NavigationParameter Key="hlink" Value="{Binding GetHLink}" />
+                    </TapGestureRecognizer.CommandParameter>
+                </TapGestureRecognizer>
+            </Grid.GestureRecognizers>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+
+            <ucon:MediaImage
+                x:Name="AnchorImage"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                BindingContext="{Binding HomeImageHLink, Mode=OneWay}"
+                Style="{StaticResource MediaImageStyle}" />
+
+            <Label
+                x:Name="dateTextBlock"
+                Grid.Row="0"
+                Grid.Column="1"
+                LineBreakMode="WordWrap"
+                Style="{StaticResource GVCardLabelStyleSmall}"
+                Text="{Binding GDate.GetYear, Mode=OneWay}" />
+
+            <Label
+                x:Name="typeTextBlock"
+                Grid.Row="0"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="EndAndExpand"
+                Style="{StaticResource GVCardLabelStyleSmall}"
+                Text="{Binding GType, Mode=OneWay}" />
+
+            <Label
+                x:Name="descriptionTextBlock"
+                Grid.Row="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource GVCardLabelStyleSmall}"
+                Text="{Binding GDescription, Mode=OneWay}" />
+
+            <Image
+                Grid.Row="1"
+                Grid.Column="3"
+                Style="{StaticResource GVSymbolIconSmallCardType}">
+                <Image.Source>
+                    <FontImageSource
+                        FontFamily="{DynamicResource MaterialFontFamily}"
+                        Glyph="{Binding HomeImageHLink.HomeSymbol}"
+                        Color="{Binding HomeImageHLink.BackgroundColour}" />
+                </Image.Source>
+            </Image>
+        </Grid>
+    </Frame.Content>
+</Frame>

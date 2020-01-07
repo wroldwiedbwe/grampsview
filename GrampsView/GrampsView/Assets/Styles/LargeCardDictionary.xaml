@@ -1,0 +1,121 @@
+﻿<ResourceDictionary
+    x:Class="GrampsView.Assets.Styles.LargeCardDictionary"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:common="clr-namespace:GrampsView.Common"
+    xmlns:model="using:GrampsView.Data.Model"
+    xmlns:usercontrols="clr-namespace:GrampsView.UserControls">
+
+    <DataTemplate
+        x:Key="AddressCardLargeDT">
+        <usercontrols:AddressCardSmall />
+    </DataTemplate>
+
+    <DataTemplate
+        x:Key="AttributeCardLargeDT">
+        <usercontrols:AttributeCardLarge />
+    </DataTemplate>
+
+    <DataTemplate
+        x:Key="BookMarkCardLargeDT">
+        <usercontrols:BookMarkCardSmall />
+    </DataTemplate>
+
+    <DataTemplate
+        x:Key="CitationCardLargeDT">
+        <usercontrols:CitationCardSmall />
+    </DataTemplate>
+
+    <!--<DataTemplate x:Key="CitationRefCardLarge" x:DataType="model:HLinkCitationModel">
+        <userControls:CitationRefCardLarge />
+    </DataTemplate>-->
+
+    <DataTemplate
+        x:Key="EventCardLargeDT">
+        <usercontrols:EventCardLarge />
+    </DataTemplate>
+
+    <DataTemplate
+        x:Key="FamilyCardLargeDT">
+        <usercontrols:FamilyCardLarge />
+    </DataTemplate>
+
+    <DataTemplate
+        x:Key="ListLineCardLargeDT">
+        <usercontrols:ListLineCardLarge />
+    </DataTemplate>
+
+    <!--<DataTemplate x:Key="MediaRefCardLarge" x:DataType="model:HLinkMediaModel">
+        <userControls:MediaRefCardLarge />
+    </DataTemplate>-->
+
+    <DataTemplate
+        x:Key="MediaCardLargeDT">
+        <usercontrols:MediaCardLarge />
+    </DataTemplate>
+
+    <!--<DataTemplate x:Key="NameMapCardLarge" x:DataType="model:NameMapModel">
+        <userControls:NameMapCardLarge />
+    </DataTemplate>-->
+
+    <DataTemplate
+        x:Key="NoteCardLargeDT">
+        <usercontrols:NoteCardLarge />
+    </DataTemplate>
+
+    <!--<DataTemplate x:Key="NoteRefCardLarge" x:DataType="model:HLinkNoteModel">
+        <userControls:NoteRefCardLarge />
+    </DataTemplate>-->
+
+    <DataTemplate
+        x:Key="PersonCardLargeDT">
+        <usercontrols:PersonCardLarge />
+    </DataTemplate>
+
+    <DataTemplate
+        x:Key="PlaceCardLargeDT">
+        <usercontrols:PlaceCardSmall />
+    </DataTemplate>
+
+    <DataTemplate
+        x:Key="RepositoryCardLargeDT">
+        <usercontrols:RepositoryCardLarge />
+    </DataTemplate>
+
+    <DataTemplate
+        x:Key="TagCardLargeDT">
+        <usercontrols:TagCardSmall />
+    </DataTemplate>
+
+    <DataTemplate
+        x:Key="SourceCardLargeDT">
+        <usercontrols:SourceCardLarge />
+    </DataTemplate>
+
+    <!--<DataTemplate x:Name="TagRefCardLarge" x:DataType="model:HLinkTagModel">
+        <userControls:TagRefCardLarge />
+    </DataTemplate>-->
+
+    <DataTemplate
+        x:Key="URLCardLargeDT">
+        <usercontrols:URLCardSmall />
+    </DataTemplate>
+
+    <common:CardGroupTemplateSelectorLarge
+        x:Key="CardGroupTemplateSelectorLarge"
+        AddressTemplate="{StaticResource AddressCardLargeDT}"
+        AttributeTemplate="{StaticResource AttributeCardLargeDT}"
+        BookMarkTemplate="{StaticResource BookMarkCardLargeDT}"
+        CitationTemplate="{StaticResource CitationCardLargeDT}"
+        EventTemplate="{StaticResource EventCardLargeDT}"
+        FamilyTemplate="{StaticResource FamilyCardLargeDT}"
+        ListLineTemplate="{StaticResource ListLineCardLargeDT}"
+        MediaTemplate="{StaticResource MediaCardLargeDT}"
+        NoteTemplate="{StaticResource NoteCardLargeDT}"
+        PersonTemplate="{StaticResource PersonCardLargeDT}"
+        PlaceTemplate="{StaticResource PlaceCardLargeDT}"
+        RepositoryTemplate="{StaticResource RepositoryCardLargeDT}"
+        SourceTemplate="{StaticResource SourceCardLargeDT}"
+        TagTemplate="{StaticResource TagCardLargeDT}"
+        URLTemplate="{StaticResource URLCardLargeDT}" />
+</ResourceDictionary>

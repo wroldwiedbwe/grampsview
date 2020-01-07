@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="GrampsView.UserControls.MediaImage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Name="mediaImage"
+    Margin="0"
+    Padding="0"
+    BackgroundColor="Transparent"
+    BindingContextChanged="mediaImage_BindingContextChanged"
+    BorderColor="Transparent"
+    VerticalOptions="Fill">
+
+    <Frame.Content>
+
+        <Grid Margin="0" Padding="0">
+
+            <Image
+                x:Name="daSymbol"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                IsVisible="True"
+                VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource FontFamily="{DynamicResource MaterialFontFamily}" />
+                </Image.Source>
+            </Image>
+
+            <ffimageloading:CachedImage
+                x:Name="daImage"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                CacheType="All"
+                Error="DaImage_Error"
+                IsVisible="False"
+                LoadingPlaceholder="ic_launcher.png"
+                RetryCount="3"
+                RetryDelay="1000" />
+        </Grid>
+    </Frame.Content>
+</Frame>

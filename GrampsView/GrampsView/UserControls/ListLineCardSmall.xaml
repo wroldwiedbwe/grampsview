@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="GrampsView.UserControls.ListLineCardSmall"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    MinimumHeightRequest="{StaticResource GVDetailCardHeightLarge}"
+    Style="{StaticResource FrameSmallVariableCardStyleNS}">
+    <Frame.Content>
+
+        <StackLayout BindableLayout.ItemsSource="{Binding .}">
+            <BindableLayout.ItemTemplate>
+
+                <DataTemplate>
+                    <Grid BackgroundColor="{StaticResource CardBackGround}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Column="0"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{Binding Label}"
+                            TextColor="{StaticResource TextDarkColor}" />
+                        <Label
+                            Grid.Column="1"
+                            HorizontalOptions="EndAndExpand"
+                            HorizontalTextAlignment="End"
+                            LineBreakMode="WordWrap"
+                            Text="{Binding Value}"
+                            TextColor="{StaticResource TextLightColor}"
+                            VerticalTextAlignment="Start" />
+                    </Grid>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
+    </Frame.Content>
+</Frame>

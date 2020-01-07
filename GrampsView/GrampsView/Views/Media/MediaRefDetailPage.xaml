@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GrampsView.Views.MediaRefDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:designtime="using:GrampsView.DesignTime"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="MediaRefDetail"
+    Title="{Binding BaseTitle}"
+    d:DataContext="{Binding Source={d:DesignInstance Type=designtime:MediaSummaryDesignTime, IsDesignTimeCreatable=True}}"
+    mc:Ignorable="d">
+
+    <!--<ScrollViewer
+        x:Name="pageScroller"
+        RelativePanel.AlignLeftWithPanel="True"
+        RelativePanel.AlignTopWithPanel="True"
+        Style="{StaticResource GVScrollViewerStyle}">
+
+        <RelativePanel x:Name="pageRoot" Style="{StaticResource RelativePanelPage}">
+
+            <StackPanel x:Name="InfoPanel" Orientation="Vertical">
+
+                <ListView
+                    Name="ModelDetails"
+                    IsItemClickEnabled="True"
+                    ItemTemplateSelector="{StaticResource DetailCardTemplateSelector}"
+                    ItemsSource="{x:Bind Model.ModelDetail}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <tkControls:WrapPanel HorizontalSpacing="1" VerticalSpacing="1" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ListView>
+            </StackPanel>
+
+            <Viewbox
+                x:Name="MediaImage"
+                ManipulationMode="All"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignTopWithPanel="True"
+                RelativePanel.LeftOf="InfoPanel"
+                Stretch="Uniform">
+
+                <tkControls:DropShadowPanel>
+                    <Image
+                        x:Name="MainImage"
+                        Source="{x:Bind Model.ImageFullBitmap, Mode=OneWay}"
+                        Style="{StaticResource ImageControlStyle}">
+                        <interactivity:Interaction.Behaviors>
+                            <interactivityCore:EventTriggerBehavior EventName="DoubleTapped">
+                                <interactivityCore:InvokeCommandAction Command="{Binding OpenImageCommand}" />
+                            </interactivityCore:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
+                    </Image>
+                </tkControls:DropShadowPanel>
+            </Viewbox>
+
+            <tkControls:WrapPanel RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="MediaImage">
+                <userControls:ModelGrid
+                    x:Name="ModelViewCollections"
+                    ControlHeaderText="Back Links"
+                    DataContext="{x:Bind Model.ModelGridView}"
+                    Style="{StaticResource ModelGrid}" />
+            </tkControls:WrapPanel>
+        </RelativePanel>
+    </ScrollViewer>-->
+</ContentPage>
