@@ -29,6 +29,8 @@ namespace GrampsView.Data.Model
         [DataMember]
         public HLinkCitationModelCollection CitationRefCollection { get; set; }
 
+        = new HLinkCitationModelCollection();
+
         /// <summary>
         /// Gets the Persons FullName. Returns 'unknown' if no firstname or surname.
         /// </summary>
@@ -168,6 +170,8 @@ namespace GrampsView.Data.Model
             set;
         }
 
+        = new SurnameModelCollection();
+
         /// <summary>Gets or sets the title.</summary>
         /// <value>The g title.</value>
         [DataMember]
@@ -190,6 +194,8 @@ namespace GrampsView.Data.Model
         /// <value>The note reference collection.</value>
         [DataMember]
         public HLinkNoteModelCollection NoteReferenceCollection { get; set; }
+
+        = new HLinkNoteModelCollection();
 
         /// <summary>
         /// Gets the sort name o.

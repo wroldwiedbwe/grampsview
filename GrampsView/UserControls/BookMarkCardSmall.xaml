@@ -62,7 +62,7 @@
                 TextColor="{StaticResource TextLightColor}" />
 
             <Image
-                Grid.Row="0"
+                Grid.Row="1"
                 Grid.Column="2"
                 Style="{StaticResource GVSymbolIconSmallCardType}">
                 <Image.Source>
@@ -74,14 +74,4 @@
             </Image>
         </Grid>
     </Frame.Content>
-
-    <!--<Viewbox
-                Grid.Row="0"
-                Grid.Column="2"
-                Style="{StaticResource GVViewBoxStyleSymbolconSmallCardType}">
-                <SymbolIcon
-                    x:Name="SourceImage"
-                    Foreground="{x:Bind ViewModel.HomeImageHLink.GetColourAsBrush}"
-                    Symbol="Bookmarks" />
-            </Viewbox>-->
 </Frame>

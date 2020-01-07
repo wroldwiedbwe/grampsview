@@ -40,6 +40,21 @@
 
         public ObservableCollection<object> DisplayList { get; set; } = new ObservableCollection<object>();
 
+        public bool FlexSingleCardVisible
+        {
+            get
+            {
+                if (!(FsctSource is null) && (FsctSource.Cards.Count > 0))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
         public CardGroup FsctSource
         {
             get { return (CardGroup)GetValue(FsctSourceProperty); }
@@ -109,7 +124,15 @@
 
         private void BuildLayout()
         {
-            this.flextitle.Text = FsctSource.Title;
+            if (string.IsNullOrWhiteSpace(FsctSource.Title))
+            {
+                this.flextitle.IsVisible = false;
+            }
+            else
+            {
+                this.flextitle.Text = FsctSource.Title;
+                this.flextitle.IsVisible = true;
+            }
 
             this.flexer.Children.Clear();
 

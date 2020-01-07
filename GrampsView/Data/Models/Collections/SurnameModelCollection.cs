@@ -41,7 +41,12 @@ namespace GrampsView.Data.Collections
             {
                 // TODO Handle multiple surnames
 
-                return Items[0].GText;
+                if (Items.Count > 0)
+                {
+                    return Items[0].GText;
+                }
+
+                return string.Empty;
             }
         }
     }
