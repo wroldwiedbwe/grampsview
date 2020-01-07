@@ -53,7 +53,7 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>
     </CodesignEntitlements>
-    <MtouchLink>Full</MtouchLink>
+    <MtouchLink>None</MtouchLink>
     <CodesignProvision />
     <CodesignExtraArgs />
     <CodesignResourceRules />
@@ -190,6 +190,12 @@
     <PackageReference Include="Xamarin.Plugin.FilePicker">
       <Version>2.1.34</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GrampsView\GrampsView.csproj">
+      <Project>{c640b795-9fc0-4464-99d2-71eaa4aac037}</Project>
+      <Name>GrampsView</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
