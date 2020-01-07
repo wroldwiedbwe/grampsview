@@ -161,12 +161,6 @@
     <AndroidResource Include="Resources\drawable\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GrampsView\GrampsView.csproj">
-      <Project>{A8655380-0BB4-4F34-8C51-64FF7AEB0A31}</Project>
-      <Name>GrampsView</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>

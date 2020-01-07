@@ -243,12 +243,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GrampsView\GrampsView.csproj">
-      <Project>{A8655380-0BB4-4F34-8C51-64FF7AEB0A31}</Project>
-      <Name>GrampsView</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Assets\Backgrounds\Splash Screen background color  #FFFFFF" />
     <Content Include="Assets\Fonts\materialdesignicons-webfont.ttf" />
     <None Include="Assets\Icons\logo\icon.pdf" />

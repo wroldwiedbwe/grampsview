@@ -192,10 +192,4 @@
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\GrampsView\GrampsView.csproj">
-      <Project>{A8655380-0BB4-4F34-8C51-64FF7AEB0A31}</Project>
-      <Name>GrampsView</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>
