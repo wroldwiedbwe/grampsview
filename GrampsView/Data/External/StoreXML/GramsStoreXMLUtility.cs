@@ -303,9 +303,11 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Validate
                 if ((!regexColorCode.IsMatch(hexColour.Trim()) && hexColour != ColorNotSet))
                 {
-                    Dictionary<string, string> argErrorDetail = new Dictionary<string, string>();
-                    argErrorDetail.Add("Color element is", a.ToString());
-                    argErrorDetail.Add("Attribute is", b);
+                    Dictionary<string, string> argErrorDetail = new Dictionary<string, string>
+                    {
+                        { "Color element is", a.ToString() },
+                        { "Attribute is", b }
+                    };
 
                     DataStore.CN.NotifyError("Bad colour in GetColour", argErrorDetail);
 

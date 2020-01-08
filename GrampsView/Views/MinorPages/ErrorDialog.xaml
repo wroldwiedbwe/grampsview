@@ -12,26 +12,21 @@
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="White">
     <Grid.RowDefinitions>
-        <RowDefinition
-            Height="Auto" />
-        <RowDefinition
-            Height="Auto" />
-        <RowDefinition
-            Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
 
-    <BoxView
-        Color="Black" />
+    <BoxView Color="Black" />
     <Label
         Margin="20,5"
         Style="{DynamicResource TitleStyle}"
         Text="{Binding adaArgs.Name}"
         TextColor="White" />
 
-    <Label
-        Grid.Row="1"
-        Margin="20,0,20,10"
-        Text="{Binding adaArgs.Text}" />
+    <ScrollView Grid.Row="1">
+        <Label Margin="20,0,20,10" Text="{Binding adaArgs.Text}" />
+    </ScrollView>
 
     <Button
         Grid.Row="2"
