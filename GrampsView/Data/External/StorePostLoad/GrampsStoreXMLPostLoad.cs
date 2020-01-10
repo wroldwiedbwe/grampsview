@@ -325,6 +325,151 @@ namespace GrampsView.Data.ExternalStorageNS
         }
 
         /// <summary>
+        /// Organises the person repository.
+        /// </summary>
+        private static void OrganisePersonRepository()
+        {
+            DataStore.CN.MajorStatusAdd("Organising Person data");
+
+            foreach (PersonModel person in DV.PersonDV.PersonData)
+            {
+                HLinkPersonModel t = person.GetHLink;
+
+                if (person.Id == "I0568")
+                {
+                }
+                // -- Organse Back Links
+                // ---------------------
+
+                // Citation Collection
+
+                foreach (HLinkCitationModel citationRef in person.GCitationRefCollection)
+                {
+                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                }
+
+                // Event Collection
+
+                foreach (HLinkEventModel eventRef in person.GEventRefCollection)
+                {
+                    DV.EventDV.GetModel(eventRef.HLinkKey).BackHLinkReferenceCollection.Add(t);
+                }
+
+                foreach (HLinkMediaModel mediaRef in person.GMediaRefCollection)
+                {
+                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                }
+
+                // Note Collection
+
+                foreach (HLinkNoteModel noteRef in person.GNoteRefCollection)
+                {
+                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                }
+
+                // Parent RelationShip
+
+                foreach (HLinkFamilyModel familyRef in person.GParentInRefCollection)
+                {
+                    DV.FamilyDV.FamilyData[familyRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                }
+
+                // Sibling Collection
+
+                foreach (HLinkPersonModel personRef in person.SiblingRefCollection)
+                {
+                    DV.PersonDV.PersonData[personRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                }
+
+                // Back Reference Tag HLinks
+                for (int i = 0; i < person.GTagRefCollection.Count; i++)
+                {
+                    HLinkTagModel tagRef = person.GTagRefCollection[i];
+
+                    // Update the tag ref with colours and symbols
+                    person.GTagRefCollection[i].HomeImageHLink = GetTagRefHomeLink(tagRef.DeRef, tagRef.HomeImageHLink);
+
+                    // Set the backlinks
+                    DV.TagDV.GetModel(tagRef.HLinkKey).BackHLinkReferenceCollection.Add(t);
+                }
+
+                // -- Organise First Image and Sorts
+                // ------------------------------
+
+                DV.PersonDV.PersonData[person.HLinkKey].GCitationRefCollection.SortAndSetFirst();
+
+                DV.PersonDV.PersonData[person.HLinkKey].GEventRefCollection.SortAndSetFirst();
+
+                // Sort media collection and get first link images
+                DV.PersonDV.PersonData[person.HLinkKey].GMediaRefCollection.SortAndSetFirst();
+
+                DV.PersonDV.PersonData[person.HLinkKey].GNoteRefCollection.SortAndSetFirst();
+
+                DV.PersonDV.PersonData[person.HLinkKey].GParentInRefCollection.SortAndSetFirst();
+
+                DV.PersonDV.PersonData[person.HLinkKey].SiblingRefCollection.SortAndSetFirst();
+
+                // -- Organsie Home Image
+                // ------------------------------
+
+                foreach (PersonModel argModel in DV.PersonDV.PersonData)
+                {
+                    if (argModel.Id == "I0568")
+                    {
+                    }
+
+                    // Get default image if available
+                    HLinkMediaModel hlink = DV.PersonDV.GetDefaultImageFromCollection(argModel);
+
+                    // Check Media for Images
+                    if (hlink is null)
+                    {
+                        hlink = argModel.GMediaRefCollection.FirstHLink;
+                    }
+
+                    // Check Citation for Images
+                    if (hlink is null)
+                    {
+                        hlink = argModel.GCitationRefCollection.FirstHLink;
+                    }
+
+                    // Action any Link
+                    if (hlink is null)
+                    {
+                        argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                    }
+                    else
+                    {
+                        argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
+                    }
+                }
+
+                // -- Setup some extra values
+                // ------------------------------
+
+                // set Birthdate
+                EventModel birthDate = DV.EventDV.GetEventType(person.GEventRefCollection, CommonConstants.EventTypeBirth);
+                if (birthDate.Valid)
+                {
+                    person.BirthDate = birthDate.GDate;
+                }
+
+                // set Is Living
+                if (DV.EventDV.GetEventType(person.GEventRefCollection, CommonConstants.EventTypeDeath).Valid)
+                {
+                    person.IsLiving = false;
+                }
+                else
+                {
+                    person.IsLiving = true;
+                }
+
+                // set Sibling Collection
+                person.SiblingRefCollection = DV.FamilyDV.FamilyData[person.GChildOf.HLinkKey].GChildRefCollection;
+            }
+        }
+
+        /// <summary>
         /// Organises the place repository.
         /// </summary>
         private static void OrganisePlaceRepository()
@@ -447,7 +592,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 if (hlink is null)
                 {
                     // Check for icon
-                    hlink = DV.MediaDV.GetFirstIconFromCollection(sourceObject.GMediaRefCollection);
+                    hlink = DV.MediaDV.GetFirstImageFromCollection(sourceObject.GMediaRefCollection);
                 }
 
                 // Set default
@@ -576,151 +721,6 @@ namespace GrampsView.Data.ExternalStorageNS
             _EventAggregator.GetEvent<DataLoadCompleteEvent>().Publish(null);
 
             _CL.LogRoutineExit(nameof(LoadXMLUIItems));
-        }
-
-        /// <summary>
-        /// Organises the person repository.
-        /// </summary>
-        private static void OrganisePersonRepository()
-        {
-            DataStore.CN.MajorStatusAdd("Organising Person data");
-
-            foreach (PersonModel person in DV.PersonDV.PersonData)
-            {
-                HLinkPersonModel t = person.GetHLink;
-
-                if (person.Id == "I0568")
-                {
-                }
-                // -- Organse Back Links
-                // ---------------------
-
-                // Citation Collection
-
-                foreach (HLinkCitationModel citationRef in person.GCitationRefCollection)
-                {
-                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
-                }
-
-                // Event Collection
-
-                foreach (HLinkEventModel eventRef in person.GEventRefCollection)
-                {
-                    DV.EventDV.GetModel(eventRef.HLinkKey).BackHLinkReferenceCollection.Add(t);
-                }
-
-                foreach (HLinkMediaModel mediaRef in person.GMediaRefCollection)
-                {
-                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
-                }
-
-                // Note Collection
-
-                foreach (HLinkNoteModel noteRef in person.GNoteRefCollection)
-                {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
-                }
-
-                // Parent RelationShip
-
-                foreach (HLinkFamilyModel familyRef in person.GParentInRefCollection)
-                {
-                    DV.FamilyDV.FamilyData[familyRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
-                }
-
-                // Sibling Collection
-
-                foreach (HLinkPersonModel personRef in person.SiblingRefCollection)
-                {
-                    DV.PersonDV.PersonData[personRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
-                }
-
-                // Back Reference Tag HLinks
-                for (int i = 0; i < person.GTagRefCollection.Count; i++)
-                {
-                    HLinkTagModel tagRef = person.GTagRefCollection[i];
-
-                    // Update the tag ref with colours and symbols
-                    person.GTagRefCollection[i].HomeImageHLink = GetTagRefHomeLink(tagRef.DeRef, tagRef.HomeImageHLink);
-
-                    // Set the backlinks
-                    DV.TagDV.GetModel(tagRef.HLinkKey).BackHLinkReferenceCollection.Add(t);
-                }
-
-                // -- Organise First Image and Sorts
-                // ------------------------------
-
-                DV.PersonDV.PersonData[person.HLinkKey].GCitationRefCollection.SortAndSetFirst();
-
-                DV.PersonDV.PersonData[person.HLinkKey].GEventRefCollection.SortAndSetFirst();
-
-                // Sort media collection and get first link images
-                DV.PersonDV.PersonData[person.HLinkKey].GMediaRefCollection.SortAndSetFirst();
-
-                DV.PersonDV.PersonData[person.HLinkKey].GNoteRefCollection.SortAndSetFirst();
-
-                DV.PersonDV.PersonData[person.HLinkKey].GParentInRefCollection.SortAndSetFirst();
-
-                DV.PersonDV.PersonData[person.HLinkKey].SiblingRefCollection.SortAndSetFirst();
-
-                // -- Organsie Home Image
-                // ------------------------------
-
-                foreach (PersonModel argModel in DV.PersonDV.PersonData)
-                {
-                    if (argModel.Id == "I0568")
-                    {
-                    }
-
-                    // Get default image if available
-                    HLinkMediaModel hlink = DV.PersonDV.GetDefaultImageFromCollection(argModel);
-
-                    // Check Media for Images
-                    if (hlink is null)
-                    {
-                        hlink = argModel.GMediaRefCollection.FirstHLink;
-                    }
-
-                    // Check Citation for Images
-                    if (hlink is null)
-                    {
-                        hlink = argModel.GCitationRefCollection.FirstHLink;
-                    }
-
-                    // Action any Link
-                    if (hlink is null)
-                    {
-                        argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
-                    }
-                    else
-                    {
-                        argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
-                    }
-                }
-
-                // -- Setup some extra values
-                // ------------------------------
-
-                // set Birthdate
-                EventModel birthDate = DV.EventDV.GetEventType(person.GEventRefCollection, CommonConstants.EventTypeBirth);
-                if (birthDate != null)
-                {
-                    person.BirthDate = birthDate.GDate;
-                }
-
-                // set Is Living
-                if (DV.EventDV.GetEventType(person.GEventRefCollection, CommonConstants.EventTypeDeath) == null)
-                {
-                    person.IsLiving = true;
-                }
-                else
-                {
-                    person.IsLiving = false;
-                }
-
-                // set Sibling Collection
-                person.SiblingRefCollection = DV.FamilyDV.FamilyData[person.GChildOf.HLinkKey].GChildRefCollection;
-            }
         }
     }
 }

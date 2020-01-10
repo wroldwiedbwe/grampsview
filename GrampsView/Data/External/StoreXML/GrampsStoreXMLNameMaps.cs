@@ -14,7 +14,7 @@ namespace GrampsView.Data.ExternalStorageNS
     using System.Threading.Tasks;
     using System.Xml.Linq;
 
-    using GrampsView.Common; 
+    using GrampsView.Common;
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
@@ -35,7 +35,7 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </returns>
         public async Task LoadNameMapsAsync()
         {
-            await DataStore.CN.MajorStatusAdd("Loading NameMaps data");
+            await DataStore.CN.MajorStatusAdd(nameof(LoadNameMapsAsync)).ConfigureAwait(false);
             {
                 // XNamespace ns = grampsXMLNameSpace;
                 try
@@ -78,13 +78,13 @@ namespace GrampsView.Data.ExternalStorageNS
                 catch (Exception e)
                 {
                     // TODO handle this
-                    await DataStore.CN.MajorStatusAdd(e.Message);
+                    await DataStore.CN.MajorStatusAdd(e.Message).ConfigureAwait(false);
 
                     throw;
                 }
             }
 
-            await DataStore.CN.MajorStatusDelete();
+            await DataStore.CN.MajorStatusDelete().ConfigureAwait(false);
             return;
         }
     }

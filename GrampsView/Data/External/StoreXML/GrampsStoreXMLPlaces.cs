@@ -35,7 +35,7 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </returns>
         public async Task LoadPlacesAsync()
         {
-            await DataStore.CN.MajorStatusAdd("Loading Place data");
+            await DataStore.CN.MajorStatusAdd(nameof(LoadPlacesAsync)).ConfigureAwait(false);
             {
                 // XNamespace ns = grampsXMLNameSpace;
                 try
@@ -104,13 +104,13 @@ namespace GrampsView.Data.ExternalStorageNS
                 catch (Exception e)
                 {
                     // TODO handle this
-                    await DataStore.CN.MajorStatusAdd(e.Message);
+                    await DataStore.CN.MajorStatusAdd(e.Message).ConfigureAwait(false);
 
                     throw;
                 }
             }
 
-            await DataStore.CN.MajorStatusDelete();
+            await DataStore.CN.MajorStatusDelete().ConfigureAwait(false);
             return;
         }
     }

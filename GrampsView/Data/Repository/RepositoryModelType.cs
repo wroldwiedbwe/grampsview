@@ -249,6 +249,11 @@ namespace GrampsView.Data.Repositories
         /// </returns>
         public T1 GetModelFromHLink(T2 argHLink)
         {
+            if (argHLink is null)
+            {
+                throw new ArgumentNullException(nameof(argHLink));
+            }
+
             return GetModelFromHLink(argHLink.HLinkKey);
         }
 

@@ -40,11 +40,6 @@ namespace GrampsView.Data.DataView
         /// </summary>
         public MediaDataView()
         {
-            //// Set cache duration
-            //ImageCache.Instance.CacheDuration = TimeSpan.FromHours(24);
-
-            //// Enable in-memory caching for 100 items
-            //ImageCache.Instance.MaxMemoryCacheCount = 100;
         }
 
         /// <summary>
@@ -183,31 +178,9 @@ namespace GrampsView.Data.DataView
                 theCollection = GetAllAsHlink();
             }
 
-            HLinkMediaModel returnMediaModel = null;
-            MediaModel tempMediaModel;
+            IEnumerable<HLinkMediaModel> t = theCollection.Where(HLinkMediaModel => HLinkMediaModel.DeRef.IsMediaFile == true);
 
-            if (theCollection.Count > 0)
-            {
-                // step through each mediamodel hlink in the collection
-                for (int i = 0; i < theCollection.Count; i++)
-                {
-                    tempMediaModel = MediaData.GetModelFromHLink(theCollection[i]);
-
-                    if (!tempMediaModel.IsMediaFile)
-                    {
-                        returnMediaModel = tempMediaModel.HomeImageHLink;
-
-                        if (returnMediaModel is null)
-                        {
-                        }
-
-                        break;
-                    }
-                }
-            }
-
-            // return the image
-            return returnMediaModel;
+            return t.FirstOrDefault();
         }
 
         /// <summary>

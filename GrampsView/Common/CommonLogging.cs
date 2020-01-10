@@ -25,6 +25,31 @@ namespace GrampsView.Common
         {
         }
 
+        public static void LogError(string argMessage, Dictionary<string, string> argErrorDetail)
+        {
+            //argErrorDetail.Add("Error", argMessage);
+
+            Crashes.TrackError(null, argErrorDetail);
+
+            Analytics.TrackEvent(argMessage, argErrorDetail);
+        }
+
+        public static void LogException(string strMessage, Exception ex)
+        {
+            if (ex is null)
+            {
+                throw new ArgumentNullException(nameof(ex));
+            }
+
+            string exceptionMessage = strMessage + " - Exception:" + ex.Message + " - " + ex.Source + " - " + ex.InnerException + " - " + ex.StackTrace;
+
+            Crashes.TrackError(ex,
+                new Dictionary<string, string>{
+                { "Message", strMessage},
+                 { "Exception Message", exceptionMessage},
+                });
+        }
+
         void ICommonLogging.CloseLogging()
         {
         }
@@ -50,30 +75,5 @@ namespace GrampsView.Common
         }
 
         // TODO detect redundant calls
-
-        public static void LogException(string strMessage, Exception ex)
-        {
-            if (ex is null)
-            {
-                throw new ArgumentNullException(nameof(ex));
-            }
-
-            string exceptionMessage = strMessage + " - Exception:" + ex.Message + " - " + ex.Source + " - " + ex.InnerException + " - " + ex.StackTrace;
-
-            Crashes.TrackError(ex,
-                new Dictionary<string, string>{
-                { "Message", strMessage},
-                 { "Exception Message", exceptionMessage},
-                });
-        }
-
-        public static void LogError(string argMessage, Dictionary<string, string> argErrorDetail)
-        {
-            //argErrorDetail.Add("Error", argMessage);
-
-            Crashes.TrackError(null, argErrorDetail);
-
-            Analytics.TrackEvent(argMessage, argErrorDetail);
-        }
     }
 }

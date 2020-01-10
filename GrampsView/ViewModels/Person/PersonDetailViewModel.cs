@@ -20,7 +20,7 @@ namespace GrampsView.ViewModels
         /// <summary>
         /// The current person.
         /// </summary>
-        private PersonModel localPersonModel = null;
+        private PersonModel _PersonObject = new PersonModel();
 
         /// <summary>Initializes a new instance of the <see cref="PersonDetailViewModel"/> class.</summary>
         /// <param name="iocCommonLogging">The common logging service.</param>
@@ -33,14 +33,8 @@ namespace GrampsView.ViewModels
             BaseTitleIcon = CommonConstants.IconPeople;
         }
 
-        public bool mediaImageVisible
-        {
-            get
-            {
-                return true;
-            }
-        }
-
+        /// <summary>Gets or sets the person biograqphical details.</summary>
+        /// <value>The person bio.</value>
         public NoteModel PersonBio
         {
             get
@@ -64,12 +58,12 @@ namespace GrampsView.ViewModels
         {
             get
             {
-                return localPersonModel;
+                return _PersonObject;
             }
 
             set
             {
-                SetProperty(ref localPersonModel, value);
+                SetProperty(ref _PersonObject, value);
             }
         }
 
@@ -104,16 +98,44 @@ namespace GrampsView.ViewModels
                 // Get Header Details
                 CardGroup t = new CardGroup { Title = "Header Details" };
 
-                // Get basic details
-                t.Cards.Add(new CardListLineCollection
+                // Get the Name Details
+
+                CardListLineCollection nameDetails = new CardListLineCollection();
+
+                nameDetails.Add(new CardListLine("Card Type:", "Person Detail"));
+                nameDetails.Add(new CardListLine("Full Name:", PersonObject.GBirthName.FullName));
+                nameDetails.Add(new CardListLine("Name Title:", PersonObject.GBirthName.GTitle));
+                nameDetails.Add(new CardListLine("First Name:", PersonObject.GBirthName.GFirstName));
+
+                if (PersonObject.GBirthName.GSurName.Count > 0)
                 {
-                    new CardListLine("Card Type:", "Person Detail"),
-                    new CardListLine("Full Name:", PersonObject.GBirthName.FullName),
-                    new CardListLine("First Name:", PersonObject.GBirthName.GFirstName),
-                    new CardListLine("Surname:", PersonObject.GBirthName.GSurName.GetPrimarySurname),
-                    new CardListLine("Nickname:", PersonObject.GBirthName.GNick),
-                    new CardListLine("Called:", PersonObject.GBirthName.GCall),
-                });
+                    foreach (SurnameModel item in PersonObject.GBirthName.GSurName)
+                    {
+                        nameDetails.Add(new CardListLine("Surname:", item.GText));
+                        nameDetails.Add(new CardListLine("Surname Connector:", item.GConnector));
+                        nameDetails.Add(new CardListLine("Surname Derivation:", item.GDerivation));
+                        nameDetails.Add(new CardListLine("Surname Prefix:", item.GPrefix));
+                        nameDetails.Add(new CardListLine("Surname Primary:", item.GPrim));
+                    }
+                }
+
+                nameDetails.Add(new CardListLine("Nickname:", PersonObject.GBirthName.GNick));
+                nameDetails.Add(new CardListLine("Family Nickname:", PersonObject.GBirthName.GFamilyNick));
+                nameDetails.Add(new CardListLine("Called:", PersonObject.GBirthName.GCall));
+
+                if (PersonObject.GBirthName.GDate.Valid)
+                {
+                    nameDetails.Add(new CardListLine("Name Date:", PersonObject.GBirthName.GDate.GetShortDateAsString));
+                }
+
+                nameDetails.Add(new CardListLine("Name Display:", PersonObject.GBirthName.GDisplay));
+                nameDetails.Add(new CardListLine("Name Group:", PersonObject.GBirthName.GGroup));
+                nameDetails.Add(new CardListLine("Name Private:", PersonObject.GBirthName.GPriv));
+                nameDetails.Add(new CardListLine("Name Sort:", PersonObject.GBirthName.GSort));
+                nameDetails.Add(new CardListLine("Name Suffix:", PersonObject.GBirthName.GSuffix));
+                nameDetails.Add(new CardListLine("Name Type:", PersonObject.GBirthName.GType));
+
+                t.Cards.Add(nameDetails);
 
                 // Get extra details
                 CardListLineCollection tt = new CardListLineCollection
@@ -132,9 +154,11 @@ namespace GrampsView.ViewModels
                     else
                     {
                         tt.Add(new CardListLine("Years Since Birth:", PersonObject.BirthDate.GetAge));
-                        if (DV.EventDV.GetEventType(PersonObject.GEventRefCollection, "Death") != null)
+
+                        EventModel ageAtDeath = DV.EventDV.GetEventType(PersonObject.GEventRefCollection, "Death");
+                        if (ageAtDeath.Valid)
                         {
-                            tt.Add(new CardListLine("Age at Death:", DV.EventDV.GetEventType(PersonObject.GEventRefCollection, "Death").GDate.DateDifferenceDecoded(PersonObject.BirthDate)));
+                            tt.Add(new CardListLine("Age at Death:", ageAtDeath.GDate.DateDifferenceDecoded(PersonObject.BirthDate)));
                         }
                     }
                 }
@@ -170,6 +194,9 @@ namespace GrampsView.ViewModels
                 BaseDetail.Add(PersonObject.GTagRefCollection.GetCardGroup);
                 BaseDetail.Add(PersonObject.GURLCollection.GetCardGroup);
                 BaseDetail.Add(PersonObject.GLDSCollection.GetCardGroup);
+
+                BaseDetail.Add(PersonObject.GBirthName.CitationRefCollection.GetCardGroup, "Name Citations");
+                BaseDetail.Add(PersonObject.GBirthName.NoteReferenceCollection.GetCardGroup, "Name Notes");
 
                 BaseDetail.Add(PersonObject.BackHLinkReferenceCollection.GetCardGroup);
 

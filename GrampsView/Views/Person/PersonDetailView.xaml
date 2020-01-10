@@ -53,7 +53,7 @@
         <ucon:MediaImage
             Grid.Row="0"
             BindingContext="{Binding PersonObject.HomeImageHLink, Mode=OneWay}"
-            UConHideSymbol="{Binding mediaImageVisible, Mode=OneWay}" />
+            IsVisible="{Binding PersonObject.HomeImageHLink.HomeUseImage, Mode=OneWay}" />
 
         <ucon:FlexMultiCardType
             x:Name="BaseHeader"

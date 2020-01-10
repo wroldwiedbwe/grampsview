@@ -224,20 +224,6 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets a value indicating whether returns true if the modelbase is valid.
-        /// </summary>
-        /// <value>
-        /// <c> true </c> if this instance is valid; otherwise, <c> false </c>.
-        /// </value>
-        public bool IsValid
-        {
-            get
-            {
-                return !string.IsNullOrEmpty(HLinkKey);
-            }
-        }
-
-        /// <summary>
         /// Gets or sets the model common logging.
         /// </summary>
         /// <value>
@@ -295,6 +281,20 @@ namespace GrampsView.Data.Model
             get
             {
                 return _Priv.ToString(CultureInfo.CurrentCulture);
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether returns true if the modelbase is valid.
+        /// </summary>
+        /// <value>
+        /// <c> true </c> if this instance is valid; otherwise, <c> false </c>.
+        /// </value>
+        public bool Valid
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(HLinkKey);
             }
         }
 

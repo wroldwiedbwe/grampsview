@@ -77,10 +77,6 @@ namespace GrampsView.Data.Model
         /// </summary>
         private string _GQuality = string.Empty;
 
-        ///// <summary>
-        ///// Notional Date Type field.
-        ///// </summary>
-        // private DateType GTypeField = DateType.NullDate;
         /// <summary>
         /// Start field.
         /// </summary>
@@ -115,30 +111,16 @@ namespace GrampsView.Data.Model
         {
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DateObjectModel" /> class.
-        /// </summary>
-        /// <param name="aCFormat">
-        /// a c format.
-        /// </param>
-        /// <param name="aDualDated">
-        /// if set to <c> true </c> [a dual dated].
-        /// </param>
-        /// <param name="aNewYear">
-        /// a new year.
-        /// </param>
-        /// <param name="aQuality">
-        /// a quality.
-        /// </param>
-        /// <param name="aStart">
-        /// a start.
-        /// </param>
-        /// <param name="aStop">
-        /// a stop.
-        /// </param>
-        /// <param name="aVal">
-        /// a value.
-        /// </param>
+        /// <summary>Initializes a new instance of the <see cref="DateObjectModel"/> class.</summary>
+        /// <param name="aDateType">Type of Date</param>
+        /// <param name="aCFormat">a c format.</param>
+        /// <param name="aDualDated">if set to <c> true </c> [a dual dated].</param>
+        /// <param name="aNewYear">a new year.</param>
+        /// <param name="aQuality">a quality.</param>
+        /// <param name="aStart">a start.</param>
+        /// <param name="aStop">a stop.</param>
+        /// <param name="aVal">a value.</param>
+        /// <param name="aValType">Type of Val date.</param>
         public DateObjectModel(DateType aDateType, string aCFormat, bool aDualDated, string aNewYear, string aQuality, string aStart, string aStop, string aVal, string aValType)
         {
             // Setup defaults
@@ -169,13 +151,13 @@ namespace GrampsView.Data.Model
 
                 case DateType.Str:
                     {
-                        DateObjectModelStr(aCFormat, aDualDated, aNewYear, aQuality, aStart, aStop, aVal);
+                        DateObjectModelStr(aVal);
                         break;
                     }
 
                 case DateType.Val:
                     {
-                        DateObjectModelVal(aCFormat, aDualDated, aNewYear, aQuality, aStart, aStop, aVal, aValType);
+                        DateObjectModelVal(aValType);
                         break;
                     }
 
@@ -187,16 +169,11 @@ namespace GrampsView.Data.Model
             }
         }
 
+        /// <summary>Enum for the types of dates.</summary>
         public enum DateType
         {
             Range, Span, Str, Unknown, Val
         }
-
-        /// <summary>Gets or sets a value indicating whether the date is valid.</summary>
-        /// <value>
-        ///   <c>true</c> if [date valid]; otherwise, <c>false</c>.</value>
-        [DataMember]
-        public bool DateValid { get; set; } = false;
 
         /// <summary>
         /// Gets the $$(cformat)$$ field.
@@ -235,18 +212,14 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>
-        /// Gets the number of years ago Because the field can have one or two dates etc this is
-        /// trickier than it sounds.
-        /// </summary>
-        /// <returns>
-        /// age.
-        /// </returns>
+        /// <summary>Gets the number of years ago Because the field can have one or two dates etc this is
+        /// trickier than it sounds.</summary>
+        /// <returns>age.</returns>
         public int GetAge
         {
             get
             {
-                if (!DateValid)
+                if (!Valid)
                 {
                     return 0;
                 }
@@ -282,27 +255,13 @@ namespace GrampsView.Data.Model
             }
         }
 
-        ///// <summary>
-        ///// Gets a date type string.
-        ///// </summary>
-        ///// <returns>
-        ///// string description of a date type.
-        ///// </returns>
-        //public virtual string GetDateTypeString
-        //{
-        //    get
-        //    {
-        //        // Return empty string as a default
-        //        return string.Empty;
-        //    }
-        //}
         /// <summary>Gets the decade of the date.</summary>
         /// <value>The get decade.</value>
         public int GetDecade
         {
             get
             {
-                if (!DateValid)
+                if (!Valid)
                 {
                     return 0;
                 }
@@ -318,7 +277,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                if (!DateValid)
+                if (!Valid)
                 {
                     return "Unknown";
                 }
@@ -361,7 +320,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                if (!DateValid)
+                if (!Valid)
                 {
                     return "Unknown";
                 }
@@ -403,7 +362,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                if (!DateValid)
+                if (!Valid)
                 {
                     return "Unknown";
                 }
@@ -418,7 +377,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                if (!DateValid)
+                if (!Valid)
                 {
                     return "Unknown";
                 }
@@ -571,6 +530,8 @@ namespace GrampsView.Data.Model
             }
         }
 
+        /// <summary>Gets the type of the  Val Type, e.g. Before</summary>
+        /// <value>The type of the g value.</value>
         [DataMember]
         public string GValType
         {
@@ -601,15 +562,6 @@ namespace GrampsView.Data.Model
                 SetProperty(ref _NotionalDate, value);
             }
         }
-
-        //public DateTimeFormatter ShortDate
-        //{
-        //    get
-        //    {
-        //        return new DateTimeFormatter("‎{day.integer} {month.abbreviated} ‎{year.full}");
-        //    }
-        //}
-        // private set { SetProperty(ref GTypeField, value); } }
 
         /// <summary>Gets returns a single dateversion of the date field Because the field can have one or
         /// two dates etc this is trickier than it sounds.
@@ -642,6 +594,14 @@ namespace GrampsView.Data.Model
             }
         }
 
+        //public DateTimeFormatter ShortDate
+        //{
+        //    get
+        //    {
+        //        return new DateTimeFormatter("‎{day.integer} {month.abbreviated} ‎{year.full}");
+        //    }
+        //}
+        // private set { SetProperty(ref GTypeField, value); } }
         /// <summary>Gets returns a sortable version of the date field Because the field can have one or two
         /// dates etc this is trickier than it sounds.
         /// Overridden by more specific date types. </summary>
@@ -674,21 +634,43 @@ namespace GrampsView.Data.Model
             }
         }
 
+        /// <summary>Gets or sets a value indicating whether the date is valid.</summary>
+        /// <value>
+        ///   <c>true</c> if [date valid]; otherwise, <c>false</c>.</value>
+        [DataMember]
+        public bool Valid { get; set; } = false;
+
+        /// <summary>Implements the operator !=.</summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator !=(DateObjectModel left, DateObjectModel right)
         {
             return !(left == right);
         }
 
+        /// <summary>Implements the operator &lt;.</summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator <(DateObjectModel left, DateObjectModel right)
         {
             return ReferenceEquals(left, null) ? !ReferenceEquals(right, null) : left.CompareTo(right) < 0;
         }
 
+        /// <summary>Implements the operator &lt;=.</summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator <=(DateObjectModel left, DateObjectModel right)
         {
             return ReferenceEquals(left, null) || left.CompareTo(right) <= 0;
         }
 
+        /// <summary>Implements the operator ==.</summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator ==(DateObjectModel left, DateObjectModel right)
         {
             if (ReferenceEquals(left, null))
@@ -699,26 +681,28 @@ namespace GrampsView.Data.Model
             return left.Equals(right);
         }
 
+        /// <summary>Implements the operator &gt;.</summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator >(DateObjectModel left, DateObjectModel right)
         {
             return !ReferenceEquals(left, null) && left.CompareTo(right) > 0;
         }
 
+        /// <summary>Implements the operator &gt;=.</summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator >=(DateObjectModel left, DateObjectModel right)
         {
             return ReferenceEquals(left, null) ? ReferenceEquals(right, null) : left.CompareTo(right) >= 0;
         }
 
-        /// <summary>
-        /// Compares two objects and returns a value indicating whether one is less than, equal to,
-        /// or greater than the other.
-        /// </summary>
-        /// <param name="x">
-        /// The first object to compare.
-        /// </param>
-        /// <param name="y">
-        /// The second object to compare.
-        /// </param>
+        /// <summary>Compares two objects and returns a value indicating whether one is less than, equal to,
+        /// or greater than the other.</summary>
+        /// <param name="x">The first object to compare.</param>
+        /// <param name="y">The second object to compare.</param>
         /// <returns>
         /// A signed integer that indicates the relative values of <paramref name="x" /> and
         /// <paramref name="y" />, as shown in the following table. Value Meaning Less than zero
@@ -760,7 +744,7 @@ namespace GrampsView.Data.Model
         /// </returns>
         public TimeSpan DateDifference(DateObjectModel otherDate)
         {
-            if (DateValid)
+            if (Valid)
             {
                 return SingleDate.Subtract(otherDate.SingleDate);
             }
@@ -778,7 +762,7 @@ namespace GrampsView.Data.Model
         /// </returns>
         public string DateDifferenceDecoded(DateObjectModel otherDate)
         {
-            if (DateValid)
+            if (Valid)
             {
                 // Because we start at year 1 for the Gregorian calendar, we must subtract a year here.
                 DateTime zeroTime = new DateTime(1, 1, 1);
@@ -836,21 +820,21 @@ namespace GrampsView.Data.Model
             // YYYY-MM-DD
             if (DateTime.TryParse(inputArg, CultureInfo.InvariantCulture, DateTimeStyles.None, out outputDateTime) == true)
             {
-                DateValid = true;
+                Valid = true;
                 return outputDateTime;
             }
 
             // YYYY-MM
             if (DateTime.TryParseExact(inputArg, "yyyy-MM", null, DateTimeStyles.None, out outputDateTime) == true)
             {
-                DateValid = true;
+                Valid = true;
                 return outputDateTime;
             }
 
             // YYYY
             if (DateTime.TryParseExact(inputArg, "yyyy", null, DateTimeStyles.None, out outputDateTime) == true)
             {
-                DateValid = true;
+                Valid = true;
                 return outputDateTime;
             }
 

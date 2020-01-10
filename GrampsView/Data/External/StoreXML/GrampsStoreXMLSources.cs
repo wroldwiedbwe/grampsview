@@ -96,7 +96,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 }
             }
 
-            await DataStore.CN.MajorStatusDelete();
+            await DataStore.CN.MajorStatusDelete().ConfigureAwait(false);
             return;
         }
     }

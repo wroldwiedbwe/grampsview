@@ -111,7 +111,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                if (DateValid)
+                if (Valid)
                 {
                     return GStart + " to " + GStop;
                 }

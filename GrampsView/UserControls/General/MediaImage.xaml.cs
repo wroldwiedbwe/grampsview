@@ -16,6 +16,20 @@ namespace GrampsView.UserControls
 
     public partial class MediaImage : Frame
     {
+        public static readonly BindableProperty UConHideSymbolProperty
+               = BindableProperty.Create(returnType: typeof(bool), declaringType: typeof(MediaImage), propertyName: nameof(UConHideSymbol), defaultValue: false, propertyChanged: MediaImage_UConPropertyChanged);
+
+        private double CropHeightRatio;
+
+        private double CropWidthRatio;
+
+        // Set some other stuff
+        private double CurrentXOffset;
+
+        private double CurrentYOffset;
+
+        private double CurrentZoomFactor;
+
         public MediaImage()
         {
             InitializeComponent();
@@ -27,19 +41,11 @@ namespace GrampsView.UserControls
             set { SetValue(UConHideSymbolProperty, value); }
         }
 
-        public static readonly BindableProperty UConHideSymbolProperty
-               = BindableProperty.Create(returnType: typeof(bool), declaringType: typeof(MediaImage), propertyName: nameof(UConHideSymbol), defaultValue: false);
-
         private HLinkMediaModel HLinkMedia { get; set; }
 
-        // Set some other stuff
-        private double CurrentXOffset;
-
-        private double CurrentYOffset;
-        private double CurrentZoomFactor;
-
-        private double CropWidthRatio;
-        private double CropHeightRatio;
+        private static void MediaImage_UConPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+        }
 
         private void DaImage_Error(object sender, FFImageLoading.Forms.CachedImageEvents.ErrorEventArgs e)
         {

@@ -13,9 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrampsView.UWP", "GrampsVie
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{290510A7-003E-4E74-A826-53809648E8D8}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\continuous-integration-workflow.yml = .github\workflows\continuous-integration-workflow.yml
+		.github\contributing.md = .github\contributing.md
 		LICENSE = LICENSE
 		README.md = README.md
-		SECURITY.md = SECURITY.md
+		.github\releasenotes.yml = .github\releasenotes.yml
+		.github\SECURITY.md = .github\SECURITY.md
 	EndProjectSection
 EndProject
 Global

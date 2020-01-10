@@ -38,6 +38,38 @@ namespace GrampsView.Data.ExternalStorageNS
     /// <seealso cref="IGrampsStoreXML" />
     public partial class GrampsStoreXML : IGrampsStoreXML
     {
+        /// <summary>Gets the bool.</summary>
+        /// <param name="xmlData">The XML data.</param>
+        /// <param name="argName">Name of the argument.</param>
+        /// <returns></returns>
+        private static bool GetBool(XElement xmlData, string argName)
+        {
+            string boolString = GetAttribute(xmlData.Attribute(argName));
+
+            if (boolString == null)
+            {
+                return false;
+            }
+
+            switch (boolString)
+            {
+                case "0":
+                    {
+                        return true;
+                    }
+
+                case "1":
+                    {
+                        return false;
+                    }
+
+                default:
+                    {
+                        return false;
+                    }
+            }
+        }
+
         /// <summary>
         /// Converts a string into a uri (if it can).
         /// </summary>
@@ -198,45 +230,6 @@ namespace GrampsView.Data.ExternalStorageNS
         }
 
         /// <summary>
-        /// Gets the bool.
-        /// </summary>
-        /// <param name="xmlData">
-        /// The XML data.
-        /// </param>
-        /// <param name="argName">
-        /// Name of the argument.
-        /// </param>
-        /// <returns>
-        /// </returns>
-        private bool GetBool(XElement xmlData, string argName)
-        {
-            string boolString = GetAttribute(xmlData.Attribute(argName));
-
-            if (boolString == null)
-            {
-                return false;
-            }
-
-            switch (boolString)
-            {
-                case "0":
-                    {
-                        return true;
-                    }
-
-                case "1":
-                    {
-                        return false;
-                    }
-
-                default:
-                    {
-                        return false;
-                    }
-            }
-        }
-
-        /// <summary>
         /// Gets the citation collection.
         /// </summary>
         /// <remarks>
@@ -326,9 +319,8 @@ namespace GrampsView.Data.ExternalStorageNS
             catch (Exception ex)
             {
                 DataStore.CN.NotifyException("Error in XML Utils GetColour", ex);
+                throw;
             }
-
-            return new Color();
         }
 
         /// <summary>

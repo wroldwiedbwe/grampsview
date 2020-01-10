@@ -69,11 +69,14 @@ namespace GrampsView.Data.DataView
             set;
         }
 
+        /// <summary>Gets the get groups by letter.
+        /// Default to empty list.</summary>
+        /// <value>The get groups by letter.</value>
         public virtual List<CommonGroupInfoCollection<TB>> GetGroupsByLetter
         {
             get
             {
-                throw new NotImplementedException();
+                return new List<CommonGroupInfoCollection<TB>>();
             }
         }
 
@@ -222,10 +225,5 @@ namespace GrampsView.Data.DataView
         /// <returns>
         /// </returns>
         public abstract List<SearchItem> Search(string queryString);
-
-        //public virtual IReadOnlyList<TB> VirtualReader(int startItem, int itemCount)
-        //{
-        //    return DataViewData.Items.ToList();
-        //}
     }
 }

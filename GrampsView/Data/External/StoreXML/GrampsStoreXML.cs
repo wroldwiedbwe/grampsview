@@ -58,6 +58,32 @@ namespace GrampsView.Data.ExternalStorageNS
         }
 
         /// <summary>
+        /// Sets the private object.
+        /// </summary>
+        /// <param name="thePriv">
+        /// The priv.
+        /// </param>
+        /// <returns>
+        /// True or False depending on if the object is private.
+        /// </returns>
+        public static bool SetPrivateObject(string thePriv)
+        {
+            switch (thePriv)
+            {
+                case "1":
+                    {
+                        return true;
+                    }
+
+                case "0":
+                default:
+                    {
+                        return false;
+                    }
+            }
+        }
+
+        /// <summary>
         /// Loads the Gramps XML data.
         /// </summary>
         /// <param name="dataFolder">
@@ -100,7 +126,7 @@ namespace GrampsView.Data.ExternalStorageNS
                             a => a.Name.Namespace == XNamespace.None ? string.Empty : a.Name.LocalName,
                             a => XNamespace.Get(a.Value)).ToDictionary(
                                                                        g => g.Key,
-                                                                       g => g.First());
+                                                                       g => g.FirstOrDefault());
 
                     ns = nameSpaceList.FirstOrDefault().Value.NamespaceName;
 
@@ -145,32 +171,6 @@ namespace GrampsView.Data.ExternalStorageNS
         }
 
         /// <summary>
-        /// Sets the private object.
-        /// </summary>
-        /// <param name="thePriv">
-        /// The priv.
-        /// </param>
-        /// <returns>
-        /// True or False depending on if the object is private.
-        /// </returns>
-        public bool SetPrivateObject(string thePriv)
-        {
-            switch (thePriv)
-            {
-                case "1":
-                    {
-                        return true;
-                    }
-
-                case "0":
-                default:
-                    {
-                        return false;
-                    }
-            }
-        }
-
-        /// <summary>
         /// Gets the attribute.
         /// </summary>
         /// <param name="a">
@@ -180,6 +180,27 @@ namespace GrampsView.Data.ExternalStorageNS
         /// Text of the XML Attribute.
         /// </returns>
         private static string GetAttribute(XAttribute a)
+        {
+            if (a == null)
+            {
+                return string.Empty;
+            }
+            else
+            {
+                return ((string)a).Trim();
+            }
+        }
+
+        /// <summary>
+        /// Gets the element.
+        /// </summary>
+        /// <param name="a">
+        /// a.
+        /// </param>
+        /// <returns>
+        /// Text of the XML Element.
+        /// </returns>
+        private static string GetElement(XElement a)
         {
             if (a == null)
             {
@@ -205,27 +226,6 @@ namespace GrampsView.Data.ExternalStorageNS
         private string GetAttribute(XElement a, string b)
         {
             return GetAttribute(a.Attribute(b));
-        }
-
-        /// <summary>
-        /// Gets the element.
-        /// </summary>
-        /// <param name="a">
-        /// a.
-        /// </param>
-        /// <returns>
-        /// Text of the XML Element.
-        /// </returns>
-        private static string GetElement(XElement a)
-        {
-            if (a == null)
-            {
-                return string.Empty;
-            }
-            else
-            {
-                return ((string)a).Trim();
-            }
         }
 
         /// <summary>

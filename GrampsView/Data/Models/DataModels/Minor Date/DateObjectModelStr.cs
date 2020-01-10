@@ -51,7 +51,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                if (DateValid)
+                if (Valid)
                 {
                     return GVal;
                 }
@@ -71,8 +71,7 @@ namespace GrampsView.Data.Model
         /// <param name="aStart">a start.</param>
         /// <param name="aStop">a stop.</param>
         /// <param name="aVal">a value.</param>
-        public void DateObjectModelStr(string aCFormat, bool aDualDated, string aNewYear, string aQuality, string aStart, string aStop, string aVal)
-
+        public void DateObjectModelStr(string aVal)
         {
             try
             {
@@ -81,7 +80,7 @@ namespace GrampsView.Data.Model
                 // Set NotionalDate
                 NotionalDate = DateTime.MinValue;
 
-                DateValid = true;
+                Valid = true;
             }
             catch (Exception e)
             {

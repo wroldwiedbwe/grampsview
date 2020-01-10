@@ -51,6 +51,21 @@ namespace GrampsView.Data.Model
             }
         }
 
+        /// <summary>Adds the specified argument card group but using the supplied title.</summary>
+        /// <param name="argCardGroup">The argument card group.</param>
+        /// <param name="argTitle">The argument title.</param>
+        /// <exception cref="ArgumentNullException">argCardGroup</exception>
+        public void Add(CardGroup argCardGroup, string argTitle)
+        {
+            if (argCardGroup is null)
+            {
+                throw new ArgumentNullException(nameof(argCardGroup));
+            }
+
+            argCardGroup.Title = argTitle;
+            Add(argCardGroup);
+        }
+
         protected void OnPropertyChanged(string propertyName)
         {
             OnPropertyChanged(new PropertyChangedEventArgs(propertyName));

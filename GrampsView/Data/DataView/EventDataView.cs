@@ -9,6 +9,7 @@
 
 namespace GrampsView.Data.DataView
 {
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Globalization;
@@ -84,6 +85,8 @@ namespace GrampsView.Data.DataView
             }
         }
 
+        /// <summary>Gets the get event groups by decade.</summary>
+        /// <value>The get groups by letter.</value>
         public override List<CommonGroupInfoCollection<EventModel>> GetGroupsByLetter
         {
             get
@@ -177,7 +180,7 @@ namespace GrampsView.Data.DataView
         }
 
         /// <summary>
-        /// Gets the type of the event.
+        /// Gets the first event type in the collection.
         /// </summary>
         /// <param name="eventCollection">
         /// The event collection.
@@ -190,19 +193,29 @@ namespace GrampsView.Data.DataView
         /// </returns>
         public EventModel GetEventType(HLinkEventModelCollection eventCollection, string eventType)
         {
-            EventModel returnValue = null;
-
-            foreach (var item in eventCollection)
+            if (eventCollection is null)
             {
-                EventModel currentEvent = Get(item);
-
-                if (currentEvent.GType == eventType)
-                {
-                    returnValue = currentEvent;
-                }
+                throw new ArgumentNullException(nameof(eventCollection));
             }
 
-            return returnValue;
+            IEnumerable<HLinkEventModel> t = eventCollection.Where(HLinkEventModel => HLinkEventModel.DeRef.GType == eventType);
+
+            if (t.Any())
+            {
+                return t.FirstOrDefault().DeRef;
+            }
+
+            //foreach (var item in eventCollection)
+            //{
+            //    EventModel currentEvent = Get(item);
+
+            //    if (currentEvent.GType == eventType)
+            //    {
+            //        return currentEvent;
+            //    }
+            //}
+
+            return new EventModel();
         }
 
         /// <summary>
@@ -264,7 +277,7 @@ namespace GrampsView.Data.DataView
         {
             List<SearchItem> itemsFound = new List<SearchItem>();
 
-            var temp = EventData.Items.Where(x => x.GDescription.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            IEnumerable<EventModel> temp = EventData.Items.Where(x => x.GDescription.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (EventModel tempMO in temp)
             {

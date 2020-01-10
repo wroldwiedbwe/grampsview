@@ -138,7 +138,7 @@ namespace GrampsView.Common
         /// </summary>
         public void CloseLogging()
         {
-            Task.Run(async () => await CloseSessionSaveFinalLogFile());
+            Task.Run(async () => await CloseSessionSaveFinalLogFile().ConfigureAwait(false));
         }
 
         /// <summary>

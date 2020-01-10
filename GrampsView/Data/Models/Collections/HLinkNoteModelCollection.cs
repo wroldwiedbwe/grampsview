@@ -31,7 +31,7 @@ namespace GrampsView.Data.Collections
 
                 if (temp.Any())
                 {
-                    HLinkNoteModel tt = temp.First();
+                    HLinkNoteModel tt = temp.FirstOrDefault();
                     return tt.DeRef;
                 }
                 else

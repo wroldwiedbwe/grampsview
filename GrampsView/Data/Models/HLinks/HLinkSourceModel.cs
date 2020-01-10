@@ -25,11 +25,8 @@ namespace GrampsView.Data.Model
     [DataContract]
     public class HLinkSourceModel : HLinkBase, IHLinkSourceModel
     {
-        ///// <summary>
-        ///// The local image h link.
-        ///// </summary>
-        //private HLinkMediaModel localImageHLink = new HLinkMediaModel { HomeSymbol = Common.CommonConstants.IconSource };
-
+        /// <summary>Gets the model from the HLink.</summary>
+        /// <value>The HLink reference.</value>
         public SourceModel DeRef
         {
             get
@@ -45,56 +42,36 @@ namespace GrampsView.Data.Model
             }
         }
 
-        ///// <summary>
-        ///// Gets or sets the image h link key.
-        ///// </summary>
-        ///// <value>
-        ///// The image h link key.
-        ///// </value>
-        //[DataMember]
-        //public HLinkMediaModel HomeImageHLink
-        //{
-        //    get
-        //    {
-        //        return localImageHLink;
-        //    }
-
-        //    set
-        //    {
-        //        SetProperty(ref localImageHLink, value);
-        //    }
-        //}
-
         /// <summary>
         /// Compares to.
         /// </summary>
-        /// <param name="obj">
+        /// <param name="argOobj">
         /// The object.
         /// </param>
         /// <returns>
         /// </returns>
-        public int CompareTo(HLinkSourceModel obj) => DeRef.CompareTo(obj);
+        public int CompareTo(HLinkSourceModel argOobj) => DeRef.CompareTo(argOobj);
 
         /// <summary>
         /// Compares to.
         /// </summary>
-        /// <param name="obj">
+        /// <param name="argObj">
         /// The object.
         /// </param>
         /// <returns>
         /// </returns>
-        public new int CompareTo(object obj)
+        public new int CompareTo(object argObj)
         {
             // Null objects go first
-            if (obj is null) { return 1; }
+            if (argObj is null) { return 1; }
 
             // Can only comapre if they are the same type so assume equal
-            if (obj.GetType() != typeof(HLinkSourceModel))
+            if (argObj.GetType() != typeof(HLinkSourceModel))
             {
                 return 0;
             }
 
-            return DeRef.CompareTo((obj as HLinkSourceModel).DeRef);
+            return DeRef.CompareTo((argObj as HLinkSourceModel).DeRef);
         }
     }
 }
