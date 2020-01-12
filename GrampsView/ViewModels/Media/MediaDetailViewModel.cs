@@ -220,6 +220,7 @@ namespace GrampsView.ViewModels
                         new CardListLine("Date:", CurrentMediaObject.GDateValue.GetLongDateAsString),
                         new CardListLine("File Description:", CurrentMediaObject.GDescription),
                         new CardListLine("File Mime Type:", CurrentMediaObject.FileMimeType),
+                        new CardListLine("File Content Type:", CurrentMediaObject.FileContentType),
                         new CardListLine("File Mime SubType:", CurrentMediaObject.FileMimeSubType),
                         new CardListLine("OriginalFilePath:", CurrentMediaObject.OriginalFilePath),
                     });
@@ -239,7 +240,10 @@ namespace GrampsView.ViewModels
 
                 // Setup Summary Models
                 BaseDetail.Add(CurrentMediaObject.GPersonRefCollection.GetCardGroup);
+                BaseDetail.Add(CurrentMediaObject.GCitationRefCollection.GetCardGroup);
                 BaseDetail.Add(CurrentMediaObject.GNoteRefCollection.GetCardGroup);
+                BaseDetail.Add(CurrentMediaObject.GEventRefCollection.GetCardGroup);
+                BaseDetail.Add(CurrentMediaObject.GFamilyRefCollection.GetCardGroup);
                 BaseDetail.Add(CurrentMediaObject.GTagRefCollection.GetCardGroup);
                 BaseDetail.Add(CurrentMediaObject.BackHLinkReferenceCollection.GetCardGroup);
             }
@@ -251,7 +255,7 @@ namespace GrampsView.ViewModels
         {
             if (argmdp is null)
             {
-                throw new ArgumentNullException("argmdp");
+                throw new ArgumentNullException(nameof(argmdp));
             }
 
             Trans = new List<ITransformation>() {

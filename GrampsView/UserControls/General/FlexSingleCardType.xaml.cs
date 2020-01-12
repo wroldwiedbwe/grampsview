@@ -11,7 +11,7 @@
 
     public partial class FlexSingleCardType : Frame
     {
-        public const int virtualItemGet = 10;
+        public const int virtualItemGet = 5;
 
         public static readonly BindableProperty FsctSourceProperty
                  = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexSingleCardType), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FsctSource));
@@ -32,7 +32,7 @@
             }
             else
             {
-                startItemGet = 100;
+                startItemGet = 110;
             }
 
             IndexLength = startItemGet;
@@ -221,6 +221,9 @@
             }
         }
 
+        /// <summary>Handles the Scrolled event of the Scroller control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="ScrolledEventArgs"/> instance containing the event data.</param>
         private void Scroller_Scrolled(object sender, ScrolledEventArgs e)
         {
             var t = sender as ScrollView;

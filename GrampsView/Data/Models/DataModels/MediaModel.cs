@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 //
-// Various routines used by the App class that are put here to keep the App class cleaner
+// MediaModel definition
 //
 // <copyright file="MediaModel.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
@@ -17,7 +17,7 @@ namespace GrampsView.Data.Model
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// Data model for a person.
+    /// Data model for a media object.
     /// </summary>
     [DataContract]
     public sealed class MediaModel : ModelBase, IMediaModel, IComparable, IComparer
@@ -25,72 +25,58 @@ namespace GrampsView.Data.Model
         /// <summary>
         /// The local date value.
         /// </summary>
-        private DateObjectModel localDateValue = new DateObjectModel();
+        private DateObjectModel _DateValue = new DateObjectModel();
 
         /// <summary>
         /// The local event collection.
         /// </summary>
-        private HLinkEventModelCollection localEventCollection = new HLinkEventModelCollection();
+        private HLinkEventModelCollection _EventCollection = new HLinkEventModelCollection();
 
         /// <summary>
         /// The local family collection.
         /// </summary>
-        private HLinkFamilyModelCollection localFamilyCollection = new HLinkFamilyModelCollection();
+        private HLinkFamilyModelCollection _FamilyCollection = new HLinkFamilyModelCollection();
 
-        private string localFileContentType;
+        private string _FileContentType;
 
         /// <summary>
         /// My file description.
         /// </summary>
-        private string localFileDescription = string.Empty;
+        private string _FileDescription = string.Empty;
 
         /// <summary>
         /// Local Storage File for media object.
         /// </summary>
-        private FileInfoEx localMediaStorageFile = null;
+        private FileInfoEx _MediaStorageFile = null;
 
         /// <summary>
         /// The local note reference collection.
         /// </summary>
-        private HLinkNoteModelCollection localNoteReferenceCollection = new HLinkNoteModelCollection();
+        private HLinkNoteModelCollection _NoteReferenceCollection = new HLinkNoteModelCollection();
 
         /// <summary>
         /// The local original file path.
         /// </summary>
-        private string localOriginalFilePath = string.Empty;
+        private string _OriginalFilePath = string.Empty;
 
         /// <summary>
         /// The local person collection.
         /// </summary>
-        private HLinkPersonModelCollection localPersonCollection = new HLinkPersonModelCollection();
+        private HLinkPersonModelCollection _PersonCollection = new HLinkPersonModelCollection();
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MediaModel" /> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="MediaModel"/> class.</summary>
         public MediaModel()
         {
             HomeImageHLink.HomeSymbol = CommonConstants.IconMedia;
         }
 
-        ///// <summary>
-        ///// Gets or sets the clip rect.
-        ///// </summary>
-        ///// <value>
-        ///// The clip rect.
-        ///// </value>
-        //[DataMember]
-        //public Rectangle ClipRect
-        //{
-        //    get; set;
-        //}
-
-        // = new Rectangle(0, 0, 100, 100);
-
+        /// <summary>Gets or sets the type of the file content.</summary>
+        /// <value>The type of the file content.</value>
         public string FileContentType
         {
             get
             {
-                return localFileContentType;
+                return _FileContentType;
             }
 
             set
@@ -101,46 +87,41 @@ namespace GrampsView.Data.Model
                     {
                     }
 
-                    SetProperty(ref localFileContentType, value);
+                    SetProperty(ref _FileContentType, value);
 
                     // get the first part
                     string[] t = value.Split('/');
 
                     if (t.Length > 0)
                     {
-                        FileMimeType = t[0].ToLower();
+                        FileMimeType = t[0].ToLower(System.Globalization.CultureInfo.CurrentCulture);
                     }
 
                     if (t.Length > 1)
                     {
-                        FileMimeSubType = t[1].ToLower();
+                        FileMimeSubType = t[1].ToLower(System.Globalization.CultureInfo.CurrentCulture);
                     }
                 }
             }
         }
 
+        /// <summary>Gets or sets the MIME subtype of the file.</summary>
+        /// <value>The type of the file MIME sub.</value>
         [DataMember]
         public string FileMimeSubType
         {
             get; set;
         }
 
-        /// <summary> Gets or sets the file MIME. </summary> <value> The file MIME.
+        /// <summary> Gets or sets the file MIME type. </summary> <value> The file MIME type.
         [DataMember]
-        public string FileMimeType
-        {
-            get
-           ;
-
-            set
-           ;
-        }
+        public string FileMimeType { get; set; }
 
         /// <summary>
-        /// Gets or sets the g citation reference collection.
+        /// Gets or sets the citation reference collection.
         /// </summary>
         /// <value>
-        /// The g citation reference collection.
+        /// The citation reference collection.
         /// </value>
         [DataMember]
         public HLinkCitationModelCollection GCitationRefCollection
@@ -162,12 +143,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localDateValue;
+                return _DateValue;
             }
 
             set
             {
-                SetProperty(ref localDateValue, value);
+                SetProperty(ref _DateValue, value);
             }
         }
 
@@ -182,17 +163,17 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localFileDescription;
+                return _FileDescription;
             }
 
             set
             {
-                SetProperty(ref localFileDescription, value);
+                SetProperty(ref _FileDescription, value);
             }
         }
 
         /// <summary>
-        /// Gets the default text for notes which is the first twenty characters.
+        /// Gets the default text for media which is the first fourty characters.
         /// </summary>
         /// <value>
         /// The get default text.
@@ -206,10 +187,10 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets the get h link.
+        /// Gets the get hlink.
         /// </summary>
         /// <value>
-        /// The get h link.
+        /// The get hlink.
         /// </value>
         public HLinkMediaModel GetHLink
         {
@@ -236,12 +217,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localEventCollection;
+                return _EventCollection;
             }
 
             set
             {
-                SetProperty(ref localEventCollection, value);
+                SetProperty(ref _EventCollection, value);
             }
         }
 
@@ -258,12 +239,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localFamilyCollection;
+                return _FamilyCollection;
             }
 
             set
             {
-                SetProperty(ref localFamilyCollection, value);
+                SetProperty(ref _FamilyCollection, value);
             }
         }
 
@@ -278,12 +259,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localNoteReferenceCollection;
+                return _NoteReferenceCollection;
             }
 
             set
             {
-                SetProperty(ref localNoteReferenceCollection, value);
+                SetProperty(ref _NoteReferenceCollection, value);
             }
         }
 
@@ -300,12 +281,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localPersonCollection;
+                return _PersonCollection;
             }
 
             set
             {
-                SetProperty(ref localPersonCollection, value);
+                SetProperty(ref _PersonCollection, value);
             }
         }
 
@@ -381,12 +362,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localMediaStorageFile;
+                return _MediaStorageFile;
             }
 
             set
             {
-                SetProperty(ref localMediaStorageFile, value);
+                SetProperty(ref _MediaStorageFile, value);
             }
         }
 
@@ -402,7 +383,7 @@ namespace GrampsView.Data.Model
             {
                 if (IsMediaStorageFileValid)
                 {
-                    return localMediaStorageFile.FInfo.FullName;
+                    return _MediaStorageFile.FInfo.FullName;
                 }
                 else
                 {
@@ -425,9 +406,13 @@ namespace GrampsView.Data.Model
             }
         }
 
+        /// <summary>Gets or sets the height of the image metadata.</summary>
+        /// <value>The height of the meta data.</value>
         [DataMember]
         public double MetaDataHeight { get; set; }
 
+        /// <summary>Gets or sets the width of the image metadata.</summary>
+        /// <value>The width of the meta data.</value>
         [DataMember]
         public double MetaDataWidth { get; set; }
 
@@ -442,24 +427,18 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localOriginalFilePath;
+                return _OriginalFilePath;
             }
 
             set
             {
                 if (value != null)
                 {
-                    SetProperty(ref localOriginalFilePath, value);
+                    SetProperty(ref _OriginalFilePath, value);
                 }
             }
         }
 
-        /// <summary>
-        /// Gets the MIME media.
-        /// </summary>
-        /// <value>
-        /// The MIME media.
-        /// </value>
         /// <summary>
         /// Gets the title decoded.
         /// </summary>
@@ -474,24 +453,33 @@ namespace GrampsView.Data.Model
             }
         }
 
-        // set { SetProperty(ref localFileMime, value); } }
         /// <summary>
         /// Compares the specified a.
         /// </summary>
-        /// <param name="a">
+        /// <param name="argFirstMediaModel">
         /// a.
         /// </param>
-        /// <param name="b">
+        /// <param name="argSecondMediaModel">
         /// The b.
         /// </param>
         /// <returns>
         /// </returns>
-        public new int Compare(object a, object b)
+        public new int Compare(object argFirstMediaModel, object argSecondMediaModel)
         {
-            MediaModel firstMediaModel = (MediaModel)a;
-            MediaModel secondMediaModel = (MediaModel)b;
+            if (argFirstMediaModel is null)
+            {
+                throw new ArgumentNullException(nameof(argFirstMediaModel));
+            }
 
-            // compare on surnname first
+            if (argSecondMediaModel is null)
+            {
+                throw new ArgumentNullException(nameof(argSecondMediaModel));
+            }
+
+            MediaModel firstMediaModel = (MediaModel)argFirstMediaModel;
+            MediaModel secondMediaModel = (MediaModel)argSecondMediaModel;
+
+            // Compare on date first
             int testFlag = DateTime.Compare(firstMediaModel.GDateValue.SortDate, secondMediaModel.GDateValue.SortDate);
 
             // If the same then on Description. Usual if there is no Date
@@ -503,26 +491,22 @@ namespace GrampsView.Data.Model
             return testFlag;
         }
 
-        ///// <summary>
-        ///// Gets or Sets the MIME media.
-        ///// </summary>
-        ///// <value>
-        ///// The MIME media.
-        ///// </value>
-        // [DataMember] public string MimeMedia { get { // get the first part string[] t =
-        // localFileMime.Split('/'); if (localFileMime.Length > 0) { return t[0]; } else { return
-        // "Unknown"; } }
         /// <summary>
         /// Implement IComparable CompareTo method.
         /// </summary>
-        /// <param name="obj">
+        /// <param name="argSecondObject">
         /// The object.
         /// </param>
         /// <returns>
         /// </returns>
-        public int CompareTo(object obj)
+        public int CompareTo(object argSecondObject)
         {
-            MediaModel secondMediaModel = (MediaModel)obj;
+            if (argSecondObject is null)
+            {
+                throw new ArgumentNullException(nameof(argSecondObject));
+            }
+
+            MediaModel secondMediaModel = (MediaModel)argSecondObject;
 
             // compare on Date first
             int testFlag = DateTime.Compare(GDateValue.SortDate, secondMediaModel.GDateValue.SortDate);
@@ -547,42 +531,5 @@ namespace GrampsView.Data.Model
         }
 
         public MediaModel GetImageModel() => throw new NotImplementedException();
-
-        /// <summary>
-        /// Sets the clip rect.
-        /// </summary>
-        public void SetClipRect()
-        {
-            //double x1 = 0;
-            //double y1 = 0;
-            //double axisWidth = 0;
-            //double axisHeight = 0;
-
-            //// Load here due to async
-            //ClipRect = new Rectangle(0, 0, 0, 0);
-
-            //if (ImageThumbNail is null)
-            //{
-            //    return;
-            //}
-
-            //axisWidth = ImageThumbNail.PixelWidth;
-            //axisHeight = ImageThumbNail.PixelHeight;
-
-            //if (axisHeight == 0 || axisWidth == 0)
-            //{
-            //    return;
-            //}
-
-            //ClipRect = new Rectangle(x1, y1, axisWidth, axisHeight);
-
-            //if (IsFullImageLoaded)
-            //{
-            //    axisWidth = ImageFullBitmap.PixelWidth;
-            //    axisHeight = ImageFullBitmap.PixelHeight;
-
-            //    ClipRect = new Rectangle(x1, y1, axisWidth, axisHeight);
-            //}
-        }
     }
 }
