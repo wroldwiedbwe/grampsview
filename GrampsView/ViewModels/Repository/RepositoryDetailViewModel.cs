@@ -89,11 +89,11 @@ namespace GrampsView.ViewModels
                 BaseHeader.Add(t);
 
                 // Add details
-                BaseDetail.Add(RepositoryObject.GNoteRefCollection.GetCardGroup);
-                BaseDetail.Add(RepositoryObject.GTagRefCollection.GetCardGroup);
-                BaseDetail.Add(RepositoryObject.BackHLinkReferenceCollection.GetCardGroup);
-                BaseDetail.Add(RepositoryObject.GAddress.GetCardGroup);
-                BaseDetail.Add(RepositoryObject.GURL.GetCardGroup);
+                BaseDetail.Add(RepositoryObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Add(RepositoryObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Add(RepositoryObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseDetail.Add(RepositoryObject.GAddress.GetCardGroup());
+                BaseDetail.Add(RepositoryObject.GURL.GetCardGroup());
             }
         }
     }

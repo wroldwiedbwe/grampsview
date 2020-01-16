@@ -165,7 +165,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        public HLinkEventModelCollection GetAllAsHlink()
+        public HLinkEventModelCollection GetAllAsHLink()
         {
             HLinkEventModelCollection t = new HLinkEventModelCollection();
 

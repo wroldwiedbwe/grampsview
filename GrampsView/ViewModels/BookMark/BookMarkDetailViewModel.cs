@@ -89,7 +89,7 @@ namespace GrampsView.ViewModels
 
                 BaseHeader.Add(t);
 
-                BaseDetail.Add(BookMarkObject.BackHLinkReferenceCollection.GetCardGroup);
+                BaseDetail.Add(BookMarkObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

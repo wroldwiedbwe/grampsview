@@ -16,76 +16,14 @@
                                        Desktop='33%'}">
 
             <Grid.GestureRecognizers>
-                <TapGestureRecognizer
-                    Command="{prism:NavigateTo 'RepositoryDetailPage'}">
+                <TapGestureRecognizer Command="{prism:NavigateTo 'RepositoryDetailPage'}">
                     <TapGestureRecognizer.CommandParameter>
-                        <prism:NavigationParameter
-                            Key="hlink"
-                            Value="{Binding GetHLink}" />
+                        <prism:NavigationParameter Key="hlink" Value="{Binding}" />
                     </TapGestureRecognizer.CommandParameter>
                 </TapGestureRecognizer>
             </Grid.GestureRecognizers>
 
-            <BoxView
-                BackgroundColor="Pink"
-                HorizontalOptions="CenterAndExpand" />
+            <BoxView BackgroundColor="Pink" HorizontalOptions="CenterAndExpand" />
         </Grid>
     </Frame.Content>
-
-    <!--<Border
-        Style="{StaticResource GVBorderSelectableItem}">
-        <interactivity:Interaction.Behaviors>
-            <interactivityCore:EventTriggerBehavior
-                EventName="PointerReleased">
-    -->
-    <!--<interactivityCore:NavigateToPageAction Parameter="{x:Bind ViewModel.HLinkKey, Mode=OneWay}" TargetPage="GrampsView.Views.SourceDetailPage" />-->
-    <!--
-                <pbehav:PrismNavigateBehavior
-                    TargetParams="{x:Bind ViewModel.HLinkKey, Mode=OneWay}"
-                    TargetView="RepositoryDetailView" />
-            </interactivityCore:EventTriggerBehavior>
-        </interactivity:Interaction.Behaviors>
-
-        <Grid
-            x:Name="controlRoot"
-            Visibility="{x:Bind ViewModel.ModelPopulated, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="1*" />
-                <ColumnDefinition
-                    Width="2*" />
-                <ColumnDefinition
-                    Width="Auto" />
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition
-                    Height="1*" />
-            </Grid.RowDefinitions>
-
-            <userControls:MediaImage
-                x:Name="AnchorImage"
-                Grid.Row="0"
-                Grid.Column="0"
-                DataContext="{x:Bind ViewModel.HomeImageHLink}"
-                Style="{StaticResource MediaImageDataModel}" />
-
-            <ItemsControl
-                x:Name="largeDetailList"
-                Grid.Row="0"
-                Grid.Column="1"
-                ItemTemplate="{StaticResource ItemDetailLarge}"
-                ItemsSource="{x:Bind PersonDetailsList}"
-                Style="{StaticResource ItemControlDetailsListStyle}" />
-            <Viewbox
-                Grid.Row="0"
-                Grid.Column="2"
-                Style="{StaticResource GVViewBoxStyleSymbolconSmallCardType}">
-                <SymbolIcon
-                    x:Name="SourceImage"
-                    Foreground="{x:Bind ViewModel.HomeImageHLink.GetColourAsBrush}"
-                    Symbol="RotateCamera" />
-            </Viewbox>
-        </Grid>
-    </Border>-->
 </Frame>

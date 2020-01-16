@@ -183,22 +183,22 @@ namespace GrampsView.ViewModels
 
                 BaseHeader.Add(t);
 
-                BaseDetail.Add(PersonObject.GParentInRefCollection.GetCardGroup);
-                BaseDetail.Add(PersonObject.GEventRefCollection.GetCardGroup);
+                BaseDetail.Add(PersonObject.GParentInRefCollection.GetCardGroup());
+                BaseDetail.Add(PersonObject.GEventRefCollection.GetCardGroup());
 
-                BaseDetail.Add(PersonObject.GCitationRefCollection.GetCardGroup);
-                BaseDetail.Add(PersonObject.GNoteRefCollection.GetCardGroup);
-                BaseDetail.Add(PersonObject.GMediaRefCollection.GetCardGroup);
-                BaseDetail.Add(PersonObject.GAttributeCollection.GetCardGroup);
-                BaseDetail.Add(PersonObject.GAddress.GetCardGroup);
-                BaseDetail.Add(PersonObject.GTagRefCollection.GetCardGroup);
-                BaseDetail.Add(PersonObject.GURLCollection.GetCardGroup);
-                BaseDetail.Add(PersonObject.GLDSCollection.GetCardGroup);
+                BaseDetail.Add(PersonObject.GCitationRefCollection.GetCardGroup());
+                BaseDetail.Add(PersonObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Add(PersonObject.GMediaRefCollection.GetCardGroup());
+                BaseDetail.Add(PersonObject.GAttributeCollection.GetCardGroup());
+                BaseDetail.Add(PersonObject.GAddress.GetCardGroup());
+                BaseDetail.Add(PersonObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Add(PersonObject.GURLCollection.GetCardGroup());
+                BaseDetail.Add(PersonObject.GLDSCollection.GetCardGroup());
 
-                BaseDetail.Add(PersonObject.GBirthName.CitationRefCollection.GetCardGroup, "Name Citations");
-                BaseDetail.Add(PersonObject.GBirthName.NoteReferenceCollection.GetCardGroup, "Name Notes");
+                BaseDetail.Add(PersonObject.GBirthName.CitationRefCollection.GetCardGroup("Name Citations"));
+                BaseDetail.Add(PersonObject.GBirthName.NoteReferenceCollection.GetCardGroup("Name Notes"));
 
-                BaseDetail.Add(PersonObject.BackHLinkReferenceCollection.GetCardGroup);
+                BaseDetail.Add(PersonObject.BackHLinkReferenceCollection.GetCardGroup());
 
                 // TODO localActivitySession = await CommonTimeline.AddToTimeLine("Person",
                 // PersonObject, PersonObject.HomeImageHLink.DeRef.MediaStorageFilePath, "Person: "

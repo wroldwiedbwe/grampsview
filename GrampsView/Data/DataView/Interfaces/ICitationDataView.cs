@@ -44,7 +44,7 @@ namespace GrampsView.Data.DataView
         /// <returns>
         /// Hlink of Citation model collection.
         /// </returns>
-        HLinkCitationModelCollection GetAllAsHlink();
+        HLinkCitationModelCollection GetAllAsHLink();
 
         /// <summary>
         /// hes the link collection sort.

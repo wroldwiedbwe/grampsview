@@ -46,6 +46,8 @@ namespace GrampsView.Data.Model
     [DataContract]
     public class HLinkEventModel : HLinkBase, IHLinkEventModel
     {
+        private EventModel _Deref = new EventModel();
+
         /// <summary>
         /// Gets the de reference.
         /// </summary>
@@ -58,11 +60,16 @@ namespace GrampsView.Data.Model
             {
                 if (Valid)
                 {
-                    return DV.EventDV.GetModel(HLinkKey);
+                    if ((_Deref is null) || (!_Deref.Valid))
+                    {
+                        _Deref = DV.EventDV.GetModel(HLinkKey);
+                    }
+
+                    return _Deref;
                 }
                 else
                 {
-                    return null;
+                    return new EventModel();
                 }
             }
         }

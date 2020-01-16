@@ -122,7 +122,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        public HLinkCitationModelCollection GetAllAsHlink()
+        public HLinkCitationModelCollection GetAllAsHLink()
         {
             HLinkCitationModelCollection t = new HLinkCitationModelCollection();
 

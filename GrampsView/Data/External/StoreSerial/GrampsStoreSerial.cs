@@ -68,7 +68,17 @@ namespace GrampsView.Data.External.StoreSerial
 
                 using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication())
                 {
-                    var stream = new IsolatedStorageFileStream(typeof(DataInstance).Name.Trim() + ".xml", FileMode.Open, isoStore);
+                    // Check of the file exists
+                    string DataInstanceFileName = typeof(DataInstance).Name.Trim() + ".xml";
+
+                    if (!isoStore.FileExists(DataInstanceFileName))
+                    {
+                        DataStore.CN.NotifyError("DesearalizeRepository - File: " + DataInstanceFileName + " does not exist.  Reload the GPKG file");
+                        CommonLocalSettings.DataSerialised = false;
+                        return;
+                    }
+
+                    var stream = new IsolatedStorageFileStream(DataInstanceFileName, FileMode.Open, isoStore);
 
                     XmlDictionaryReaderQuotas xmlQuot = new XmlDictionaryReaderQuotas
                     {

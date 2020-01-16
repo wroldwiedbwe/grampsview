@@ -89,6 +89,18 @@ namespace GrampsView.Data.DataView
             return t;
         }
 
+        //public TH AsHLinks(IReadOnlyList<TB> argReadOnlyList)
+        //{
+        //    TH returnCollection = new TH();
+
+        //    foreach (TB item in argReadOnlyList)
+        //    {
+        //        returnCollection.Add(item.HLink as TU);
+        //    }
+
+        //    return returnCollection;
+        //}
+
         /// <summary>
         /// Gets all as ViewModel.
         /// </summary>

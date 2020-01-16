@@ -28,7 +28,7 @@
                 x:Name="mdview"
                 Grid.Row="0"
                 FlexLayout.Basis="75"
-                Markdown="{Binding GText}" />
+                Markdown="{Binding DeRef.GText}" />
         </Grid>
     </Frame.Content>
 </Frame>

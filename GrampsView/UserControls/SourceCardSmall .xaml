@@ -18,7 +18,7 @@
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{prism:NavigateTo 'SourceDetailPage'}">
                     <TapGestureRecognizer.CommandParameter>
-                        <prism:NavigationParameter Key="hlink" Value="{Binding GetHLink}" />
+                        <prism:NavigationParameter Key="hlink" Value="{Binding}" />
                     </TapGestureRecognizer.CommandParameter>
                 </TapGestureRecognizer>
             </Grid.GestureRecognizers>
@@ -37,14 +37,14 @@
                 x:Name="AnchorImage"
                 Grid.Row="0"
                 Grid.Column="0"
-                BindingContext="{Binding HomeImageHLink, Mode=OneWay}"
+                BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
                 Style="{StaticResource MediaImageStyle}" />
 
             <Label
                 Grid.Row="0"
                 Grid.Column="1"
                 Style="{StaticResource GVLabelStyleLarge}"
-                Text="{Binding GSTitle, Mode=OneWay}"
+                Text="{Binding DeRef.GSTitle, Mode=OneWay}"
                 TextColor="{StaticResource TextLightColor}" />
 
             <Image
@@ -54,8 +54,8 @@
                 <Image.Source>
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"
-                        Glyph="{Binding HomeImageHLink.HomeSymbol}"
-                        Color="{Binding HomeImageHLink.BackgroundColour}" />
+                        Glyph="{Binding DeRef.HomeImageHLink.HomeSymbol}"
+                        Color="{Binding DeRef.HomeImageHLink.BackgroundColour}" />
                 </Image.Source>
             </Image>
         </Grid>

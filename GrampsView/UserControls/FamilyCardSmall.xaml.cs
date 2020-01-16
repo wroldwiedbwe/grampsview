@@ -14,28 +14,6 @@ namespace GrampsView.UserControls
         public FamilyCardSmall()
         {
             InitializeComponent();
-
-            //DataContextChanged += (s, e) => Bindings.Update();
         }
-
-        ///// <summary>
-        ///// Gets. </summary>
-        ///// <value>
-        ///// The ViewModel.
-        ///// </value>
-        //public FamilyModel ViewModel
-        //{
-        //    get
-        //    {
-        //        if ((DataContext != null) && (DataContext.GetType() == typeof(FamilyModel)))
-        //        {
-        //            return (FamilyModel)DataContext;
-        //        }
-        //        else
-        //        {
-        //            return new FamilyModel();
-        //        }
-        //    }
-        //}
     }
 }

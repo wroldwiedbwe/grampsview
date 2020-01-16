@@ -105,12 +105,188 @@ namespace GrampsView.Common
         }
 
         /// <summary>
+        /// Gets or sets the book mark template.
+        /// </summary>
+        /// <value>
+        /// The book mark template.
+        /// </value>
+        public DataTemplate HLinkBookMarkTemplate
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the List Line template.
+        /// </summary>
+        /// <value>
+        /// The List Line template.
+        /// </value>
+        public DataTemplate HLinkCardListLineTemplate
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the citation template.
+        /// </summary>
+        /// <value>
+        /// The citation template.
+        /// </value>
+        public DataTemplate HLinkCitationTemplate
+        {
+            get;
+            set;
+        }
+
+        ///// <summary>
+        ///// Gets or sets the citation template.
+        ///// </summary>
+        ///// <value>
+        ///// The citation template.
+        ///// </value>
+        // public DataTemplate CitationRefTemplate { get; set; }
+        /// <summary>
+        /// Gets or sets the event template.
+        /// </summary>
+        /// <value>
+        /// The event template.
+        /// </value>
+        public DataTemplate HLinkEventTemplate
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the family template.
+        /// </summary>
+        /// <value>
+        /// The family template.
+        /// </value>
+        public DataTemplate HLinkFamilyTemplate
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Gets or sets the media reference template.
         /// </summary>
         /// <value>
         /// The media reference template.
         /// </value>
         public DataTemplate HLinkMediaTemplate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name map template.
+        /// </summary>
+        /// <value>
+        /// The name map template.
+        /// </value>
+        public DataTemplate HLinkNameMapTemplate
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the note template.
+        /// </summary>
+        /// <value>
+        /// The note template.
+        /// </value>
+        public DataTemplate HLinkNoteTemplate
+        {
+            get;
+            set;
+        }
+
+        public DataTemplate HLinkParentLinkTemplate
+        {
+            get;
+            set;
+        }
+
+        ///// <summary>
+        ///// Gets or sets the note template.
+        ///// </summary>
+        ///// <value>
+        ///// The note template.
+        ///// </value>
+        // public DataTemplate NoteRefTemplate { get; set; }
+        /// <summary>
+        /// Gets or sets the person template.
+        /// </summary>
+        /// <value>
+        /// The person template.
+        /// </value>
+        public DataTemplate HLinkPersonTemplate
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the place template.
+        /// </summary>
+        /// <value>
+        /// The place template.
+        /// </value>
+        public DataTemplate HLinkPlaceTemplate
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the repository template.
+        /// </summary>
+        /// <value>
+        /// The repository template.
+        /// </value>
+        public DataTemplate HLinkRepositoryTemplate
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the source template.
+        /// </summary>
+        /// <value>
+        /// The source template.
+        /// </value>
+        public DataTemplate HLinkSourceTemplate
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the tag template.
+        /// </summary>
+        /// <value>
+        /// The tag template.
+        /// </value>
+        public DataTemplate HLinkTagTemplate
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the URL template.
+        /// </summary>
+        /// <value>
+        /// The attribute template.
+        /// </value>
+        public DataTemplate HLinkURLTemplate
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Gets or sets the media template.
@@ -276,12 +452,6 @@ namespace GrampsView.Common
                 return CitationTemplate;
             }
 
-            // if (item is HLinkCitationModel) { return CitationRefTemplate; }
-            if (item is EventModel)
-            {
-                return EventTemplate;
-            }
-
             if (item is FamilyModel)
             {
                 return FamilyTemplate;
@@ -292,12 +462,70 @@ namespace GrampsView.Common
                 return CardListLineTemplate;
             }
 
-            if (item is MediaModel)
+            if (item is HLinkBookMarkModel)
+            {
+                return BookMarkTemplate;
+            }
+
+            if (item is HLinkCitationModel)
+            {
+                return CitationTemplate;
+            }
+
+            if (item is HLinkEventModel)
+            {
+                return EventTemplate;
+            }
+
+            if (item is HLinkFamilyModel)
+            {
+                return FamilyTemplate;
+            }
+
+            if (item is HLinkMediaModel)
             {
                 return MediaTemplate;
             }
 
-            if (item is HLinkMediaModel) { return HLinkMediaTemplate; }
+            if (item is HLinkNameMapModel)
+            {
+                return NameMapTemplate;
+            }
+
+            if (item is HLinkNoteModel)
+            {
+                return NoteTemplate;
+            }
+
+            if (item is HLinkPersonModel)
+            {
+                return PersonTemplate;
+            }
+
+            if (item is HLinkPlaceModel)
+            {
+                return PlaceTemplate;
+            }
+
+            if (item is HLinkRepositoryModel)
+            {
+                return RepositoryTemplate;
+            }
+
+            if (item is HLinkSourceModel)
+            {
+                return SourceTemplate;
+            }
+
+            if (item is HLinkTagModel)
+            {
+                return TagTemplate;
+            }
+
+            if (item is MediaModel)
+            {
+                return MediaTemplate;
+            }
 
             if (item is NameMapModel)
             {
@@ -314,7 +542,6 @@ namespace GrampsView.Common
                 return ParentLinkTemplate;
             }
 
-            // if (item is HLinkNoteModel) { return NoteRefTemplate; }
             if (item is PersonModel)
             {
                 return PersonTemplate;
@@ -340,7 +567,6 @@ namespace GrampsView.Common
                 return TagTemplate;
             }
 
-            // if (item is HLinkTagModel) { return TagRefTemplate; }
             if (item is URLModel)
             {
                 return URLTemplate;

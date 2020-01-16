@@ -38,7 +38,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        HLinkFamilyModelCollection getAllAsHlink();
+        HLinkFamilyModelCollection GetAllAsHLink();
 
         /// <summary>
         /// Gets the children.

@@ -43,6 +43,19 @@
             set { SetValue(FMultiSourceProperty, value); }
         }
 
+        private static View CreateChildView(CardGroup item)
+        {
+            Application.Current.Resources.TryGetValue("CardGroupTemplate", out var cardGroupTemplate);
+
+            DataTemplate t = cardGroupTemplate as DataTemplate;
+
+            View view = (View)t.CreateContent(item, null);
+
+            view.BindingContext = item;
+
+            return view;
+        }
+
         private static void OnItemsSourceChanged(BindableObject obj, object oldValue, object newValue)
         {
             var layout = obj as FlexMultiCardType;
@@ -82,19 +95,6 @@
             {
                 this.multiflexer.Children.Add(CreateChildView(item));
             }
-        }
-
-        private static View CreateChildView(CardGroup item)
-        {
-            Application.Current.Resources.TryGetValue("CardGroupTemplate", out var cardGroupTemplate);
-
-            DataTemplate t = cardGroupTemplate as DataTemplate;
-
-            View view = (View)t.CreateContent(item, null);
-
-            view.BindingContext = item;
-
-            return view;
         }
 
         private void OnDisplayListCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

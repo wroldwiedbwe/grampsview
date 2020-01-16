@@ -14,6 +14,7 @@ namespace GrampsView.ViewModels
 
     using Prism.Events;
     using Prism.Navigation;
+    using System.Collections.ObjectModel;
 
     /// <summary>
     /// View Model for the Event Section Page.
@@ -39,7 +40,11 @@ namespace GrampsView.ViewModels
         {
             get
             {
-                return DV.PlaceDV.AsCardGroup(DV.PlaceDV.DataDefaultSort);
+                CardGroup t = new CardGroup();
+
+                t.Cards.AddRange(new ObservableCollection<object>(DV.PlaceDV.GetAllAsHLink()));
+
+                return t;
             }
         }
     }

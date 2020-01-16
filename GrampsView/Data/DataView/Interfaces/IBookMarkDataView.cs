@@ -42,7 +42,7 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The get all as hlink.
         /// </value>
-        HLinkBookMarkModelCollection GetAllAsHlink
+        HLinkBookMarkModelCollection GetAllAsHLink
         {
             get;
         }
@@ -53,7 +53,7 @@ namespace GrampsView.Data.DataView
         /// <returns>
         /// HLink Base Collection.
         /// </returns>
-        HLinkBaseCollection<HLinkBase> GetAllAsHlinkBase();
+        HLinkBaseCollection<HLinkBase> GetAllAsHLinkBase();
 
         /// <summary>
         /// Gets all as ViewModel.

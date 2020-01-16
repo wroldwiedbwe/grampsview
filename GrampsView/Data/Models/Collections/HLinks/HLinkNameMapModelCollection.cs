@@ -18,22 +18,9 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<HLinkCitationModel>))]
     public class HLinkNameMapModelCollection : HLinkBaseCollection<HLinkNameMapModel>
     {
-        public new CardGroup GetCardGroup
+        public CardGroup GetCardGroup()
         {
-            get
-            {
-                CardGroup t = new CardGroup
-                {
-                    Title = "NameMap Collection",
-                };
-
-                foreach (var item in Items)
-                {
-                    t.Cards.Add(item.DeRef);
-                }
-
-                return t;
-            }
+            return base.GetCardGroup("NameMap Collection");
         }
     }
 }

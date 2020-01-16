@@ -34,22 +34,9 @@ namespace GrampsView.Data.Collections
             }
         }
 
-        public new CardGroup GetCardGroup
+        public CardGroup GetCardGroup()
         {
-            get
-            {
-                CardGroup t = new CardGroup
-                {
-                    Title = "Bookmark Collection",
-                };
-
-                foreach (var item in Items)
-                {
-                    t.Cards.Add(item.DeRef);
-                }
-
-                return t;
-            }
+            return base.GetCardGroup("Bookmark Collection");
         }
     }
 }

@@ -35,6 +35,6 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        HLinkTagModelCollection getAllAsHlink();
+        HLinkTagModelCollection GetAllAsHLink();
     }
 }

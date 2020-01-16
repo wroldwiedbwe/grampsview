@@ -177,7 +177,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        public HLinkPersonModelCollection getAllAsHlink()
+        public HLinkPersonModelCollection GetAllAsHLink()
         {
             HLinkPersonModelCollection t = new HLinkPersonModelCollection();
 

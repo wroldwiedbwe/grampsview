@@ -35,7 +35,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        HLinkMediaModelCollection GetAllAsHlink();
+        HLinkMediaModelCollection GetAllAsHLink();
 
         /// <summary>
         /// Gets the first icon from collection.

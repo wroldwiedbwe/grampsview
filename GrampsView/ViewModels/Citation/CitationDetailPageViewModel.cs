@@ -21,7 +21,7 @@ namespace GrampsView.ViewModels
     /// </summary>
     public class CitationDetailViewModel : ViewModelBase
     {
-        private SourceModel _SourceObject = new SourceModel();
+        private HLinkSourceModel _SourceObject = new HLinkSourceModel();
 
         /// <summary>
         /// Holds the Note ViewModel.
@@ -63,7 +63,7 @@ namespace GrampsView.ViewModels
         /// <value>
         /// The source object.
         /// </value>
-        public SourceModel SourceObject
+        public HLinkSourceModel SourceObject
         {
             get
             {
@@ -111,7 +111,7 @@ namespace GrampsView.ViewModels
                 BaseHeader.Add(t);
 
                 // Add Source details
-                SourceObject = CitationObject.GSourceRef.DeRef;
+                SourceObject = CitationObject.GSourceRef;
 
                 //// If only one note (the most common case) just display it in a large format,
                 //// otherwise setup a list of them.
@@ -121,10 +121,10 @@ namespace GrampsView.ViewModels
                 //}
 
                 // Add remaining details
-                BaseDetail.Add(CitationObject.GMediaRefCollection.GetCardGroup);
-                BaseDetail.Add(CitationObject.GNoteRef.GetCardGroup);
-                BaseDetail.Add(CitationObject.GTagRef.GetCardGroup);
-                BaseDetail.Add(CitationObject.BackHLinkReferenceCollection.GetCardGroup);
+                BaseDetail.Add(CitationObject.GMediaRefCollection.GetCardGroup());
+                BaseDetail.Add(CitationObject.GNoteRef.GetCardGroup());
+                BaseDetail.Add(CitationObject.GTagRef.GetCardGroup());
+                BaseDetail.Add(CitationObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

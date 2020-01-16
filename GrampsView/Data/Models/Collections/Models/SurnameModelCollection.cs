@@ -1,4 +1,4 @@
-﻿// <copyright file="OCURLModelCollection.cs" company="PlaceholderCompany">
+﻿// <copyright file="SurnameModelCollection.cs" company="PlaceholderCompany">
 //     Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -17,22 +17,27 @@ namespace GrampsView.Data.Collections
     /// </summary>
     /// <seealso cref="System.Collections.ObjectViewModel.ObservableCollection{GrampsView.Data.ViewModel.AttributeModel}" />
     [CollectionDataContract]
-    [KnownType(typeof(ObservableCollection<URLModel>))]
-    public class OCURLModelCollection : ObservableCollection<URLModel>
+    [KnownType(typeof(ObservableCollection<SurnameModel>))]
+    public class SurnameModelCollection : ModelBaseCollection<SurnameModel>
     {
-        public CardGroup GetCardGroup
+        public string GetPrimarySurname
         {
             get
             {
-                CardGroup t = new CardGroup
+                // TODO Handle multiple surnames
+
+                if (Items.Count > 0)
                 {
-                    Title = "URL Model Collection",
-                };
+                    return Items[0].GText;
+                }
 
-                t.Cards.AddRange(new ObservableCollection<object>(Items));
-
-                return t;
+                return string.Empty;
             }
+        }
+
+        public CardGroup GetCardGroup()
+        {
+            return base.GetCardGroup("Surname Model Collection");
         }
     }
 }

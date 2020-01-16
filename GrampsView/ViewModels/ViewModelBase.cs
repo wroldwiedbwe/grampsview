@@ -16,45 +16,6 @@ namespace GrampsView.ViewModels
     {
         private bool _BaseIsLoading;
 
-        public bool BaseIsLoading
-        {
-            get
-            {
-                return this._BaseIsLoading;
-            }
-
-            set
-            {
-                this._BaseIsLoading = value;
-                RaisePropertyChanged(nameof(BaseIsLoading));
-            }
-        }
-
-        public HLinkBase BaseNavParamsHLink
-        {
-            get
-            {
-                Debug.Assert(_BaseNavParamsHLink != null, "BaseNavParamsHLink is null.");
-
-                return _BaseNavParamsHLink;
-            }
-
-            set
-            {
-                SetProperty(ref _BaseNavParamsHLink, value);
-            }
-        }
-
-        public HLinkBase BaseNavParamsHLinkDefault(HLinkBase argDefault)
-        {
-            if (_BaseNavParamsHLink is null)
-            {
-                return argDefault;
-            }
-
-            return BaseNavParamsHLink;
-        }
-
         private HLinkBase _BaseNavParamsHLink = null;
 
         private string _BaseTitle = string.Empty;
@@ -188,6 +149,20 @@ namespace GrampsView.ViewModels
             }
         }
 
+        public bool BaseIsLoading
+        {
+            get
+            {
+                return this._BaseIsLoading;
+            }
+
+            set
+            {
+                this._BaseIsLoading = value;
+                RaisePropertyChanged(nameof(BaseIsLoading));
+            }
+        }
+
         public INavigationService BaseNavigationService
         {
             get
@@ -216,6 +191,21 @@ namespace GrampsView.ViewModels
             set
             {
                 SetProperty(ref localNavParams, value);
+            }
+        }
+
+        public HLinkBase BaseNavParamsHLink
+        {
+            get
+            {
+                Debug.Assert(_BaseNavParamsHLink != null, "BaseNavParamsHLink is null.");
+
+                return _BaseNavParamsHLink;
+            }
+
+            set
+            {
+                SetProperty(ref _BaseNavParamsHLink, value);
             }
         }
 
@@ -256,6 +246,16 @@ namespace GrampsView.ViewModels
         /// </value>
         private bool DetailDataLoadedFlag { get; set; } = false;
 
+        public HLinkBase BaseNavParamsHLinkDefault(HLinkBase argDefault)
+        {
+            if (_BaseNavParamsHLink is null)
+            {
+                return argDefault;
+            }
+
+            return BaseNavParamsHLink;
+        }
+
         public virtual void Destroy()
         {
         }
@@ -268,7 +268,7 @@ namespace GrampsView.ViewModels
         /// </param>
         public void Initialize(INavigationParameters parameters)
         {
-            // See https://github.com/PrismLibrary/Prism/issues/1748
+            // TODO See https://github.com/PrismLibrary/Prism/issues/1748
 
             BaseNavParams = parameters;
 

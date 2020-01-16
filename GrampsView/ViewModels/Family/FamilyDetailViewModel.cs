@@ -102,15 +102,15 @@ namespace GrampsView.ViewModels
                 BaseHeader.Add(t);
 
                 // Detail reference
-                BaseDetail.Add(FamilyObject.GEventRefCollection.GetCardGroup);
-                BaseDetail.Add(FamilyObject.GChildRefCollection.GetCardGroup);
+                BaseDetail.Add(FamilyObject.GEventRefCollection.GetCardGroup());
+                BaseDetail.Add(FamilyObject.GChildRefCollection.GetCardGroup());
 
-                BaseDetail.Add(FamilyObject.GCitationRefCollection.GetCardGroup);
-                BaseDetail.Add(FamilyObject.GMediaRefCollection.GetCardGroup);
-                BaseDetail.Add(FamilyObject.GNoteRefCollection.GetCardGroup);
-                BaseDetail.Add(FamilyObject.GAttributeCollection.GetCardGroup);
-                BaseDetail.Add(FamilyObject.GTagRefCollection.GetCardGroup);
-                BaseDetail.Add(FamilyObject.BackHLinkReferenceCollection.GetCardGroup);
+                BaseDetail.Add(FamilyObject.GCitationRefCollection.GetCardGroup());
+                BaseDetail.Add(FamilyObject.GMediaRefCollection.GetCardGroup());
+                BaseDetail.Add(FamilyObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Add(FamilyObject.GAttributeCollection.GetCardGroup());
+                BaseDetail.Add(FamilyObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Add(FamilyObject.BackHLinkReferenceCollection.GetCardGroup());
 
                 string outFamEvent = string.Empty;
                 if (FamilyObject.GEventRefCollection.Count > 0)

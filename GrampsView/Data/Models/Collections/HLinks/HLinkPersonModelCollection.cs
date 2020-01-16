@@ -1,12 +1,9 @@
-﻿//-----------------------------------------------------------------------
-//
-// Storage routines for the FamilyModel
-//
-// <copyright file="HLinkEventModelCollection.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="HLinkPersonModelCollection.cs" company="PlaceholderCompany">
+//     Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-//-----------------------------------------------------------------------
 
+/// <summary>
+/// </summary>
 namespace GrampsView.Data.Collections
 {
     using System.Collections.Generic;
@@ -19,31 +16,37 @@ namespace GrampsView.Data.Collections
     using GrampsView.Data.Model;
 
     /// <summary>
-    /// Collection of EVent $$(HLinks)$$.
+    /// Contains pointers to family models.
     /// </summary>
+    /// <seealso cref="GrampsView.Data.ViewModel.HLinkBaseCollection{GrampsView.Data.ViewModel.HLinkPersonModel}" />
     [CollectionDataContract]
-    [KnownType(typeof(ObservableCollection<HLinkEventModel>))]
-    public class HLinkEventModelCollection : HLinkBaseCollection<HLinkEventModel>
+    [KnownType(typeof(ObservableCollection<HLinkPersonModel>))]
+    public class HLinkPersonModelCollection : HLinkBaseCollection<HLinkPersonModel>
     {
         /// <summary>
-        /// Gets the de reference.
+        /// Gets the dereferenced person models.
         /// </summary>
         /// <value>
         /// The de reference.
         /// </value>
-        public ObservableCollection<EventModel> DeRef
+        public ObservableCollection<PersonModel> DeRef
         {
             get
             {
-                ObservableCollection<EventModel> t = new ObservableCollection<EventModel>();
+                ObservableCollection<PersonModel> t = new ObservableCollection<PersonModel>();
 
-                foreach (HLinkEventModel item in Items)
+                foreach (HLinkPersonModel item in Items)
                 {
                     t.Add(item.DeRef);
                 }
 
                 return t;
             }
+        }
+
+        public CardGroup GetCardGroup()
+        {
+            return base.GetCardGroup("People Collection");
         }
 
         /// <summary>Helper method to sort and set the firt image link.</summary>
@@ -57,14 +60,14 @@ namespace GrampsView.Data.Collections
 
             // Set the first image link. Assumes main image is manually set to the first image in
             // Gramps if we need it to be, e.g. Citations.
-            EventModel tempModel = new EventModel();
+            PersonModel tempModel = new PersonModel();
 
             if (Count > 0)
             {
                 // Step through each citationmodel hlink in the collection
                 for (int i = 0; i < Count; i++)
                 {
-                    tempModel = DV.EventDV.EventData.GetModelFromHLink(this[i]);
+                    tempModel = DV.PersonDV.PersonData.GetModelFromHLink(this[i]);
 
                     if (tempModel.HomeImageHLink.HomeUseImage)
                     {
@@ -74,32 +77,14 @@ namespace GrampsView.Data.Collections
                 }
 
                 // Sort the collection
-                List<HLinkEventModel> t = this.OrderBy(HLinkEventModel => HLinkEventModel.DeRef.GDate).ToList();
+                List<HLinkPersonModel> t = this.OrderBy(HLinkEventModel => HLinkEventModel.DeRef.GBirthName.SortName).ToList();
 
                 Items.Clear();
 
-                foreach (HLinkEventModel item in t)
+                foreach (HLinkPersonModel item in t)
                 {
                     Items.Add(item);
                 }
-            }
-        }
-
-        public new CardGroup GetCardGroup
-        {
-            get
-            {
-                CardGroup t = new CardGroup
-                {
-                    Title = "Event Collection",
-                };
-
-                foreach (var item in Items)
-                {
-                    t.Cards.Add(item.DeRef);
-                }
-
-                return t;
             }
         }
     }

@@ -18,27 +18,11 @@ namespace GrampsView.Data.Collections
     /// </summary>
     [CollectionDataContract]
     [KnownType(typeof(ObservableCollection<AddressModel>))]
-    public class OCAddressModelCollection : ObservableCollection<AddressModel>
+    public class OCAddressModelCollection : ModelBaseCollection<AddressModel>
     {
-        /// <summary>
-        /// Gets the card group.
-        /// </summary>
-        /// <value>
-        /// The card group.
-        /// </value>
-        public CardGroup GetCardGroup
+        public CardGroup GetCardGroup()
         {
-            get
-            {
-                CardGroup t = new CardGroup
-                {
-                    Title = "Address Collection",
-                };
-
-                t.Cards.AddRange(new ObservableCollection<object>(Items));
-
-                return t;
-            }
+            return base.GetCardGroup("Address Collection");
         }
     }
 }

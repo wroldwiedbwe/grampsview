@@ -17,68 +17,14 @@
                                        Desktop='33%'}">
 
             <Grid.GestureRecognizers>
-                <TapGestureRecognizer
-                    Command="{prism:NavigateTo 'NoteDetailPage'}">
+                <TapGestureRecognizer Command="{prism:NavigateTo 'NoteDetailPage'}">
                     <TapGestureRecognizer.CommandParameter>
-                        <prism:NavigationParameter
-                            Key="hlink"
-                            Value="{Binding GetHLink}" />
+                        <prism:NavigationParameter Key="hlink" Value="{Binding}" />
                     </TapGestureRecognizer.CommandParameter>
                 </TapGestureRecognizer>
             </Grid.GestureRecognizers>
 
-            <BoxView
-                BackgroundColor="Pink"
-                HorizontalOptions="CenterAndExpand" />
+            <BoxView BackgroundColor="Pink" HorizontalOptions="CenterAndExpand" />
         </Grid>
     </Frame.Content>
-
-    <!--<interactivityCore:NavigateToPageAction Parameter="{x:Bind ViewModel.HLinkKey, Mode=OneWay}" TargetPage="GrampsView.Views.PersonDetailView" />-->
-    <!--
-                <pbehav:PrismNavigateBehavior
-                    TargetParams="{x:Bind ViewModel.HLinkKey, Mode=OneWay}"
-                    TargetView="NoteDetailView" />
-            </interactivityCore:EventTriggerBehavior>
-        </interactivity:Interaction.Behaviors>
-
-        <Grid
-            x:Name="controlRoot">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="1*" />
-                <ColumnDefinition
-                    Width="2*" />
-                <ColumnDefinition
-                    Width="Auto" />
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition
-                    Height="1*" />
-            </Grid.RowDefinitions>
-
-            <userControls:MediaImage
-                x:Name="AnchorImage"
-                Grid.Row="0"
-                Grid.Column="0"
-                DataContext="{x:Bind ViewModel.HomeImageHLink}"
-                Style="{StaticResource MediaImageDataModel}" />
-
-            <TextBlock
-                x:Name="SummaryTextBlock"
-                Grid.Column="1"
-                Padding="5"
-                Style="{StaticResource GVTextBlockStyleLarge}"
-                Text="{x:Bind ViewModel.GText}" />
-
-            <Viewbox
-                Grid.Row="0"
-                Grid.Column="2"
-                Style="{StaticResource GVViewBoxStyleSymbolconLargeCardType}">
-                <SymbolIcon
-                    Foreground="{x:Bind ViewModel.HomeImageHLink.GetColourAsBrush}"
-                    Symbol="Contact" />
-            </Viewbox>
-        </Grid>
-    </Border>-->
 </Frame>

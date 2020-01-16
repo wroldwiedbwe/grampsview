@@ -54,11 +54,11 @@
 
                 <StackLayout x:Name="Attribution">
 
-                    <Frame Style="{StaticResource FrameLargeFixedCardStyle}">
+                    <Frame Style="{StaticResource FrameLargeVariableCardStyle}">
                         <Label Style="{StaticResource GVLabelStyleInstructions}" Text="{i18n:Translate AboutPage_PrivacyPolicy}" />
                     </Frame>
 
-                    <Frame Style="{StaticResource FrameLargeFixedCardStyle}">
+                    <Frame Style="{StaticResource FrameLargeVariableCardStyle}">
                         <Label Style="{StaticResource GVLabelStyleInstructions}" Text="{i18n:Translate AboutPage_AttributionText}" />
                     </Frame>
 

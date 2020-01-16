@@ -21,22 +21,9 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<HLinkMediaModel>))]
     public class HLinkMediaModelCollection : HLinkBaseCollection<HLinkMediaModel>
     {
-        public new CardGroup GetCardGroup
+        public CardGroup GetCardGroup()
         {
-            get
-            {
-                CardGroup t = new CardGroup
-                {
-                    Title = "Media Collection",
-                };
-
-                foreach (var item in Items)
-                {
-                    t.Cards.Add(item.DeRef);
-                }
-
-                return t;
-            }
+            return base.GetCardGroup("Media Collection");
         }
 
         /// <summary>

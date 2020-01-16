@@ -22,25 +22,9 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<HLinkCitationModel>))]
     public class HLinkCitationModelCollection : HLinkBaseCollection<HLinkCitationModel>
     {
-        /// <summary>
-        /// Gets getCardGroup for HLink collection.
-        /// </summary>
-        public new CardGroup GetCardGroup
+        public CardGroup GetCardGroup()
         {
-            get
-            {
-                CardGroup t = new CardGroup
-                {
-                    Title = "Citation Collection",
-                };
-
-                foreach (var item in Items)
-                {
-                    t.Cards.Add(item.DeRef);
-                }
-
-                return t;
-            }
+            return base.GetCardGroup("Citation Collection");
         }
 
         /// <summary>Helper method to sort and set the firt image link.</summary>

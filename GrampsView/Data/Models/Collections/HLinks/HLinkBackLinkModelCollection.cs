@@ -34,22 +34,19 @@ namespace GrampsView.Data.Collections
             }
         }
 
-        public CardGroup GetCardGroup
+        public CardGroup GetCardGroup()
         {
-            get
+            CardGroup t = new CardGroup
             {
-                CardGroup t = new CardGroup
-                {
-                    Title = "Backlink Collection",
-                };
+                Title = "Backlink Collection",
+            };
 
-                foreach (var item in Items)
-                {
-                    t.Cards.Add(item.GetActualModel);
-                }
-
-                return t;
+            foreach (var item in Items)
+            {
+                t.Cards.Add(item);
             }
+
+            return t;
         }
     }
 }

@@ -84,7 +84,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        public HLinkNameMapModelCollection getAllAsHlink()
+        public HLinkNameMapModelCollection GetAllAsHLink()
         {
             HLinkNameMapModelCollection t = new HLinkNameMapModelCollection();
 

@@ -13,7 +13,7 @@
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{prism:NavigateTo 'CitationDetailPage'}">
                     <TapGestureRecognizer.CommandParameter>
-                        <prism:NavigationParameter Key="hlink" Value="{Binding GetHLink}" />
+                        <prism:NavigationParameter Key="hlink" Value="{Binding}" />
                     </TapGestureRecognizer.CommandParameter>
                 </TapGestureRecognizer>
             </Grid.GestureRecognizers>
@@ -35,7 +35,7 @@
                 Grid.Row="0"
                 Grid.RowSpan="2"
                 Grid.Column="0"
-                BindingContext="{Binding HomeImageHLink, Mode=OneWay}"
+                BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
                 Style="{StaticResource MediaImageStyle}" />
 
             <Label
@@ -44,7 +44,7 @@
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Style="{StaticResource GVLabelStyleLarge}"
-                Text="{Binding GetDefaultText, Mode=OneWay}"
+                Text="{Binding DeRef.GetDefaultText, Mode=OneWay}"
                 TextColor="{StaticResource TextLightColor}" />
 
             <Label
@@ -52,7 +52,7 @@
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Style="{StaticResource GVLabelStyleLarge}"
-                Text="{Binding GDateContent.GetShortDateAsString, Mode=OneWay}"
+                Text="{Binding DeRef.GDateContent.GetShortDateAsString, Mode=OneWay}"
                 TextColor="{StaticResource TextLightColor}" />
 
             <Image
@@ -62,8 +62,8 @@
                 <Image.Source>
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"
-                        Glyph="{Binding HomeImageHLink.HomeSymbol}"
-                        Color="{Binding HomeImageHLink.BackgroundColour}" />
+                        Glyph="{Binding DeRef.HomeImageHLink.HomeSymbol}"
+                        Color="{Binding DeRef.HomeImageHLink.BackgroundColour}" />
                 </Image.Source>
             </Image>
         </Grid>

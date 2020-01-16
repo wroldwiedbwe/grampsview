@@ -23,7 +23,7 @@
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer prism:Navigation.CanNavigate="{Binding IsValid, Mode=OneWay}" Command="{prism:NavigateTo 'PersonDetailPage'}">
                     <TapGestureRecognizer.CommandParameter>
-                        <prism:NavigationParameter Key="hlink" Value="{Binding GetHLink, Mode=OneWay}" />
+                        <prism:NavigationParameter Key="hlink" Value="{Binding , Mode=OneWay}" />
                     </TapGestureRecognizer.CommandParameter>
                 </TapGestureRecognizer>
             </Grid.GestureRecognizers>
@@ -42,14 +42,14 @@
                 x:Name="AnchorImage1"
                 Grid.Row="0"
                 Grid.Column="0"
-                BindingContext="{Binding HomeImageHLink, Mode=OneWay}"
+                BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
                 Style="{StaticResource MediaImageStyle}" />
 
             <Label
                 Grid.Row="1"
                 Grid.Column="0"
                 Style="{StaticResource GVCardLabelStyleSmall}"
-                Text="{Binding GetDefaultText}" />
+                Text="{Binding DeRef.GetDefaultText}" />
         </Grid>
     </Frame.Content>
 </Frame>

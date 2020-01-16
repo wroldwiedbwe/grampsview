@@ -16,12 +16,15 @@ namespace GrampsView.ViewModels
     using GrampsView.Events;
     using Prism.Events;
     using Prism.Navigation;
+    using System.Collections.ObjectModel;
 
     /// <summary>
     /// View model for the Hub Page.
     /// </summary>
     public class HubViewModel : ViewModelBase
     {
+        private CardGroup _TodoList = new CardGroup();
+
         /// <summary>
         /// The local header ViewModel.
         /// </summary>
@@ -50,10 +53,6 @@ namespace GrampsView.ViewModels
             BaseTitleIcon = Common.CommonConstants.IconHub;
 
             BaseEventAggregator.GetEvent<DataLoadCompleteEvent>().Subscribe(CheckHeroImageLoad, ThreadOption.BackgroundThread);
-        }
-
-        public static void CheckHeroImageLoad(object value)
-        {
         }
 
         /// <summary>
@@ -114,7 +113,9 @@ namespace GrampsView.ViewModels
             }
         }
 
-        private CardGroup _TodoList = new CardGroup();
+        public static void CheckHeroImageLoad(object value)
+        {
+        }
 
         /// <summary>Called when [navigating from].</summary>
         public void OnNavigatingFrom()
@@ -142,7 +143,15 @@ namespace GrampsView.ViewModels
             }
 
             // Setup ToDo list
-            CardGroup temp = DV.NoteDV.AsCardGroup(DV.NoteDV.GetAllOfType(NoteModel.GTypeToDo));
+            ObservableCollection<NoteModel> t = DV.NoteDV.GetAllOfType(NoteModel.GTypeToDo);
+
+            CardGroup temp = new CardGroup();
+
+            foreach (NoteModel item in t)
+            {
+                temp.Cards.Add(item.GetHLink);
+            }
+
             temp.Title = "ToDo list";
             TodoList = temp;
         }

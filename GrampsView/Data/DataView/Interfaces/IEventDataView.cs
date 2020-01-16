@@ -57,7 +57,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        HLinkEventModelCollection GetAllAsHlink();
+        HLinkEventModelCollection GetAllAsHLink();
 
         /// <summary>
         /// Gets the type of the event.

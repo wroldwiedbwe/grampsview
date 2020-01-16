@@ -103,7 +103,7 @@ namespace GrampsView.ViewModels
             BaseHeader.Add(t);
 
             // BackHLinkRefNavArgument = localNavigationHelper.HLinkModelCollectionAdd(NoteObject.BackHLinkReferenceCollection);
-            BaseDetail.Add(NameMapObject.BackHLinkReferenceCollection.GetCardGroup);
+            BaseDetail.Add(NameMapObject.BackHLinkReferenceCollection.GetCardGroup());
         }
     }
 }

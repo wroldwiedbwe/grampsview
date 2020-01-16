@@ -62,7 +62,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        HLinkPersonModelCollection getAllAsHlink();
+        HLinkPersonModelCollection GetAllAsHLink();
 
         /// <summary>
         /// Gets the default image from collection.

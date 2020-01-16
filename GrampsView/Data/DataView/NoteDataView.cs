@@ -80,7 +80,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        public HLinkNoteModelCollection GetAllAsHlink()
+        public HLinkNoteModelCollection GetAllAsHLink()
         {
             HLinkNoteModelCollection t = new HLinkNoteModelCollection();
 

@@ -68,7 +68,9 @@ namespace GrampsView.ViewModels
         /// </summary>
         public override void PopulateViewModel()
         {
-            EventObject = DV.EventDV.GetModel(BaseNavParamsHLink);
+            HLinkEventModel HLinkObject = BaseNavParamsHLink as HLinkEventModel;
+
+            EventObject = HLinkObject.DeRef;
 
             if (!(EventObject is null))
             {
@@ -93,13 +95,13 @@ namespace GrampsView.ViewModels
 
                 BaseHeader.Add(t);
 
-                BaseDetail.Add(EventObject.GAttribute.GetCardGroup);
-                BaseDetail.Add(EventObject.GCitationRefCollection.GetCardGroup);
-                BaseDetail.Add(EventObject.GMediaRefCollection.GetCardGroup);
-                BaseDetail.Add(EventObject.GNoteRefCollection.GetCardGroup);
-                BaseDetail.Add(EventObject.GTagRefCollection.GetCardGroup);
+                BaseDetail.Add(EventObject.GAttribute.GetCardGroup());
+                BaseDetail.Add(EventObject.GCitationRefCollection.GetCardGroup());
+                BaseDetail.Add(EventObject.GMediaRefCollection.GetCardGroup());
+                BaseDetail.Add(EventObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Add(EventObject.GTagRefCollection.GetCardGroup());
 
-                BaseDetail.Add(EventObject.BackHLinkReferenceCollection.GetCardGroup);
+                BaseDetail.Add(EventObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

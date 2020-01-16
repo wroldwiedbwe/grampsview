@@ -12,13 +12,15 @@
 namespace GrampsView.Common
 {
     using Newtonsoft.Json;
-    using System;
+
     using System.Collections.ObjectModel;
 
     /// <summary>
     /// </summary>
     public class CardGroup /*: INotifyPropertyChanged*/
     {
+        private ObservableCollection<object> data = new ObservableCollection<object>();
+
         /// <summary>
         /// Gets a value indicating whether [control visible].
         /// </summary>
@@ -51,11 +53,11 @@ namespace GrampsView.Common
         {
             get
             {
+                // TODO Handle Hlinks properly so they have their own data
+
                 return data;
             }
         }
-
-        private ObservableCollection<object> data = new ObservableCollection<object>();
 
         public string SerializedData
         {

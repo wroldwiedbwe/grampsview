@@ -39,7 +39,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        HLinkNoteModelCollection GetAllAsHlink();
+        HLinkNoteModelCollection GetAllAsHLink();
 
         /// <summary>
         /// Gets all t of aype.

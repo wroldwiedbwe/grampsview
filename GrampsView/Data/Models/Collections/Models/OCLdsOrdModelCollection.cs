@@ -16,21 +16,11 @@ namespace GrampsView.Data.Collections
     /// </summary>
     [CollectionDataContract]
     [KnownType(typeof(ObservableCollection<LdsOrdModel>))]
-    public class OCLdsOrdModelCollection : ObservableCollection<LdsOrdModel>
+    public class OCLdsOrdModelCollection : ModelBaseCollection<LdsOrdModel>
     {
-        public CardGroup GetCardGroup
+        public CardGroup GetCardGroup()
         {
-            get
-            {
-                CardGroup t = new CardGroup
-                {
-                    Title = "LDS Ordination Collection",
-                };
-
-                t.Cards.AddRange(new ObservableCollection<object>(Items));
-
-                return t;
-            }
+            return base.GetCardGroup("LDS Ordination Collection");
         }
     }
 }

@@ -72,7 +72,14 @@
     <Compile Remove="Events\PageMenuPanelOpenEvent.cs" />
     <Compile Remove="Events\PageTitleChangedEvent.cs" />
     <Compile Remove="Events\PageTitleChangedEventArgs.cs" />
+    <Compile Remove="UserControls\CitationRefCardSmall.xaml.cs" />
     <Compile Remove="UserControls\General\FlexSingleCardGroup.xaml.cs" />
+    <Compile Remove="UserControls\HLinkCitationCardSmall.xaml.cs" />
+    <Compile Remove="UserControls\HLinkEventCardSmall.xaml.cs" />
+    <Compile Remove="UserControls\MediaRefCardSmall.xaml.cs" />
+    <Compile Remove="UserControls\RepositoryRefCardLarge.xaml.cs" />
+    <Compile Remove="UserControls\TagRefCardLarge.xaml.cs" />
+    <Compile Remove="UserControls\TagRefCardSmall.xaml.cs" />
     <Compile Remove="UserControls\TestControl.xaml.cs" />
     <Compile Remove="ViewModels\AboutViewModel.cs" />
     <Compile Remove="ViewModels\BaseViewModel.cs" />
@@ -89,9 +96,11 @@
     <Compile Remove="ViewModels\Person\Interfaces\IPersonSummaryPageViewModel.cs" />
     <Compile Remove="Views\AboutPage.xaml.cs" />
     <Compile Remove="Views\BaseViewList.xaml.cs" />
+    <Compile Remove="Views\Citation\CitationRefDetailPage.xaml.cs" />
     <Compile Remove="Views\ItemDetailPage.xaml.cs" />
     <Compile Remove="Views\ItemsPage.xaml.cs" />
     <Compile Remove="Views\Media\MediaDisplayPage.xaml.cs" />
+    <Compile Remove="Views\Media\MediaRefDetailPage.xaml.cs" />
     <Compile Remove="Views\MinorPages\AppShellView.xaml.cs" />
     <Compile Remove="Views\MinorPages\NavigationPage.xaml.cs" />
     <Compile Remove="Views\MinorPages\SerialLoadPage.xaml.cs" />
@@ -103,13 +112,22 @@
 
   <ItemGroup>
     <EmbeddedResource Remove="Common\CommonPropertyDebug.xaml" />
+    <EmbeddedResource Remove="UserControls\CitationRefCardSmall.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexSingleCardGroup.xaml" />
+    <EmbeddedResource Remove="UserControls\HLinkCitationCardSmall.xaml" />
+    <EmbeddedResource Remove="UserControls\HLinkEventCardSmall.xaml" />
+    <EmbeddedResource Remove="UserControls\MediaRefCardSmall.xaml" />
+    <EmbeddedResource Remove="UserControls\RepositoryRefCardLarge.xaml" />
+    <EmbeddedResource Remove="UserControls\TagRefCardLarge.xaml" />
+    <EmbeddedResource Remove="UserControls\TagRefCardSmall.xaml" />
     <EmbeddedResource Remove="UserControls\TestControl.xaml" />
     <EmbeddedResource Remove="Views\AboutPage.xaml" />
     <EmbeddedResource Remove="Views\BaseViewList.xaml" />
+    <EmbeddedResource Remove="Views\Citation\CitationRefDetailPage.xaml" />
     <EmbeddedResource Remove="Views\ItemDetailPage.xaml" />
     <EmbeddedResource Remove="Views\ItemsPage.xaml" />
     <EmbeddedResource Remove="Views\Media\MediaDisplayPage.xaml" />
+    <EmbeddedResource Remove="Views\Media\MediaRefDetailPage.xaml" />
     <EmbeddedResource Remove="Views\MinorPages\AppShellView.xaml" />
     <EmbeddedResource Remove="Views\MinorPages\NavigationPage.xaml" />
     <EmbeddedResource Remove="Views\MinorPages\SerialLoadPage.xaml" />

@@ -86,7 +86,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        public HLinkPlaceModelCollection getAllAsHlink()
+        public HLinkPlaceModelCollection GetAllAsHLink()
         {
             HLinkPlaceModelCollection t = new HLinkPlaceModelCollection();
 

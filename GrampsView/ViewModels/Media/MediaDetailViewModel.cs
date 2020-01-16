@@ -239,13 +239,13 @@ namespace GrampsView.ViewModels
                 BaseHeader.Add(t);
 
                 // Setup Summary Models
-                BaseDetail.Add(CurrentMediaObject.GPersonRefCollection.GetCardGroup);
-                BaseDetail.Add(CurrentMediaObject.GCitationRefCollection.GetCardGroup);
-                BaseDetail.Add(CurrentMediaObject.GNoteRefCollection.GetCardGroup);
-                BaseDetail.Add(CurrentMediaObject.GEventRefCollection.GetCardGroup);
-                BaseDetail.Add(CurrentMediaObject.GFamilyRefCollection.GetCardGroup);
-                BaseDetail.Add(CurrentMediaObject.GTagRefCollection.GetCardGroup);
-                BaseDetail.Add(CurrentMediaObject.BackHLinkReferenceCollection.GetCardGroup);
+                BaseDetail.Add(CurrentMediaObject.GPersonRefCollection.GetCardGroup());
+                BaseDetail.Add(CurrentMediaObject.GCitationRefCollection.GetCardGroup());
+                BaseDetail.Add(CurrentMediaObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Add(CurrentMediaObject.GEventRefCollection.GetCardGroup());
+                BaseDetail.Add(CurrentMediaObject.GFamilyRefCollection.GetCardGroup());
+                BaseDetail.Add(CurrentMediaObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Add(CurrentMediaObject.BackHLinkReferenceCollection.GetCardGroup());
             }
 
             BaseCL.LogRoutineExit("MediaDetailViewModel OnNavigatedTo");

@@ -104,7 +104,7 @@ namespace GrampsView.ViewModels
 
                 BaseHeader.Add(t);
 
-                BaseDetail.Add(NoteObject.BackHLinkReferenceCollection.GetCardGroup);
+                BaseDetail.Add(NoteObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿// <copyright file="HLinkPersonModelCollection.cs" company="PlaceholderCompany">
+﻿// <copyright file="HLinkFamilyModelCollection.cs" company="PlaceholderCompany">
 //     Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -16,26 +16,26 @@ namespace GrampsView.Data.Collections
     using GrampsView.Data.Model;
 
     /// <summary>
-    /// Contains pointers to family models.
+    /// Colelction of Family hLinks.
     /// </summary>
-    /// <seealso cref="GrampsView.Data.ViewModel.HLinkBaseCollection{GrampsView.Data.ViewModel.HLinkPersonModel}" />
+    /// <seealso cref="GrampsView.Data.ViewModel.HLinkBaseCollection{GrampsView.Data.ViewModel.HLinkFamilyModel}" />
     [CollectionDataContract]
-    [KnownType(typeof(ObservableCollection<HLinkPersonModel>))]
-    public class HLinkPersonModelCollection : HLinkBaseCollection<HLinkPersonModel>
+    [KnownType(typeof(ObservableCollection<HLinkFamilyModel>))]
+    public class HLinkFamilyModelCollection : HLinkBaseCollection<HLinkFamilyModel>
     {
         /// <summary>
-        /// Gets the dereferenced person models.
+        /// Gets the dereferenced Family Models.
         /// </summary>
         /// <value>
         /// The de reference.
         /// </value>
-        public ObservableCollection<PersonModel> DeRef
+        public ObservableCollection<FamilyModel> DeRef
         {
             get
             {
-                ObservableCollection<PersonModel> t = new ObservableCollection<PersonModel>();
+                ObservableCollection<FamilyModel> t = new ObservableCollection<FamilyModel>();
 
-                foreach (HLinkPersonModel item in Items)
+                foreach (HLinkFamilyModel item in Items)
                 {
                     t.Add(item.DeRef);
                 }
@@ -44,22 +44,9 @@ namespace GrampsView.Data.Collections
             }
         }
 
-        public new CardGroup GetCardGroup
+        public CardGroup GetCardGroup()
         {
-            get
-            {
-                CardGroup t = new CardGroup
-                {
-                    Title = "People Collection",
-                };
-
-                foreach (var item in Items)
-                {
-                    t.Cards.Add(item.DeRef);
-                }
-
-                return t;
-            }
+            return base.GetCardGroup("Family Collection");
         }
 
         /// <summary>Helper method to sort and set the firt image link.</summary>
@@ -73,14 +60,14 @@ namespace GrampsView.Data.Collections
 
             // Set the first image link. Assumes main image is manually set to the first image in
             // Gramps if we need it to be, e.g. Citations.
-            PersonModel tempModel = new PersonModel();
+            FamilyModel tempModel = new FamilyModel();
 
             if (Count > 0)
             {
                 // Step through each citationmodel hlink in the collection
                 for (int i = 0; i < Count; i++)
                 {
-                    tempModel = DV.PersonDV.PersonData.GetModelFromHLink(this[i]);
+                    tempModel = DV.FamilyDV.FamilyData.GetModelFromHLink(this[i]);
 
                     if (tempModel.HomeImageHLink.HomeUseImage)
                     {
@@ -90,11 +77,11 @@ namespace GrampsView.Data.Collections
                 }
 
                 // Sort the collection
-                List<HLinkPersonModel> t = this.OrderBy(HLinkEventModel => HLinkEventModel.DeRef.GBirthName.SortName).ToList();
+                List<HLinkFamilyModel> t = this.OrderBy(HLinkCitationModel => HLinkCitationModel.DeRef.FamilyDisplayNameSort).ToList();
 
                 Items.Clear();
 
-                foreach (HLinkPersonModel item in t)
+                foreach (HLinkFamilyModel item in t)
                 {
                     Items.Add(item);
                 }

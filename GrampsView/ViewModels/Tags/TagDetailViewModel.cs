@@ -107,7 +107,7 @@ namespace GrampsView.ViewModels
                 {
                         new CardListLine("Card Type:", "Tag Detail"),
                         new CardListLine("Name:", TagObject.GName),
-                        new CardListLine("Priority:", TagObject.GPriority.ToString()),
+                        new CardListLine("Priority:", TagObject.GPriority.ToString(System.Globalization.CultureInfo.CurrentCulture)),
                         new CardListLine("Private:", TagObject.PrivAsString),
                 });
 
@@ -116,7 +116,7 @@ namespace GrampsView.ViewModels
                 BaseHeader.Add(t);
 
                 // Add Details BackHLinkRefNavArgument = localNavigationHelper.HLinkModelCollectionAdd(NoteObject.BackHLinkReferenceCollection);
-                BaseDetail.Add(TagObject.BackHLinkReferenceCollection.GetCardGroup);
+                BaseDetail.Add(TagObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

@@ -107,7 +107,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        public HLinkFamilyModelCollection getAllAsHlink()
+        public HLinkFamilyModelCollection GetAllAsHLink()
         {
             HLinkFamilyModelCollection t = new HLinkFamilyModelCollection();
 

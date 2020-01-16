@@ -41,24 +41,6 @@ namespace GrampsView.Data.Collections
             }
         }
 
-        public new CardGroup GetCardGroup
-        {
-            get
-            {
-                CardGroup t = new CardGroup
-                {
-                    Title = "Note Collection",
-                };
-
-                foreach (var item in Items)
-                {
-                    t.Cards.Add(item.DeRef);
-                }
-
-                return t;
-            }
-        }
-
         /// <summary>
         /// Gets the get summary.
         /// </summary>
@@ -78,6 +60,11 @@ namespace GrampsView.Data.Collections
                     return this[0].DeRef.GText;
                 }
             }
+        }
+
+        public CardGroup GetCardGroup()
+        {
+            return base.GetCardGroup("Note Collection");
         }
 
         /// <summary>Helper method to sort and set the firt image link.</summary>

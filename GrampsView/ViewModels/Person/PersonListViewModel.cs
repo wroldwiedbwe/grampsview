@@ -49,7 +49,7 @@ namespace GrampsView.ViewModels
             {
                 CardGroup t = new CardGroup();
 
-                t.Cards.AddRange(new ObservableCollection<object>(DV.PersonDV.DataDefaultSort));
+                t.Cards.AddRange(new ObservableCollection<object>(DV.PersonDV.GetAllAsHLink()));
 
                 return t;
             }

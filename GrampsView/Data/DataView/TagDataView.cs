@@ -87,7 +87,7 @@ namespace GrampsView.Data.DataView
         /// <returns>
         /// Tag HLink Collection.
         /// </returns>
-        public HLinkTagModelCollection getAllAsHlink()
+        public HLinkTagModelCollection GetAllAsHLink()
         {
             HLinkTagModelCollection t = new HLinkTagModelCollection();
 

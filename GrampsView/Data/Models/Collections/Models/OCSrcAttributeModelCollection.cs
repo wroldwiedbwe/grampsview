@@ -17,21 +17,11 @@ namespace GrampsView.Data.Collections
     /// <seealso cref="System.Collections.ObjectViewModel.ObservableCollection{GrampsView.Data.ViewModel.SrcAttributeModel}" />
     [CollectionDataContract]
     [KnownType(typeof(ObservableCollection<SrcAttributeModel>))]
-    public class OCSrcAttributeModelCollection : ObservableCollection<SrcAttributeModel>
+    public class OCSrcAttributeModelCollection : ModelBaseCollection<SrcAttributeModel>
     {
-        public CardGroup GetCardGroup
+        public CardGroup GetCardGroup()
         {
-            get
-            {
-                CardGroup t = new CardGroup
-                {
-                    Title = "Attribute Collection",
-                };
-
-                t.Cards.AddRange(new ObservableCollection<object>(Items));
-
-                return t;
-            }
+            return base.GetCardGroup("Attribute Collection");
         }
     }
 }

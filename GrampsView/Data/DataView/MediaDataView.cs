@@ -147,7 +147,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        public HLinkMediaModelCollection GetAllAsHlink()
+        public HLinkMediaModelCollection GetAllAsHLink()
         {
             HLinkMediaModelCollection t = new HLinkMediaModelCollection();
 
@@ -175,7 +175,7 @@ namespace GrampsView.Data.DataView
             // handle null argument
             if (theCollection == null)
             {
-                theCollection = GetAllAsHlink();
+                theCollection = GetAllAsHLink();
             }
 
             IEnumerable<HLinkMediaModel> t = theCollection.Where(HLinkMediaModel => HLinkMediaModel.DeRef.IsMediaFile == true);
@@ -199,7 +199,7 @@ namespace GrampsView.Data.DataView
             // handle null argument
             if (argCollection == null)
             {
-                argCollection = GetAllAsHlink();
+                argCollection = GetAllAsHLink();
             }
 
             HLinkMediaModel returnMediaModel = null;
@@ -240,7 +240,7 @@ namespace GrampsView.Data.DataView
             // handle null argument
             if (argCollection == null)
             {
-                argCollection = GetAllAsHlink();
+                argCollection = GetAllAsHLink();
             }
 
             HLinkMediaModel tt = new HLinkMediaModel

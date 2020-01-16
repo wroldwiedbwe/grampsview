@@ -81,7 +81,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        public HLinkBookMarkModelCollection GetAllAsHlink
+        public HLinkBookMarkModelCollection GetAllAsHLink
         {
             get
             {
@@ -103,7 +103,7 @@ namespace GrampsView.Data.DataView
         /// </summary>
         /// <returns>
         /// </returns>
-        public HLinkBaseCollection<HLinkBase> GetAllAsHlinkBase()
+        public HLinkBaseCollection<HLinkBase> GetAllAsHLinkBase()
         {
             HLinkBaseCollection<HLinkBase> t = new HLinkBaseCollection<HLinkBase>();
 
