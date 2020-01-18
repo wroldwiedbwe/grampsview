@@ -12,6 +12,7 @@ namespace GrampsView.Data.External.StoreSerial
     using System;
     using System.IO;
     using System.IO.IsolatedStorage;
+    using System.Runtime.ExceptionServices;
     using System.Runtime.Serialization;
     using System.Threading.Tasks;
     using System.Xml;
@@ -58,6 +59,7 @@ namespace GrampsView.Data.External.StoreSerial
         /// Deserialise the previously serialised repository. Perform as a single step so that it
         /// goes faster at the cost of providing less feedbak to the user.
         /// </summary>
+
         public void DeSerializeRepository()
         {
             localGVLogging.LogRoutineEntry(nameof(DeSerializeRepository));
@@ -73,7 +75,7 @@ namespace GrampsView.Data.External.StoreSerial
 
                     if (!isoStore.FileExists(DataInstanceFileName))
                     {
-                        DataStore.CN.NotifyError("DesearalizeRepository - File: " + DataInstanceFileName + " does not exist.  Reload the GPKG file");
+                        DataStore.CN.NotifyError("DeSerializeRepository - File: " + DataInstanceFileName + " does not exist.  Reload the GPKG file");
                         CommonLocalSettings.DataSerialised = false;
                         return;
                     }

@@ -38,22 +38,22 @@ namespace GrampsView.Views
             image.LoadingPlaceholder = null;
         }
 
-        private void OnPanUpdated(object sender, PanUpdatedEventArgs args)
-        {
-            MediaDetailViewModel t = this.BindingContext as MediaDetailViewModel;
+        //private void OnPanUpdated(object sender, PanUpdatedEventArgs args)
+        //{
+        //    MediaDetailViewModel t = this.BindingContext as MediaDetailViewModel;
 
-            CachedImage tt = sender as CachedImage;
+        //    CachedImage tt = sender as CachedImage;
 
-            t.OnPanUpdated(tt, args);
-        }
+        //    t.OnPanUpdated(tt, args);
+        //}
 
-        private void OnPinchUpdated(object sender, PinchGestureUpdatedEventArgs args)
-        {
-            MediaDetailViewModel t = this.BindingContext as MediaDetailViewModel;
+        //private void OnPinchUpdated(object sender, PinchGestureUpdatedEventArgs args)
+        //{
+        //    MediaDetailViewModel t = this.BindingContext as MediaDetailViewModel;
 
-            CachedImage tt = sender as CachedImage;
+        //    CachedImage tt = sender as CachedImage;
 
-            t.OnPinchUpdated(tt, args);
-        }
+        //    t.OnPinchUpdated(tt, args);
+        //}
     }
 }

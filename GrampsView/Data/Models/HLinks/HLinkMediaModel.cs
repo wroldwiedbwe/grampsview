@@ -90,23 +90,23 @@ namespace GrampsView.Data.Model
         {
         }
 
-        /// <summary>
-        /// Gets the de reference.
-        /// </summary>
-        /// <value>
-        /// The de reference.
-        /// </value>
+        /// <summary>Gets the associated media model </summary>
+        /// <value>The media model.<note type="caution">This can not hold a local copy of the media model as the Model Base has a hlinkmediamodel in it and this will cause a referene loop</note></value>
         public MediaModel DeRef
         {
             get
             {
-                MediaModel tt = DV.MediaDV.GetModel(HLinkKey);
-
-                return tt;
+                if (Valid)
+                {
+                    return DV.MediaDV.GetModel(HLinkKey);
+                }
+                else
+                {
+                    return new MediaModel();
+                }
             }
         }
 
-        //= Microsoft.Toolkit.Uwp.Helpers.ColorHelper.ToColor("White");
         /// <summary>
         /// Gets or sets the g attribute.
         /// </summary>
@@ -179,17 +179,6 @@ namespace GrampsView.Data.Model
         public Image HomeImageClippedBitmap
         {
             get; set;
-        }
-
-        /// <summary>Gets a value indicating whether gets boolean showing if the $$(HLink)$$ is valid.
-        /// Can have a HLInk or be a pointer to an image.</summary>
-        /// <value>Boolean showing if $$(HLink)$$ is valid.</value>
-        public override bool Valid
-        {
-            get
-            {
-                return ((!string.IsNullOrEmpty(HLinkKey)) || (HomeImageType == CommonConstants.HomeImageTypeSymbol));
-            }
         }
 
         ///// <summary>
@@ -308,6 +297,17 @@ namespace GrampsView.Data.Model
                 }
 
                 return true;
+            }
+        }
+
+        /// <summary>Gets a value indicating whether gets boolean showing if the $$(HLink)$$ is valid.
+        /// Can have a HLInk or be a pointer to an image.</summary>
+        /// <value>Boolean showing if $$(HLink)$$ is valid.</value>
+        public override bool Valid
+        {
+            get
+            {
+                return ((!string.IsNullOrEmpty(HLinkKey)) || (HomeImageType == CommonConstants.HomeImageTypeSymbol));
             }
         }
     }

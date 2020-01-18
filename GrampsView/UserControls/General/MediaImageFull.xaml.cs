@@ -13,11 +13,11 @@ namespace GrampsView.UserControls
 
     public partial class MediaImageFull : Frame
     {
-        public static readonly BindableProperty UCMediaModelProperty = BindableProperty.Create(
-                                                        propertyName: nameof(UCMediaModel),
-                                                        returnType: typeof(MediaModel),
+        public static readonly BindableProperty UCHLinkMediaModelProperty = BindableProperty.Create(
+                                                        propertyName: nameof(UCHLinkMediaModel),
+                                                        returnType: typeof(HLinkMediaModel),
                                                         declaringType: typeof(MediaImageFull),
-                                                        defaultValue: new MediaModel(),
+                                                        defaultValue: new HLinkMediaModel(),
                                                         defaultBindingMode: BindingMode.OneWay,
                                                         propertyChanged: HandleVMPropertyChanged
                                                         );
@@ -29,18 +29,18 @@ namespace GrampsView.UserControls
             //this.daImage.CacheKeyFactory = new CustomCacheKeyFactory();
         }
 
-        public MediaModel UCMediaModel
+        public HLinkMediaModel UCHLinkMediaModel
         {
             get
             {
-                return GetValue(UCMediaModelProperty) as MediaModel;
+                return GetValue(UCHLinkMediaModelProperty) as HLinkMediaModel;
             }
 
             set
             {
-                if (UCMediaModel != value)
+                if (UCHLinkMediaModel != value)
                 {
-                    SetValue(UCMediaModelProperty, value);
+                    SetValue(UCHLinkMediaModelProperty, value);
                 }
             }
         }
@@ -49,19 +49,21 @@ namespace GrampsView.UserControls
         {
             MediaImageFull mifModel = (bindable as MediaImageFull);
 
-            if (newValue is MediaModel imageMediaModel)
+            if (newValue is HLinkMediaModel imageHLinkMediaModel)
             {
-                if ((imageMediaModel.IsMediaStorageFileValid) && (imageMediaModel.IsMediaFile))
+                MediaModel t = imageHLinkMediaModel.DeRef;
+
+                if ((t.IsMediaStorageFileValid) && (t.IsMediaFile))
                 {
                     try
                     {
-                        mifModel.daImage.Source = imageMediaModel.MediaStorageFilePath;
-                        var t = mifModel.daImage.Source;
+                        mifModel.daImage.Source = t.MediaStorageFilePath;
+                        var tt = mifModel.daImage.Source;
 
                         mifModel.IsVisible = true;
 
                         // TODO cleanup code so does nto use bindignContext if possible
-                        mifModel.BindingContext = imageMediaModel;
+                        mifModel.BindingContext = imageHLinkMediaModel;
 
                         return;
                     }

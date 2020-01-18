@@ -52,9 +52,9 @@ namespace GrampsView.UserControls
         {
             MediaImageFullCard mifModel = (bindable as MediaImageFullCard);
 
-            if (newValue is MediaModel imageMediaModel)
+            if (newValue is HLinkMediaModel imageMediaModel)
             {
-                mifModel.mediaFull.UCMediaModel = imageMediaModel;
+                mifModel.mediaFull.UCHLinkMediaModel = imageMediaModel;
             }
 
             // Check if anything to display

@@ -17,12 +17,26 @@ namespace GrampsView.Data.Model
     [DataContract]
     public class ParentLinkModel : ModelBase, IDetailViewText
     {
+        private FamilyModel _Parents = new FamilyModel();
+
         public ParentLinkModel()
         {
         }
 
-        public FamilyModel Parents { get; set; }
+        public FamilyModel Parents
+        {
+            get
+            {
+                return _Parents;
+            }
 
-                    = new FamilyModel();
+            set
+            {
+                SetProperty(ref _Parents, value);
+
+                // Set HlinkKey to the family model so Valid is true;
+                this.HLinkKey = Parents.HLinkKey;
+            }
+        }
     }
 }

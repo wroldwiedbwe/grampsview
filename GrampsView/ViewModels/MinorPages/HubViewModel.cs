@@ -23,17 +23,17 @@ namespace GrampsView.ViewModels
     /// </summary>
     public class HubViewModel : ViewModelBase
     {
+        /// <summary>
+        /// Media object for the Hub 'Hero' image.
+        /// </summary>
+        private HLinkMediaModel _HeroImage = new HLinkMediaModel();
+
         private CardGroup _TodoList = new CardGroup();
 
         /// <summary>
         /// The local header ViewModel.
         /// </summary>
         private HeaderModel localHeaderModel = new HeaderModel();
-
-        /// <summary>
-        /// Media object for the Hub 'Hero' image.
-        /// </summary>
-        private MediaModel localHeroImage;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HubViewModel" /> class.
@@ -81,16 +81,16 @@ namespace GrampsView.ViewModels
         /// The hero image.
         /// </value>
         // [RestorableState]
-        public MediaModel HeroImage
+        public HLinkMediaModel HeroImage
         {
             get
             {
-                return localHeroImage;
+                return _HeroImage;
             }
 
             set
             {
-                SetProperty(ref localHeroImage, value);
+                SetProperty(ref _HeroImage, value);
             }
         }
 
@@ -123,7 +123,7 @@ namespace GrampsView.ViewModels
             // Clear large Bitmap Image
             if (HeroImage != null)
             {
-                HeroImage.FullImageClean();
+                HeroImage.DeRef.FullImageClean();
             }
         }
 
@@ -135,7 +135,7 @@ namespace GrampsView.ViewModels
             HeaderData = DV.HeaderDV.HeaderDataModel;
 
             // Load the full bitmap
-            HeroImage = DV.MediaDV.GetModel(DV.MediaDV.GetRandomFromCollection(null).HLinkKey);
+            HeroImage = DV.MediaDV.GetModel(DV.MediaDV.GetRandomFromCollection(null).HLinkKey).GetHLink;
 
             if (HeroImage == null)
             {

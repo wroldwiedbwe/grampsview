@@ -46,7 +46,7 @@ namespace GrampsView.Data.ExternalStorageNS
                     // Loop through results to get the Citation Uri _baseUri = new Uri("ms-appx:///");
                     foreach (XElement argBookMark in de)
                     {
-                        BookMarkModel loadBookMark = DV.BookMarkDV.NewModel();
+                        BookMarkModel loadBookMark = new BookMarkModel();
 
                         // BookMark Handle
                         bookMarkCount++;
