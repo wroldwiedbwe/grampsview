@@ -286,6 +286,11 @@ namespace GrampsView.Data.Model
                 return false;
             }
 
+            if (this.GetType() != obj.GetType())
+            {
+                return false;
+            }
+
             return (this.HLinkKey == (obj as HLinkBase).HLinkKey);
         }
 

@@ -23,7 +23,7 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<HLinkNoteModel>))]
     public class HLinkNoteModelCollection : HLinkBaseCollection<HLinkNoteModel>
     {
-        public NoteModel GetBio
+        public HLinkNoteModel GetBio
         {
             get
             {
@@ -32,7 +32,7 @@ namespace GrampsView.Data.Collections
                 if (temp.Any())
                 {
                     HLinkNoteModel tt = temp.FirstOrDefault();
-                    return tt.DeRef;
+                    return tt;
                 }
                 else
                 {

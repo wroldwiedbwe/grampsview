@@ -55,7 +55,7 @@ namespace GrampsView.Data.Model
     /// </code>
     /// </summary>
     [DataContract]
-    public partial class DateObjectModel : CommonBindableBase, IDateObjectModel, IComparable<DateObjectModel>, IComparer<DateObjectModel>
+    public partial class DateObjectModel : ModelBase, IDateObjectModel, IComparable<DateObjectModel>, IComparer<DateObjectModel>
     {
         /// <summary>
         /// $$(cformat)$$ field.
@@ -788,6 +788,11 @@ namespace GrampsView.Data.Model
             }
 
             if (ReferenceEquals(obj, null))
+            {
+                return false;
+            }
+
+            if (this.GetType() != obj.GetType())
             {
                 return false;
             }

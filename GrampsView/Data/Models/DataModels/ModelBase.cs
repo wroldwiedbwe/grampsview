@@ -393,6 +393,11 @@ namespace GrampsView.Data.Model
                 return false;
             }
 
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+
             if (string.IsNullOrEmpty(this.Id))
             {
                 return false;

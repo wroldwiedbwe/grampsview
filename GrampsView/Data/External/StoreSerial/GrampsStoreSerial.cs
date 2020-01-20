@@ -21,6 +21,7 @@ namespace GrampsView.Data.External.StoreSerial
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Creates a collection of entities with content read from a GRAMPS XML file.
@@ -47,14 +48,6 @@ namespace GrampsView.Data.External.StoreSerial
             localGVLogging = iocGVLogging;
         }
 
-        ///// <summary>
-        ///// Gets or sets the local data repository.
-        ///// </summary>
-        ///// <value>
-        ///// The local data repository.
-        ///// </value>
-        // private IDataRepository LocalDataRepository { get; set; }
-
         /// <summary>
         /// Deserialise the previously serialised repository. Perform as a single step so that it
         /// goes faster at the cost of providing less feedbak to the user.
@@ -71,7 +64,7 @@ namespace GrampsView.Data.External.StoreSerial
                 using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication())
                 {
                     // Check of the file exists
-                    string DataInstanceFileName = typeof(DataInstance).Name.Trim() + ".xml";
+                    string DataInstanceFileName = typeof(DataInstance).Name.Trim() + ".json";
 
                     if (!isoStore.FileExists(DataInstanceFileName))
                     {
@@ -82,14 +75,12 @@ namespace GrampsView.Data.External.StoreSerial
 
                     var stream = new IsolatedStorageFileStream(DataInstanceFileName, FileMode.Open, isoStore);
 
-                    XmlDictionaryReaderQuotas xmlQuot = new XmlDictionaryReaderQuotas
+                    using (StreamReader file = new StreamReader(stream))
                     {
-                        MaxStringContentLength = 32767
-                    };
+                        JsonSerializer serializer = new JsonSerializer();
+                        serializer.Converters.Add(new GrampsView.Converters.NewtonSoftColorConverter());
 
-                    using (XmlDictionaryReader sw = XmlDictionaryReader.CreateTextReader(stream, xmlQuot))
-                    {
-                        DataInstance t = (DataInstance)ser.ReadObject(sw, true);
+                        DataInstance t = (DataInstance)serializer.Deserialize(file, typeof(DataInstance));
 
                         // Check for nulls
                         if (t.BookMarkData != null)
@@ -166,11 +157,11 @@ namespace GrampsView.Data.External.StoreSerial
                         // Check for nulls
                         if (t.localTagData != null)
                         {
-                            // Hack TODO Work out why xamarin not serilising color property
-                            foreach (TagModel item in t.localTagData)
-                            {
-                                item.HomeImageHLink.HomeSymbolColour = item.GColor;
-                            }
+                            //// Hack TODO Work out why xamarin not serilising color property
+                            //foreach (TagModel item in t.localTagData)
+                            //{
+                            //    item.HomeImageHLink.HomeSymbolColour = item.GColor;
+                            //}
 
                             DataStore.DS.localTagData = t.localTagData;
                         }
@@ -216,20 +207,20 @@ namespace GrampsView.Data.External.StoreSerial
         {
             try
             {
-                XmlWriterSettings ws = new XmlWriterSettings
-                {
-                    Async = true,
-                };
+                JsonSerializer serializer = new JsonSerializer();
+
+                serializer.Converters.Add(new GrampsView.Converters.NewtonSoftColorConverter());
 
                 using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication())
                 {
-                    using (IsolatedStorageFileStream stream = new IsolatedStorageFileStream(typeof(DataInstance).Name.Trim() + ".xml", FileMode.Create, isoStore))
-
-                    using (XmlWriter sw = XmlWriter.Create(stream, ws))
+                    using (IsolatedStorageFileStream stream = new IsolatedStorageFileStream(typeof(DataInstance).Name.Trim() + ".json", FileMode.Create, isoStore))
                     {
-                        DataContractSerializer ser = new DataContractSerializer(theObject.GetType());
-                        ser.WriteObject(sw, theObject);
-                        await sw.FlushAsync().ConfigureAwait(false);
+                        StreamWriter sw = new StreamWriter(stream);
+
+                        using (JsonWriter writer = new JsonTextWriter(sw))
+                        {
+                            serializer.Serialize(writer, theObject);
+                        }
                     }
                 }
 

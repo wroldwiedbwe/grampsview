@@ -181,13 +181,6 @@ namespace GrampsView.Data.Model
             get; set;
         }
 
-        ///// <summary>
-        ///// Gets or sets a value indicating whether [g priv].
-        ///// </summary>
-        ///// <value>
-        ///// <c> true </c> if [g priv]; otherwise, <c> false </c>.
-        ///// </value>
-        // [DataMember] public bool GPriv { get; set; }
         /// <summary>
         /// Gets the home image display bit map.
         /// </summary>
@@ -277,6 +270,10 @@ namespace GrampsView.Data.Model
 
             set
             {
+                if (value != Color.Default)
+                {
+                }
+
                 SetProperty(ref _HomeSymbolColour, value);
             }
         }

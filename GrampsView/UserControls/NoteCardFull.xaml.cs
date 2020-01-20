@@ -32,15 +32,29 @@ namespace GrampsView.UserControls
 
         private void PersonCardSmallRoot_BindingContextChanged(object sender, System.EventArgs e)
         {
-            NoteModel t = ((sender as NoteCardFull).BindingContext as NoteModel);
+            NoteCardFull card = (sender as NoteCardFull);
 
-            if ((t is null) || (string.IsNullOrEmpty(t.GText)))
+            if (card is null)
             {
                 this.IsVisible = false;
+                return;
+            }
+
+            HLinkNoteModel t = (card.BindingContext as HLinkNoteModel);
+
+            if (t is null)
+            {
+                this.IsVisible = false;
+                return;
+            }
+
+            if (t.Valid)
+            {
+                this.IsVisible = true;
             }
             else
             {
-                this.IsVisible = true;
+                this.IsVisible = false;
             }
         }
     }

@@ -86,33 +86,23 @@ namespace GrampsView.Data.Repository
         [DataMember]
         public RepositoryModelType<TagModel, HLinkTagModel> localTagData = new RepositoryModelType<TagModel, HLinkTagModel>();
 
+        /// <summary>
+        /// The local book mark data.
+        /// </summary>
+        [DataMember]
+        private RepositoryModelType<BookMarkModel, HLinkBookMarkModel> _BookMarkData = new RepositoryModelType<BookMarkModel, HLinkBookMarkModel>();
+
+        private DirectoryInfo _CurrentDataFolder;
+
         private FileData _CurrentInputFile = null;
 
         private DirectoryInfo _CurrentInputFolder;
 
         /// <summary>
-        /// The local book mark data.
-        /// </summary>
-        [DataMember]
-        private RepositoryModelType<BookMarkModel, HLinkBookMarkModel> localBookMarkData = new RepositoryModelType<BookMarkModel, HLinkBookMarkModel>();
-
-        /// <summary>
-        /// The current data folder.
-        /// </summary>
-        //private DirectoryInfo localCurrentDataFolder = null;
-
-        private DirectoryInfo localCurrentDataFolder;
-
-        ///// <summary>
-        ///// The local current thumb nail folder.
-        ///// </summary>
-        //private IFolder localCurrentThumbNailFolder = CrossStorage.Current.NewFolder;
-
-        /// <summary>
         /// The local source data.
         /// </summary>
         [DataMember]
-        private RepositoryModelType<SourceModel, HLinkSourceModel> localSourceData = new RepositoryModelType<SourceModel, HLinkSourceModel>();
+        private RepositoryModelType<SourceModel, HLinkSourceModel> _SourceData = new RepositoryModelType<SourceModel, HLinkSourceModel>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DataInstance" /> class.
@@ -131,12 +121,12 @@ namespace GrampsView.Data.Repository
         {
             get
             {
-                return localBookMarkData;
+                return _BookMarkData;
             }
 
             set
             {
-                SetProperty(ref localBookMarkData, value);
+                SetProperty(ref _BookMarkData, value);
             }
         }
 
@@ -150,12 +140,12 @@ namespace GrampsView.Data.Repository
         {
             get
             {
-                return localCurrentDataFolder;
+                return _CurrentDataFolder;
             }
 
             set
             {
-                SetProperty(ref localCurrentDataFolder, value);
+                SetProperty(ref _CurrentDataFolder, value);
             }
         }
 
@@ -201,25 +191,6 @@ namespace GrampsView.Data.Repository
             }
         }
 
-        ///// <summary>
-        ///// Gets or sets the current thumb nail folder.
-        ///// </summary>
-        ///// <value>
-        ///// The current thumb nail folder.
-        ///// </value>
-        //public IFolder CurrentThumbNailFolder
-        //{
-        //    get
-        //    {
-        //        return localCurrentThumbNailFolder;
-        //    }
-
-        //    set
-        //    {
-        //        SetProperty(ref localCurrentThumbNailFolder, value);
-        //    }
-        //}
-
         /// <summary>
         /// Gets or sets a value indicating whether this instance is data loaded.
         /// </summary>
@@ -242,12 +213,12 @@ namespace GrampsView.Data.Repository
         {
             get
             {
-                return localSourceData;
+                return _SourceData;
             }
 
             set
             {
-                SetProperty(ref localSourceData, value);
+                SetProperty(ref _SourceData, value);
             }
         }
 

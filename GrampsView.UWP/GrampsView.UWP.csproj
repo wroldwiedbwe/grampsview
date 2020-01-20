@@ -107,7 +107,6 @@
     </Compile>
     <Compile Include="Common\BorderlessEditorRenderer.cs" />
     <Compile Include="Common\BorderlessEntryRenderer.cs" />
-    <Compile Include="Common\CommonLogging.cs" />
     <Compile Include="Common\CommonTileUpdate.cs" />
     <Compile Include="Common\PlatformSpecific.cs" />
     <Compile Include="Common\XamarinUtil.cs" />
@@ -236,7 +235,7 @@
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
       <Version>2.4.11.982</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
+    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991477" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.9" />
     <PackageReference Include="Xamarin.Plugin.FilePicker">
       <Version>2.1.34</Version>

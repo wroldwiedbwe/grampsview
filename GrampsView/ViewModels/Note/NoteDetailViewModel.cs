@@ -24,7 +24,7 @@ namespace GrampsView.ViewModels
         /// <summary>
         /// Holds the Note ViewModel.
         /// </summary>
-        private NoteModel localNoteObject;
+        private HLinkNoteModel _HLinkNote;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NoteDetailViewModel" /> class. Common logging.
@@ -49,27 +49,18 @@ namespace GrampsView.ViewModels
         /// The note object.
         /// </value>
         // [RestorableState]
-        public NoteModel NoteObject
+        public HLinkNoteModel HLinkNote
         {
             get
             {
-                return localNoteObject;
+                return _HLinkNote;
             }
 
             set
             {
-                SetProperty(ref localNoteObject, value);
+                SetProperty(ref _HLinkNote, value);
             }
         }
-
-        /// <summary>
-        /// Gets or sets the note text.
-        /// </summary>
-        /// <value>
-        /// The note text.
-        /// </value>
-        // [RestorableState]
-        public TextDetailCardModel NoteText { get; set; } = new TextDetailCardModel();
 
         /// <summary>
         /// Handles navigation in wards and sets up the event model parameter.
@@ -82,11 +73,13 @@ namespace GrampsView.ViewModels
         /// </param>
         public override void PopulateViewModel()
         {
-            NoteObject = DV.NoteDV.GetModel(BaseNavParamsHLink);
+            HLinkNote = BaseNavParamsHLink as HLinkNoteModel;
 
-            if (NoteObject != null)
+            if (HLinkNote.Valid)
             {
-                BaseTitle = NoteObject.GetDefaultText;
+                NoteModel NoteModel = DV.NoteDV.GetModel(BaseNavParamsHLink);
+
+                BaseTitle = NoteModel.GetDefaultText;
                 BaseTitleIcon = CommonConstants.IconNotes;
 
                 // Get basic details
@@ -95,16 +88,16 @@ namespace GrampsView.ViewModels
                 t.Cards.Add(new CardListLineCollection
                 {
                     new CardListLine("Card Type:", "Note Detail"),
-                    new CardListLine("Type:", NoteObject.GType),
-                    new CardListLine("Private:", NoteObject.PrivAsString),
+                    new CardListLine("Type:", NoteModel.GType),
+                    new CardListLine("Private:", NoteModel.PrivAsString),
                 });
 
                 // Add Model details
-                t.Cards.Add(DV.NoteDV.GetModelInfoFormatted(NoteObject));
+                t.Cards.Add(DV.NoteDV.GetModelInfoFormatted(NoteModel));
 
                 BaseHeader.Add(t);
 
-                BaseDetail.Add(NoteObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseDetail.Add(NoteModel.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

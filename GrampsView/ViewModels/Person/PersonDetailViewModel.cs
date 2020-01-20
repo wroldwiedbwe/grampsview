@@ -15,7 +15,7 @@ namespace GrampsView.ViewModels
     /// </summary>
     public class PersonDetailViewModel : ViewModelBase
     {
-        private NoteModel _PersonBio = new NoteModel();
+        private HLinkNoteModel _PersonBio = new HLinkNoteModel();
 
         /// <summary>
         /// The current person.
@@ -35,7 +35,7 @@ namespace GrampsView.ViewModels
 
         /// <summary>Gets or sets the person biograqphical details.</summary>
         /// <value>The person bio.</value>
-        public NoteModel PersonBio
+        public HLinkNoteModel PersonBio
         {
             get
             {
