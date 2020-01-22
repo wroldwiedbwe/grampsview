@@ -87,7 +87,7 @@ namespace GrampsView.Data.DataView
             {
                 HLinkBookMarkModelCollection t = new HLinkBookMarkModelCollection();
 
-                foreach (var item in DataViewData)
+                foreach (var item in DataDefaultSort)
                 {
                     t.Add(item.GetHLink);
                 }
@@ -107,7 +107,7 @@ namespace GrampsView.Data.DataView
         {
             HLinkBaseCollection<HLinkBase> t = new HLinkBaseCollection<HLinkBase>();
 
-            foreach (var item in DataViewData)
+            foreach (var item in DataDefaultSort)
             {
                 t.Add(item.GetBookMarkHLink);
             }

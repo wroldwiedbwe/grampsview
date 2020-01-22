@@ -1,6 +1,7 @@
 ﻿using FFImageLoading.Forms.Platform;
 
 using Foundation;
+using GrampsView.Common;
 using GrampsView.Data.Repository;
 using Microsoft.AppCenter.Distribute;
 using Prism;
@@ -28,7 +29,11 @@ namespace GrampsView.iOS
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
 
-            Distribute.DontCheckForUpdatesInDebug();
+            // Only Start App Center if there
+            if (!CommonRoutines.IsEmualator())
+            {
+                Distribute.DontCheckForUpdatesInDebug();
+            }
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 

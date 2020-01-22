@@ -12,6 +12,7 @@ namespace GrampsView.Common
     using GrampsView.Data.Model;
     using System;
     using System.Text.RegularExpressions;
+    using Xamarin.Essentials;
     using Xamarin.Forms;
 
     /// <summary>
@@ -44,6 +45,21 @@ namespace GrampsView.Common
         //    }
         //}
 
+        public static bool IsEmualator()
+        {
+            if (Xamarin.Essentials.DeviceInfo.DeviceType == DeviceType.Physical)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public static string ReplaceLineSeperators(string argString)
+        {
+            return Regex.Replace(argString, @"[\u000A\u000B\u000C\u000D\u2028\u2029\u0085]+", "");
+        }
+
         public static Color ResourceColourGet(string keyName)
         {
             var t = ResourceValueGet(keyName);
@@ -61,11 +77,6 @@ namespace GrampsView.Common
             // Search all dictionaries
             if (Application.Current.Resources.TryGetValue(keyName, out var retVal)) { }
             return retVal;
-        }
-
-        public static string ReplaceLineSeperators(string argString)
-        {
-            return Regex.Replace(argString, @"[\u000A\u000B\u000C\u000D\u2028\u2029\u0085]+", "");
         }
 
         /// <summary>

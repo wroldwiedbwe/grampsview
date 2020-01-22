@@ -34,6 +34,58 @@ namespace GrampsView.Data
         }
 
         /// <summary>
+        /// get the StorageFile of the file.
+        /// </summary>
+        /// <param name="relativeFilePath">
+        /// file path relative to the provider base folder.
+        /// </param>
+        /// <returns>
+        /// StorageFile for the chosen file.
+        /// </returns>
+        public async static Task<FileInfoEx> GetStorageFileAsync(string relativeFilePath)
+        {
+            FileInfoEx resultFile = new FileInfoEx();
+
+            // Check for relative path
+            if (!StoreFileUtility.IsRelativeFilePathValid(relativeFilePath))
+            {
+                return resultFile;
+            }
+
+            // load the real file
+            DirectoryInfo tt = DataStore.DS.CurrentDataFolder;
+            if (tt != null)
+            {
+                try
+                {
+                    if (Directory.Exists(Path.Combine(tt.FullName, Path.GetDirectoryName(relativeFilePath))))
+                    {
+                        FileInfo[] t = tt.GetFiles(relativeFilePath);
+
+                        if (t.Length > 0)
+                        {
+                            resultFile.FInfo = t[0];
+                        }
+                    }
+                    return resultFile;
+                }
+                catch (FileNotFoundException ex)
+                {
+                    await DataStore.CN.MajorStatusAdd(ex.Message + ex.FileName).ConfigureAwait(false);
+
+                    // default to a standard file marker
+                }
+                catch (Exception ex)
+                {
+                    DataStore.CN.NotifyException(ex.Message + relativeFilePath, ex);
+                    throw;
+                }
+            }
+
+            return resultFile;
+        }
+
+        /// <summary>
         /// Deletes all local copies of GRAMPS data.
         /// </summary>
         /// <returns>
@@ -168,55 +220,6 @@ namespace GrampsView.Data
 
             //// hide the progress bar await DataStore.CN.MajorStatusAdd("GRAMPS file loading complete");
             return true;
-        }
-
-        /// <summary>
-        /// get the StorageFile of the file.
-        /// </summary>
-        /// <param name="relativeFilePath">
-        /// file path relative to the provider base folder.
-        /// </param>
-        /// <returns>
-        /// StorageFile for the chosen file.
-        /// </returns>
-        public async static Task<FileInfoEx> GetStorageFileAsync(string relativeFilePath)
-        {
-            FileInfoEx resultFile = new FileInfoEx();
-
-            // Check for relative path
-            if (!StoreFileUtility.IsRelativeFilePathValid(relativeFilePath))
-            {
-                return resultFile;
-            }
-
-            // load the real file
-            DirectoryInfo tt = DataStore.DS.CurrentDataFolder;
-            if (tt != null)
-            {
-                try
-                {
-                    if (Directory.Exists(Path.Combine(tt.FullName, Path.GetDirectoryName(relativeFilePath))))
-                    {
-                        FileInfo[] t = tt.GetFiles(relativeFilePath);
-
-                        resultFile.FInfo = t[0];
-                    }
-                    return resultFile;
-                }
-                catch (FileNotFoundException ex)
-                {
-                    await DataStore.CN.MajorStatusAdd(ex.Message + ex.FileName).ConfigureAwait(false);
-
-                    // default to a standard file marker
-                }
-                catch (Exception ex)
-                {
-                    DataStore.CN.NotifyException(ex.Message + relativeFilePath, ex);
-                    throw;
-                }
-            }
-
-            return resultFile;
         }
     }
 }

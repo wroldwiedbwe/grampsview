@@ -169,7 +169,7 @@ namespace GrampsView.Data.DataView
         {
             HLinkEventModelCollection t = new HLinkEventModelCollection();
 
-            foreach (var item in DataViewData)
+            foreach (var item in DataDefaultSort)
             {
                 t.Add(item.GetHLink);
             }

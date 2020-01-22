@@ -84,7 +84,7 @@ namespace GrampsView.Data.DataView
         {
             HLinkNoteModelCollection t = new HLinkNoteModelCollection();
 
-            foreach (var item in NoteData)
+            foreach (var item in DataDefaultSort)
             {
                 t.Add(item.GetHLink);
             }

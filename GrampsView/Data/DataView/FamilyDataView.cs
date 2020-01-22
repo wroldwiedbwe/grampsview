@@ -117,7 +117,7 @@ namespace GrampsView.Data.DataView
                 return t;
             }
 
-            foreach (var item in FamilyData)
+            foreach (var item in DataDefaultSort)
             {
                 t.Add(item.GetHLink);
             }

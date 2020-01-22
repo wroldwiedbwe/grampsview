@@ -88,7 +88,7 @@ namespace GrampsView.Data.DataView
         {
             HLinkNameMapModelCollection t = new HLinkNameMapModelCollection();
 
-            foreach (var item in DataViewData)
+            foreach (var item in DataDefaultSort)
             {
                 t.Add(item.GetHLink);
             }

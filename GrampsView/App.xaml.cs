@@ -38,9 +38,13 @@ namespace GrampsView
             : this(null)
         {
             System.Diagnostics.Debug.WriteLine("====== resource debug info =========");
+
             var assembly = typeof(App).GetTypeInfo().Assembly;
+
             foreach (var res in assembly.GetManifestResourceNames())
+
                 System.Diagnostics.Debug.WriteLine("found resource: " + res);
+
             System.Diagnostics.Debug.WriteLine("====================================");
 
             // This lookup NOT required for Windows platforms - the Culture will be automatically set
@@ -120,7 +124,11 @@ namespace GrampsView
 
             IDataRepositoryManager temp = Container.Resolve<IDataRepositoryManager>();
 
-            AppCenterInit();
+            // Only Start App Center if physical
+            if (!Common.CommonRoutines.IsEmualator())
+            {
+                AppCenterInit();
+            }
 
             // Start at the MessageLog Page and work from there
             StartPage = nameof(MessageLogPage);

@@ -109,83 +109,111 @@ namespace GrampsView.ViewModels
             SearchText = argSearch;
             BaseDetail.Clear();
 
-            CardGroup SearchCards = new CardGroup();
+            CardGroup SearchCards;
 
             if (SearchText.Length > 0)
             {
                 // Create Person Cards
-                SearchCards.Title = "People";
+                SearchCards = new CardGroup
+                {
+                    Title = "People"
+                };
 
                 foreach (SearchItem item in DV.PersonDV.Search(SearchText))
                 {
                     if (SearchCards.Cards.Count < argLimit)
                     {
-                        SearchCards.Cards.Add(item.HLink.GetActualModel);
+                        SearchCards.Cards.Add(item.HLink);
                     }
                 }
                 BaseDetail.Add(SearchCards);
 
                 // Create Family Cards
-                SearchCards = new CardGroup();
-                SearchCards.Title = "Families";
+                SearchCards = new CardGroup
+                {
+                    Title = "Families"
+                };
 
                 foreach (SearchItem item in DV.FamilyDV.Search(SearchText))
                 {
                     if (SearchCards.Cards.Count < argLimit)
                     {
-                        SearchCards.Cards.Add(item.HLink.GetActualModel);
+                        SearchCards.Cards.Add(item.HLink);
                     }
                 }
                 BaseDetail.Add(SearchCards);
 
                 // Create Event Cards
-                SearchCards = new CardGroup();
-                SearchCards.Title = "Events";
+                SearchCards = new CardGroup
+                {
+                    Title = "Events"
+                };
 
                 foreach (SearchItem item in DV.EventDV.Search(SearchText))
                 {
                     if (SearchCards.Cards.Count < argLimit)
                     {
-                        SearchCards.Cards.Add(item.HLink.GetActualModel);
+                        SearchCards.Cards.Add(item.HLink);
                     }
                 }
                 BaseDetail.Add(SearchCards);
 
                 // Create Note cards
-                SearchCards = new CardGroup();
-                SearchCards.Title = "Notes";
+                SearchCards = new CardGroup
+                {
+                    Title = "Notes"
+                };
 
                 foreach (SearchItem item in DV.NoteDV.Search(SearchText))
                 {
                     if (SearchCards.Cards.Count < argLimit)
                     {
-                        SearchCards.Cards.Add(item.HLink.GetActualModel);
+                        SearchCards.Cards.Add(item.HLink);
                     }
                 }
                 BaseDetail.Add(SearchCards);
 
                 // Create Citation cards
-                SearchCards = new CardGroup();
-                SearchCards.Title = "Citations";
+                SearchCards = new CardGroup
+                {
+                    Title = "Citations"
+                };
 
                 foreach (SearchItem item in DV.CitationDV.Search(SearchText))
                 {
                     if (SearchCards.Cards.Count < argLimit)
                     {
-                        SearchCards.Cards.Add(item.HLink.GetActualModel);
+                        SearchCards.Cards.Add(item.HLink);
                     }
                 }
                 BaseDetail.Add(SearchCards);
 
                 // Create Media Cards
-                SearchCards = new CardGroup();
-                SearchCards.Title = "Media";
+                SearchCards = new CardGroup
+                {
+                    Title = "Media"
+                };
 
                 foreach (SearchItem item in DV.MediaDV.Search(SearchText))
                 {
                     if (SearchCards.Cards.Count < argLimit)
                     {
-                        SearchCards.Cards.Add(item.HLink.GetActualModel);
+                        SearchCards.Cards.Add(item.HLink);
+                    }
+                }
+                BaseDetail.Add(SearchCards);
+
+                // Create Place Cards
+                SearchCards = new CardGroup
+                {
+                    Title = "Places"
+                };
+
+                foreach (SearchItem item in DV.PlaceDV.Search(SearchText))
+                {
+                    if (SearchCards.Cards.Count < argLimit)
+                    {
+                        SearchCards.Cards.Add(item.HLink);
                     }
                 }
                 BaseDetail.Add(SearchCards);

@@ -91,7 +91,7 @@ namespace GrampsView.Data.DataView
         {
             HLinkTagModelCollection t = new HLinkTagModelCollection();
 
-            foreach (var item in DataViewData)
+            foreach (var item in DataDefaultSort)
             {
                 t.Add(item.GetHLink);
             }

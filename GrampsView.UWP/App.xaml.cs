@@ -15,6 +15,7 @@
     using System.Diagnostics;
     using GrampsView.Data.Repository;
     using System.Threading.Tasks;
+    using GrampsView.Common;
 
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -35,19 +36,6 @@
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
 
             Current.UnhandledException += new Windows.UI.Xaml.UnhandledExceptionEventHandler(UnhandledExceptionHandler);
-        }
-
-        private static void UnhandledExceptionHandler(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs args)
-        {
-            Exception e = args.Exception;
-
-            DataStore.CN.NotifyException("UnhandledExceptionHandler", e);
-        }
-
-        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
-        {
-            var newExc = new Exception(nameof(TaskSchedulerOnUnobservedTaskException), unobservedTaskExceptionEventArgs.Exception);
-            DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
         }
 
         /// <summary>
@@ -98,7 +86,11 @@
 
                 // App Center
                 ////////////////////////////////////////////////////////////////////////////////////////////////Debug.WriteLine(initString, "AppCenterInit");
-                Debug.WriteLine(AppCenter.SdkVersion, "UWP SDK");
+                // Only Start App Center if there
+                if (!CommonRoutines.IsEmualator())
+                {
+                    Debug.WriteLine(AppCenter.SdkVersion, "UWP SDK");
+                }
 
                 // Forms Init
                 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -124,6 +116,19 @@
 
             // Ensure the current window is active
             Window.Current.Activate();
+        }
+
+        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
+        {
+            var newExc = new Exception(nameof(TaskSchedulerOnUnobservedTaskException), unobservedTaskExceptionEventArgs.Exception);
+            DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
+        }
+
+        private static void UnhandledExceptionHandler(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs args)
+        {
+            Exception e = args.Exception;
+
+            DataStore.CN.NotifyException("UnhandledExceptionHandler", e);
         }
 
         /// <summary>

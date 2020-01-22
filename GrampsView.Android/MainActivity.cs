@@ -8,7 +8,7 @@ using Android.Support.V4.App;
 using Android.Support.V4.Content;
 
 using FFImageLoading.Forms.Platform;
-
+using GrampsView.Common;
 using GrampsView.Common.CustomClasses;
 using GrampsView.Data.Repository;
 using GrampsView.Droid.Common;
@@ -44,12 +44,6 @@ namespace GrampsView.Droid
             //Connector.SetAuthenticationContinuationEventArgs(requestCode, resultCode, data);
         }
 
-        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
-        {
-            var newExc = new Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as Exception);
-            DataStore.CN.NotifyException("CurrentDomainOnUnhandledException", newExc);
-        }
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             //TabLayoutResource = Resource.Layout.Tabbar;
@@ -77,8 +71,12 @@ namespace GrampsView.Droid
 
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
 
-            // App Center Distribute
-            Distribute.SetEnabledForDebuggableBuild(true);
+            // Only Start App Center if there
+            if (!CommonRoutines.IsEmualator())
+            {
+                // App Center Distribute
+                Distribute.SetEnabledForDebuggableBuild(true);
+            }
 
             // FFImageLoading Init
 
@@ -94,12 +92,6 @@ namespace GrampsView.Droid
 
             // Load the app
             LoadApplication(new App(new AndroidInitializer()));
-        }
-
-        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
-        {
-            var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
-            DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
         }
 
         protected override void OnDestroy()
@@ -119,6 +111,18 @@ namespace GrampsView.Droid
             base.OnResume();
 
             //CrashManager.Register(this, GrampsView.Common.CommonConstants.HockeyAppId);
+        }
+
+        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+        {
+            var newExc = new Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as Exception);
+            DataStore.CN.NotifyException("CurrentDomainOnUnhandledException", newExc);
+        }
+
+        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
+        {
+            var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
+            DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
         }
 
         private void UnregisterManagers()

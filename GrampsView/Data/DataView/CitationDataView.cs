@@ -126,7 +126,7 @@ namespace GrampsView.Data.DataView
         {
             HLinkCitationModelCollection t = new HLinkCitationModelCollection();
 
-            foreach (var item in DataViewData)
+            foreach (var item in DataDefaultSort)
             {
                 t.Add(item.GetHLink);
             }

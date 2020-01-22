@@ -90,7 +90,7 @@ namespace GrampsView.Data.DataView
         {
             HLinkPlaceModelCollection t = new HLinkPlaceModelCollection();
 
-            foreach (var item in DataViewData)
+            foreach (var item in DataDefaultSort)
             {
                 t.Add(item.GetHLink);
             }

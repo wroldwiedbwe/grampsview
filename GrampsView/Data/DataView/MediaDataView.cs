@@ -151,7 +151,7 @@ namespace GrampsView.Data.DataView
         {
             HLinkMediaModelCollection t = new HLinkMediaModelCollection();
 
-            for (int i = 0; i < MediaData.Count; i++)
+            for (int i = 0; i < DataDefaultSort.Count; i++)
             {
                 t.Add(MediaData.Get(i).GetHLink);
             }

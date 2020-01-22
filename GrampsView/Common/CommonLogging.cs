@@ -29,9 +29,13 @@ namespace GrampsView.Common
         {
             //argErrorDetail.Add("Error", argMessage);
 
-            Crashes.TrackError(null, argErrorDetail);
+            // Only Start App Center if there
+            if (!Common.CommonRoutines.IsEmualator())
+            {
+                Crashes.TrackError(null, argErrorDetail);
 
-            Analytics.TrackEvent(argMessage, argErrorDetail);
+                Analytics.TrackEvent(argMessage, argErrorDetail);
+            }
         }
 
         public static void LogException(string strMessage, Exception ex)
@@ -43,11 +47,15 @@ namespace GrampsView.Common
 
             string exceptionMessage = strMessage + " - Exception:" + ex.Message + " - " + ex.Source + " - " + ex.InnerException + " - " + ex.StackTrace;
 
-            Crashes.TrackError(ex,
+            // Only Start App Center if there
+            if (!Common.CommonRoutines.IsEmualator())
+            {
+                Crashes.TrackError(ex,
                 new Dictionary<string, string>{
                 { "Message", strMessage},
                  { "Exception Message", exceptionMessage},
                 });
+            }
         }
 
         void ICommonLogging.CloseLogging()
