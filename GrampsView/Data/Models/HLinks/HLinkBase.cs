@@ -36,24 +36,6 @@ namespace GrampsView.Data.Model
         /// </summary>
         private bool localPriv = default(bool);
 
-        public enum HLinkBackLinkEnum : int
-        {
-            HLinkBookMarkModel,
-            HLinkCitationModel,
-            HLinkEventModel,
-            HLinkFamilyModel,
-            HLinkMediaModel,
-            HLinkNameMapModel,
-            HLinkNoteModel,
-            HLinkPersonModel,
-            HLinkPlaceModel,
-            HLinkRepositoryModel,
-            HLinkSourceAttrModel,
-            HLinkSourceModel,
-            HLinkTagModel,
-            Unknown
-        }
-
         /// <summary>
         /// Gets the actual ViewModel.
         /// </summary>
@@ -161,13 +143,13 @@ namespace GrampsView.Data.Model
             }
         }
 
-        public virtual HLinkBackLink GetHLinkBackLink
-        {
-            get
-            {
-                return new HLinkBackLink { HLinkKey = HLinkKey, HLinkType = (int)HLinkBackLinkEnum.Unknown };
-            }
-        }
+        //public virtual HLinkBackLink GetHLinkBackLink
+        //{
+        //    get
+        //    {
+        //        return new HLinkBackLink { HLinkKey = HLinkKey, HLinkType = (int)HLinkBackLinkEnum.Unknown };
+        //    }
+        //}
 
         [DataMember]
         public bool GPriv

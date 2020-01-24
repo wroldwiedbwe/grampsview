@@ -51,22 +51,22 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Media Collection - Create backlinks in media models to citation models
                 foreach (HLinkMediaModel mediaRef in citationModel.GMediaRefCollection)
                 {
-                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Note HLinks
                 foreach (HLinkNoteModel noteRef in citationModel.GNoteRef)
                 {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Source HLink
-                DV.SourceDV.SourceData[citationModel.GSourceRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                DV.SourceDV.SourceData[citationModel.GSourceRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
 
                 // Back Reference Tag HLinks
                 foreach (HLinkTagModel tagRef in citationModel.GTagRef)
                 {
-                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // -- Organsie Default FirstLinks
@@ -123,13 +123,13 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Citation Collection
                 foreach (HLinkCitationModel citationRef in eventModel.GCitationRefCollection)
                 {
-                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Media Collection
                 foreach (HLinkMediaModel mediaRef in eventModel.GMediaRefCollection)
                 {
-                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Sort media collection and get first link images
@@ -140,12 +140,12 @@ namespace GrampsView.Data.ExternalStorageNS
                 // DV.EventDV.EventData[eventModel.HLinkKey].GMediaRefCollection.FirstHLink = DV.MediaDV.GetFirstImageFromCollection(DV.EventDV.EventData[eventModel.HLinkKey].GMediaRefCollection);
 
                 // Place Reference
-                DV.PlaceDV.PlaceData[eventModel.GPlace.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                DV.PlaceDV.PlaceData[eventModel.GPlace.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
 
                 // Back Reference Note HLinks
                 foreach (HLinkNoteModel noteRef in eventModel.GNoteRefCollection)
                 {
-                    DV.EventDV.GetModel(noteRef.HLinkKey).BackHLinkReferenceCollection.Add(t);
+                    DV.EventDV.GetModel(noteRef.HLinkKey).BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
             }
         }
@@ -167,37 +167,37 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Child Collection
                 foreach (HLinkPersonModel personRef in familyModel.GChildRefCollection)
                 {
-                    DV.PersonDV.PersonData[personRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.PersonDV.PersonData[personRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Citation Collection
                 foreach (HLinkCitationModel citationRef in familyModel.GCitationRefCollection)
                 {
-                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Event HLinks
                 foreach (HLinkEventModel eventRef in familyModel.GEventRefCollection)
                 {
-                    DV.EventDV.EventData[eventRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.EventDV.EventData[eventRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Media Collection
                 foreach (HLinkMediaModel mediaRef in familyModel.GMediaRefCollection)
                 {
-                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Note Collection
                 foreach (HLinkNoteModel noteRef in familyModel.GNoteRefCollection)
                 {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Tag Collection
                 foreach (HLinkTagModel tagRef in familyModel.GTagRefCollection)
                 {
-                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // -- Organse First and Sorts
@@ -277,19 +277,19 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Back Reference Citation HLinks
                 foreach (HLinkCitationModel citationRef in mediaObject.GCitationRefCollection)
                 {
-                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Note HLinks
                 foreach (HLinkNoteModel noteRef in mediaObject.GNoteRefCollection)
                 {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Tag HLinks
                 foreach (HLinkTagModel tagRef in mediaObject.GTagRefCollection)
                 {
-                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Person Collection
@@ -345,40 +345,40 @@ namespace GrampsView.Data.ExternalStorageNS
 
                 foreach (HLinkCitationModel citationRef in person.GCitationRefCollection)
                 {
-                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Event Collection
 
                 foreach (HLinkEventModel eventRef in person.GEventRefCollection)
                 {
-                    DV.EventDV.GetModel(eventRef.HLinkKey).BackHLinkReferenceCollection.Add(t);
+                    DV.EventDV.GetModel(eventRef.HLinkKey).BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 foreach (HLinkMediaModel mediaRef in person.GMediaRefCollection)
                 {
-                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Note Collection
 
                 foreach (HLinkNoteModel noteRef in person.GNoteRefCollection)
                 {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Parent RelationShip
 
                 foreach (HLinkFamilyModel familyRef in person.GParentInRefCollection)
                 {
-                    DV.FamilyDV.FamilyData[familyRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.FamilyDV.FamilyData[familyRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Sibling Collection
 
                 foreach (HLinkPersonModel personRef in person.SiblingRefCollection)
                 {
-                    DV.PersonDV.PersonData[personRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.PersonDV.PersonData[personRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Tag HLinks
@@ -390,7 +390,7 @@ namespace GrampsView.Data.ExternalStorageNS
                     person.GTagRefCollection[i].HomeImageHLink = GetTagRefHomeLink(tagRef.DeRef, tagRef.HomeImageHLink);
 
                     // Set the backlinks
-                    DV.TagDV.GetModel(tagRef.HLinkKey).BackHLinkReferenceCollection.Add(t);
+                    DV.TagDV.GetModel(tagRef.HLinkKey).BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // -- Organise First Image and Sorts
@@ -485,31 +485,31 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Back Reference Citation HLinks
                 foreach (HLinkCitationModel citationRef in placeObject.GCitationRefCollection)
                 {
-                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Note HLinks
                 foreach (HLinkNoteModel noteRef in placeObject.GNoteRefCollection)
                 {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Media HLinks
                 foreach (HLinkMediaModel mediaRef in placeObject.GMediaRefCollection)
                 {
-                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Place HLinks
                 foreach (HLinkPlaceModel placeRef in placeObject.GPlaceRefCollection)
                 {
-                    DV.PlaceDV.PlaceData[placeRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.PlaceDV.PlaceData[placeRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Tag HLinks
                 foreach (HLinkTagModel tagRef in placeObject.GTagRefCollection)
                 {
-                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
             }
         }
@@ -528,13 +528,13 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Back Reference Note HLinks
                 foreach (HLinkNoteModel noteRef in repositoryObject.GNoteRefCollection)
                 {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Tag HLinks
                 foreach (HLinkTagModel tagRef in repositoryObject.GTagRefCollection)
                 {
-                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
             }
         }
@@ -556,25 +556,25 @@ namespace GrampsView.Data.ExternalStorageNS
 
                 foreach (HLinkMediaModel mediaRef in sourceObject.GMediaRefCollection)
                 {
-                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Note Collection
                 foreach (IHLinkNoteModel noteRef in sourceObject.GNoteRefCollection)
                 {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Repository Collection
                 foreach (HLinkRepositoryModel repositoryRef in sourceObject.GRepositoryRefCollection)
                 {
-                    DV.RepositoryDV.RepositoryData[repositoryRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.RepositoryDV.RepositoryData[repositoryRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Tag Collection
                 foreach (HLinkTagModel tagRef in sourceObject.GTagRefCollection)
                 {
-                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(t);
+                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // -- Organse First and Sorts

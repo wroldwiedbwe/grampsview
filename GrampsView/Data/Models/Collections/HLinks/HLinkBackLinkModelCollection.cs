@@ -15,27 +15,20 @@ namespace GrampsView.Data.Collections
     /// <summary>
     /// </summary>
     [CollectionDataContract]
-    [KnownType(typeof(ObservableCollection<HLinkBase>))]
-    public class HLinkBackLinkModelCollection : ObservableCollection<HLinkBase>
+    [KnownType(typeof(ObservableCollection<HLinkBackLink>))]
+    public class HLinkBackLinkModelCollection
     {
-        /// <summary>Gets the model for this hlink. </summary> <returns>ObservableCollection.<PersonModel></returns>
-        public ObservableCollection<ModelBase> DeRef
+        private ObservableCollection<HLinkBackLink> Items = new ObservableCollection<HLinkBackLink>();
+
+        public void Add(HLinkBackLink ArgHLink)
         {
-            get
-            {
-                ObservableCollection<ModelBase> t = new ObservableCollection<ModelBase>();
-
-                foreach (HLinkBase item in Items)
-                {
-                    t.Add(item.GetActualModel);
-                }
-
-                return t;
-            }
+            Items.Add(ArgHLink);
         }
 
         public CardGroup GetCardGroup()
         {
+            var tt = this;
+
             CardGroup t = new CardGroup
             {
                 Title = "Backlink Collection",
@@ -43,7 +36,7 @@ namespace GrampsView.Data.Collections
 
             foreach (var item in Items)
             {
-                t.Cards.Add(item);
+                t.Cards.Add(item.GetHLink());
             }
 
             return t;
