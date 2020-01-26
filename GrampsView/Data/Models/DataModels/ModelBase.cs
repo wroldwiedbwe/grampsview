@@ -46,7 +46,7 @@ namespace GrampsView.Data.Model
         /// <summary>
         /// The local change.
         /// </summary>
-        private string _Change = string.Empty;
+        private DateTime _Change = DateTime.MinValue;
 
         /// <summary>
         /// The local handle.
@@ -100,7 +100,7 @@ namespace GrampsView.Data.Model
         /// The change.
         /// </value>
         [DataMember]
-        public string Change
+        public DateTime Change
         {
             get
             {

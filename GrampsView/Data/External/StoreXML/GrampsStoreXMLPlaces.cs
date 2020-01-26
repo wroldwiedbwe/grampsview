@@ -62,7 +62,7 @@ namespace GrampsView.Data.ExternalStorageNS
                             {
                             }
 
-                            loadPlace.Change = (string)placeData.Attribute("change");
+                            loadPlace.Change = GetDateTime(placeData, "change");
                             loadPlace.Priv = SetPrivateObject((string)placeData.Attribute("priv"));
                             loadPlace.Handle = (string)placeData.Attribute("handle");
 

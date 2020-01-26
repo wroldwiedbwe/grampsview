@@ -50,7 +50,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                     // Primary attributes
                     loadRepository.Id = (string)prepository.Attribute("id");
-                    loadRepository.Change = (string)prepository.Attribute("change");
+                    loadRepository.Change = GetDateTime(prepository, "change");
                     loadRepository.Priv = SetPrivateObject((string)prepository.Attribute("priv"));
                     loadRepository.Handle = (string)prepository.Attribute("handle");
 

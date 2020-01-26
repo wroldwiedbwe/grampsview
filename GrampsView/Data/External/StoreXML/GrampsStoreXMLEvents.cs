@@ -74,7 +74,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // Event attributes
                         loadEvent.Id = GetAttribute(pname.Attribute("id"));
-                        loadEvent.Change = GetAttribute(pname.Attribute("change"));
+                        loadEvent.Change = GetDateTime(GetAttribute(pname, "change"));
                         loadEvent.Priv = SetPrivateObject(GetAttribute(pname.Attribute("priv")));
                         loadEvent.Handle = GetAttribute(pname.Attribute("handle"));
 

@@ -152,7 +152,7 @@ namespace GrampsView.Data.ExternalStorageNS
                             Id = (string)pname.Attribute("id"),
                             Handle = (string)pname.Attribute("handle"),
                             Priv = SetPrivateObject((string)pname.Attribute("priv")),
-                            Change = (string)pname.Attribute("change"),
+                            Change = GetDateTime(GetAttribute(pname, "change")),
                         };
 
                         if (loadObject.Id == "O0220")

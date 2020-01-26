@@ -336,6 +336,26 @@ namespace GrampsView.Data.ExternalStorageNS
             return SetDate(xmlData);
         }
 
+        private DateTime GetDateTime(XElement a, string b)
+        {
+            string argUnixSecs = GetAttribute(a.Attribute(b));
+
+            return GetDateTime(argUnixSecs);
+        }
+
+        private DateTime GetDateTime(string argUnixSecs)
+        {
+            long ls = new long();
+
+            long.TryParse(argUnixSecs, out ls);
+
+            DateTimeOffset t = DateTimeOffset.FromUnixTimeSeconds(ls);
+
+            // TODO This is in UTC and need to convert to local time
+
+            return t.DateTime;
+        }
+
         /// <summary>
         /// Gets the event collection.
         /// </summary>

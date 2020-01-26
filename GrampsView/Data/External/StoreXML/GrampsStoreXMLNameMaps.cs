@@ -54,7 +54,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // Citation attributes
                         loadNameMap.Id = (string)pcitation.Attribute("id");
-                        loadNameMap.Change = (string)pcitation.Attribute("change");
+                        loadNameMap.Change = GetDateTime(pcitation, "change");
                         loadNameMap.Priv = SetPrivateObject((string)pcitation.Attribute("priv"));
                         loadNameMap.Handle = (string)pcitation.Attribute("handle");
 

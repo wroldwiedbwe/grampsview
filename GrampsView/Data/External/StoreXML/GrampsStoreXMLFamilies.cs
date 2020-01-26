@@ -29,6 +29,22 @@ namespace GrampsView.Data.ExternalStorageNS
     /// <seealso cref="GrampsView.Data.ExternalStorageNS.IGrampsStoreXML" />
     public partial class GrampsStoreXML : IGrampsStoreXML
     {
+        public static FamilyModel SetHomeImage(FamilyModel argModel)
+        {
+            HLinkMediaModel hlink = argModel.GMediaRefCollection.FirstHLink;
+            if (hlink == null)
+            {
+                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconFamilies;
+            }
+            else
+            {
+                argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
+            }
+
+            return argModel;
+        }
+
         /// <summary>
         /// load families from external storage.
         /// </summary>
@@ -66,7 +82,7 @@ namespace GrampsView.Data.ExternalStorageNS
                         }
 
                         loadFamily.Handle = (string)familyElement.Attribute("handle");
-                        loadFamily.Change = (string)familyElement.Attribute("change");
+                        loadFamily.Change = GetDateTime((string)familyElement.Attribute("change"));
                         loadFamily.Priv = SetPrivateObject((string)familyElement.Attribute("priv"));
 
                         // Family fields
@@ -145,22 +161,6 @@ namespace GrampsView.Data.ExternalStorageNS
             // now let everyone know that we have finished
             await DataStore.CN.MajorStatusDelete().ConfigureAwait(false);
             return true;
-        }
-
-        public static FamilyModel SetHomeImage(FamilyModel argModel)
-        {
-            HLinkMediaModel hlink = argModel.GMediaRefCollection.FirstHLink;
-            if (hlink == null)
-            {
-                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
-                argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconFamilies;
-            }
-            else
-            {
-                argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
-            }
-
-            return argModel;
         }
     }
 }

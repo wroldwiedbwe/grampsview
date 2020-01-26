@@ -59,7 +59,7 @@ namespace GrampsView.Data.ExternalStorageNS
                         {
                         }
 
-                        loadPerson.Change = GetAttribute(pname.Attribute("change"));
+                        loadPerson.Change = GetDateTime(pname, "change");
                         loadPerson.Priv = SetPrivateObject(GetAttribute(pname.Attribute("priv")));
                         loadPerson.Handle = GetAttribute(pname, "handle");
 

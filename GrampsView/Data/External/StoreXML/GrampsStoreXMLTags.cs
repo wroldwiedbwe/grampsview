@@ -46,7 +46,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // Citation attributes
                         loadTag.Id = GetAttribute(pcitation, "id");
-                        loadTag.Change = GetAttribute(pcitation, "change");
+                        loadTag.Change = GetDateTime(pcitation, "change");
                         loadTag.Priv = SetPrivateObject(GetAttribute(pcitation, "priv"));
                         loadTag.Handle = GetAttribute(pcitation, "handle");
 

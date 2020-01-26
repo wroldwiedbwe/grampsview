@@ -24,6 +24,27 @@ namespace GrampsView.Data.ExternalStorageNS
     /// </summary>
     public partial class GrampsStoreXML : IGrampsStoreXML
     {
+        public static CitationModel SetHomeImage(CitationModel argModel)
+        {
+            if (argModel is null)
+            {
+                throw new ArgumentNullException(nameof(argModel));
+            }
+
+            HLinkMediaModel hlink = argModel.GMediaRefCollection.FirstHLink;
+            if (hlink is null)
+            {
+                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconCitation;
+            }
+            else
+            {
+                argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
+            }
+
+            return argModel;
+        }
+
         /// <summary>
         /// load events from external storage.
         /// </summary>
@@ -54,7 +75,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // Citation attributes
                         loadCitation.Id = GetAttribute(pcitation, "id");
-                        loadCitation.Change = GetAttribute(pcitation, "change");
+                        loadCitation.Change = GetDateTime(pcitation, "change");
                         loadCitation.Priv = SetPrivateObject(GetAttribute(pcitation, "priv"));
                         loadCitation.Handle = GetAttribute(pcitation, "handle");
 
@@ -105,27 +126,6 @@ namespace GrampsView.Data.ExternalStorageNS
 
             await DataStore.CN.MajorStatusDelete().ConfigureAwait(false);
             return;
-        }
-
-        public static CitationModel SetHomeImage(CitationModel argModel)
-        {
-            if (argModel is null)
-            {
-                throw new ArgumentNullException(nameof(argModel));
-            }
-
-            HLinkMediaModel hlink = argModel.GMediaRefCollection.FirstHLink;
-            if (hlink is null)
-            {
-                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
-                argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconCitation;
-            }
-            else
-            {
-                argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
-            }
-
-            return argModel;
         }
     }
 }

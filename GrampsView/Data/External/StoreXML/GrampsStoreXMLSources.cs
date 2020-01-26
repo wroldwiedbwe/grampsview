@@ -53,7 +53,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // Citation attributes
                         loadSource.Id = (string)pSource.Attribute("id");
-                        loadSource.Change = (string)pSource.Attribute("change");
+                        loadSource.Change = GetDateTime(pSource, "change");
                         loadSource.Priv = SetPrivateObject((string)pSource.Attribute("priv"));
                         loadSource.Handle = (string)pSource.Attribute("handle");
 

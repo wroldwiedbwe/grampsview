@@ -318,10 +318,20 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             DataStore.CN.MajorStatusAdd("Organising Note data");
 
-            //foreach (NoteModel noteObject in DV.NoteDV.NoteData)
-            //{
-            //    // set the image TODO default to a proper image noteObject.ImageHLinkKey = CommonConstants.HLinkDefaultNote;
-            //}
+            foreach (NoteModel note in DV.NoteDV.NoteData)
+            {
+                HLinkNoteModel t = note.GetHLink;
+
+                // -- Organse Back Links
+                // ---------------------
+
+                // Citation Collection
+
+                foreach (HLinkTagModel tagnRef in note.GTagRefCollection)
+                {
+                    DV.TagDV.TagData[tagnRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                }
+            }
         }
 
         /// <summary>
@@ -361,7 +371,6 @@ namespace GrampsView.Data.ExternalStorageNS
                 }
 
                 // Note Collection
-
                 foreach (HLinkNoteModel noteRef in person.GNoteRefCollection)
                 {
                     DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));

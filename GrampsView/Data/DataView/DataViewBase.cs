@@ -182,7 +182,7 @@ namespace GrampsView.Data.DataView
                {
                  new CardListLine("Handle:", argModel.Handle),
                  new CardListLine("Id:", argModel.Id),
-                 new CardListLine("Change:", argModel.Change),
+                 new CardListLine("Change:", argModel.Change.ToString()),
                  new CardListLine("Private Object:", argModel.PrivAsString),
                };
 

@@ -53,7 +53,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // Note attributes
                         loadNote.Id = (string)pname.Attribute("id");
-                        loadNote.Change = (string)pname.Attribute("change");
+                        loadNote.Change = GetDateTime(pname, "change");
                         loadNote.Priv = SetPrivateObject((string)pname.Attribute("priv"));
                         loadNote.Handle = (string)pname.Attribute("handle");
 
