@@ -14,7 +14,7 @@ namespace GrampsView.Data.Model
     /// </summary>
     public interface IPlaceModel : IModelBase
     {
-        HLinkPlaceModel GetHLink
+        HLinkPlaceModel HLink
         {
             get;
         }

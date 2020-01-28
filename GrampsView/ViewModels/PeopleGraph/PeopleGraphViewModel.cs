@@ -266,7 +266,7 @@ namespace GrampsView.ViewModels
 
         // // Assume person PersonModel t = DV.PersonDV.GetModel(item.nodeHLink.HLinkKey);
 
-        // if (t.GetHLink.Valid == true) { PersonCardSmall tt = new PersonCardSmall { DataContext =
+        // if (t.HLink.Valid == true) { PersonCardSmall tt = new PersonCardSmall { DataContext =
         // t, Background = new SolidColorBrush(Colors.AliceBlue), }; theGraph.Children.Add(tt);
 
         // tt.SetValue(Canvas.LeftProperty, item.xStart); tt.SetValue(Canvas.TopProperty,
@@ -307,7 +307,7 @@ namespace GrampsView.ViewModels
                     // Add person to graph
                     theNode = new PeopleGraphNode
                     {
-                        NodeHLink = (t.HLink as HLinkPersonModel).DeRef.GetHLink,
+                        NodeHLink = (t.HLink as HLinkPersonModel).DeRef.HLink,
                         YStart = t.Level,
                     };
                     TreeGraph.Add(theNode);
@@ -342,7 +342,7 @@ namespace GrampsView.ViewModels
                     // Add Family
                     theNode = new PeopleGraphNode
                     {
-                        NodeHLink = (t.HLink as HLinkFamilyModel).DeRef.GetHLink,
+                        NodeHLink = (t.HLink as HLinkFamilyModel).DeRef.HLink,
                         YStart = t.Level,
                     };
                     TreeGraph.Add(theNode);
@@ -533,17 +533,17 @@ namespace GrampsView.ViewModels
             string startPoint = BaseNavParamsHLinkDefault(new HLinkBase { HLinkKey = "_c47a6bd11500b4b0cc8" }).HLinkKey;
 
             // Assume person
-            PersonModel t = DV.PersonDV.GetModel(startPoint);
+            PersonModel t = DV.PersonDV.GetModelFromHLinkString(startPoint);
 
-            if (t.GetHLink.Valid == true)
+            if (t.HLink.Valid == true)
             {
-                StartHLink = t.GetHLink;
+                StartHLink = t.HLink;
             }
             else
             {
-                FamilyModel tf = DV.FamilyDV.GetModel(startPoint);
+                FamilyModel tf = DV.FamilyDV.GetModelFromHLinkString(startPoint);
 
-                StartHLink = tf.GetHLink;
+                StartHLink = tf.HLink;
             }
 
             if (!StartHLink.Valid)

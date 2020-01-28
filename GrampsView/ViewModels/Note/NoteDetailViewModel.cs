@@ -77,7 +77,7 @@ namespace GrampsView.ViewModels
 
             if (HLinkNote.Valid)
             {
-                NoteModel NoteModel = DV.NoteDV.GetModel(BaseNavParamsHLink);
+                NoteModel NoteModel = DV.NoteDV.GetModelFromHLink(BaseNavParamsHLink);
 
                 BaseTitle = NoteModel.GetDefaultText;
                 BaseTitleIcon = CommonConstants.IconNotes;

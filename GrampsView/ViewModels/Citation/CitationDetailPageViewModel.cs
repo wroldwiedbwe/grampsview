@@ -88,7 +88,7 @@ namespace GrampsView.ViewModels
         {
             // Handle HLInkKeys
 
-            CitationObject = DV.CitationDV.GetModel(BaseNavParamsHLink.HLinkKey);
+            CitationObject = DV.CitationDV.GetModelFromHLinkString(BaseNavParamsHLink.HLinkKey);
 
             if (CitationObject != null)
             {

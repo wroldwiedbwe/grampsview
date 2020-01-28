@@ -399,7 +399,7 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </param>
         /// <returns>
         /// </returns>
-        private HLinkBase GetHLink(XElement xmlData)
+        private HLinkBase HLink(XElement xmlData)
         {
             HLinkBase t = new HLinkBase();
 

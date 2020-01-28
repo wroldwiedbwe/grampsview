@@ -24,6 +24,6 @@ namespace GrampsView.Data.Model
         /// Gets the get h link Family Model that points to this ViewModel.
         /// </summary>
         /// <value>The get h link.</value>
-        HLinkFamilyModel GetHLink { get; }
+        HLinkFamilyModel HLink { get; }
     }
 }

@@ -18,6 +18,6 @@ namespace GrampsView.Data.Model
         /// Gets the get h link Note Model that points to this ViewModel.
         /// </summary>
         /// <value> The get h link. </value>
-        HLinkNoteModel GetHLink { get; }
+        HLinkNoteModel HLink { get; }
     }
 }

@@ -18,6 +18,6 @@ namespace GrampsView.Data.Model
         /// Gets a get h link Event Model that points to the ViewModel.
         /// </summary>
         /// <value> The get h link. </value>
-        HLinkEventModel GetHLink { get; }
+        HLinkEventModel HLink { get; }
     }
 }

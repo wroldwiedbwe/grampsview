@@ -98,7 +98,7 @@ namespace GrampsView.Data.Model
             {
                 if (Valid)
                 {
-                    return DV.MediaDV.GetModel(HLinkKey);
+                    return DV.MediaDV.GetModelFromHLinkString(HLinkKey);
                 }
                 else
                 {

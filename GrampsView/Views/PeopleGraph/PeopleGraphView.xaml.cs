@@ -65,7 +65,7 @@ namespace GrampsView.Views
 
         // // Assume person PersonModel t = DV.PersonDV.GetModel(item.nodeHLink.HLinkKey);
 
-        // if (t.GetHLink.Valid == true) { PersonCardSmall tt = new PersonCardSmall { DataContext =
+        // if (t.HLink.Valid == true) { PersonCardSmall tt = new PersonCardSmall { DataContext =
         // t, }; theGraph.Children.Add(tt);
 
         // tt.SetValue(Canvas.LeftProperty, item.xStart); tt.SetValue(Canvas.TopProperty,

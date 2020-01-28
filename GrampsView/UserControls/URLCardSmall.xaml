@@ -34,21 +34,21 @@
                 Grid.Row="0"
                 Grid.RowSpan="2"
                 Grid.Column="0"
-                BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
+                BindingContext="{Binding HomeImageHLink, Mode=OneWay}"
                 Style="{StaticResource MediaImageStyle}" />
 
             <Label
                 Grid.Row="0"
                 Grid.Column="1"
                 Style="{StaticResource GVLabelStyleLarge}"
-                Text="{Binding DeRef.DefaultText, Mode=OneWay}"
+                Text="{Binding DefaultText, Mode=OneWay}"
                 TextColor="{StaticResource TextLightColor}" />
 
             <Label
                 Grid.Row="1"
                 Grid.Column="1"
                 Style="{StaticResource GVLabelStyleLarge}"
-                Text="{Binding DeRef.GHRef, Mode=OneWay}"
+                Text="{Binding GHRef, Mode=OneWay}"
                 TextColor="{StaticResource TextLightColor}" />
 
             <Image
@@ -58,8 +58,8 @@
                 <Image.Source>
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"
-                        Glyph="{Binding DeRef.HomeImageHLink.HomeSymbol}"
-                        Color="{Binding DeRef.HomeImageHLink.BackgroundColour}" />
+                        Glyph="{Binding HomeImageHLink.HomeSymbol}"
+                        Color="{Binding HomeImageHLink.BackgroundColour}" />
                 </Image.Source>
             </Image>
         </Grid>

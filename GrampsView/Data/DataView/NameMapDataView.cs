@@ -90,11 +90,13 @@ namespace GrampsView.Data.DataView
 
             foreach (var item in DataDefaultSort)
             {
-                t.Add(item.GetHLink);
+                t.Add(item.HLink);
             }
 
             return t;
         }
+
+        public override CardGroup GetLatestChanges() => throw new System.NotImplementedException();
 
         /// <summary>
         /// hes the link collection sort.
@@ -134,7 +136,7 @@ namespace GrampsView.Data.DataView
             {
                 itemsFound.Add(new SearchItem
                 {
-                    HLink = tempMO.GetHLink,
+                    HLink = tempMO.HLink,
                     Text = tempMO.GetDefaultText,
                 });
             }

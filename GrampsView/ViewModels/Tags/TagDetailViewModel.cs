@@ -93,7 +93,7 @@ namespace GrampsView.ViewModels
         /// </param>
         public override void PopulateViewModel()
         {
-            TagObject = DV.TagDV.GetModel(BaseNavParamsHLink.HLinkKey);
+            TagObject = DV.TagDV.GetModelFromHLinkString(BaseNavParamsHLink.HLinkKey);
 
             if (!(TagObject is null))
             {

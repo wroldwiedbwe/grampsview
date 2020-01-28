@@ -192,7 +192,7 @@ namespace GrampsView.ViewModels
         {
             BaseCL.LogRoutineEntry("MediaDetailViewModel OnNavigatedTo");
 
-            CurrentMediaObject = DV.MediaDV.GetModel(BaseNavParamsHLink);
+            CurrentMediaObject = DV.MediaDV.GetModelFromHLink(BaseNavParamsHLink);
 
             if (CurrentMediaObject != null)
             {

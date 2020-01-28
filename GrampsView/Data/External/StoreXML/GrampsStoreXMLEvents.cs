@@ -95,7 +95,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         loadEvent.GNoteRefCollection = GetNoteCollection(pname);
 
-                        loadEvent.GPlace.SetBase(GetHLink(pname.Element(ns + "place")));
+                        loadEvent.GPlace.SetBase(HLink(pname.Element(ns + "place")));
 
                         loadEvent.GTagRefCollection = GetTagCollection(pname);
 

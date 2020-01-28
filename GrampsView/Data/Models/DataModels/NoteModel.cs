@@ -130,7 +130,7 @@ namespace GrampsView.Data.Model
         /// <value>
         /// The get h link.
         /// </value>
-        public HLinkNoteModel GetHLink
+        public HLinkNoteModel HLink
         {
             get
             {

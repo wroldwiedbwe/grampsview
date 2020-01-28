@@ -71,7 +71,7 @@ namespace GrampsView.Data.Repositories
         ///// Gets the h link string collection.
         ///// </summary>
         ///// <returns></returns>
-        // ObservableCollection<object> getHLinkStringCollection();
+        // ObservableCollection<object> HLinkStringCollection();
         /// <summary>
         /// Randoms the item.
         /// </summary>

@@ -196,24 +196,6 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets the get h link.
-        /// </summary>
-        /// <value>
-        /// The get h link.
-        /// </value>
-        public HLinkBookMarkModel GetHLink
-        {
-            get
-            {
-                HLinkBookMarkModel t = new HLinkBookMarkModel
-                {
-                    HLinkKey = HLinkKey,
-                };
-                return t;
-            }
-        }
-
-        /// <summary>
         /// Gets or sets the target attribute.
         /// </summary>
         /// <value>
@@ -227,6 +209,24 @@ namespace GrampsView.Data.Model
         }
 
             = null;
+
+        /// <summary>
+        /// Gets the get h link.
+        /// </summary>
+        /// <value>
+        /// The get h link.
+        /// </value>
+        public HLinkBookMarkModel HLink
+        {
+            get
+            {
+                HLinkBookMarkModel t = new HLinkBookMarkModel
+                {
+                    HLinkKey = HLinkKey,
+                };
+                return t;
+            }
+        }
 
         public string TargetDecoded
         {
@@ -423,12 +423,12 @@ namespace GrampsView.Data.Model
                 return true;
             }
 
-            if (!GetHLink.Valid || !(obj is BookMarkModel))
+            if (!HLink.Valid || !(obj is BookMarkModel))
             {
                 return false;
             }
 
-            if (GetHLink == (obj as BookMarkModel).GetHLink)
+            if (HLink == (obj as BookMarkModel).HLink)
             {
                 return true;
             }

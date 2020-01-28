@@ -34,7 +34,7 @@ namespace GrampsView.Data.Model
             {
                 if (Valid)
                 {
-                    return DV.PlaceDV.GetModel(HLinkKey);
+                    return DV.PlaceDV.GetModelFromHLinkString(HLinkKey);
                 }
                 else
                 {

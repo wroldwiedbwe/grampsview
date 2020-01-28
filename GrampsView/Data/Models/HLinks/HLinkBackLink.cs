@@ -152,7 +152,7 @@ namespace GrampsView.Data.Model
 
         public HLinkBackLinkEnum HLinkType { get; set; }
 
-        public HLinkBase GetHLink()
+        public HLinkBase HLink()
         {
             switch (HLinkType)
             {

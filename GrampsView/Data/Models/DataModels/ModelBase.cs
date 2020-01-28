@@ -163,13 +163,13 @@ namespace GrampsView.Data.Model
             }
         }
 
-        public virtual HLinkBase HLink
-        {
-            get
-            {
-                return new HLinkBase();
-            }
-        }
+        //public virtual HLinkBase HLink
+        //{
+        //    get
+        //    {
+        //        return new HLinkBase();
+        //    }
+        //}
 
         /// <summary>
         /// Gets or sets the h link key.
@@ -362,6 +362,16 @@ namespace GrampsView.Data.Model
             if (argSecondModelBase is null)
             {
                 throw new ArgumentNullException(nameof(argSecondModelBase));
+            }
+
+            if (!(argFirstModelBase is ModelBase))
+            {
+                return 0;
+            }
+
+            if (!(argSecondModelBase is ModelBase))
+            {
+                return 0;
             }
 
             ModelBase firstSource = (ModelBase)argFirstModelBase;

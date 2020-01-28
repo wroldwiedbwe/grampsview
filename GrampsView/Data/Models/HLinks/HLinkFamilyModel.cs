@@ -31,7 +31,7 @@ namespace GrampsView.Data.Model
             {
                 if (Valid)
                 {
-                    return new FamilyDataView().GetModel(HLinkKey);
+                    return new FamilyDataView().GetModelFromHLinkString(HLinkKey);
                 }
                 else
                 {

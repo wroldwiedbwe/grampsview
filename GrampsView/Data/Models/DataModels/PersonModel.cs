@@ -254,25 +254,6 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>
-        /// Gets the get h link.
-        /// </summary>
-        /// <value>
-        /// The get h link.
-        /// </value>
-        public HLinkPersonModel GetHLink
-        {
-            get
-            {
-                HLinkPersonModel t = new HLinkPersonModel
-                {
-                    HLinkKey = HLinkKey,
-                };
-
-                return t;
-            }
-        }
-
         /// <summary> Gets or sets the Event Reference Collection.
         ////   <zeroOrMore>
         ////     <element name = "eventref" >
@@ -449,6 +430,25 @@ namespace GrampsView.Data.Model
         /// </value>
         [DataMember]
         public OCURLModelCollection GURLCollection { get; set; } = new OCURLModelCollection();
+
+        /// <summary>
+        /// Gets the get h link.
+        /// </summary>
+        /// <value>
+        /// The get h link.
+        /// </value>
+        public HLinkPersonModel HLink
+        {
+            get
+            {
+                HLinkPersonModel t = new HLinkPersonModel
+                {
+                    HLinkKey = HLinkKey,
+                };
+
+                return t;
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is living.

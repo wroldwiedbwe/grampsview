@@ -25,7 +25,7 @@ namespace GrampsView.Data.Model
             {
                 if (Valid)
                 {
-                    return new BookMarkDataView().GetModel(HLinkKey);
+                    return new BookMarkDataView().GetModelFromHLinkString(HLinkKey);
                 }
                 else
                 {

@@ -47,12 +47,10 @@
 
                     <ucon:HeaderCardLarge Grid.Row="2" BindingContext="{Binding HeaderData, Mode=OneWay}" />
 
-                    <ucon:FlexSingleCardType
-                        x:Name="flexLayout"
+                    <ucon:FlexMultiCardType
+                        x:Name="LatestChangesCards"
                         Grid.Row="3"
-                        BorderColor="Transparent"
-                        FsctSource="{Binding TodoList, Mode=OneWay}"
-                        FsctTemplate="{StaticResource NoteCardSmallDT}" />
+                        FMultiSource="{Binding LatestChanges, Mode=OneWay}" />
                 </Grid>
 
                 <!--  Content End  -->

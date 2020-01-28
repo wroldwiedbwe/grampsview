@@ -207,7 +207,7 @@ namespace GrampsView.Data.Model
         /// <value>
         /// The get h link.
         /// </value>
-        public HLinkPlaceModel GetHLink
+        public HLinkPlaceModel HLink
         {
             get
             {

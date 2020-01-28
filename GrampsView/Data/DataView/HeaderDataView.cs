@@ -80,6 +80,8 @@ namespace GrampsView.Data.DataView
             }
         }
 
+        public override CardGroup GetLatestChanges() => throw new System.NotImplementedException();
+
         /// <summary>
         /// hes the link collection sort.
         /// </summary>

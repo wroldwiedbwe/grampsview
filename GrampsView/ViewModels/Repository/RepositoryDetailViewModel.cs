@@ -66,7 +66,7 @@ namespace GrampsView.ViewModels
         /// </summary>
         public override void PopulateViewModel()
         {
-            RepositoryObject = DV.RepositoryDV.GetModel(BaseNavParamsHLink);
+            RepositoryObject = DV.RepositoryDV.GetModelFromHLink(BaseNavParamsHLink);
 
             if (!(RepositoryObject == null))
             {

@@ -10,6 +10,7 @@
 namespace GrampsView.Data.DataView
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
@@ -153,7 +154,7 @@ namespace GrampsView.Data.DataView
 
             for (int i = 0; i < DataDefaultSort.Count; i++)
             {
-                t.Add(MediaData.Get(i).GetHLink);
+                t.Add(MediaData.Get(i).HLink);
             }
 
             t = HLinkCollectionSort(t);
@@ -222,6 +223,22 @@ namespace GrampsView.Data.DataView
 
             // return the image
             return returnMediaModel;
+        }
+
+        public override CardGroup GetLatestChanges()
+        {
+            IEnumerable tt = DataViewData.Items.OrderByDescending(t => t.Change).Take(3);
+
+            CardGroup returnCardGroup = new CardGroup();
+
+            foreach (MediaModel item in tt)
+            {
+                returnCardGroup.Cards.Add(item.HLink);
+            }
+
+            returnCardGroup.Title = "Latest Media Changes";
+
+            return returnCardGroup;
         }
 
         /// <summary>
@@ -332,7 +349,7 @@ namespace GrampsView.Data.DataView
             {
                 itemsFound.Add(new SearchItem
                 {
-                    HLink = tempMO.GetHLink,
+                    HLink = tempMO.HLink,
                     Text = tempMO.GetDefaultText,
                 });
             }

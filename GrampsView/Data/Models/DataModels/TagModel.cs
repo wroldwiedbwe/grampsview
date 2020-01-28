@@ -75,7 +75,7 @@ namespace GrampsView.Data.Model
         /// <value>
         /// The get h link.
         /// </value>
-        public HLinkTagModel GetHLink
+        public HLinkTagModel HLink
         {
             get
             {

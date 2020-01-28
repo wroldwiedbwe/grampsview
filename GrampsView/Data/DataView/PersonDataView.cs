@@ -4,6 +4,7 @@
 
 namespace GrampsView.Data.DataView
 {
+    using System.Collections;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Globalization;
@@ -20,11 +21,6 @@ namespace GrampsView.Data.DataView
 
     public class PersonDataView : DataViewBase<PersonModel, HLinkPersonModel, HLinkPersonModelCollection>, IPersonDataView
     {
-        ///// <summary>
-        ///// The local cl.
-        ///// </summary>
-        // private ICommonProgress iocCP;
-
         /// <summary>
         /// The local current person h link key.
         /// </summary>
@@ -183,7 +179,7 @@ namespace GrampsView.Data.DataView
 
             foreach (var item in DataDefaultSort)
             {
-                t.Add(item.GetHLink);
+                t.Add(item.HLink);
             }
 
             t = HLinkCollectionSort(t);
@@ -210,6 +206,24 @@ namespace GrampsView.Data.DataView
             return returnHLink;
         }
 
+        /// <summary>Gets the latest changes for the Person Data View.</summary>
+        /// <returns></returns>
+        public override CardGroup GetLatestChanges()
+        {
+            IEnumerable tt = DataViewData.Items.OrderByDescending(t => t.Change).Take(3);
+
+            CardGroup returnCardGroup = new CardGroup();
+
+            foreach (PersonModel item in tt)
+            {
+                returnCardGroup.Cards.Add(item.HLink);
+            }
+
+            returnCardGroup.Title = "Latest Person Changes";
+
+            return returnCardGroup;
+        }
+
         /// <summary>
         /// Gets the specified h link string.
         /// </summary>
@@ -218,7 +232,7 @@ namespace GrampsView.Data.DataView
         /// </param>
         /// <returns>
         /// </returns>
-        public override PersonModel GetModel(string HLinkString)
+        public override PersonModel GetModelFromHLinkString(string HLinkString)
         {
             return PersonData[HLinkString];
         }
@@ -309,7 +323,7 @@ namespace GrampsView.Data.DataView
             {
                 itemsFound.Add(new SearchItem
                 {
-                    HLink = tempMO.GetHLink,
+                    HLink = tempMO.HLink,
                     Text = tempMO.GetDefaultText,
                 });
             }
@@ -321,7 +335,7 @@ namespace GrampsView.Data.DataView
             {
                 itemsFound.Add(new SearchItem
                 {
-                    HLink = tempMO.GetHLink,
+                    HLink = tempMO.HLink,
                     Text = tempMO.GetDefaultText,
                 });
             }
@@ -333,7 +347,7 @@ namespace GrampsView.Data.DataView
             {
                 itemsFound.Add(new SearchItem
                 {
-                    HLink = tempMO.GetHLink,
+                    HLink = tempMO.HLink,
                     Text = tempMO.GetDefaultText,
                 });
             }

@@ -86,67 +86,67 @@ namespace GrampsView.Data.Model
         /// <summary>
         /// The local database version.
         /// </summary>
-        private int localDatabaseVersion = 0;
+        private int _DatabaseVersion = 0;
 
         /// <summary>
         /// created date.
         /// </summary>
-        private string localGCreatedDate = string.Empty;
+        private string _GCreatedDate = string.Empty;
 
         /// <summary>
         /// crated version.
         /// </summary>
-        private string localGCreatedVersion = string.Empty;
+        private string _GCreatedVersion = string.Empty;
 
         /// <summary>
         /// Media Path.
         /// </summary>
-        private string localGMediaPath = string.Empty;
+        private string _GMediaPath = string.Empty;
 
         /// <summary>
         /// Researcher Address.
         /// </summary>
-        private string localGResearcherAddress = string.Empty;
+        private string _GResearcherAddress = string.Empty;
 
         /// <summary>
         /// Researcher City.
         /// </summary>
-        private string localGResearcherCity = string.Empty;
+        private string _GResearcherCity = string.Empty;
 
         /// <summary>
         /// Researcher Country.
         /// </summary>
-        private string localGResearcherCountry = string.Empty;
+        private string _GResearcherCountry = string.Empty;
 
         /// <summary>
         /// Researcher Email.
         /// </summary>
-        private string localGResearcherEmail = string.Empty;
+        private string _GResearcherEmail = string.Empty;
 
         /// <summary>
         /// Researcher Locality.
         /// </summary>
-        private string localGResearcherLocality = string.Empty;
+        private string _GResearcherLocality = string.Empty;
 
         /// <summary>
         /// Researcher Name.
         /// </summary>
-        private string localGResearcherName = string.Empty;
+        private string _GResearcherName = string.Empty;
 
         /// <summary>
         /// Researcher Phone.
         /// </summary>
-        private string localGResearcherPhone = string.Empty;
+        private string _GResearcherPhone = string.Empty;
 
         /// <summary>
         /// Researcher Postal Address.
         /// </summary>
-        private string localGResearcherPostal = string.Empty;
+        private string _GResearcherPostal = string.Empty;
 
         /// <summary>
         /// Researcher State.
         /// </summary>
-        private string localGResearcherState = string.Empty;
+        private string _GResearcherState = string.Empty;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HeaderModel" /> class.
@@ -166,12 +166,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localDatabaseVersion;
+                return _DatabaseVersion;
             }
 
             set
             {
-                SetProperty(ref localDatabaseVersion, value);
+                SetProperty(ref _DatabaseVersion, value);
             }
         }
 
@@ -183,12 +183,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGCreatedDate;
+                return _GCreatedDate;
             }
 
             set
             {
-                SetProperty(ref localGCreatedDate, value);
+                SetProperty(ref _GCreatedDate, value);
             }
         }
 
@@ -200,12 +200,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGCreatedVersion;
+                return _GCreatedVersion;
             }
 
             set
             {
-                SetProperty(ref localGCreatedVersion, value);
+                SetProperty(ref _GCreatedVersion, value);
             }
         }
 
@@ -217,12 +217,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGMediaPath;
+                return _GMediaPath;
             }
 
             set
             {
-                SetProperty(ref localGMediaPath, value);
+                SetProperty(ref _GMediaPath, value);
             }
         }
 
@@ -234,12 +234,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGResearcherAddress;
+                return _GResearcherAddress;
             }
 
             set
             {
-                SetProperty(ref localGResearcherAddress, value);
+                SetProperty(ref _GResearcherAddress, value);
             }
         }
 
@@ -251,12 +251,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGResearcherCity;
+                return _GResearcherCity;
             }
 
             set
             {
-                SetProperty(ref localGResearcherCity, value);
+                SetProperty(ref _GResearcherCity, value);
             }
         }
 
@@ -268,12 +268,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGResearcherCountry;
+                return _GResearcherCountry;
             }
 
             set
             {
-                SetProperty(ref localGResearcherCountry, value);
+                SetProperty(ref _GResearcherCountry, value);
             }
         }
 
@@ -285,12 +285,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGResearcherEmail;
+                return _GResearcherEmail;
             }
 
             set
             {
-                SetProperty(ref localGResearcherEmail, value);
+                SetProperty(ref _GResearcherEmail, value);
             }
         }
 
@@ -302,12 +302,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGResearcherLocality;
+                return _GResearcherLocality;
             }
 
             set
             {
-                SetProperty(ref localGResearcherLocality, value);
+                SetProperty(ref _GResearcherLocality, value);
             }
         }
 
@@ -319,12 +319,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGResearcherName;
+                return _GResearcherName;
             }
 
             set
             {
-                SetProperty(ref localGResearcherName, value);
+                SetProperty(ref _GResearcherName, value);
             }
         }
 
@@ -336,12 +336,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGResearcherPhone;
+                return _GResearcherPhone;
             }
 
             set
             {
-                SetProperty(ref localGResearcherPhone, value);
+                SetProperty(ref _GResearcherPhone, value);
             }
         }
 
@@ -353,12 +353,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGResearcherPostal;
+                return _GResearcherPostal;
             }
 
             set
             {
-                SetProperty(ref localGResearcherPostal, value);
+                SetProperty(ref _GResearcherPostal, value);
             }
         }
 
@@ -370,12 +370,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGResearcherState;
+                return _GResearcherState;
             }
 
             set
             {
-                SetProperty(ref localGResearcherState, value);
+                SetProperty(ref _GResearcherState, value);
             }
         }
     }

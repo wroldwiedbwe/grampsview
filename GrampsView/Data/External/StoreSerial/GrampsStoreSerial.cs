@@ -9,19 +9,17 @@
 
 namespace GrampsView.Data.External.StoreSerial
 {
+    using GrampsView.Common;
+    using GrampsView.Data.DataView;
+    using GrampsView.Data.Repository;
+
+    using Newtonsoft.Json;
+
     using System;
     using System.IO;
     using System.IO.IsolatedStorage;
-    using System.Runtime.ExceptionServices;
     using System.Runtime.Serialization;
     using System.Threading.Tasks;
-    using System.Xml;
-
-    using GrampsView.Common;
-    using GrampsView.Data.DataView;
-    using GrampsView.Data.Model;
-    using GrampsView.Data.Repository;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// Creates a collection of entities with content read from a GRAMPS XML file.

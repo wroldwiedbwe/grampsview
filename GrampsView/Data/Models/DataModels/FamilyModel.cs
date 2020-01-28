@@ -286,7 +286,7 @@ namespace GrampsView.Data.Model
         /// <value>
         /// The get h link.
         /// </value>
-        public HLinkFamilyModel GetHLink
+        public HLinkFamilyModel HLink
         {
             get
             {

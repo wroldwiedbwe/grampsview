@@ -16,6 +16,7 @@ namespace GrampsView.ViewModels
     using GrampsView.Events;
     using Prism.Events;
     using Prism.Navigation;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
 
     /// <summary>
@@ -28,7 +29,7 @@ namespace GrampsView.ViewModels
         /// </summary>
         private HLinkMediaModel _HeroImage = new HLinkMediaModel();
 
-        private CardGroup _TodoList = new CardGroup();
+        private CardGroupCollection _LatestChanges = new CardGroupCollection();
 
         /// <summary>
         /// The local header ViewModel.
@@ -50,7 +51,7 @@ namespace GrampsView.ViewModels
        : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "Hub";
-            BaseTitleIcon = Common.CommonConstants.IconHub;
+            BaseTitleIcon = CommonConstants.IconHub;
 
             BaseEventAggregator.GetEvent<DataLoadCompleteEvent>().Subscribe(CheckHeroImageLoad, ThreadOption.BackgroundThread);
         }
@@ -94,22 +95,11 @@ namespace GrampsView.ViewModels
             }
         }
 
-        /// <summary>
-        /// Gets the todo list.
-        /// </summary>
-        /// <value>
-        /// The todo list.
-        /// </value>
-        public CardGroup TodoList
+        public CardGroupCollection LatestChanges
         {
             get
             {
-                return _TodoList;
-            }
-
-            set
-            {
-                SetProperty(ref _TodoList, value);
+                return _LatestChanges;
             }
         }
 
@@ -135,7 +125,7 @@ namespace GrampsView.ViewModels
             HeaderData = DV.HeaderDV.HeaderDataModel;
 
             // Load the full bitmap
-            HeroImage = DV.MediaDV.GetModel(DV.MediaDV.GetRandomFromCollection(null).HLinkKey).GetHLink;
+            HeroImage = DV.MediaDV.GetModelFromHLinkString(DV.MediaDV.GetRandomFromCollection(null).HLinkKey).HLink;
 
             if (HeroImage == null)
             {
@@ -149,11 +139,33 @@ namespace GrampsView.ViewModels
 
             foreach (NoteModel item in t)
             {
-                temp.Cards.Add(item.GetHLink);
+                temp.Cards.Add(item.HLink);
             }
 
             temp.Title = "ToDo list";
-            TodoList = temp;
+            LatestChanges.Add(temp);
+
+            // Setup Latest Changes list
+
+            LatestChanges.Add(DV.BookMarkDV.GetLatestChanges());
+
+            LatestChanges.Add(DV.CitationDV.GetLatestChanges());
+
+            LatestChanges.Add(DV.EventDV.GetLatestChanges());
+
+            LatestChanges.Add(DV.FamilyDV.GetLatestChanges());
+
+            LatestChanges.Add(DV.MediaDV.GetLatestChanges());
+
+            LatestChanges.Add(DV.NoteDV.GetLatestChanges());
+
+            LatestChanges.Add(DV.PersonDV.GetLatestChanges());
+
+            LatestChanges.Add(DV.PlaceDV.GetLatestChanges());
+
+            LatestChanges.Add(DV.SourceDV.GetLatestChanges());
+
+            LatestChanges.Add(DV.TagDV.GetLatestChanges());
         }
     }
 }

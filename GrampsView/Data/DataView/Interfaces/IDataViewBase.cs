@@ -57,15 +57,6 @@ namespace GrampsView.Data.DataView
         List<T> GetAllAsModel();
 
         /// <summary>
-        /// Searches the specified query string.
-        /// </summary>
-        /// <param name="queryString">
-        /// The query string.
-        /// </param>
-        /// <returns>
-        /// List of Search Items.
-        /// </returns>
-        /// <summary>
         /// Gets the first image from collection.
         /// </summary>
         /// <param name="theCollection">
@@ -75,17 +66,9 @@ namespace GrampsView.Data.DataView
         /// </returns>
         HLinkMediaModel GetFirstImageFromCollection(TH theCollection);
 
-        T GetHLink(string hLinkString);
+        //T GetModelFromHLinkString(string hLinkString);
 
-        /// <summary>
-        /// Gets the specified h link string.
-        /// </summary>
-        /// <param name="HLinkString">
-        /// The h link string.
-        /// </param>
-        /// <returns>
-        /// </returns>
-        T GetModel(string HLinkString);
+        CardGroup GetLatestChanges();
 
         /// <summary>
         /// Gets the model from the hlink. Helper method.
@@ -96,7 +79,17 @@ namespace GrampsView.Data.DataView
         /// <returns>
         /// Model from HLink.
         /// </returns>
-        T GetModel(HLinkBase HLink);
+        T GetModelFromHLink(HLinkBase HLink);
+
+        /// <summary>
+        /// Gets the specified h link string.
+        /// </summary>
+        /// <param name="HLinkString">
+        /// The h link string.
+        /// </param>
+        /// <returns>
+        /// </returns>
+        T GetModelFromHLinkString(string HLinkString);
 
         /// <summary>
         /// Gets the model information formatted.

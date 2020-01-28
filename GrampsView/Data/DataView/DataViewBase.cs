@@ -5,6 +5,7 @@
 namespace GrampsView.Data.DataView
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
@@ -114,33 +115,7 @@ namespace GrampsView.Data.DataView
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Gets the specified h link string.
-        /// </summary>
-        /// <param name="hLinkString">
-        /// The h link string.
-        /// </param>
-        /// <returns>
-        /// ModelBase.
-        /// </returns>
-        public TB GetHLink(string hLinkString)
-        {
-            return DataViewData.GetModelFromHLink(hLinkString);
-        }
-
-        /// <summary>
-        /// Gets the specified h link string.
-        /// </summary>
-        /// <param name="HLinkString">
-        /// The h link string.
-        /// </param>
-        /// <returns>
-        /// ModelBase.
-        /// </returns>
-        public virtual TB GetModel(string HLinkString)
-        {
-            return DataViewData.GetModelFromHLink(HLinkString);
-        }
+        public abstract CardGroup GetLatestChanges();
 
         /// <summary>
         /// Gets the model.
@@ -151,7 +126,7 @@ namespace GrampsView.Data.DataView
         /// <returns>
         /// Model for HLink.
         /// </returns>
-        public virtual TB GetModel(HLinkBase argHLink)
+        public virtual TB GetModelFromHLink(HLinkBase argHLink)
         {
             if (argHLink is null)
             {
@@ -159,6 +134,34 @@ namespace GrampsView.Data.DataView
             }
 
             return DataViewData.GetModelFromHLink(argHLink.HLinkKey);
+        }
+
+        ///// <summary>
+        ///// Gets the specified h link string.
+        ///// </summary>
+        ///// <param name="hLinkString">
+        ///// The h link string.
+        ///// </param>
+        ///// <returns>
+        ///// ModelBase.
+        ///// </returns>
+        //public TB GetModelFromHLinkString(string hLinkString)
+        //{
+        //    return DataViewData.GetModelFromHLink(hLinkString);
+        //}
+
+        /// <summary>
+        /// Gets the specified h link string.
+        /// </summary>
+        /// <param name="HLinkString">
+        /// The h link string.
+        /// </param>
+        /// <returns>
+        /// ModelBase.
+        /// </returns>
+        public virtual TB GetModelFromHLinkString(string HLinkString)
+        {
+            return DataViewData.GetModelFromHLink(HLinkString);
         }
 
         /// <summary>

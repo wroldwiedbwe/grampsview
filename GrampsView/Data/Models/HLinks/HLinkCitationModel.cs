@@ -33,7 +33,7 @@ namespace GrampsView.Data.Model
             {
                 if (Valid)
                 {
-                    return DV.CitationDV.GetModel(HLinkKey);
+                    return DV.CitationDV.GetModelFromHLinkString(HLinkKey);
                 }
                 else
                 {

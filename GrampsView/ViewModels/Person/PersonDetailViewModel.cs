@@ -89,7 +89,7 @@ namespace GrampsView.ViewModels
         {
             BaseCL.LogRoutineEntry("PersonDetailViewModel");
 
-            PersonObject = DV.PersonDV.GetModel(BaseNavParamsHLink);
+            PersonObject = DV.PersonDV.GetModelFromHLink(BaseNavParamsHLink);
 
             if (!(PersonObject is null))
             {

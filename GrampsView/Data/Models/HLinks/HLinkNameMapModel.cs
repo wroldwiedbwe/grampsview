@@ -26,7 +26,7 @@ namespace GrampsView.Data.Model
             {
                 if (Valid)
                 {
-                    return new NameMapDataView().GetModel(HLinkKey);
+                    return new NameMapDataView().GetModelFromHLinkString(HLinkKey);
                 }
                 else
                 {

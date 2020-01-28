@@ -29,6 +29,8 @@ namespace GrampsView.Data.Model
         public URLModel()
         {
             OpenURLCommand = new DelegateCommand(OpenURL, CanOpenURL);
+
+            HomeImageHLink.HomeSymbol = GrampsView.Common.IconFont.Link;
         }
 
         /// <summary>Gets the default text.</summary>

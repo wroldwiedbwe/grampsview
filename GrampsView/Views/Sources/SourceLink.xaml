@@ -25,7 +25,7 @@
         MinHeight="100"
         MaxWidth="200"
         MaxHeight="200"
-        Visibility="{x:Bind Model.GetHLink.Valid, Converter={StaticResource HLinkValidVisibilityConverter}, Mode=OneWay}">
+        Visibility="{x:Bind Model.HLink.Valid, Converter={StaticResource HLinkValidVisibilityConverter}, Mode=OneWay}">
 
         <interactivity:Interaction.Behaviors>
             <interactivityCore:EventTriggerBehavior EventName="PointerPressed">

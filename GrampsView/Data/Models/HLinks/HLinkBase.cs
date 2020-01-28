@@ -57,67 +57,67 @@ namespace GrampsView.Data.Model
                 {
                     case "HLinkBookMarkModel":
                         {
-                            _ActualModel = DV.BookMarkDV.GetModel(HLinkKey);
+                            _ActualModel = DV.BookMarkDV.GetModelFromHLinkString(HLinkKey);
                             break;
                         }
 
                     case "HLinkCitationModel":
                         {
-                            _ActualModel = DV.CitationDV.GetModel(HLinkKey);
+                            _ActualModel = DV.CitationDV.GetModelFromHLinkString(HLinkKey);
                             break;
                         }
 
                     case "HLinkEventModel":
                         {
-                            _ActualModel = DV.EventDV.GetModel(HLinkKey);
+                            _ActualModel = DV.EventDV.GetModelFromHLinkString(HLinkKey);
                             break;
                         }
 
                     case "HLinkFamilyModel":
                         {
-                            _ActualModel = DV.FamilyDV.GetModel(HLinkKey);
+                            _ActualModel = DV.FamilyDV.GetModelFromHLinkString(HLinkKey);
                             break;
                         }
 
                     case "HLinkMediaModel":
                         {
-                            _ActualModel = DV.MediaDV.GetModel(HLinkKey);
+                            _ActualModel = DV.MediaDV.GetModelFromHLinkString(HLinkKey);
                             break;
                         }
 
                     case "HLinkNameMapModel":
                         {
-                            _ActualModel = DV.NameMapDV.GetModel(HLinkKey);
+                            _ActualModel = DV.NameMapDV.GetModelFromHLinkString(HLinkKey);
                             break;
                         }
 
                     case "HLinkNoteModel":
                         {
-                            _ActualModel = DV.NoteDV.GetModel(HLinkKey);
+                            _ActualModel = DV.NoteDV.GetModelFromHLinkString(HLinkKey);
                             break;
                         }
 
                     case "HLinkPersonModel":
                         {
-                            _ActualModel = DV.PersonDV.GetModel(HLinkKey);
+                            _ActualModel = DV.PersonDV.GetModelFromHLinkString(HLinkKey);
                             break;
                         }
 
                     case "HLinkPlaceModel":
                         {
-                            _ActualModel = DV.PlaceDV.GetModel(HLinkKey);
+                            _ActualModel = DV.PlaceDV.GetModelFromHLinkString(HLinkKey);
                             break;
                         }
 
                     case "HLinkRepositoryModel":
                         {
-                            _ActualModel = DV.RepositoryDV.GetModel(HLinkKey);
+                            _ActualModel = DV.RepositoryDV.GetModelFromHLinkString(HLinkKey);
                             break;
                         }
 
                     case "HLinkSourceModel":
                         {
-                            _ActualModel = DV.SourceDV.GetModel(HLinkKey);
+                            _ActualModel = DV.SourceDV.GetModelFromHLinkString(HLinkKey);
                             break;
                         }
 
@@ -129,7 +129,7 @@ namespace GrampsView.Data.Model
 
                     case "HLinkTagModel":
                         {
-                            _ActualModel = DV.TagDV.GetModel(HLinkKey);
+                            _ActualModel = DV.TagDV.GetModelFromHLinkString(HLinkKey);
                             break;
                         }
 
@@ -143,7 +143,7 @@ namespace GrampsView.Data.Model
             }
         }
 
-        //public virtual HLinkBackLink GetHLinkBackLink
+        //public virtual HLinkBackLink HLinkBackLink
         //{
         //    get
         //    {

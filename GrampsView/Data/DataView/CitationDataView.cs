@@ -15,7 +15,7 @@ namespace GrampsView.Data.DataView
     using GrampsView.Data.Model;
     using GrampsView.Data.Repositories;
     using GrampsView.Data.Repository;
-
+    using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
@@ -128,7 +128,7 @@ namespace GrampsView.Data.DataView
 
             foreach (var item in DataDefaultSort)
             {
-                t.Add(item.GetHLink);
+                t.Add(item.HLink);
             }
 
             return t;
@@ -167,7 +167,7 @@ namespace GrampsView.Data.DataView
                     //// Handle direct media reference
                     // if (currentHLink.DeRef.GMediaRefCollection.Count > 0) { foreach
                     // (HLinkMediaModel item in currentHLink.DeRef.GMediaRefCollection) {
-                    // tempMediaModel = DV.MediaDV.GetHLink(item.HLinkKey);
+                    // tempMediaModel = DV.MediaDV.HLink(item.HLinkKey);
 
                     // if (tempMediaModel.IsMediaFile) { returnMediaModel = item; break; } } }
 
@@ -186,6 +186,22 @@ namespace GrampsView.Data.DataView
 
             // return the image
             return returnMediaModel;
+        }
+
+        public override CardGroup GetLatestChanges()
+        {
+            IEnumerable tt = DataViewData.Items.OrderByDescending(t => t.Change).Take(3);
+
+            CardGroup returnCardGroup = new CardGroup();
+
+            foreach (CitationModel item in tt)
+            {
+                returnCardGroup.Cards.Add(item.HLink);
+            }
+
+            returnCardGroup.Title = "Latest Citation Changes";
+
+            return returnCardGroup;
         }
 
         /// <summary>
@@ -226,7 +242,7 @@ namespace GrampsView.Data.DataView
             {
                 itemsFound.Add(new SearchItem
                 {
-                    HLink = tempMO.GetHLink,
+                    HLink = tempMO.HLink,
                     Text = tempMO.GetDefaultText,
                 });
             }

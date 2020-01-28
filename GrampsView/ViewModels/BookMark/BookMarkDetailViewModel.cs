@@ -67,7 +67,7 @@ namespace GrampsView.ViewModels
         /// </returns>
         public override void PopulateViewModel()
         {
-            BookMarkObject = DV.BookMarkDV.GetModel(BaseNavParamsHLink.HLinkKey);
+            BookMarkObject = DV.BookMarkDV.GetModelFromHLinkString(BaseNavParamsHLink.HLinkKey);
 
             if (BookMarkObject != null)
             {

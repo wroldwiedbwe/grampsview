@@ -43,7 +43,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 {
                 }
 
-                HLinkCitationModel t = citationModel.GetHLink;
+                HLinkCitationModel t = citationModel.HLink;
 
                 // -- Organsie BackLinks
                 // ---------------------
@@ -114,7 +114,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
             foreach (EventModel eventModel in DV.EventDV.EventData)
             {
-                HLinkEventModel t = eventModel.GetHLink;
+                HLinkEventModel t = eventModel.HLink;
 
                 if (eventModel.Id == "E0059")
                 {
@@ -145,7 +145,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Back Reference Note HLinks
                 foreach (HLinkNoteModel noteRef in eventModel.GNoteRefCollection)
                 {
-                    DV.EventDV.GetModel(noteRef.HLinkKey).BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DV.EventDV.GetModelFromHLinkString(noteRef.HLinkKey).BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
             }
         }
@@ -159,7 +159,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
             foreach (FamilyModel familyModel in DV.FamilyDV.FamilyData)
             {
-                HLinkFamilyModel t = familyModel.GetHLink;
+                HLinkFamilyModel t = familyModel.HLink;
 
                 // -- Organse Back Links
                 // ---------------------
@@ -262,7 +262,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
             foreach (MediaModel mediaObject in DV.MediaDV.MediaData)
             {
-                HLinkMediaModel t = mediaObject.GetHLink;
+                HLinkMediaModel t = mediaObject.HLink;
 
                 // Event Collection
                 mediaObject.GEventRefCollection = DV.EventDV.HLinkCollectionSort(mediaObject.GEventRefCollection);
@@ -320,7 +320,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
             foreach (NoteModel note in DV.NoteDV.NoteData)
             {
-                HLinkNoteModel t = note.GetHLink;
+                HLinkNoteModel t = note.HLink;
 
                 // -- Organse Back Links
                 // ---------------------
@@ -343,7 +343,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
             foreach (PersonModel person in DV.PersonDV.PersonData)
             {
-                HLinkPersonModel t = person.GetHLink;
+                HLinkPersonModel t = person.HLink;
 
                 if (person.Id == "I0568")
                 {
@@ -362,7 +362,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                 foreach (HLinkEventModel eventRef in person.GEventRefCollection)
                 {
-                    DV.EventDV.GetModel(eventRef.HLinkKey).BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DV.EventDV.GetModelFromHLinkString(eventRef.HLinkKey).BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 foreach (HLinkMediaModel mediaRef in person.GMediaRefCollection)
@@ -399,7 +399,7 @@ namespace GrampsView.Data.ExternalStorageNS
                     person.GTagRefCollection[i].HomeImageHLink = GetTagRefHomeLink(tagRef.DeRef, tagRef.HomeImageHLink);
 
                     // Set the backlinks
-                    DV.TagDV.GetModel(tagRef.HLinkKey).BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DV.TagDV.GetModelFromHLinkString(tagRef.HLinkKey).BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // -- Organise First Image and Sorts
@@ -487,7 +487,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
             foreach (PlaceModel placeObject in DV.PlaceDV.PlaceData)
             {
-                HLinkPlaceModel t = placeObject.GetHLink;
+                HLinkPlaceModel t = placeObject.HLink;
 
                 // TODO fill this
 
@@ -532,7 +532,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
             foreach (RepositoryModel repositoryObject in DV.RepositoryDV.RepositoryData)
             {
-                HLinkRepositoryModel t = repositoryObject.GetHLink;
+                HLinkRepositoryModel t = repositoryObject.HLink;
 
                 // Back Reference Note HLinks
                 foreach (HLinkNoteModel noteRef in repositoryObject.GNoteRefCollection)
@@ -554,7 +554,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
             foreach (SourceModel sourceObject in DV.SourceDV.SourceData)
             {
-                HLinkSourceModel t = sourceObject.GetHLink;
+                HLinkSourceModel t = sourceObject.HLink;
 
                 // -- Organse Back Links
                 // ---------------------

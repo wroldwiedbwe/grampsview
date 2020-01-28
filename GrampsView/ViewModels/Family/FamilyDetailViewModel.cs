@@ -71,7 +71,7 @@ namespace GrampsView.ViewModels
         /// </returns>
         public override void PopulateViewModel()
         {
-            FamilyObject = DV.FamilyDV.GetModel(BaseNavParamsHLink);
+            FamilyObject = DV.FamilyDV.GetModelFromHLink(BaseNavParamsHLink);
 
             if (!(FamilyObject is null))
             {

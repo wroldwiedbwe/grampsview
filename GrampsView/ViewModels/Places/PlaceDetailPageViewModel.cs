@@ -17,61 +17,45 @@ namespace GrampsView.ViewModels
     using Prism.Navigation;
 
     /// <summary>
-    /// Defines the EVent Detail Page View ViewModel.
+    /// Defines the Place Detail Page View ViewModel.
     /// </summary>
     public class PlaceDetailViewModel : ViewModelBase
     {
         /// <summary>
-        /// The local book mark object.
+        /// The local place object.
         /// </summary>
-        private PlaceModel localPlaceObject;
+        private PlaceModel _PlaceObject;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PlaceDetailViewModel" /> class.
-        /// </summary>
-        /// <param name="iocLoggingService">
-        /// The ioc logging service.
-        /// </param>
-        /// <param name="iocEventAggregator">
-        /// The ioc event aggregator.
-        /// </param>
-        /// <param name="iocCommonModelGridBuilder">
-        /// The ioc common model grid builder.
-        /// </param>
+        /// <summary>Initializes a new instance of the <see cref="PlaceDetailViewModel"/> class.</summary>
+        /// <param name="iocCommonLogging"></param>
+        /// <param name="iocEventAggregator">The ioc event aggregator.</param>
+        /// <param name="iocNavigationService"></param>
         public PlaceDetailViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
         }
 
         /// <summary>
-        /// Gets or sets the public Event ViewModel.
+        /// Gets or sets the public Place ViewModel.
         /// </summary>
-        // [RestorableState]
+
         public PlaceModel PlaceObject
         {
             get
             {
-                return localPlaceObject;
+                return _PlaceObject;
             }
 
             set
             {
-                SetProperty(ref localPlaceObject, value);
+                SetProperty(ref _PlaceObject, value);
             }
         }
 
-        /// <summary>
-        /// Handles navigation in wards and sets up the event model parameter.
-        /// </summary>
-        /// <param name="e">
-        /// The <see cref="NavigatedToEventArgs" /> instance containing the event data.
-        /// </param>
-        /// <param name="viewModelState">
-        /// The parameter is not used.
-        /// </param>
+        /// <summary>Handles navigation in wards and sets up the place model parameter.</summary>
         public override void PopulateViewModel()
         {
-            PlaceObject = DV.PlaceDV.GetModel(BaseNavParamsHLink);
+            PlaceObject = DV.PlaceDV.GetModelFromHLink(BaseNavParamsHLink);
 
             if (PlaceObject != null)
             {
@@ -87,7 +71,6 @@ namespace GrampsView.ViewModels
                         new CardListLine("Title:", PlaceObject.GPTitle),
                         new CardListLine("Name:", PlaceObject.GName),
                         new CardListLine("Type:", PlaceObject.GType),
-                        new CardListLine("Private:", PlaceObject.PrivAsString),
                     });
 
                 t.Cards.Add(DV.PlaceDV.GetModelInfoFormatted(PlaceObject));

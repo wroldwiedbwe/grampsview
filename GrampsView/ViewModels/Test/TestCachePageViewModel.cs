@@ -30,7 +30,7 @@ namespace GrampsView.ViewModels
             // Elliot - _c47ecf788120563f2b2
 
             // do a
-            pm = DV.PersonDV.GetModel(new HLinkMediaModel { HLinkKey = "_c47a6bd13bb4288c272" });
+            pm = DV.PersonDV.GetModelFromHLink(new HLinkMediaModel { HLinkKey = "_c47a6bd13bb4288c272" });
 
             doCrop();
 
@@ -41,7 +41,7 @@ namespace GrampsView.ViewModels
             aSource = tt.MediaStorageFilePath;
 
             // do b
-            pm = DV.PersonDV.GetModel(new HLinkMediaModel { HLinkKey = "_dc84f6a1f0b6400c49bf3370bbc" });
+            pm = DV.PersonDV.GetModelFromHLink(new HLinkMediaModel { HLinkKey = "_dc84f6a1f0b6400c49bf3370bbc" });
 
             doCrop();
 
@@ -52,7 +52,7 @@ namespace GrampsView.ViewModels
             bSource = tt.MediaStorageFilePath;
 
             // do c
-            pm = DV.PersonDV.GetModel("_c47a1a9640c7f46c6fb");
+            pm = DV.PersonDV.GetModelFromHLinkString("_c47a1a9640c7f46c6fb");
 
             doCrop();
 

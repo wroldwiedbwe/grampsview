@@ -192,7 +192,7 @@ namespace GrampsView.Data.Model
         /// <value>
         /// The get hlink.
         /// </value>
-        public HLinkMediaModel GetHLink
+        public HLinkMediaModel HLink
         {
             get
             {

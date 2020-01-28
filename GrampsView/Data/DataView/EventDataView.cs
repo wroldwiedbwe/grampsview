@@ -10,6 +10,7 @@
 namespace GrampsView.Data.DataView
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Globalization;
@@ -171,7 +172,7 @@ namespace GrampsView.Data.DataView
 
             foreach (var item in DataDefaultSort)
             {
-                t.Add(item.GetHLink);
+                t.Add(item.HLink);
             }
 
             t = HLinkCollectionSort(t);
@@ -245,6 +246,22 @@ namespace GrampsView.Data.DataView
             }
         }
 
+        public override CardGroup GetLatestChanges()
+        {
+            IEnumerable tt = DataViewData.Items.OrderByDescending(t => t.Change).Take(3);
+
+            CardGroup returnCardGroup = new CardGroup();
+
+            foreach (EventModel item in tt)
+            {
+                returnCardGroup.Cards.Add(item.HLink);
+            }
+
+            returnCardGroup.Title = "Latest Event Changes";
+
+            return returnCardGroup;
+        }
+
         /// <summary>
         /// hes the link collection sort.
         /// </summary>
@@ -283,7 +300,7 @@ namespace GrampsView.Data.DataView
             {
                 itemsFound.Add(new SearchItem
                 {
-                    HLink = tempMO.GetHLink,
+                    HLink = tempMO.HLink,
                     Text = tempMO.GetDefaultText,
                 });
             }

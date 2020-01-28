@@ -77,7 +77,7 @@ namespace GrampsView.ViewModels
         public override void PopulateViewModel()
         {
             // cache the Note model
-            SourceObject = DV.SourceDV.GetModel(BaseNavParamsHLink);
+            SourceObject = DV.SourceDV.GetModelFromHLink(BaseNavParamsHLink);
 
             if (!(SourceObject is null))
             {
