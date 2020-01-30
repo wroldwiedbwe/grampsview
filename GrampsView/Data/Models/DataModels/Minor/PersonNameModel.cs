@@ -225,6 +225,16 @@ namespace GrampsView.Data.Model
         /// </returns>
         public new int Compare(object a, object b)
         {
+            if (a is null)
+            {
+                return 1;
+            }
+
+            if (b is null)
+            {
+                return 0;
+            }
+
             PersonNameModel firstEvent = (PersonNameModel)a;
             PersonNameModel secondEvent = (PersonNameModel)b;
 
@@ -245,6 +255,11 @@ namespace GrampsView.Data.Model
         /// </returns>
         public int CompareTo(object obj)
         {
+            if (obj is null)
+            {
+                return 0;
+            }
+
             PersonNameModel secondEvent = (PersonNameModel)obj;
 
             // compare on String first

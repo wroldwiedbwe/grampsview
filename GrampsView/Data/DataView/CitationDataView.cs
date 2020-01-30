@@ -43,13 +43,13 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataStore.DS.LocalCitationData;
+                return DataStore.DS.CitationData;
             }
 
-            set
-            {
-                SetProperty(ref DataStore.DS.LocalCitationData, value);
-            }
+            //set
+            //{
+            //    SetProperty(ref DataStore.DS.CitationData, value);
+            //}
         }
 
         /// <summary>

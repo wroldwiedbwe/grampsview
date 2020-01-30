@@ -138,51 +138,6 @@ namespace GrampsView.ViewModels
             ImageFullBitmap = null;
         }
 
-        //public void OnPanUpdated(CachedImage argmdp, PanUpdatedEventArgs e)
-        //{
-        //    if (e.StatusType == GestureStatus.Completed)
-
-        //    {
-        //        mX = CurrentXOffset;
-
-        //        mY = CurrentYOffset;
-        //    }
-        //    else if (e.StatusType == GestureStatus.Running)
-
-        //    {
-        //        CurrentXOffset = (e.TotalX * mRatioPan) + mX;
-
-        //        CurrentYOffset = (e.TotalY * mRatioPan) + mY;
-
-        //        ReloadImage(argmdp);
-        //    }
-        //}
-
-        //public void OnPinchUpdated(CachedImage argmdp, PinchGestureUpdatedEventArgs e)
-
-        //{
-        //    if (e.Status == GestureStatus.Completed)
-
-        //    {
-        //        mX = CurrentXOffset;
-
-        //        mY = CurrentYOffset;
-        //    }
-        //    else if (e.Status == GestureStatus.Running)
-
-        //    {
-        //        CurrentZoomFactor += (e.Scale - 1) * CurrentZoomFactor * mRatioZoom;
-
-        //        CurrentZoomFactor = Math.Max(1, CurrentZoomFactor);
-
-        //        CurrentXOffset = (e.ScaleOrigin.X * mRatioPan) + mX;
-
-        //        CurrentYOffset = (e.ScaleOrigin.Y * mRatioPan) + mY;
-
-        //        ReloadImage(argmdp);
-        //    }
-        //}
-
         /// <summary>
         /// Handles navigation in wards and sets up the event model parameter.
         /// </summary>
@@ -214,9 +169,10 @@ namespace GrampsView.ViewModels
                     });
 
                 // Set up note re opening in photo app
-                CardListLineCollection t1 = new CardListLineCollection();
-
-                t1.Add(new CardListLine(string.Empty, "Note: Double click the image to open it."));
+                CardListLineCollection t1 = new CardListLineCollection
+                {
+                    new CardListLine(string.Empty, "Note: Double click the image to open it.")
+                };
 
                 t.Cards.Add(t1);
 
@@ -255,7 +211,7 @@ namespace GrampsView.ViewModels
 
                 argmdp.LoadingPlaceholder = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

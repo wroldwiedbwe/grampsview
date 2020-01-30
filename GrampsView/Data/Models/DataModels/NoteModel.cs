@@ -100,15 +100,15 @@ namespace GrampsView.Data.Model
         /// </summary>
         private string localText = string.Empty;
 
-        public NoteModel()
-        {
-            HomeImageHLink.HomeSymbol = CommonConstants.IconNotes;
-        }
-
         /// <summary>
         /// The local type.
         /// </summary>
         private string localType = string.Empty;
+
+        public NoteModel()
+        {
+            HomeImageHLink.HomeSymbol = CommonConstants.IconNotes;
+        }
 
         /// <summary>
         /// Gets the default text for notes which is the first twenty characters.
@@ -121,24 +121,6 @@ namespace GrampsView.Data.Model
             get
             {
                 return TextShort;
-            }
-        }
-
-        /// <summary>
-        /// Gets the get h link.
-        /// </summary>
-        /// <value>
-        /// The get h link.
-        /// </value>
-        public HLinkNoteModel HLink
-        {
-            get
-            {
-                HLinkNoteModel t = new HLinkNoteModel
-                {
-                    HLinkKey = HLinkKey,
-                };
-                return t;
             }
         }
 
@@ -162,8 +144,6 @@ namespace GrampsView.Data.Model
             }
         }
 
-        // TODO add field style*
-
         /// <summary>
         /// Gets or sets the g tag reference collection.
         /// </summary>
@@ -178,6 +158,7 @@ namespace GrampsView.Data.Model
 
         = new HLinkTagModelCollection();
 
+        // TODO add field style*
         /// <summary>
         /// Gets or sets the text.
         /// </summary>
@@ -215,6 +196,24 @@ namespace GrampsView.Data.Model
             set
             {
                 SetProperty(ref localType, value);
+            }
+        }
+
+        /// <summary>
+        /// Gets the get h link.
+        /// </summary>
+        /// <value>
+        /// The get h link.
+        /// </value>
+        public HLinkNoteModel HLink
+        {
+            get
+            {
+                HLinkNoteModel t = new HLinkNoteModel
+                {
+                    HLinkKey = HLinkKey,
+                };
+                return t;
             }
         }
 
@@ -266,6 +265,11 @@ namespace GrampsView.Data.Model
         /// </returns>
         public int CompareTo(object obj)
         {
+            if (obj is null)
+            {
+                return 0;
+            }
+
             NoteModel secondEvent = (NoteModel)obj;
 
             // compare on String first

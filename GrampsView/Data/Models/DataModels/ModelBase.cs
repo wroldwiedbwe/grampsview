@@ -23,6 +23,7 @@ namespace GrampsView.Data.Model
     /// /// ///
     /// <seealso cref="GrampsView.Data.ViewModel.IModelBase" />
     [DataContract]
+    [KnownType(typeof(HLinkBackLink))]
     [KnownType(typeof(HLinkBookMarkModel))]
     [KnownType(typeof(HLinkCitationModel))]
     [KnownType(typeof(HLinkEventModel))]

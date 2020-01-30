@@ -27,7 +27,7 @@ namespace GrampsView.Data.DataView
         /// </param>
         RepositoryModelType<CitationModel, HLinkCitationModel> CitationData
         {
-            get; set;
+            get;
         }
 
         /// <summary>

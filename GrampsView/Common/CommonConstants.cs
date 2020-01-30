@@ -37,7 +37,7 @@ namespace GrampsView.Common
         /// <summary>
         /// The gramps view database version.
         /// </summary>
-        public const int GrampsViewDatabaseVersion = 24;
+        public const int GrampsViewDatabaseVersion = 25;
 
         /// <summary>
         /// The Gramps XML name space.

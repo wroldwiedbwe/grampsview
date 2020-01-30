@@ -16,10 +16,8 @@ namespace GrampsView.Data.Collections
     /// </summary>
     [CollectionDataContract]
     [KnownType(typeof(ObservableCollection<HLinkBackLink>))]
-    public class HLinkBackLinkModelCollection
+    public class HLinkBackLinkModelCollection : HLinkBaseCollection<HLinkBackLink>
     {
-        private ObservableCollection<HLinkBackLink> Items = new ObservableCollection<HLinkBackLink>();
-
         public void Add(HLinkBackLink ArgHLink)
         {
             Items.Add(ArgHLink);

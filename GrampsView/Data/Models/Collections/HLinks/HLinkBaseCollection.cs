@@ -24,22 +24,6 @@ namespace GrampsView.Data.Model
     {
         // TODO Handle HLink collections properly by handlign all their data
 
-        /// <summary>Gets the model for this hlink. </summary> <returns>ObservableCollection.<PersonModel></returns>
-        public ObservableCollection<ModelBase> DeRef
-        {
-            get
-            {
-                ObservableCollection<ModelBase> t = new ObservableCollection<ModelBase>();
-
-                foreach (T item in Items)
-                {
-                    t.Add(item.GetActualModel);
-                }
-
-                return t;
-            }
-        }
-
         /// <summary>
         /// Gets or sets the first image h link.
         /// </summary>

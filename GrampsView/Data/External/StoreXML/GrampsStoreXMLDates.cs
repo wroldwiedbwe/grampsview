@@ -43,6 +43,45 @@ namespace GrampsView.Data.ExternalStorageNS
     public partial class GrampsStoreXML : CommonBindableBase, IGrampsStoreXML
     {
         /// <summary>
+        /// Sets the date string.
+        /// </summary>
+        /// <param name="currentElement">
+        /// The current element.
+        /// </param>
+        /// <returns>
+        /// </returns>
+        public static DateObjectModel SetDateStr(XElement currentElement)
+        {
+            string aCFormat = string.Empty;
+            bool aDualDated = false;
+            string aNewYear = string.Empty;
+            string aQuality = string.Empty;
+            string aStart = string.Empty;
+            string aStop = string.Empty;
+            string aVal = string.Empty;
+            string aValType = string.Empty;
+
+            // check for date range
+            try
+            {
+                // val CDATA #REQUIRED
+                string stringFound = (string)currentElement.Attribute("val");
+                if (!string.IsNullOrEmpty(stringFound))
+                {
+                    aVal = stringFound;
+                }
+            }
+            catch (Exception e)
+            {
+                // TODO
+                DataStore.CN.NotifyException("Error", e);
+                throw;
+            }
+
+            return new DateObjectModel(DateObjectModel.DateType.Str, aCFormat, aDualDated, aNewYear, aQuality, aStart, aStop, aVal, aValType);
+        }
+
+        /// <summary>
         /// Sets the date.
         /// </summary>
         /// <param name="currentElement">
@@ -91,6 +130,8 @@ namespace GrampsView.Data.ExternalStorageNS
             {
                 // TODO
                 DataStore.CN.NotifyException("Error in SetDate", e);
+
+                throw;
             }
 
             // TODO fix this if (tempDate is typeof( DateObjectModel) ) { // no date found tempDate =
@@ -177,45 +218,6 @@ namespace GrampsView.Data.ExternalStorageNS
             }
 
             return new DateObjectModel(DateObjectModel.DateType.Span, aCFormat, aDualDated, aNewYear, aQuality, aStart, aStop, aVal, aValType);
-        }
-
-        /// <summary>
-        /// Sets the date string.
-        /// </summary>
-        /// <param name="currentElement">
-        /// The current element.
-        /// </param>
-        /// <returns>
-        /// </returns>
-        public static DateObjectModel SetDateStr(XElement currentElement)
-        {
-            string aCFormat = string.Empty;
-            bool aDualDated = false;
-            string aNewYear = string.Empty;
-            string aQuality = string.Empty;
-            string aStart = string.Empty;
-            string aStop = string.Empty;
-            string aVal = string.Empty;
-            string aValType = string.Empty;
-
-            // check for date range
-            try
-            {
-                // val CDATA #REQUIRED
-                string stringFound = (string)currentElement.Attribute("val");
-                if (!string.IsNullOrEmpty(stringFound))
-                {
-                    aVal = stringFound;
-                }
-            }
-            catch (Exception e)
-            {
-                // TODO
-                DataStore.CN.NotifyException("Error", e);
-                throw;
-            }
-
-            return new DateObjectModel(DateObjectModel.DateType.Str, aCFormat, aDualDated, aNewYear, aQuality, aStart, aStop, aVal, aValType);
         }
 
         /// <summary>

@@ -38,6 +38,8 @@
     <Compile Remove="Common\CommonCropBitmap.cs" />
     <Compile Remove="Common\CommonLogCircular.cs" />
     <Compile Remove="Common\CommonPropertyDebug.xaml.cs" />
+    <Compile Remove="Common\CustomClasses\BorderlessEditor.cs" />
+    <Compile Remove="Common\CustomClasses\BorderlessEntry.cs" />
     <Compile Remove="Common\CustomClasses\CustomCacheKeyFactory .cs" />
     <Compile Remove="Common\CustomClasses\CustomImageStreamSource.cs" />
     <Compile Remove="Common\CustomClasses\FlexLayoutVirtual.cs" />
@@ -159,7 +161,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Identity.Client" Version="4.7.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Nito.AsyncEx" Version="5.0.0" />
     <PackageReference Include="Prism.Unity.Forms" Version="7.2.0.1422" />
@@ -170,7 +171,7 @@
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991477" />
+    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991537" />
     <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.34" />  
   </ItemGroup>
 

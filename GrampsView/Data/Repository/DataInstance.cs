@@ -21,12 +21,6 @@ namespace GrampsView.Data.Repository
     public class DataInstance : CommonBindableBase
     {
         /// <summary>
-        /// The local citation data.
-        /// </summary>
-        [DataMember]
-        public RepositoryModelType<CitationModel, HLinkCitationModel> LocalCitationData = new RepositoryModelType<CitationModel, HLinkCitationModel>();
-
-        /// <summary>
         /// The local event data.
         /// </summary>
         [DataMember]
@@ -92,6 +86,8 @@ namespace GrampsView.Data.Repository
         [DataMember]
         private RepositoryModelType<BookMarkModel, HLinkBookMarkModel> _BookMarkData = new RepositoryModelType<BookMarkModel, HLinkBookMarkModel>();
 
+        private RepositoryModelType<CitationModel, HLinkCitationModel> _CitationData = new RepositoryModelType<CitationModel, HLinkCitationModel>();
+
         private DirectoryInfo _CurrentDataFolder;
 
         private FileData _CurrentInputFile = null;
@@ -127,6 +123,23 @@ namespace GrampsView.Data.Repository
             set
             {
                 SetProperty(ref _BookMarkData, value);
+            }
+        }
+
+        /// <summary>
+        /// The local citation data.
+        /// </summary>
+        [DataMember]
+        public RepositoryModelType<CitationModel, HLinkCitationModel> CitationData
+        {
+            get
+            {
+                return _CitationData;
+            }
+
+            set
+            {
+                SetProperty(ref _CitationData, value);
             }
         }
 

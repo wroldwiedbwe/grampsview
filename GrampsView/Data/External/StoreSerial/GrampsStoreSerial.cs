@@ -91,9 +91,9 @@ namespace GrampsView.Data.External.StoreSerial
                             DataStore.CN.NotifyError("Bad BookMark deserialisation error.  Data loading cancelled. Restart the program and reload the data.");
                         }
 
-                        if (t.LocalCitationData != null)
+                        if (t.CitationData != null)
                         {
-                            DataStore.DS.LocalCitationData = t.LocalCitationData;
+                            DataStore.DS.CitationData = t.CitationData;
                         }
                         else
                         {

@@ -26,26 +26,40 @@ namespace GrampsView.Data.Model
     [DataContract]
     public class HLinkBackLink : HLinkBase
     {
+        [DataMember]
         private HLinkBookMarkModel _HLinkBookMarkModel;
 
+        [DataMember]
         private HLinkCitationModel _HLinkCitationModel;
 
+        [DataMember]
         private HLinkEventModel _HLinkEventModel;
+
+        [DataMember]
         private HLinkFamilyModel _HLinkFamilyModel;
+
+        [DataMember]
         private HLinkMediaModel _HLinkMediaModel;
 
+        [DataMember]
         private HLinkNameMapModel _HLinkNameMapModel;
 
+        [DataMember]
         private HLinkNoteModel _HLinkNoteModel;
 
+        [DataMember]
         private HLinkPersonModel _HLinkPersonModel;
 
+        [DataMember]
         private HLinkPlaceModel _HLinkPlaceModel;
 
+        [DataMember]
         private HLinkRepositoryModel _HLinkRepositoryModel;
 
+        [DataMember]
         private HLinkSourceModel _HLinkSourceModel;
 
+        [DataMember]
         private HLinkTagModel _HLinkTagModel;
 
         public HLinkBackLink(HLinkBookMarkModel ArgHLinkLink)
@@ -53,6 +67,10 @@ namespace GrampsView.Data.Model
             _HLinkBookMarkModel = ArgHLinkLink;
 
             HLinkType = HLinkBackLinkEnum.HLinkBookMarkModel;
+        }
+
+        public HLinkBackLink()
+        {
         }
 
         public HLinkBackLink(HLinkCitationModel ArgHLinkLink)
@@ -150,6 +168,7 @@ namespace GrampsView.Data.Model
             Unknown
         }
 
+        [DataMember]
         public HLinkBackLinkEnum HLinkType { get; set; }
 
         public HLinkBase HLink()

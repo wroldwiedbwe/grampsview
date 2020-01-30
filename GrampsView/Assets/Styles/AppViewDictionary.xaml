@@ -34,12 +34,13 @@
     -->
 
     <!--  Create a Base Style for a Button Style  -->
+    <!--
     <Style x:Key="GVEditorStyle" TargetType="ucon:BorderlessEditor">
         <Setter Property="IsReadOnly" Value="True" />
         <Setter Property="BackgroundColor" Value="{StaticResource CardBackGround}" />
         <Setter Property="AutoSize" Value="TextChanges" />
         <Setter Property="TextColor" Value="{StaticResource TextLightColor}" />
-    </Style>
+    </Style>-->
 
     <!--
         ******************************************************
