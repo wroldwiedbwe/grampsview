@@ -75,7 +75,7 @@ namespace GrampsView.Data.Model
         /// <summary>
         /// The local home use image.
         /// </summary>
-        private int localHomeImageType = CommonConstants.HomeImageTypeSymbol;
+        private int localHomeImageType = CommonConstants.HomeImageTypeUnknown;
 
         ///// <summary>
         ///// The local internal default character icon
@@ -84,14 +84,19 @@ namespace GrampsView.Data.Model
         private string localIDefaultSymbol = CommonConstants.IconDDefault;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HLinkMediaModel" /> class.
+        /// Initializes a new instance of the <see cref="HLinkMediaModel"/> class.
         /// </summary>
         public HLinkMediaModel()
         {
         }
 
-        /// <summary>Gets the associated media model </summary>
-        /// <value>The media model.<note type="caution">This can not hold a local copy of the media model as the Model Base has a hlinkmediamodel in it and this will cause a referene loop</note></value>
+        /// <summary>
+        /// Gets the associated media model
+        /// </summary>
+        /// <value>
+        /// The media model. <note type="caution">This can not hold a local copy of the media model
+        /// as the Model Base has a hlinkmediamodel in it and this will cause a referene loop</note>
+        /// </value>
         public MediaModel DeRef
         {
             get
@@ -217,7 +222,7 @@ namespace GrampsView.Data.Model
         /// Gets or sets a value indicating whether [home use image].
         /// </summary>
         /// <value>
-        /// <c> true </c> if [home use image]; otherwise, <c> false </c>.
+        /// <c>true</c> if [home use image]; otherwise, <c>false</c>.
         /// </value>
         [DataMember]
         public int HomeImageType
@@ -282,29 +287,58 @@ namespace GrampsView.Data.Model
         /// Gets a value indicating whether [home use image].
         /// </summary>
         /// <value>
-        /// <c> true </c> if [home use image]; otherwise, <c> false </c>.
+        /// <c>true</c> if [home use image]; otherwise, <c>false</c>.
         /// </value>
         public bool HomeUseImage
         {
             get
             {
-                if (HomeImageType == CommonConstants.HomeImageTypeSymbol)
+                if (HomeImageType == CommonConstants.HomeImageTypeThumbNail || HomeImageType == CommonConstants.HomeImageTypeClippedBitmap)
                 {
-                    return false;
+                    return true;
                 }
 
-                return true;
+                return false;
             }
         }
 
-        /// <summary>Gets a value indicating whether gets boolean showing if the $$(HLink)$$ is valid.
-        /// Can have a HLInk or be a pointer to an image.</summary>
-        /// <value>Boolean showing if $$(HLink)$$ is valid.</value>
+        /// <summary>
+        /// Gets a value indicating whether gets boolean showing if the $$(HLink)$$ is valid. <note
+        /// type="note">Can have a HLink or be a pointer to an image. <br/><br/> So, MUST be valid
+        /// for both types and MUST be invalid for a default new instance. <br/></note>
+        /// </summary>
+        /// <value>
+        /// Boolean showing if $$(HLink)$$ is valid.
+        /// </value>
         public override bool Valid
         {
             get
             {
-                return ((!string.IsNullOrEmpty(HLinkKey)) || (HomeImageType == CommonConstants.HomeImageTypeSymbol));
+                switch (HomeImageType)
+                {
+                    case CommonConstants.HomeImageTypeClippedBitmap:
+                        {
+                            return !string.IsNullOrEmpty(HLinkKey);
+                        }
+                    case CommonConstants.HomeImageTypeSymbol:
+                        {
+                            return true;
+                        }
+                    case CommonConstants.HomeImageTypeThumbNail:
+                        {
+                            return !string.IsNullOrEmpty(HLinkKey);
+                        }
+                    case CommonConstants.HomeImageTypeUnknown:
+                        {
+                            return false;
+                        }
+
+                    default:
+                        {
+                            // TODO Unknown type
+                            return false;
+                        }
+                }
             }
         }
     }

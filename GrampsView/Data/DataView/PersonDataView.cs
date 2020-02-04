@@ -27,7 +27,7 @@ namespace GrampsView.Data.DataView
         private string localCurrentPersonHLinkKey = string.Empty;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PersonDataView" /> class.
+        /// Initializes a new instance of the <see cref="PersonDataView"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The ioc common logging.
@@ -198,16 +198,17 @@ namespace GrampsView.Data.DataView
         /// </returns>
         public HLinkMediaModel GetDefaultImageFromCollection(PersonModel argModel)
         {
-            HLinkMediaModel returnHLink = null;
-
-            // if (argModel.ga)
+            HLinkMediaModel returnHLink = new HLinkMediaModel();
 
             // ???? TODO "Default Image Citation"
             return returnHLink;
         }
 
-        /// <summary>Gets the latest changes for the Person Data View.</summary>
-        /// <returns></returns>
+        /// <summary>
+        /// Gets the latest changes for the Person Data View.
+        /// </summary>
+        /// <returns>
+        /// </returns>
         public override CardGroup GetLatestChanges()
         {
             IEnumerable tt = DataViewData.Items.OrderByDescending(t => t.Change).Take(3);

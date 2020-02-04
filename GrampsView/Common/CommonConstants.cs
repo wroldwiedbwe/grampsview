@@ -69,6 +69,8 @@ namespace GrampsView.Common
         /// </summary>
         public const int HomeImageTypeThumbNail = 2;
 
+        public const int HomeImageTypeUnknown = 3;
+
         /// <summary>
         /// The icon Address.
         /// </summary>

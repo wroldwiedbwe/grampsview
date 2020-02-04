@@ -37,14 +37,14 @@ namespace GrampsView.Data.DataView
         readonly private ICommonLogging localCL = null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MediaDataView" /> class.
+        /// Initializes a new instance of the <see cref="MediaDataView"/> class.
         /// </summary>
         public MediaDataView()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MediaDataView" /> class.
+        /// Initializes a new instance of the <see cref="MediaDataView"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The ioc common logging.
@@ -197,13 +197,14 @@ namespace GrampsView.Data.DataView
         /// </returns>
         public new HLinkMediaModel GetFirstImageFromCollection(HLinkMediaModelCollection argCollection)
         {
-            // handle null argument
+            // Handle null argument
             if (argCollection == null)
             {
                 argCollection = GetAllAsHLink();
             }
 
-            HLinkMediaModel returnMediaModel = null;
+            HLinkMediaModel returnMediaModel = new HLinkMediaModel();
+
             MediaModel tempMediaModel;
 
             if (argCollection.Count > 0)

@@ -66,6 +66,7 @@
     <Compile Remove="Converters\GetGyyph.cs" />
     <Compile Remove="Data\External\StoreFile\IStoreFileDirectory.cs" />
     <Compile Remove="Data\External\StorePostLoad\GrampsStorePostLoadClippedBM.cs" />
+    <Compile Remove="Data\External\StorePostLoad\StorePostLoadHomeImage.cs" />
     <Compile Remove="Data\External\StorePostLoad\StorePostLoadImageSource.cs" />
     <Compile Remove="Data\PluginStorageFile.cs" />
     <Compile Remove="Data\PluginStorageFileSystem.cs" />

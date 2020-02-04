@@ -15,6 +15,9 @@ namespace GrampsView.Data.ExternalStorageNS
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
     using GrampsView.Events;
+
+    using System;
+
     using Xamarin.Forms;
 
     /// <summary>
@@ -23,11 +26,79 @@ namespace GrampsView.Data.ExternalStorageNS
     public partial class GrampsStorePostLoad : IStorePostLoad
     {
         /// <summary>
+        /// Gets the tag reference home link.
+        /// </summary>
+        /// <param name="argHLink">
+        /// The argument h link.
+        /// </param>
+        /// <returns>
+        /// </returns>
+        public static HLinkMediaModel GetTagRefHomeLink(TagModel argModel, HLinkMediaModel argHLink)
+        {
+            if (argModel is null)
+            {
+                throw new ArgumentNullException(nameof(argModel));
+            }
+
+            if (argHLink is null)
+            {
+                throw new ArgumentNullException(nameof(argHLink));
+            }
+
+            HLinkMediaModel returnHLink = argHLink;
+
+            returnHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+
+            // Set the colour of the tag ref to match the tag
+            returnHLink.HomeSymbolColour = argModel.GColor;
+
+            return returnHLink;
+        }
+
+        /// <summary>
+        /// Sets the home h link.
+        /// </summary>
+        /// <param name="HomeImageHLink">
+        /// The home image h link.
+        /// </param>
+        /// <param name="argHLink">
+        /// The hlink.
+        /// </param>
+        /// <returns>
+        /// </returns>
+        public static HLinkMediaModel SetHomeHLink(HLinkMediaModel argStartHLink, HLinkMediaModel argHLink)
+        {
+            if (argStartHLink is null)
+            {
+                throw new ArgumentNullException(nameof(argStartHLink));
+            }
+
+            if (argHLink is null)
+            {
+                throw new ArgumentNullException(nameof(argHLink));
+            }
+
+            argStartHLink.GCorner1X = argHLink.GCorner1X;
+            argStartHLink.GCorner1Y = argHLink.GCorner1Y;
+            argStartHLink.GCorner2X = argHLink.GCorner2X;
+            argStartHLink.GCorner2Y = argHLink.GCorner2Y;
+            argStartHLink.HLinkKey = argHLink.HLinkKey;
+            argStartHLink.HomeImageType = argHLink.HomeImageType;
+
+            return argStartHLink;
+        }
+
+        /// <summary>
         /// Organises the book mark repository.
         /// </summary>
         private static void OrganiseBookMarkRepository()
         {
             DataStore.CN.MajorStatusAdd("Organising BookMark data");
+
+            foreach (BookMarkModel argModel in DV.BookMarkDV.BookMarkData)
+            {
+                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+            }
         }
 
         /// <summary>
@@ -45,8 +116,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                 HLinkCitationModel t = citationModel.HLink;
 
-                // -- Organsie BackLinks
-                // ---------------------
+                // -- Organise BackLinks ---------------------
 
                 // Media Collection - Create backlinks in media models to citation models
                 foreach (HLinkMediaModel mediaRef in citationModel.GMediaRefCollection)
@@ -69,8 +139,7 @@ namespace GrampsView.Data.ExternalStorageNS
                     DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
-                // -- Organsie Default FirstLinks
-                // ------------------------------
+                // -- Organsie Default FirstLinks ------------------------------
 
                 // Sort media collection and get first link images
                 DV.CitationDV.CitationData[citationModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
@@ -78,14 +147,13 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Sort note collection and get first link images
                 DV.CitationDV.CitationData[citationModel.HLinkKey].GNoteRef.SortAndSetFirst();
 
-                // -- Organise Home Images
-                // -----------------------
+                // -- Organise Home Images -----------------------
 
                 // Try media reference collection first
                 HLinkMediaModel hlink = citationModel.GMediaRefCollection.FirstHLink;
 
                 // Check Source for Image
-                if (hlink == null)
+                if (!hlink.Valid)
                 {
                     if (citationModel.GSourceRef.DeRef.HomeImageHLink.HomeUseImage)
                     {
@@ -94,7 +162,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 }
 
                 // Handle the link if we can
-                if (hlink == null)
+                if (!hlink.Valid)
                 {
                     citationModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
                 }
@@ -147,6 +215,35 @@ namespace GrampsView.Data.ExternalStorageNS
                 {
                     DV.EventDV.GetModelFromHLinkString(noteRef.HLinkKey).BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
+
+                // Setup home images
+
+                // Try media reference collection first
+                HLinkMediaModel hlink = eventModel.GMediaRefCollection.FirstHLink;
+
+                // Check Media for Images
+                if (!hlink.Valid)
+                {
+                    hlink = eventModel.GMediaRefCollection.FirstHLink;
+                }
+
+                // Check Citation for Images
+                if (!hlink.Valid)
+                {
+                    hlink = eventModel.GCitationRefCollection.FirstHLink;
+
+                    //hlink = DV.CitationDV.GetFirstImageFromCollection(argModel.GCitationRefCollection);
+                }
+
+                // Handle the link if we can
+                if (!hlink.Valid)
+                {
+                    eventModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                }
+                else
+                {
+                    eventModel.HomeImageHLink = SetHomeHLink(eventModel.HomeImageHLink, hlink);
+                }
             }
         }
 
@@ -161,8 +258,7 @@ namespace GrampsView.Data.ExternalStorageNS
             {
                 HLinkFamilyModel t = familyModel.HLink;
 
-                // -- Organse Back Links
-                // ---------------------
+                // -- Organse Back Links ---------------------
 
                 // Child Collection
                 foreach (HLinkPersonModel personRef in familyModel.GChildRefCollection)
@@ -200,8 +296,7 @@ namespace GrampsView.Data.ExternalStorageNS
                     DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
-                // -- Organse First and Sorts
-                // --------------------------
+                // -- Organse First and Sorts --------------------------
 
                 DV.FamilyDV.FamilyData[familyModel.HLinkKey].GCitationRefCollection.SortAndSetFirst();
 
@@ -211,29 +306,28 @@ namespace GrampsView.Data.ExternalStorageNS
 
                 DV.FamilyDV.FamilyData[familyModel.HLinkKey].GNoteRefCollection.SortAndSetFirst();
 
-                // -- Organse Home Image
-                // ---------------------
+                // -- Organse Home Image ---------------------
 
                 // Try media reference collection first
                 HLinkMediaModel hlink = familyModel.GMediaRefCollection.FirstHLink;
 
-                if (hlink == null)
+                if (!hlink.Valid)
                 {
                     hlink = familyModel.GCitationRefCollection.FirstHLink;
                 }
 
-                if (hlink == null)
+                if (!hlink.Valid)
                 {
                     hlink = familyModel.GEventRefCollection.FirstHLink;
                 }
 
-                if (hlink == null)
+                if (!hlink.Valid)
                 {
                     hlink = familyModel.GNoteRefCollection.FirstHLink;
                 }
 
                 // Set the image if available
-                if (hlink != null)
+                if (hlink.Valid)
                 {
                     familyModel.HomeImageHLink = SetHomeHLink(familyModel.HomeImageHLink, hlink);
                 }
@@ -296,6 +390,69 @@ namespace GrampsView.Data.ExternalStorageNS
                 mediaObject.GPersonRefCollection = DV.PersonDV.HLinkCollectionSort(mediaObject.GPersonRefCollection);
 
                 // TODO Change to SortAndSetFirst
+
+                // Setup HomeImage
+                mediaObject.HomeImageHLink.HLinkKey = mediaObject.HLink.HLinkKey;
+
+                switch (mediaObject.FileMimeType)
+                {
+                    case "application":
+                        {
+                            switch (mediaObject.FileMimeSubType)
+                            {
+                                case "pdf":
+                                    {
+                                        mediaObject.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                                        mediaObject.HomeImageHLink.HomeSymbol = IconFont.FilePdf;
+                                        break;
+                                    }
+
+                                case "x-zip-compressed":
+                                    {
+                                        mediaObject.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                                        mediaObject.HomeImageHLink.HomeSymbol = IconFont.ZipBox;
+                                        break;
+                                    }
+
+                                case "zip":
+                                    {
+                                        mediaObject.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                                        mediaObject.HomeImageHLink.HomeSymbol = IconFont.ZipBox;
+                                        break;
+                                    }
+
+                                default:
+                                    {
+                                        mediaObject.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                                        mediaObject.HomeImageHLink.HomeSymbol = IconFont.FileDocument;
+                                        break;
+                                    }
+                            }
+
+                            break;
+                        }
+
+                    case "image":
+                        {
+                            mediaObject.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+                            mediaObject.HomeImageHLink.HomeSymbol = IconFont.Image;
+                            break;
+                        }
+
+                    case "video":
+                        {
+                            mediaObject.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                            mediaObject.HomeImageHLink.HomeSymbol = IconFont.Video;
+                            break;
+                        }
+
+                    default:
+                        {
+                            mediaObject.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+                            mediaObject.HomeImageHLink.HomeSymbol = CommonConstants.IconMedia;
+                            break;
+                        }
+                }
             }
         }
 
@@ -322,8 +479,7 @@ namespace GrampsView.Data.ExternalStorageNS
             {
                 HLinkNoteModel t = note.HLink;
 
-                // -- Organse Back Links
-                // ---------------------
+                // -- Organse Back Links ---------------------
 
                 // Citation Collection
 
@@ -348,8 +504,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 if (person.Id == "I0568")
                 {
                 }
-                // -- Organse Back Links
-                // ---------------------
+                // -- Organse Back Links ---------------------
 
                 // Citation Collection
 
@@ -402,8 +557,7 @@ namespace GrampsView.Data.ExternalStorageNS
                     DV.TagDV.GetModelFromHLinkString(tagRef.HLinkKey).BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
-                // -- Organise First Image and Sorts
-                // ------------------------------
+                // -- Organise First Image and Sorts ------------------------------
 
                 DV.PersonDV.PersonData[person.HLinkKey].GCitationRefCollection.SortAndSetFirst();
 
@@ -418,32 +572,31 @@ namespace GrampsView.Data.ExternalStorageNS
 
                 DV.PersonDV.PersonData[person.HLinkKey].SiblingRefCollection.SortAndSetFirst();
 
-                // -- Organsie Home Image
-                // ------------------------------
+                // -- Organsie Home Image ------------------------------
 
                 foreach (PersonModel argModel in DV.PersonDV.PersonData)
                 {
-                    if (argModel.Id == "I0568")
-                    {
-                    }
+                    //if (argModel.Id == "I0568")
+                    //{
+                    //}
 
                     // Get default image if available
                     HLinkMediaModel hlink = DV.PersonDV.GetDefaultImageFromCollection(argModel);
 
                     // Check Media for Images
-                    if (hlink is null)
+                    if (!hlink.Valid)
                     {
                         hlink = argModel.GMediaRefCollection.FirstHLink;
                     }
 
                     // Check Citation for Images
-                    if (hlink is null)
+                    if (!hlink.Valid)
                     {
                         hlink = argModel.GCitationRefCollection.FirstHLink;
                     }
 
                     // Action any Link
-                    if (hlink is null)
+                    if (!hlink.Valid)
                     {
                         argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
                     }
@@ -453,8 +606,7 @@ namespace GrampsView.Data.ExternalStorageNS
                     }
                 }
 
-                // -- Setup some extra values
-                // ------------------------------
+                // -- Setup some extra values ------------------------------
 
                 // set Birthdate
                 EventModel birthDate = DV.EventDV.GetEventType(person.GEventRefCollection, CommonConstants.EventTypeBirth);
@@ -556,8 +708,7 @@ namespace GrampsView.Data.ExternalStorageNS
             {
                 HLinkSourceModel t = sourceObject.HLink;
 
-                // -- Organse Back Links
-                // ---------------------
+                // -- Organse Back Links ---------------------
 
                 // Source Attribute Collection is model so no backlink
 
@@ -586,8 +737,7 @@ namespace GrampsView.Data.ExternalStorageNS
                     DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
-                // -- Organse First and Sorts
-                // ---------------------
+                // -- Organse First and Sorts ---------------------
 
                 // Sort media collection and get first link images
                 DV.SourceDV.SourceData[sourceObject.HLinkKey].GMediaRefCollection.SortAndSetFirst();
@@ -598,14 +748,14 @@ namespace GrampsView.Data.ExternalStorageNS
                 HLinkMediaModel hlink = sourceObject.GMediaRefCollection.FirstHLink;
 
                 // Action default media image
-                if (hlink is null)
+                if (!hlink.Valid)
                 {
                     // Check for icon
                     hlink = DV.MediaDV.GetFirstImageFromCollection(sourceObject.GMediaRefCollection);
                 }
 
                 // Set default
-                if (hlink is null)
+                if (!hlink.Valid)
                 {
                     sourceObject.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
                 }
@@ -712,8 +862,6 @@ namespace GrampsView.Data.ExternalStorageNS
                         item.MetaDataHeight = imageSize.Height;
                         item.MetaDataWidth = imageSize.Width;
                     }
-
-                    GetHomeImages();
                 }
 
                 await DataStore.CN.MajorStatusDelete().ConfigureAwait(false);

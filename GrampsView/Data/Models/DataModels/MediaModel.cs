@@ -64,14 +64,20 @@ namespace GrampsView.Data.Model
         /// </summary>
         private HLinkPersonModelCollection _PersonCollection = new HLinkPersonModelCollection();
 
-        /// <summary>Initializes a new instance of the <see cref="MediaModel"/> class.</summary>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MediaModel"/> class.
+        /// </summary>
         public MediaModel()
         {
             HomeImageHLink.HomeSymbol = CommonConstants.IconMedia;
         }
 
-        /// <summary>Gets or sets the type of the file content.</summary>
-        /// <value>The type of the file content.</value>
+        /// <summary>
+        /// Gets or sets the type of the file content.
+        /// </summary>
+        /// <value>
+        /// The type of the file content.
+        /// </value>
         public string FileContentType
         {
             get
@@ -105,8 +111,12 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets or sets the MIME subtype of the file.</summary>
-        /// <value>The type of the file MIME sub.</value>
+        /// <summary>
+        /// Gets or sets the MIME subtype of the file.
+        /// </summary>
+        /// <value>
+        /// The type of the file MIME sub.
+        /// </value>
         [DataMember]
         public string FileMimeSubType
         {
@@ -187,27 +197,9 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets the get hlink.
-        /// </summary>
-        /// <value>
-        /// The get hlink.
-        /// </value>
-        public HLinkMediaModel HLink
-        {
-            get
-            {
-                HLinkMediaModel t = new HLinkMediaModel
-                {
-                    HLinkKey = HLinkKey,
-                };
-                return t;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the event reference collection, i.e. person models that reference this media
-        /// object. These are not part of the normal GRAMPS XML file and are added after the media
-        /// models are loaded.
+        /// Gets or sets the event reference collection, i.e. person models that reference this
+        /// media object. These are not part of the normal GRAMPS XML file and are added after the
+        /// media models are loaded.
         /// </summary>
         /// <value>
         /// The person reference collection.
@@ -227,9 +219,9 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets or sets the event reference collection, i.e. person models that reference this media
-        /// object. These are not part of the normal GRAMPS XML file and are added after the media
-        /// models are loaded.
+        /// Gets or sets the event reference collection, i.e. person models that reference this
+        /// media object. These are not part of the normal GRAMPS XML file and are added after the
+        /// media models are loaded.
         /// </summary>
         /// <value>
         /// The person reference collection.
@@ -300,10 +292,29 @@ namespace GrampsView.Data.Model
         public HLinkTagModelCollection GTagRefCollection { get; set; }
 
         /// <summary>
+        /// Gets the get hlink.
+        /// </summary>
+        /// <value>
+        /// The get hlink.
+        /// </value>
+        public HLinkMediaModel HLink
+        {
+            get
+            {
+                HLinkMediaModel t = new HLinkMediaModel
+                {
+                    HLinkKey = HLinkKey,
+                    HomeImageType = CommonConstants.HomeImageTypeThumbNail,
+                };
+                return t;
+            }
+        }
+
+        /// <summary>
         /// Gets a value indicating whether this instance is media file.
         /// </summary>
         /// <value>
-        /// <c> true </c> if this instance is media file; otherwise, <c> false </c>.
+        /// <c>true</c> if this instance is media file; otherwise, <c>false</c>.
         /// </value>
         public bool IsMediaFile
         {
@@ -322,7 +333,7 @@ namespace GrampsView.Data.Model
         /// Gets a value indicating whether [media storage file valid]. Runs various checks on the mediafile.
         /// </summary>
         /// <value>
-        /// <c> true </c> if [media storage file valid]; otherwise, <c> false </c>.
+        /// <c>true</c> if [media storage file valid]; otherwise, <c>false</c>.
         /// </value>
         public bool IsMediaStorageFileValid
         {
@@ -337,7 +348,7 @@ namespace GrampsView.Data.Model
         /// Gets a value indicating whether [original file path] is valid.
         /// </summary>
         /// <value>
-        /// <c> true </c> if [original file path valid]; otherwise, <c> false </c>.
+        /// <c>true</c> if [original file path valid]; otherwise, <c>false</c>.
         /// </value>
         public bool IsOriginalFilePathValid
         {
@@ -406,13 +417,21 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets or sets the height of the image metadata.</summary>
-        /// <value>The height of the meta data.</value>
+        /// <summary>
+        /// Gets or sets the height of the image metadata.
+        /// </summary>
+        /// <value>
+        /// The height of the meta data.
+        /// </value>
         [DataMember]
         public double MetaDataHeight { get; set; }
 
-        /// <summary>Gets or sets the width of the image metadata.</summary>
-        /// <value>The width of the meta data.</value>
+        /// <summary>
+        /// Gets or sets the width of the image metadata.
+        /// </summary>
+        /// <value>
+        /// The width of the meta data.
+        /// </value>
         [DataMember]
         public double MetaDataWidth { get; set; }
 

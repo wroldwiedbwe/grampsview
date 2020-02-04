@@ -25,28 +25,6 @@ namespace GrampsView.Data.ExternalStorageNS
     public partial class GrampsStoreXML : IGrampsStoreXML
     {
         /// <summary>
-        /// Sets the home image ro itself. Media files are themselves.
-        /// </summary>
-        /// <param name="argModel">
-        /// The argument ViewModel.
-        /// </param>
-        /// <returns>
-        /// Media ViewModel.
-        /// </returns>
-        public static MediaModel SetHomeImage(MediaModel argModel)
-        {
-            if (argModel is null)
-            {
-                throw new ArgumentNullException(nameof(argModel));
-            }
-
-            argModel.HomeImageHLink.HLinkKey = argModel.HLink.HLinkKey;
-            argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
-
-            return argModel;
-        }
-
-        /// <summary>
         /// load media objects from external storage.
         /// </summary>
         /// <param name="mediaRepository">
@@ -75,9 +53,9 @@ namespace GrampsView.Data.ExternalStorageNS
                 {
                     foreach (XElement pname in de)
                     {
-                        // <code> < define name = "object-content" > <ref name= "primary-object" /> <
-                        // element name = "file" > < attribute name = "src" > < text /> </ attribute
-                        // > < attribute name = "mime" >
+                        // <code> < define name = "object-content" > <ref name= "primary-object" />
+                        // < element name = "file" > < attribute name = "src" > < text /> </
+                        // attribute > < attribute name = "mime" >
 
                         // < text />
 
@@ -109,7 +87,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // < element name = "attribute" >
 
-                        // <ref name="attribute-content" />
+                        // <ref name="attribute-content"/>
 
                         // </ element >
 
@@ -119,7 +97,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // < element name = "noteref" >
 
-                        // <ref name="noteref-content" />
+                        // <ref name="noteref-content"/>
 
                         // </ element >
 
@@ -127,7 +105,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // < optional >
 
-                        // <ref name="date-content" />
+                        // <ref name="date-content"/>
 
                         // </ optional >
 
@@ -135,7 +113,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // < element name = "citationref" >
 
-                        // <ref name="citationref-content" />
+                        // <ref name="citationref-content"/>
 
                         // </ element >
 
@@ -217,8 +195,8 @@ namespace GrampsView.Data.ExternalStorageNS
                         // Load NoteRefs
                         loadObject.GNoteRefCollection = GetNoteCollection(pname);
 
-                        // var localNoteElement = from ElementEl in pname.Descendants(ns + "noteref")
-                        // select ElementEl;
+                        // var localNoteElement = from ElementEl in pname.Descendants(ns +
+                        // "noteref") select ElementEl;
 
                         // if (localNoteElement.Count() != 0) { // load note references foreach
                         // (XElement loadNoteElement in localNoteElement) { HLinkNoteModel noteHLink
@@ -235,9 +213,6 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // < zeroOrMore > < element name = "tagref" > <ref name="tagref-content" />
                         loadObject.GTagRefCollection = GetTagCollection(pname);
-
-                        // set the Home image or symbol now that everythign is laoded
-                        loadObject = SetHomeImage(loadObject);
 
                         // save the object
                         DV.MediaDV.MediaData.Add(loadObject);

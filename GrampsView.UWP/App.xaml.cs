@@ -121,7 +121,10 @@
         private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
         {
             var newExc = new Exception(nameof(TaskSchedulerOnUnobservedTaskException), unobservedTaskExceptionEventArgs.Exception);
+
             DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
+
+            CommonLocalSettings.DataSerialised = false;
         }
 
         private static void UnhandledExceptionHandler(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs args)

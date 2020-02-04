@@ -123,6 +123,8 @@ namespace GrampsView.Droid
         {
             var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
             DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
+
+            CommonLocalSettings.DataSerialised = false;
         }
 
         private void UnregisterManagers()
