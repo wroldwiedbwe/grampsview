@@ -19,7 +19,7 @@ namespace GrampsView.ViewModels
     /// <summary>
     /// Defines the EVent Detail Page View ViewModel.
     /// </summary>
-    /// <seealso cref="Prism.Mvvm.ViewModelBase" />
+    /// <seealso cref="Prism.Mvvm.ViewModelBase"/>
     public class EventDetailViewModel : ViewModelBase
     {
         /// <summary>
@@ -28,7 +28,7 @@ namespace GrampsView.ViewModels
         private EventModel localEventObject;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EventDetailViewModel" /> class.
+        /// Initializes a new instance of the <see cref="EventDetailViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonModelGridBuilder">
         /// The ioc common model grid builder.
@@ -70,38 +70,48 @@ namespace GrampsView.ViewModels
         {
             HLinkEventModel HLinkObject = BaseNavParamsHLink as HLinkEventModel;
 
-            EventObject = HLinkObject.DeRef;
-
-            if (!(EventObject is null))
+            if (!(HLinkObject is null) && (HLinkObject.Valid))
             {
-                BaseTitle = EventObject.GDescription;
-                BaseTitleIcon = CommonConstants.IconEvents;
+                EventObject = HLinkObject.DeRef;
 
-                // Get basic details
-                CardGroup t = new CardGroup { Title = "Header Details" };
+                if (!(EventObject is null) && (EventObject.Valid))
+                {
+                    BaseTitle = EventObject.GDescription;
+                    BaseTitleIcon = CommonConstants.IconEvents;
 
-                t.Cards.Add(new CardListLineCollection
+                    // Get basic details
+                    CardGroup t = new CardGroup { Title = "Header Details" };
+
+                    t.Cards.Add(new CardListLineCollection
                     {
                         new CardListLine("Card Type:", "Event Detail"),
                         new CardListLine("Type:", EventObject.GType),
                         new CardListLine("Date:", EventObject.GDate.GetLongDateAsString),
                         new CardListLine("Event Age:", EventObject.GDate.GetAge),
-                        new CardListLine("Description:", EventObject.GDescription),
-                        new CardListLine("Place:", EventObject.GPlace.HLinkKey),
                     });
 
-                // Add Model details
-                t.Cards.Add(DV.EventDV.GetModelInfoFormatted(localEventObject));
+                    // Add Model details
+                    t.Cards.Add(DV.EventDV.GetModelInfoFormatted(localEventObject));
 
-                BaseHeader.Add(t);
+                    // Add the description and event place card
+                    CardListLineCollection t1 = new CardListLineCollection
+                        {
+                            new CardListLine("Description", EventObject.GDescription)
+                        };
+                    t.Cards.Add(t1);
 
-                BaseDetail.Add(EventObject.GAttribute.GetCardGroup());
-                BaseDetail.Add(EventObject.GCitationRefCollection.GetCardGroup());
-                BaseDetail.Add(EventObject.GMediaRefCollection.GetCardGroup());
-                BaseDetail.Add(EventObject.GNoteRefCollection.GetCardGroup());
-                BaseDetail.Add(EventObject.GTagRefCollection.GetCardGroup());
+                    t.Cards.Add(EventObject.GPlace);
 
-                BaseDetail.Add(EventObject.BackHLinkReferenceCollection.GetCardGroup());
+                    BaseHeader.Add(t);
+
+                    BaseDetail.Add(EventObject.GAttribute.GetCardGroup());
+                    BaseDetail.Add(EventObject.GCitationRefCollection.GetCardGroup());
+                    BaseDetail.Add(EventObject.GMediaRefCollection.GetCardGroup());
+                    BaseDetail.Add(EventObject.GNoteRefCollection.GetCardGroup());
+                    BaseDetail.Add(EventObject.GTagRefCollection.GetCardGroup());
+
+                    BaseDetail.Add(EventObject.BackHLinkReferenceCollection.GetCardGroup());
+                }
             }
         }
     }

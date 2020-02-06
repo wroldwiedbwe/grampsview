@@ -32,7 +32,7 @@ namespace GrampsView.Data.External.StoreSerial
         private readonly ICommonLogging localGVLogging;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GrampsStoreSerial" /> class.
+        /// Initializes a new instance of the <see cref="GrampsStoreSerial"/> class.
         /// </summary>
         /// <param name="iocGVProgress">
         /// The ioc gv progress.
@@ -101,9 +101,9 @@ namespace GrampsView.Data.External.StoreSerial
                             DataStore.CN.NotifyError("Bad Citation deserialisation error.  Data loading cancelled. Restart the program and reload the data.");
                         }
 
-                        if (t.localEventData != null)
+                        if (t.EventData != null)
                         {
-                            DataStore.DS.localEventData = t.localEventData;
+                            DataStore.DS.EventData = t.EventData;
                         }
                         else
                         {

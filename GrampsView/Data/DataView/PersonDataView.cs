@@ -4,6 +4,7 @@
 
 namespace GrampsView.Data.DataView
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -184,7 +185,6 @@ namespace GrampsView.Data.DataView
 
             t = HLinkCollectionSort(t);
 
-            // t = t.OrderBy(x => thisDataRepository.PersonData.Get(x.HLinkKey).BirthName.SortName);
             return t;
         }
 
@@ -211,7 +211,9 @@ namespace GrampsView.Data.DataView
         /// </returns>
         public override CardGroup GetLatestChanges()
         {
-            IEnumerable tt = DataViewData.Items.OrderByDescending(t => t.Change).Take(3);
+            DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
+
+            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 

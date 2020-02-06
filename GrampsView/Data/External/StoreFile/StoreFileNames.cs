@@ -4,11 +4,10 @@
 
 namespace GrampsView.Data
 {
-    using System;
-    using System.Threading.Tasks;
-
     using GrampsView.Common;
     using GrampsView.Data.Repository;
+
+    using System;
 
     using Xamarin.Essentials;
 
@@ -17,105 +16,6 @@ namespace GrampsView.Data
     /// </summary>
     public static class StoreFileNames
     {
-        ///// <summary>
-        ///// Sets the Data Folder in settings for Local Storage and creates if required.
-        ///// </summary>
-        ///// <returns>
-        ///// Nothign Task.
-        ///// </returns>
-        //public static async Task DataFolderSetLocalStorageAsync()
-        //{
-        //    //await ApplicationData.Current.LocalFolder.CreateFolderAsync(CommonConstants.StorageInternalFolder, CreationCollisionOption.OpenIfExists);
-
-        // //DataStore.DS.CurrentDataFolder = await
-        // ApplicationData.Current.LocalFolder.CreateFolderAsync(CommonConstants.StorageInternalFolder, CreationCollisionOption.OpenIfExists);
-
-        //    // DataFolderSettingsSaveTo();
-        //}
-
-        ///// <summary>
-        ///// </summary>
-        ///// <returns>
-        ///// A <see cref="Task{TResult}" /> representing the result of the asynchronous operation.
-        ///// </returns>
-        //public static async Task<bool> DataFolderSetToExistingAsync()
-        //{
-        //    try
-        //    {
-        //        // Define data folder TODO DataStore.DS.CurrentInputFolder.AuthLoad(CommonConstants.SettingsDataStorageFolder);
-
-        // //DataStore.DS.CurrentThumbNailFolder.AuthLoad(CommonConstants.StorageThumbNailFolder);
-
-        // //DataStore.DS.CurrentDataFolder = await DataFolderSettingsReadFrom().ConfigureAwait(false);
-
-        // //DataStore.DS.CurrentThumbNailFolder = await
-        // DataStore.DS.CurrentDataFolder.CreateFolderAsync(CommonConstants.StorageThumbNailFolder, CreationCollisionOption.OpenIfExists);
-
-        // // DataFolderSettingsSaveTo(); } catch (Exception ex) { CommonLocalSettings.DataSerialised
-        // = false;
-
-        // if (!(DataStore.DS.CurrentInputFolder is null)) { // TODO
-        // DataStore.DS.CurrentInputFolder.AuthClear(CommonConstants.SettingsDataStorageFolder); }
-
-        // //if (!(DataStore.DS.CurrentThumbNailFolder is null)) //{ //
-        // DataStore.DS.CurrentThumbNailFolder.AuthClear(CommonConstants.StorageThumbNailFolder); //}
-
-        // DataStore.CN.NotifyException("Trying DataFolderSetToExisting", ex);
-
-        // return false; }
-
-        //    return true;
-        //}
-
-        ///// <summary>
-        ///// Datas the folder set to new.
-        ///// </summary>
-        ///// <param name="t">
-        ///// The t.
-        ///// </param>
-        //public static void DataFolderSetToNew(string t)
-        //{
-        //    // Define data folder
-        //    //DataStore.DS.CurrentDataFolder = t;
-
-        //    DataFolderSettingsSaveTo();
-        //}
-
-        ///// <summary>
-        ///// Files the get first GPKG.
-        ///// </summary>
-        ///// <returns>
-        ///// </returns>
-        //public static async Task<FileInfoEx> FileGetFirstGPKG()
-        //{
-        //    FileInfo[] tt = DataStore.DS.CurrentInputFolder.GetFiles();
-
-        // foreach (FileInfo item in tt) { if (Path.GetExtension(item.Extension) == ".gpkg") { return
-        // item; } }
-
-        //    return null;
-        //}
-
-        ///// <summary>
-        ///// Files the get latest GPKG.
-        ///// </summary>
-        ///// <returns>
-        ///// </returns>
-        //public static async Task<string> FileGetLatestGPKG()
-        //{
-        //    string latestGPKG = null;
-
-        // //var options = new QueryOptions(); //options.FileTypeFilter.Add(".gpkg");
-        // //options.FolderDepth = FolderDepth.Shallow;
-
-        // //StorageFileQueryResult query = DataStore.DS.CurrentDataFolder.CreateFileQueryWithOptions(options);
-
-        // //// TODO output how many files that match the query were found
-
-        //    // TODO finish this
-        //    return latestGPKG;
-        //}
-
         /// <summary>
         /// Was the file modified since the last datetime saved?
         /// </summary>
@@ -130,7 +30,7 @@ namespace GrampsView.Data
         /// </returns>
         public static bool FileModifiedSinceLastSaveAsync(string settingsKey, FileInfoEx fileToCheck)
         {
-            if ( fileToCheck is null)
+            if (fileToCheck is null)
             {
                 throw new ArgumentNullException(nameof(fileToCheck));
             }
@@ -163,14 +63,11 @@ namespace GrampsView.Data
                     DateTime settingsStoredDateTime;
                     settingsStoredDateTime = DateTime.Parse(oldDateTime);
 
-             
                     int t = fileDateTime.CompareTo(settingsStoredDateTime);
                     if (t > 0)
                     {
                         return true;
                     }
-
-                
 
                     return false;
                 }
@@ -203,7 +100,7 @@ namespace GrampsView.Data
         /// </summary>
         /// <returns>
         /// </returns>
-        private static  DateTime FileGetDateTimeModified(FileInfoEx fileToCheck)
+        private static DateTime FileGetDateTimeModified(FileInfoEx fileToCheck)
         {
             try
             {

@@ -15,6 +15,7 @@ namespace GrampsView.Data.DataView
     using GrampsView.Data.Model;
     using GrampsView.Data.Repositories;
     using GrampsView.Data.Repository;
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
@@ -26,7 +27,7 @@ namespace GrampsView.Data.DataView
     public class CitationDataView : DataViewBase<CitationModel, HLinkCitationModel, HLinkCitationModelCollection>, ICitationDataView
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CitationDataView" /> class.
+        /// Initializes a new instance of the <see cref="CitationDataView"/> class.
         /// </summary>
         public CitationDataView()
         {
@@ -45,11 +46,6 @@ namespace GrampsView.Data.DataView
             {
                 return DataStore.DS.CitationData;
             }
-
-            //set
-            //{
-            //    SetProperty(ref DataStore.DS.CitationData, value);
-            //}
         }
 
         /// <summary>
@@ -190,7 +186,9 @@ namespace GrampsView.Data.DataView
 
         public override CardGroup GetLatestChanges()
         {
-            IEnumerable tt = DataViewData.Items.OrderByDescending(t => t.Change).Take(3);
+            DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
+
+            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 

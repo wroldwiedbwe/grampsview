@@ -10,6 +10,7 @@
 
 namespace GrampsView.Data.DataView
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
@@ -24,13 +25,13 @@ namespace GrampsView.Data.DataView
 
     /// <summary>
     /// </summary>
-    /// <seealso cref="GrampsView.Data.DataView.DataViewBase{GrampsView.Data.ViewModel.RepositoryModel, GrampsView.Data.ViewModel.HLinkRepositoryModel, GrampsView.Data.Collections.HLinkRepositoryModelCollection}" />
+    /// <seealso cref="GrampsView.Data.DataView.DataViewBase{GrampsView.Data.ViewModel.RepositoryModel, GrampsView.Data.ViewModel.HLinkRepositoryModel, GrampsView.Data.Collections.HLinkRepositoryModelCollection}"/>
     /// /// /// /// /// /// ///
-    /// <seealso cref="GrampsView.Data.DataView.IRepositoryDataView" />
+    /// <seealso cref="GrampsView.Data.DataView.IRepositoryDataView"/>
     public class RepositoryDataView : DataViewBase<RepositoryModel, HLinkRepositoryModel, HLinkRepositoryModelCollection>, IRepositoryDataView
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RepositoryDataView" /> class.
+        /// Initializes a new instance of the <see cref="RepositoryDataView"/> class.
         /// </summary>
         public RepositoryDataView()
         {
@@ -100,7 +101,9 @@ namespace GrampsView.Data.DataView
 
         public override CardGroup GetLatestChanges()
         {
-            IEnumerable tt = DataViewData.Items.OrderByDescending(t => t.Change).Take(3);
+            DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
+
+            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 

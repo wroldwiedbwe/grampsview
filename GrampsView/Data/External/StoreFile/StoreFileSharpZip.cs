@@ -16,11 +16,45 @@ namespace GrampsView.Data
 
     /// <summary>
     /// </summary>
-    /// <seealso cref="GrampsView.Common.CommonBindableBase" />
+    /// <seealso cref="GrampsView.Common.CommonBindableBase"/>
     /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="GrampsView.Data.IStoreFile" />
+    /// <seealso cref="GrampsView.Data.IStoreFile"/>
     public partial class StoreFile : CommonBindableBase, IStoreFile
     {
+        /// <summary>
+        /// Extracts the gzip file.
+        /// </summary>
+        /// <param name="argInputFile">
+        /// The input file.
+        /// </param>
+        /// <returns>
+        /// </returns>
+        public static async Task<bool> ExtractGZip(FileInfoEx argInputFile)
+        {
+            if (argInputFile is null)
+            {
+                throw new ArgumentNullException(nameof(argInputFile));
+            }
+
+            FileStream originalFileStream = argInputFile.FInfo.OpenRead();
+
+            byte[] dataBuffer = new byte[4096];
+
+            GZipInputStream gzipStream = new GZipInputStream(originalFileStream);
+
+            FileInfo fsOut = new FileInfo(Path.Combine(DataStore.DS.CurrentDataFolder.FullName, "data.xml"));
+
+            FileStream fsOut1 = fsOut.Create();
+
+            StreamUtils.Copy(gzipStream, fsOut1, dataBuffer);
+            fsOut1.Flush();
+
+            fsOut1.Dispose();
+            gzipStream.Dispose();
+
+            return true;
+        }
+
         /// <summary>
         /// Extracts the zip file.
         /// </summary>
@@ -79,38 +113,6 @@ namespace GrampsView.Data
                     zf.Close(); // Ensure we release resources
                 }
             }
-        }
-
-        /// <summary>Extracts the gzip file.</summary>
-        /// <param name="argInputFile">The input file.</param>
-        /// <returns></returns>
-        public static async Task<bool> ExtractGZip(FileInfoEx argInputFile)
-        {
-            if (argInputFile is null)
-            {
-                throw new ArgumentNullException(nameof(argInputFile));
-            }
-
-            FileStream originalFileStream = argInputFile.FInfo.OpenRead();
-
-            byte[] dataBuffer = new byte[4096];
-
-            GZipInputStream gzipStream = new GZipInputStream(originalFileStream);
-
-            FileInfo fsOut = new FileInfo(Path.Combine(DataStore.DS.CurrentDataFolder.FullName, "data.xml"));
-
-            FileStream fsOut1 = fsOut.Create();
-
-            StreamUtils.Copy(gzipStream, fsOut1, dataBuffer);
-            fsOut1.Flush();
-
-            fsOut1.Dispose();
-            gzipStream.Dispose();
-
-            // Save the modified datetime so when can check for changes later TODO
-            // StoreFileNames.SaveFileModifiedSinceLastSave(CommonConstants.SettingsGPRAMPSFileLastDateTimeModified, CommonConstants.StorageGRAMPSFileName);
-
-            return true;
         }
     }
 }

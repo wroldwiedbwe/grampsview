@@ -23,8 +23,6 @@ namespace GrampsView.Data.Repository
         /// <summary>
         /// The local event data.
         /// </summary>
-        [DataMember]
-        public RepositoryModelType<EventModel, HLinkEventModel> localEventData = new RepositoryModelType<EventModel, HLinkEventModel>();
 
         /// <summary>
         /// The local family data.
@@ -94,6 +92,8 @@ namespace GrampsView.Data.Repository
 
         private DirectoryInfo _CurrentInputFolder;
 
+        private RepositoryModelType<EventModel, HLinkEventModel> _EventData = new RepositoryModelType<EventModel, HLinkEventModel>();
+
         /// <summary>
         /// The local source data.
         /// </summary>
@@ -101,7 +101,7 @@ namespace GrampsView.Data.Repository
         private RepositoryModelType<SourceModel, HLinkSourceModel> _SourceData = new RepositoryModelType<SourceModel, HLinkSourceModel>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DataInstance" /> class.
+        /// Initializes a new instance of the <see cref="DataInstance"/> class.
         /// </summary>
         public DataInstance()
         {
@@ -205,10 +205,27 @@ namespace GrampsView.Data.Repository
         }
 
         /// <summary>
+        /// The local citation data.
+        /// </summary>
+        [DataMember]
+        public RepositoryModelType<EventModel, HLinkEventModel> EventData
+        {
+            get
+            {
+                return _EventData;
+            }
+
+            set
+            {
+                SetProperty(ref _EventData, value);
+            }
+        }
+
+        /// <summary>
         /// Gets or sets a value indicating whether this instance is data loaded.
         /// </summary>
         /// <value>
-        /// <c> true </c> if this instance is data loaded; otherwise, <c> false </c>.
+        /// <c>true</c> if this instance is data loaded; otherwise, <c>false</c>.
         /// </value>
         [DataMember]
         public bool IsDataLoaded

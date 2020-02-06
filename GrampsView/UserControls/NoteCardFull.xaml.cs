@@ -13,11 +13,11 @@ namespace GrampsView.UserControls
     /// <summary>
     /// Code behind for Note Card Large.
     /// </summary>
-    /// <seealso cref="Windows.UI.Xaml.Controls.UserControl" />
+    /// <seealso cref="Windows.UI.Xaml.Controls.UserControl"/>
     public partial class NoteCardFull : Frame
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NoteCardFull" /> class.
+        /// Initializes a new instance of the <see cref="NoteCardFull"/> class.
         /// </summary>
         public NoteCardFull()
         {

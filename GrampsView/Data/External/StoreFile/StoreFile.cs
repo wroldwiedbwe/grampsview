@@ -24,7 +24,7 @@ namespace GrampsView.Data
     public partial class StoreFile : CommonBindableBase, IStoreFile
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="StoreFile" /> class.
+        /// Initializes a new instance of the <see cref="StoreFile"/> class.
         /// </summary>
         /// <param name="iocCommonProgress">
         /// The ioc common progress.
@@ -145,9 +145,6 @@ namespace GrampsView.Data
 
             try
             {
-                // Common.TestFileSystem vfs = new TestFileSystem();
-
-                // VFS.SetCurrent(vfs);
                 await ExtractGZip(inputFile).ConfigureAwait(false);
 
                 await DataStore.CN.MajorStatusAdd("GRAMPS file decompressing complete").ConfigureAwait(false);
@@ -174,8 +171,6 @@ namespace GrampsView.Data
         {
             await DataStore.CN.MajorStatusAdd("Decompressing GRAMPS TAR file").ConfigureAwait(false);
 
-            // bool onlyCopyIfModified = true;
-
             // Check arguments
             if (DataStore.DS.CurrentInputFile == null)
             {
@@ -184,12 +179,6 @@ namespace GrampsView.Data
             }
 
             Stream originalFileStream = DataStore.DS.CurrentInputFile.GetStream();
-
-            // TarArchive archive = null;
-
-            // Common.TestFileSystem vfs = new TestFileSystem();
-
-            // VFS.SetCurrent(vfs);
 
             // open the gzip and extract the tar file
             await DataStore.CN.MajorStatusAdd("Decompressing individual TAR files").ConfigureAwait(false);
@@ -200,25 +189,10 @@ namespace GrampsView.Data
                 using (TarInputStream tarIn = new TarInputStream(stream))
                 {
                     // DO NOT AWAIT as causes thread blocking await
-                    // ExtractTarIfNotModified(dataFolder, tarIn, false);
                     await ExtractTarArchive(tarIn).ConfigureAwait(false);
                 }
             }
 
-            // await DataStore.CN.MajorStatusAdd("Decompressing Gramps XML file");
-
-            // Stream inStream = File.OpenRead(localDataFolderPath.Path + "\\" + CommonConstants.localGRAMPSxmlFileName);
-
-            // tarArchive.ExtractContents(localDataFolderPath.Path + "\\" + "camerons");
-
-            // ExtractGZipSample(dataFolder.Path + "\\data.gramps", dataFolder.Path);
-
-            // Delete file and copy new StorageFile oldFile = await
-            // StorageFile.GetFileFromPathAsync(dataFolder.Path + "\\" + "data");
-
-            // await oldFile.RenameAsync(CommonConstants.StorageGRAMPSXMLFileName, NameCollisionOption.ReplaceExisting);
-
-            //// hide the progress bar await DataStore.CN.MajorStatusAdd("GRAMPS file loading complete");
             return true;
         }
     }

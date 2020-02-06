@@ -27,21 +27,28 @@ namespace GrampsView.Data.ExternalStorageNS
     /// <summary>
     /// Various utility and loading routines for XML data.
     /// </summary>
-    /// <seealso cref="GrampsView.Common.CommonBindableBase" />
+    /// <seealso cref="GrampsView.Common.CommonBindableBase"/>
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
     /// /// ///
-    /// <seealso cref="GrampsView.Data.ExternalStorageNS.IGrampsStoreXML" />
+    /// <seealso cref="GrampsView.Data.ExternalStorageNS.IGrampsStoreXML"/>
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
     /// /// ///
-    /// <seealso cref="IGrampsStoreXML" />
+    /// <seealso cref="IGrampsStoreXML"/>
     public partial class GrampsStoreXML : IGrampsStoreXML
     {
-        /// <summary>Gets the bool.</summary>
-        /// <param name="xmlData">The XML data.</param>
-        /// <param name="argName">Name of the argument.</param>
-        /// <returns></returns>
+        /// <summary>
+        /// Gets the bool.
+        /// </summary>
+        /// <param name="xmlData">
+        /// The XML data.
+        /// </param>
+        /// <param name="argName">
+        /// Name of the argument.
+        /// </param>
+        /// <returns>
+        /// </returns>
         private static bool GetBool(XElement xmlData, string argName)
         {
             string boolString = GetAttribute(xmlData.Attribute(argName));
@@ -98,10 +105,18 @@ namespace GrampsView.Data.ExternalStorageNS
             }
         }
 
-        /// <summary>Sets the home h link.</summary>
-        /// <param name="HomeImageHLink">The home image h link.</param>
-        /// <param name="hlink">The hlink.</param>
-        /// <returns>Updatded HomeImageLink</returns>
+        /// <summary>
+        /// Sets the home h link.
+        /// </summary>
+        /// <param name="HomeImageHLink">
+        /// The home image h link.
+        /// </param>
+        /// <param name="hlink">
+        /// The hlink.
+        /// </param>
+        /// <returns>
+        /// Updatded HomeImageLink
+        /// </returns>
         private static HLinkMediaModel SetHomeHLink(HLinkMediaModel HomeImageHLink, HLinkMediaModel hlink)
         {
             HomeImageHLink.GCorner1X = hlink.GCorner1X;
@@ -125,20 +140,12 @@ namespace GrampsView.Data.ExternalStorageNS
 
             if (theERElement.Any())
             {
-                HLinkMediaModel newHomeLink = new HLinkMediaModel
-                {
-                    HomeImageType = CommonConstants.HomeImageTypeSymbol,
-                    HomeSymbol = CommonConstants.IconBookMark // TODO  Windows.UI.Xaml.Controls.Symbol.Home,
-                };
-
-                // load event object references
+                // Load address object references
                 foreach (XElement theLoadORElement in theERElement)
                 {
-                    AddressModel tt = new AddressModel
+                    AddressModel newAddressModel = new AddressModel
                     {
                         Handle = "AddressCollection",
-
-                        HomeImageHLink = newHomeLink,
 
                         GCitationRefCollection = GetCitationCollection(theLoadORElement),
 
@@ -165,7 +172,11 @@ namespace GrampsView.Data.ExternalStorageNS
                         GNoteRefCollection = GetNoteCollection(theLoadORElement),
                     };
 
-                    t.Add(tt);
+                    // set the Home image or symbol
+                    newAddressModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                    newAddressModel.HomeImageHLink.HomeSymbol = CommonConstants.IconAddress;
+
+                    t.Add(newAddressModel);
                 }
 
                 t.Sort(x => x.GDate.SortDate);
@@ -193,20 +204,12 @@ namespace GrampsView.Data.ExternalStorageNS
 
             if (theERElement.Any())
             {
-                HLinkMediaModel newHomeLink = new HLinkMediaModel
-                {
-                    HomeImageType = CommonConstants.HomeImageTypeSymbol,
-                    HomeSymbol = CommonConstants.IconBookMark // TODO   Windows.UI.Xaml.Controls.Symbol.List,
-                };
-
-                // load event object references
+                // Load attribute object references
                 foreach (XElement theLoadORElement in theERElement)
                 {
-                    AttributeModel tt = new AttributeModel
+                    AttributeModel newAttributeModel = new AttributeModel
                     {
                         Handle = "AttributeCollection",
-
-                        HomeImageHLink = newHomeLink,
 
                         GCitationReferenceCollection = GetCitationCollection(theLoadORElement),
 
@@ -219,7 +222,11 @@ namespace GrampsView.Data.ExternalStorageNS
                         GValue = GetAttribute(theLoadORElement.Attribute("value")),
                     };
 
-                    t.Add(tt);
+                    // set the Home image or symbol
+                    newAttributeModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                    newAttributeModel.HomeImageHLink.HomeSymbol = CommonConstants.IconAttribute;
+
+                    t.Add(newAttributeModel);
                 }
             }
 
@@ -392,26 +399,6 @@ namespace GrampsView.Data.ExternalStorageNS
         }
 
         /// <summary>
-        /// Gets the h link.
-        /// </summary>
-        /// <param name="xmlData">
-        /// The XML data.
-        /// </param>
-        /// <returns>
-        /// </returns>
-        private HLinkBase HLink(XElement xmlData)
-        {
-            HLinkBase t = new HLinkBase();
-
-            if (xmlData != null)
-            {
-                t.HLinkKey = GetAttribute(xmlData.Attribute("hlink"));
-            }
-
-            return t;
-        }
-
-        /// <summary>
         /// Gets the note collection.
         /// </summary>
         /// <param name="xmlData">
@@ -488,8 +475,8 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         t2.HomeImageType = CommonConstants.HomeImageTypeClippedBitmap;
 
-                        // Gramps uses (0,0,0,0) or (0,0,100,100) for the entire bitmap . We point to
-                        // the mediaObject bitmap to save memory space.
+                        // Gramps uses (0,0,0,0) or (0,0,100,100) for the entire bitmap . We point
+                        // to the mediaObject bitmap to save memory space.
                         if ((t2.GCorner1X == 0) && (t2.GCorner1Y == 0) && (t2.GCorner2X == 0) && (t2.GCorner2Y == 0))
                         {
                             t2.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
@@ -783,6 +770,26 @@ namespace GrampsView.Data.ExternalStorageNS
 
             // Return sorted by the default text
             t.Sort(T => T.DeRef.GetDefaultText);
+
+            return t;
+        }
+
+        /// <summary>
+        /// Gets the h link.
+        /// </summary>
+        /// <param name="xmlData">
+        /// The XML data.
+        /// </param>
+        /// <returns>
+        /// </returns>
+        private HLinkBase HLink(XElement xmlData)
+        {
+            HLinkBase t = new HLinkBase();
+
+            if (xmlData != null)
+            {
+                t.HLinkKey = GetAttribute(xmlData.Attribute("hlink"));
+            }
 
             return t;
         }

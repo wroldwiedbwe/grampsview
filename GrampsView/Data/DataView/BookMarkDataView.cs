@@ -4,6 +4,7 @@
 
 namespace GrampsView.Data.DataView
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
@@ -19,13 +20,13 @@ namespace GrampsView.Data.DataView
     /// <summary>
     /// Event repository.
     /// </summary>
-    /// <seealso cref="GrampsView.Data.DataView.DataViewBase{GrampsView.Data.ViewModel.BookMarkModel, GrampsView.Data.ViewModel.HLinkBookMarkModel, GrampsView.Data.Collections.HLinkBookMarkModelCollection}" />
+    /// <seealso cref="GrampsView.Data.DataView.DataViewBase{GrampsView.Data.ViewModel.BookMarkModel, GrampsView.Data.ViewModel.HLinkBookMarkModel, GrampsView.Data.Collections.HLinkBookMarkModelCollection}"/>
     /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="GrampsView.Data.DataView.IBookMarkDataView" />
+    /// <seealso cref="GrampsView.Data.DataView.IBookMarkDataView"/>
     public class BookMarkDataView : DataViewBase<BookMarkModel, HLinkBookMarkModel, HLinkBookMarkModelCollection>, IBookMarkDataView
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BookMarkDataView" /> class.
+        /// Initializes a new instance of the <see cref="BookMarkDataView"/> class.
         /// </summary>
         /// iocDat
         public BookMarkDataView()
@@ -33,7 +34,7 @@ namespace GrampsView.Data.DataView
         }
 
         /// <summary>
-        /// Gets the citation data.
+        /// Gets the BookMarkdata.
         /// </summary>
         /// <value>
         /// The citation data.
@@ -45,8 +46,6 @@ namespace GrampsView.Data.DataView
             {
                 return DataStore.DS.BookMarkData;
             }
-
-            // set { SetProperty(ref DataStore.DS.BookMarkData, value); }
         }
 
         /// <summary>
@@ -118,7 +117,9 @@ namespace GrampsView.Data.DataView
 
         public override CardGroup GetLatestChanges()
         {
-            IEnumerable tt = DataViewData.Items.OrderByDescending(t => t.Change).Take(3);
+            DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
+
+            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 

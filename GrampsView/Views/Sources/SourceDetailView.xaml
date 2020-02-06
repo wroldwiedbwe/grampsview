@@ -13,10 +13,8 @@
     <NavigationPage.TitleView>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="Auto" />
-                <ColumnDefinition
-                    Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Image
@@ -42,21 +40,16 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition
-                Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition
-                Height="Auto" />
-            <RowDefinition
-                Height="Auto" />
-            <RowDefinition
-                Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <ucon:MediaImageFullCard
-            Grid.Row="0"
-            UCMedia="{Binding SourceObject.HomeImageHLink.DeRef, Mode=OneWay}" />
+
+        <ucon:MediaImageFullCard Grid.Row="0" UCMedia="{Binding SourceObject.HomeImageHLink, Mode=OneWay}" />
 
         <ucon:FlexMultiCardType
             x:Name="BaseHeader"

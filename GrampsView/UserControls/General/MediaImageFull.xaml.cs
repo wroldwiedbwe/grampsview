@@ -49,7 +49,9 @@ namespace GrampsView.UserControls
         {
             MediaImageFull mifModel = (bindable as MediaImageFull);
 
-            if (newValue is HLinkMediaModel imageHLinkMediaModel)
+            HLinkMediaModel imageHLinkMediaModel = newValue as HLinkMediaModel;
+
+            if (!(imageHLinkMediaModel is null) && (imageHLinkMediaModel.Valid))
             {
                 MediaModel t = imageHLinkMediaModel.DeRef;
 

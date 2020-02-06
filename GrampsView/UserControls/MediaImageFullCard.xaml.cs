@@ -13,22 +13,22 @@ namespace GrampsView.UserControls
     public partial class MediaImageFullCard : Frame
     {
         public static readonly BindableProperty UCMediaProperty = BindableProperty.Create(propertyName: nameof(UCMedia),
-                                                                                                returnType: typeof(MediaModel),
+                                                                                                returnType: typeof(HLinkMediaModel),
                                                                                                 declaringType: typeof(MediaImageFullCard),
-                                                                                                defaultValue: new MediaModel(),
+                                                                                                defaultValue: new HLinkMediaModel(),
                                                                                                 defaultBindingMode: BindingMode.OneWay,
                                                                                                 propertyChanged: HandleVMPropertyChanged
                                                                                                 );
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MediaImageFullCard" /> class.
+        /// Initializes a new instance of the <see cref="MediaImageFullCard"/> class.
         /// </summary>
         public MediaImageFullCard()
         {
             InitializeComponent();
         }
 
-        public MediaModel UCMedia
+        public HLinkMediaModel UCMedia
         {
             get
             {
@@ -36,7 +36,7 @@ namespace GrampsView.UserControls
                 {
                 }
 
-                return (MediaModel)base.GetValue(UCMediaProperty);
+                return (HLinkMediaModel)base.GetValue(UCMediaProperty);
             }
 
             set
@@ -52,7 +52,9 @@ namespace GrampsView.UserControls
         {
             MediaImageFullCard mifModel = (bindable as MediaImageFullCard);
 
-            if (newValue is HLinkMediaModel imageMediaModel)
+            HLinkMediaModel imageMediaModel = newValue as HLinkMediaModel;
+
+            if (!(imageMediaModel is null) && (imageMediaModel.Valid))
             {
                 mifModel.mediaFull.UCHLinkMediaModel = imageMediaModel;
             }
@@ -67,25 +69,6 @@ namespace GrampsView.UserControls
                 // Nothing to display so hide
                 mifModel.IsVisible = false;
             }
-        }
-
-        private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
-        {
-#if WINDOWS_UWP
-
-            MediaModel t = ((Image)sender).BindingContext as MediaModel;
-
-            if (t.IsOriginalFilePathValid)
-            {
-                OpenFileRequest tt = new OpenFileRequest
-
-                {
-                    File = new ReadOnlyFile(t.MediaStorageFileUri.AbsoluteUri)
-                };
-
-                Launcher.OpenAsync(tt);
-            }
-#endif
         }
     }
 }

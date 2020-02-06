@@ -15,11 +15,11 @@ namespace GrampsView.Data
 
     /// <summary>
     /// </summary>
-    /// <seealso cref="GrampsView.Common.CommonBindableBase" />
+    /// <seealso cref="GrampsView.Common.CommonBindableBase"/>
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
     /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="GrampsView.Data.IStoreFile" />
+    /// <seealso cref="GrampsView.Data.IStoreFile"/>
     public partial class StoreFile : CommonBindableBase, IStoreFile
     {
         /// <summary>
@@ -32,7 +32,7 @@ namespace GrampsView.Data
         /// The target dir.
         /// </param>
         /// <param name="asciiTranslate">
-        /// if set to <c> true </c> [ASCII translate].
+        /// if set to <c>true</c> [ASCII translate].
         /// </param>
         public static void ExtractTarByEntry(string tarFileName, string targetDir, bool asciiTranslate)
         {
@@ -99,10 +99,6 @@ namespace GrampsView.Data
         /// </returns>
         public async Task ExtractTarArchive(TarInputStream tarIn)
         {
-            //TarArchive archive = null;
-
-            //archive = TarArchive.CreateInputTarArchive(tarIn);
-
             await ExtractTarIfNotModified(tarIn, false).ConfigureAwait(false);
         }
 
@@ -118,7 +114,7 @@ namespace GrampsView.Data
         /// The tar in.
         /// </param>
         /// <param name="asciiTranslate">
-        /// if set to <c> true </c> [ASCII translate].
+        /// if set to <c>true</c> [ASCII translate].
         /// </param>
         /// <returns>
         /// True if the file is UnTARed correctly.
@@ -185,7 +181,7 @@ namespace GrampsView.Data
                     // Check file modification date if it exists
                     bool okToCopyFlag = true;
 
-                    //// Android uses mimetypes and a type for .gramps file sis not in the list TODO
+                    //// Android uses mimetypes and a type for .gramps files is not in the list TODO
                     //// work how how to add it to the list .gramps are .gz to just rename for now
                     //if (filename == "data.gramps")
                     //{

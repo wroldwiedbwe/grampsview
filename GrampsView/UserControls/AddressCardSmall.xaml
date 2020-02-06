@@ -37,7 +37,7 @@
             <ucon:MediaImage
                 x:Name="AnchorImage"
                 Grid.Row="0"
-                Grid.RowSpan="2"
+                Grid.RowSpan="3"
                 Grid.Column="0"
                 BindingContext="{Binding HomeImageHLink, Mode=OneWay}"
                 Style="{StaticResource MediaImageStyle}" />

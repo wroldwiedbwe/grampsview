@@ -26,13 +26,13 @@ namespace GrampsView.Data.DataView
     /// <summary>
     /// Event data store handy routines.
     /// </summary>
-    /// <seealso cref="GrampsView.Data.DataView.DataViewBase{GrampsView.Data.ViewModel.EventModel, GrampsView.Data.ViewModel.HLinkEventModel, GrampsView.Data.Collections.HLinkEventModelCollection}" />
+    /// <seealso cref="GrampsView.Data.DataView.DataViewBase{GrampsView.Data.ViewModel.EventModel, GrampsView.Data.ViewModel.HLinkEventModel, GrampsView.Data.Collections.HLinkEventModelCollection}"/>
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="GrampsView.Data.DataView.IEventDataView" />
+    /// <seealso cref="GrampsView.Data.DataView.IEventDataView"/>
     public class EventDataView : DataViewBase<EventModel, HLinkEventModel, HLinkEventModelCollection>, IEventDataView
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EventDataView" /> class.
+        /// Initializes a new instance of the <see cref="EventDataView"/> class.
         /// </summary>
         public EventDataView()
         {
@@ -77,17 +77,21 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataStore.DS.localEventData;
+                return DataStore.DS.EventData;
             }
 
-            set
-            {
-                SetProperty(ref DataStore.DS.localEventData, value);
-            }
+            //set
+            //{
+            //    SetProperty(ref DataStore.DS.EventData, value);
+            //}
         }
 
-        /// <summary>Gets the get event groups by decade.</summary>
-        /// <value>The get groups by letter.</value>
+        /// <summary>
+        /// Gets the get event groups by decade.
+        /// </summary>
+        /// <value>
+        /// The get groups by letter.
+        /// </value>
         public override List<CommonGroupInfoCollection<EventModel>> GetGroupsByLetter
         {
             get
@@ -248,7 +252,9 @@ namespace GrampsView.Data.DataView
 
         public override CardGroup GetLatestChanges()
         {
-            IEnumerable tt = DataViewData.Items.OrderByDescending(t => t.Change).Take(3);
+            DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
+
+            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 
