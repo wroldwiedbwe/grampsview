@@ -5,6 +5,7 @@
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     BackgroundColor="{StaticResource CardBackGroundPlace}"
+    IsVisible="{Binding Valid, Mode=OneWay}"
     Style="{StaticResource FrameSmallFixedCardStyle}">
     <Frame.Content>
 

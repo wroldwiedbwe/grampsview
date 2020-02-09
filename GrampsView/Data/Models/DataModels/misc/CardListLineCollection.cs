@@ -22,6 +22,14 @@ namespace GrampsView.Data.Model
 
         public string Title { get; set; }
 
+        public bool Visible
+        {
+            get
+            {
+                return (Items.Count > 0);
+            }
+        }
+
         public new void Add(CardListLine newLine)
         {
             if (newLine is null)

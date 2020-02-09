@@ -857,6 +857,10 @@ namespace GrampsView.Data.ExternalStorageNS
                         //    });
                         //}
 
+                        if (item.Id == "O0196")
+                        {
+                        }
+
                         var imageSize = DependencyService.Get<IImageResource>().GetSize(item.MediaStorageFilePath);
                         System.Diagnostics.Debug.WriteLine(imageSize);
                         item.MetaDataHeight = imageSize.Height;

@@ -25,16 +25,22 @@ namespace GrampsView.Data.Model
         //// "href"
         //// "description"
 
-        /// <summary>Initializes a new instance of the <see cref="URLModel"/> class.</summary>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="URLModel"/> class.
+        /// </summary>
         public URLModel()
         {
             OpenURLCommand = new DelegateCommand(OpenURL, CanOpenURL);
 
-            HomeImageHLink.HomeSymbol = GrampsView.Common.IconFont.Link;
+            HomeImageHLink.HomeSymbol = Common.IconFont.Link;
         }
 
-        /// <summary>Gets the default text.</summary>
-        /// <value>The default text.</value>
+        /// <summary>
+        /// Gets the default text.
+        /// </summary>
+        /// <value>
+        /// The default text.
+        /// </value>
         public string DefaultText
         {
             get
@@ -50,8 +56,12 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets or sets the description.</summary>
-        /// <value>The g description.</value>
+        /// <summary>
+        /// Gets or sets the description.
+        /// </summary>
+        /// <value>
+        /// The g description.
+        /// </value>
         [DataMember]
         public string GDescription
         {
@@ -59,8 +69,12 @@ namespace GrampsView.Data.Model
             set;
         }
 
-        /// <summary>Gets or sets the hlink reference.</summary>
-        /// <value>The gh reference.</value>
+        /// <summary>
+        /// Gets or sets the hlink reference.
+        /// </summary>
+        /// <value>
+        /// The gh reference.
+        /// </value>
         [DataMember]
         public Uri GHRef
         {

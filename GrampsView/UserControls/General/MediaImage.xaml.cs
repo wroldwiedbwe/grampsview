@@ -78,6 +78,10 @@ namespace GrampsView.UserControls
 
             MediaModel t = HLinkMedia.DeRef;
 
+            if (t.Id == "O0196")
+            {
+            }
+
             if (!HLinkMedia.Valid || !HLinkMedia.HomeUseImage || !t.IsMediaFile)
             {
                 this.daImage.IsVisible = false;
@@ -117,18 +121,18 @@ namespace GrampsView.UserControls
 
             if (HLinkMedia.GCorner1X > 0 || HLinkMedia.GCorner1Y > 0 || HLinkMedia.GCorner2X > 0 || HLinkMedia.GCorner2Y > 0)
             {
-                double CropWidth = HLinkMedia.GCorner2X - HLinkMedia.GCorner1X;
-                double CropHeight = HLinkMedia.GCorner2Y - HLinkMedia.GCorner1Y;
+                double CropWidth = ((HLinkMedia.GCorner2X - HLinkMedia.GCorner1X) / 100d) * t.MetaDataWidth;
+                double CropHeight = ((HLinkMedia.GCorner2Y - HLinkMedia.GCorner1Y) / 100d) * t.MetaDataHeight;
 
-                CropWidthRatio = CropWidth / 100d;
-                CropHeightRatio = CropHeight / 100d;
-                CurrentZoomFactor = 100d / Math.Min((CropWidth), CropHeight);
+                CropWidthRatio = CropWidth / CropHeight;
+                CropHeightRatio = CropHeight / CropWidth;
+                CurrentZoomFactor = 100 / ((HLinkMedia.GCorner2X - HLinkMedia.GCorner1X));
 
-                CurrentXOffset = (-50 + HLinkMedia.GCorner1X + (CropWidth / 2));
-                CurrentXOffset = CurrentXOffset * (t.MetaDataWidth / t.MetaDataHeight) * (CropHeight / CropWidth) / 100d;
+                CurrentXOffset = (CropWidth / 2);
+                CurrentXOffset = CurrentXOffset * (CropHeight / CropWidth);
 
-                CurrentYOffset = (-50 + HLinkMedia.GCorner1Y + (CropHeight / 2));
-                CurrentYOffset = CurrentYOffset * (t.MetaDataHeight / t.MetaDataWidth) * (CropWidth / CropHeight) / 100d;
+                CurrentYOffset = (CropHeight / 2);
+                CurrentYOffset = CurrentYOffset * (CropWidth / CropHeight);
 
                 this.daImage.DownsampleToViewSize = false;
 

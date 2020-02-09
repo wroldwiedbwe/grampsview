@@ -764,6 +764,10 @@ namespace GrampsView.Data.ExternalStorageNS
                         GDescription = GetAttribute(theLoadORElement.Attribute("description")),
                     };
 
+                    // set the Home image or symbol
+                    tt.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                    tt.HomeImageHLink.HomeSymbol = IconFont.Link;
+
                     t.Add(tt);
                 }
             }

@@ -3,6 +3,7 @@
     x:Class="GrampsView.UserControls.ListLineCardSmall"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    IsVisible="{Binding Visible, Mode=OneWay}"
     MinimumHeightRequest="{StaticResource GVDetailCardHeightLarge}"
     Style="{StaticResource FrameSmallVariableCardStyleNS}">
     <Frame.Content>
