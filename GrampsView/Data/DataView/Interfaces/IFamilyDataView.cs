@@ -30,7 +30,7 @@ namespace GrampsView.Data.DataView
         /// </value>
         RepositoryModelType<FamilyModel, HLinkFamilyModel> FamilyData
         {
-            get; set;
+            get;
         }
 
         /// <summary>

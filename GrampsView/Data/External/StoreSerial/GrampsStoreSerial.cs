@@ -111,9 +111,9 @@ namespace GrampsView.Data.External.StoreSerial
                             DataStore.CN.NotifyError("Bad Event deserialisation error.  Data loading cancelled. Restart the program and reload the data.");
                         }
 
-                        if (t.localFamilyData != null)
+                        if (t.FamilyData != null)
                         {
-                            DV.FamilyDV.FamilyData = t.localFamilyData;
+                            DataStore.DS.FamilyData = t.FamilyData;
                         }
                         else
                         {
@@ -170,7 +170,7 @@ namespace GrampsView.Data.External.StoreSerial
                         }
 
                         // TODO Finish setting the checks up on these
-                        DataStore.DS.localFamilyData = t.localFamilyData;
+                        DataStore.DS.FamilyData = t.FamilyData;
                         DataStore.DS.localHeaderData = t.localHeaderData;
                         DataStore.DS.localNameMapData = t.localNameMapData;
                         DataStore.DS.localNoteData = t.localNoteData;

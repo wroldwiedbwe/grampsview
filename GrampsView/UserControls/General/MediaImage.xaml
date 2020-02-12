@@ -10,7 +10,9 @@
     BackgroundColor="Transparent"
     BindingContextChanged="mediaImage_BindingContextChanged"
     BorderColor="Transparent"
-    VerticalOptions="Fill">
+    HeightRequest="100"
+    VerticalOptions="Fill"
+    WidthRequest="100">
 
     <Frame.Content>
 

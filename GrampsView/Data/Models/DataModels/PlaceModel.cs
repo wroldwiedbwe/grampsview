@@ -32,9 +32,7 @@
 ////       </attribute>
 ////     </element>
 ////   </optional>
-//
 
-//
 ////   <zeroOrMore>
 ////     <element name = "location" >
 ////       < optional >
@@ -95,7 +93,7 @@
 ////     </element>
 ////   </zeroOrMore>
 ////
-//
+
 namespace GrampsView.Data.Model
 {
     using System;
@@ -106,13 +104,13 @@ namespace GrampsView.Data.Model
 
     /// <summary>
     /// </summary>
-    /// <seealso cref="GrampsView.Data.ViewModel.ModelBase" />
+    /// <seealso cref="GrampsView.Data.ViewModel.ModelBase"/>
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="GrampsView.Data.ViewModel.IPlaceModel" />
+    /// <seealso cref="GrampsView.Data.ViewModel.IPlaceModel"/>
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="System.IComparable" />
+    /// <seealso cref="System.IComparable"/>
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="System.Collections.IComparer" />
+    /// <seealso cref="System.Collections.IComparer"/>
     [DataContract]
     public sealed class PlaceModel : ModelBase, IPlaceModel, IComparable, IComparer
     {
@@ -149,7 +147,7 @@ namespace GrampsView.Data.Model
         private string localPTitleField;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PlaceModel" /> class.
+        /// Initializes a new instance of the <see cref="PlaceModel"/> class.
         /// </summary>
         public PlaceModel()
         {
@@ -197,25 +195,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return GPTitle;
-            }
-        }
-
-        /// <summary>
-        /// Gets the get h link.
-        /// </summary>
-        /// <value>
-        /// The get h link.
-        /// </value>
-        public HLinkPlaceModel HLink
-        {
-            get
-            {
-                HLinkPlaceModel t = new HLinkPlaceModel
+                if (!string.IsNullOrEmpty(GPTitle))
                 {
-                    HLinkKey = HLinkKey,
-                };
-                return t;
+                    return GPTitle;
+                }
+
+                return GName;
             }
         }
 
@@ -351,6 +336,24 @@ namespace GrampsView.Data.Model
         public OCURLModelCollection GURLCollection { get; set; }
 
         = new OCURLModelCollection();
+
+        /// <summary>
+        /// Gets the get h link.
+        /// </summary>
+        /// <value>
+        /// The get h link.
+        /// </value>
+        public HLinkPlaceModel HLink
+        {
+            get
+            {
+                HLinkPlaceModel t = new HLinkPlaceModel
+                {
+                    HLinkKey = HLinkKey,
+                };
+                return t;
+            }
+        }
 
         /// <summary>
         /// Compares two objects.

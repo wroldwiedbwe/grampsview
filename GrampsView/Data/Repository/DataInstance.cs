@@ -21,16 +21,6 @@ namespace GrampsView.Data.Repository
     public class DataInstance : CommonBindableBase
     {
         /// <summary>
-        /// The local event data.
-        /// </summary>
-
-        /// <summary>
-        /// The local family data.
-        /// </summary>
-        [DataMember]
-        public RepositoryModelType<FamilyModel, HLinkFamilyModel> localFamilyData = new RepositoryModelType<FamilyModel, HLinkFamilyModel>();
-
-        /// <summary>
         /// The local header data.
         /// </summary>
         [DataMember]
@@ -92,7 +82,16 @@ namespace GrampsView.Data.Repository
 
         private DirectoryInfo _CurrentInputFolder;
 
+        /// <summary>
+        /// The local event data.
+        /// </summary>
         private RepositoryModelType<EventModel, HLinkEventModel> _EventData = new RepositoryModelType<EventModel, HLinkEventModel>();
+
+        /// <summary>
+        /// The local family data.
+        /// </summary>
+        [DataMember]
+        private RepositoryModelType<FamilyModel, HLinkFamilyModel> _FamilyData = new RepositoryModelType<FamilyModel, HLinkFamilyModel>();
 
         /// <summary>
         /// The local source data.
@@ -205,7 +204,7 @@ namespace GrampsView.Data.Repository
         }
 
         /// <summary>
-        /// The local citation data.
+        /// The local Event data.
         /// </summary>
         [DataMember]
         public RepositoryModelType<EventModel, HLinkEventModel> EventData
@@ -218,6 +217,23 @@ namespace GrampsView.Data.Repository
             set
             {
                 SetProperty(ref _EventData, value);
+            }
+        }
+
+        /// <summary>
+        /// The local Family data.
+        /// </summary>
+        [DataMember]
+        public RepositoryModelType<FamilyModel, HLinkFamilyModel> FamilyData
+        {
+            get
+            {
+                return _FamilyData;
+            }
+
+            set
+            {
+                SetProperty(ref _FamilyData, value);
             }
         }
 

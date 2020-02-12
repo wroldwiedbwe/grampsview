@@ -121,23 +121,63 @@ namespace GrampsView.UserControls
 
             if (HLinkMedia.GCorner1X > 0 || HLinkMedia.GCorner1Y > 0 || HLinkMedia.GCorner2X > 0 || HLinkMedia.GCorner2Y > 0)
             {
-                double CropWidth = ((HLinkMedia.GCorner2X - HLinkMedia.GCorner1X) / 100d) * t.MetaDataWidth;
-                double CropHeight = ((HLinkMedia.GCorner2Y - HLinkMedia.GCorner1Y) / 100d) * t.MetaDataHeight;
+                double desiredWidthPerc = (HLinkMedia.GCorner2X - HLinkMedia.GCorner1X);
+                double desiredHeightPerc = (HLinkMedia.GCorner2Y - HLinkMedia.GCorner1Y);
 
-                CropWidthRatio = CropWidth / CropHeight;
-                CropHeightRatio = CropHeight / CropWidth;
-                CurrentZoomFactor = 100 / ((HLinkMedia.GCorner2X - HLinkMedia.GCorner1X));
+                double CropWidth = (desiredWidthPerc / 100d) * t.MetaDataWidth;
+                double CropHeight = (desiredHeightPerc / 100d) * t.MetaDataHeight;
 
-                CurrentXOffset = (CropWidth / 2);
-                CurrentXOffset = CurrentXOffset * (CropHeight / CropWidth);
+                CropWidthRatio = desiredWidthPerc;
+                CropHeightRatio = desiredHeightPerc;
+                CurrentZoomFactor = 100 / (Math.Max(desiredWidthPerc, desiredHeightPerc));
 
-                CurrentYOffset = (CropHeight / 2);
-                CurrentYOffset = CurrentYOffset * (CropWidth / CropHeight);
+                CurrentXOffset = ((HLinkMedia.GCorner1X - 50d) / 100d);
+                //CurrentXOffset = CurrentXOffset * (CropWidthRatio / 100);
 
+                CurrentYOffset = ((HLinkMedia.GCorner1Y - 50) / 100d);
+                //CurrentYOffset = CurrentYOffset * (CropHeightRatio / 100);
+
+                //////////////////////////////////////////////////////////////
+                double sourceWidth = t.MetaDataWidth;
+                double sourceHeight = t.MetaDataHeight;
+
+                double desiredWidth = sourceWidth;
+                double desiredHeight = sourceHeight;
+
+                double desiredRatio = CropWidthRatio / CropHeightRatio;
+                double currentRatio = sourceWidth / sourceHeight;
+
+                if (currentRatio > desiredRatio)
+                    desiredWidth = (CropWidthRatio * sourceHeight / CropHeightRatio);
+                else if (currentRatio < desiredRatio)
+                    desiredHeight = (CropHeightRatio * sourceWidth / CropWidthRatio);
+
+                double xOffset = CurrentXOffset * desiredWidth;
+                double yOffset = CurrentYOffset * desiredHeight;
+
+                desiredWidth = desiredWidth / CurrentZoomFactor;
+                desiredHeight = desiredHeight / CurrentZoomFactor;
+
+                float cropX = (float)(((sourceWidth - desiredWidth) / 2) + xOffset);
+                float cropY = (float)(((sourceHeight - desiredHeight) / 2) + yOffset);
+
+                if (cropX < 0)
+                    cropX = 0;
+
+                if (cropY < 0)
+                    cropY = 0;
+
+                if (cropX + desiredWidth > sourceWidth)
+                    cropX = (float)(sourceWidth - desiredWidth);
+
+                if (cropY + desiredHeight > sourceHeight)
+                    cropY = (float)(sourceHeight - desiredHeight);
+                //////////////////////////////////////////////////////////////////
+                ///
                 this.daImage.DownsampleToViewSize = false;
 
                 this.daImage.Transformations = new List<ITransformation> {
-                         new CropTransformation(CurrentZoomFactor, CurrentXOffset, CurrentYOffset, CropWidthRatio, CropHeightRatio) };
+                         new CropTransformation(CurrentZoomFactor, CurrentXOffset, CurrentYOffset,CropWidthRatio,CropHeightRatio) };
             }
 
             this.daSymbol.IsVisible = false;

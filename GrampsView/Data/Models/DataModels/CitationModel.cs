@@ -61,7 +61,7 @@ namespace GrampsView.Data.Model
     public sealed class CitationModel : ModelBase, ICitationModel, IComparable, IComparer
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CitationModel" /> class.
+        /// Initializes a new instance of the <see cref="CitationModel"/> class.
         /// </summary>
         public CitationModel()
         {
@@ -113,25 +113,11 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets the get h link.
+        /// Gets or sets the media reference collection.
         /// </summary>
         /// <value>
-        /// The get h link.
+        /// The media reference collection.
         /// </value>
-        public HLinkCitationModel HLink
-        {
-            get
-            {
-                HLinkCitationModel t = new HLinkCitationModel
-                {
-                    HLinkKey = HLinkKey,
-                };
-                return t;
-            }
-        }
-
-        /// <summary>Gets or sets the media reference collection.</summary>
-        /// <value>The media reference collection.</value>
         [DataMember]
         public HLinkMediaModelCollection GMediaRefCollection
         {
@@ -217,6 +203,24 @@ namespace GrampsView.Data.Model
             = new HLinkTagModelCollection();
 
         /// <summary>
+        /// Gets the get h link.
+        /// </summary>
+        /// <value>
+        /// The get h link.
+        /// </value>
+        public HLinkCitationModel HLink
+        {
+            get
+            {
+                HLinkCitationModel t = new HLinkCitationModel
+                {
+                    HLinkKey = HLinkKey,
+                };
+                return t;
+            }
+        }
+
+        /// <summary>
         /// Compares two objects.
         /// </summary>
         /// <param name="a">
@@ -251,6 +255,11 @@ namespace GrampsView.Data.Model
         /// </returns>
         public int CompareTo(object obj)
         {
+            if (obj is null)
+            {
+                return 0;
+            }
+
             CitationModel secondEvent = (CitationModel)obj;
 
             int testFlag = DateTime.Compare(GDateContent.SortDate, secondEvent.GDateContent.SortDate);

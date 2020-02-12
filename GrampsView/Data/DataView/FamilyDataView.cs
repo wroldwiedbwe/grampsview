@@ -65,12 +65,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataStore.DS.localFamilyData;
-            }
-
-            set
-            {
-                SetProperty(ref DataStore.DS.localFamilyData, value);
+                return DataStore.DS.FamilyData;
             }
         }
 
