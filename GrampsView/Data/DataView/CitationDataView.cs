@@ -146,7 +146,7 @@ namespace GrampsView.Data.DataView
                 return null;
             }
 
-            HLinkMediaModel returnMediaModel = null;
+            HLinkMediaModel returnMediaModel = new HLinkMediaModel();
 
             if (theCollection.Count > 0)
             {
@@ -173,7 +173,7 @@ namespace GrampsView.Data.DataView
                         returnMediaModel = currentHLink.DeRef.HomeImageHLink;
                     }
 
-                    if (returnMediaModel != null)
+                    if (returnMediaModel.Valid)
                     {
                         break;
                     }

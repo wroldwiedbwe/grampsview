@@ -195,9 +195,15 @@ namespace GrampsView.Data
                     {
                         FileInfoEx newFileName = await StoreFolder.FolderGetFileAsync(newFolder, filename).ConfigureAwait(false);
 
+                        //if (filename == "1024x768.png")
+                        //{
+                        //}
+
                         if (newFileName.Valid)
                         {
-                            if (tarEntry.ModTime.CompareTo(newFileName.FInfo.LastWriteTimeUtc) < 0)
+                            // TODO Check this compare date and tiem TODO Add delete existing files
+                            // option before extract
+                            if (tarEntry.ModTime.CompareTo(newFileName.FInfo.LastAccessTime) < 0)
                             {
                                 okToCopyFlag = false;
                             }

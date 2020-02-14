@@ -51,7 +51,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ucon:MediaImageFullCard Grid.Row="0" UCMedia="{Binding CitationObject.HomeImageHLink, Mode=OneWay}" />
+        <ucon:MediaImageSkia Grid.Row="0" BindingContext="{Binding CitationObject.HomeImageHLink, Mode=OneWay}" />
 
         <ucon:NoteCardFull Grid.Row="1" BindingContext="{Binding CitationObject.GNoteRef[0].DeRef, Mode=OneWay}" />
 

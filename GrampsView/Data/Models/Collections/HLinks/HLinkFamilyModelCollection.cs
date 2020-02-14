@@ -6,19 +6,19 @@
 /// </summary>
 namespace GrampsView.Data.Collections
 {
+    using GrampsView.Common;
+    using GrampsView.Data.DataView;
+    using GrampsView.Data.Model;
+
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Runtime.Serialization;
 
-    using GrampsView.Common;
-    using GrampsView.Data.DataView;
-    using GrampsView.Data.Model;
-
     /// <summary>
     /// Colelction of Family hLinks.
     /// </summary>
-    /// <seealso cref="GrampsView.Data.ViewModel.HLinkBaseCollection{GrampsView.Data.ViewModel.HLinkFamilyModel}" />
+    /// <seealso cref="GrampsView.Data.ViewModel.HLinkBaseCollection{GrampsView.Data.ViewModel.HLinkFamilyModel}"/>
     [CollectionDataContract]
     [KnownType(typeof(ObservableCollection<HLinkFamilyModel>))]
     public class HLinkFamilyModelCollection : HLinkBaseCollection<HLinkFamilyModel>
@@ -49,15 +49,11 @@ namespace GrampsView.Data.Collections
             return base.GetCardGroup("Family Collection");
         }
 
-        /// <summary>Helper method to sort and set the firt image link.</summary>
+        /// <summary>
+        /// Helper method to sort and set the firt image link.
+        /// </summary>
         public void SortAndSetFirst()
         {
-            // Return if null
-            if (this == null)
-            {
-                return;
-            }
-
             // Set the first image link. Assumes main image is manually set to the first image in
             // Gramps if we need it to be, e.g. Citations.
             FamilyModel tempModel = new FamilyModel();

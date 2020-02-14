@@ -6,19 +6,18 @@
 /// </summary>
 namespace GrampsView.Data.Collections
 {
+    using GrampsView.Common;
+    using GrampsView.Data.Model;
+
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Runtime.Serialization;
 
-    using GrampsView.Common;
-    using GrampsView.Data.DataView;
-    using GrampsView.Data.Model;
-
     /// <summary>
     /// Collection of HLinks to Notes.
     /// </summary>
-    /// <seealso cref="GrampsView.Data.ViewModel.HLinkBaseCollection{GrampsView.Data.ViewModel.HLinkNoteModel}" />
+    /// <seealso cref="GrampsView.Data.ViewModel.HLinkBaseCollection{GrampsView.Data.ViewModel.HLinkNoteModel}"/>
     [CollectionDataContract]
     [KnownType(typeof(ObservableCollection<HLinkNoteModel>))]
     public class HLinkNoteModelCollection : HLinkBaseCollection<HLinkNoteModel>
@@ -36,7 +35,7 @@ namespace GrampsView.Data.Collections
                 }
                 else
                 {
-                    return null;
+                    return new HLinkNoteModel();
                 }
             }
         }
@@ -67,15 +66,11 @@ namespace GrampsView.Data.Collections
             return base.GetCardGroup("Note Collection");
         }
 
-        /// <summary>Helper method to sort and set the firt image link.</summary>
+        /// <summary>
+        /// Helper method to sort and set the firt image link.
+        /// </summary>
         public void SortAndSetFirst()
         {
-            // Return if null
-            if (this == null)
-            {
-                return;
-            }
-
             // Set the first image link. Assumes main image is manually set to the first image in
             // Gramps if we need it to be, e.g. Citations.
 

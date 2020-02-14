@@ -6,14 +6,14 @@
 /// </summary>
 namespace GrampsView.Data.Collections
 {
+    using GrampsView.Common;
+    using GrampsView.Data.DataView;
+    using GrampsView.Data.Model;
+
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Runtime.Serialization;
-
-    using GrampsView.Common;
-    using GrampsView.Data.DataView;
-    using GrampsView.Data.Model;
 
     /// <summary>
     /// </summary>
@@ -34,12 +34,6 @@ namespace GrampsView.Data.Collections
         /// </param>
         public void SortAndSetFirst()
         {
-            // Return if null
-            if (this == null)
-            {
-                return;
-            }
-
             // Set the first image link. Assumes main image is manually set to the first image in
             // Gramps if we need it to be, e.g. Citations.
             MediaModel tempMediaModel = new MediaModel();

@@ -24,15 +24,15 @@ namespace GrampsView.Data.ExternalStorageNS
     /// <summary>
     /// Private Storage Routines.
     /// </summary>
-    /// <seealso cref="GrampsView.Common.CommonBindableBase" />
+    /// <seealso cref="GrampsView.Common.CommonBindableBase"/>
     /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="GrampsView.Data.ExternalStorageNS.IGrampsStoreXML" />
+    /// <seealso cref="GrampsView.Data.ExternalStorageNS.IGrampsStoreXML"/>
     public partial class GrampsStoreXML : IGrampsStoreXML
     {
         public static FamilyModel SetHomeImage(FamilyModel argModel)
         {
             HLinkMediaModel hlink = argModel.GMediaRefCollection.FirstHLink;
-            if (hlink == null)
+            if (!hlink.Valid)
             {
                 argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
                 argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconFamilies;

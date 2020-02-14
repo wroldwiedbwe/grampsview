@@ -32,7 +32,7 @@ namespace GrampsView.Data.ExternalStorageNS
             }
 
             HLinkMediaModel hlink = argModel.GMediaRefCollection.FirstHLink;
-            if (hlink == null)
+            if (!hlink.Valid)
             {
                 argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
                 argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconEvents;

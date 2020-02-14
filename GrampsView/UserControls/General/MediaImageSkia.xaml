@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="GrampsView.UserControls.MediaImageSkia"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Margin="0"
+    Padding="0"
+    BackgroundColor="Transparent"
+    BindingContextChanged="mediaImage_BindingContextChanged"
+    BorderColor="Transparent"
+    HeightRequest="100"
+    VerticalOptions="Fill"
+    WidthRequest="100">
+
+    <Frame.Content>
+
+        <Grid
+            x:Name="skiaHostControl"
+            Margin="0"
+            Padding="0">
+
+            <Image
+                x:Name="daSymbol"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                IsVisible="True"
+                VerticalOptions="CenterAndExpand">
+                <Image.Source>
+                    <FontImageSource FontFamily="{DynamicResource MaterialFontFamily}" />
+                </Image.Source>
+            </Image>
+
+            <Image x:Name="skiaBitMapImage" />
+        </Grid>
+    </Frame.Content>
+</Frame>

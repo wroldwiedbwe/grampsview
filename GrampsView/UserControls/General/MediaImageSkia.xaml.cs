@@ -8,13 +8,15 @@ namespace GrampsView.UserControls
     using FFImageLoading.Work;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
+    using SkiaSharp;
+    using SkiaSharp.Views.Forms;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
-
+    using System.IO;
     using Xamarin.Forms;
 
-    public partial class MediaImage : Frame
+    public partial class MediaImageSkia : Frame
     {
         public static readonly BindableProperty UConHideSymbolProperty
                = BindableProperty.Create(returnType: typeof(bool), declaringType: typeof(MediaImage), propertyName: nameof(UConHideSymbol), defaultValue: false, propertyChanged: MediaImage_UConPropertyChanged);
@@ -30,7 +32,7 @@ namespace GrampsView.UserControls
 
         private double CurrentZoomFactor;
 
-        public MediaImage()
+        public MediaImageSkia()
         {
             InitializeComponent();
         }
@@ -79,7 +81,6 @@ namespace GrampsView.UserControls
 
             if (!HLinkMedia.Valid || !HLinkMedia.HomeUseImage || !t.IsMediaFile)
             {
-                this.daImage.IsVisible = false;
                 this.daSymbol.IsVisible = true;
 
                 // Set symbol
@@ -109,80 +110,43 @@ namespace GrampsView.UserControls
 
             Debug.WriteLine(HLinkMedia.DeRef.MediaStorageFilePath, "MediaImage");
 
-            this.daImage.IsVisible = true;
-            this.daSymbol.IsVisible = false;
+            SKBitmapImageSource skiabmimage = new SKBitmapImageSource();
 
-            this.daImage.DownsampleToViewSize = true;
+            SKBitmap resourceBitmap = new SKBitmap();
 
-            if (HLinkMedia.GCorner1X > 0 || HLinkMedia.GCorner1Y > 0 || HLinkMedia.GCorner2X > 0 || HLinkMedia.GCorner2Y > 0)
+            using (StreamReader stream = new StreamReader(HLinkMedia.DeRef.MediaStorageFilePath))
             {
-                double desiredWidthPerc = (HLinkMedia.GCorner2X - HLinkMedia.GCorner1X);
-                double desiredHeightPerc = (HLinkMedia.GCorner2Y - HLinkMedia.GCorner1Y);
-
-                double CropWidth = (desiredWidthPerc / 100d) * t.MetaDataWidth;
-                double CropHeight = (desiredHeightPerc / 100d) * t.MetaDataHeight;
-
-                CropWidthRatio = desiredWidthPerc;
-                CropHeightRatio = desiredHeightPerc;
-
-                if (desiredHeightPerc > desiredWidthPerc)
-                {
-                    CurrentZoomFactor = desiredHeightPerc / desiredWidthPerc;
-                }
-                else
-                {
-                    CurrentZoomFactor = desiredWidthPerc / desiredHeightPerc;
-                }
-
-                CurrentXOffset = ((50 - HLinkMedia.GCorner1X) / 2) * (CurrentZoomFactor / 100) * -1; // ((100 - HLinkMedia.GCorner1X) / 100d);
-
-                CurrentYOffset = ((50 - HLinkMedia.GCorner1Y) / 2) * (CurrentZoomFactor / 100) * -1; // ((100 - HLinkMedia.GCorner1Y) / 100d);
-
-                //////////////////////////////////////////////////////////////
-                double sourceWidth = t.MetaDataWidth;
-                double sourceHeight = t.MetaDataHeight;
-
-                double desiredWidth = sourceWidth;
-                double desiredHeight = sourceHeight;
-
-                double desiredRatio = CropWidthRatio / CropHeightRatio;
-                double currentRatio = sourceWidth / sourceHeight;
-
-                if (currentRatio > desiredRatio)
-                    desiredWidth = (CropWidthRatio * sourceHeight / CropHeightRatio);
-                else if (currentRatio < desiredRatio)
-                    desiredHeight = (CropHeightRatio * sourceWidth / CropWidthRatio);
-
-                double xOffset = CurrentXOffset * desiredWidth;
-                double yOffset = CurrentYOffset * desiredHeight;
-
-                desiredWidth = desiredWidth / CurrentZoomFactor;
-                desiredHeight = desiredHeight / CurrentZoomFactor;
-
-                float cropX = (float)(((sourceWidth - desiredWidth) / 2) + xOffset);
-                float cropY = (float)(((sourceHeight - desiredHeight) / 2) + yOffset);
-
-                if (cropX < 0)
-                    cropX = 0;
-
-                if (cropY < 0)
-                    cropY = 0;
-
-                if (cropX + desiredWidth > sourceWidth)
-                    cropX = (float)(sourceWidth - desiredWidth);
-
-                if (cropY + desiredHeight > sourceHeight)
-                    cropY = (float)(sourceHeight - desiredHeight);
-                //////////////////////////////////////////////////////////////////
-
-                this.daImage.DownsampleToViewSize = false;
-
-                this.daImage.Transformations = new List<ITransformation> {
-                         new CropTransformation(CurrentZoomFactor, CurrentXOffset, CurrentYOffset,CropWidthRatio,CropHeightRatio) };
+                resourceBitmap = SKBitmap.Decode(stream.BaseStream);
             }
 
             this.daSymbol.IsVisible = false;
-            this.daImage.Source = t.MediaStorageFilePath;
+
+            if (HLinkMedia.GCorner1X > 0 || HLinkMedia.GCorner1Y > 0 || HLinkMedia.GCorner2X > 0 || HLinkMedia.GCorner2Y > 0)
+            {
+                float crleft = (float)(HLinkMedia.GCorner1X / 100d * t.MetaDataWidth);
+                float crright = (float)(HLinkMedia.GCorner2X / 100d * t.MetaDataWidth);
+                float crtop = (float)(HLinkMedia.GCorner1Y / 100d * t.MetaDataHeight);
+                float crbottom = (float)(HLinkMedia.GCorner2Y / 100d * t.MetaDataHeight);
+
+                SKRect cropRect = new SKRect(crleft, crtop, crright, crbottom);
+
+                SKBitmap croppedBitmap = new SKBitmap((int)cropRect.Width,
+                                                  (int)cropRect.Height);
+                SKRect dest = new SKRect(0, 0, cropRect.Width, cropRect.Height);
+                SKRect source = new SKRect(cropRect.Left, cropRect.Top,
+                                           cropRect.Right, cropRect.Bottom);
+
+                using (SKCanvas canvas = new SKCanvas(croppedBitmap))
+                {
+                    canvas.DrawBitmap(resourceBitmap, source, dest);
+                }
+
+                skiabmimage.Bitmap = croppedBitmap;
+            }
+
+            skiaBitMapImage.Source = skiabmimage;
+
+            this.daSymbol.IsVisible = false;
         }
     }
 }
