@@ -38,7 +38,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <ucon:MediaImage
+            <ucon:MediaImageSkia
                 x:Name="AnchorImage1"
                 Grid.Row="0"
                 Grid.Column="0"

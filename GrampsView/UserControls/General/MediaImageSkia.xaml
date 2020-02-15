@@ -6,7 +6,7 @@
     Margin="0"
     Padding="0"
     BackgroundColor="Transparent"
-    BindingContextChanged="mediaImage_BindingContextChanged"
+    BindingContextChanged="MediaImageSkia_BindingContextChanged"
     BorderColor="Transparent"
     HeightRequest="100"
     VerticalOptions="Fill"

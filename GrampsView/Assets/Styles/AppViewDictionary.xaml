@@ -435,7 +435,7 @@
     <!--  Create a Large Style for a Label  -->
     <Style x:Key="GVLabelStyleInstructions" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource TextLightColor}" />
-        <Setter Property="FontSize" Value="22" />
+        <Setter Property="FontSize" Value="18" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 

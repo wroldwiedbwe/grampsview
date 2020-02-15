@@ -106,7 +106,7 @@ namespace GrampsView.Data.Model
         private HLinkPersonModelCollection _SiblingRefCollection = new HLinkPersonModelCollection();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PersonModel" /> class.
+        /// Initializes a new instance of the <see cref="PersonModel"/> class.
         /// </summary>
         public PersonModel()
         {
@@ -255,11 +255,6 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary> Gets or sets the Event Reference Collection.
-        ////   <zeroOrMore>
-        ////     <element name = "eventref" >
-        ////       <ref name="eventref-content" />
-        ////     </element>
-        ////   </zeroOrMore>
         // </summary>
         [DataMember]
         public HLinkEventModelCollection GEventRefCollection
@@ -349,11 +344,6 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary> Gets or sets Media In $$(hLink)$$.
-        ////   <zeroOrMore>
-        ////     <element name = "objref" >
-        ////       <ref name="objref-content" />
-        ////     </element>
-        ////   </zeroOrMore>
         // </summary>
         [DataMember]
         public HLinkMediaModelCollection GMediaRefCollection
@@ -389,7 +379,9 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets or sets the parent relationship collection.</summary>
+        /// <summary>
+        /// Gets or sets the parent relationship collection.
+        /// </summary>
         [DataMember]
         public HLinkFamilyModelCollection GParentInRefCollection
         {
@@ -454,7 +446,7 @@ namespace GrampsView.Data.Model
         /// Gets or sets a value indicating whether this instance is living.
         /// </summary>
         /// <value>
-        /// <c> true </c> if this instance is living; otherwise, <c> false </c>.
+        /// <c>true</c> if this instance is living; otherwise, <c>false</c>.
         /// </value>
         [DataMember]
         public bool IsLiving

@@ -50,7 +50,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ucon:MediaImage
+        <ucon:MediaImageSkia
             Grid.Row="0"
             BindingContext="{Binding PersonObject.HomeImageHLink, Mode=OneWay}"
             IsVisible="{Binding PersonObject.HomeImageHLink.HomeUseImage, Mode=OneWay}" />

@@ -4,33 +4,26 @@
 
 namespace GrampsView.UserControls
 {
-    using FFImageLoading.Transformations;
-    using FFImageLoading.Work;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
+
     using SkiaSharp;
     using SkiaSharp.Views.Forms;
+
     using System;
-    using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
+
     using Xamarin.Forms;
 
-    public partial class MediaImageSkia : Frame
+    public partial class MediaImageSkia : Frame, IDisposable
     {
         public static readonly BindableProperty UConHideSymbolProperty
                = BindableProperty.Create(returnType: typeof(bool), declaringType: typeof(MediaImage), propertyName: nameof(UConHideSymbol), defaultValue: false, propertyChanged: MediaImage_UConPropertyChanged);
 
-        private double CropHeightRatio;
+        private bool disposedValue = false;
 
-        private double CropWidthRatio;
-
-        // Set some other stuff
-        private double CurrentXOffset;
-
-        private double CurrentYOffset;
-
-        private double CurrentZoomFactor;
+        private SKBitmap resourceBitmap = new SKBitmap();
 
         public MediaImageSkia()
         {
@@ -45,6 +38,31 @@ namespace GrampsView.UserControls
 
         private HLinkMediaModel HLinkMedia { get; set; }
 
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above. GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects).
+                    resourceBitmap.Dispose();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                disposedValue = true;
+            }
+        }
+
         private static void MediaImage_UConPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
         }
@@ -57,7 +75,7 @@ namespace GrampsView.UserControls
             (sender as FFImageLoading.Forms.CachedImage).Source = null;
         }
 
-        private void mediaImage_BindingContextChanged(object sender, EventArgs e)
+        private void MediaImageSkia_BindingContextChanged(object sender, EventArgs e)
         {
             HLinkMediaModel qq = this.BindingContext as HLinkMediaModel;
             if ((qq is null) || (!qq.Valid))
@@ -112,8 +130,6 @@ namespace GrampsView.UserControls
 
             SKBitmapImageSource skiabmimage = new SKBitmapImageSource();
 
-            SKBitmap resourceBitmap = new SKBitmap();
-
             using (StreamReader stream = new StreamReader(HLinkMedia.DeRef.MediaStorageFilePath))
             {
                 resourceBitmap = SKBitmap.Decode(stream.BaseStream);
@@ -143,10 +159,19 @@ namespace GrampsView.UserControls
 
                 skiabmimage.Bitmap = croppedBitmap;
             }
+            else
+            {
+                skiabmimage.Bitmap = resourceBitmap;
+            }
 
             skiaBitMapImage.Source = skiabmimage;
 
             this.daSymbol.IsVisible = false;
         }
+
+        // To detect redundant calls
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        // ~MediaImageSkia() { // Do not change this code. Put cleanup code in Dispose(bool
+        // disposing) above. Dispose(false); }
     }
 }

@@ -33,7 +33,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <ucon:MediaImage
+            <ucon:MediaImageSkia
                 x:Name="AnchorImage"
                 Grid.Row="0"
                 Grid.Column="0"
