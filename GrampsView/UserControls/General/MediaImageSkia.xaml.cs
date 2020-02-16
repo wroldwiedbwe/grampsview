@@ -83,7 +83,7 @@ namespace GrampsView.UserControls
 
             if (HLinkMedia is null)
             {
-                DataStore.CN.NotifyError("Bad HlinkMediaModel (is null) passed to MediaImage");
+                //DataStore.CN.NotifyError("Bad HlinkMediaModel (is null) passed to MediaImage");
                 return;
             }
 
