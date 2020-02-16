@@ -28,18 +28,27 @@ namespace GrampsView.ViewModels
     /// </summary>
     public partial class WhatsNewViewModel : ViewModelBase
     {
-        private string _WhatsNewText = string.Empty;
-
         /// <summary>
         /// The local data repsitory.
         /// </summary>
         private readonly IDataRepositoryManager _DataRepositoryManager;
 
-        /// <summary>Initializes a new instance of the <see cref="SetupStorageViewModel"/> class.</summary>
-        /// <param name="iocDataRepositoryManager"></param>
-        /// <param name="iocCommonLogging">The common logging.</param>
-        /// <param name="iocEventAggregator">The event aggregator.</param>
-        /// <param name="iocNavigationService">The navigation service.</param>
+        private string _WhatsNewText = string.Empty;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SetupStorageViewModel"/> class.
+        /// </summary>
+        /// <param name="iocDataRepositoryManager">
+        /// </param>
+        /// <param name="iocCommonLogging">
+        /// The common logging.
+        /// </param>
+        /// <param name="iocEventAggregator">
+        /// The event aggregator.
+        /// </param>
+        /// <param name="iocNavigationService">
+        /// The navigation service.
+        /// </param>
         public WhatsNewViewModel(IDataRepositoryManager iocDataRepositoryManager, ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
@@ -50,8 +59,14 @@ namespace GrampsView.ViewModels
             BaseTitle = "What's new";
         }
 
-        /// <summary>Gets or sets the whats new text.</summary>
-        /// <value>  Whats New text</value>
+        public DelegateCommand LoadDataCommand { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the whats new text.
+        /// </summary>
+        /// <value>
+        /// Whats New text
+        /// </value>
         public string WhatsNewText
         {
             get
@@ -65,14 +80,12 @@ namespace GrampsView.ViewModels
             }
         }
 
-        public DelegateCommand LoadDataCommand { get; private set; }
-
         public void LoadDataAction()
         {
-            BaseEventAggregator.GetEvent<AppStartEvent>().Publish(false);
+            BaseEventAggregator.GetEvent<AppMainViewStart>().Publish();
 
-            // Start data load
-            BaseEventAggregator.GetEvent<PageNavigateEvent>().Publish(nameof(MessageLogPage));
+            //// Start data load
+            //BaseEventAggregator.GetEvent<PageNavigateEvent>().Publish(nameof(MessageLogPage));
         }
 
         /// <summary>

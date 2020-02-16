@@ -25,6 +25,8 @@ namespace GrampsView.UserControls
 
         private SKBitmap resourceBitmap = new SKBitmap();
 
+        private MediaModel theMediaModel = new MediaModel();
+
         public MediaImageSkia()
         {
             InitializeComponent();
@@ -77,13 +79,7 @@ namespace GrampsView.UserControls
 
         private void MediaImageSkia_BindingContextChanged(object sender, EventArgs e)
         {
-            HLinkMediaModel qq = this.BindingContext as HLinkMediaModel;
-            if ((qq is null) || (!qq.Valid))
-            {
-                return;
-            }
-
-            HLinkMedia = qq;
+            HLinkMedia = this.BindingContext as HLinkMediaModel;
 
             if (HLinkMedia is null)
             {
@@ -91,13 +87,19 @@ namespace GrampsView.UserControls
                 return;
             }
 
-            MediaModel t = HLinkMedia.DeRef;
+            if (!HLinkMedia.Valid)
+            {
+                //DataStore.CN.NotifyError("Invalid HlinkMediaModel (" + HLinkMedia.HLinkKey + ") passed to MediaImage");
+                return;
+            }
 
-            if (t.Id == "O0196")
+            theMediaModel = HLinkMedia.DeRef;
+
+            if (theMediaModel.Id == "O0196")
             {
             }
 
-            if (!HLinkMedia.Valid || !HLinkMedia.HomeUseImage || !t.IsMediaFile)
+            if (!HLinkMedia.Valid || !HLinkMedia.HomeUseImage || !theMediaModel.IsMediaFile)
             {
                 this.daSymbol.IsVisible = true;
 
@@ -123,26 +125,40 @@ namespace GrampsView.UserControls
                 {
                     this.daSymbol.IsVisible = true;
                 }
+
                 return;
             }
 
+            // Have a media image to display
             Debug.WriteLine(HLinkMedia.DeRef.MediaStorageFilePath, "MediaImage");
-
-            SKBitmapImageSource skiabmimage = new SKBitmapImageSource();
-
-            using (StreamReader stream = new StreamReader(HLinkMedia.DeRef.MediaStorageFilePath))
-            {
-                resourceBitmap = SKBitmap.Decode(stream.BaseStream);
-            }
 
             this.daSymbol.IsVisible = false;
 
             if (HLinkMedia.GCorner1X > 0 || HLinkMedia.GCorner1Y > 0 || HLinkMedia.GCorner2X > 0 || HLinkMedia.GCorner2Y > 0)
             {
-                float crleft = (float)(HLinkMedia.GCorner1X / 100d * t.MetaDataWidth);
-                float crright = (float)(HLinkMedia.GCorner2X / 100d * t.MetaDataWidth);
-                float crtop = (float)(HLinkMedia.GCorner1Y / 100d * t.MetaDataHeight);
-                float crbottom = (float)(HLinkMedia.GCorner2Y / 100d * t.MetaDataHeight);
+                this.daImage.IsVisible = false;
+                this.daSymbol.IsVisible = false;
+                this.skiaBitMapImage.IsVisible = true;
+
+                SKBitmapImageSource skiabmimage = new SKBitmapImageSource();
+
+                using (StreamReader stream = new StreamReader(HLinkMedia.DeRef.MediaStorageFilePath))
+                {
+                    resourceBitmap = SKBitmap.Decode(stream.BaseStream);
+                }
+
+                // Check for too large a bitmap
+                Debug.WriteLine("resourceBitmap size", resourceBitmap.ByteCount);
+                if (resourceBitmap.ByteCount > int.MaxValue - 1000)
+                {
+                    // TODO Handle this better. Perhaps resize? Delete for now
+                    resourceBitmap = new SKBitmap();
+                }
+
+                float crleft = (float)(HLinkMedia.GCorner1X / 100d * theMediaModel.MetaDataWidth);
+                float crright = (float)(HLinkMedia.GCorner2X / 100d * theMediaModel.MetaDataWidth);
+                float crtop = (float)(HLinkMedia.GCorner1Y / 100d * theMediaModel.MetaDataHeight);
+                float crbottom = (float)(HLinkMedia.GCorner2Y / 100d * theMediaModel.MetaDataHeight);
 
                 SKRect cropRect = new SKRect(crleft, crtop, crright, crbottom);
 
@@ -157,16 +173,22 @@ namespace GrampsView.UserControls
                     canvas.DrawBitmap(resourceBitmap, source, dest);
                 }
 
+                resourceBitmap.Dispose();
+
                 skiabmimage.Bitmap = croppedBitmap;
+
+                skiaBitMapImage.Source = skiabmimage;
             }
             else
             {
-                skiabmimage.Bitmap = resourceBitmap;
+                this.daImage.IsVisible = true;
+                this.daSymbol.IsVisible = false;
+                this.skiaBitMapImage.IsVisible = false;
+
+                this.daImage.DownsampleToViewSize = true;
+
+                this.daImage.Source = theMediaModel.MediaStorageFilePath;
             }
-
-            skiaBitMapImage.Source = skiabmimage;
-
-            this.daSymbol.IsVisible = false;
         }
 
         // To detect redundant calls

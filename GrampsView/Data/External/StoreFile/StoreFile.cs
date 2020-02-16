@@ -46,6 +46,12 @@ namespace GrampsView.Data
         {
             FileInfoEx resultFile = new FileInfoEx();
 
+            // Validate the input
+            if ((relativeFilePath is null) || (string.IsNullOrEmpty(relativeFilePath)))
+            {
+                return resultFile;
+            }
+
             // Check for relative path
             if (!StoreFileUtility.IsRelativeFilePathValid(relativeFilePath))
             {

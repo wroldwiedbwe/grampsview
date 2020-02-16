@@ -45,6 +45,8 @@
 
             BaseEventAggregator.GetEvent<GRAMPSDialogBoxEvent>().Subscribe(ActionDialog, ThreadOption.UIThread);
 
+            BaseEventAggregator.GetEvent<AppMainViewStart>().Subscribe(AppMainViewStart, ThreadOption.UIThread);
+
             // Build the Menu
             NavigateCommand = new DelegateCommand<string>(OnNavigateCommandExecuted);
 
@@ -115,6 +117,11 @@
 
             //using the dialog service as-is
             _dialogService.ShowDialog("ErrorDialog", t);
+        }
+
+        public void AppMainViewStart()
+        {
+            PopulateViewModel();
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)

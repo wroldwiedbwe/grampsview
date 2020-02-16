@@ -56,7 +56,7 @@
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"
                         Glyph="{Binding HomeImageHLink.HomeSymbol}"
-                        Color="{Binding HomeImageHLink.BackgroundColour}" />
+                        Color="{Binding HomeImageHLink.HomeSymbolColour}" />
                 </Image.Source>
             </Image>
         </Grid>
