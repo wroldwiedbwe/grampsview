@@ -2,15 +2,15 @@
 //     Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using Prism.Navigation;
-
 namespace GrampsView.Services
 {
+    using Prism.Events;
+
     /// <summary>
     /// Display the database reload view if required.
     /// </summary>
     public interface IDatabaseReloadDisplayService
     {
-        bool ShowIfAppropriate(INavigationService iocNavigationService, bool shown);
+        bool ShowIfAppropriate(IEventAggregator iocEventAggregator);
     }
 }

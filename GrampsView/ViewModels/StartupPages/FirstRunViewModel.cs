@@ -10,29 +10,35 @@
 namespace GrampsView.ViewModels
 {
     using GrampsView.Common;
-    using GrampsView.Data.Repository;
+    using GrampsView.Events;
 
+    using Prism.Commands;
     using Prism.Events;
     using Prism.Navigation;
 
     /// <summary>
-    /// <c> viewmodel </c> for the About <c> Flyout </c>.
+    /// <c>First Run View Model</c>
     /// </summary>
     public class FirstRunViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FirstRunViewModel" /> class.
+        /// Initializes a new instance of the <see cref="FirstRunViewModel"/> class.
         /// </summary>
-        /// <param name="iocDataRepositoryManager">
-        /// Controls the data repository.
+        /// <param name="iocCommonLogging">
+        /// Common logger
         /// </param>
         /// <param name="iocEventAggregator">
         /// The ioc event aggregator.
         /// </param>
-        public FirstRunViewModel(ICommonLogging iocCommonLogging, IDataRepositoryManager iocDataRepositoryManager, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
+        /// <param name="iocNavigationService">
+        /// </param>
+        public FirstRunViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
+            LoadDataCommand = new DelegateCommand(FirstRunLoadAFileButton);
         }
+
+        public DelegateCommand LoadDataCommand { get; private set; }
 
         /// <summary>
         /// Gramps export XML plus media.
@@ -45,8 +51,7 @@ namespace GrampsView.ViewModels
         /// </param>
         public void FirstRunLoadAFileButton()
         {
-            // Navigate to the Hubpage
-            BaseNavigationService.NavigateAsync(nameof(Views.FileInputHandlerPage));
+            BaseEventAggregator.GetEvent<AppStartFirstRunEvent>().Publish();
         }
 
         /// <summary>
@@ -60,6 +65,8 @@ namespace GrampsView.ViewModels
         /// </param>
         public async void LoadSampleFileButton(object sender, object parameter)
         {
+            // TODO add the sample button back
+
             //var uri = new Uri("ms-appx:///AnythingElse/SampleData/EnglishTudorHouse.gpkg");
             //StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(uri);
 
@@ -72,17 +79,16 @@ namespace GrampsView.ViewModels
         }
 
         /// <summary>
-        /// Raises the <see cref="avigatedTo" /> event.
+        /// Raises the <see cref="avigatedTo"/> event.
         /// </summary>
         /// <param name="e">
-        /// The <see cref="NavigatedToEventArgs" /> instance containing the event data.
+        /// The <see cref="NavigatedToEventArgs"/> instance containing the event data.
         /// </param>
         /// <param name="viewModelState">
         /// State of the view ViewModel.
         /// </param>
         public override void PopulateViewModel()
         {
-            // base.OnNavigatedTo(INavigationParameters parameters); BaseEventAggregator.GetEvent<PageTitleChangedEvent>().Publish();
         }
     }
 }

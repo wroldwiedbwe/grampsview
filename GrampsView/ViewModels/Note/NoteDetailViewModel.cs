@@ -27,7 +27,7 @@ namespace GrampsView.ViewModels
         private HLinkNoteModel _HLinkNote;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NoteDetailViewModel" /> class. Common logging.
+        /// Initializes a new instance of the <see cref="NoteDetailViewModel"/> class. Common logging.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// Common logging.
@@ -48,7 +48,6 @@ namespace GrampsView.ViewModels
         /// <value>
         /// The note object.
         /// </value>
-        // [RestorableState]
         public HLinkNoteModel HLinkNote
         {
             get
@@ -66,7 +65,7 @@ namespace GrampsView.ViewModels
         /// Handles navigation in wards and sets up the event model parameter.
         /// </summary>
         /// <param name="e">
-        /// The <see cref="NavigatedToEventArgs" /> instance containing the event data.
+        /// The <see cref="NavigatedToEventArgs"/> instance containing the event data.
         /// </param>
         /// <param name="viewModelState">
         /// The parameter is not used.
@@ -89,7 +88,6 @@ namespace GrampsView.ViewModels
                 {
                     new CardListLine("Card Type:", "Note Detail"),
                     new CardListLine("Type:", NoteModel.GType),
-                    new CardListLine("Private:", NoteModel.PrivAsString),
                 });
 
                 // Add Model details

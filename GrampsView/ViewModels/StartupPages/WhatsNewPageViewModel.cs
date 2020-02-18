@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 //
-// Various routines used by the Media object Summary Page View Model
+// Various routines used by the Whats New Page View Model
 //
 // <copyright file="SetupStorageViewModel.cs" company="MeMyselfAndI">
 // Copyright (c) MeMyselfAndI. All rights reserved.
@@ -9,17 +9,15 @@
 
 namespace GrampsView.ViewModels
 {
-    using System.IO;
-    using System.Reflection;
-
     using GrampsView.Common;
-    using GrampsView.Data.Repository;
     using GrampsView.Events;
-    using GrampsView.Views;
 
     using Prism.Commands;
     using Prism.Events;
     using Prism.Navigation;
+
+    using System.IO;
+    using System.Reflection;
 
     using Xam.Forms.Markdown;
 
@@ -28,18 +26,11 @@ namespace GrampsView.ViewModels
     /// </summary>
     public partial class WhatsNewViewModel : ViewModelBase
     {
-        /// <summary>
-        /// The local data repsitory.
-        /// </summary>
-        private readonly IDataRepositoryManager _DataRepositoryManager;
-
         private string _WhatsNewText = string.Empty;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SetupStorageViewModel"/> class.
         /// </summary>
-        /// <param name="iocDataRepositoryManager">
-        /// </param>
         /// <param name="iocCommonLogging">
         /// The common logging.
         /// </param>
@@ -49,11 +40,9 @@ namespace GrampsView.ViewModels
         /// <param name="iocNavigationService">
         /// The navigation service.
         /// </param>
-        public WhatsNewViewModel(IDataRepositoryManager iocDataRepositoryManager, ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
+        public WhatsNewViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
-            _DataRepositoryManager = iocDataRepositoryManager;
-
             LoadDataCommand = new DelegateCommand(LoadDataAction);
 
             BaseTitle = "What's new";
@@ -82,10 +71,7 @@ namespace GrampsView.ViewModels
 
         public void LoadDataAction()
         {
-            BaseEventAggregator.GetEvent<AppMainViewStart>().Publish();
-
-            //// Start data load
-            //BaseEventAggregator.GetEvent<PageNavigateEvent>().Publish(nameof(MessageLogPage));
+            BaseEventAggregator.GetEvent<AppStartWhatsNewEvent>().Publish();
         }
 
         /// <summary>

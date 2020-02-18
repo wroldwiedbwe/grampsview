@@ -13,14 +13,6 @@
     mc:Ignorable="d">
     <FlexLayout Direction="Column">
 
-        <!--  Header  -->
-        <!--
-        <Label
-            BackgroundColor="Aqua"
-            FontSize="Large"
-            HorizontalTextAlignment="Center"
-            Text="HEADER" />-->
-
         <!--  Body  -->
         <FlexLayout FlexLayout.Grow="1">
 
@@ -36,16 +28,16 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <Label
-                        Grid.Row="0"
-                        Style="{StaticResource GVLabelStyleInstructions}"
-                        Text="{i18n:Translate NeedDatabaseReloadPage_Instructions}" />
+                    <Frame Grid.Row="0" Style="{StaticResource FrameLargeVariableCardStyleNS}">
+                        <Label Style="{StaticResource GVLabelStyleInstructions}" Text="{i18n:Translate NeedDatabaseReloadPage_Instructions}" />
+                    </Frame>
 
                     <Button
                         Grid.Row="1"
                         Command="{prismnav:NavigateTo 'FileInputHandlerPage',
                                                       Animated=True}"
                         HorizontalOptions="Center"
+                        Style="{StaticResource GVButtonStyle}"
                         Text="Load Database"
                         VerticalOptions="Center" />
                 </Grid>

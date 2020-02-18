@@ -71,7 +71,7 @@ namespace GrampsView.Data.Repository
         /// <summary>
         /// The local book mark data.
         /// </summary>
-        [DataMember]
+
         private RepositoryModelType<BookMarkModel, HLinkBookMarkModel> _BookMarkData = new RepositoryModelType<BookMarkModel, HLinkBookMarkModel>();
 
         private RepositoryModelType<CitationModel, HLinkCitationModel> _CitationData = new RepositoryModelType<CitationModel, HLinkCitationModel>();
@@ -90,13 +90,12 @@ namespace GrampsView.Data.Repository
         /// <summary>
         /// The local family data.
         /// </summary>
-        [DataMember]
+
         private RepositoryModelType<FamilyModel, HLinkFamilyModel> _FamilyData = new RepositoryModelType<FamilyModel, HLinkFamilyModel>();
 
         /// <summary>
         /// The local source data.
         /// </summary>
-        [DataMember]
         private RepositoryModelType<SourceModel, HLinkSourceModel> _SourceData = new RepositoryModelType<SourceModel, HLinkSourceModel>();
 
         /// <summary>
@@ -112,6 +111,7 @@ namespace GrampsView.Data.Repository
         /// <value>
         /// The book mark data.
         /// </value>
+        [DataMember]
         public RepositoryModelType<BookMarkModel, HLinkBookMarkModel> BookMarkData
         {
             get
@@ -255,6 +255,7 @@ namespace GrampsView.Data.Repository
         /// <summary>
         /// Gets or sets source Data repository.
         /// </summary>
+        [DataMember]
         public RepositoryModelType<SourceModel, HLinkSourceModel> SourceData
         {
             get

@@ -12,14 +12,6 @@
 
     <FlexLayout Direction="Column">
 
-        <!--  Header  -->
-        <!--
-        <Label
-            BackgroundColor="Aqua"
-            FontSize="Large"
-            HorizontalTextAlignment="Center"
-            Text="HEADER" />-->
-
         <!--  Body  -->
         <FlexLayout FlexLayout.Grow="1">
 

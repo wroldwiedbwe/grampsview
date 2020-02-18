@@ -34,10 +34,17 @@ namespace GrampsView.ViewModels
         /// </summary>
         private FamilyModel localFamilyModel = new FamilyModel();
 
-        /// <summary>Initializes a new instance of the <see cref="FamilyDetailViewModel"/> class.</summary>
-        /// <param name="iocCommonLogging">common logging.</param>
-        /// <param name="iocEventAggregator">Prism event aggregator.</param>
-        /// <param name="iocNavigationService"></param>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FamilyDetailViewModel"/> class.
+        /// </summary>
+        /// <param name="iocCommonLogging">
+        /// common logging.
+        /// </param>
+        /// <param name="iocEventAggregator">
+        /// Prism event aggregator.
+        /// </param>
+        /// <param name="iocNavigationService">
+        /// </param>
         public FamilyDetailViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
@@ -103,7 +110,7 @@ namespace GrampsView.ViewModels
 
                 // Detail reference
                 BaseDetail.Add(FamilyObject.GEventRefCollection.GetCardGroup());
-                BaseDetail.Add(FamilyObject.GChildRefCollection.GetCardGroup());
+                BaseDetail.Add(FamilyObject.GChildRefCollection.GetCardGroup(), "Children");
 
                 BaseDetail.Add(FamilyObject.GCitationRefCollection.GetCardGroup());
                 BaseDetail.Add(FamilyObject.GMediaRefCollection.GetCardGroup());

@@ -2,36 +2,41 @@
 //     Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using Prism.Navigation;
-
-using Xamarin.Essentials;
-
 namespace GrampsView.Services
 {
+    using GrampsView.Events;
+    using GrampsView.Views;
+    using Prism.Events;
+
+    using Xamarin.Essentials;
+
     public class FirstRunDisplayService : IFirstRunDisplayService
     {
-        private static bool shown = false;
-
         public FirstRunDisplayService()
         {
         }
 
         /// <summary>
-        /// Shows if appropriate asynchronous.
+        /// Shows FirstRun pageif appropriate asynchronous.
         /// </summary>
-        /// <param name="navService">
-        /// The nav service.
+        /// <param name="iocEventAggregator">
         /// </param>
         /// <returns>
         /// </returns>
-        public bool ShowIfAppropriate(INavigationService iocNavigationService)
+        public bool ShowIfAppropriate(IEventAggregator iocEventAggregator)
         {
-            if (VersionTracking.IsFirstLaunchEver && !shown)
+            if (iocEventAggregator is null)
             {
-                shown = true;
+                return false;
             }
 
-            return shown;
+            if (VersionTracking.IsFirstLaunchEver && !Common.CommonLocalSettings.FirstRunDisplay)
+            {
+                Common.CommonLocalSettings.FirstRunDisplay = true;
+                iocEventAggregator.GetEvent<PageNavigateEvent>().Publish(nameof(FirstRunPage));
+            }
+
+            return false;
         }
     }
 }

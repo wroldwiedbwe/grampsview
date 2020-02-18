@@ -58,6 +58,7 @@ namespace GrampsView.Data.Model
 
     /// <summary> Data model for a Citation. <code> ************************************************************
     [DataContract]
+    [KnownType(typeof(HLinkSourceModel))]
     public sealed class CitationModel : ModelBase, ICitationModel, IComparable, IComparer
     {
         /// <summary>
@@ -108,7 +109,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return GSourceRef.DeRef.GSTitle;
+                if (GSourceRef.Valid)
+                {
+                    return GSourceRef.DeRef.GSTitle;
+                }
+
+                return "???Source Reference not found";
             }
         }
 

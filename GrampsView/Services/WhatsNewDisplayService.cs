@@ -2,28 +2,37 @@
 //     Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using Prism.Navigation;
-
-using Xamarin.Essentials;
-
 namespace GrampsView.Services
 {
+    using GrampsView.Events;
+    using GrampsView.Views;
+    using Prism.Events;
+    using Prism.Navigation;
+
+    using Xamarin.Essentials;
+
     public class WhatsNewDisplayService : IWhatsNewDisplayService
     {
-        private static bool shown = false;
-
         public WhatsNewDisplayService()
         {
         }
 
-        public bool ShowIfAppropriate(INavigationService iocNavigationService)
+        public bool ShowIfAppropriate(IEventAggregator iocEventAggregator)
         {
-            if (VersionTracking.IsFirstLaunchForCurrentBuild && !shown)
+            if (iocEventAggregator is null)
             {
-                shown = true;
+                return false;
             }
 
-            return shown;
+            if (VersionTracking.IsFirstLaunchForCurrentBuild && !Common.CommonLocalSettings.WhatsNewDisplayed)
+            {
+                Common.CommonLocalSettings.WhatsNewDisplayed = true;
+                iocEventAggregator.GetEvent<PageNavigateEvent>().Publish(nameof(WhatsNewPage));
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

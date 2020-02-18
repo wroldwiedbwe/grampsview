@@ -22,6 +22,7 @@
         private string CurrentPage = string.Empty;
 
         private IDatabaseReloadDisplayService localDatabaseReloadDisplayService = new DatabaseReloadDisplayService();
+
         private IFirstRunDisplayService localFirstRunDisplayService = new FirstRunDisplayService();
 
         private IWhatsNewDisplayService localWhatsNewDisplayService = new WhatsNewDisplayService();
@@ -45,7 +46,11 @@
 
             BaseEventAggregator.GetEvent<GRAMPSDialogBoxEvent>().Subscribe(ActionDialog, ThreadOption.UIThread);
 
-            BaseEventAggregator.GetEvent<AppMainViewStart>().Subscribe(AppMainViewStart, ThreadOption.UIThread);
+            BaseEventAggregator.GetEvent<AppStartWhatsNewEvent>().Subscribe(ServiceFirstRun, ThreadOption.UIThread);
+
+            BaseEventAggregator.GetEvent<AppStartFirstRunEvent>().Subscribe(ServiceReloadDatabase, ThreadOption.UIThread);
+
+            BaseEventAggregator.GetEvent<AppStartReloadDatabaseEvent>().Subscribe(ServiceLoadData, ThreadOption.UIThread);
 
             // Build the Menu
             NavigateCommand = new DelegateCommand<string>(OnNavigateCommandExecuted);
@@ -119,11 +124,6 @@
             _dialogService.ShowDialog("ErrorDialog", t);
         }
 
-        public void AppMainViewStart()
-        {
-            PopulateViewModel();
-        }
-
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
             base.OnNavigatedFrom(parameters);
@@ -145,45 +145,41 @@
         /// </returns>
         public override void PopulateViewModel()
         {
-            // check some initial conditions and show some alternative starting pages
-            string StartPage = string.Empty;
-            bool startSomewhere = false;
-
-            if ((!startSomewhere) && (localWhatsNewDisplayService.ShowIfAppropriate(BaseNavigationService)))
+            if (!localWhatsNewDisplayService.ShowIfAppropriate(BaseEventAggregator))
             {
-                StartPage = nameof(WhatsNewPage);
-                startSomewhere = true;
+                BaseEventAggregator.GetEvent<AppStartWhatsNewEvent>().Publish();
             }
+        }
 
-            if ((!startSomewhere) && ((localFirstRunDisplayService.ShowIfAppropriate(BaseNavigationService))))
+        public void ServiceFirstRun()
+        {
+            if (!localFirstRunDisplayService.ShowIfAppropriate(BaseEventAggregator))
             {
-                StartPage = nameof(FirstRunPage);
-                startSomewhere = true;
+                BaseEventAggregator.GetEvent<AppStartFirstRunEvent>().Publish();
             }
+        }
 
-            startSomewhere = (localDatabaseReloadDisplayService.ShowIfAppropriate(BaseNavigationService, startSomewhere));
-
-            if ((!startSomewhere) && (CommonLocalSettings.DataSerialised))
+        public void ServiceLoadData()
+        {
+            if (CommonLocalSettings.DataSerialised)
             {
                 BaseEventAggregator.GetEvent<AppStartEvent>().Publish(false);
 
                 // Start data load
-                StartPage = nameof(MessageLogPage);
-                startSomewhere = true;
+                BaseEventAggregator.GetEvent<PageNavigateEvent>().Publish(nameof(MessageLogPage));
+                return;
             }
 
-            if (!startSomewhere)
-            {
-                // No Serialised Data and made it this far so some problem has occurred. Load
-                // everything from the beginning.
+            // No Serialised Data and made it this far so some problem has occurred. Load everything
+            // from the beginning.
+            BaseEventAggregator.GetEvent<PageNavigateEvent>().Publish(nameof(FileInputHandlerPage));
+        }
 
-                StartPage = nameof(FileInputHandlerPage);
-            }
-
-            // Jump to another page if required
-            if (!string.IsNullOrEmpty(StartPage))
+        public void ServiceReloadDatabase()
+        {
+            if (!localDatabaseReloadDisplayService.ShowIfAppropriate(BaseEventAggregator))
             {
-                BaseEventAggregator.GetEvent<PageNavigateEvent>().Publish(StartPage);
+                BaseEventAggregator.GetEvent<AppStartReloadDatabaseEvent>().Publish();
             }
         }
 

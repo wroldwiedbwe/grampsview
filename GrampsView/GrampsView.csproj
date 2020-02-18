@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyVersion>1.15.229.206</AssemblyVersion>
     <FileVersion>1.15.229.206</FileVersion>
+    <Copyright>2011 - 2020 YouMeAndI</Copyright>
 
   </PropertyGroup>
 
@@ -18,6 +19,7 @@
     <UpdatePackageVersion>False</UpdatePackageVersion>
     <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
     <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

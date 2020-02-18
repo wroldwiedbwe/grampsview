@@ -118,7 +118,7 @@ namespace GrampsView.Data.External.StoreSerial
                         else
                         {
                             CommonLocalSettings.DataSerialised = false;
-                            DataStore.CN.NotifyError("Bad Media deserialisation error.  Data loading cancelled. Restart the program and reload the data.");
+                            DataStore.CN.NotifyError("Bad Family deserialisation error.  Data loading cancelled. Restart the program and reload the data.");
                         }
 
                         if (t.localMediaData != null)
@@ -170,7 +170,6 @@ namespace GrampsView.Data.External.StoreSerial
                         }
 
                         // TODO Finish setting the checks up on these
-                        DataStore.DS.FamilyData = t.FamilyData;
                         DataStore.DS.localHeaderData = t.localHeaderData;
                         DataStore.DS.localNameMapData = t.localNameMapData;
                         DataStore.DS.localNoteData = t.localNoteData;

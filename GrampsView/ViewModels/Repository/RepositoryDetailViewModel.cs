@@ -27,7 +27,7 @@ namespace GrampsView.ViewModels
         private RepositoryModel localRepositoryObject;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RepositoryDetailViewModel" /> class.
+        /// Initializes a new instance of the <see cref="RepositoryDetailViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The ioc common logging.
@@ -81,7 +81,6 @@ namespace GrampsView.ViewModels
                         new CardListLine("Card Type:", "Repository Detail"),
                         new CardListLine("Name:", RepositoryObject.GRName),
                         new CardListLine("Type:", RepositoryObject.GType),
-                        new CardListLine("Private:", RepositoryObject.PrivAsString),
                     });
 
                 t.Cards.Add(DV.RepositoryDV.GetModelInfoFormatted(RepositoryObject));

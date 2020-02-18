@@ -5,10 +5,10 @@
 namespace GrampsView.Services
 {
     using GrampsView.Common;
-    using GrampsView.Data.Repository;
+    using GrampsView.Events;
     using GrampsView.Views;
 
-    using Prism.Navigation;
+    using Prism.Events;
 
     // For instructions on testing this service see https://github.com/Microsoft/WindowsTemplateStudio/tree/master/docs/features/whats-new-prompt.md
     public class DatabaseReloadDisplayService : IDatabaseReloadDisplayService
@@ -23,16 +23,20 @@ namespace GrampsView.Services
         /// <returns>
         /// if the view is displayed.
         /// </returns>
-        public bool ShowIfAppropriate(INavigationService iocNavigationService, bool shown)
+        public bool ShowIfAppropriate(IEventAggregator iocEventAggregator)
         {
-            if (CommonLocalSettings.DatabaseReloadNeeded && !shown)
+            if (iocEventAggregator is null)
             {
-                DataStore.NV.Nav(nameof(NeedDatabaseReloadPage));
+                return false;
+            }
+            if (CommonLocalSettings.DatabaseReloadNeeded)
+            {
+                iocEventAggregator.GetEvent<PageNavigateEvent>().Publish(nameof(NeedDatabaseReloadPage));
 
-                shown = true;
+                return true;
             }
 
-            return shown;
+            return false;
         }
     }
 }

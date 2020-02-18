@@ -2,12 +2,12 @@
 //     Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using Prism.Navigation;
+using Prism.Events;
 
 namespace GrampsView.Services
 {
     public interface IFirstRunDisplayService
     {
-        bool ShowIfAppropriate(INavigationService iocNavigationService);
+        bool ShowIfAppropriate(IEventAggregator iocEventAggregator);
     }
 }

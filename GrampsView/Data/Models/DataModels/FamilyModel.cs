@@ -79,16 +79,40 @@ namespace GrampsView.Data.Model
     /// <summary>
     /// Data model for a family.
     /// </summary>
-    /// <seealso cref="GrampsView.Data.ViewModel.ModelBase" />
+    /// <seealso cref="GrampsView.Data.ViewModel.ModelBase"/>
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="GrampsView.Data.ViewModel.IFamilyModel" />
+    /// <seealso cref="GrampsView.Data.ViewModel.IFamilyModel"/>
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="System.IComparable" />
+    /// <seealso cref="System.IComparable"/>
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="System.Collections.IComparer" />
+    /// <seealso cref="System.Collections.IComparer"/>
     [DataContract]
+    [KnownType(typeof(HLinkPersonModel))]
     public sealed class FamilyModel : ModelBase, IFamilyModel, IComparable, IComparer
     {
+        /// <summary>
+        /// The local attribute reference.
+        /// </summary>
+        private OCAttributeModelCollection _AttributeReference = new OCAttributeModelCollection();
+
+        // citationref*
+        private HLinkCitationModelCollection _CitationReferenceCollection = new HLinkCitationModelCollection();
+
+        /// <summary>
+        /// The local event collection.
+        /// </summary>
+        private HLinkEventModelCollection _EventReferenceCollection = new HLinkEventModelCollection();
+
+        /// <summary>
+        /// Backing store for the HLink Note collection.
+        /// </summary>
+        private HLinkNoteModelCollection _GNoteRefCollection = new HLinkNoteModelCollection();
+
+        /// <summary>
+        /// The local media collection.
+        /// </summary>
+        private HLinkMediaModelCollection _MediaReferenceCollection = new HLinkMediaModelCollection();
+
         /// <summary>
         /// Collection of Child References $$(childref)$$.
         /// </summary>
@@ -105,29 +129,6 @@ namespace GrampsView.Data.Model
         private HLinkPersonModel fatherHLink = new HLinkPersonModel();
 
         /// <summary>
-        /// The local attribute reference.
-        /// </summary>
-        private OCAttributeModelCollection localAttributeReference = new OCAttributeModelCollection();
-
-        // citationref*
-        private HLinkCitationModelCollection localCitationReferenceCollection = new HLinkCitationModelCollection();
-
-        /// <summary>
-        /// The local event collection.
-        /// </summary>
-        private HLinkEventModelCollection localEventReferenceCollection = new HLinkEventModelCollection();
-
-        /// <summary>
-        /// Backing store for the HLink Note collection.
-        /// </summary>
-        private HLinkNoteModelCollection localGNoteRefCollection = new HLinkNoteModelCollection();
-
-        /// <summary>
-        /// The local media collection.
-        /// </summary>
-        private HLinkMediaModelCollection localMediaReferenceCollection = new HLinkMediaModelCollection();
-
-        /// <summary>
         /// Family Father Handle mother?.
         /// </summary>
         private HLinkPersonModel motherHLink = new HLinkPersonModel();
@@ -135,7 +136,7 @@ namespace GrampsView.Data.Model
         //// TODO lds_ord*
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FamilyModel" /> class.
+        /// Initializes a new instance of the <see cref="FamilyModel"/> class.
         /// </summary>
         public FamilyModel()
         {
@@ -208,7 +209,7 @@ namespace GrampsView.Data.Model
                 {
                     StringBuilder t = new StringBuilder();
                     t.Append(familyName);
-                    t.Append(GMother.DeRef.GBirthName.GSurName);
+                    t.Append(GMother.DeRef.GBirthName.GSurName.GetPrimarySurname);
                     familyName = t.ToString();
                 }
                 else
@@ -231,12 +232,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localAttributeReference;
+                return _AttributeReference;
             }
 
             set
             {
-                SetProperty(ref localAttributeReference, value);
+                SetProperty(ref _AttributeReference, value);
             }
         }
 
@@ -271,30 +272,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localCitationReferenceCollection;
+                return _CitationReferenceCollection;
             }
 
             set
             {
-                SetProperty(ref localCitationReferenceCollection, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets the get h link.
-        /// </summary>
-        /// <value>
-        /// The get h link.
-        /// </value>
-        public HLinkFamilyModel HLink
-        {
-            get
-            {
-                HLinkFamilyModel t = new HLinkFamilyModel
-                {
-                    HLinkKey = HLinkKey,
-                };
-                return t;
+                SetProperty(ref _CitationReferenceCollection, value);
             }
         }
 
@@ -309,12 +292,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localEventReferenceCollection;
+                return _EventReferenceCollection;
             }
 
             set
             {
-                SetProperty(ref localEventReferenceCollection, value);
+                SetProperty(ref _EventReferenceCollection, value);
             }
         }
 
@@ -369,12 +352,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localMediaReferenceCollection;
+                return _MediaReferenceCollection;
             }
 
             set
             {
-                SetProperty(ref localMediaReferenceCollection, value);
+                SetProperty(ref _MediaReferenceCollection, value);
             }
         }
 
@@ -409,12 +392,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGNoteRefCollection;
+                return _GNoteRefCollection;
             }
 
             set
             {
-                SetProperty(ref localGNoteRefCollection, value);
+                SetProperty(ref _GNoteRefCollection, value);
             }
         }
 
@@ -428,6 +411,24 @@ namespace GrampsView.Data.Model
         public HLinkTagModelCollection GTagRefCollection
         {
             get; set;
+        }
+
+        /// <summary>
+        /// Gets the get h link.
+        /// </summary>
+        /// <value>
+        /// The get h link.
+        /// </value>
+        public HLinkFamilyModel HLink
+        {
+            get
+            {
+                HLinkFamilyModel t = new HLinkFamilyModel
+                {
+                    HLinkKey = HLinkKey,
+                };
+                return t;
+            }
         }
 
         /// <summary>

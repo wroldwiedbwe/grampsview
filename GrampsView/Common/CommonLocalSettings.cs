@@ -93,38 +93,7 @@ namespace GrampsView.Common
             }
         }
 
-        ///// <summary>
-        ///// Gets or sets the file data input.
-        ///// </summary>
-        ///// <value>
-        ///// The file data input.
-        ///// </value>
-        //public static string FileDataInput
-        //{
-        //    get
-        //    {
-        //        return Task.Run<string>(() => GetStorageFile("FileGrampsDataInput")).Result;
-        //    }
 
-        //    set
-        //    {
-        //        SetStorageFile("FileGrampsDataInput", value);
-        //    }
-        //}
-
-        /// <summary>
-        /// Gets or sets a value indicating whether [first run].
-        /// </summary>
-        /// <value>
-        /// <c> true </c> if [first run]; otherwise, <c> false </c>.
-        /// </value>
-        public static bool FirstRun
-        {
-            get
-            {
-                return VersionTracking.IsFirstLaunchEver;
-            }
-        }
 
         /// <summary>
         /// Gets or sets a value indicating whether [logging enabled].
@@ -145,34 +114,43 @@ namespace GrampsView.Common
             }
         }
 
+        public static bool WhatsNewDisplayed
+        {
+            get
+            {
+                return GetBool("WhatsNewDisplayed");
+            }
+
+            set
+            {
+                SetBool("WhatsNewDisplayed", value);
+            }
+        }
+
+        public static bool FirstRunDisplay
+        {
+            get
+            {
+                return GetBool("FirstRunDisplay");
+            }
+
+            set
+            {
+                SetBool("FirstRunDisplay", value);
+            }
+        }
+
         public static void SetReloadDatabase()
         {
             // Remove the old dateTime stamps so the files get reloaded even if they have been seen before
-            Preferences.Remove(Common.CommonConstants.SettingsGPKGFileLastDateTimeModified);
-            Preferences.Remove(Common.CommonConstants.SettingsGPRAMPSFileLastDateTimeModified);
-            Preferences.Remove(Common.CommonConstants.SettingsXMLFileLastDateTimeModified);
+            Preferences.Remove(CommonConstants.SettingsGPKGFileLastDateTimeModified);
+            Preferences.Remove(CommonConstants.SettingsGPRAMPSFileLastDateTimeModified);
+            Preferences.Remove(CommonConstants.SettingsXMLFileLastDateTimeModified);
 
             DataSerialised = false;
         }
 
-        //public static string GeneralSettings
-        //{
-        //    get
-        //    {
-        //        return Preferences.Get(SettingsKey, SettingsDefault);
-        //    }
-        //    set
-        //    {
-        //        Preferences.Set(SettingsKey, value);
-        //    }
-        //}
-        //private static ISettings AppSettings
-        //{
-        //    get
-        //    {
-        //        return CrossSettings.Current;
-        //    }
-        //}
+      
 
         /// <summary>
         /// Gets the bool local setting data.
@@ -203,24 +181,7 @@ namespace GrampsView.Common
             }
         }
 
-        ///// <summary>
-        ///// Gets the storage file.
-        ///// </summary>
-        ///// <param name="setting">
-        ///// The setting.
-        ///// </param>
-        ///// <returns>
-        ///// </returns>
-        //private static async Task<string> GetStorageFile(string setting)
-        //{
-        //    string fileGrampsDataInput = null;
-
-        // //if (Preferences.Get(setting, string.Empty) == string.Empty) //{ // try // { //
-        // fileGrampsDataInput = await
-        // StorageApplicationPermissions.MostRecentlyUsedList.GetFileAsync(t); // } // catch
-        // (Exception) // { // fileGrampsDataInput = null; // } //}
-        //    return fileGrampsDataInput;
-        //}
+      
 
         /// <summary>
         /// Sets the bool.
@@ -257,30 +218,6 @@ namespace GrampsView.Common
             Preferences.Set(setting, value);
         }
 
-        ///// <summary>
-        ///// Sets the storage file by saving a list token that incorporates security permissions .
-        ///// Clears the value if null supplied.
-        ///// </summary>
-        ///// <param name="setting">
-        ///// The setting.
-        ///// </param>
-        ///// <param name="value">
-        ///// The value.
-        ///// </param>
-        //private static void SetStorageFile(string setting, string value)
-        //{
-        //    if (value != null)
-        //    {
-        //        //string listToken = StorageApplicationPermissions.MostRecentlyUsedList.Add(value);
-        //        Preferences.Set(setting, value);
-        //    }
-        //    else
-        //    {
-        //        //string listToken = ApplicationData.Current.LocalSettings.Values[setting] as string;
-        //        //ApplicationData.Current.LocalSettings.Values[setting] = null;
-
-        //        //StorageApplicationPermissions.MostRecentlyUsedList.Remove(listToken);
-        //    }
-        //}
+    
     }
 }

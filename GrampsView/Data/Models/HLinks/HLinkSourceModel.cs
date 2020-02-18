@@ -25,8 +25,12 @@ namespace GrampsView.Data.Model
     [DataContract]
     public class HLinkSourceModel : HLinkBase, IHLinkSourceModel
     {
-        /// <summary>Gets the model from the HLink.</summary>
-        /// <value>The HLink reference.</value>
+        /// <summary>
+        /// Gets the model from the HLink.
+        /// </summary>
+        /// <value>
+        /// The HLink reference.
+        /// </value>
         public SourceModel DeRef
         {
             get
@@ -37,7 +41,7 @@ namespace GrampsView.Data.Model
                 }
                 else
                 {
-                    return null;
+                    return new SourceModel();
                 }
             }
         }
