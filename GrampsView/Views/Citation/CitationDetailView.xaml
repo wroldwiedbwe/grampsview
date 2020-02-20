@@ -51,16 +51,16 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ucon:MediaImageSkia Grid.Row="0" BindingContext="{Binding CitationObject.HomeImageHLink, Mode=OneWay}" />
+        <ucon:MediaCardLarge Grid.Row="0" BindingContext="{Binding CitationObject.HomeImageHLink, Mode=OneWay}" />
 
         <ucon:NoteCardFull Grid.Row="1" BindingContext="{Binding CitationObject.GNoteRef[0].DeRef, Mode=OneWay}" />
 
-        <ucon:SourceCardLarge Grid.Row="2" BindingContext="{Binding SourceObject, Mode=OneWay}" />
-
         <ucon:FlexMultiCardType
             x:Name="BaseHeader"
-            Grid.Row="3"
+            Grid.Row="2"
             FMultiSource="{Binding BaseHeader}" />
+
+        <ucon:SourceCardLarge Grid.Row="3" BindingContext="{Binding SourceObject, Mode=OneWay}" />
 
         <ucon:FlexMultiCardType
             x:Name="BaseDetail"

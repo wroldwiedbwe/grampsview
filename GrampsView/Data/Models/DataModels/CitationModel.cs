@@ -7,43 +7,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-////<define name = "citation-content" >
-////   <ref name="primary-object" />
-////   <optional>
-////     <ref name="date-content" />
-////   </optional>
-////   <optional>
-////     <element name = "page" >
-////       < text />
-////     </ element >
-////   </ optional >
-////   < element name="confidence">
-////     <text />
-////   </element>
-////   <zeroOrMore>
-////     <element name = "noteref" >
-////       <ref name="noteref-content" />
-////     </element>
-////   </zeroOrMore>
-////   <zeroOrMore>
-////     <element name = "objref" >
-////       <ref name="objref-content" />
-////     </element>
-////   </zeroOrMore>
-////   <zeroOrMore>
-////     <element name = "srcattribute" >
-////       <ref name="srcattribute-content" />
-////     </element>
-////   </zeroOrMore>
-////   <element name = "sourceref" >
-////     <ref name="sourceref-content" />
-////   </element>
-////   <zeroOrMore>
-////     <element name = "tagref" >
-////       <ref name="tagref-content" />
-////     </element>
-////   </zeroOrMore>
-//// </define>
+/// XML 171 - All fields defined
+///
+/// primary-object date-content page confidence noteref objref srcattribute sourceref tagref
 
 /// <summary>
 /// </summary>
@@ -56,7 +22,9 @@ namespace GrampsView.Data.Model
     using GrampsView.Common;
     using GrampsView.Data.Collections;
 
-    /// <summary> Data model for a Citation. <code> ************************************************************
+    /// <summary>
+    /// Data model for a Citation.
+    /// </summary>
     [DataContract]
     [KnownType(typeof(HLinkSourceModel))]
     public sealed class CitationModel : ModelBase, ICitationModel, IComparable, IComparer
@@ -70,10 +38,10 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets or sets the g confidence.
+        /// Gets or sets the VConfidence.
         /// </summary>
         /// <value>
-        /// The g confidence.
+        /// The Confidence.
         /// </value>
         [DataMember]
         public string GConfidence
@@ -85,7 +53,7 @@ namespace GrampsView.Data.Model
             = string.Empty;
 
         /// <summary>
-        /// Gets or sets the content of the g date.
+        /// Gets or sets the content of the DateContent field.
         /// </summary>
         /// <value>
         /// The content of the g date.
@@ -134,13 +102,13 @@ namespace GrampsView.Data.Model
             = new HLinkMediaModelCollection();
 
         /// <summary>
-        /// Gets or sets the g note reference.
+        /// Gets or sets the note reference.
         /// </summary>
         /// <value>
         /// The g note reference.
         /// </value>
         [DataMember]
-        public HLinkNoteModelCollection GNoteRef
+        public HLinkNoteModelCollection GNoteRefCollection
         {
             get;
             set;
@@ -149,7 +117,7 @@ namespace GrampsView.Data.Model
             = new HLinkNoteModelCollection();
 
         /// <summary>
-        /// Gets or sets the g page.
+        /// Gets or sets the page.
         /// </summary>
         /// <value>
         /// The g page.
@@ -164,13 +132,13 @@ namespace GrampsView.Data.Model
             = string.Empty;
 
         /// <summary>
-        /// Gets or sets the g source attribute.
+        /// Gets or sets the source attribute.
         /// </summary>
         /// <value>
         /// The g source attribute.
         /// </value>
         [DataMember]
-        public OCSrcAttributeModelCollection GSourceAttribute
+        public OCSrcAttributeModelCollection GSourceAttributeCollection
         {
             get;
             set;
@@ -179,7 +147,7 @@ namespace GrampsView.Data.Model
             = new OCSrcAttributeModelCollection();
 
         /// <summary>
-        /// Gets or sets the g source reference.
+        /// Gets or sets the source reference.
         /// </summary>
         /// <value>
         /// The g source reference.
@@ -209,10 +177,10 @@ namespace GrampsView.Data.Model
             = new HLinkTagModelCollection();
 
         /// <summary>
-        /// Gets the get h link.
+        /// Gets the get hlink.
         /// </summary>
         /// <value>
-        /// The get h link.
+        /// The get hlink.
         /// </value>
         public HLinkCitationModel HLink
         {
@@ -240,6 +208,16 @@ namespace GrampsView.Data.Model
         /// </returns>
         public new int Compare(object a, object b)
         {
+            if (a is null)
+            {
+                return 0;
+            }
+
+            if (b is null)
+            {
+                return 0;
+            }
+
             CitationModel firstEvent = (CitationModel)a;
             CitationModel secondEvent = (CitationModel)b;
 

@@ -10,6 +10,7 @@
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     Title="{Binding BaseTitle}"
     Appearing="ContentPage_Appearing"
+    ControlTemplate="{StaticResource DetailPageTemplate}"
     Style="{StaticResource GVBaseContentPage}"
     mc:Ignorable="d">
 

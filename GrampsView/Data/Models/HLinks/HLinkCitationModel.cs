@@ -3,11 +3,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-//// <define name = "citationref-content" >
-////  < attribute name="hlink">
-////    <data type = "IDREF" />
-////  </ attribute >
-//// </ define >
+// XML 171 - All fields defined
+//
+// HLink
 
 namespace GrampsView.Data.Model
 {

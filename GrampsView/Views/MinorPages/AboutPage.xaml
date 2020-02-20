@@ -9,11 +9,37 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prismnav="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    Title="{Binding BaseTitle}"
     ControlTemplate="{StaticResource DetailPageTemplate}"
-    Icon="{Binding BaseIcon, Converter={StaticResource IconPath}, Mode=OneWay}"
     Style="{StaticResource GVBaseContentPage}"
     mc:Ignorable="d">
+
+    <NavigationPage.TitleView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{StaticResource GVSymbolconPageHeaderType}">
+                <Image.Source>
+                    <FontImageSource
+                        FontFamily="{DynamicResource MaterialFontFamily}"
+                        Glyph="{Binding BaseTitleIcon}"
+                        Size="44"
+                        Color="Orange" />
+                </Image.Source>
+            </Image>
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Style="{StaticResource GVLabelPageHeaderTitleStyle}"
+                Text="{Binding BaseTitle, Mode=OneWay}" />
+        </Grid>
+    </NavigationPage.TitleView>
 
     <!--  Content  -->
     <Grid FlexLayout.Grow="1">
@@ -29,7 +55,6 @@
                 VerticalOptions="Center">
 
                 <Image
-                    BackgroundColor="White"
                     HeightRequest="64"
                     Source="ic_launcher.png"
                     VerticalOptions="Start" />
@@ -38,7 +63,7 @@
                     FontAttributes="Bold"
                     FontSize="22"
                     Style="{StaticResource GVLabelStyleLarge}"
-                    Text="{Binding AppName}"
+                    Text="{Binding AppName, Mode=OneTime}"
                     TextColor="White"
                     VerticalOptions="Center" />
             </StackLayout>
@@ -81,12 +106,6 @@
                     Command="{Binding TestPageCommand}"
                     Style="{StaticResource GVButtonStyle}"
                     Text="Test Page" />
-
-                <Button
-                    Command="{prismnav:NavigateTo 'CropTransformationPage',
-                                                  Animated=True}"
-                    Style="{StaticResource GVButtonStyle}"
-                    Text="Go To CropTransformationPage" />
             </StackLayout>
         </ScrollView>
     </Grid>

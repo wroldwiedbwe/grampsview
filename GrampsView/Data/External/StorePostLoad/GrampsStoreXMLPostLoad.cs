@@ -125,7 +125,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 }
 
                 // Back Reference Note HLinks
-                foreach (HLinkNoteModel noteRef in citationModel.GNoteRef)
+                foreach (HLinkNoteModel noteRef in citationModel.GNoteRefCollection)
                 {
                     DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
@@ -145,7 +145,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 DV.CitationDV.CitationData[citationModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
 
                 // Sort note collection and get first link images
-                DV.CitationDV.CitationData[citationModel.HLinkKey].GNoteRef.SortAndSetFirst();
+                DV.CitationDV.CitationData[citationModel.HLinkKey].GNoteRefCollection.SortAndSetFirst();
 
                 // -- Organise Home Images -----------------------
 

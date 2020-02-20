@@ -26,14 +26,14 @@
             </Grid.GestureRecognizers>
 
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
@@ -43,6 +43,7 @@
                 Grid.RowSpan="3"
                 Grid.Column="0"
                 BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
+                HorizontalOptions="FillAndExpand"
                 Style="{StaticResource MediaImageStyle}"
                 VerticalOptions="CenterAndExpand" />
 

@@ -18,8 +18,12 @@ namespace GrampsView.Data.ExternalStorageNS
     /// </summary>
     public partial class GrampsStorePostLoad
     {
-        /// <summary>Loads the UI items.</summary>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <summary>
+        /// Loads the UI items.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="Task"/> representing the asynchronous operation.
+        /// </returns>
         public async Task LoadSerialUiItems()
         {
             _CL.LogRoutineEntry("LoadSerialUiItems");
@@ -33,13 +37,17 @@ namespace GrampsView.Data.ExternalStorageNS
 
             await DataStore.CN.MajorStatusDelete().ConfigureAwait(false);
 
-            await DataStore.CN.MajorStatusAdd("Serial UI Load Complete. Data ready for display").ConfigureAwait(false);
+            await DataStore.CN.MinorStatusAdd("Serial UI Load Complete. Data ready for display").ConfigureAwait(false);
 
             _CL.LogRoutineExit(nameof(LoadSerialUiItems));
         }
 
-        /// <summary>Fixes the media files.</summary>
-        /// <returns>true.</returns>
+        /// <summary>
+        /// Fixes the media files.
+        /// </summary>
+        /// <returns>
+        /// true.
+        /// </returns>
         private async Task<bool> FixMediaFiles()
         {
             _CL.LogRoutineEntry("FixMediaFiles");
@@ -48,11 +56,11 @@ namespace GrampsView.Data.ExternalStorageNS
 
             if (localMediaFolder != null)
             {
-                await DataStore.CN.MajorStatusAdd("Loading media file pointers").ConfigureAwait(false);
+                await DataStore.CN.MinorStatusAdd("Loading media file pointers").ConfigureAwait(false);
 
                 foreach (MediaModel item in DV.MediaDV.MediaData)
                 { // if (item.Id == "O0259") { }
-                    await DataStore.CN.MajorStatusAdd("Loading media file pointer: " + item.OriginalFilePath).ConfigureAwait(false);
+                    await DataStore.CN.MinorStatusAdd("Loading media file pointer: " + item.OriginalFilePath).ConfigureAwait(false);
 
                     try
                     {

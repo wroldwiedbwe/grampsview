@@ -41,7 +41,7 @@
         x:Key="GVDetailCardHeightLarge"
         x:TypeArguments="x:Double"
         Default="150"
-        Desktop="150"
+        Desktop="250"
         Phone="150"
         Tablet="150" />
 

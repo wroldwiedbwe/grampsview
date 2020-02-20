@@ -54,31 +54,4 @@
             HorizontalTextAlignment="Center"
             Text="FOOTER" />-->
     </FlexLayout>
-
-    <!--<Grid x:Name="rootGrid" Style="{StaticResource GridPageStyleLarge}">
-        <Grid.RowDefinitions>
-            <RowDefinition />
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-
-        <ListBox
-            x:Name="DataLogListBox"
-            Grid.Row="0"
-            Grid.Column="0"
-            ItemTemplate="{StaticResource DataLogEntryLarge}"
-            ItemsSource="{x:Bind ViewModel.DataLoadLog, Mode=OneWay}"
-            Style="{StaticResource ListBoxStyle}">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    <Setter Property="Background" Value="{StaticResource SystemControlAcrylicWindowBrush}" />
-                    <Setter Property="Margin" Value="{StaticResource GVMarginVerticalSmall}" />
-                    <Setter Property="Padding" Value="1" />
-                </Style>
-            </ListBox.ItemContainerStyle>
-        </ListBox>
-    </Grid>-->
 </ContentPage>

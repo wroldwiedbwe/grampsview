@@ -28,37 +28,17 @@ namespace GrampsView.ViewModels
 
     public class AboutViewModel : ViewModelBase
     {
-        private string _DaText = string.Empty;
-
         private CardListLineCollection _ApplicationVersionList = new CardListLineCollection();
-
+        private string _DaText = string.Empty;
         private CardGroup _HeaderDetailList = new CardGroup();
 
         private HeaderModel _HeaderModel = null;
 
         public AboutViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
                                     : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
-
         {
             BaseTitle = "About";
             BaseTitleIcon = CommonConstants.IconSettings;
-
-            TestPageCommand = new DelegateCommand(TestPage);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AboutViewModel" /> class.
-        /// </summary>
-        public AboutViewModel()
-        {
-        }
-
-        public static string AppName
-        {
-            get
-            {
-                return AppInfo.Name;
-            }
         }
 
         /// <summary>
@@ -78,6 +58,14 @@ namespace GrampsView.ViewModels
             set
             {
                 SetProperty(ref _ApplicationVersionList, value);
+            }
+        }
+
+        public string AppName
+        {
+            get
+            {
+                return AppInfo.Name;
             }
         }
 
@@ -134,19 +122,17 @@ namespace GrampsView.ViewModels
             }
         }
 
-        public DelegateCommand TestPageCommand { get; private set; }
-
         /// <summary>
-        /// Raises the <see cref="NavigatedTo" /> event.
+        /// Raises the <see cref="NavigatedTo"/> event.
         /// </summary>
         /// <param name="e">
-        /// The <see cref="NavigatedToEventArgs" /> instance containing the event data.
+        /// The <see cref="NavigatedToEventArgs"/> instance containing the event data.
         /// </param>
         /// <param name="viewModelState">
         /// State of the view ViewModel.
         /// </param>
         /// <returns>
-        /// A <see cref="Task" /> representing the asynchronous operation.
+        /// A <see cref="Task"/> representing the asynchronous operation.
         /// </returns>
         public override void PopulateViewModel()
         {

@@ -287,7 +287,7 @@ namespace GrampsView.Data
                     }
                     else
                     {
-                        await DataStore.CN.ChangeLoadingMessage("File " + tarEntry.Name + " does not need to be unTARed as its modified date is earlier than the one in the output folder").ConfigureAwait(false);
+                        await DataStore.CN.MinorStatusAdd("File " + tarEntry.Name + " does not need to be unTARed as its modified date is earlier than the one in the output folder").ConfigureAwait(false);
                     }
                 }
             }

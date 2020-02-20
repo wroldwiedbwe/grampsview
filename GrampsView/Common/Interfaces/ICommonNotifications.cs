@@ -38,7 +38,7 @@ namespace GrampsView.Common
         /// The string message.
         /// </param>
         /// <param name="showProgressRing">
-        /// if set to <c> true </c> [show progress ring].
+        /// if set to <c>true</c> [show progress ring].
         /// </param>
         Task MajorStatusAdd(string strMessage);
 
@@ -49,7 +49,7 @@ namespace GrampsView.Common
         /// The string message.
         /// </param>
         /// <param name="showProgressRing">
-        /// if set to <c> true </c> [show progress ring].
+        /// if set to <c>true</c> [show progress ring].
         /// </param>
         /// <returns>
         /// </returns>
@@ -61,6 +61,17 @@ namespace GrampsView.Common
         /// <returns>
         /// </returns>
         Task MajorStatusDelete();
+
+        /// <summary>
+        /// Notifies the general status.
+        /// </summary>
+        /// <param name="strMessage">
+        /// The string message.
+        /// </param>
+        /// <param name="showProgressRing">
+        /// if set to <c>true</c> [show progress ring].
+        /// </param>
+        Task MinorStatusAdd(string strMessage);
 
         /// <summary>
         /// Notifies the dialog box.
@@ -78,9 +89,15 @@ namespace GrampsView.Common
         /// </param>
         void NotifyError(string strMessage);
 
-        /// <summary>Notifies the error.</summary>
-        /// <param name="strMessage">The string message.</param>
-        /// <param name="argErrorDetail">Error detail.</param>
+        /// <summary>
+        /// Notifies the error.
+        /// </summary>
+        /// <param name="strMessage">
+        /// The string message.
+        /// </param>
+        /// <param name="argErrorDetail">
+        /// Error detail.
+        /// </param>
         void NotifyError(string strMessage, Dictionary<string, string> argErrorDetail);
 
         /// <summary>

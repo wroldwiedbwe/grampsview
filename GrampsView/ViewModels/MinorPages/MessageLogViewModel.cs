@@ -19,18 +19,25 @@ namespace GrampsView.ViewModels
     using Prism.Navigation;
 
     /// <summary>
-    /// <c> viewmodel </c> for the About <c> Flyout </c>.
+    /// <c>viewmodel</c> for the About <c>Flyout</c>.
     /// </summary>
     public class MessageLogViewModel : ViewModelBase
     {
-        private readonly int maxCount = 10;
+        private readonly int maxCount = 8;
 
         private int currentIndex = -1;
 
-        /// <summary>Initializes a new instance of the <see cref="MessageLogViewModel"/> class.</summary>
-        /// <param name="iocCommonLogging">The ioc common logging.</param>
-        /// <param name="iocEventAggregator">The ioc event aggregator.</param>
-        /// <param name="iocNavigationService"></param>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageLogViewModel"/> class.
+        /// </summary>
+        /// <param name="iocCommonLogging">
+        /// The ioc common logging.
+        /// </param>
+        /// <param name="iocEventAggregator">
+        /// The ioc event aggregator.
+        /// </param>
+        /// <param name="iocNavigationService">
+        /// </param>
         public MessageLogViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {

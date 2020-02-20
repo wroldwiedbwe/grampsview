@@ -30,15 +30,15 @@ namespace GrampsView.Common
         /// </summary>
         private readonly ICommonLogging _CL;
 
-        private string _MajorStatusMessage = string.Empty;
-
         /// <summary>
         /// Injected Event Aggregator.
         /// </summary>
         private readonly IEventAggregator _EventAggregator;
 
+        private string _MajorStatusMessage = string.Empty;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="CommonNotifications" /> class.
+        /// Initializes a new instance of the <see cref="CommonNotifications"/> class.
         /// </summary>
         /// <param name="iocEventAggregator">
         /// The ioc event aggregator.
@@ -102,7 +102,7 @@ namespace GrampsView.Common
         /// The string message.
         /// </param>
         /// <param name="argShowProgressRing">
-        /// if set to <c> true </c> [show progress ring].
+        /// if set to <c>true</c> [show progress ring].
         /// </param>
         /// <returns>
         /// </returns>
@@ -141,6 +141,11 @@ namespace GrampsView.Common
             // localEventAggregator.GetEvent<GVProgressMajorTextUpdate>().Publish(null)).ConfigureAwait(false); }
         }
 
+        public async Task MinorStatusAdd(string strMessage)
+        {
+            // TODO Handle this
+        }
+
         /// <summary>
         /// Handle DialogBox messages.
         /// </summary>
@@ -166,9 +171,15 @@ namespace GrampsView.Common
             NotifyError(strMessage, argErrorDetail);
         }
 
-        /// <summary>Notifies the user of an error and logs it for further analysis.</summary>
-        /// <param name="argMessage">The argument message.</param>
-        /// <param name="argErrorDetail">The argument error detail.</param>
+        /// <summary>
+        /// Notifies the user of an error and logs it for further analysis.
+        /// </summary>
+        /// <param name="argMessage">
+        /// The argument message.
+        /// </param>
+        /// <param name="argErrorDetail">
+        /// The argument error detail.
+        /// </param>
         public void NotifyError(string argMessage, Dictionary<string, string> argErrorDetail)
         {
             ActionDialogArgs t = new ActionDialogArgs

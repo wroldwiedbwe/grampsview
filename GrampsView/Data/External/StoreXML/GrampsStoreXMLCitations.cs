@@ -1,6 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-//
-// Storage routines for the GrampsStoreXML
+// Storage routines for GrampsStoreXML
 //
 // <copyright file="GrampsStoreXMLCitations.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
@@ -20,10 +19,21 @@ namespace GrampsView.Data.ExternalStorageNS
     using GrampsView.Data.Repository;
 
     /// <summary>
-    /// Private Storage Routines.
+    /// Load Citations from external storage routines.
     /// </summary>
     public partial class GrampsStoreXML : IGrampsStoreXML
     {
+        /// <summary>
+        /// Sets the Citation home image.
+        /// </summary>
+        /// <param name="argModel">
+        /// The argument model.
+        /// </param>
+        /// <returns>
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// argModel
+        /// </exception>
         public static CitationModel SetHomeImage(CitationModel argModel)
         {
             if (argModel is null)
@@ -46,19 +56,15 @@ namespace GrampsView.Data.ExternalStorageNS
         }
 
         /// <summary>
-        /// load events from external storage.
+        /// Load Citations from external storage.
         /// </summary>
-        /// <param name="eventRepository">
-        /// The event repository.
-        /// </param>
         /// <returns>
-        /// Flag of loaded successfully.
+        /// Flag if loaded successfully.
         /// </returns>
         public async Task LoadCitationsAsync()
         {
             await DataStore.CN.MajorStatusAdd("Loading Citation data").ConfigureAwait(false);
             {
-                // XNamespace ns = grampsXMLNameSpace;
                 try
                 {
                     // Run query
@@ -66,9 +72,8 @@ namespace GrampsView.Data.ExternalStorageNS
                         from el in localGrampsXMLdoc.Descendants(ns + "citation")
                         select el;
 
-                    // get Citation fields
+                    // Loop through results to get the Citation
 
-                    // Loop through results to get the Citation Uri _baseUri = new Uri("ms-appx:///");
                     foreach (XElement pcitation in de)
                     {
                         CitationModel loadCitation = DV.CitationDV.NewModel();
@@ -81,45 +86,33 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // Citation fields
 
-                        // < optional ><ref name = "date-content" /></ optional >
                         loadCitation.GDateContent = GetDate(pcitation);
 
-                        // < optional >< element name = "page" >< text /></ element ></ optional >
                         loadCitation.GPage = GetElement(pcitation.Element(ns + "page"));
 
-                        // < element name = "confidence" >< text /></ element >
                         loadCitation.GConfidence = GetElement(pcitation.Element(ns + "confidence"));
 
-                        // < zeroOrMore >< element name = "noteref" > <ref name = "noteref-content"
-                        // /> </ element ></ zeroOrMore >
-                        loadCitation.GNoteRef = GetNoteCollection(pcitation);
-
-                        // Don't sort here as the objects pointed to may not have been loaded. Sort
-                        // in Post Load cleanup
+                        loadCitation.GNoteRefCollection = GetNoteCollection(pcitation);
 
                         // ObjectRef loading
                         loadCitation.GMediaRefCollection = GetObjectCollection(pcitation);
 
-                        loadCitation.GSourceAttribute = GetSrcAttributeCollection(pcitation);
+                        loadCitation.GSourceAttributeCollection = GetSrcAttributeCollection(pcitation);
 
                         loadCitation.GSourceRef.HLinkKey = GetAttribute(pcitation.Element(ns + "sourceref"), "hlink");
 
                         loadCitation.GTagRef = GetTagCollection(pcitation);
 
-                        // set the Home image or symbol now that everythign is laoded
+                        // set the Home image or symbol now that everything is laoded
                         loadCitation = SetHomeImage(loadCitation);
 
                         // save the event
                         DV.CitationDV.CitationData.Add(loadCitation);
                     }
-
-                    // let everybody know
                 }
                 catch (Exception e)
                 {
-                    // TODO handle this
-                    await DataStore.CN.MajorStatusAdd(e.Message).ConfigureAwait(false);
-
+                    DataStore.CN.NotifyException("Exception loading Citations form XML", e);
                     throw;
                 }
             }

@@ -140,7 +140,7 @@ namespace GrampsView.Data
         /// </returns>
         public async Task<bool> DecompressGZIP(FileInfoEx inputFile)
         {
-            await DataStore.CN.MajorStatusAdd("Decompressing GRAMPS GZIP file").ConfigureAwait(false);
+            await DataStore.CN.MinorStatusAdd("Decompressing GRAMPS GZIP file").ConfigureAwait(false);
 
             // Check arguments
             if (inputFile == null)
@@ -153,7 +153,7 @@ namespace GrampsView.Data
             {
                 await ExtractGZip(inputFile).ConfigureAwait(false);
 
-                await DataStore.CN.MajorStatusAdd("GRAMPS file decompressing complete").ConfigureAwait(false);
+                await DataStore.CN.MinorStatusAdd("GRAMPS file decompressing complete").ConfigureAwait(false);
                 return true;
             }
             catch (UnauthorizedAccessException ex)
@@ -187,8 +187,8 @@ namespace GrampsView.Data
             Stream originalFileStream = DataStore.DS.CurrentInputFile.GetStream();
 
             // open the gzip and extract the tar file
-            await DataStore.CN.MajorStatusAdd("Decompressing individual TAR files").ConfigureAwait(false);
-            await DataStore.CN.MajorStatusAdd("This will take a while...").ConfigureAwait(false);
+            await DataStore.CN.MinorStatusAdd("Decompressing individual TAR files").ConfigureAwait(false);
+            await DataStore.CN.MinorStatusAdd("This will take a while...").ConfigureAwait(false);
 
             using (Stream stream = new GZipInputStream(originalFileStream))
             {
