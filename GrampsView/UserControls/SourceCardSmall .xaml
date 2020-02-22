@@ -43,7 +43,7 @@
             <Label
                 Grid.Row="0"
                 Grid.Column="1"
-                Style="{DynamicResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding DeRef.GSTitle, Mode=OneWay}"
                 TextColor="{DynamicResource TextLightColor}" />
 

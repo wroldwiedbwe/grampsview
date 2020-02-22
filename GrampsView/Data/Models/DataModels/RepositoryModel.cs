@@ -59,13 +59,13 @@ namespace GrampsView.Data.Model
 
     /// <summary>
     /// </summary>
-    /// <seealso cref="GrampsView.Data.ViewModel.ModelBase" />
+    /// <seealso cref="GrampsView.Data.ViewModel.ModelBase"/>
     /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="GrampsView.Data.ViewModel.IRepositoryModel" />
+    /// <seealso cref="GrampsView.Data.ViewModel.IRepositoryModel"/>
     /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="System.IComparable" />
+    /// <seealso cref="System.IComparable"/>
     /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="System.Collections.IComparer" />
+    /// <seealso cref="System.Collections.IComparer"/>
     [DataContract]
     public sealed class RepositoryModel : ModelBase, IRepositoryModel, IComparable, IComparer
     {
@@ -80,10 +80,11 @@ namespace GrampsView.Data.Model
         private string localType;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RepositoryModel" /> class.
+        /// Initializes a new instance of the <see cref="RepositoryModel"/> class.
         /// </summary>
         public RepositoryModel()
         {
+            HomeImageHLink.HomeSymbol = Common.CommonConstants.IconRepository;
         }
 
         /// <summary>
@@ -105,24 +106,6 @@ namespace GrampsView.Data.Model
             get
             {
                 return GRName;
-            }
-        }
-
-        /// <summary>
-        /// Gets the get h link.
-        /// </summary>
-        /// <value>
-        /// The get h link.
-        /// </value>
-        public HLinkRepositoryModel HLink
-        {
-            get
-            {
-                HLinkRepositoryModel t = new HLinkRepositoryModel
-                {
-                    HLinkKey = HLinkKey,
-                };
-                return t;
             }
         }
 
@@ -192,6 +175,24 @@ namespace GrampsView.Data.Model
         public OCURLModelCollection GURL { get; set; }
 
         = new OCURLModelCollection();
+
+        /// <summary>
+        /// Gets the get h link.
+        /// </summary>
+        /// <value>
+        /// The get h link.
+        /// </value>
+        public HLinkRepositoryModel HLink
+        {
+            get
+            {
+                HLinkRepositoryModel t = new HLinkRepositoryModel
+                {
+                    HLinkKey = HLinkKey,
+                };
+                return t;
+            }
+        }
 
         /// <summary>
         /// Compares two objects.

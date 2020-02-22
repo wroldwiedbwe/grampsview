@@ -44,7 +44,7 @@
                 x:Name="NameTextBlock"
                 Grid.Row="0"
                 Grid.Column="1"
-                Style="{DynamicResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding DeRef.GRName, Mode=OneWay}"
                 TextColor="{DynamicResource TextLightColor}" />
 

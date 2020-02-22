@@ -15,18 +15,20 @@
         #3d3d3d
     </Color>
 
-    <Color x:Key="PageBackGround">
+    <!--<Color x:Key="PageBackGround">
         #000000
-    </Color>
+    </Color>-->
 
     <!--  Text Colours  -->
 
     <Color x:Key="TextDarkColor">
-        #d3d3d3
+        #212121
+        <!--  #d3d3d3  -->
     </Color>
 
     <Color x:Key="TextLightColor">
-        #000000
+        #BDBDBD
+        <!--  #000000  -->
     </Color>
 
     <!--  Card Colours  -->
@@ -35,14 +37,18 @@
         <!--  #7f7f7f  -->
     </Color>
 
-    <!--  Card Not Selectable  -->
+    <Color x:Key="CardGroupBackGround">
+        #BDBDBD
+        <!--  #000000  -->
+    </Color>
+
     <Color x:Key="CardNotSelectable">
         #FFFFFF
     </Color>
 
-    <!--  #Card Selectable  -->
     <Color x:Key="CardSelectable">
-        #ffa500
+        #FF5722
+        <!--  #ffa500  -->
     </Color>
 
     <!--  Card Background colours  -->
@@ -77,10 +83,6 @@
 
     <Color x:Key="CardBackGroundSource">
         #ff4000
-    </Color>
-
-    <Color x:Key="CardGroupBackGround">
-        #000000
     </Color>
 
     <!--  Icon Colours  -->

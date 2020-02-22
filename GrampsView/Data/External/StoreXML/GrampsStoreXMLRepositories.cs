@@ -76,6 +76,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                     // set the Home image or symbol
                     loadRepository.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+
                     loadRepository.HomeImageHLink.HomeSymbol = CommonConstants.IconRepository;
 
                     // save the event

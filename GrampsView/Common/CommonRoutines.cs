@@ -9,7 +9,6 @@
 
 namespace GrampsView.Common
 {
-    using GrampsView.Data.Model;
     using System.Text.RegularExpressions;
 
     using Xamarin.Essentials;
@@ -22,7 +21,7 @@ namespace GrampsView.Common
     {
         public static bool IsEmualator()
         {
-            if (Xamarin.Essentials.DeviceInfo.DeviceType == DeviceType.Physical)
+            if (DeviceInfo.DeviceType == DeviceType.Physical)
             {
                 return false;
             }

@@ -87,7 +87,7 @@
 
     <!--  Create a ContentPage style  -->
     <Style x:Key="GVBaseContentPage" TargetType="ContentPage">
-        <Setter Property="BackgroundColor" Value="{DynamicResource PageBackGround}" />
+        <!--<Setter Property="BackgroundColor" Value="{DynamicResource PageBackGround}" />-->
     </Style>
 
     <!--

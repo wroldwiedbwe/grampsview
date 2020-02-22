@@ -96,15 +96,24 @@
                     </Frame>
                 </StackLayout>
 
-                <Frame BorderColor="Accent">
+                <Frame Style="{DynamicResource FrameLargeVariableCardStyle}">
 
                     <StackLayout HorizontalOptions="Start" Orientation="Vertical">
-                        <Label Style="{DynamicResource GVCardLabelStyleSmall}" Text="Use Light Theme" />
-                        <Switch BackgroundColor="{DynamicResource TextDarkColor}" IsToggled="{Binding UseLightTheme, Mode=TwoWay}" />
-                        <Label Style="{DynamicResource GVCardLabelStyleSmall}" Text="Use Dark Theme" />
-                        <Switch BackgroundColor="{DynamicResource TextDarkColor}" IsToggled="{Binding UseDarkTheme, Mode=TwoWay}" />
-                        <Label Style="{DynamicResource GVCardLabelStyleSmall}" Text="Use System Theme" />
-                        <Switch BackgroundColor="{DynamicResource TextDarkColor}" IsToggled="{Binding UseSystemTheme, Mode=TwoWay}" />
+
+                        <ucon:CheckBoxExtended
+                            BackgroundColor="Red"
+                            Checked="{Binding UseLightTheme, Mode=TwoWay}"
+                            Text="Use Light Theme" />
+
+                        <ucon:CheckBoxExtended
+                            BackgroundColor="PaleVioletRed"
+                            Checked="{Binding UseDarkTheme, Mode=TwoWay}"
+                            Text="Use Dark Theme" />
+
+                        <ucon:CheckBoxExtended
+                            BackgroundColor="IndianRed"
+                            Checked="{Binding UseSystemTheme, Mode=TwoWay}"
+                            Text="Use System Theme" />
                     </StackLayout>
                 </Frame>
 

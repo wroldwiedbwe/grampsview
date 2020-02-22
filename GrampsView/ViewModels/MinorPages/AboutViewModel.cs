@@ -160,12 +160,13 @@ namespace GrampsView.ViewModels
                 {
                     SetProperty(ref _AppDarkTheme, value);
 
-                    UseLightTheme = false;
-                    UseSystemTheme = false;
+                    if (value)
+                    {
+                        CommonTheming.SetThemeDark();
 
-                    CommonLocalSettings.ApplicationTheme = AppTheme.Dark;
-
-                    App.Current.Resources.Add(new DarkTheme());
+                        UseLightTheme = false;
+                        UseSystemTheme = false;
+                    }
                 }
             }
         }
@@ -183,12 +184,13 @@ namespace GrampsView.ViewModels
                 {
                     SetProperty(ref _AppLightTheme, value);
 
-                    UseDarkTheme = false;
-                    UseSystemTheme = false;
+                    if (value)
+                    {
+                        CommonTheming.SetThemeLight();
 
-                    CommonLocalSettings.ApplicationTheme = AppTheme.Light;
-
-                    App.Current.Resources.Add(new LightTheme());
+                        UseDarkTheme = false;
+                        UseSystemTheme = false;
+                    }
                 }
             }
         }
@@ -205,13 +207,14 @@ namespace GrampsView.ViewModels
                 if (value != _AppSystemTheme)
                 {
                     SetProperty(ref _AppSystemTheme, value);
+                }
 
-                    UseLightTheme = false;
+                if (value)
+                {
+                    CommonTheming.SetThemeSystem();
+
                     UseDarkTheme = false;
-
-                    CommonLocalSettings.ApplicationTheme = AppTheme.Unspecified;
-
-                    App.Current.Resources.Add(new DarkTheme());
+                    UseSystemTheme = false;
                 }
             }
         }

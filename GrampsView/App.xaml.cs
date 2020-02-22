@@ -125,45 +125,7 @@ namespace GrampsView
                 AppCenterInit();
             }
 
-            // Set theme
-            switch (CommonLocalSettings.ApplicationTheme)
-            {
-                case AppTheme.Unspecified:
-                    {
-                        // Honor the system request
-                        switch (AppInfo.RequestedTheme)
-                        {
-                            case AppTheme.Dark:
-                                {
-                                    Resources.Add(new DarkTheme());
-                                    break;
-                                }
-                            case AppTheme.Light:
-                                {
-                                    Resources.Add(new LightTheme());
-                                    break;
-                                }
-                            default:
-                                {
-                                    break;
-                                }
-                        }
-                        break;
-                    }
-
-                case AppTheme.Light:
-                    {
-                        Resources.Add(new LightTheme());
-                        break;
-                    }
-                case AppTheme.Dark:
-                    {
-                        Resources.Add(new DarkTheme());
-                        break;
-                    }
-                default:
-                    break;
-            }
+            CommonTheming.SetAppTheme();
 
             IPlatformSpecific ps = Container.Resolve<IPlatformSpecific>();
 

@@ -37,14 +37,14 @@
             <Label
                 Grid.Row="0"
                 Grid.Column="1"
-                Style="{DynamicResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding GType, Mode=OneWay}"
                 TextColor="{DynamicResource TextLightColor}" />
 
             <Label
                 Grid.Row="1"
                 Grid.Column="1"
-                Style="{DynamicResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding GValue, Mode=OneWay}"
                 TextColor="{DynamicResource TextLightColor}" />
 

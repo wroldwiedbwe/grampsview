@@ -45,21 +45,21 @@
             <Label
                 Grid.Row="0"
                 Grid.Column="1"
-                Style="{DynamicResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding GDate.GetShortDateAsString, Mode=OneWay}"
                 TextColor="{DynamicResource TextLightColor}" />
 
             <Label
                 Grid.Row="1"
                 Grid.Column="1"
-                Style="{DynamicResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding GStreet, Mode=OneWay}"
                 TextColor="{DynamicResource TextLightColor}" />
 
             <Label
                 Grid.Row="2"
                 Grid.Column="1"
-                Style="{DynamicResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding GCity, Mode=OneWay}"
                 TextColor="{DynamicResource TextLightColor}" />
 

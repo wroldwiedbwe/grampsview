@@ -47,7 +47,7 @@
                 Grid.Column="1"
                 HorizontalOptions="StartAndExpand"
                 HorizontalTextAlignment="End"
-                Style="{DynamicResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding DeRef.TargetDecoded, Mode=OneWay}"
                 TextColor="{DynamicResource TextLightColor}" />
 
@@ -57,7 +57,7 @@
                 Grid.Column="1"
                 HorizontalOptions="StartAndExpand"
                 HorizontalTextAlignment="End"
-                Style="{DynamicResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding Deref.GetBookMarkHLink.DeRef.GetDefaultText, Mode=OneWay}"
                 TextColor="{DynamicResource TextLightColor}" />
 
