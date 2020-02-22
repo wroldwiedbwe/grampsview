@@ -29,7 +29,7 @@
                     Visibility="{Binding ControlHeaderTextVisible, Mode=OneWay, ElementName=CardGridSingleTypeRoot}">
                     <TextBlock
                         Margin="0"
-                        Style="{StaticResource GVLabelStyleLarge}"
+                        Style="{DynamicResource GVLabelStyleLarge}"
                         Text="{Binding ControlHeaderText, ElementName=CardGridSingleTypeRoot}" />
                     <Rectangle
                         Height="1"

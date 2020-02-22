@@ -1,0 +1,90 @@
+﻿<ResourceDictionary
+    x:Class="GrampsView.Assets.Styles.LightTheme"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Color x:Key="Primary">
+        #ce3d64
+    </Color>
+
+    <Color x:Key="ItemBackground">
+        #3d3d3d
+    </Color>
+
+    <Color x:Key="FrameBackGround">
+        #3d3d3d
+    </Color>
+
+    <Color x:Key="PageBackGround">
+        #000000
+    </Color>
+
+    <!--  Text Colours  -->
+
+    <Color x:Key="TextDarkColor">
+        #d3d3d3
+    </Color>
+
+    <Color x:Key="TextLightColor">
+        #000000
+    </Color>
+
+    <!--  Card Colours  -->
+    <Color x:Key="CardBackGround">
+        #FFFFFF
+        <!--  #7f7f7f  -->
+    </Color>
+
+    <!--  Card Not Selectable  -->
+    <Color x:Key="CardNotSelectable">
+        #FFFFFF
+    </Color>
+
+    <!--  #Card Selectable  -->
+    <Color x:Key="CardSelectable">
+        #ffa500
+    </Color>
+
+    <!--  Card Background colours  -->
+
+    <Color x:Key="CardBackGroundCitation">
+        #e6b505
+    </Color>
+
+    <Color x:Key="CardBackGroundEvent">
+        #b120a2
+    </Color>
+
+    <Color x:Key="CardBackGroundFamily">
+        #0000ff
+    </Color>
+
+    <Color x:Key="CardBackGroundMedia">
+        #ce3d64
+    </Color>
+
+    <Color x:Key="CardBackGroundNote">
+        #ff00bf
+    </Color>
+
+    <Color x:Key="CardBackGroundPlace">
+        #ffa500
+    </Color>
+
+    <Color x:Key="CardBackGroundPerson">
+        #0080ff
+    </Color>
+
+    <Color x:Key="CardBackGroundSource">
+        #ff4000
+    </Color>
+
+    <Color x:Key="CardGroupBackGround">
+        #000000
+    </Color>
+
+    <!--  Icon Colours  -->
+    <Color x:Key="IconMenu">
+        #ed9c28
+    </Color>
+</ResourceDictionary>

@@ -9,6 +9,7 @@
 
 namespace GrampsView.ViewModels
 {
+    using GrampsView.Assets.Styles;
     using GrampsView.Common;
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
@@ -28,17 +29,41 @@ namespace GrampsView.ViewModels
 
     public class AboutViewModel : ViewModelBase
     {
+        private bool _AppDarkTheme;
         private CardListLineCollection _ApplicationVersionList = new CardListLineCollection();
+        private bool _AppLightTheme;
+        private bool _AppSystemTheme;
         private string _DaText = string.Empty;
         private CardGroup _HeaderDetailList = new CardGroup();
 
         private HeaderModel _HeaderModel = null;
 
         public AboutViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
-                                    : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
+                                            : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "About";
             BaseTitleIcon = CommonConstants.IconSettings;
+
+            switch (CommonLocalSettings.ApplicationTheme)
+            {
+                case AppTheme.Light:
+                    {
+                        UseLightTheme = true; ;
+                        break;
+                    }
+
+                case AppTheme.Dark:
+                    {
+                        UseDarkTheme = true; ;
+                        break;
+                    }
+
+                default:
+                    {
+                        UseSystemTheme = true;
+                        break;
+                    }
+            }
         }
 
         /// <summary>
@@ -122,6 +147,75 @@ namespace GrampsView.ViewModels
             }
         }
 
+        public bool UseDarkTheme
+        {
+            get
+            {
+                return _AppDarkTheme;
+            }
+
+            set
+            {
+                if (value != _AppDarkTheme)
+                {
+                    SetProperty(ref _AppDarkTheme, value);
+
+                    UseLightTheme = false;
+                    UseSystemTheme = false;
+
+                    CommonLocalSettings.ApplicationTheme = AppTheme.Dark;
+
+                    App.Current.Resources.Add(new DarkTheme());
+                }
+            }
+        }
+
+        public bool UseLightTheme
+        {
+            get
+            {
+                return _AppLightTheme;
+            }
+
+            set
+            {
+                if (value != _AppLightTheme)
+                {
+                    SetProperty(ref _AppLightTheme, value);
+
+                    UseDarkTheme = false;
+                    UseSystemTheme = false;
+
+                    CommonLocalSettings.ApplicationTheme = AppTheme.Light;
+
+                    App.Current.Resources.Add(new LightTheme());
+                }
+            }
+        }
+
+        public bool UseSystemTheme
+        {
+            get
+            {
+                return _AppSystemTheme;
+            }
+
+            set
+            {
+                if (value != _AppSystemTheme)
+                {
+                    SetProperty(ref _AppSystemTheme, value);
+
+                    UseLightTheme = false;
+                    UseDarkTheme = false;
+
+                    CommonLocalSettings.ApplicationTheme = AppTheme.Unspecified;
+
+                    App.Current.Resources.Add(new DarkTheme());
+                }
+            }
+        }
+
         /// <summary>
         /// Raises the <see cref="NavigatedTo"/> event.
         /// </summary>
@@ -188,7 +282,7 @@ namespace GrampsView.ViewModels
 
             // Set WhatsNew text Set MarkdownView information that is not easily set in XAML
             MarkdownTheme tt = (MarkdownTheme)new DarkMarkdownTheme();
-            tt.BackgroundColor = Common.CommonRoutines.ResourceColourGet("CardBackGroundNote");
+            tt.BackgroundColor = CommonRoutines.ResourceColourGet("CardBackGroundNote");
 
             //this.mdview.Theme = t;
 

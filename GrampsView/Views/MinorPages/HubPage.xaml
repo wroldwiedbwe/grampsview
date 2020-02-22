@@ -10,7 +10,7 @@
     Title="{Binding BaseTitle}"
     prism:ViewModelLocator.AutowireViewModel="True"
     Icon="{Binding BaseIcon}"
-    Style="{StaticResource GVBaseContentPage}">
+    Style="{DynamicResource GVBaseContentPage}">
     <FlexLayout Direction="Column">
 
         <!--  Header  -->
@@ -40,7 +40,7 @@
                     </Grid.RowDefinitions>
 
                     <Frame Grid.Row="0" Style="{StaticResource FrameLargeVariableCardStyleNS}">
-                        <Label Style="{StaticResource GVLabelStyleInstructions}" Text="{i18n:Translate HubPage_IntroductionText}" />
+                        <Label Style="{DynamicResource GVLabelStyleInstructions}" Text="{i18n:Translate HubPage_IntroductionText}" />
                     </Frame>
 
                     <ucon:MediaCardLarge Grid.Row="1" BindingContext="{Binding HeroImage, Mode=OneWay}" />

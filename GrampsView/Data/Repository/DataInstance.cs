@@ -87,12 +87,11 @@ namespace GrampsView.Data.Repository
         /// </summary>
         private RepositoryModelType<EventModel, HLinkEventModel> _EventData = new RepositoryModelType<EventModel, HLinkEventModel>();
 
+        private RepositoryModelType<FamilyModel, HLinkFamilyModel> _FamilyData = new RepositoryModelType<FamilyModel, HLinkFamilyModel>();
+
         /// <summary>
         /// The local family data.
         /// </summary>
-
-        private RepositoryModelType<FamilyModel, HLinkFamilyModel> _FamilyData = new RepositoryModelType<FamilyModel, HLinkFamilyModel>();
-
         /// <summary>
         /// The local source data.
         /// </summary>

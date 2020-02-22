@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     ControlTemplate="{StaticResource DetailPageTemplate}"
-    Style="{StaticResource GVBaseContentPage}"
+    Style="{DynamicResource GVBaseContentPage}"
     mc:Ignorable="d">
 
     <NavigationPage.TitleView>
@@ -21,20 +21,20 @@
             <Image
                 Grid.Row="0"
                 Grid.Column="0"
-                Style="{StaticResource GVSymbolconPageHeaderType}">
+                Style="{DynamicResource GVSymbolconPageHeaderType}">
                 <Image.Source>
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"
                         Glyph="{Binding BaseTitleIcon}"
                         Size="44"
-                        Color="Orange" />
+                        Color="{DynamicResource IconMenu}" />
                 </Image.Source>
             </Image>
 
             <Label
                 Grid.Row="0"
                 Grid.Column="1"
-                Style="{StaticResource GVLabelPageHeaderTitleStyle}"
+                Style="{DynamicResource GVLabelPageHeaderTitleStyle}"
                 Text="{Binding BaseTitle, Mode=OneWay}" />
         </Grid>
     </NavigationPage.TitleView>

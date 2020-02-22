@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     Title="{Binding BaseTitle}"
-    Style="{StaticResource GVBaseContentPage}"
+    Style="{DynamicResource GVBaseContentPage}"
     mc:Ignorable="d">
     <FlexLayout Direction="Column">
 
@@ -39,7 +39,7 @@
 
                     <Label
                         Grid.Row="0"
-                        Style="{StaticResource GVLabelStyleInstructions}"
+                        Style="{DynamicResource GVLabelStyleInstructions}"
                         Text="{i18n:Translate FileInputHandlerPage_Instructions}" />
 
                     <ucon:ListLineCardLarge
@@ -50,7 +50,7 @@
                     <Button
                         Grid.Row="2"
                         Command="{Binding PickFileCommand}"
-                        Style="{StaticResource GVButtonStyle}"
+                        Style="{DynamicResource GVButtonStyle}"
                         Text="{i18n:Translate FileInputHandlerPage_Choose_Button_Text}" />
                 </Grid>
 

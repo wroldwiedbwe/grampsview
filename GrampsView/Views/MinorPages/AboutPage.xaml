@@ -10,7 +10,7 @@
     xmlns:prismnav="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     ControlTemplate="{StaticResource DetailPageTemplate}"
-    Style="{StaticResource GVBaseContentPage}"
+    Style="{DynamicResource GVBaseContentPage}"
     mc:Ignorable="d">
 
     <NavigationPage.TitleView>
@@ -23,20 +23,20 @@
             <Image
                 Grid.Row="0"
                 Grid.Column="0"
-                Style="{StaticResource GVSymbolconPageHeaderType}">
+                Style="{DynamicResource GVSymbolconPageHeaderType}">
                 <Image.Source>
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"
                         Glyph="{Binding BaseTitleIcon}"
                         Size="44"
-                        Color="Orange" />
+                        Color="{DynamicResource IconMenu}" />
                 </Image.Source>
             </Image>
 
             <Label
                 Grid.Row="0"
                 Grid.Column="1"
-                Style="{StaticResource GVLabelPageHeaderTitleStyle}"
+                Style="{DynamicResource GVLabelPageHeaderTitleStyle}"
                 Text="{Binding BaseTitle, Mode=OneWay}" />
         </Grid>
     </NavigationPage.TitleView>
@@ -48,7 +48,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackLayout Grid.Row="0" BackgroundColor="{StaticResource CardBackGround}">
+        <StackLayout Grid.Row="0" BackgroundColor="{DynamicResource CardBackGround}">
             <StackLayout
                 HorizontalOptions="Start"
                 Orientation="Horizontal"
@@ -62,7 +62,7 @@
                 <Label
                     FontAttributes="Bold"
                     FontSize="22"
-                    Style="{StaticResource GVLabelStyleLarge}"
+                    Style="{DynamicResource GVLabelStyleLarge}"
                     Text="{Binding AppName, Mode=OneTime}"
                     TextColor="White"
                     VerticalOptions="Center" />
@@ -79,15 +79,15 @@
 
                 <StackLayout x:Name="Attribution">
 
-                    <Frame Style="{StaticResource FrameLargeVariableCardStyle}">
-                        <Label Style="{StaticResource GVLabelStyleInstructions}" Text="{i18n:Translate AboutPage_PrivacyPolicy}" />
+                    <Frame Style="{DynamicResource FrameLargeVariableCardStyle}">
+                        <Label Style="{DynamicResource GVLabelStyleInstructions}" Text="{i18n:Translate AboutPage_PrivacyPolicy}" />
                     </Frame>
 
-                    <Frame Style="{StaticResource FrameLargeVariableCardStyle}">
-                        <Label Style="{StaticResource GVLabelStyleInstructions}" Text="{i18n:Translate AboutPage_AttributionText}" />
+                    <Frame Style="{DynamicResource FrameLargeVariableCardStyle}">
+                        <Label Style="{DynamicResource GVLabelStyleInstructions}" Text="{i18n:Translate AboutPage_AttributionText}" />
                     </Frame>
 
-                    <Frame Style="{StaticResource FrameLargeVariableCardStyle}">
+                    <Frame Style="{DynamicResource FrameLargeVariableCardStyle}">
                         <markdown:MarkdownView
                             x:Name="mdview"
                             Grid.Row="0"
@@ -96,15 +96,27 @@
                     </Frame>
                 </StackLayout>
 
+                <Frame BorderColor="Accent">
+
+                    <StackLayout HorizontalOptions="Start" Orientation="Vertical">
+                        <Label Style="{DynamicResource GVCardLabelStyleSmall}" Text="Use Light Theme" />
+                        <Switch BackgroundColor="{DynamicResource TextDarkColor}" IsToggled="{Binding UseLightTheme, Mode=TwoWay}" />
+                        <Label Style="{DynamicResource GVCardLabelStyleSmall}" Text="Use Dark Theme" />
+                        <Switch BackgroundColor="{DynamicResource TextDarkColor}" IsToggled="{Binding UseDarkTheme, Mode=TwoWay}" />
+                        <Label Style="{DynamicResource GVCardLabelStyleSmall}" Text="Use System Theme" />
+                        <Switch BackgroundColor="{DynamicResource TextDarkColor}" IsToggled="{Binding UseSystemTheme, Mode=TwoWay}" />
+                    </StackLayout>
+                </Frame>
+
                 <Button
                     Command="{prismnav:NavigateTo 'MessageLogPage',
                                                   Animated=True}"
-                    Style="{StaticResource GVButtonStyle}"
+                    Style="{DynamicResource GVButtonStyle}"
                     Text="Go To MessageLog" />
 
                 <Button
                     Command="{Binding TestPageCommand}"
-                    Style="{StaticResource GVButtonStyle}"
+                    Style="{DynamicResource GVButtonStyle}"
                     Text="Test Page" />
             </StackLayout>
         </ScrollView>

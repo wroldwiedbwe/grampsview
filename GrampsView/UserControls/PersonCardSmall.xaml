@@ -6,8 +6,8 @@
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="PersonCardSmallRoot"
-    BackgroundColor="{StaticResource CardBackGroundPerson}"
-    Style="{StaticResource FrameSmallFixedCardStyle}">
+    BackgroundColor="{DynamicResource CardBackGroundPerson}"
+    Style="{DynamicResource FrameSmallFixedCardStyle}">
     <Frame.Content>
 
         <Grid x:Name="controlRoot">
@@ -37,26 +37,26 @@
                 Grid.RowSpan="2"
                 Grid.Column="0"
                 BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
-                Style="{StaticResource MediaImageStyle}" />
+                Style="{DynamicResource MediaImageStyle}" />
 
             <Label
                 x:Name="PersonSummaryNameTextBlock"
                 Grid.Row="0"
                 Grid.Column="1"
-                Style="{StaticResource GVCardLabelStyleSmall}"
+                Style="{DynamicResource GVCardLabelStyleSmall}"
                 Text="{Binding DeRef.GBirthName.FullName, Mode=OneWay}" />
 
             <Label
                 x:Name="PersonSummaryDOBTextBlock"
                 Grid.Row="1"
                 Grid.Column="1"
-                Style="{StaticResource GVCardLabelStyleSmall}"
+                Style="{DynamicResource GVCardLabelStyleSmall}"
                 Text="{Binding DeRef.BirthDate.GetShortDateAsString, Mode=OneWay}" />
 
             <Image
                 Grid.Row="1"
                 Grid.Column="2"
-                Style="{StaticResource GVSymbolIconSmallCardType}">
+                Style="{DynamicResource GVSymbolIconSmallCardType}">
                 <Image.Source>
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"

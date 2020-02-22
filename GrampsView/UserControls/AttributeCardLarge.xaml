@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    Style="{StaticResource FrameSmallFixedCardStyle}">
+    Style="{DynamicResource FrameSmallFixedCardStyle}">
     <Frame.Content>
 
         <Grid
@@ -16,26 +16,22 @@
                                        Desktop='33%'}">
 
             <Grid.GestureRecognizers>
-                <TapGestureRecognizer
-                    Command="{prism:NavigateTo 'AttributeDetailPage'}">
+                <TapGestureRecognizer Command="{prism:NavigateTo 'AttributeDetailPage'}">
                     <TapGestureRecognizer.CommandParameter>
-                        <prism:NavigationParameter
-                            Key="hlink"
-                            Value="{Binding HLink}" />
+                        <prism:NavigationParameter Key="hlink" Value="{Binding HLink}" />
                     </TapGestureRecognizer.CommandParameter>
                 </TapGestureRecognizer>
             </Grid.GestureRecognizers>
-            <BoxView
-                BackgroundColor="Azure" />
+            <BoxView BackgroundColor="Azure" />
         </Grid>
     </Frame.Content>
 
     <!--<Border
-        Style="{StaticResource GVBorderNonSelectableItem}">
+        Style="{DynamicResource GVBorderNonSelectableItem}">
 
         <Grid
             x:Name="controlRoot"
-            Visibility="{x:Bind ViewModel.ModelPopulated, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+            Visibility="{x:Bind ViewModel.ModelPopulated, Mode=OneWay, Converter={DynamicResource BoolToVisibilityConverter}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition
                     Width="1*" />
@@ -55,20 +51,20 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 DataContext="{x:Bind ViewModel.HomeImageHLink}"
-                Style="{StaticResource MediaImageDataModel}" />
+                Style="{DynamicResource MediaImageDataModel}" />
 
             <ItemsControl
                 x:Name="largeDetailList"
                 Grid.Row="0"
                 Grid.Column="1"
-                ItemTemplate="{StaticResource ItemDetailLarge}"
+                ItemTemplate="{DynamicResource ItemDetailLarge}"
                 ItemsSource="{x:Bind AttributeList}"
-                Style="{StaticResource ItemControlDetailsListStyle}" />
+                Style="{DynamicResource ItemControlDetailsListStyle}" />
 
             <Viewbox
                 Grid.Row="0"
                 Grid.Column="2"
-                Style="{StaticResource GVViewBoxStyleSymbolconLargeCardType}">
+                Style="{DynamicResource GVViewBoxStyleSymbolconLargeCardType}">
                 <SymbolIcon
                     x:Name="SourceImage"
                     Foreground="{x:Bind ViewModel.HomeImageHLink.GetColourAsBrush}"

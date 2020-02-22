@@ -2,12 +2,16 @@
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Content.Res;
 using Android.OS;
 using Android.Runtime;
-using Android.Support.V4.App;
-using Android.Support.V4.Content;
+
+using AndroidX.Core.App;
+using AndroidX.Core.Content;
 
 using FFImageLoading.Forms.Platform;
+
+using GrampsView.Assets.Styles;
 using GrampsView.Common;
 using GrampsView.Common.CustomClasses;
 using GrampsView.Data.Repository;
@@ -22,6 +26,8 @@ using Prism.Ioc;
 
 using System;
 using System.Threading.Tasks;
+
+using static GrampsView.App;
 
 //using Xamarin.OneDrive;
 
@@ -80,7 +86,7 @@ namespace GrampsView.Droid
 
             // FFImageLoading Init
 
-            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: false);
+            CachedImageRenderer.Init(enableFastRenderer: false);
 
             CachedImageRenderer.InitImageViewHandler();
 
@@ -92,6 +98,8 @@ namespace GrampsView.Droid
 
             // Load the app
             LoadApplication(new App(new AndroidInitializer()));
+
+            //SetAppTheme();
         }
 
         protected override void OnDestroy()
@@ -119,12 +127,37 @@ namespace GrampsView.Droid
             DataStore.CN.NotifyException("CurrentDomainOnUnhandledException", newExc);
         }
 
+        private static void SetTheme(Xamarin.Essentials.AppTheme mode)
+        {
+            if (mode == Xamarin.Essentials.AppTheme.Dark)
+            {
+                if (AppTheme == Xamarin.Essentials.AppTheme.Dark)
+                    return;
+                PrismApplicationBase.Current.Resources = new DarkTheme();
+            }
+            else
+            {
+                if (AppTheme != Xamarin.Essentials.AppTheme.Dark)
+                    return;
+                PrismApplicationBase.Current.Resources = new LightTheme();
+            }
+            AppTheme = mode;
+        }
+
         private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
         {
             var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
             DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
 
             CommonLocalSettings.DataSerialised = false;
+        }
+
+        private void SetAppTheme()
+        {
+            if (Resources.Configuration.UiMode.HasFlag(UiMode.NightYes))
+                SetTheme(Xamarin.Essentials.AppTheme.Dark);
+            else
+                SetTheme(Xamarin.Essentials.AppTheme.Light);
         }
 
         private void UnregisterManagers()

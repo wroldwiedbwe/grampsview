@@ -6,14 +6,14 @@
     xmlns:userControls="clr-namespace:GrampsView.UserControls"
     Title="{Binding BaseTitle}"
     ControlTemplate="{StaticResource ListPageTemplate}"
-    Style="{StaticResource GVBaseContentPage}">
+    Style="{DynamicResource GVBaseContentPage}">
 
     <!--  Content  -->
     <Grid>
 
         <userControls:FlexSingleCardType
             x:Name="flexLayout"
-            BorderColor="{StaticResource CardBackGround}"
+            BorderColor="{DynamicResource CardBackGround}"
             FsctSource="{Binding EventSource, Mode=OneWay}"
             FsctTemplate="{StaticResource EventCardSmallDT}" />
     </Grid>

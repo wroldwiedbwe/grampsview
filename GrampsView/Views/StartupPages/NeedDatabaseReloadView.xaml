@@ -9,7 +9,7 @@
     xmlns:prismnav="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     Title="{Binding BaseTitle, Mode=OneWay}"
-    Style="{StaticResource GVBaseContentPage}"
+    Style="{DynamicResource GVBaseContentPage}"
     mc:Ignorable="d">
     <FlexLayout Direction="Column">
 
@@ -29,7 +29,7 @@
                     </Grid.RowDefinitions>
 
                     <Frame Grid.Row="0" Style="{StaticResource FrameLargeVariableCardStyleNS}">
-                        <Label Style="{StaticResource GVLabelStyleInstructions}" Text="{i18n:Translate NeedDatabaseReloadPage_Instructions}" />
+                        <Label Style="{DynamicResource GVLabelStyleInstructions}" Text="{i18n:Translate NeedDatabaseReloadPage_Instructions}" />
                     </Frame>
 
                     <Button
@@ -37,7 +37,7 @@
                         Command="{prismnav:NavigateTo 'FileInputHandlerPage',
                                                       Animated=True}"
                         HorizontalOptions="Center"
-                        Style="{StaticResource GVButtonStyle}"
+                        Style="{DynamicResource GVButtonStyle}"
                         Text="Load Database"
                         VerticalOptions="Center" />
                 </Grid>

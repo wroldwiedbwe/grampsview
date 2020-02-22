@@ -4,15 +4,15 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     IsVisible="{Binding Visible, Mode=OneWay}"
-    MinimumHeightRequest="{StaticResource GVDetailCardHeightLarge}"
-    Style="{StaticResource FrameSmallVariableCardStyleNS}">
+    MinimumHeightRequest="{DynamicResource GVDetailCardHeightLarge}"
+    Style="{DynamicResource FrameSmallVariableCardStyleNS}">
     <Frame.Content>
 
         <StackLayout BindableLayout.ItemsSource="{Binding .}">
             <BindableLayout.ItemTemplate>
 
                 <DataTemplate>
-                    <Grid BackgroundColor="{StaticResource CardBackGround}">
+                    <Grid BackgroundColor="{DynamicResource CardBackGround}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
@@ -22,14 +22,14 @@
                             Grid.Column="0"
                             HorizontalOptions="StartAndExpand"
                             Text="{Binding Label}"
-                            TextColor="{StaticResource TextDarkColor}" />
+                            TextColor="{DynamicResource TextDarkColor}" />
                         <Label
                             Grid.Column="1"
                             HorizontalOptions="EndAndExpand"
                             HorizontalTextAlignment="End"
                             LineBreakMode="WordWrap"
                             Text="{Binding Value}"
-                            TextColor="{StaticResource TextLightColor}"
+                            TextColor="{DynamicResource TextLightColor}"
                             VerticalTextAlignment="Start" />
                     </Grid>
                 </DataTemplate>

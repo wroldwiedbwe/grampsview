@@ -22,7 +22,7 @@
                 x:Name="flextitle"
                 Grid.Row="0"
                 Text="{Binding FsctSource.Title, Mode=OneWay}"
-                TextColor="White" />
+                TextColor="{DynamicResource TextLightColor}" />
 
             <FlexLayout
                 x:Name="flexer"
@@ -30,7 +30,7 @@
                 BindableLayout.ItemTemplate="{Binding FsctTemplate, Mode=OneWay}"
                 BindableLayout.ItemsSource="{Binding DisplayList, Mode=OneWay}"
                 IsEnabled="{Binding FlexSingleCardVisible, Mode=OneWay}"
-                Style="{StaticResource FlexLayoutCards}" />
+                Style="{DynamicResource FlexLayoutCards}" />
         </Grid>
     </ScrollView>
 </Frame>

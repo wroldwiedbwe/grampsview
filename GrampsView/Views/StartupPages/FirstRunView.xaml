@@ -7,7 +7,7 @@
     xmlns:i18n="clr-namespace:GrampsView.Common"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{Binding BaseTitle}"
-    Style="{StaticResource GVBaseContentPage}"
+    Style="{DynamicResource GVBaseContentPage}"
     mc:Ignorable="d">
 
     <FlexLayout Direction="Column">
@@ -17,16 +17,16 @@
 
             <ScrollView>
                 <FlexLayout Direction="Column">
-                    <Frame Style="{StaticResource FrameLargeVariableCardStyle}">
+                    <Frame Style="{DynamicResource FrameLargeVariableCardStyle}">
 
                         <Frame Grid.Row="0" Style="{StaticResource FrameLargeVariableCardStyleNS}">
-                            <Label Style="{StaticResource GVLabelStyleInstructions}" Text="{i18n:Translate FirstRun_IntroductionText}" />
+                            <Label Style="{DynamicResource GVLabelStyleInstructions}" Text="{i18n:Translate FirstRun_IntroductionText}" />
                         </Frame>
                     </Frame>
 
                     <Button
                         Command="{Binding LoadDataCommand}"
-                        Style="{StaticResource GVButtonStyle}"
+                        Style="{DynamicResource GVButtonStyle}"
                         Text="Load Data" />
                 </FlexLayout>
             </ScrollView>

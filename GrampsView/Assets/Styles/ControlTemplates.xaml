@@ -33,20 +33,6 @@
 
             <!--  Footer  -->
             <ucon:BottomMenu />
-
-            <!--<ContentView
-                x:Name="actIndBackground"
-                AbsoluteLayout.LayoutBounds="0,0,1,1"
-                AbsoluteLayout.LayoutFlags="All"
-                BackgroundColor="#222222"
-                IsVisible="{Binding IsLoading}"
-                Opacity="0.5" />
-            <ActivityIndicator
-                x:Name="actInd"
-                AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                IsRunning="{Binding IsLoading}"
-                IsVisible="{Binding IsLoading}" />-->
         </FlexLayout>
     </ControlTemplate>
 

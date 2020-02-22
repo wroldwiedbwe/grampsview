@@ -4,9 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    BackgroundColor="{StaticResource CardBackGroundCitation}"
+    BackgroundColor="{DynamicResource CardBackGroundCitation}"
     HorizontalOptions="FillAndExpand"
-    Style="{StaticResource FrameSmallFixedCardStyle}">
+    Style="{DynamicResource FrameSmallFixedCardStyle}">
     <Frame.Content>
         <Grid x:Name="controlRoot">
 
@@ -36,29 +36,29 @@
                 Grid.RowSpan="2"
                 Grid.Column="0"
                 BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
-                Style="{StaticResource MediaImageStyle}" />
+                Style="{DynamicResource MediaImageStyle}" />
 
             <Label
                 x:Name="idTextBlock"
                 Grid.Row="0"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
-                Style="{StaticResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVCardLabelStyleSmall}"
                 Text="{Binding DeRef.GetDefaultText, Mode=OneWay}"
-                TextColor="{StaticResource TextLightColor}" />
+                TextColor="{DynamicResource TextLightColor}" />
 
             <Label
                 Grid.Row="1"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
-                Style="{StaticResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVCardLabelStyleSmall}"
                 Text="{Binding DeRef.GDateContent.GetShortDateAsString, Mode=OneWay}"
-                TextColor="{StaticResource TextLightColor}" />
+                TextColor="{DynamicResource TextLightColor}" />
 
             <Image
                 Grid.Row="1"
                 Grid.Column="3"
-                Style="{StaticResource GVSymbolIconSmallCardType}">
+                Style="{DynamicResource GVSymbolIconSmallCardType}">
                 <Image.Source>
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"

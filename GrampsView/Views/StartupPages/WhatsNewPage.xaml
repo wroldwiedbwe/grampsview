@@ -7,7 +7,7 @@
     xmlns:markdown="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{Binding BaseTitle}"
-    Style="{StaticResource GVBaseContentPage}"
+    Style="{DynamicResource GVBaseContentPage}"
     mc:Ignorable="d">
 
     <FlexLayout Direction="Column">
@@ -17,7 +17,7 @@
 
             <ScrollView>
                 <FlexLayout Direction="Column">
-                    <Frame Style="{StaticResource FrameLargeVariableCardStyle}">
+                    <Frame Style="{DynamicResource FrameLargeVariableCardStyle}">
 
                         <markdown:MarkdownView
                             x:Name="mdview"
@@ -27,7 +27,7 @@
                     </Frame>
                     <Button
                         Command="{Binding LoadDataCommand}"
-                        Style="{StaticResource GVButtonStyle}"
+                        Style="{DynamicResource GVButtonStyle}"
                         Text="Load Data" />
                 </FlexLayout>
             </ScrollView>

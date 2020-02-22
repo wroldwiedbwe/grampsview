@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    BackgroundColor="{StaticResource CardBackGroundSource}"
-    Style="{StaticResource FrameSmallFixedCardStyle}">
+    BackgroundColor="{DynamicResource CardBackGroundSource}"
+    Style="{DynamicResource FrameSmallFixedCardStyle}">
     <Frame.Content>
 
         <Grid
@@ -38,19 +38,19 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
-                Style="{StaticResource MediaImageStyle}" />
+                Style="{DynamicResource MediaImageStyle}" />
 
             <Label
                 Grid.Row="0"
                 Grid.Column="1"
-                Style="{StaticResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVLabelStyleLarge}"
                 Text="{Binding DeRef.GSTitle, Mode=OneWay}"
-                TextColor="{StaticResource TextLightColor}" />
+                TextColor="{DynamicResource TextLightColor}" />
 
             <Image
                 Grid.Row="0"
                 Grid.Column="2"
-                Style="{StaticResource GVSymbolIconSmallCardType}">
+                Style="{DynamicResource GVSymbolIconSmallCardType}">
                 <Image.Source>
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"

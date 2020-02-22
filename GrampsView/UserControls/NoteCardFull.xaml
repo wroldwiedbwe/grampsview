@@ -6,7 +6,7 @@
     xmlns:markdown="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
     x:Name="NoteCardFullRoot"
     BindingContextChanged="PersonCardSmallRoot_BindingContextChanged"
-    Style="{StaticResource NoteFullTextStyle}">
+    Style="{DynamicResource NoteFullTextStyle}">
     <Frame.Content>
 
         <Grid

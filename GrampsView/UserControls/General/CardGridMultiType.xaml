@@ -58,7 +58,7 @@
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 Margin="0"
-                                Style="{StaticResource GVLabelStyleLarge}"
+                                Style="{DynamicResource GVLabelStyleLarge}"
                                 Text="{Binding Title}" />
 
                             <Rectangle

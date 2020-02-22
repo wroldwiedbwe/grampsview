@@ -4,9 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    BackgroundColor="{StaticResource CardBackGroundPlace}"
+    BackgroundColor="{DynamicResource CardBackGroundPlace}"
     IsVisible="{Binding Valid, Mode=OneWay}"
-    Style="{StaticResource FrameSmallFixedCardStyle}">
+    Style="{DynamicResource FrameSmallFixedCardStyle}">
     <Frame.Content>
 
         <Grid
@@ -41,27 +41,27 @@
                 Grid.RowSpan="2"
                 Grid.Column="0"
                 BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
-                Style="{StaticResource MediaImageStyle}" />
+                Style="{DynamicResource MediaImageStyle}" />
 
             <Label
                 x:Name="TitleTextBlock"
                 Grid.Row="0"
                 Grid.Column="1"
-                Style="{StaticResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVCardLabelStyleSmall}"
                 Text="{Binding DeRef.GName, Mode=OneWay}"
-                TextColor="{StaticResource TextLightColor}" />
+                TextColor="{DynamicResource TextLightColor}" />
 
             <Label
                 x:Name="NameTextBlock"
                 Grid.Row="1"
                 Grid.Column="1"
-                Style="{StaticResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVCardLabelStyleSmall}"
                 Text="{Binding DeRef.GPTitle, Mode=OneWay}"
-                TextColor="{StaticResource TextLightColor}" />
+                TextColor="{DynamicResource TextLightColor}" />
             <Image
                 Grid.Row="1"
                 Grid.Column="2"
-                Style="{StaticResource GVSymbolIconSmallCardType}">
+                Style="{DynamicResource GVSymbolIconSmallCardType}">
                 <Image.Source>
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"

@@ -5,9 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    BackgroundColor="{StaticResource CardBackGroundPerson}"
-    BorderColor="{StaticResource CardBackGround}"
-    Style="{StaticResource FrameCardStyle}"
+    BackgroundColor="{DynamicResource CardBackGroundPerson}"
+    BorderColor="{DynamicResource CardBackGround}"
+    Style="{DynamicResource FrameCardStyle}"
     WidthRequest="100">
 
     <Frame.Content>
@@ -43,12 +43,12 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
-                Style="{StaticResource MediaImageStyle}" />
+                Style="{DynamicResource MediaImageStyle}" />
 
             <Label
                 Grid.Row="1"
                 Grid.Column="0"
-                Style="{StaticResource GVCardLabelStyleSmall}"
+                Style="{DynamicResource GVCardLabelStyleSmall}"
                 Text="{Binding DeRef.GetDefaultText}" />
         </Grid>
     </Frame.Content>

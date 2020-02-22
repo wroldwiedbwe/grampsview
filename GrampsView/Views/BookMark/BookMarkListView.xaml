@@ -8,7 +8,7 @@
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     Title="{Binding BaseTitle}"
     ControlTemplate="{StaticResource ListPageTemplate}"
-    Style="{StaticResource GVBaseContentPage}"
+    Style="{DynamicResource GVBaseContentPage}"
     mc:Ignorable="d">
 
     <!--  Content  -->
@@ -16,7 +16,7 @@
 
         <ucon:FlexSingleCardType
             x:Name="flexLayout"
-            BorderColor="{StaticResource CardBackGround}"
+            BorderColor="{DynamicResource CardBackGround}"
             FsctSource="{Binding BookMarkSource, Mode=OneWay}"
             FsctTemplate="{StaticResource BookMarkCardSmallDT}" />
     </Grid>

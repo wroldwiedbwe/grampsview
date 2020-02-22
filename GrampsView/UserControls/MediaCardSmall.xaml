@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    BackgroundColor="{StaticResource CardBackGroundMedia}"
-    Style="{StaticResource FrameSmallFixedCardStyle}">
+    BackgroundColor="{DynamicResource CardBackGroundMedia}"
+    Style="{DynamicResource FrameSmallFixedCardStyle}">
     <Frame.Content>
 
         <Grid x:Name="controlRoot" RowSpacing="3">
@@ -35,28 +35,27 @@
                 Grid.RowSpan="2"
                 Grid.Column="0"
                 BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
-                Style="{StaticResource MediaImageStyle}"
+                Style="{DynamicResource MediaImageStyle}"
                 VerticalOptions="CenterAndExpand" />
 
             <Label
                 x:Name="MediaObjectTitle"
                 Grid.Row="0"
                 Grid.Column="1"
-                Style="{StaticResource GVLabelStyleLarge}"
-                Text="{Binding DeRef.GDescription, Mode=OneWay}"
-                TextColor="{StaticResource TextLightColor}" />
+                Style="{DynamicResource GVCardLabelStyleSmall}"
+                Text="{Binding DeRef.GDescription, Mode=OneWay}" />
 
             <Label
                 x:Name="GDateValueBTextBlock"
                 Grid.Row="1"
                 Grid.Column="1"
-                Style="{StaticResource GVCardLabelStyleSmall}"
+                Style="{DynamicResource GVCardLabelStyleSmall}"
                 Text="{Binding DeRef.GDateValue.GetShortDateAsString, Mode=OneWay}" />
 
             <Image
                 Grid.Row="1"
                 Grid.Column="2"
-                Style="{StaticResource GVSymbolIconSmallCardType}">
+                Style="{DynamicResource GVSymbolIconSmallCardType}">
                 <Image.Source>
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"

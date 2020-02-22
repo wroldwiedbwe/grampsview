@@ -9,6 +9,7 @@
 
 namespace GrampsView.Common
 {
+    using System;
     using Xamarin.Essentials;
 
     /// <summary>
@@ -19,6 +20,19 @@ namespace GrampsView.Common
         //private const string SettingsKey = "settings_key";
 
         //private static readonly string SettingsDefault = string.Empty;
+
+        public static AppTheme ApplicationTheme
+        {
+            get
+            {
+                return (AppTheme)Enum.ToObject(typeof(AppTheme), GetInt("ApplicationTheme", Convert.ToInt32(AppTheme.Unspecified)));
+            }
+
+            set
+            {
+                SetInt("ApplicationTheme", Convert.ToInt32(value));
+            }
+        }
 
         /// <summary>
         /// Gets a value indicating whether needs the database reload.
@@ -78,7 +92,7 @@ namespace GrampsView.Common
         /// Gets or sets a value indicating whether [data serialised].
         /// </summary>
         /// <value>
-        /// <c> true </c> if [data serialised]; otherwise, <c> false </c>.
+        /// <c>true</c> if [data serialised]; otherwise, <c>false</c>.
         /// </value>
         public static bool DataSerialised
         {
@@ -93,13 +107,24 @@ namespace GrampsView.Common
             }
         }
 
+        public static bool FirstRunDisplay
+        {
+            get
+            {
+                return GetBool("FirstRunDisplay");
+            }
 
+            set
+            {
+                SetBool("FirstRunDisplay", value);
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether [logging enabled].
         /// </summary>
         /// <value>
-        /// <c> true </c> if [logging enabled]; otherwise, <c> false </c>.
+        /// <c>true</c> if [logging enabled]; otherwise, <c>false</c>.
         /// </value>
         public static bool LoggingEnabled
         {
@@ -127,19 +152,6 @@ namespace GrampsView.Common
             }
         }
 
-        public static bool FirstRunDisplay
-        {
-            get
-            {
-                return GetBool("FirstRunDisplay");
-            }
-
-            set
-            {
-                SetBool("FirstRunDisplay", value);
-            }
-        }
-
         public static void SetReloadDatabase()
         {
             // Remove the old dateTime stamps so the files get reloaded even if they have been seen before
@@ -149,8 +161,6 @@ namespace GrampsView.Common
 
             DataSerialised = false;
         }
-
-      
 
         /// <summary>
         /// Gets the bool local setting data.
@@ -181,7 +191,12 @@ namespace GrampsView.Common
             }
         }
 
-      
+        private static Int32 GetInt(string setting, Int32 argDefault)
+        {
+            Int32 settingFlag = Preferences.Get(setting, argDefault);
+
+            return settingFlag;
+        }
 
         /// <summary>
         /// Sets the bool.
@@ -190,7 +205,7 @@ namespace GrampsView.Common
         /// The setting.
         /// </param>
         /// <param name="value">
-        /// if set to <c> true </c> [value].
+        /// if set to <c>true</c> [value].
         /// </param>
         private static void SetBool(string setting, bool value)
         {
@@ -213,11 +228,9 @@ namespace GrampsView.Common
         /// <param name="value">
         /// The value.
         /// </param>
-        private static void SetInt(string setting, int value)
+        private static void SetInt(string setting, Int32 value)
         {
             Preferences.Set(setting, value);
         }
-
-    
     }
 }

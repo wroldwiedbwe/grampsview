@@ -6,7 +6,7 @@
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="HeaderCardLargeRoot"
     BindingContextChanged="HeaderCardLargeRoot_BindingContextChanged"
-    Style="{StaticResource FrameLargeVariableCardStyleNS}">
+    Style="{DynamicResource FrameLargeVariableCardStyleNS}">
     <Frame.Content>
 
         <Grid

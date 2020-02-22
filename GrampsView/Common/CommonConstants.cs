@@ -164,7 +164,7 @@ namespace GrampsView.Common
         /// <summary>
         /// The symbol Repository.
         /// </summary>
-        public const string IconRepository = IconFont.SourceRepository;
+        public const string IconRepository = IconFont.BookMultiple;
 
         /// <summary>
         /// The icon Search.

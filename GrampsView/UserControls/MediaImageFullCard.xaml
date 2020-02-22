@@ -5,9 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="MediaImageFullCardRoot"
-    BackgroundColor="{StaticResource CardBackGroundMedia}"
+    BackgroundColor="{DynamicResource CardBackGroundMedia}"
     HeightRequest="300"
-    Style="{StaticResource FrameLargeFixedCardStyle}">
+    Style="{DynamicResource FrameLargeFixedCardStyle}">
     <Frame.Content>
 
         <ucon:MediaImageFull x:Name="mediaFull" />

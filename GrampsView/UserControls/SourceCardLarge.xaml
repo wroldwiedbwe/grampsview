@@ -6,8 +6,8 @@
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="PersonCardSmallRoot"
-    BackgroundColor="{StaticResource CardBackGroundSource}"
-    Style="{StaticResource FrameLargeFixedCardStyle}">
+    BackgroundColor="{DynamicResource CardBackGroundSource}"
+    Style="{DynamicResource FrameLargeFixedCardStyle}">
     <Frame.Content>
 
         <Grid
@@ -44,33 +44,33 @@
                 Grid.Column="0"
                 BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
                 HorizontalOptions="FillAndExpand"
-                Style="{StaticResource MediaImageStyle}"
+                Style="{DynamicResource MediaImageStyle}"
                 VerticalOptions="CenterAndExpand" />
 
             <Label
                 Grid.Row="0"
                 Grid.Column="1"
-                Style="{StaticResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVLabelStyleLarge}"
                 Text="{Binding DeRef.GSTitle, Mode=OneWay}"
-                TextColor="{StaticResource TextLightColor}" />
+                TextColor="{DynamicResource TextLightColor}" />
 
             <Label
                 Grid.Row="1"
                 Grid.Column="1"
-                Style="{StaticResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVLabelStyleLarge}"
                 Text="{Binding DeRef.GSAuthor, Mode=OneWay}"
-                TextColor="{StaticResource TextLightColor}" />
+                TextColor="{DynamicResource TextLightColor}" />
             <Label
                 Grid.Row="2"
                 Grid.Column="1"
-                Style="{StaticResource GVLabelStyleLarge}"
+                Style="{DynamicResource GVLabelStyleLarge}"
                 Text="{Binding DeRef.GSPubInfo, Mode=OneWay}"
-                TextColor="{StaticResource TextLightColor}" />
+                TextColor="{DynamicResource TextLightColor}" />
 
             <Image
                 Grid.Row="2"
                 Grid.Column="2"
-                Style="{StaticResource GVSymbolIconLargeCardType}">
+                Style="{DynamicResource GVSymbolIconLargeCardType}">
                 <Image.Source>
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"

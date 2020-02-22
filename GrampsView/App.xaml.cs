@@ -1,4 +1,5 @@
-﻿using GrampsView.Common;
+﻿using GrampsView.Assets.Styles;
+using GrampsView.Common;
 using GrampsView.Common.CustomClasses;
 using GrampsView.Data;
 using GrampsView.Data.External.StoreSerial;
@@ -37,15 +38,15 @@ namespace GrampsView
         public App()
             : this(null)
         {
-            System.Diagnostics.Debug.WriteLine("====== resource debug info =========");
+            Debug.WriteLine("====== resource debug info =========");
 
             var assembly = typeof(App).GetTypeInfo().Assembly;
 
             foreach (var res in assembly.GetManifestResourceNames())
 
-                System.Diagnostics.Debug.WriteLine("found resource: " + res);
+                Debug.WriteLine("found resource: " + res);
 
-            System.Diagnostics.Debug.WriteLine("====================================");
+            Debug.WriteLine("====================================");
 
             // This lookup NOT required for Windows platforms - the Culture will be automatically set
             if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS || Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
@@ -69,6 +70,8 @@ namespace GrampsView
                             : base(initializer, setFormsDependencyResolver)
         {
         }
+
+        public static AppTheme AppTheme { get; set; }
 
         /// <summary>
         /// Creates the logger.
@@ -116,6 +119,52 @@ namespace GrampsView
         {
             string StartPage = string.Empty;
 
+            // Only Start App Center if physical
+            if (!CommonRoutines.IsEmualator())
+            {
+                AppCenterInit();
+            }
+
+            // Set theme
+            switch (CommonLocalSettings.ApplicationTheme)
+            {
+                case AppTheme.Unspecified:
+                    {
+                        // Honor the system request
+                        switch (AppInfo.RequestedTheme)
+                        {
+                            case AppTheme.Dark:
+                                {
+                                    Resources.Add(new DarkTheme());
+                                    break;
+                                }
+                            case AppTheme.Light:
+                                {
+                                    Resources.Add(new LightTheme());
+                                    break;
+                                }
+                            default:
+                                {
+                                    break;
+                                }
+                        }
+                        break;
+                    }
+
+                case AppTheme.Light:
+                    {
+                        Resources.Add(new LightTheme());
+                        break;
+                    }
+                case AppTheme.Dark:
+                    {
+                        Resources.Add(new DarkTheme());
+                        break;
+                    }
+                default:
+                    break;
+            }
+
             IPlatformSpecific ps = Container.Resolve<IPlatformSpecific>();
 
             DataStore.CN = Container.Resolve<ICommonNotifications>();
@@ -123,12 +172,6 @@ namespace GrampsView
             DataStore.NV = new NavCmd(Container.Resolve<IEventAggregator>());
 
             IDataRepositoryManager temp = Container.Resolve<IDataRepositoryManager>();
-
-            // Only Start App Center if physical
-            if (!Common.CommonRoutines.IsEmualator())
-            {
-                AppCenterInit();
-            }
 
             // Start at the MessageLog Page and work from there
             StartPage = nameof(MessageLogPage);

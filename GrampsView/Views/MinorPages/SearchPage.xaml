@@ -11,7 +11,7 @@
     Title="{Binding BaseTitle}"
     Appearing="ContentPage_Appearing"
     ControlTemplate="{StaticResource DetailPageTemplate}"
-    Style="{StaticResource GVBaseContentPage}"
+    Style="{DynamicResource GVBaseContentPage}"
     mc:Ignorable="d">
 
     <!--<ContentPage.BindingContext>
@@ -51,7 +51,7 @@
                     x:Uid="SearchPage_Instructions"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Style="{StaticResource GVLabelStyleInstructions}"
+                    Style="{DynamicResource GVLabelStyleInstructions}"
                     Text="{i18n:Translate SearchPage_Instructions}" />
 
                 <SearchBar
@@ -64,7 +64,7 @@
                     IsTabStop="True"
                     SearchCommand="{Binding SearchCommand}"
                     SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
-                    TextColor="{StaticResource TextDarkColor}">
+                    TextColor="{DynamicResource TextDarkColor}">
                     <SearchBar.Behaviors>
 
                         <behaviour:EventToCommandBehavior

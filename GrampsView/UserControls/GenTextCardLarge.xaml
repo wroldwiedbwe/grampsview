@@ -4,9 +4,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    MinimumHeightRequest="{StaticResource GVDetailCardHeightLarge}"
-    Style="{StaticResource FrameLargeFixedCardStyle}"
-    WidthRequest="{StaticResource GVDetailCardWidthLarge}">
+    MinimumHeightRequest="{DynamicResource GVDetailCardHeightLarge}"
+    Style="{DynamicResource FrameLargeFixedCardStyle}"
+    WidthRequest="{DynamicResource GVDetailCardWidthLarge}">
     <Frame.Content>
 
         <BoxView BackgroundColor="Pink" HorizontalOptions="CenterAndExpand" />
@@ -29,12 +29,12 @@
         <Border
             Grid.Row="0"
             Grid.Column="0"
-            Style="{StaticResource GVBorderNonSelectableItem}">
+            Style="{DynamicResource GVBorderNonSelectableItem}">
 
             <TextBlock
                 x:Name="largeDetailList"
                 Padding="5"
-                Style="{StaticResource GVTextBlockDataModelLarge}"
+                Style="{DynamicResource GVTextBlockDataModelLarge}"
                 Text="{x:Bind ViewModel.TextDetails}" />
         </Border>
     </Grid>-->

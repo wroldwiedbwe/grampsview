@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    BackgroundColor="{StaticResource CardBackGroundEvent}"
-    Style="{StaticResource FrameSmallFixedCardStyle}">
+    BackgroundColor="{DynamicResource CardBackGroundEvent}"
+    Style="{DynamicResource FrameSmallFixedCardStyle}">
     <Frame.Content>
 
         <Grid x:Name="controlRoot" RowSpacing="3">
@@ -36,14 +36,14 @@
                 Grid.RowSpan="2"
                 Grid.Column="0"
                 BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
-                Style="{StaticResource MediaImageStyle}" />
+                Style="{DynamicResource MediaImageStyle}" />
 
             <Label
                 x:Name="dateTextBlock"
                 Grid.Row="0"
                 Grid.Column="1"
                 LineBreakMode="WordWrap"
-                Style="{StaticResource GVCardLabelStyleSmall}"
+                Style="{DynamicResource GVCardLabelStyleSmall}"
                 Text="{Binding DeRef.GDate.GetYear, Mode=OneWay}" />
 
             <Label
@@ -52,7 +52,7 @@
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
                 HorizontalOptions="EndAndExpand"
-                Style="{StaticResource GVCardLabelStyleSmall}"
+                Style="{DynamicResource GVCardLabelStyleSmall}"
                 Text="{Binding DeRef.GType, Mode=OneWay}" />
 
             <Label
@@ -60,13 +60,13 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
-                Style="{StaticResource GVCardLabelStyleSmall}"
+                Style="{DynamicResource GVCardLabelStyleSmall}"
                 Text="{Binding DeRef.GDescription, Mode=OneWay}" />
 
             <Image
                 Grid.Row="1"
                 Grid.Column="3"
-                Style="{StaticResource GVSymbolIconSmallCardType}">
+                Style="{DynamicResource GVSymbolIconSmallCardType}">
                 <Image.Source>
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"

@@ -21,16 +21,17 @@
                         <DataTemplate>
 
                             <StackLayout
-                                BackgroundColor="{StaticResource CardBackGround}"
+                                BackgroundColor="{DynamicResource CardBackGround}"
                                 HorizontalOptions="StartAndExpand"
                                 Orientation="Horizontal">
 
-                                <Image HeightRequest="40" Style="{StaticResource GVSymbolcon}">
+                                <Image HeightRequest="40" Style="{DynamicResource GVSymbolconPageHeaderType}">
                                     <Image.Source>
                                         <FontImageSource
                                             FontFamily="{DynamicResource MaterialFontFamily}"
                                             Glyph="{Binding Icon}"
-                                            Size="40" />
+                                            Size="40"
+                                            Color="{DynamicResource IconMenu}" />
                                     </Image.Source>
                                 </Image>
                                 <Button

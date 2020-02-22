@@ -4,8 +4,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    MinimumHeightRequest="{StaticResource GVDetailCardHeightLarge}"
-    Style="{StaticResource FrameLargeVariableCardStyleNS}">
+    MinimumHeightRequest="{DynamicResource GVDetailCardHeightLarge}"
+    Style="{DynamicResource FrameLargeVariableCardStyleNS}">
 
     <Frame.Content>
         <Grid>
@@ -27,14 +27,14 @@
                     x:Name="LLCardLargeTitle"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Style="{StaticResource GVHeaderStyleLarge}" />
+                    Style="{DynamicResource GVHeaderStyleLarge}" />
             </Frame>
 
             <ucon:BindableStackLayout
                 x:Name="largeDetailList"
                 Grid.Row="1"
                 Grid.Column="0"
-                ItemDataTemplate="{StaticResource GVCardListLineLarge}" />
+                ItemDataTemplate="{DynamicResource GVCardListLineLarge}" />
         </Grid>
     </Frame.Content>
 </Frame>
