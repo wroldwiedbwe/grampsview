@@ -3,7 +3,6 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Name="FlexSingleCardTypeRoot"
-    BackgroundColor="{StaticResource FrameBackGround}"
     Style="{StaticResource FlexSingleCollection}">
 
     <ScrollView
@@ -22,7 +21,7 @@
                 x:Name="flextitle"
                 Grid.Row="0"
                 Text="{Binding FsctSource.Title, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                TextColor="{DynamicResource OnSecondaryColor}" />
 
             <FlexLayout
                 x:Name="flexer"

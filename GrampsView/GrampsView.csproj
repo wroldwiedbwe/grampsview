@@ -36,6 +36,7 @@
 
   <ItemGroup>
     <Compile Remove="Behaviours\ListViewAutoSizeBehaviour.cs" />
+    <Compile Remove="Behaviours\RadioButtonBehaviour.cs" />
     <Compile Remove="Common\AppExtension.cs" />
     <Compile Remove="Common\CommonCropBitmap.cs" />
     <Compile Remove="Common\CommonLogCircular.cs" />
@@ -80,7 +81,9 @@
     <Compile Remove="UserControls\CitationRefCardSmall.xaml.cs" />
     <Compile Remove="UserControls\General\CardGridMultiType.xaml.cs" />
     <Compile Remove="UserControls\General\CardGridSingleType.xaml.cs" />
+    <Compile Remove="UserControls\General\CheckBoxExtended.cs" />
     <Compile Remove="UserControls\General\FlexSingleCardGroup.xaml.cs" />
+    <Compile Remove="UserControls\General\RadioButtonxExtended .cs" />
     <Compile Remove="UserControls\HLinkCitationCardSmall.xaml.cs" />
     <Compile Remove="UserControls\HLinkEventCardSmall.xaml.cs" />
     <Compile Remove="UserControls\MediaRefCardSmall.xaml.cs" />

@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
+    BackgroundColor="{DynamicResource CardBackGroundAddress}"
     Style="{DynamicResource FrameSmallFixedCardStyle}">
     <Frame.Content>
 
@@ -45,23 +46,20 @@
             <Label
                 Grid.Row="0"
                 Grid.Column="1"
-                Style="{DynamicResource GVLabelStyleSmall}"
-                Text="{Binding GDate.GetShortDateAsString, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                Style="{DynamicResource GVCardLabelStyleSmall}"
+                Text="{Binding GDate.GetShortDateAsString, Mode=OneWay}" />
 
             <Label
                 Grid.Row="1"
                 Grid.Column="1"
-                Style="{DynamicResource GVLabelStyleSmall}"
-                Text="{Binding GStreet, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                Style="{DynamicResource GVCardLabelStyleSmall}"
+                Text="{Binding GStreet, Mode=OneWay}" />
 
             <Label
                 Grid.Row="2"
                 Grid.Column="1"
-                Style="{DynamicResource GVLabelStyleSmall}"
-                Text="{Binding GCity, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                Style="{DynamicResource GVCardLabelStyleSmall}"
+                Text="{Binding GCity, Mode=OneWay}" />
 
             <Image
                 Grid.Row="2"

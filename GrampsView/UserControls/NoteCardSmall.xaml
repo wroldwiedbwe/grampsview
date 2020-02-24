@@ -48,8 +48,7 @@
                 Grid.RowSpan="2"
                 Grid.Column="1"
                 Style="{DynamicResource GVCardLabelStyleSmall}"
-                Text="{Binding DeRef.GText, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                Text="{Binding DeRef.GText, Mode=OneWay}" />
 
             <Image
                 Grid.Row="1"

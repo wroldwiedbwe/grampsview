@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
+    BackgroundColor="{DynamicResource CardBackGroundAttribute}"
     Style="{DynamicResource FrameSmallFixedCardStyleNS}">
     <Frame.Content>
 
@@ -37,16 +38,14 @@
             <Label
                 Grid.Row="0"
                 Grid.Column="1"
-                Style="{DynamicResource GVLabelStyleSmall}"
-                Text="{Binding GType, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                Style="{DynamicResource GVCardLabelStyleSmall}"
+                Text="{Binding GType, Mode=OneWay}" />
 
             <Label
                 Grid.Row="1"
                 Grid.Column="1"
-                Style="{DynamicResource GVLabelStyleSmall}"
-                Text="{Binding GValue, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                Style="{DynamicResource GVCardLabelStyleSmall}"
+                Text="{Binding GValue, Mode=OneWay}" />
 
             <Image
                 Grid.Row="1"

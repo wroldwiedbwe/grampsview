@@ -15,7 +15,7 @@
     <Grid>
         <ucon:FlexSingleCardType
             x:Name="flexLayout"
-            BorderColor="{DynamicResource CardBackGround}"
+            BorderColor="{DynamicResource SecondaryVariantLightColor}"
             FsctSource="{Binding CitationSource, Mode=OneWay}"
             FsctTemplate="{StaticResource CitationCardSmallDT}" />
     </Grid>

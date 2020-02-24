@@ -5,15 +5,18 @@
 
     using Xamarin.Forms;
 
-    public class CheckBoxExtended : StackLayout
+    public class RadioButtonxExtended : StackLayout
     {
-        public static readonly BindableProperty CheckedProperty = BindableProperty.Create("Checked", typeof(Boolean?), typeof(CheckBoxExtended), null,
+        public static readonly BindableProperty CheckedProperty = BindableProperty.Create("Checked", typeof(Boolean?), typeof(RadioButtonxExtended), false,
                 BindingMode.TwoWay, propertyChanged: CheckedValueChanged);
 
-        public static readonly BindableProperty CommandProperty = BindableProperty.Create("Command", typeof(ICommand), typeof(CheckBoxExtended));
+        public static readonly BindableProperty CommandProperty = BindableProperty.Create("Command", typeof(ICommand), typeof(RadioButtonxExtended));
+
+        public static readonly BindableProperty RadioButtonCheckedProperty = BindableProperty.Create(" RadioButtonChecked", typeof(Boolean?), typeof(RadioButtonxExtended), null,
+                  BindingMode.TwoWay, propertyChanged: RadioButtonCheckedChanged);
 
         public static readonly BindableProperty TextProperty =
-                BindableProperty.Create("Text", typeof(String), typeof(CheckBoxExtended), null, BindingMode.TwoWay, propertyChanged: TextValueChanged);
+                BindableProperty.Create("Text", typeof(String), typeof(RadioButtonxExtended), null, BindingMode.TwoWay, propertyChanged: TextValueChanged);
 
         private static FontImageSource checkedFalse
                 = new FontImageSource
@@ -31,7 +34,7 @@
 
         private readonly Label _label;
 
-        public CheckBoxExtended()
+        public RadioButtonxExtended()
         {
             Orientation = StackOrientation.Horizontal;
             BackgroundColor = Color.Transparent;
@@ -100,6 +103,12 @@
             set => SetValue(CommandProperty, value);
         }
 
+        public Boolean RadioButtonChecked
+        {
+            get => (bool)GetValue(RadioButtonCheckedProperty);
+            set => SetValue(RadioButtonCheckedProperty, value);
+        }
+
         public String Text
         {
             get => (string)GetValue(TextProperty);
@@ -108,23 +117,45 @@
 
         private static void CheckedValueChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            if (newValue != null && (Boolean)newValue)
+            RadioButtonxExtended daRadioButton = bindable as RadioButtonxExtended;
+
+            if (daRadioButton is null)
             {
-                ((CheckBoxExtended)bindable)._image.Source = checkedTrue;
-            }
-            else
-            {
-                ((CheckBoxExtended)bindable)._image.Source = checkedFalse;
+                return;
             }
 
-            ((CheckBoxExtended)bindable).CheckedChanged?.Invoke(bindable, EventArgs.Empty);
+            // If it's meant to be checked then leave it
+            if (daRadioButton.RadioButtonChecked)
+            {
+                daRadioButton._image.Source = checkedTrue;
+                return;
+            }
 
-            ((CheckBoxExtended)bindable).Command?.Execute(null);
+            // If it's meant to be unchecked then leave it
+            if (!daRadioButton.RadioButtonChecked && !(Boolean)newValue)
+            {
+                daRadioButton._image.Source = checkedFalse;
+                return;
+            }
+
+            if (!daRadioButton.RadioButtonChecked && (Boolean)newValue)
+            {
+                daRadioButton._image.Source = checkedTrue;
+                return;
+            }
+
+            daRadioButton.CheckedChanged?.Invoke(bindable, EventArgs.Empty);
+
+            //daRadioButton.Command?.Execute(null);
+        }
+
+        private static void RadioButtonCheckedChanged(BindableObject bindable, object oldValue, object newValue)
+        {
         }
 
         private static void TextValueChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            if (newValue != null) ((CheckBoxExtended)bindable)._label.Text = newValue.ToString();
+            if (newValue != null) ((RadioButtonxExtended)bindable)._label.Text = newValue.ToString();
         }
 
         private void Tg_Tapped(object sender, EventArgs e)

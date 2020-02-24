@@ -12,7 +12,7 @@
             <BindableLayout.ItemTemplate>
 
                 <DataTemplate>
-                    <Grid BackgroundColor="{DynamicResource CardBackGround}">
+                    <Grid BackgroundColor="{DynamicResource SecondaryVariantLightColor}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
@@ -22,14 +22,14 @@
                             Grid.Column="0"
                             HorizontalOptions="StartAndExpand"
                             Text="{Binding Label}"
-                            TextColor="{DynamicResource TextDarkColor}" />
+                            TextColor="{DynamicResource OnPrimaryColor}" />
                         <Label
                             Grid.Column="1"
                             HorizontalOptions="EndAndExpand"
                             HorizontalTextAlignment="End"
                             LineBreakMode="WordWrap"
                             Text="{Binding Value}"
-                            TextColor="{DynamicResource TextLightColor}"
+                            TextColor="{DynamicResource OnSecondaryColor}"
                             VerticalTextAlignment="Start" />
                     </Grid>
                 </DataTemplate>

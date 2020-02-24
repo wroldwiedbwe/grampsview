@@ -9,7 +9,7 @@
                 Padding="1"
                 BorderColor="{StaticResource CardNotSelectable}"
                 CornerRadius="0">
-                <Grid BackgroundColor="{DynamicResource CardBackGround}">
+                <Grid BackgroundColor="{DynamicResource SecondaryVariantLightColor}">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
@@ -24,11 +24,11 @@
                         Grid.Column="0"
                         FontSize="{StaticResource FontSizeSmall}"
                         Text="{Binding Label}"
-                        TextColor="{DynamicResource TextDarkColor}" />
+                        TextColor="{DynamicResource OnPrimaryColor}" />
                     <Label
                         Grid.Column="1"
                         Text="{Binding Text}"
-                        TextColor="{StaticResource TextLightColor}" />
+                        TextColor="{StaticResource OnSecondaryColor}" />
                 </Grid>
             </Frame>
         </ViewCell>
@@ -48,7 +48,7 @@
                 <Label
                     Grid.Row="0"
                     Text="{Binding Title}"
-                    TextColor="{DynamicResource TextDarkColor}" />
+                    TextColor="{DynamicResource OnPrimaryColor}" />
 
                 <FlexLayout
                     x:Name="flexer"
@@ -63,7 +63,7 @@
     <!--  Item Detail data template  large  -->
     <DataTemplate x:Key="GVCardListLineLarge" x:Name="GVCardListLineLarge">
 
-        <Grid BackgroundColor="{DynamicResource CardBackGround}">
+        <Grid BackgroundColor="{DynamicResource PrimaryVariantLightColor}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -77,12 +77,12 @@
                 Grid.Column="0"
                 FontSize="{StaticResource FontSizeSmall}"
                 Text="{Binding Label}"
-                TextColor="{DynamicResource TextDarkColor}" />
+                TextColor="{DynamicResource OnPrimaryColor}" />
             <Label
                 Grid.Column="1"
                 HorizontalTextAlignment="End"
                 Text="{Binding Value}"
-                TextColor="{StaticResource TextLightColor}" />
+                TextColor="{StaticResource OnSecondaryColor}" />
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

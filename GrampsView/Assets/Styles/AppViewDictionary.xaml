@@ -37,9 +37,9 @@
     <!--
     <Style x:Key="GVEditorStyle" TargetType="ucon:BorderlessEditor">
         <Setter Property="IsReadOnly" Value="True" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource CardBackGround}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryVariantLightColor}" />
         <Setter Property="AutoSize" Value="TextChanges" />
-        <Setter Property="TextColor" Value="{DynamicResource TextLightColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource OnSecondaryColor}" />
     </Style>-->
 
     <!--
@@ -55,7 +55,7 @@
         <Setter Property="BorderRadius" Value="1" />
         <Setter Property="WidthRequest" Value="{DynamicResource GVDetailCardWidthSmall}" />
         <Setter Property="BackgroundColor" Value="Red" />
-        <Setter Property="TextColor" Value="{DynamicResource TextLightColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource OnSecondaryColor}" />
     </Style>
 
     <!--  Create a Menu Style Button Style  -->
@@ -65,7 +65,7 @@
         TargetType="Button">
         <Setter Property="BackgroundColor" Value="Accent" />
         <Setter Property="BorderRadius" Value="0" />
-        <Setter Property="TextColor" Value="{DynamicResource TextLightColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource OnSecondaryColor}" />
         <Setter Property="WidthRequest" Value="{DynamicResource GVDetailCardWidthLarge}" />
     </Style>
 
@@ -87,7 +87,7 @@
 
     <!--  Create a ContentPage style  -->
     <Style x:Key="GVBaseContentPage" TargetType="ContentPage">
-        <!--<Setter Property="BackgroundColor" Value="{DynamicResource PageBackGround}" />-->
+        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
     </Style>
 
     <!--
@@ -117,7 +117,7 @@
     <!--  Create a Frame Card Style  -->
     <Style x:Key="FrameCardStyle" TargetType="Frame">
         <Setter Property="BorderColor" Value="Accent" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource CardBackGround}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryVariantLightColor}" />
         <Setter Property="HasShadow" Value="False" />
         <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="Padding" Value="5" />
@@ -158,7 +158,7 @@
 
     <!--  Create a FrameBottomMenu Style  -->
     <Style x:Key="FrameBottomMenu" TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
         <Setter Property="BorderColor" Value="Accent" />
         <Setter Property="HasShadow" Value="False" />
         <Setter Property="Margin" Value="1" />
@@ -171,8 +171,8 @@
 
     <!--  Create a MediaImage Style  -->
     <Style x:Key="MediaImageStyle" TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="{DynamicResource CardBackGround}" />
-        <Setter Property="BorderColor" Value="{DynamicResource CardBackGround}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryVariantLightColor}" />
+        <Setter Property="BorderColor" Value="{DynamicResource SecondaryVariantLightColor}" />
         <Setter Property="HasShadow" Value="False" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="1" />
@@ -239,7 +239,7 @@
         <Setter Property="HasShadow" Value="False" />
         <Setter Property="Margin" Value="5" />
         <Setter Property="Padding" Value="2" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource CardGroupBackGround}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryVariantLightColor}" />
         <Setter Property="CornerRadius" Value="10" />
     </Style>
 
@@ -248,6 +248,7 @@
         <Setter Property="Margin" Value="1,5,1,1" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryVariantDarkColor}" />
     </Style>
 
     <Style x:Key="FlexMultiCollection" TargetType="Frame">
@@ -256,6 +257,7 @@
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryVariantDarkColor}" />
     </Style>
 
     <!--  Create a Note Full Text Card Style  -->
@@ -341,7 +343,7 @@
         <Setter Property="HorizontalOptions" Value="StartAndExpand" />
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="LineBreakMode" Value="WordWrap" />
-        <Setter Property="TextColor" Value="{DynamicResource TextDarkColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource OnPrimaryColor}" />
     </Style>
 
     <!--  Create a Small Style for a TextBlock  -->
@@ -364,7 +366,7 @@
         x:Key="GVLabelStyleInstructions"
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource TextLightColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource OnPrimaryColor}" />
         <Setter Property="FontSize" Value="Medium" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
@@ -377,7 +379,7 @@
         <Setter Property="LineBreakMode" Value="TailTruncation" />
         <Setter Property="FontSize" Value="Medium" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
-        <Setter Property="TextColor" Value="{DynamicResource TextLightColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource OnSecondaryColor}" />
     </Style>
 
     <!--  Create a Large Style for a Text Block Header  -->
@@ -385,7 +387,7 @@
         x:Key="GVHeaderStyleLarge"
         BasedOn="{StaticResource GVLabelStyleLarge}"
         TargetType="Label">
-        <Setter Property="TextColor" Value="{DynamicResource TextLightColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource OnSecondaryColor}" />
     </Style>
 
     <!--
@@ -414,5 +416,15 @@
     <!--  Create a Large Style for a TextBlock  -->
     <Style x:Key="GVTextBlockStyleLarge" TargetType="Label">
         <Setter Property="IsEnabled" Value="False" />
+    </Style>
+
+    <!--
+        ******************************************************
+        Page Title Styles
+        ******************************************************
+    -->
+
+    <Style x:Key="GVPageTitleStyle" TargetType="Grid">
+        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
     </Style>
 </ResourceDictionary>

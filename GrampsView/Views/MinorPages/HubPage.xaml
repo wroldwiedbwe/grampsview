@@ -7,65 +7,62 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="HubPageRoot"
-    Title="{Binding BaseTitle}"
     prism:ViewModelLocator.AutowireViewModel="True"
-    Icon="{Binding BaseIcon}"
+    ControlTemplate="{StaticResource DetailPageTemplate}"
     Style="{DynamicResource GVBaseContentPage}">
-    <FlexLayout Direction="Column">
 
-        <!--  Header  -->
-        <!--
-        <Label
-            BackgroundColor="Aqua"
-            FontSize="Large"
-            HorizontalTextAlignment="Center"
-            Text="HEADER" />-->
+    <NavigationPage.TitleView>
+        <Grid Style="{DynamicResource GVPageTitleStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-        <!--  Body  -->
-        <FlexLayout FlexLayout.Grow="1">
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{DynamicResource GVSymbolconPageHeaderType}">
+                <Image.Source>
+                    <FontImageSource
+                        FontFamily="{DynamicResource MaterialFontFamily}"
+                        Glyph="{Binding BaseTitleIcon}"
+                        Size="44"
+                        Color="{DynamicResource IconMenu}" />
+                </Image.Source>
+            </Image>
 
-            <ScrollView FlexLayout.Grow="1" Orientation="Vertical">
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Style="{DynamicResource GVLabelPageHeaderTitleStyle}"
+                Text="{Binding BaseTitle, Mode=OneWay}" />
+        </Grid>
+    </NavigationPage.TitleView>
 
-                <!--  Content  -->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+    <!--  Content  -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-                    <Frame Grid.Row="0" Style="{StaticResource FrameLargeVariableCardStyleNS}">
-                        <Label Style="{DynamicResource GVLabelStyleInstructions}" Text="{i18n:Translate HubPage_IntroductionText}" />
-                    </Frame>
+        <Frame Grid.Row="0" Style="{StaticResource FrameLargeVariableCardStyleNS}">
+            <Label Style="{DynamicResource GVLabelStyleInstructions}" Text="{i18n:Translate HubPage_IntroductionText}" />
+        </Frame>
 
-                    <ucon:MediaCardLarge Grid.Row="1" BindingContext="{Binding HeroImage, Mode=OneWay}" />
+        <ucon:MediaCardLarge Grid.Row="1" BindingContext="{Binding HeroImage, Mode=OneWay}" />
 
-                    <ucon:HeaderCardLarge Grid.Row="2" BindingContext="{Binding HeaderData, Mode=OneWay}" />
+        <ucon:HeaderCardLarge Grid.Row="2" BindingContext="{Binding HeaderData, Mode=OneWay}" />
 
-                    <ucon:FlexMultiCardType
-                        x:Name="LatestChangesCards"
-                        Grid.Row="3"
-                        FMultiSource="{Binding LatestChanges, Mode=OneWay}" />
-                </Grid>
-
-                <!--  Content End  -->
-            </ScrollView>
-
-            <!--  Navigation items  -->
-            <BoxView FlexLayout.Basis="50" FlexLayout.Order="-1" />
-
-            <!--  Aside items  -->
-            <BoxView FlexLayout.Basis="50" />
-
-            <!--  Body End  -->
-        </FlexLayout>
-
-        <!--  Footer  -->
-        <ucon:BottomMenu />
-    </FlexLayout>
+        <ucon:FlexMultiCardType
+            x:Name="LatestChangesCards"
+            Grid.Row="3"
+            FMultiSource="{Binding LatestChanges, Mode=OneWay}" />
+    </Grid>
 </ContentPage>

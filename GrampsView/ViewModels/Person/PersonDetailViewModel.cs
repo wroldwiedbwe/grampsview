@@ -115,7 +115,7 @@ namespace GrampsView.ViewModels
                         nameDetails.Add(new CardListLine("Surname Connector:", item.GConnector));
                         nameDetails.Add(new CardListLine("Surname Derivation:", item.GDerivation));
                         nameDetails.Add(new CardListLine("Surname Prefix:", item.GPrefix));
-                        nameDetails.Add(new CardListLine("Surname Primary:", item.GPrim));
+                        nameDetails.Add(new CardListLine("Surname SecondaryColor:", item.GPrim));
                     }
                 }
 

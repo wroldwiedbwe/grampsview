@@ -34,6 +34,6 @@
 
         <Label
             Text="{Binding StatusText, Source={x:Reference BottomMenueRoot}, Mode=OneWay}"
-            TextColor="{StaticResource TextLightColor}" />
+            TextColor="{StaticResource OnSecondaryColor}" />
     </StackLayout>
 </Frame>

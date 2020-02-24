@@ -53,7 +53,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 {
                     foreach (XElement pname in de)
                     {
-                        // <code> < define name = "object-content" > <ref name= "primary-object" />
+                        // <code> < define name = "object-content" > <ref name= "SecondaryColor-object" />
                         // < element name = "file" > < attribute name = "src" > < text /> </
                         // attribute > < attribute name = "mime" >
 

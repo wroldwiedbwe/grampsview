@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------
 
 /// - Completed
-/// -- primary-object
+/// -- SecondaryColor-object
 /// -- stitle
 /// -- sauthor
 /// -- spubinfo
@@ -106,7 +106,7 @@ namespace GrampsView.Data.Model
         }
 
         /// <code>
-        /// <ref name="primary-object" />
+        /// <ref name="SecondaryColor-object" />
         /// </code>
         /// <summary>
         /// Gets or sets the g note reference.

@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------
 
 ////<define name = "note-content" >
-////  <ref name="primary-object" />
+////  <ref name="SecondaryColor-object" />
 ////  <optional>
 ////    <attribute name = "format" >
 ////      < choice >

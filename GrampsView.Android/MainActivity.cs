@@ -26,7 +26,7 @@ using Prism.Ioc;
 
 using System;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using static GrampsView.App;
 
 //using Xamarin.OneDrive;
@@ -85,7 +85,6 @@ namespace GrampsView.Droid
             }
 
             // FFImageLoading Init
-
             CachedImageRenderer.Init(enableFastRenderer: false);
 
             CachedImageRenderer.InitImageViewHandler();
@@ -99,7 +98,7 @@ namespace GrampsView.Droid
             // Load the app
             LoadApplication(new App(new AndroidInitializer()));
 
-            //SetAppTheme();
+            SetAppTheme();
         }
 
         protected override void OnDestroy()
@@ -127,23 +126,6 @@ namespace GrampsView.Droid
             DataStore.CN.NotifyException("CurrentDomainOnUnhandledException", newExc);
         }
 
-        private static void SetTheme(Xamarin.Essentials.AppTheme mode)
-        {
-            if (mode == Xamarin.Essentials.AppTheme.Dark)
-            {
-                if (AppTheme == Xamarin.Essentials.AppTheme.Dark)
-                    return;
-                PrismApplicationBase.Current.Resources = new DarkTheme();
-            }
-            else
-            {
-                if (AppTheme != Xamarin.Essentials.AppTheme.Dark)
-                    return;
-                PrismApplicationBase.Current.Resources = new LightTheme();
-            }
-            AppTheme = mode;
-        }
-
         private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
         {
             var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
@@ -154,11 +136,75 @@ namespace GrampsView.Droid
 
         private void SetAppTheme()
         {
-            if (Resources.Configuration.UiMode.HasFlag(UiMode.NightYes))
-                SetTheme(Xamarin.Essentials.AppTheme.Dark);
-            else
-                SetTheme(Xamarin.Essentials.AppTheme.Light);
+            switch (Resources.Configuration.UiMode & UiMode.NightMask)
+            {
+                case UiMode.NightMask:
+                    break;
+
+                case UiMode.NightNo:
+                    {
+                        SetTheme(Xamarin.Essentials.AppTheme.Light);
+                        break;
+                    }
+                case UiMode.NightUndefined:
+                    {
+                        SetTheme(Xamarin.Essentials.AppTheme.Unspecified);
+                        break;
+                    }
+                case UiMode.NightYes:
+                    {
+                        SetTheme(Xamarin.Essentials.AppTheme.Dark);
+                        break;
+                    }
+
+                default:
+                    {
+                        SetTheme(Xamarin.Essentials.AppTheme.Unspecified);
+                        break;
+                    }
+            }
         }
+
+        private void SetTheme(AppTheme mode)
+        {
+            if (mode == Xamarin.Essentials.AppTheme.Dark)
+            {
+                if (App.AppTheme == Xamarin.Essentials.AppTheme.Dark)
+                    return;
+                App.Current.Resources = new DarkTheme();
+            }
+            else
+            {
+                if (App.AppTheme != Xamarin.Essentials.AppTheme.Dark)
+                    return;
+                App.Current.Resources = new LightTheme();
+            }
+            App.AppTheme = mode;
+        }
+
+        //private static void SetTheme(Xamarin.Essentials.AppTheme mode)
+        //{
+        //    if (mode == Xamarin.Essentials.AppTheme.Dark)
+        //    {
+        //        if (AppTheme == Xamarin.Essentials.AppTheme.Dark)
+        //            return;
+        //        PrismApplicationBase.Current.Resources = new DarkTheme();
+        //    }
+        //    else
+        //    {
+        //        if (AppTheme != Xamarin.Essentials.AppTheme.Dark)
+        //            return;
+        //        PrismApplicationBase.Current.Resources = new LightTheme();
+        //    }
+        //    AppTheme = mode;
+        //}
+        //private void SetAppTheme()
+        //{
+        //    if (Resources.Configuration.UiMode.HasFlag(UiMode.NightYes))
+        //        SetTheme(Xamarin.Essentials.AppTheme.Dark);
+        //    else
+        //        SetTheme(Xamarin.Essentials.AppTheme.Light);
+        //}
 
         private void UnregisterManagers()
         {

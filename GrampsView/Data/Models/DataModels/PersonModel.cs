@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------
 
 ////    -- Completed
-////    - primary-object
+////    - SecondaryColor-object
 ////    - name
 ////    - gender
 ////    - citationref

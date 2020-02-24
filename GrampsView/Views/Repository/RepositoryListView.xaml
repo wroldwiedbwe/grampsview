@@ -15,7 +15,7 @@
 
         <ucon:FlexSingleCardType
             x:Name="flexLayout"
-            BorderColor="{DynamicResource CardBackGround}"
+            BorderColor="{DynamicResource SecondaryVariantLightColor}"
             FsctSource="{Binding RepositorySource, Mode=OneWay}"
             FsctTemplate="{StaticResource RepositoryCardSmallDT}" />
     </Grid>

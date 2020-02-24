@@ -12,7 +12,7 @@
     mc:Ignorable="d">
 
     <NavigationPage.TitleView>
-        <Grid>
+        <Grid Style="{DynamicResource GVPageTitleStyle}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />

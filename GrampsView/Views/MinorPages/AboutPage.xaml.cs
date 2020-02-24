@@ -19,7 +19,7 @@ namespace GrampsView.Views
     public sealed partial class AboutPage : ContentPage
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AboutView" /> class.
+        /// Initializes a new instance of the <see cref="AboutView"/> class.
         /// </summary>
         public AboutPage()
         {

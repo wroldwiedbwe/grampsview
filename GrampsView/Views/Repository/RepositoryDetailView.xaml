@@ -11,12 +11,10 @@
     mc:Ignorable="d">
 
     <NavigationPage.TitleView>
-        <Grid>
+        <Grid Style="{DynamicResource GVPageTitleStyle}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="Auto" />
-                <ColumnDefinition
-                    Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Image
@@ -42,15 +40,12 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition
-                Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition
-                Height="Auto" />
-            <RowDefinition
-                Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!--  Content  -->

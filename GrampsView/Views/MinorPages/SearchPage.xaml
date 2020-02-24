@@ -64,7 +64,7 @@
                     IsTabStop="True"
                     SearchCommand="{Binding SearchCommand}"
                     SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
-                    TextColor="{DynamicResource TextDarkColor}">
+                    TextColor="{DynamicResource OnPrimaryColor}">
                     <SearchBar.Behaviors>
 
                         <behaviour:EventToCommandBehavior

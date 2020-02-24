@@ -52,20 +52,20 @@
                 Grid.Column="1"
                 Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding DeRef.GSTitle, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                TextColor="{DynamicResource OnSecondaryColor}" />
 
             <Label
                 Grid.Row="1"
                 Grid.Column="1"
                 Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding DeRef.GSAuthor, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                TextColor="{DynamicResource OnSecondaryColor}" />
             <Label
                 Grid.Row="2"
                 Grid.Column="1"
                 Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding DeRef.GSPubInfo, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                TextColor="{DynamicResource OnSecondaryColor}" />
 
             <Image
                 Grid.Row="2"

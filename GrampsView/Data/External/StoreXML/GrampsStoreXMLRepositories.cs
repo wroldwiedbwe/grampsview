@@ -48,7 +48,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 {
                     RepositoryModel loadRepository = DV.RepositoryDV.NewModel();
 
-                    // Primary attributes
+                    // SecondaryColor attributes
                     loadRepository.Id = (string)prepository.Attribute("id");
                     loadRepository.Change = GetDateTime(prepository, "change");
                     loadRepository.Priv = SetPrivateObject((string)prepository.Attribute("priv"));

@@ -46,7 +46,7 @@
                 Grid.Column="1"
                 Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding DeRef.GRName, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                TextColor="{DynamicResource OnSecondaryColor}" />
 
             <Image
                 Grid.Row="1"

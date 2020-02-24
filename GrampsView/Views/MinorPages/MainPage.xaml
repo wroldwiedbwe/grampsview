@@ -21,7 +21,7 @@
                         <DataTemplate>
 
                             <StackLayout
-                                BackgroundColor="{DynamicResource CardBackGround}"
+                                BackgroundColor="{DynamicResource SecondaryVariantLightColor}"
                                 HorizontalOptions="StartAndExpand"
                                 Orientation="Horizontal">
 

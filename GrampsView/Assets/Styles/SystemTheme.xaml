@@ -3,53 +3,86 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <Color x:Key="Primary">
-        #ce3d64
+    <!--  Material Design colors  -->
+    <Color x:Key="PrimaryColor">
+        #6002ee
     </Color>
 
-    <Color x:Key="FrameBackGround">
-        #3d3d3d
+    <Color x:Key="PrimaryVariantLightColor">
+        #9c47ff
+    </Color>
+
+    <Color x:Key="PrimaryVariantDarkColor">
+        #0000ba
+    </Color>
+
+    <Color x:Key="SecondaryColor">
+        #76ff03
+    </Color>
+
+    <Color x:Key="SecondaryVariantLightColor">
+        #b0ff57
+    </Color>
+
+    <Color x:Key="SecondaryVariantDarkColor">
+        #32cb00
+    </Color>
+
+    <Color x:Key="BackgroundColor">
+        #000000
+    </Color>
+
+    <Color x:Key="SurfaceColor">
+        #bdbdbd
+    </Color>
+
+    <Color x:Key="ErrorColor">
+        #000000
+    </Color>
+
+    <Color x:Key="OnPrimaryColor">
+        #ffffff
+    </Color>
+
+    <Color x:Key="OnSecondaryColor">
+        #000000
+    </Color>
+
+    <Color x:Key="OnBackgroundColor">
+        #888888
+    </Color>
+
+    <Color x:Key="OnSurfaceColor">
+        #888888
+    </Color>
+
+    <Color x:Key="OnErrorColor">
+        #dd2c00
     </Color>
 
     <Color x:Key="ItemBackground">
         #3d3d3d
     </Color>
 
-    <!--<Color x:Key="PageBackGround">
-        #000000
-    </Color>-->
-
-    <!--  Text Colours  -->
-
-    <Color x:Key="TextDarkColor">
-        #000000
-    </Color>
-
-    <Color x:Key="TextLightColor">
-        #FFFFFF
-    </Color>
-
     <!--  Card Colours  -->
 
-    <Color x:Key="CardBackGround">
-        #a7a9ac
-    </Color>
-
-    <Color x:Key="CardGroupBackGround">
-        #ffffcc
-    </Color>
-
-    <!--  Card Not Selectable  -->
     <Color x:Key="CardNotSelectable">
         #FFFFFF
     </Color>
 
-    <!--  #Card Selectable  -->
     <Color x:Key="CardSelectable">
         #ffa500
     </Color>
 
     <!--  Card Background colours  -->
+
+    <Color x:Key="CardBackGroundAddress">
+        #A9A9A9
+    </Color>
+
+    <Color x:Key="CardBackGroundAttribute">
+        #A9A9A9
+    </Color>
 
     <Color x:Key="CardBackGroundCitation">
         #e6b505
@@ -81,6 +114,10 @@
 
     <Color x:Key="CardBackGroundSource">
         #ff4000
+    </Color>
+
+    <Color x:Key="CardBackGroundTag">
+        #A9A9A9
     </Color>
 
     <!--  Icon Colours  -->

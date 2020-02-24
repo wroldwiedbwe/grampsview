@@ -13,7 +13,7 @@
 ///
 /// Done.
 ///
-/// - primary-object
+/// - SecondaryColor-object
 /// -- type
 /// -- ptitle
 /// -- placeref

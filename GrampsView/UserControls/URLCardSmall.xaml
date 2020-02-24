@@ -42,14 +42,14 @@
                 Grid.Column="1"
                 Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding DefaultText, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                TextColor="{DynamicResource OnSecondaryColor}" />
 
             <Label
                 Grid.Row="1"
                 Grid.Column="1"
                 Style="{DynamicResource GVLabelStyleSmall}"
                 Text="{Binding GHRef, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                TextColor="{DynamicResource OnSecondaryColor}" />
 
             <Image
                 Grid.Row="1"

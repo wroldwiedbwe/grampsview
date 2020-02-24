@@ -44,16 +44,14 @@
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Style="{DynamicResource GVCardLabelStyleSmall}"
-                Text="{Binding DeRef.GetDefaultText, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                Text="{Binding DeRef.GetDefaultText, Mode=OneWay}" />
 
             <Label
                 Grid.Row="1"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Style="{DynamicResource GVCardLabelStyleSmall}"
-                Text="{Binding DeRef.GDateContent.GetShortDateAsString, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                Text="{Binding DeRef.GDateContent.GetShortDateAsString, Mode=OneWay}" />
 
             <Image
                 Grid.Row="1"

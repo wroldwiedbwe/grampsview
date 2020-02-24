@@ -1,8 +1,8 @@
 ﻿//-----------------------------------------------------------------------
 //
-// Common routines for the CommonRoutines
+// Common routines for the CommonTheming
 //
-// <copyright file="CommonRoutines.cs" company="PlaceholderCompany">
+// <copyright file="CommonTheming.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
@@ -10,11 +10,8 @@
 namespace GrampsView.Common
 {
     using GrampsView.Assets.Styles;
-    using GrampsView.Data.Model;
-    using System.Text.RegularExpressions;
 
     using Xamarin.Essentials;
-    using Xamarin.Forms;
 
     /// <summary>
     /// Various common routines.

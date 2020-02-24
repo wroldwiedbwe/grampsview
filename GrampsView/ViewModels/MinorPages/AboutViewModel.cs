@@ -9,12 +9,10 @@
 
 namespace GrampsView.ViewModels
 {
-    using GrampsView.Assets.Styles;
     using GrampsView.Common;
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
-    using GrampsView.Views;
-
+    using GrampsView.UserControls;
     using Prism.Commands;
     using Prism.Events;
     using Prism.Navigation;
@@ -26,14 +24,16 @@ namespace GrampsView.ViewModels
     using Xam.Forms.Markdown;
 
     using Xamarin.Essentials;
+    using Xamarin.Forms;
 
     public class AboutViewModel : ViewModelBase
     {
-        private bool _AppDarkTheme;
         private CardListLineCollection _ApplicationVersionList = new CardListLineCollection();
-        private bool _AppLightTheme;
-        private bool _AppSystemTheme;
+
+        private RadioItems _daRadioItems = new RadioItems();
+
         private string _DaText = string.Empty;
+
         private CardGroup _HeaderDetailList = new CardGroup();
 
         private HeaderModel _HeaderModel = null;
@@ -44,23 +44,44 @@ namespace GrampsView.ViewModels
             BaseTitle = "About";
             BaseTitleIcon = CommonConstants.IconSettings;
 
+            //Setup Theme radio buttons
+            RadioButtonToggledCommand = new DelegateCommand<RadioItemToggledEventArgs>(HandleRadioToggle);
+
+            DaRadioItems.Add(new RadioItem
+            {
+                Text = "Light Theme",
+                Toggled = false
+            });
+
+            DaRadioItems.Add(new RadioItem
+            {
+                Text = "Dark Theme",
+                Toggled = false
+            });
+
+            DaRadioItems.Add(new RadioItem
+            {
+                Text = "System Theme",
+                Toggled = false
+            });
+
             switch (CommonLocalSettings.ApplicationTheme)
             {
                 case AppTheme.Light:
                     {
-                        UseLightTheme = true; ;
+                        DaRadioItems[0].Toggled = true;
                         break;
                     }
 
                 case AppTheme.Dark:
                     {
-                        UseDarkTheme = true; ;
+                        DaRadioItems[1].Toggled = true;
                         break;
                     }
 
                 default:
                     {
-                        UseSystemTheme = true;
+                        DaRadioItems[2].Toggled = true;
                         break;
                     }
             }
@@ -91,6 +112,19 @@ namespace GrampsView.ViewModels
             get
             {
                 return AppInfo.Name;
+            }
+        }
+
+        public RadioItems DaRadioItems
+        {
+            get
+            {
+                return _daRadioItems;
+            }
+
+            set
+            {
+                SetProperty(ref _daRadioItems, value);
             }
         }
 
@@ -147,77 +181,118 @@ namespace GrampsView.ViewModels
             }
         }
 
-        public bool UseDarkTheme
+        public DelegateCommand<RadioItemToggledEventArgs> RadioButtonToggledCommand { get; private set; }
+
+        public void HandleRadioToggle(RadioItemToggledEventArgs argRadioItem)
         {
-            get
+            switch (argRadioItem.SelectedItem.Text)
             {
-                return _AppDarkTheme;
-            }
-
-            set
-            {
-                if (value != _AppDarkTheme)
-                {
-                    SetProperty(ref _AppDarkTheme, value);
-
-                    if (value)
+                case "Dark Theme":
                     {
                         CommonTheming.SetThemeDark();
-
-                        UseLightTheme = false;
-                        UseSystemTheme = false;
+                        break;
                     }
-                }
-            }
-        }
 
-        public bool UseLightTheme
-        {
-            get
-            {
-                return _AppLightTheme;
-            }
-
-            set
-            {
-                if (value != _AppLightTheme)
-                {
-                    SetProperty(ref _AppLightTheme, value);
-
-                    if (value)
+                case "Light Theme":
                     {
                         CommonTheming.SetThemeLight();
-
-                        UseDarkTheme = false;
-                        UseSystemTheme = false;
+                        break;
                     }
-                }
+
+                default:
+                    {
+                        CommonTheming.SetThemeSystem();
+                        break;
+                    }
             }
         }
 
-        public bool UseSystemTheme
-        {
-            get
-            {
-                return _AppSystemTheme;
-            }
+        //public bool UseDarkTheme
+        //{
+        //    get
+        //    {
+        //        return _AppDarkTheme;
+        //    }
 
-            set
-            {
-                if (value != _AppSystemTheme)
-                {
-                    SetProperty(ref _AppSystemTheme, value);
-                }
+        // set { if (SetRadioButton(AppTheme.Dark,value)) { SetProperty(ref _AppDarkTheme, value);
 
-                if (value)
-                {
-                    CommonTheming.SetThemeSystem();
+        //            CommonTheming.SetThemeDark();
+        //        }
+        //    }
+        //}
 
-                    UseDarkTheme = false;
-                    UseSystemTheme = false;
-                }
-            }
-        }
+        //private bool _UseDarkThemeChecked = false;
+
+        //public bool UseDarkThemeChecked
+        //{
+        //    get
+        //    {
+        //        return _UseDarkThemeChecked;
+        //    }
+
+        //    set
+        //    {
+        //        SetProperty(ref _UseDarkThemeChecked, value);
+        //    }
+        //}
+
+        //private bool _UseLightThemeChecked = false;
+
+        //public bool UseLightThemeChecked
+        //{
+        //    get
+        //    {
+        //        return _UseLightThemeChecked;
+        //    }
+
+        //    set
+        //    {
+        //        SetProperty(ref _UseLightThemeChecked, value);
+        //    }
+        //}
+
+        //private bool _UseSystemThemeChecked = false;
+
+        //public bool UseSystemThemeChecked
+        //{
+        //    get
+        //    {
+        //        return _UseSystemThemeChecked;
+        //    }
+
+        //    set
+        //    {
+        //        SetProperty(ref _UseSystemThemeChecked, value);
+        //    }
+        //}
+
+        //public bool UseLightTheme
+        //{
+        //    get
+        //    {
+        //        return _AppLightTheme;
+        //    }
+
+        // set { if (SetRadioButton(AppTheme.Light,value)) { SetProperty(ref _AppLightTheme, value);
+
+        //            CommonTheming.SetThemeLight();
+        //        }
+        //    }
+        //}
+
+        //public bool UseSystemTheme
+        //{
+        //    get
+        //    {
+        //        return _AppSystemTheme;
+        //    }
+
+        // set { if (SetRadioButton(AppTheme.Unspecified,value)) { SetProperty(ref _AppSystemTheme, value);
+
+        //            CommonTheming.SetThemeSystem();
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Raises the <see cref="NavigatedTo"/> event.
@@ -306,5 +381,41 @@ namespace GrampsView.ViewModels
 
             //BaseNavigationService.NavigateAsync(nameof(AShellPage));
         }
+
+        //private bool SetRadioButton(AppTheme ArgThemeSelected, bool argNewValue)
+        //{
+        //    switch (ArgThemeSelected)
+        //    {
+        //        case AppTheme.Unspecified:
+        //            {
+        //                if (UseSystemTheme == true)
+        //                {
+        //                    return false;
+        //                }
+
+        // UseDarkTheme = false; UseLightTheme = false;
+
+        // return true; }
+
+        // case AppTheme.Light: { if (UseLightTheme == true) { return false; }
+
+        // UseDarkTheme = false; UseSystemTheme = false;
+
+        // return true; }
+
+        // case AppTheme.Dark: { if (UseDarkTheme == argNewValue) { return false; }
+
+        // if (UseDarkTheme == true) { return false; }
+
+        // UseSystemTheme = false; UseLightTheme = false;
+
+        //                return true;
+        //            }
+        //        default:
+        //            {
+        //                return true;
+        //            }
+        //    }
+        //}
     }
 }

@@ -6,7 +6,7 @@
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     BackgroundColor="{DynamicResource CardBackGroundPerson}"
-    BorderColor="{DynamicResource CardBackGround}"
+    BorderColor="{DynamicResource SecondaryVariantLightColor}"
     Style="{DynamicResource FrameCardStyle}"
     WidthRequest="100">
 

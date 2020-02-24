@@ -9,7 +9,7 @@
 //-----------------------------------------------------------------------
 
 ////<define name = "object-content" >
-////    <ref name="primary-object" />
+////    <ref name="SecondaryColor-object" />
 ////    <element name = "file" >
 ////      < attribute name="src">
 ////        <text />

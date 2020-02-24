@@ -48,16 +48,14 @@
                 Grid.Row="0"
                 Grid.Column="1"
                 Style="{DynamicResource GVCardLabelStyleSmall}"
-                Text="{Binding DeRef.GName, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                Text="{Binding DeRef.GName, Mode=OneWay}" />
 
             <Label
                 x:Name="NameTextBlock"
                 Grid.Row="1"
                 Grid.Column="1"
                 Style="{DynamicResource GVCardLabelStyleSmall}"
-                Text="{Binding DeRef.GPTitle, Mode=OneWay}"
-                TextColor="{DynamicResource TextLightColor}" />
+                Text="{Binding DeRef.GPTitle, Mode=OneWay}" />
             <Image
                 Grid.Row="1"
                 Grid.Column="2"

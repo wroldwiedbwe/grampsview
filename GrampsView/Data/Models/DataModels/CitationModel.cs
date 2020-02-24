@@ -9,7 +9,7 @@
 
 /// XML 171 - All fields defined
 ///
-/// primary-object date-content page confidence noteref objref srcattribute sourceref tagref
+/// SecondaryColor-object date-content page confidence noteref objref srcattribute sourceref tagref
 
 /// <summary>
 /// </summary>
