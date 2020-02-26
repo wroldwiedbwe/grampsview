@@ -29,13 +29,15 @@
                 x:Name="AnchorImage1"
                 Grid.Row="0"
                 Grid.Column="0"
-                BindingContext="{Binding Parents.GFather, Mode=OneWay}" />
+                BindingContext="{Binding Parents.GFather, Mode=OneWay}"
+                HorizontalOptions="Center" />
 
             <ucon:PersonLink
                 x:Name="AnchorImage2"
                 Grid.Row="0"
                 Grid.Column="1"
-                BindingContext="{Binding Parents.GMother, Mode=OneWay}" />
+                BindingContext="{Binding Parents.GMother, Mode=OneWay}"
+                HorizontalOptions="Center" />
         </Grid>
     </Frame.Content>
 </Frame>

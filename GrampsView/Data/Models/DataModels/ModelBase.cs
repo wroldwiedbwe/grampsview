@@ -18,10 +18,10 @@ namespace GrampsView.Data.Model
     /// <summary>
     /// Base for Models.
     /// </summary>
-    /// <seealso cref="GrampsView.Common.CommonBindableBase" />
+    /// <seealso cref="GrampsView.Common.CommonBindableBase"/>
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
     /// /// ///
-    /// <seealso cref="GrampsView.Data.ViewModel.IModelBase" />
+    /// <seealso cref="GrampsView.Data.ViewModel.IModelBase"/>
     [DataContract]
     [KnownType(typeof(HLinkBackLink))]
     [KnownType(typeof(HLinkBookMarkModel))]
@@ -244,7 +244,7 @@ namespace GrampsView.Data.Model
         /// Gets a value indicating whether [h link key valid].
         /// </summary>
         /// <value>
-        /// <c> true </c> if [h link key valid]; otherwise, <c> false </c>.
+        /// <c>true</c> if [h link key valid]; otherwise, <c>false</c>.
         /// </value>
         public bool ModelPopulated
         {
@@ -255,10 +255,10 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="ModelBase" /> is priv.
+        /// Gets or sets a value indicating whether this <see cref="ModelBase"/> is priv.
         /// </summary>
         /// <value>
-        /// <c> true </c> if priv; otherwise, <c> false </c>.
+        /// <c>true</c> if priv; otherwise, <c>false</c>.
         /// </value>
         [DataMember]
         public bool Priv
@@ -297,9 +297,9 @@ namespace GrampsView.Data.Model
         /// Gets a value indicating whether returns true if the modelbase is valid.
         /// </summary>
         /// <value>
-        /// <c> true </c> if this instance is valid; otherwise, <c> false </c>.
+        /// <c>true</c> if this instance is valid; otherwise, <c>false</c>.
         /// </value>
-        public bool Valid
+        public virtual bool Valid
         {
             get
             {

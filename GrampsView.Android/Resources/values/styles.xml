@@ -21,10 +21,6 @@
 
     <item name="colorAccent">@color/colorAccent</item>
 
-    <item name="android:background">#FF000000</item>
-    <item name="android:windowBackground">#FF000000</item>
-    <item name="android:colorBackground">#FF000000</item>
-
     <item name="windowActionModeOverlay">true</item>
 
     <item name="android:statusBarColor">#000000</item>

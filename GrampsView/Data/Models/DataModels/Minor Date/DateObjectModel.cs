@@ -105,22 +105,42 @@ namespace GrampsView.Data.Model
         private DateTime _NotionalDate = DateTime.MinValue;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DateObjectModel" /> class.
+        /// Initializes a new instance of the <see cref="DateObjectModel"/> class.
         /// </summary>
         public DateObjectModel()
         {
         }
 
-        /// <summary>Initializes a new instance of the <see cref="DateObjectModel"/> class.</summary>
-        /// <param name="aDateType">Type of Date</param>
-        /// <param name="aCFormat">a c format.</param>
-        /// <param name="aDualDated">if set to <c> true </c> [a dual dated].</param>
-        /// <param name="aNewYear">a new year.</param>
-        /// <param name="aQuality">a quality.</param>
-        /// <param name="aStart">a start.</param>
-        /// <param name="aStop">a stop.</param>
-        /// <param name="aVal">a value.</param>
-        /// <param name="aValType">Type of Val date.</param>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DateObjectModel"/> class.
+        /// </summary>
+        /// <param name="aDateType">
+        /// Type of Date
+        /// </param>
+        /// <param name="aCFormat">
+        /// a c format.
+        /// </param>
+        /// <param name="aDualDated">
+        /// if set to <c>true</c> [a dual dated].
+        /// </param>
+        /// <param name="aNewYear">
+        /// a new year.
+        /// </param>
+        /// <param name="aQuality">
+        /// a quality.
+        /// </param>
+        /// <param name="aStart">
+        /// a start.
+        /// </param>
+        /// <param name="aStop">
+        /// a stop.
+        /// </param>
+        /// <param name="aVal">
+        /// a value.
+        /// </param>
+        /// <param name="aValType">
+        /// Type of Val date.
+        /// </param>
         public DateObjectModel(DateType aDateType, string aCFormat, bool aDualDated, string aNewYear, string aQuality, string aStart, string aStop, string aVal, string aValType)
         {
             // Setup defaults
@@ -169,7 +189,9 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Enum for the types of dates.</summary>
+        /// <summary>
+        /// Enum for the types of dates.
+        /// </summary>
         public enum DateType
         {
             Range, Span, Str, Unknown, Val
@@ -212,9 +234,13 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets the number of years ago Because the field can have one or two dates etc this is
-        /// trickier than it sounds.</summary>
-        /// <returns>age.</returns>
+        /// <summary>
+        /// Gets the number of years ago Because the field can have one or two dates etc this is
+        /// trickier than it sounds.
+        /// </summary>
+        /// <returns>
+        /// age.
+        /// </returns>
         public int GetAge
         {
             get
@@ -255,8 +281,12 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets the decade of the date.</summary>
-        /// <value>The get decade.</value>
+        /// <summary>
+        /// Gets the decade of the date.
+        /// </summary>
+        /// <value>
+        /// The get decade.
+        /// </value>
         public int GetDecade
         {
             get
@@ -270,9 +300,12 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets the get long date as string.
-        /// Default so it can be overridden. </summary>
-        /// <value>The get long date as string.</value>
+        /// <summary>
+        /// Gets the get long date as string. Default so it can be overridden.
+        /// </summary>
+        /// <value>
+        /// The get long date as string.
+        /// </value>
         public string GetLongDateAsString
         {
             get
@@ -313,9 +346,12 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets the string version of the date field.
-        /// Default so it can be overridden.</summary>
-        /// <returns>a string version of the date.</returns>
+        /// <summary>
+        /// Gets the string version of the date field. Default so it can be overridden.
+        /// </summary>
+        /// <returns>
+        /// a string version of the date.
+        /// </returns>
         public string GetShortDateAsString
         {
             get
@@ -356,8 +392,10 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets an empty string if a null date or the date string. Used for formatting.
-        /// Default so it can be overridden.</summary>
+        /// <summary>
+        /// Gets an empty string if a null date or the date string. Used for formatting. Default so
+        /// it can be overridden.
+        /// </summary>
         public string GetShortDateOrEmptyAsString
         {
             get
@@ -371,8 +409,12 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets the year of the date.</summary>
-        /// <value>The date year.</value>
+        /// <summary>
+        /// Gets the year of the date.
+        /// </summary>
+        /// <value>
+        /// The date year.
+        /// </value>
         public string GetYear
         {
             get
@@ -530,8 +572,12 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets the type of the  Val Type, e.g. Before</summary>
-        /// <value>The type of the g value.</value>
+        /// <summary>
+        /// Gets the type of the Val Type, e.g. Before
+        /// </summary>
+        /// <value>
+        /// The type of the g value.
+        /// </value>
         [DataMember]
         public string GValType
         {
@@ -563,10 +609,13 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets returns a single dateversion of the date field Because the field can have one or
-        /// two dates etc this is trickier than it sounds.
-        /// Overridden by more specific date types.</summary>
-        /// <value>The single date.</value>
+        /// <summary>
+        /// Gets returns a single dateversion of the date field Because the field can have one or
+        /// two dates etc this is trickier than it sounds. Overridden by more specific date types.
+        /// </summary>
+        /// <value>
+        /// The single date.
+        /// </value>
         public virtual DateTime SingleDate
         {
             get
@@ -602,10 +651,13 @@ namespace GrampsView.Data.Model
         //    }
         //}
         // private set { SetProperty(ref GTypeField, value); } }
-        /// <summary>Gets returns a sortable version of the date field Because the field can have one or two
-        /// dates etc this is trickier than it sounds.
-        /// Overridden by more specific date types. </summary>
-        /// <returns>A DateTime field that can be sorted.</returns>
+        /// <summary>
+        /// Gets returns a sortable version of the date field Because the field can have one or two
+        /// dates etc this is trickier than it sounds. Overridden by more specific date types.
+        /// </summary>
+        /// <returns>
+        /// A DateTime field that can be sorted.
+        /// </returns>
         public virtual DateTime SortDate
         {
             get
@@ -634,43 +686,78 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets or sets a value indicating whether the date is valid.</summary>
+        /// <summary>
+        /// Gets or sets a value indicating whether the date is valid.
+        /// </summary>
         /// <value>
-        ///   <c>true</c> if [date valid]; otherwise, <c>false</c>.</value>
+        /// <c>true</c> if [date valid]; otherwise, <c>false</c>.
+        /// </value>
         [DataMember]
-        public bool Valid { get; set; } = false;
+        public new bool Valid { get; set; } = false;
 
-        /// <summary>Implements the operator !=.</summary>
-        /// <param name="left">The left.</param>
-        /// <param name="right">The right.</param>
-        /// <returns>The result of the operator.</returns>
+        /// <summary>
+        /// Implements the operator !=.
+        /// </summary>
+        /// <param name="left">
+        /// The left.
+        /// </param>
+        /// <param name="right">
+        /// The right.
+        /// </param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
         public static bool operator !=(DateObjectModel left, DateObjectModel right)
         {
             return !(left == right);
         }
 
-        /// <summary>Implements the operator &lt;.</summary>
-        /// <param name="left">The left.</param>
-        /// <param name="right">The right.</param>
-        /// <returns>The result of the operator.</returns>
+        /// <summary>
+        /// Implements the operator &lt;.
+        /// </summary>
+        /// <param name="left">
+        /// The left.
+        /// </param>
+        /// <param name="right">
+        /// The right.
+        /// </param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
         public static bool operator <(DateObjectModel left, DateObjectModel right)
         {
             return ReferenceEquals(left, null) ? !ReferenceEquals(right, null) : left.CompareTo(right) < 0;
         }
 
-        /// <summary>Implements the operator &lt;=.</summary>
-        /// <param name="left">The left.</param>
-        /// <param name="right">The right.</param>
-        /// <returns>The result of the operator.</returns>
+        /// <summary>
+        /// Implements the operator &lt;=.
+        /// </summary>
+        /// <param name="left">
+        /// The left.
+        /// </param>
+        /// <param name="right">
+        /// The right.
+        /// </param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
         public static bool operator <=(DateObjectModel left, DateObjectModel right)
         {
             return ReferenceEquals(left, null) || left.CompareTo(right) <= 0;
         }
 
-        /// <summary>Implements the operator ==.</summary>
-        /// <param name="left">The left.</param>
-        /// <param name="right">The right.</param>
-        /// <returns>The result of the operator.</returns>
+        /// <summary>
+        /// Implements the operator ==.
+        /// </summary>
+        /// <param name="left">
+        /// The left.
+        /// </param>
+        /// <param name="right">
+        /// The right.
+        /// </param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
         public static bool operator ==(DateObjectModel left, DateObjectModel right)
         {
             if (ReferenceEquals(left, null))
@@ -681,33 +768,55 @@ namespace GrampsView.Data.Model
             return left.Equals(right);
         }
 
-        /// <summary>Implements the operator &gt;.</summary>
-        /// <param name="left">The left.</param>
-        /// <param name="right">The right.</param>
-        /// <returns>The result of the operator.</returns>
+        /// <summary>
+        /// Implements the operator &gt;.
+        /// </summary>
+        /// <param name="left">
+        /// The left.
+        /// </param>
+        /// <param name="right">
+        /// The right.
+        /// </param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
         public static bool operator >(DateObjectModel left, DateObjectModel right)
         {
             return !ReferenceEquals(left, null) && left.CompareTo(right) > 0;
         }
 
-        /// <summary>Implements the operator &gt;=.</summary>
-        /// <param name="left">The left.</param>
-        /// <param name="right">The right.</param>
-        /// <returns>The result of the operator.</returns>
+        /// <summary>
+        /// Implements the operator &gt;=.
+        /// </summary>
+        /// <param name="left">
+        /// The left.
+        /// </param>
+        /// <param name="right">
+        /// The right.
+        /// </param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
         public static bool operator >=(DateObjectModel left, DateObjectModel right)
         {
             return ReferenceEquals(left, null) ? ReferenceEquals(right, null) : left.CompareTo(right) >= 0;
         }
 
-        /// <summary>Compares two objects and returns a value indicating whether one is less than, equal to,
-        /// or greater than the other.</summary>
-        /// <param name="x">The first object to compare.</param>
-        /// <param name="y">The second object to compare.</param>
+        /// <summary>
+        /// Compares two objects and returns a value indicating whether one is less than, equal to,
+        /// or greater than the other.
+        /// </summary>
+        /// <param name="x">
+        /// The first object to compare.
+        /// </param>
+        /// <param name="y">
+        /// The second object to compare.
+        /// </param>
         /// <returns>
-        /// A signed integer that indicates the relative values of <paramref name="x" /> and
-        /// <paramref name="y" />, as shown in the following table. Value Meaning Less than zero
-        /// <paramref name="x" /> is less than <paramref name="y" />. Zero <paramref name="x" />
-        /// equals <paramref name="y" />. Greater than zero <paramref name="x" /> is greater than <paramref name="y" />.
+        /// A signed integer that indicates the relative values of <paramref name="x"/> and
+        /// <paramref name="y"/>, as shown in the following table. Value Meaning Less than zero
+        /// <paramref name="x"/> is less than <paramref name="y"/>. Zero <paramref name="x"/> equals
+        /// <paramref name="y"/>. Greater than zero <paramref name="x"/> is greater than <paramref name="y"/>.
         /// </returns>
         public int Compare(DateObjectModel x, DateObjectModel y)
         {
@@ -724,10 +833,10 @@ namespace GrampsView.Data.Model
         /// </param>
         /// <returns>
         /// A value that indicates the relative order of the objects being compared. The return
-        /// value has these meanings: Value Meaning Less than zero This instance precedes
-        /// <paramref name="other" /> in the sort order. Zero This instance occurs in the same
-        /// position in the sort order as <paramref name="other" />. Greater than zero This instance
-        /// follows <paramref name="other" /> in the sort order.
+        /// value has these meanings: Value Meaning Less than zero This instance precedes <paramref
+        /// name="other"/> in the sort order. Zero This instance occurs in the same position in the
+        /// sort order as <paramref name="other"/>. Greater than zero This instance follows
+        /// <paramref name="other"/> in the sort order.
         /// </returns>
         public int CompareTo(DateObjectModel other)
         {

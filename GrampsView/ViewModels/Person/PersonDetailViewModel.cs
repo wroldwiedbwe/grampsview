@@ -22,10 +22,18 @@ namespace GrampsView.ViewModels
         /// </summary>
         private PersonModel _PersonObject = new PersonModel();
 
-        /// <summary>Initializes a new instance of the <see cref="PersonDetailViewModel"/> class.</summary>
-        /// <param name="iocCommonLogging">The common logging service.</param>
-        /// <param name="iocEventAggregator">The event aggregator.</param>
-        /// <param name="iocNavigationService">Prism Navigation Service</param>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PersonDetailViewModel"/> class.
+        /// </summary>
+        /// <param name="iocCommonLogging">
+        /// The common logging service.
+        /// </param>
+        /// <param name="iocEventAggregator">
+        /// The event aggregator.
+        /// </param>
+        /// <param name="iocNavigationService">
+        /// Prism Navigation Service
+        /// </param>
         public PersonDetailViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
@@ -33,8 +41,12 @@ namespace GrampsView.ViewModels
             BaseTitleIcon = CommonConstants.IconPeople;
         }
 
-        /// <summary>Gets or sets the person biograqphical details.</summary>
-        /// <value>The person bio.</value>
+        /// <summary>
+        /// Gets or sets the person biograqphical details.
+        /// </summary>
+        /// <value>
+        /// The person bio.
+        /// </value>
         public HLinkNoteModel PersonBio
         {
             get
@@ -100,12 +112,13 @@ namespace GrampsView.ViewModels
 
                 // Get the Name Details
 
-                CardListLineCollection nameDetails = new CardListLineCollection();
-
-                nameDetails.Add(new CardListLine("Card Type:", "Person Detail"));
-                nameDetails.Add(new CardListLine("Full Name:", PersonObject.GBirthName.FullName));
-                nameDetails.Add(new CardListLine("Name Title:", PersonObject.GBirthName.GTitle));
-                nameDetails.Add(new CardListLine("First Name:", PersonObject.GBirthName.GFirstName));
+                CardListLineCollection nameDetails = new CardListLineCollection
+                {
+                    new CardListLine("Card Type:", "Person Detail"),
+                    new CardListLine("Full Name:", PersonObject.GBirthName.FullName),
+                    new CardListLine("Name Title:", PersonObject.GBirthName.GTitle),
+                    new CardListLine("First Name:", PersonObject.GBirthName.GFirstName)
+                };
 
                 if (PersonObject.GBirthName.GSurName.Count > 0)
                 {

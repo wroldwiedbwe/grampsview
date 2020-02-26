@@ -48,7 +48,7 @@
                 <Label
                     Grid.Row="0"
                     Text="{Binding Title}"
-                    TextColor="{DynamicResource OnPrimaryColor}" />
+                    TextColor="{DynamicResource OnSurfaceColor}" />
 
                 <FlexLayout
                     x:Name="flexer"
@@ -63,7 +63,7 @@
     <!--  Item Detail data template  large  -->
     <DataTemplate x:Key="GVCardListLineLarge" x:Name="GVCardListLineLarge">
 
-        <Grid BackgroundColor="{DynamicResource PrimaryVariantLightColor}">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />

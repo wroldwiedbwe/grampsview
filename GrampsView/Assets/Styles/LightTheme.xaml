@@ -5,27 +5,27 @@
 
     <!--  Material Design colors  -->
     <Color x:Key="PrimaryColor">
-        #6002ee
+        #b894f6
     </Color>
 
     <Color x:Key="PrimaryVariantLightColor">
-        #9c47ff
+        #ecc5ff
     </Color>
 
     <Color x:Key="PrimaryVariantDarkColor">
-        #0000ba
+        #8666c3
     </Color>
 
     <Color x:Key="SecondaryColor">
-        #76ff03
+        #3960c2
     </Color>
 
     <Color x:Key="SecondaryVariantLightColor">
-        #b0ff57
+        #728df5
     </Color>
 
     <Color x:Key="SecondaryVariantDarkColor">
-        #32cb00
+        #003791
     </Color>
 
     <Color x:Key="BackgroundColor">
@@ -33,7 +33,7 @@
     </Color>
 
     <Color x:Key="SurfaceColor">
-        #000000
+        #CFD8DC
     </Color>
 
     <Color x:Key="ErrorColor">
@@ -41,11 +41,11 @@
     </Color>
 
     <Color x:Key="OnPrimaryColor">
-        #ffffff
+        #000000
     </Color>
 
     <Color x:Key="OnSecondaryColor">
-        #000000
+        #EEEEEE
     </Color>
 
     <Color x:Key="OnBackgroundColor">
@@ -53,16 +53,11 @@
     </Color>
 
     <Color x:Key="OnSurfaceColor">
-        #888888
+        #000000
     </Color>
 
     <Color x:Key="OnErrorColor">
         #dd2c00
-    </Color>
-
-    <!--    -->
-    <Color x:Key="ItemBackground">
-        #3d3d3d
     </Color>
 
     <!--  Card Colours  -->

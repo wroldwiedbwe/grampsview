@@ -20,9 +20,10 @@
 
             <Frame
                 x:Name="LLCardLargeFrame"
+                Margin="0"
                 Padding="0"
-                BackgroundColor="Accent"
-                CornerRadius="3">
+                BackgroundColor="{DynamicResource PrimaryColor}"
+                CornerRadius="1">
                 <Label
                     x:Name="LLCardLargeTitle"
                     Grid.Row="0"

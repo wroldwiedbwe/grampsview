@@ -122,6 +122,7 @@
 
   <ItemGroup>
     <EmbeddedResource Remove="Assets\Styles\_Colors.xaml" />
+    <EmbeddedResource Remove="Assets\Styles\_GenericOverride.xaml" />
     <EmbeddedResource Remove="Common\CommonPropertyDebug.xaml" />
     <EmbeddedResource Remove="UserControls\CitationRefCardSmall.xaml" />
     <EmbeddedResource Remove="UserControls\General\CardGridMultiType.xaml" />

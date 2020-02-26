@@ -12,7 +12,7 @@
             <BindableLayout.ItemTemplate>
 
                 <DataTemplate>
-                    <Grid BackgroundColor="{DynamicResource SecondaryVariantLightColor}">
+                    <Grid BackgroundColor="{DynamicResource PrimaryVariantLightColor}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
