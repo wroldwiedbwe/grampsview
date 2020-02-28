@@ -500,49 +500,66 @@ namespace GrampsView.Data.ExternalStorageNS
             return t;
         }
 
-        /// <summary>
-        /// Gets the full details of the name of the person.
-        /// </summary>
-        /// <param name="xmlData">
-        /// The XML data.
-        /// </param>
-        /// <returns>
-        /// </returns>
-        private PersonNameModel GetPersonName(XElement xmlData)
+        private PersonNameModelCollection GetPersonNameCollection(XElement xmlData)
         {
-            PersonNameModel t = new PersonNameModel();
+            PersonNameModelCollection t = new PersonNameModelCollection();
 
-            t.GAlt.GAlt = GetBool(xmlData, "alt");
+            var theERElement =
+                    from orElementEl
+                    in xmlData.Elements(ns + "name")
+                    select orElementEl;
 
-            t.Priv = SetPrivateObject((string)xmlData.Attribute("priv"));
+            if (theERElement.Any())
+            {
+                // Load attribute object references
+                foreach (XElement theLoadORElement in theERElement)
+                {
+                    // TODO is date handling correct
+                    PersonNameModel newPersonNameModel = new PersonNameModel
+                    {
+                        Handle = "PersonNameCollection",
 
-            t.GType = GetElement(xmlData, "type");
+                        GCitationRefCollection = GetCitationCollection(theLoadORElement),
 
-            t.GSuffix = GetElement(xmlData, "suffix");
+                        GDate = SetDate(theLoadORElement),
 
-            t.GSurName = GetSurnameCollection(xmlData);
+                        GDisplay = GetElement(theLoadORElement, "display"),
 
-            t.GTitle = GetElement(xmlData, "title");
+                        GFamilyNick = GetElement(theLoadORElement, "familynick"),
 
-            t.GFamilyNick = GetElement(xmlData, "familynick");
+                        GFirstName = GetElement(theLoadORElement, "first"),
 
-            t.GGroup = GetElement(xmlData, "group");
+                        GGroup = GetElement(theLoadORElement, "group"),
 
-            t.GDate = GetDate(xmlData);
+                        GNick = GetElement(theLoadORElement, "nick"),
 
-            t.NoteReferenceCollection = GetNoteCollection(xmlData);
+                        GPriv = SetPrivateObject(GetAttribute(theLoadORElement.Attribute("priv"))),
 
-            t.CitationRefCollection = GetCitationCollection(xmlData);
+                        GSort = GetElement(theLoadORElement, "sort"),
 
-            t.GSort = GetElement(xmlData, "sort");
+                        GSuffix = GetElement(theLoadORElement, "suffix"),
 
-            t.GDisplay = GetElement(xmlData, "display");
+                        GSurName = GetSurnameCollection(theLoadORElement),
 
-            t.GFirstName = GetElement(xmlData, "first");
+                        GTitle = GetElement(theLoadORElement, "title"),
 
-            t.GCall = GetElement(xmlData, "call");
+                        GType = GetAttribute(theLoadORElement.Attribute("type")),
 
-            t.GNick = GetElement(xmlData, "nick");
+                        GNoteReferenceCollection = GetNoteCollection(theLoadORElement),
+                    };
+
+                    newPersonNameModel.GAlt.SetAlt(GetAttribute(theLoadORElement, "alt"));
+
+                    // set the Home image or symbol
+                    newPersonNameModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                    newPersonNameModel.HomeImageHLink.HomeSymbol = CommonConstants.IconAttribute;
+
+                    t.Add(newPersonNameModel);
+                }
+            }
+
+            // Return sorted by the default text
+            t.Sort(T => T.DeRef.GetDefaultText);
 
             return t;
         }

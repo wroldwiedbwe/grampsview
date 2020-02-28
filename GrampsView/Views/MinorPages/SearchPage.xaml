@@ -14,20 +14,9 @@
     Style="{DynamicResource GVBaseContentPage}"
     mc:Ignorable="d">
 
-    <!--<ContentPage.BindingContext>
-        <vm:AboutViewModel />
-    </ContentPage.BindingContext>-->
-
     <FlexLayout Direction="Column">
 
         <!--  Header  -->
-        <!--
-
-        <Label
-            BackgroundColor="Aqua"
-            FontSize="Large"
-            HorizontalTextAlignment="Center"
-            Text="HEADER" />-->
 
         <!--  Body  -->
         <FlexLayout FlexLayout.Grow="1">
@@ -58,13 +47,13 @@
                     x:Name="SearchBar"
                     Grid.Row="1"
                     Grid.Column="0"
-                    BackgroundColor="{StaticResource ItemBackground}"
+                    BackgroundColor="{DynamicResource SurfaceColor}"
                     HorizontalOptions="FillAndExpand"
                     HorizontalTextAlignment="Start"
                     IsTabStop="True"
                     SearchCommand="{Binding SearchCommand}"
                     SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
-                    TextColor="{DynamicResource OnPrimaryColor}">
+                    TextColor="{DynamicResource OnSurfaceColor}">
                     <SearchBar.Behaviors>
 
                         <behaviour:EventToCommandBehavior

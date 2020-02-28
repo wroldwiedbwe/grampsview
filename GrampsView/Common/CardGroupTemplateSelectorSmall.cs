@@ -338,6 +338,12 @@ namespace GrampsView.Common
             set;
         }
 
+        public DataTemplate PersonNameTemplate
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Gets or sets the person template.
         /// </summary>
@@ -545,6 +551,11 @@ namespace GrampsView.Common
             if (item is PersonModel)
             {
                 return PersonTemplate;
+            }
+
+            if (item is PersonNameModel)
+            {
+                return PersonNameTemplate;
             }
 
             if (item is PlaceModel)

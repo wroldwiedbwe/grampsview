@@ -93,8 +93,8 @@ namespace GrampsView.ViewModels
                 new CardListLine("Card Type:", "Family Detail"),
                 new CardListLine("Family Display Name:", FamilyObject.FamilyDisplayName),
                 new CardListLine("Family Relationship:", FamilyObject.GFamilyRelationship),
-                new CardListLine("Father Name:", FamilyObject.GFather.DeRef.GBirthName.FullName),
-                new CardListLine("Mother Name:", FamilyObject.GMother.DeRef.GBirthName.FullName),
+                new CardListLine("Father Name:", FamilyObject.GFather.DeRef.GPersonNamesCollection.GetPrimaryName.FullName),
+                new CardListLine("Mother Name:", FamilyObject.GMother.DeRef.GPersonNamesCollection.GetPrimaryName.FullName),
             });
 
                 // Add Model details

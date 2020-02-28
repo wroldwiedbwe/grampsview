@@ -24,10 +24,6 @@
         <usercontrols:CitationCardSmall />
     </DataTemplate>
 
-    <!--<DataTemplate x:Key="CitationRefCardSmall" x:DataType="model:HLinkCitationModel">
-        <userControls:CitationRefCardSmall />
-    </DataTemplate>-->
-
     <DataTemplate x:Key="EventCardSmallDT">
         <usercontrols:EventCardSmall />
     </DataTemplate>
@@ -60,16 +56,16 @@
         <usercontrols:NoteCardSmall />
     </DataTemplate>
 
-    <!--<DataTemplate x:Key="NoteRefCardSmall" x:DataType="model:HLinkNoteModel">
-        <userControls:NoteRefCardSmall />
-    </DataTemplate>-->
-
     <DataTemplate x:Key="ParentLinkCardSmallDT">
         <usercontrols:ParentLinkCardLarge />
     </DataTemplate>
 
     <DataTemplate x:Key="PersonCardSmallDT">
         <usercontrols:PersonCardSmall />
+    </DataTemplate>
+
+    <DataTemplate x:Key="PersonNameCardSmallDT">
+        <usercontrols:PersonNameCardSmall />
     </DataTemplate>
 
     <DataTemplate x:Key="PlaceCardSmallDT">
@@ -88,10 +84,6 @@
         <usercontrols:SourceCardSmall />
     </DataTemplate>
 
-    <!--<DataTemplate x:Name="TagRefCardSmall" x:DataType="model:HLinkTagModel">
-        <userControls:TagRefCardSmall />
-    </DataTemplate>-->
-
     <DataTemplate x:Key="URLCardSmallDT">
         <usercontrols:URLCardSmall />
     </DataTemplate>
@@ -108,6 +100,7 @@
         MediaTemplate="{StaticResource MediaCardSmallDT}"
         NoteTemplate="{StaticResource NoteCardSmallDT}"
         ParentLinkTemplate="{StaticResource ParentLinkCardSmallDT}"
+        PersonNameTemplate="{StaticResource PersonNameCardSmallDT}"
         PersonTemplate="{StaticResource PersonCardSmallDT}"
         PlaceTemplate="{StaticResource PlaceCardSmallDT}"
         RepositoryTemplate="{StaticResource RepositoryCardSmallDT}"

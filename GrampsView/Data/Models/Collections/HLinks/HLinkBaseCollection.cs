@@ -22,7 +22,7 @@ namespace GrampsView.Data.Model
     public class HLinkBaseCollection<T> : ObservableCollection<T>, IHLinkCollectionBase<T>
          where T : HLinkBase, new()
     {
-        // TODO Handle HLink collections properly by handlign all their data
+        // TODO Handle HLink collections properly by handling all their data
 
         /// <summary>
         /// Gets or sets the first image h link.

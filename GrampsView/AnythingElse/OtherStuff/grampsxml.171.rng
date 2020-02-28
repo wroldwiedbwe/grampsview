@@ -254,7 +254,7 @@
     </attribute>
   </define>
 
-  <define name="SecondaryColor-object">
+  <define name="primary-object">
     <ref name="table-object" />
     <optional>
       <attribute name="id">
@@ -272,7 +272,7 @@
   </define>
 
   <define name="person-content">
-    <ref name="SecondaryColor-object" />
+    <ref name="primary-object" />
     <element name="gender">
       <choice>
         <value>M</value>
@@ -646,7 +646,7 @@
   </define>
 
   <define name="family-content">
-    <ref name="SecondaryColor-object" />
+    <ref name="primary-object" />
     <optional>
       <element name="rel">
         <attribute name="type">
@@ -741,7 +741,7 @@
   </define>
 
   <define name="event-content">
-    <ref name="SecondaryColor-object" />
+    <ref name="primary-object" />
     <element name="type">
       <text />
     </element>
@@ -788,7 +788,7 @@
   </define>
 
   <define name="citation-content">
-    <ref name="SecondaryColor-object" />
+    <ref name="primary-object" />
     <optional>
       <ref name="date-content" />
     </optional>
@@ -826,7 +826,7 @@
   </define>
 
   <define name="source-content">
-    <ref name="SecondaryColor-object" />
+    <ref name="primary-object" />
     <optional>
       <element name="stitle">
         <text />
@@ -875,7 +875,7 @@
   </define>
 
   <define name="place-content">
-    <ref name="SecondaryColor-object" />
+    <ref name="primary-object" />
     <attribute name="type">
       <text />
     </attribute>
@@ -986,7 +986,7 @@
   </define>
 
   <define name="object-content">
-    <ref name="SecondaryColor-object" />
+    <ref name="primary-object" />
     <element name="file">
       <attribute name="src">
         <text />
@@ -1031,7 +1031,7 @@
   </define>
 
   <define name="repository-content">
-    <ref name="SecondaryColor-object" />
+    <ref name="primary-object" />
     <optional>
       <element name="rname">
         <text />
@@ -1118,7 +1118,7 @@
   </define>
 
   <define name="note-content">
-    <ref name="SecondaryColor-object" />
+    <ref name="primary-object" />
     <optional>
       <attribute name="format">
         <choice>

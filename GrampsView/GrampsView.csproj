@@ -38,6 +38,7 @@
     <Compile Remove="Behaviours\ListViewAutoSizeBehaviour.cs" />
     <Compile Remove="Behaviours\RadioButtonBehaviour.cs" />
     <Compile Remove="Common\AppExtension.cs" />
+    <Compile Remove="Common\CardGroupTemplateSelectorRefLarge.cs" />
     <Compile Remove="Common\CommonCropBitmap.cs" />
     <Compile Remove="Common\CommonLogCircular.cs" />
     <Compile Remove="Common\CommonPropertyDebug.xaml.cs" />
@@ -203,6 +204,9 @@
     </Compile>
     <Compile Update="UserControls\General\MediaImageSkia.xaml.cs">
       <DependentUpon>MediaImageSkia.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\PersonNameCardSmall.xaml.cs">
+      <DependentUpon>PersonNameCardSmall.xaml</DependentUpon>
     </Compile>
     <Compile Update="UserControls\ListLineCardSmall.xaml.cs">
       <DependentUpon>ListLineCardSmall.xaml</DependentUpon>

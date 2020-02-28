@@ -16,7 +16,6 @@
 
         <ucon:FlexSingleCardType
             x:Name="flexLayout"
-            BorderColor="{DynamicResource SecondaryVariantLightColor}"
             FsctSource="{Binding BookMarkSource, Mode=OneWay}"
             FsctTemplate="{StaticResource BookMarkCardSmallDT}" />
     </Grid>

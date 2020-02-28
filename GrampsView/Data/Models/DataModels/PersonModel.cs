@@ -51,11 +51,6 @@ namespace GrampsView.Data.Model
         private OCAttributeModelCollection _AttributeReference = new OCAttributeModelCollection();
 
         /// <summary>
-        /// Person Element - Name.
-        /// </summary>
-        private PersonNameModel _BirthName = new PersonNameModel();
-
-        /// <summary>
         /// Reference to the parent family object.
         /// </summary>
         private HLinkFamilyModel _ChildOf = new HLinkFamilyModel();
@@ -79,6 +74,11 @@ namespace GrampsView.Data.Model
         /// The local LDS collection.
         /// </summary>
         private OCLdsOrdModelCollection _GLDSCollection = new OCLdsOrdModelCollection();
+
+        /// <summary>
+        /// Person Element - Name.
+        /// </summary>
+        private PersonNameModelCollection _GPersonNamesCollection = new PersonNameModelCollection();
 
         /// <summary>
         /// The local is living.
@@ -156,23 +156,6 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets or sets the Persons Birthname.
-        /// </summary>
-        [DataMember]
-        public PersonNameModel GBirthName
-        {
-            get
-            {
-                return _BirthName;
-            }
-
-            set
-            {
-                SetProperty(ref _BirthName, value);
-            }
-        }
-
-        /// <summary>
         /// Gets or sets the child of.
         /// </summary>
         /// <value>
@@ -222,7 +205,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return GBirthName.GetDefaultText;
+                return GPersonNamesCollection.GetPrimaryName.GetDefaultText;
             }
         }
 
@@ -397,6 +380,23 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
+        /// Gets or sets the Persons Birthname.
+        /// </summary>
+        [DataMember]
+        public PersonNameModelCollection GPersonNamesCollection
+        {
+            get
+            {
+                return _GPersonNamesCollection;
+            }
+
+            set
+            {
+                SetProperty(ref _GPersonNamesCollection, value);
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the g person reference collection.
         /// </summary>
         /// <value>
@@ -513,12 +513,12 @@ namespace GrampsView.Data.Model
             PersonModel secondPersonModel = (PersonModel)b;
 
             // compare on surnname first
-            int testFlag = string.Compare(firstPersonModel.GBirthName.GSurName.GetPrimarySurname, secondPersonModel.GBirthName.GSurName.GetPrimarySurname, StringComparison.CurrentCulture);
+            int testFlag = string.Compare(firstPersonModel.GPersonNamesCollection.GetPrimaryName.GSurName.GetPrimarySurname, secondPersonModel.GPersonNamesCollection.GetPrimaryName.GSurName.GetPrimarySurname, StringComparison.CurrentCulture);
 
             if (testFlag.Equals(0))
             {
                 // equal so check firstname
-                testFlag = string.Compare(firstPersonModel.GBirthName.GFirstName, secondPersonModel.GBirthName.GFirstName, StringComparison.CurrentCulture);
+                testFlag = string.Compare(firstPersonModel.GPersonNamesCollection.GetPrimaryName.GFirstName, secondPersonModel.GPersonNamesCollection.GetPrimaryName.GFirstName, StringComparison.CurrentCulture);
             }
 
             return testFlag;
@@ -538,12 +538,12 @@ namespace GrampsView.Data.Model
             PersonModel secondPersonModel = (PersonModel)obj;
 
             // compare on surnname first
-            int testFlag = string.Compare(GBirthName.GSurName.GetPrimarySurname, secondPersonModel.GBirthName.GSurName.GetPrimarySurname, StringComparison.CurrentCulture);
+            int testFlag = string.Compare(GPersonNamesCollection.GetPrimaryName.GSurName.GetPrimarySurname, secondPersonModel.GPersonNamesCollection.GetPrimaryName.GSurName.GetPrimarySurname, StringComparison.CurrentCulture);
 
             if (testFlag.Equals(0))
             {
                 // equal so check firstname
-                testFlag = string.Compare(GBirthName.GFirstName, secondPersonModel.GBirthName.GFirstName, StringComparison.CurrentCulture);
+                testFlag = string.Compare(GPersonNamesCollection.GetPrimaryName.GFirstName, secondPersonModel.GPersonNamesCollection.GetPrimaryName.GFirstName, StringComparison.CurrentCulture);
             }
 
             return testFlag;

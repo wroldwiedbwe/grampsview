@@ -75,7 +75,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataViewData.Items.OrderBy(PersonModel => PersonModel.GBirthName.SortName).ToList();
+                return DataViewData.Items.OrderBy(PersonModel => PersonModel.GPersonNamesCollection.GetPrimaryName.SortName).ToList();
             }
         }
 
@@ -105,8 +105,8 @@ namespace GrampsView.Data.DataView
                 List<CommonGroupInfoCollection<PersonModel>> groups = new List<CommonGroupInfoCollection<PersonModel>>();
 
                 var query = from item in PersonData.Items
-                            orderby item.GBirthName.SortName
-                            group item by (item.GBirthName.GSurName + " ").ToUpper(CultureInfo.CurrentCulture).Substring(0, 1) into g
+                            orderby item.GPersonNamesCollection.GetPrimaryName.SortName
+                            group item by (item.GPersonNamesCollection.GetPrimaryName.GSurName + " ").ToUpper(CultureInfo.CurrentCulture).Substring(0, 1) into g
                             select new { GroupName = g.Key, Items = g };
 
                 foreach (var g in query)
@@ -288,7 +288,7 @@ namespace GrampsView.Data.DataView
                 return null;
             }
 
-            IOrderedEnumerable<HLinkPersonModel> t = collectionArg.OrderBy(HLinkPersonModel => HLinkPersonModel.DeRef.GBirthName.SortName);
+            IOrderedEnumerable<HLinkPersonModel> t = collectionArg.OrderBy(HLinkPersonModel => HLinkPersonModel.DeRef.GPersonNamesCollection.GetPrimaryName.SortName);
 
             HLinkPersonModelCollection tt = new HLinkPersonModelCollection();
 
@@ -300,11 +300,12 @@ namespace GrampsView.Data.DataView
             return tt;
         }
 
-        // var query = from item in PersonData.Items orderby ((PersonModel)item).GBirthName.SortName
-        // group item by ((PersonModel)item).GBirthName.SortName into g select new { GroupName =
-        // g.Key, Items = g, }; foreach (var g in query) { CommonGroupInfoCollection info = new
-        // CommonGroupInfoCollection { Key = g.GroupName, }; foreach (var item in g.Items) {
-        // info.Add(item); }
+        // var query = from item in PersonData.Items orderby
+        // ((PersonModel)item).GPersonNamesCollection.GetPrimaryName.SortName group item by
+        // ((PersonModel)item).GPersonNamesCollection.GetPrimaryName.SortName into g select new {
+        // GroupName = g.Key, Items = g, }; foreach (var g in query) { CommonGroupInfoCollection
+        // info = new CommonGroupInfoCollection { Key = g.GroupName, }; foreach (var item in
+        // g.Items) { info.Add(item); }
         /// <summary>
         /// Searches the items.
         /// </summary>
@@ -320,7 +321,7 @@ namespace GrampsView.Data.DataView
             queryString = queryString.ToLower(CultureInfo.CurrentCulture);
 
             // Search by Full Name
-            var temp = PersonData.Items.Where(x => x.GBirthName.FullName.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            var temp = PersonData.Items.Where(x => x.GPersonNamesCollection.GetPrimaryName.FullName.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (PersonModel tempMO in temp)
             {
@@ -332,7 +333,7 @@ namespace GrampsView.Data.DataView
             }
 
             // Search by Called By
-            temp = PersonData.Items.Where(x => x.GBirthName.GCall.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            temp = PersonData.Items.Where(x => x.GPersonNamesCollection.GetPrimaryName.GCall.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (PersonModel tempMO in temp)
             {
@@ -344,7 +345,7 @@ namespace GrampsView.Data.DataView
             }
 
             // Search by Nick Name
-            temp = PersonData.Items.Where(x => x.GBirthName.GNick.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            temp = PersonData.Items.Where(x => x.GPersonNamesCollection.GetPrimaryName.GNick.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (PersonModel tempMO in temp)
             {

@@ -13,7 +13,6 @@
 
         <ucon:FlexSingleCardType
             x:Name="flexLayout"
-            BorderColor="{DynamicResource SecondaryVariantLightColor}"
             FsctSource="{Binding TagSource, Mode=OneWay}"
             FsctTemplate="{StaticResource TagCardSmallDT}" />
     </Grid>

@@ -4,20 +4,20 @@
 
 namespace GrampsView.ViewModels
 {
-    using System.Windows.Input;
-
     using GrampsView.Common;
     using GrampsView.Data.DataView;
 
     using Prism.Events;
     using Prism.Navigation;
 
+    using System.Windows.Input;
+
     using Xamarin.Forms;
 
     /// <summary>
     /// Search ViewModel class.
     /// </summary>
-    /// <seealso cref="GrampsView.ViewModels.ViewModelBase" />
+    /// <seealso cref="GrampsView.ViewModels.ViewModelBase"/>
     public class SearchViewModel : ViewModelBase
     {
         /// <summary>
@@ -28,10 +28,10 @@ namespace GrampsView.ViewModels
         /// <summary>
         /// The local search text.
         /// </summary>
-        private string localSearchText;
+        private string _SearchText;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchViewModel" /> class.
+        /// Initializes a new instance of the <see cref="SearchViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// Common Logging.
@@ -86,12 +86,12 @@ namespace GrampsView.ViewModels
         {
             get
             {
-                return localSearchText;
+                return _SearchText;
             }
 
             set
             {
-                SetProperty(ref localSearchText, value);
+                SetProperty(ref _SearchText, value);
             }
         }
 

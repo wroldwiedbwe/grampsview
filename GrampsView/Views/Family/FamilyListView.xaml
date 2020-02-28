@@ -14,7 +14,6 @@
 
         <ucon:FlexSingleCardType
             x:Name="flexLayout"
-            BorderColor="{DynamicResource SecondaryVariantLightColor}"
             FsctSource="{Binding FamilySource, Mode=OneWay}"
             FsctTemplate="{StaticResource FamilyCardSmallDT}" />
     </Grid>

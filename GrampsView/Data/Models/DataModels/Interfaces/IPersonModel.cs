@@ -38,18 +38,6 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets or sets the Persons Birth Name.
-        /// </summary>
-        /// <value>
-        /// The name of the birth.
-        /// </value>
-        PersonNameModel GBirthName
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// Gets or sets the child of.
         /// </summary>
         /// <value>
@@ -62,17 +50,6 @@ namespace GrampsView.Data.Model
         }
 
         string GetGenderGlyph { get; }
-
-        /// <summary>
-        /// Gets the get $$(HLinkPersonModel)$$ that points to this ViewModel.
-        /// </summary>
-        /// <value>
-        /// The get h link.
-        /// </value>
-        HLinkPersonModel HLink
-        {
-            get;
-        }
 
         /// <summary>
         /// Gets the event reference.
@@ -132,10 +109,33 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
+        /// Gets or sets the Persons Birth Name.
+        /// </summary>
+        /// <value>
+        /// The name of the birth.
+        /// </value>
+        PersonNameModelCollection GPersonNamesCollection
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets the get $$(HLinkPersonModel)$$ that points to this ViewModel.
+        /// </summary>
+        /// <value>
+        /// The get h link.
+        /// </value>
+        HLinkPersonModel HLink
+        {
+            get;
+        }
+
+        /// <summary>
         /// Gets a value indicating whether this instance is living.
         /// </summary>
         /// <value>
-        /// <c> true </c> if this instance is living; otherwise, <c> false </c>.
+        /// <c>true</c> if this instance is living; otherwise, <c>false</c>.
         /// </value>
         bool IsLiving
         {

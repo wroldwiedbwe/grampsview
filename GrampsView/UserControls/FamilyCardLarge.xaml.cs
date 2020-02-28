@@ -40,8 +40,8 @@ namespace GrampsView.UserControls
         //            CardListLineCollection t =
         //             new CardListLineCollection
         //            {
-        //            new CardListLine("Mother:", ViewModel.GMother.DeRef.GBirthName.FullName),
-        //            new CardListLine("Father:", ViewModel.GFather.DeRef.GBirthName.FullName),
+        //            new CardListLine("Mother:", ViewModel.GMother.DeRef.GPersonNamesCollection.GetPrimaryName.FullName),
+        //            new CardListLine("Father:", ViewModel.GFather.DeRef.GPersonNamesCollection.GetPrimaryName.FullName),
         //            new CardListLine("Relationship:", ViewModel.GFamilyRelationship),
         //            };
 

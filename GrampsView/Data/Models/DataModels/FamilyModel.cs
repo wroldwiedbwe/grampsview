@@ -158,7 +158,7 @@ namespace GrampsView.Data.Model
                 // set family display name
                 if (GFather.Valid)
                 {
-                    familyName = GFather.DeRef.GBirthName.FullName;
+                    familyName = GFather.DeRef.GPersonNamesCollection.GetPrimaryName.FullName;
                 }
                 else
                 {
@@ -171,7 +171,7 @@ namespace GrampsView.Data.Model
                 {
                     StringBuilder t = new StringBuilder();
                     t.Append(familyName);
-                    t.Append(GMother.DeRef.GBirthName.FullName);
+                    t.Append(GMother.DeRef.GPersonNamesCollection.GetPrimaryName.FullName);
                     familyName = t.ToString();
                 }
                 else
@@ -198,7 +198,7 @@ namespace GrampsView.Data.Model
                 // set family display name
                 if (GFather.Valid)
                 {
-                    familyName = GFather.DeRef.GBirthName.GSurName.GetPrimarySurname;
+                    familyName = GFather.DeRef.GPersonNamesCollection.GetPrimaryName.GSurName.GetPrimarySurname;
                 }
                 else
                 {
@@ -209,7 +209,7 @@ namespace GrampsView.Data.Model
                 {
                     StringBuilder t = new StringBuilder();
                     t.Append(familyName);
-                    t.Append(GMother.DeRef.GBirthName.GSurName.GetPrimarySurname);
+                    t.Append(GMother.DeRef.GPersonNamesCollection.GetPrimaryName.GSurName.GetPrimarySurname);
                     familyName = t.ToString();
                 }
                 else
@@ -449,12 +449,12 @@ namespace GrampsView.Data.Model
             FamilyModel c2 = (FamilyModel)y;
 
             // compare on surnname first
-            int testFlag = string.Compare(c1.GFather.DeRef.GBirthName.SortName, c2.GFather.DeRef.GBirthName.SortName, StringComparison.CurrentCulture);
+            int testFlag = string.Compare(c1.GFather.DeRef.GPersonNamesCollection.GetPrimaryName.SortName, c2.GFather.DeRef.GPersonNamesCollection.GetPrimaryName.SortName, StringComparison.CurrentCulture);
 
             if (testFlag.Equals(0))
             {
                 // equal so check firstname
-                testFlag = string.Compare(c1.GMother.DeRef.GBirthName.SortName, c2.GMother.DeRef.GBirthName.SortName, StringComparison.CurrentCulture);
+                testFlag = string.Compare(c1.GMother.DeRef.GPersonNamesCollection.GetPrimaryName.SortName, c2.GMother.DeRef.GPersonNamesCollection.GetPrimaryName.SortName, StringComparison.CurrentCulture);
             }
 
             return testFlag;
@@ -474,12 +474,12 @@ namespace GrampsView.Data.Model
             FamilyModel secondFamilyModel = (FamilyModel)obj;
 
             // compare on fathers name first TODO use culture related sort
-            int testFlag = string.Compare(GFather.DeRef.GBirthName.SortName, secondFamilyModel.GFather.DeRef.GBirthName.SortName, StringComparison.CurrentCulture);
+            int testFlag = string.Compare(GFather.DeRef.GPersonNamesCollection.GetPrimaryName.SortName, secondFamilyModel.GFather.DeRef.GPersonNamesCollection.GetPrimaryName.SortName, StringComparison.CurrentCulture);
 
             if (testFlag.Equals(0))
             {
                 // equal so check firstname
-                testFlag = string.Compare(GMother.DeRef.GBirthName.SortName, secondFamilyModel.GMother.DeRef.GBirthName.SortName, StringComparison.CurrentCulture);
+                testFlag = string.Compare(GMother.DeRef.GPersonNamesCollection.GetPrimaryName.SortName, secondFamilyModel.GMother.DeRef.GPersonNamesCollection.GetPrimaryName.SortName, StringComparison.CurrentCulture);
             }
 
             return testFlag;

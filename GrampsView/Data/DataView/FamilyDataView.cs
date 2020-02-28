@@ -76,8 +76,8 @@ namespace GrampsView.Data.DataView
                 List<CommonGroupInfoCollection<FamilyModel>> groups = new List<CommonGroupInfoCollection<FamilyModel>>();
 
                 var query = from item in FamilyData.Items
-                            orderby item.GFather.DeRef.GBirthName.GSurName
-                            group item by (item.GFather.DeRef.GBirthName.GSurName + " ").ToUpper(CultureInfo.CurrentCulture).Substring(0, 1) into g
+                            orderby item.GFather.DeRef.GPersonNamesCollection.GetPrimaryName.GSurName
+                            group item by (item.GFather.DeRef.GPersonNamesCollection.GetPrimaryName.GSurName + " ").ToUpper(CultureInfo.CurrentCulture).Substring(0, 1) into g
                             select new { GroupName = g.Key, Items = g };
 
                 foreach (var g in query)

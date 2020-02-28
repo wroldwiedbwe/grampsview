@@ -91,9 +91,10 @@ namespace GrampsView.Data.ExternalStorageNS
                         loadPerson.GMediaRefCollection = GetObjectCollection(pname);
 
                         // Name
-                        XElement birthName = pname.Element(ns + "name");
-                        localGrampsCommonLogging.LogVariable("BirthName", birthName.ToString());
-                        loadPerson.GBirthName = GetPersonName(birthName);
+                        if (loadPerson.Id == "I0571")
+                        {
+                        }
+                        loadPerson.GPersonNamesCollection = GetPersonNameCollection(pname);
 
                         // NoteRefs Collection
                         loadPerson.GNoteRefCollection = GetNoteCollection(pname);
@@ -135,7 +136,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 {
                     if (DV.PersonDV.PersonData.Count > 0)
                     {
-                        DataStore.CN.NotifyException("Loading person from GRAMPSXML storage.  The last person successfully loaded was " + DV.PersonDV.PersonData.Items[DV.PersonDV.PersonData.Count].GBirthName.FullName, ex);
+                        DataStore.CN.NotifyException("Loading person from GRAMPSXML storage.  The last person successfully loaded was " + DV.PersonDV.PersonData.Items[DV.PersonDV.PersonData.Count].GPersonNamesCollection.GetPrimaryName.FullName, ex);
                         throw;
                     }
                     else

@@ -16,21 +16,16 @@ namespace GrampsView.Data.Model
 
     using GrampsView.Data.Collections;
 
-    /// <summary>Class for holding a person's name.</summary>
-    /// <seealso cref="GrampsView.Data.Model.ModelBase" />
-    /// <seealso cref="GrampsView.Data.Model.IPersonNameModel" />
-    /// <seealso cref="System.IComparable" />
-    /// <seealso cref="System.Collections.IComparer" />
+    /// <summary>
+    /// Class for holding a person's name.
+    /// </summary>
+    /// <seealso cref="GrampsView.Data.Model.ModelBase"/>
+    /// <seealso cref="GrampsView.Data.Model.IPersonNameModel"/>
+    /// <seealso cref="System.IComparable"/>
+    /// <seealso cref="System.Collections.IComparer"/>
     [DataContract]
     public class PersonNameModel : ModelBase, IPersonNameModel, IComparable, IComparer
     {
-        /// <summary>Gets or sets the citation reference collection.</summary>
-        /// <value>The citation reference collection.</value>
-        [DataMember]
-        public HLinkCitationModelCollection CitationRefCollection { get; set; }
-
-        = new HLinkCitationModelCollection();
-
         /// <summary>
         /// Gets the Persons FullName. Returns 'unknown' if no firstname or surname.
         /// </summary>
@@ -50,13 +45,21 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets or sets the alt. details.</summary>
-        /// <value>The g alt.</value>
+        /// <summary>
+        /// Gets or sets the alt. details.
+        /// </summary>
+        /// <value>
+        /// The g alt.
+        /// </value>
         [DataMember]
         public AltModel GAlt { get; set; } = new AltModel();
 
-        /// <summary>Gets or sets the  call details.</summary>
-        /// <value>The g call.</value>
+        /// <summary>
+        /// Gets or sets the call details.
+        /// </summary>
+        /// <value>
+        /// The g call.
+        /// </value>
         [DataMember]
         public string GCall
         {
@@ -65,8 +68,23 @@ namespace GrampsView.Data.Model
 
         = string.Empty;
 
-        /// <summary>Gets or sets the date.</summary>
-        /// <value>The date.</value>
+        /// <summary>
+        /// Gets or sets the citation reference collection.
+        /// </summary>
+        /// <value>
+        /// The citation reference collection.
+        /// </value>
+        [DataMember]
+        public HLinkCitationModelCollection GCitationRefCollection { get; set; }
+
+        = new HLinkCitationModelCollection();
+
+        /// <summary>
+        /// Gets or sets the date.
+        /// </summary>
+        /// <value>
+        /// The date.
+        /// </value>
         [DataMember]
         public DateObjectModel GDate { get; set; } = new DateObjectModel();
 
@@ -97,16 +115,24 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Gets or sets the  family nick.</summary>
-        /// <value>The g family nick.</value>
+        /// <summary>
+        /// Gets or sets the family nick.
+        /// </summary>
+        /// <value>
+        /// The g family nick.
+        /// </value>
         [DataMember]
         public string GFamilyNick
         {
             get; set;
         }
 
-        /// <summary>Gets or sets the first name.</summary>
-        /// <value>The first name of the g.</value>
+        /// <summary>
+        /// Gets or sets the first name.
+        /// </summary>
+        /// <value>
+        /// The first name of the g.
+        /// </value>
         [DataMember]
         public string GFirstName
         {
@@ -115,25 +141,47 @@ namespace GrampsView.Data.Model
             set;
         }
 
-        /// <summary>Gets or sets the group.</summary>
-        /// <value>The g group.</value>
+        /// <summary>
+        /// Gets or sets the group.
+        /// </summary>
+        /// <value>
+        /// The g group.
+        /// </value>
         [DataMember]
         public string GGroup
         {
             get; set;
         }
 
-        /// <summary>Gets or sets the nick.</summary>
-        /// <value>The g nick.</value>
+        /// <summary>
+        /// Gets or sets the nick.
+        /// </summary>
+        /// <value>
+        /// The g nick.
+        /// </value>
         [DataMember]
         public string GNick
         {
             get; set;
         }
 
-        /// <summary>Gets or sets a value indicating whether [priv] set.</summary>
+        /// <summary>
+        /// Gets or sets the note reference collection.
+        /// </summary>
         /// <value>
-        ///   <c>true</c> if [g priv]; otherwise, <c>false</c>.</value>
+        /// The note reference collection.
+        /// </value>
+        [DataMember]
+        public HLinkNoteModelCollection GNoteReferenceCollection { get; set; }
+
+        = new HLinkNoteModelCollection();
+
+        /// <summary>
+        /// Gets or sets a value indicating whether [priv] set.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if [g priv]; otherwise, <c>false</c>.
+        /// </value>
         public bool GPriv
         {
             get;
@@ -142,8 +190,12 @@ namespace GrampsView.Data.Model
 
             = false;
 
-        /// <summary>Gets or sets the sort.</summary>
-        /// <value>The g sort.</value>
+        /// <summary>
+        /// Gets or sets the sort.
+        /// </summary>
+        /// <value>
+        /// The g sort.
+        /// </value>
         [DataMember]
         public string GSort
         {
@@ -152,16 +204,24 @@ namespace GrampsView.Data.Model
             set;
         }
 
-        /// <summary>Gets or sets the suffix.</summary>
-        /// <value>The g suffix.</value>
+        /// <summary>
+        /// Gets or sets the suffix.
+        /// </summary>
+        /// <value>
+        /// The g suffix.
+        /// </value>
         [DataMember]
         public string GSuffix
         {
             get; set;
         }
 
-        /// <summary>Gets or sets the surname.</summary>
-        /// <value>The name of the g sur.</value>
+        /// <summary>
+        /// Gets or sets the surname.
+        /// </summary>
+        /// <value>
+        /// The name of the g sur.
+        /// </value>
         [DataMember]
         public SurnameModelCollection GSurName
         {
@@ -172,16 +232,24 @@ namespace GrampsView.Data.Model
 
         = new SurnameModelCollection();
 
-        /// <summary>Gets or sets the title.</summary>
-        /// <value>The g title.</value>
+        /// <summary>
+        /// Gets or sets the title.
+        /// </summary>
+        /// <value>
+        /// The g title.
+        /// </value>
         [DataMember]
         public string GTitle
         {
             get; set;
         }
 
-        /// <summary>Gets or sets the type.</summary>
-        /// <value>The type of the g.</value>
+        /// <summary>
+        /// Gets or sets the type.
+        /// </summary>
+        /// <value>
+        /// The type of the g.
+        /// </value>
         [DataMember]
         public string GType
         {
@@ -189,13 +257,6 @@ namespace GrampsView.Data.Model
 
             set;
         }
-
-        /// <summary>Gets or sets the note reference collection.</summary>
-        /// <value>The note reference collection.</value>
-        [DataMember]
-        public HLinkNoteModelCollection NoteReferenceCollection { get; set; }
-
-        = new HLinkNoteModelCollection();
 
         /// <summary>
         /// Gets the sort name o.

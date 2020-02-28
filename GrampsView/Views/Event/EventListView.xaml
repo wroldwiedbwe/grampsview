@@ -13,7 +13,6 @@
 
         <userControls:FlexSingleCardType
             x:Name="flexLayout"
-            BorderColor="{DynamicResource SecondaryVariantLightColor}"
             FsctSource="{Binding EventSource, Mode=OneWay}"
             FsctTemplate="{StaticResource EventCardSmallDT}" />
     </Grid>

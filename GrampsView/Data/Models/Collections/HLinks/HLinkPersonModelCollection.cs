@@ -73,7 +73,7 @@ namespace GrampsView.Data.Collections
                 }
 
                 // Sort the collection
-                List<HLinkPersonModel> t = this.OrderBy(HLinkEventModel => HLinkEventModel.DeRef.GBirthName.SortName).ToList();
+                List<HLinkPersonModel> t = this.OrderBy(HLinkEventModel => HLinkEventModel.DeRef.GPersonNamesCollection.GetPrimaryName.SortName).ToList();
 
                 Items.Clear();
 

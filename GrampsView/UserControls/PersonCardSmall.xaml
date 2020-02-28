@@ -44,7 +44,7 @@
                 Grid.Row="0"
                 Grid.Column="1"
                 Style="{DynamicResource GVCardLabelStyleSmall}"
-                Text="{Binding DeRef.GBirthName.FullName, Mode=OneWay}" />
+                Text="{Binding DeRef.GPersonNamesCollection.GetPrimaryName.FullName, Mode=OneWay}" />
 
             <Label
                 x:Name="PersonSummaryDOBTextBlock"
