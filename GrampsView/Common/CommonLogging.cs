@@ -30,7 +30,7 @@ namespace GrampsView.Common
             //argErrorDetail.Add("Error", argMessage);
 
             // Only Start App Center if there
-            if (!Common.CommonRoutines.IsEmualator())
+            if (!Common.CommonRoutines.IsEmulator())
             {
                 Crashes.TrackError(null, argErrorDetail);
 
@@ -48,7 +48,7 @@ namespace GrampsView.Common
             string exceptionMessage = strMessage + " - Exception:" + ex.Message + " - " + ex.Source + " - " + ex.InnerException + " - " + ex.StackTrace;
 
             // Only Start App Center if there
-            if (!Common.CommonRoutines.IsEmualator())
+            if (!Common.CommonRoutines.IsEmulator())
             {
                 Crashes.TrackError(ex,
                 new Dictionary<string, string>{

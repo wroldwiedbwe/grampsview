@@ -117,7 +117,8 @@ namespace GrampsView.ViewModels
                 BaseDetail.Add(FamilyObject.GNoteRefCollection.GetCardGroup());
                 BaseDetail.Add(FamilyObject.GAttributeCollection.GetCardGroup());
                 BaseDetail.Add(FamilyObject.GTagRefCollection.GetCardGroup());
-                BaseDetail.Add(FamilyObject.BackHLinkReferenceCollection.GetCardGroup());
+
+                BaseBackLinks.Add(FamilyObject.BackHLinkReferenceCollection.GetCardGroup());
 
                 string outFamEvent = string.Empty;
                 if (FamilyObject.GEventRefCollection.Count > 0)

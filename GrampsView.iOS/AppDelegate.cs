@@ -30,7 +30,7 @@ namespace GrampsView.iOS
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
 
             // Only Start App Center if there
-            if (!CommonRoutines.IsEmualator())
+            if (!CommonRoutines.IsEmulator())
             {
                 Distribute.DontCheckForUpdatesInDebug();
             }

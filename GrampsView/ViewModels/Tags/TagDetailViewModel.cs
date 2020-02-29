@@ -27,7 +27,7 @@ namespace GrampsView.ViewModels
         private TagModel localTagObject;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TagDetailViewModel" /> class.
+        /// Initializes a new instance of the <see cref="TagDetailViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The ioc common logging.
@@ -86,7 +86,7 @@ namespace GrampsView.ViewModels
         /// Handles navigation in wards and sets up the event model parameter.
         /// </summary>
         /// <param name="e">
-        /// The <see cref="NavigatedToEventArgs" /> instance containing the event data.
+        /// The <see cref="NavigatedToEventArgs"/> instance containing the event data.
         /// </param>
         /// <param name="viewModelState">
         /// The parameter is not used.
@@ -116,7 +116,7 @@ namespace GrampsView.ViewModels
                 BaseHeader.Add(t);
 
                 // Add Details BackHLinkRefNavArgument = localNavigationHelper.HLinkModelCollectionAdd(NoteObject.BackHLinkReferenceCollection);
-                BaseDetail.Add(TagObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseBackLinks.Add(TagObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

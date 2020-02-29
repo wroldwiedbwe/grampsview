@@ -14,6 +14,13 @@ namespace GrampsView.ViewModels
 {
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible, IInitialize
     {
+        private CardGroupCollection _BaseBackLinks = new CardGroupCollection();
+
+        /// <summary>
+        /// The local base header
+        /// </summary>
+        private CardGroupCollection _BaseHeader = new CardGroupCollection();
+
         private bool _BaseIsLoading;
 
         private HLinkBase _BaseNavParamsHLink = null;
@@ -22,39 +29,32 @@ namespace GrampsView.ViewModels
 
         private string _BaseTitleIcon = string.Empty;
 
-        private bool isBusy = false;
-
-        /// <summary>
-        /// The local base header
-        /// </summary>
-        private CardGroupCollection localBaseHeader = new CardGroupCollection();
-
         /// <summary>
         /// The local cl.
         /// </summary>
-        private ICommonLogging localCL;
+        private ICommonLogging _CL;
 
         /// <summary>
         /// The local event aggregator.
         /// </summary>
-        private IEventAggregator localEventAggregator;
+        private IEventAggregator _EventAggregator;
 
-        private INavigationService localNavigationService;
+        private INavigationService _NavigationService;
 
         /// <summary>
         /// The local nav parameters.
         /// </summary>
-        private INavigationParameters localNavParams;
+        private INavigationParameters _NavParams;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseViewModel" /> class.
+        /// Initializes a new instance of the <see cref="BaseViewModel"/> class.
         /// </summary>
         public ViewModelBase()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseViewModel" /> class. Initializes the
+        /// Initializes a new instance of the <see cref="BaseViewModel"/> class. Initializes the
         /// specified ioc common logging.
         /// </summary>
         /// <param name="iocCommonLogging">
@@ -70,6 +70,19 @@ namespace GrampsView.ViewModels
             BaseNavigationService = iocNavigationService;
         }
 
+        public CardGroupCollection BaseBackLinks
+        {
+            get
+            {
+                return _BaseBackLinks;
+            }
+
+            set
+            {
+                SetProperty(ref _BaseBackLinks, value);
+            }
+        }
+
         /// <summary>
         /// Gets or sets the base common logger.
         /// </summary>
@@ -80,14 +93,14 @@ namespace GrampsView.ViewModels
         {
             get
             {
-                Debug.Assert(localCL != null, "BaseCL is null.  Was this set in the constructor for the derived class?");
+                Debug.Assert(_CL != null, "BaseCL is null.  Was this set in the constructor for the derived class?");
 
-                return localCL;
+                return _CL;
             }
 
             private set
             {
-                SetProperty(ref localCL, value);
+                SetProperty(ref _CL, value);
             }
         }
 
@@ -119,14 +132,14 @@ namespace GrampsView.ViewModels
         {
             get
             {
-                Debug.Assert(localEventAggregator != null, "BaseEventAggregator is null.  Was this set in the constructor for the derived class?");
+                Debug.Assert(_EventAggregator != null, "BaseEventAggregator is null.  Was this set in the constructor for the derived class?");
 
-                return localEventAggregator;
+                return _EventAggregator;
             }
 
             private set
             {
-                SetProperty(ref localEventAggregator, value);
+                SetProperty(ref _EventAggregator, value);
             }
         }
 
@@ -140,12 +153,12 @@ namespace GrampsView.ViewModels
         {
             get
             {
-                return localBaseHeader;
+                return _BaseHeader;
             }
 
             set
             {
-                SetProperty(ref localBaseHeader, value);
+                SetProperty(ref _BaseHeader, value);
             }
         }
 
@@ -167,11 +180,11 @@ namespace GrampsView.ViewModels
         {
             get
             {
-                return localNavigationService;
+                return _NavigationService;
             }
             set
             {
-                SetProperty(ref localNavigationService, value);
+                SetProperty(ref _NavigationService, value);
             }
         }
 
@@ -185,12 +198,12 @@ namespace GrampsView.ViewModels
         {
             get
             {
-                return localNavParams;
+                return _NavParams;
             }
 
             set
             {
-                SetProperty(ref localNavParams, value);
+                SetProperty(ref _NavParams, value);
             }
         }
 
@@ -242,7 +255,7 @@ namespace GrampsView.ViewModels
         /// Gets or sets a value indicating whether [detail data loaded flag].
         /// </summary>
         /// <value>
-        /// <c> true </c> if [detail data loaded flag]; otherwise, <c> false </c>.
+        /// <c>true</c> if [detail data loaded flag]; otherwise, <c>false</c>.
         /// </value>
         private bool DetailDataLoadedFlag { get; set; } = false;
 
@@ -313,28 +326,6 @@ namespace GrampsView.ViewModels
             }
         }
 
-        ///// <summary>
-        ///// Called when [navigated to].
-        ///// </summary>
-        ///// <param name="parameters">
-        ///// The parameters.
-        ///// </param>
-        //public virtual async Task OnNavigatedToAsync(INavigationParameters parameters)
-        //{
-        //    //TryFromJson(parameters, out localNavParams);
-
-        // //BaseCL.LogRoutineEntry("Navigating to " + BaseNavParams.TargetView);
-
-        // if (!DetailDataLoadedFlag) { DetailDataLoadedFlag = true;
-
-        // //PopulateViewModel().SafeFireAndForget(onException: ex =>
-        // DataStore.CN.NotifyException("Trouble calling PopulateViewModel for " +
-        // BaseNavParams.TargetView, ex));
-
-        //        PopulateViewModel();
-        //    }
-        //}
-
         public virtual void OnNavigatingTo(INavigationParameters parameters)
         {
         }
@@ -354,16 +345,5 @@ namespace GrampsView.ViewModels
         {
             return;
         }
-
-        ///// <summary>
-        ///// Populates the view ViewModel.
-        ///// </summary>
-        ///// <returns>
-        ///// Nothibg.
-        ///// </returns>
-        //public virtual async Task PopulateViewModel()
-        //{
-        //    return;
-        //}
     }
 }

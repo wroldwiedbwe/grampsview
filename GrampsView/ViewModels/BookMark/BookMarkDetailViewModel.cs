@@ -27,7 +27,7 @@ namespace GrampsView.ViewModels
         private BookMarkModel localBookMarkObject;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BookMarkDetailViewModel" /> class.
+        /// Initializes a new instance of the <see cref="BookMarkDetailViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The ioc common logging.
@@ -89,7 +89,7 @@ namespace GrampsView.ViewModels
 
                 BaseHeader.Add(t);
 
-                BaseDetail.Add(BookMarkObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseBackLinks.Add(BookMarkObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

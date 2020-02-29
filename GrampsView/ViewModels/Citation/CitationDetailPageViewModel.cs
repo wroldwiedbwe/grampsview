@@ -132,7 +132,8 @@ namespace GrampsView.ViewModels
                 BaseDetail.Add(CitationObject.GNoteRefCollection.GetCardGroup());
                 BaseDetail.Add(CitationObject.GTagRef.GetCardGroup());
                 BaseDetail.Add(CitationObject.GSourceAttributeCollection.GetCardGroup());
-                BaseDetail.Add(CitationObject.BackHLinkReferenceCollection.GetCardGroup());
+
+                BaseBackLinks.Add(CitationObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

@@ -13,6 +13,7 @@ namespace GrampsView.ViewModels
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.UserControls;
+    using Microsoft.AppCenter.Distribute;
     using Prism.Commands;
     using Prism.Events;
     using Prism.Navigation;
@@ -207,93 +208,6 @@ namespace GrampsView.ViewModels
             }
         }
 
-        //public bool UseDarkTheme
-        //{
-        //    get
-        //    {
-        //        return _AppDarkTheme;
-        //    }
-
-        // set { if (SetRadioButton(AppTheme.Dark,value)) { SetProperty(ref _AppDarkTheme, value);
-
-        //            CommonTheming.SetThemeDark();
-        //        }
-        //    }
-        //}
-
-        //private bool _UseDarkThemeChecked = false;
-
-        //public bool UseDarkThemeChecked
-        //{
-        //    get
-        //    {
-        //        return _UseDarkThemeChecked;
-        //    }
-
-        //    set
-        //    {
-        //        SetProperty(ref _UseDarkThemeChecked, value);
-        //    }
-        //}
-
-        //private bool _UseLightThemeChecked = false;
-
-        //public bool UseLightThemeChecked
-        //{
-        //    get
-        //    {
-        //        return _UseLightThemeChecked;
-        //    }
-
-        //    set
-        //    {
-        //        SetProperty(ref _UseLightThemeChecked, value);
-        //    }
-        //}
-
-        //private bool _UseSystemThemeChecked = false;
-
-        //public bool UseSystemThemeChecked
-        //{
-        //    get
-        //    {
-        //        return _UseSystemThemeChecked;
-        //    }
-
-        //    set
-        //    {
-        //        SetProperty(ref _UseSystemThemeChecked, value);
-        //    }
-        //}
-
-        //public bool UseLightTheme
-        //{
-        //    get
-        //    {
-        //        return _AppLightTheme;
-        //    }
-
-        // set { if (SetRadioButton(AppTheme.Light,value)) { SetProperty(ref _AppLightTheme, value);
-
-        //            CommonTheming.SetThemeLight();
-        //        }
-        //    }
-        //}
-
-        //public bool UseSystemTheme
-        //{
-        //    get
-        //    {
-        //        return _AppSystemTheme;
-        //    }
-
-        // set { if (SetRadioButton(AppTheme.Unspecified,value)) { SetProperty(ref _AppSystemTheme, value);
-
-        //            CommonTheming.SetThemeSystem();
-        //        }
-        //    }
-        //}
-
         /// <summary>
         /// Raises the <see cref="NavigatedTo"/> event.
         /// </summary>
@@ -306,7 +220,7 @@ namespace GrampsView.ViewModels
         /// <returns>
         /// A <see cref="Task"/> representing the asynchronous operation.
         /// </returns>
-        public override void PopulateViewModel()
+        public override async Task PopulateViewModelAsync()
         {
             // cache Header Data record
             HeaderData = DV.HeaderDV.HeaderDataModel;
@@ -352,6 +266,10 @@ namespace GrampsView.ViewModels
             new CardListLine("Middle Revision", assemblyName.Version.Revision),
 
             new CardListLine("Minor Revision", assemblyName.Version.MinorRevision),
+
+            new CardListLine("App Center update status", await Distribute.IsEnabledAsync().ConfigureAwait(false)),
+
+            new CardListLine("App Center update track",  Distribute.UpdateTrack.ToString()),
             };
 
             t.Title = "Application Versions";
@@ -373,6 +291,8 @@ namespace GrampsView.ViewModels
             {
                 DaText = reader.ReadToEnd();
             }
+
+            return;
         }
 
         public void TestPage()
@@ -381,41 +301,5 @@ namespace GrampsView.ViewModels
 
             //BaseNavigationService.NavigateAsync(nameof(AShellPage));
         }
-
-        //private bool SetRadioButton(AppTheme ArgThemeSelected, bool argNewValue)
-        //{
-        //    switch (ArgThemeSelected)
-        //    {
-        //        case AppTheme.Unspecified:
-        //            {
-        //                if (UseSystemTheme == true)
-        //                {
-        //                    return false;
-        //                }
-
-        // UseDarkTheme = false; UseLightTheme = false;
-
-        // return true; }
-
-        // case AppTheme.Light: { if (UseLightTheme == true) { return false; }
-
-        // UseDarkTheme = false; UseSystemTheme = false;
-
-        // return true; }
-
-        // case AppTheme.Dark: { if (UseDarkTheme == argNewValue) { return false; }
-
-        // if (UseDarkTheme == true) { return false; }
-
-        // UseSystemTheme = false; UseLightTheme = false;
-
-        //                return true;
-        //            }
-        //        default:
-        //            {
-        //                return true;
-        //            }
-        //    }
-        //}
     }
 }

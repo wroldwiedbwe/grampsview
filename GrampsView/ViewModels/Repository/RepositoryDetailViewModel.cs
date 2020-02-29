@@ -92,7 +92,8 @@ namespace GrampsView.ViewModels
                 BaseDetail.Add(RepositoryObject.GTagRefCollection.GetCardGroup());
                 BaseDetail.Add(RepositoryObject.BackHLinkReferenceCollection.GetCardGroup());
                 BaseDetail.Add(RepositoryObject.GAddress.GetCardGroup());
-                BaseDetail.Add(RepositoryObject.GURL.GetCardGroup());
+
+                BaseBackLinks.Add(RepositoryObject.GURL.GetCardGroup());
             }
         }
     }

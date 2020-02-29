@@ -87,7 +87,7 @@
                 // App Center
                 ////////////////////////////////////////////////////////////////////////////////////////////////Debug.WriteLine(initString, "AppCenterInit");
                 // Only Start App Center if there
-                if (!CommonRoutines.IsEmualator())
+                if (!CommonRoutines.IsEmulator())
                 {
                     Debug.WriteLine(AppCenter.SdkVersion, "UWP SDK");
                 }

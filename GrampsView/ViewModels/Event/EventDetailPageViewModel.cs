@@ -110,7 +110,7 @@ namespace GrampsView.ViewModels
                     BaseDetail.Add(EventObject.GNoteRefCollection.GetCardGroup());
                     BaseDetail.Add(EventObject.GTagRefCollection.GetCardGroup());
 
-                    BaseDetail.Add(EventObject.BackHLinkReferenceCollection.GetCardGroup());
+                    BaseBackLinks.Add(EventObject.BackHLinkReferenceCollection.GetCardGroup());
                 }
             }
         }

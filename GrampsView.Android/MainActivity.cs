@@ -77,19 +77,19 @@ namespace GrampsView.Droid
 
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
 
-            // Only Start App Center if there
-            if (!CommonRoutines.IsEmualator())
-            {
-                // App Center Distribute
-                Distribute.SetEnabledForDebuggableBuild(true);
-            }
-
             // FFImageLoading Init
             CachedImageRenderer.Init(enableFastRenderer: false);
 
             CachedImageRenderer.InitImageViewHandler();
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+
+            // Only Start App Center if not virtual
+            if (!CommonRoutines.IsEmulator())
+            {
+                // App Center Distribute
+                Distribute.SetEnabledForDebuggableBuild(true);
+            }
 
             //GrampsView.UserControls.Droid.Renderers.BorderlessEntryRenderer.Init();
 

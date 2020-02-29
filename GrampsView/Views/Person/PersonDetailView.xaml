@@ -48,6 +48,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <ucon:MediaImageSkia
@@ -66,5 +67,11 @@
             x:Name="BaseDetail"
             Grid.Row="3"
             FMultiSource="{Binding BaseDetail}" />
+
+        <ucon:FlexMultiCardType
+            x:Name="BaseBackLinks"
+            Grid.Row="4"
+            FMultiSource="{Binding BaseBackLinks}"
+            Style="{DynamicResource BackLinkCollection}" />
     </Grid>
 </ContentPage>

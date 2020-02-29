@@ -256,7 +256,13 @@
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="CornerRadius" Value="10" />
-        <Setter Property="BackgroundColor" Value="Transparent" />
+    </Style>
+
+    <Style
+        x:Key="BackLinkCollection"
+        BasedOn="{StaticResource FlexMultiCollection}"
+        TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryVariantDarkColor}" />
     </Style>
 
     <!--  Create a Note Full Text Card Style  -->
@@ -377,7 +383,7 @@
         <Setter Property="LineBreakMode" Value="TailTruncation" />
         <Setter Property="FontSize" Value="Medium" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
-        <Setter Property="TextColor" Value="{DynamicResource OnSecondaryColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource OnPrimaryColor}" />
     </Style>
 
     <!--  Create a Large Style for a Text Block Header  -->

@@ -19,14 +19,14 @@ namespace GrampsView.Common
     /// </summary>
     public static class CommonRoutines
     {
-        public static bool IsEmualator()
+        public static bool IsEmulator()
         {
-            if (DeviceInfo.DeviceType == DeviceType.Physical)
+            if (DeviceInfo.DeviceType == DeviceType.Virtual)
             {
-                return false;
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         public static string ReplaceLineSeperators(string argString)

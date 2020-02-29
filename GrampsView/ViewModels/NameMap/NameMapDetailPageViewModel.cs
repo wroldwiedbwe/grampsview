@@ -27,7 +27,7 @@ namespace GrampsView.ViewModels
         private NameMapModel localNameMapObject;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NameMapDetailViewModel" /> class.
+        /// Initializes a new instance of the <see cref="NameMapDetailViewModel"/> class.
         /// </summary>
         /// <param name="iocNameMapDataView">
         /// The ioc book mark data view.
@@ -74,7 +74,7 @@ namespace GrampsView.ViewModels
         /// Handles navigation in wards and sets up the event model parameter.
         /// </summary>
         /// <param name="e">
-        /// The <see cref="NavigatedToEventArgs" /> instance containing the event data.
+        /// The <see cref="NavigatedToEventArgs"/> instance containing the event data.
         /// </param>
         /// <param name="viewModelState">
         /// The parameter is not used.
@@ -103,7 +103,7 @@ namespace GrampsView.ViewModels
             BaseHeader.Add(t);
 
             // BackHLinkRefNavArgument = localNavigationHelper.HLinkModelCollectionAdd(NoteObject.BackHLinkReferenceCollection);
-            BaseDetail.Add(NameMapObject.BackHLinkReferenceCollection.GetCardGroup());
+            BaseBackLinks.Add(NameMapObject.BackHLinkReferenceCollection.GetCardGroup());
         }
     }
 }

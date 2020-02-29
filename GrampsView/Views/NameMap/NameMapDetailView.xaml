@@ -13,15 +13,13 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition
-                Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition
-                Height="Auto" />
-            <RowDefinition
-                Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!--  Content  -->
@@ -34,6 +32,12 @@
             x:Name="BaseDetail"
             Grid.Row="1"
             FMultiSource="{Binding BaseDetail}" />
+
+        <ucon:FlexMultiCardType
+            x:Name="BaseBackLinks"
+            Grid.Row="2"
+            FMultiSource="{Binding BaseBackLinks}"
+            Style="{DynamicResource BackLinkCollection}" />
     </Grid>
 
     <!--<Grid x:Name="pageRoot" Style="{StaticResource GridContentRegionStyleMedium}">

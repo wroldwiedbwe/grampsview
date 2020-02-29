@@ -115,58 +115,15 @@ namespace GrampsView.ViewModels
                 CardListLineCollection nameDetails = new CardListLineCollection
                 {
                     new CardListLine("Card Type:", "Person Detail"),
-                    new CardListLine("Full Name:", PersonObject.GPersonNamesCollection.GetPrimaryName.FullName),
-                    new CardListLine("Name Title:", PersonObject.GPersonNamesCollection.GetPrimaryName.GTitle),
-                    new CardListLine("First Name:", PersonObject.GPersonNamesCollection.GetPrimaryName.GFirstName)
                 };
-
-                //if (PersonObject.GPersonNamesCollection.GetPrimaryName.GSurName.Count > 0)
-                //{
-                //    foreach (SurnameModel item in PersonObject.GPersonNamesCollection.GetPrimaryName.GSurName)
-                //    {
-                //        nameDetails.Add(new CardListLine("Surname:", item.GText));
-                //        nameDetails.Add(new CardListLine("Surname Connector:", item.GConnector));
-                //        nameDetails.Add(new CardListLine("Surname Derivation:", item.GDerivation));
-                //        nameDetails.Add(new CardListLine("Surname Prefix:", item.GPrefix));
-                //        nameDetails.Add(new CardListLine("Surname Primary:", item.GPrim));
-                //    }
-                //}
-
-                //nameDetails.Add(new CardListLine("Nickname:", PersonObject.GPersonNamesCollection.GetPrimaryName.GNick));
-                //nameDetails.Add(new CardListLine("Family Nickname:", PersonObject.GPersonNamesCollection.GetPrimaryName.GFamilyNick));
-                //nameDetails.Add(new CardListLine("Called:", PersonObject.GPersonNamesCollection.GetPrimaryName.GCall));
-
-                //if (PersonObject.GPersonNamesCollection.GetPrimaryName.GDate.Valid)
-                //{
-                //    nameDetails.Add(new CardListLine("Name Date:", PersonObject.GPersonNamesCollection.GetPrimaryName.GDate.GetShortDateAsString));
-                //}
-
-                //nameDetails.Add(new CardListLine("Name Display:", PersonObject.GPersonNamesCollection.GetPrimaryName.GDisplay));
-                //nameDetails.Add(new CardListLine("Name Group:", PersonObject.GPersonNamesCollection.GetPrimaryName.GGroup));
-                //nameDetails.Add(new CardListLine("Name Private:", PersonObject.GPersonNamesCollection.GetPrimaryName.GPriv));
-                //nameDetails.Add(new CardListLine("Name Sort:", PersonObject.GPersonNamesCollection.GetPrimaryName.GSort));
-                //nameDetails.Add(new CardListLine("Name Suffix:", PersonObject.GPersonNamesCollection.GetPrimaryName.GSuffix));
-                //nameDetails.Add(new CardListLine("Name Type:", PersonObject.GPersonNamesCollection.GetPrimaryName.GType));
 
                 t.Cards.Add(nameDetails);
 
-                //// Get extra name details
-                //if (PersonObject.GPersonNamesCollection.GetPrimaryName.GSurName.Count > 0)
-                //{
-                //    foreach (SurnameModel item in PersonObject.GPersonNamesCollection.GetPrimaryName.GSurName)
-                //    {
-                //        CardListLineCollection extraNameDetails = new CardListLineCollection
-                //        {
-                //            new CardListLine("Surname:", item.GText),
-                //            new CardListLine("Surname Connector:", item.GConnector),
-                //            new CardListLine("Surname Derivation:", item.GDerivation),
-                //            new CardListLine("Surname Prefix:", item.GPrefix),
-                //            new CardListLine("Surname Primary:", item.GPrim)
-                //        };
-
-                //        t.Cards.Add(extraNameDetails);
-                //    }
-                //}
+                // Handle the common case where there is only one name
+                if (PersonObject.GPersonNamesCollection.Count == 1)
+                {
+                    t.Cards.Add(PersonObject.GPersonNamesCollection[0]);
+                }
 
                 // Get extra details
                 CardListLineCollection tt = new CardListLineCollection
@@ -214,8 +171,12 @@ namespace GrampsView.ViewModels
 
                 BaseHeader.Add(t);
 
-                // Add extra name details
-                BaseHeader.Add(PersonObject.GPersonNamesCollection.GetCardGroup());
+                // Handle the uncommon case where there is more than one name
+                if (PersonObject.GPersonNamesCollection.Count > 1)
+                {
+                    // Add extra name details
+                    BaseHeader.Add(PersonObject.GPersonNamesCollection.GetCardGroup());
+                }
 
                 // Add details
                 BaseDetail.Add(PersonObject.GParentInRefCollection.GetCardGroup());
@@ -233,7 +194,7 @@ namespace GrampsView.ViewModels
                 BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GCitationRefCollection.GetCardGroup("Name Citations"));
                 BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GNoteReferenceCollection.GetCardGroup("Name Notes"));
 
-                BaseDetail.Add(PersonObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseBackLinks.Add(PersonObject.BackHLinkReferenceCollection.GetCardGroup());
 
                 // TODO localActivitySession = await CommonTimeline.AddToTimeLine("Person",
                 // PersonObject, PersonObject.HomeImageHLink.DeRef.MediaStorageFilePath, "Person: "

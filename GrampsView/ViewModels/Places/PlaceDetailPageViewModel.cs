@@ -26,10 +26,16 @@ namespace GrampsView.ViewModels
         /// </summary>
         private PlaceModel _PlaceObject;
 
-        /// <summary>Initializes a new instance of the <see cref="PlaceDetailViewModel"/> class.</summary>
-        /// <param name="iocCommonLogging"></param>
-        /// <param name="iocEventAggregator">The ioc event aggregator.</param>
-        /// <param name="iocNavigationService"></param>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PlaceDetailViewModel"/> class.
+        /// </summary>
+        /// <param name="iocCommonLogging">
+        /// </param>
+        /// <param name="iocEventAggregator">
+        /// The ioc event aggregator.
+        /// </param>
+        /// <param name="iocNavigationService">
+        /// </param>
         public PlaceDetailViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
@@ -52,7 +58,9 @@ namespace GrampsView.ViewModels
             }
         }
 
-        /// <summary>Handles navigation in wards and sets up the place model parameter.</summary>
+        /// <summary>
+        /// Handles navigation in wards and sets up the place model parameter.
+        /// </summary>
         public override void PopulateViewModel()
         {
             PlaceObject = DV.PlaceDV.GetModelFromHLink(BaseNavParamsHLink);
@@ -83,7 +91,7 @@ namespace GrampsView.ViewModels
                 BaseDetail.Add(PlaceObject.GTagRefCollection.GetCardGroup());
                 BaseDetail.Add(PlaceObject.GURLCollection.GetCardGroup());
 
-                BaseDetail.Add(PlaceObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseBackLinks.Add(PlaceObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

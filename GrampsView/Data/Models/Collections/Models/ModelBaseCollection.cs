@@ -33,5 +33,10 @@ namespace GrampsView.Data.Model
 
             return t;
         }
+
+        public virtual CardGroup GetCardGroup()
+        {
+            return GetCardGroup("");
+        }
     }
 }

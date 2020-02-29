@@ -43,10 +43,18 @@ namespace GrampsView.ViewModels
 
         //private double mY = 0f;
 
-        /// <summary>Initializes a new instance of the <see cref="MediaDetailViewModel"/> class.</summary>
-        /// <param name="iocCommonLogging">The common logging.</param>
-        /// <param name="iocEventAggregator">The event aggregator.</param>
-        /// <param name="iocNavigationService">The navigation service.</param>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MediaDetailViewModel"/> class.
+        /// </summary>
+        /// <param name="iocCommonLogging">
+        /// The common logging.
+        /// </param>
+        /// <param name="iocEventAggregator">
+        /// The event aggregator.
+        /// </param>
+        /// <param name="iocNavigationService">
+        /// The navigation service.
+        /// </param>
         public MediaDetailViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
@@ -188,7 +196,8 @@ namespace GrampsView.ViewModels
                 BaseDetail.Add(CurrentMediaObject.GEventRefCollection.GetCardGroup());
                 BaseDetail.Add(CurrentMediaObject.GFamilyRefCollection.GetCardGroup());
                 BaseDetail.Add(CurrentMediaObject.GTagRefCollection.GetCardGroup());
-                BaseDetail.Add(CurrentMediaObject.BackHLinkReferenceCollection.GetCardGroup());
+
+                BaseBackLinks.Add(CurrentMediaObject.BackHLinkReferenceCollection.GetCardGroup());
             }
 
             BaseCL.LogRoutineExit("MediaDetailViewModel OnNavigatedTo");

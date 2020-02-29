@@ -48,6 +48,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <ucon:FlexMultiCardType
@@ -70,6 +71,12 @@
             x:Name="BaseDetail"
             Grid.Row="2"
             FMultiSource="{Binding BaseDetail}" />
+
+        <ucon:FlexMultiCardType
+            x:Name="BaseBackLinks"
+            Grid.Row="3"
+            FMultiSource="{Binding BaseBackLinks}"
+            Style="{DynamicResource BackLinkCollection}" />
     </Grid>
 
     <!--<Button

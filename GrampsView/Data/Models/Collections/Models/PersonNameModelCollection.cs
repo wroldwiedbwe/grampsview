@@ -41,9 +41,35 @@ namespace GrampsView.Data.Collections
             }
         }
 
-        public CardGroup GetCardGroup()
+        public override CardGroup GetCardGroup()
         {
-            return base.GetCardGroup("Person Name Model Collection");
+            CardGroup t = new CardGroup
+            {
+                Title = "Person Names",
+            };
+
+            foreach (PersonNameModel item in Items)
+            {
+                t.Cards.Add(item);
+
+                if (item.GCitationRefCollection.Count > 0)
+                {
+                    foreach (HLinkCitationModel citem in item.GCitationRefCollection)
+                    {
+                        t.Cards.Add(citem);
+                    }
+                }
+
+                if (item.GNoteReferenceCollection.Count > 0)
+                {
+                    foreach (HLinkNoteModel nitem in item.GNoteReferenceCollection)
+                    {
+                        t.Cards.Add(nitem);
+                    }
+                }
+            }
+
+            return t;
         }
     }
 }

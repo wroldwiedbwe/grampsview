@@ -120,7 +120,7 @@ namespace GrampsView
             string StartPage = string.Empty;
 
             // Only Start App Center if physical
-            if (!CommonRoutines.IsEmualator())
+            if (!CommonRoutines.IsEmulator())
             {
                 AppCenterInit();
             }
