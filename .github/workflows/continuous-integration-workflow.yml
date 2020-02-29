@@ -1,4 +1,4 @@
-name: Release Drafter and Commit Changelog
+name: Commit Changelog
 
 on:
   push:
@@ -9,16 +9,7 @@ on:
 jobs:
   update_release_draft:
     runs-on: ubuntu-latest
-    steps:
-      # Drafts your next Release notes as Pull Requests are merged into "master"
-      - name: Draft release
-      - uses: release-drafter/release-drafter@v5.6.0
-        # with:
-          # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
-          # config-name: my-config.yml
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+    steps:      
       # Update Commit file
       - name: Conventional Changelog Action
       - uses: TriPSs/conventional-changelog-action@v1.3.0
