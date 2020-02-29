@@ -10,9 +10,6 @@ jobs:
   update_release_draft:
     runs-on: ubuntu-latest
     steps:
-    - name: Setup Debug Session
-      uses: P3TERX/debugger-action@master
-  
   
     - name: Create commit change log file
       uses: TriPSs/conventional-changelog-action@v1.2.0
