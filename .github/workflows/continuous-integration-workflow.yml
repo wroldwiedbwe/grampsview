@@ -9,6 +9,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      
+      - name: autochangelog-action
+        id: ac
+        uses: rubenfiszel/autochangelog-action@v0.13.0
+        with:
+          changelog_file: './CHANGELOG.md'
+          manifest_file: './manifest.yml'
+          dry_run: false
+          issues_url_prefix: 'https://MY_REPO_URL_PREFIX.com/issues'
+          tag_prefix: 'v'
+      
       - name: Create commit change log file
         uses: TriPSs/conventional-changelog-action@v1.3.0
         with:
