@@ -12,7 +12,7 @@ jobs:
     steps:
   
     - name: Create commit change log file
-      uses: TriPSs/conventional-changelog-action@v1.3.0
+      uses: TriPSs/conventional-changelog-action@v1.2.0
       with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           git-message: 'chore(release): {version}'
