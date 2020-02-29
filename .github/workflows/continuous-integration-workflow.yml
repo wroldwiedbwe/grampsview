@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: A name
       - uses: TriPSs/conventional-changelog-action@v1.3.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
