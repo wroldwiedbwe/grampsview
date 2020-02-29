@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: A name
-      - uses: TriPSs/conventional-changelog-action@v1.3.0
+        uses: TriPSs/conventional-changelog-action@v1.3.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           output-file: 'CHANGELOG.md'
