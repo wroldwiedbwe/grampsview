@@ -10,21 +10,7 @@ jobs:
   update_release_draft:
     runs-on: ubuntu-latest
     steps:
-
-    - name: autochangelog
-      uses: rubenfiszel/autochangelog-action@v0.13.0
-      # with:
-        # changelog file path
-        #changelog_file: # optional, default is ./CHANGELOG.md
-        # manifest file path
-        #manifest_file: # optional, default is ./manifest.yml
-        # issues url prefix
-        #issues_url_prefix: # optional, default is 
-        # tag_prefix (used to retrieve commits)
-        #tag_prefix: # optional, default is v
-        # do not change files
-        #dry_run: # optional, default is false
-    
+  
     - name: Create commit change log file
       uses: TriPSs/conventional-changelog-action@v1.3.0
       with:
