@@ -17,4 +17,3 @@ jobs:
           preset: 'angular'
           tag-prefix: ''
           output-file: 'CHANGELOG.md'
-
