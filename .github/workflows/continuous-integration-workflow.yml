@@ -1,4 +1,4 @@
-name: Release Drafter
+name: CI
 
 on:
   push:
@@ -10,13 +10,6 @@ jobs:
   update_release_draft:
     runs-on: ubuntu-latest
     steps:
-      # Drafts your next Release notes as Pull Requests are merged into "master"
-      - uses: release-drafter/release-drafter@v5.6.0
-        # with:
-          # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
-          # config-name: my-config.yml
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create commit change log file
         uses: TriPSs/conventional-changelog-action@master
@@ -25,4 +18,4 @@ jobs:
           git-message: 'chore(release): {version}'
           preset: 'angular'
           tag-prefix: ''
-          output-file: 'CHANGELOG.md'
+          output-file: 'changelog.md'
