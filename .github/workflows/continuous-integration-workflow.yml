@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: TriPSs/conventional-changelog-action@v1.3.0
     - name: Conventional Changelog Action
-        with:
+      with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           output-file: 'CHANGELOG.md'
           changelog-release-count: 5
