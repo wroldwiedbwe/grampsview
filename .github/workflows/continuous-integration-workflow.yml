@@ -13,7 +13,7 @@ jobs:
 
     - name: autochangelog
       uses: rubenfiszel/autochangelog-action@v0.13.0
-      with:
+      # with:
         # changelog file path
         #changelog_file: # optional, default is ./CHANGELOG.md
         # manifest file path
@@ -27,7 +27,7 @@ jobs:
     
     - name: Create commit change log file
       uses: TriPSs/conventional-changelog-action@v1.3.0
-        with:
+      with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git-message: 'chore(release): {version}'
           preset: 'angular'
