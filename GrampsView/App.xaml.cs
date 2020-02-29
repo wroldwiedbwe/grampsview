@@ -1,5 +1,4 @@
-﻿using GrampsView.Assets.Styles;
-using GrampsView.Common;
+﻿using GrampsView.Common;
 using GrampsView.Common.CustomClasses;
 using GrampsView.Data;
 using GrampsView.Data.External.StoreSerial;
