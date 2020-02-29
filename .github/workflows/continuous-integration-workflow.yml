@@ -21,7 +21,7 @@ jobs:
       - name: Create commit change log file
         uses: TriPSs/conventional-changelog-action@v1.3.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           git-message: 'chore(release): {version}'
           preset: 'angular'
           tag-prefix: ''
