@@ -10,7 +10,7 @@ jobs:
       - name: A name
         uses: TriPSs/conventional-changelog-action@v1.3.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           git-message: 'chore(release): {version}'
           preset: 'angular'
           tag-prefix: ''
