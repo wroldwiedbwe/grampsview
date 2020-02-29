@@ -10,22 +10,26 @@
     prism:DialogLayout.RelativeWidthRequest="{OnIdiom Default=0.75,
                                                       Desktop=0.5}"
     prism:ViewModelLocator.AutowireViewModel="True"
-    BackgroundColor="White">
+    BackgroundColor="{DynamicResource SurfaceColor}">
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
         <RowDefinition Height="*" />
         <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
 
-    <BoxView Color="Black" />
+    <BoxView />
     <Label
         Margin="20,5"
         Style="{DynamicResource TitleStyle}"
         Text="{Binding adaArgs.Name}"
-        TextColor="White" />
+        TextColor="{DynamicResource OnSurfaceColor}" />
 
     <ScrollView Grid.Row="1">
-        <Label Margin="20,0,20,10" Text="{Binding adaArgs.Text}" />
+        <Label
+            Margin="20,0,20,10"
+            Style="{DynamicResource GVCardLabelStyleSmall}"
+            Text="{Binding adaArgs.Text}"
+            TextColor="{DynamicResource OnSurfaceColor}" />
     </ScrollView>
 
     <Button
@@ -33,5 +37,6 @@
         Margin="0,0,0,10"
         Command="{Binding CloseCommand}"
         HorizontalOptions="Center"
+        Style="{DynamicResource GVButtonMenu}"
         Text="Ok" />
 </Grid>

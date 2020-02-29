@@ -190,6 +190,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="UserControls\General\TopMenu.xaml.cs">
+      <DependentUpon>TopMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Update="UserControls\General\FlexMultiCardType.xaml.cs">
       <DependentUpon>FlexMultiCardType.xaml</DependentUpon>
     </Compile>

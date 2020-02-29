@@ -31,7 +31,7 @@
                                             FontFamily="{DynamicResource MaterialFontFamily}"
                                             Glyph="{Binding Icon}"
                                             Size="40"
-                                            Color="{DynamicResource IconMenu}" />
+                                            Color="{DynamicResource OnSecondaryColor}" />
                                     </Image.Source>
                                 </Image>
                                 <Button

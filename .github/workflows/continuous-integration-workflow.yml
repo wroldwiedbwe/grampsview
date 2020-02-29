@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: A name
+      - name: Create commit change log file
         uses: TriPSs/conventional-changelog-action@v1.3.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

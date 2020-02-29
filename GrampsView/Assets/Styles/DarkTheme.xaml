@@ -115,9 +115,4 @@
     <Color x:Key="CardBackGroundTag">
         #A9A9A9
     </Color>
-
-    <!--  Icon Colours  -->
-    <Color x:Key="IconMenu">
-        #ed9c28
-    </Color>
 </ResourceDictionary>

@@ -383,7 +383,7 @@
         <Setter Property="LineBreakMode" Value="TailTruncation" />
         <Setter Property="FontSize" Value="Medium" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
-        <Setter Property="TextColor" Value="{DynamicResource OnPrimaryColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource OnSecondaryColor}" />
     </Style>
 
     <!--  Create a Large Style for a Text Block Header  -->

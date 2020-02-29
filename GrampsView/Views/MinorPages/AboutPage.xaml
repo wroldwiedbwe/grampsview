@@ -30,7 +30,7 @@
                         FontFamily="{DynamicResource MaterialFontFamily}"
                         Glyph="{Binding BaseTitleIcon}"
                         Size="44"
-                        Color="{DynamicResource IconMenu}" />
+                        Color="{DynamicResource OnSecondaryColor}" />
                 </Image.Source>
             </Image>
 
