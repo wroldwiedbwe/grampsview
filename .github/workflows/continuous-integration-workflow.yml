@@ -17,5 +17,5 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           git-message: 'chore(release): {version}'
           preset: 'angular'
-          tag-prefix: ''
-          output-file: '.\changelog.md'
+          tag-prefix: 'v'
+          output-file: 'changelog.md'
