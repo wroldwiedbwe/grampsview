@@ -15,7 +15,7 @@ jobs:
       uses: TriPSs/conventional-changelog-action@v1.2.0
       with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          git-message: 'chore(release): {version}'
-          preset: 'angular'
-          tag-prefix: 'v'
-          output-file: 'changelog.md'
+          #git-message: 'chore(release): {version}'
+          #preset: 'angular'
+          #tag-prefix: 'v'
+          #output-file: 'changelog.md'
