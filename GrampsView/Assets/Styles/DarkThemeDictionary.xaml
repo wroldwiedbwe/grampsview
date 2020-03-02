@@ -1,31 +1,31 @@
 ﻿<ResourceDictionary
-    x:Class="GrampsView.Assets.Styles.LightTheme"
+    x:Class="GrampsView.Assets.Styles.DarkThemeDictionary"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <!--  Material Design colors  -->
     <Color x:Key="PrimaryColor">
-        #b894f6
+        #aeea00
     </Color>
 
     <Color x:Key="PrimaryVariantLightColor">
-        #ecc5ff
+        #e4ff54
     </Color>
 
     <Color x:Key="PrimaryVariantDarkColor">
-        #8666c3
+        #79b700
     </Color>
 
     <Color x:Key="SecondaryColor">
-        #3960c2
+        #ffca28
     </Color>
 
     <Color x:Key="SecondaryVariantLightColor">
-        #728df5
+        #fffd61
     </Color>
 
     <Color x:Key="SecondaryVariantDarkColor">
-        #003791
+        #c79a00
     </Color>
 
     <Color x:Key="BackgroundColor">
@@ -33,7 +33,11 @@
     </Color>
 
     <Color x:Key="SurfaceColor">
-        #CFD8DC
+        #FFFFFF
+    </Color>
+
+    <Color x:Key="SurfaceVariantDarkColor">
+        #C8C8C8
     </Color>
 
     <Color x:Key="ErrorColor">
@@ -45,7 +49,7 @@
     </Color>
 
     <Color x:Key="OnSecondaryColor">
-        #EEEEEE
+        #000000
     </Color>
 
     <Color x:Key="OnBackgroundColor">
@@ -53,11 +57,11 @@
     </Color>
 
     <Color x:Key="OnSurfaceColor">
-        #000000
+        #888888
     </Color>
 
     <Color x:Key="OnErrorColor">
-        #dd2c00
+        #888888
     </Color>
 
     <!--  Card Colours  -->
@@ -67,8 +71,7 @@
     </Color>
 
     <Color x:Key="CardSelectable">
-        #FF5722
-        <!--  #ffa500  -->
+        #ffa500
     </Color>
 
     <!--  Card Background colours  -->

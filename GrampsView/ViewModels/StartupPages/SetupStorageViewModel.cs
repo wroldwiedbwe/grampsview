@@ -32,7 +32,7 @@ namespace GrampsView.ViewModels
         private IDataRepositoryManager localDataRepositoryManager;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SetupStorageViewModel" /> class.
+        /// Initializes a new instance of the <see cref="SetupStorageViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The common logging.
@@ -62,7 +62,7 @@ namespace GrampsView.ViewModels
         /// Gets or sets a value indicating whether [button locked].
         /// </summary>
         /// <value>
-        /// <c> true </c> if [button locked]; otherwise, <c> false </c>.
+        /// <c>true</c> if [button locked]; otherwise, <c>false</c>.
         /// </value>
         public bool ButtonUnLocked
         {
@@ -85,31 +85,29 @@ namespace GrampsView.ViewModels
             }
         }
 
-        /// <summary>
-        /// Gramps export XML plus media.
-        /// </summary>
-        /// <param name="sender">
-        /// The sender.
-        /// </param>
-        /// <param name="parameter">
-        /// The parameter.
-        /// </param>
-        public async void HandleSetDataFolderToChosen(object sender, object parameter)
-        {
-            BaseCL.LogProgress("Calling folder picker");
+        ///// <summary>
+        ///// Gramps export XML plus media.
+        ///// </summary>
+        ///// <param name="sender">
+        ///// The sender.
+        ///// </param>
+        ///// <param name="parameter">
+        ///// The parameter.
+        ///// </param>
+        //public async void HandleSetDataFolderToChosen(object sender, object parameter)
+        //{
+        //    BaseCL.LogProgress("Calling folder picker");
 
-            //bool allOk = await StoreFileUtility.GetCurrentInputFolder().ConfigureAwait(false);
+        // //bool allOk = await StoreFileUtility.GetCurrentInputFolder().ConfigureAwait(false);
 
-            //if (allOk)
-            //{
-            //    StorageFolder t = DataStore.DS.CurrentDataFolder;
+        // //if (allOk) //{ // StorageFolder t = DataStore.DS.CurrentDataFolder;
 
-            //    DataDetailList = new CardListLineCollection
-            //{
-            //    new CardListLine("Data Folder:", DataStore.DS.CurrentDataFolder.Path),
-            //};
-            //}
-        }
+        //    //    DataDetailList = new CardListLineCollection
+        //    //{
+        //    //    new CardListLine("Data Folder:", DataStore.DS.CurrentDataFolder.Path),
+        //    //};
+        //    //}
+        //}
 
         ///// <summary>
         ///// Gramps export XML plus media.

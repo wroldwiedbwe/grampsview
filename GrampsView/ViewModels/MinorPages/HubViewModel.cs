@@ -37,7 +37,7 @@ namespace GrampsView.ViewModels
         private HeaderModel localHeaderModel = new HeaderModel();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HubViewModel" /> class.
+        /// Initializes a new instance of the <see cref="HubViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The ioc common logging.
@@ -107,7 +107,9 @@ namespace GrampsView.ViewModels
         {
         }
 
-        /// <summary>Called when [navigating from].</summary>
+        /// <summary>
+        /// Called when [navigating from].
+        /// </summary>
         public void OnNavigatingFrom()
         {
             // Clear large Bitmap Image
@@ -147,7 +149,7 @@ namespace GrampsView.ViewModels
 
             // Setup Latest Changes list
 
-            LatestChanges.Add(DV.BookMarkDV.GetLatestChanges());
+            // TODO fix this LatestChanges.Add(DV.BookMarkDV.GetLatestChanges());
 
             LatestChanges.Add(DV.CitationDV.GetLatestChanges());
 

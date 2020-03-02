@@ -37,6 +37,8 @@ namespace GrampsView.Common
 
         private string _MajorStatusMessage = string.Empty;
 
+        private string _MinorStatusMessage = string.Empty;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CommonNotifications"/> class.
         /// </summary>
@@ -60,6 +62,19 @@ namespace GrampsView.Common
             set
             {
                 SetProperty(ref _MajorStatusMessage, value);
+            }
+        }
+
+        public string MinorStatusMessage
+        {
+            get
+            {
+                return _MinorStatusMessage;
+            }
+
+            set
+            {
+                SetProperty(ref _MinorStatusMessage, value);
             }
         }
 
@@ -127,6 +142,8 @@ namespace GrampsView.Common
         {
             MajorStatusMessage = string.Empty;
 
+            await MajorStatusAdd(string.Empty, false).ConfigureAwait(false);
+
             //// Pop top item
             // if (majorStatusQueue.Count > 0) { QueueItem oldItem = majorStatusQueue.Dequeue();
 
@@ -141,9 +158,16 @@ namespace GrampsView.Common
             // localEventAggregator.GetEvent<GVProgressMajorTextUpdate>().Publish(null)).ConfigureAwait(false); }
         }
 
-        public async Task MinorStatusAdd(string strMessage)
+        public async Task MinorStatusAdd(string argMessage)
         {
-            // TODO Handle this
+            await Task.Run(() => _EventAggregator.GetEvent<GVProgressMajorTextUpdate>().Publish(argMessage)).ConfigureAwait(false);
+
+            _CL.LogVariable("MinorStatusAdd", argMessage);
+
+            MinorStatusMessage = argMessage;
+
+            // majorStatusQueue.Enqueue(new QueueItem { Text = strMessage, showProgressRing = false });
+            return;
         }
 
         /// <summary>
@@ -182,6 +206,11 @@ namespace GrampsView.Common
         /// </param>
         public void NotifyError(string argMessage, Dictionary<string, string> argErrorDetail)
         {
+            if (argErrorDetail is null)
+            {
+                argErrorDetail = new Dictionary<string, string>();
+            }
+
             ActionDialogArgs t = new ActionDialogArgs
             {
                 Name = "Error",

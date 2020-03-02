@@ -1,8 +1,8 @@
 ﻿namespace GrampsView.Assets.Styles
 {
-    public partial class SystemTheme
+    public partial class SystemThemeDictionary
     {
-        public SystemTheme()
+        public SystemThemeDictionary()
         {
             InitializeComponent();
         }

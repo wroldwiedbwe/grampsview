@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary
-    x:Class="GrampsView.Assets.Styles.SmallCardTemplates"
+    x:Class="GrampsView.Assets.Styles.SmallCardTemplatesDictionary"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:common="clr-namespace:GrampsView.Common"
@@ -16,9 +16,9 @@
         <usercontrols:AttributeCardSmall />
     </DataTemplate>
 
-    <DataTemplate x:Key="BookMarkCardSmallDT">
+    <!--<DataTemplate x:Key="BookMarkCardSmallDT">
         <usercontrols:BookMarkCardSmall />
-    </DataTemplate>
+    </DataTemplate>-->
 
     <DataTemplate x:Key="CitationCardSmallDT">
         <usercontrols:CitationCardSmall />
@@ -92,7 +92,6 @@
         x:Key="CardGroupTemplateSelectorSmall"
         AddressTemplate="{StaticResource AddressCardSmallDT}"
         AttributeTemplate="{StaticResource AttributeCardSmallDT}"
-        BookMarkTemplate="{StaticResource BookMarkCardSmallDT}"
         CardListLineTemplate="{StaticResource CardListLineCardSmallDT}"
         CitationTemplate="{StaticResource CitationCardSmallDT}"
         EventTemplate="{StaticResource EventCardSmallDT}"

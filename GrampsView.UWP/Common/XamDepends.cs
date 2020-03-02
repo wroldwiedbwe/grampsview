@@ -44,10 +44,6 @@ namespace GrampsView.UWP.Common
                     // TODO For example, handle a file not found error
                     return new Size(0, 0);
                 }
-                catch (Exception)
-                {
-                    throw;
-                }
 
                 return new Size(0, 0);
             }).Result;

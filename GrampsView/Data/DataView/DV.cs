@@ -1,6 +1,9 @@
 ﻿// <copyright file="DV.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+//     Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
+
+using GrampsView.Data.Collections;
+using GrampsView.Data.Repository;
 
 namespace GrampsView.Data.DataView
 {
@@ -14,7 +17,13 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The book mark dv.
         /// </value>
-        public static IBookMarkDataView BookMarkDV { get; } = new BookMarkDataView();
+        public static HLinkBackLinkModelCollection BookMarkCollection
+        {
+            get
+            {
+                return DataStore.DS.BookMarkCollection;
+            }
+        }
 
         /// <summary>
         /// Gets the citation dv.

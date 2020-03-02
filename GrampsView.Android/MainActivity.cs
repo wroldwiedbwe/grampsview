@@ -2,17 +2,13 @@
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
-using Android.Content.Res;
 using Android.OS;
 using Android.Runtime;
-
-using AndroidX.Core.App;
-using AndroidX.Core.Content;
+using Android.Support.V4.App;
+using Android.Support.V4.Content;
 
 using FFImageLoading.Forms.Platform;
 
-using GrampsView.Assets.Styles;
-using GrampsView.Common;
 using GrampsView.Common.CustomClasses;
 using GrampsView.Data.Repository;
 using GrampsView.Droid.Common;
@@ -26,8 +22,6 @@ using Prism.Ioc;
 
 using System;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
-using static GrampsView.App;
 
 //using Xamarin.OneDrive;
 
@@ -48,6 +42,12 @@ namespace GrampsView.Droid
             base.OnActivityResult(requestCode, resultCode, data);
 
             //Connector.SetAuthenticationContinuationEventArgs(requestCode, resultCode, data);
+        }
+
+        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+        {
+            var newExc = new Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as Exception);
+            DataStore.CN.NotifyException("CurrentDomainOnUnhandledException", newExc);
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -77,19 +77,16 @@ namespace GrampsView.Droid
 
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
 
+            // App Center Distribute
+            Distribute.SetEnabledForDebuggableBuild(true);
+
             // FFImageLoading Init
-            CachedImageRenderer.Init(enableFastRenderer: false);
+
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: false);
 
             CachedImageRenderer.InitImageViewHandler();
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-
-            // Only Start App Center if not virtual
-            if (!CommonRoutines.IsEmulator())
-            {
-                // App Center Distribute
-                Distribute.SetEnabledForDebuggableBuild(true);
-            }
 
             //GrampsView.UserControls.Droid.Renderers.BorderlessEntryRenderer.Init();
 
@@ -97,8 +94,12 @@ namespace GrampsView.Droid
 
             // Load the app
             LoadApplication(new App(new AndroidInitializer()));
+        }
 
-            SetAppTheme();
+        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
+        {
+            var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
+            DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
         }
 
         protected override void OnDestroy()
@@ -119,92 +120,6 @@ namespace GrampsView.Droid
 
             //CrashManager.Register(this, GrampsView.Common.CommonConstants.HockeyAppId);
         }
-
-        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
-        {
-            var newExc = new Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as Exception);
-            DataStore.CN.NotifyException("CurrentDomainOnUnhandledException", newExc);
-        }
-
-        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
-        {
-            var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
-            DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
-
-            CommonLocalSettings.DataSerialised = false;
-        }
-
-        private void SetAppTheme()
-        {
-            switch (Resources.Configuration.UiMode & UiMode.NightMask)
-            {
-                case UiMode.NightMask:
-                    break;
-
-                case UiMode.NightNo:
-                    {
-                        SetTheme(Xamarin.Essentials.AppTheme.Light);
-                        break;
-                    }
-                case UiMode.NightUndefined:
-                    {
-                        SetTheme(Xamarin.Essentials.AppTheme.Unspecified);
-                        break;
-                    }
-                case UiMode.NightYes:
-                    {
-                        SetTheme(Xamarin.Essentials.AppTheme.Dark);
-                        break;
-                    }
-
-                default:
-                    {
-                        SetTheme(Xamarin.Essentials.AppTheme.Unspecified);
-                        break;
-                    }
-            }
-        }
-
-        private void SetTheme(AppTheme mode)
-        {
-            if (mode == Xamarin.Essentials.AppTheme.Dark)
-            {
-                if (App.AppTheme == Xamarin.Essentials.AppTheme.Dark)
-                    return;
-                App.Current.Resources = new DarkTheme();
-            }
-            else
-            {
-                if (App.AppTheme != Xamarin.Essentials.AppTheme.Dark)
-                    return;
-                App.Current.Resources = new LightTheme();
-            }
-            App.AppTheme = mode;
-        }
-
-        //private static void SetTheme(Xamarin.Essentials.AppTheme mode)
-        //{
-        //    if (mode == Xamarin.Essentials.AppTheme.Dark)
-        //    {
-        //        if (AppTheme == Xamarin.Essentials.AppTheme.Dark)
-        //            return;
-        //        PrismApplicationBase.Current.Resources = new DarkTheme();
-        //    }
-        //    else
-        //    {
-        //        if (AppTheme != Xamarin.Essentials.AppTheme.Dark)
-        //            return;
-        //        PrismApplicationBase.Current.Resources = new LightTheme();
-        //    }
-        //    AppTheme = mode;
-        //}
-        //private void SetAppTheme()
-        //{
-        //    if (Resources.Configuration.UiMode.HasFlag(UiMode.NightYes))
-        //        SetTheme(Xamarin.Essentials.AppTheme.Dark);
-        //    else
-        //        SetTheme(Xamarin.Essentials.AppTheme.Light);
-        //}
 
         private void UnregisterManagers()
         {

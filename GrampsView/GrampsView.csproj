@@ -35,6 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Assets\Styles\LargeRefCardTemplatesDictionary.cs" />
     <Compile Remove="Behaviours\ListViewAutoSizeBehaviour.cs" />
     <Compile Remove="Behaviours\RadioButtonBehaviour.cs" />
     <Compile Remove="Common\AppExtension.cs" />
@@ -46,6 +47,7 @@
     <Compile Remove="Common\CustomClasses\BorderlessEntry.cs" />
     <Compile Remove="Common\CustomClasses\CustomCacheKeyFactory .cs" />
     <Compile Remove="Common\CustomClasses\CustomImageStreamSource.cs" />
+    <Compile Remove="Common\CustomClasses\ExNavigatetoExtension.cs" />
     <Compile Remove="Common\CustomClasses\FlexLayoutVirtual.cs" />
     <Compile Remove="Common\CustomClasses\NavCommand.cs" />
     <Compile Remove="Common\CustomClasses\ObservableCollectionEx.cs" />
@@ -68,10 +70,16 @@
     <Compile Remove="Common\Interfaces\ICommonCircularLog.cs" />
     <Compile Remove="Common\NavigationHelper.cs" />
     <Compile Remove="Converters\GetGyyph.cs" />
+    <Compile Remove="Data\DataView\BookMarkDataView.cs" />
+    <Compile Remove="Data\DataView\Interfaces\IBookMarkDataView.cs" />
     <Compile Remove="Data\External\StoreFile\IStoreFileDirectory.cs" />
     <Compile Remove="Data\External\StorePostLoad\GrampsStorePostLoadClippedBM.cs" />
     <Compile Remove="Data\External\StorePostLoad\StorePostLoadHomeImage.cs" />
     <Compile Remove="Data\External\StorePostLoad\StorePostLoadImageSource.cs" />
+    <Compile Remove="Data\Models\Collections\HLinks\HLinkBookMarkModelCollection.cs" />
+    <Compile Remove="Data\Models\DataModels\BookMarkModel.cs" />
+    <Compile Remove="Data\Models\DataModels\Interfaces\IBookMarkModel.cs" />
+    <Compile Remove="Data\Models\HLinks\HLinkBookMarkModel.cs" />
     <Compile Remove="Data\PluginStorageFile.cs" />
     <Compile Remove="Data\PluginStorageFileSystem.cs" />
     <Compile Remove="Data\PluginStorageFolder.cs" />
@@ -79,6 +87,7 @@
     <Compile Remove="Events\PageMenuPanelOpenEvent.cs" />
     <Compile Remove="Events\PageTitleChangedEvent.cs" />
     <Compile Remove="Events\PageTitleChangedEventArgs.cs" />
+    <Compile Remove="UserControls\BookMarkCardSmall.xaml.cs" />
     <Compile Remove="UserControls\CitationRefCardSmall.xaml.cs" />
     <Compile Remove="UserControls\General\CardGridMultiType.xaml.cs" />
     <Compile Remove="UserControls\General\CardGridSingleType.xaml.cs" />
@@ -94,6 +103,7 @@
     <Compile Remove="UserControls\TestControl.xaml.cs" />
     <Compile Remove="ViewModels\AboutViewModel.cs" />
     <Compile Remove="ViewModels\BaseViewModel.cs" />
+    <Compile Remove="ViewModels\BookMark\BookMarkDetailViewModel.cs" />
     <Compile Remove="ViewModels\IBaseViewModel.cs" />
     <Compile Remove="ViewModels\ItemDetailViewModel.cs" />
     <Compile Remove="ViewModels\ItemsViewModel.cs" />
@@ -107,6 +117,7 @@
     <Compile Remove="ViewModels\Person\Interfaces\IPersonSummaryPageViewModel.cs" />
     <Compile Remove="Views\AboutPage.xaml.cs" />
     <Compile Remove="Views\BaseViewList.xaml.cs" />
+    <Compile Remove="Views\BookMark\BookMarkDetailView.xaml.cs" />
     <Compile Remove="Views\Citation\CitationRefDetailPage.xaml.cs" />
     <Compile Remove="Views\ItemDetailPage.xaml.cs" />
     <Compile Remove="Views\ItemsPage.xaml.cs" />
@@ -122,9 +133,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="Assets\Styles\LargeRefCardTemplates.xaml" />
     <EmbeddedResource Remove="Assets\Styles\_Colors.xaml" />
     <EmbeddedResource Remove="Assets\Styles\_GenericOverride.xaml" />
     <EmbeddedResource Remove="Common\CommonPropertyDebug.xaml" />
+    <EmbeddedResource Remove="UserControls\BookMarkCardSmall.xaml" />
     <EmbeddedResource Remove="UserControls\CitationRefCardSmall.xaml" />
     <EmbeddedResource Remove="UserControls\General\CardGridMultiType.xaml" />
     <EmbeddedResource Remove="UserControls\General\CardGridSingleType.xaml" />
@@ -138,6 +151,7 @@
     <EmbeddedResource Remove="UserControls\TestControl.xaml" />
     <EmbeddedResource Remove="Views\AboutPage.xaml" />
     <EmbeddedResource Remove="Views\BaseViewList.xaml" />
+    <EmbeddedResource Remove="Views\BookMark\BookMarkDetailView.xaml" />
     <EmbeddedResource Remove="Views\Citation\CitationRefDetailPage.xaml" />
     <EmbeddedResource Remove="Views\ItemDetailPage.xaml" />
     <EmbeddedResource Remove="Views\ItemsPage.xaml" />
@@ -177,11 +191,11 @@
     <PackageReference Include="SkiaSharp" Version="1.68.1.1" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.1.1" />
     <PackageReference Include="Xam.Forms.MarkdownView" Version="0.6.1-pre" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.4.0" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.0" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
     <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.34" />  
   </ItemGroup>
 

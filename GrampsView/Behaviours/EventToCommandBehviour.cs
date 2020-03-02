@@ -79,7 +79,7 @@
             EventInfo eventInfo = AssociatedObject.GetType().GetRuntimeEvent(name);
             if (eventInfo == null)
             {
-                throw new ArgumentException(string.Format("EventToCommandBehavior: Can't de-register the '{0}' event.", EventName));
+                throw new ArgumentException(string.Format(System.Globalization.CultureInfo.CurrentCulture, "EventToCommandBehavior: Can't de-register the '{0}' event.", EventName));
             }
             eventInfo.RemoveEventHandler(AssociatedObject, eventHandler);
             eventHandler = null;
@@ -128,7 +128,7 @@
             EventInfo eventInfo = AssociatedObject.GetType().GetRuntimeEvent(name);
             if (eventInfo == null)
             {
-                throw new ArgumentException(string.Format("EventToCommandBehavior: Can't register the '{0}' event.", EventName));
+                throw new ArgumentException(string.Format(System.Globalization.CultureInfo.CurrentCulture, "EventToCommandBehavior: Can't register the '{0}' event.", EventName));
             }
             MethodInfo methodInfo = typeof(EventToCommandBehavior).GetTypeInfo().GetDeclaredMethod("OnEvent");
             eventHandler = methodInfo.CreateDelegate(eventInfo.EventHandlerType, this);

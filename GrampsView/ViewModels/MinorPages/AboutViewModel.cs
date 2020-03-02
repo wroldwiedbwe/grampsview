@@ -220,7 +220,7 @@ namespace GrampsView.ViewModels
         /// <returns>
         /// A <see cref="Task"/> representing the asynchronous operation.
         /// </returns>
-        public override async Task PopulateViewModelAsync()
+        public override async Task<bool> PopulateViewModelAsync()
         {
             // cache Header Data record
             HeaderData = DV.HeaderDV.HeaderDataModel;
@@ -287,12 +287,17 @@ namespace GrampsView.ViewModels
             var resourceName = "GrampsView.releasenotes.md";
 
             using (Stream stream = assemblyExec.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
             {
-                DaText = reader.ReadToEnd();
+                if (!(stream is null))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        DaText = reader.ReadToEnd();
+                    }
+                }
             }
 
-            return;
+            return true;
         }
 
         public void TestPage()

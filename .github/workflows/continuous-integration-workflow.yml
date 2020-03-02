@@ -1,4 +1,4 @@
-name: CI 
+name: CI
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  update_release_draft:
+  create commit change log:
     runs-on: ubuntu-latest
     steps:
   
@@ -18,4 +18,4 @@ jobs:
         git-message: 'chore(release): {version}'
         preset: 'angular'
         tag-prefix: ''
-        output-file: 'CHANGELOG.md'
+        output-file: 'changelog.md'

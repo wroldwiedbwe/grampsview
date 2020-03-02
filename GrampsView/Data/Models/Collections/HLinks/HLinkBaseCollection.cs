@@ -29,11 +29,13 @@ namespace GrampsView.Data.Model
         /// </summary>
         public HLinkMediaModel FirstHLink { get; set; } = new HLinkMediaModel();
 
-        public virtual CardGroup GetCardGroup(string argTitle)
+        public virtual CardGroup GetCardGroup(string argTitle = "")
         {
-            CardGroup t = new CardGroup
+            CardGroup t = new CardGroup();
+
+            if (!string.IsNullOrEmpty(argTitle))
             {
-                Title = argTitle,
+                t.Title = argTitle;
             };
 
             t.Cards.AddRange(new ObservableCollection<object>(Items));

@@ -29,11 +29,11 @@ namespace GrampsView.Data.DataView
     /// <typeparam name="TH">
     /// Hlink.
     /// </typeparam>
-    /// <seealso cref="GrampsView.Common.CommonBindableBase" />
+    /// <seealso cref="GrampsView.Common.CommonBindableBase"/>
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="GrampsView.Data.DataView.IDataViewBase{T, U, H}" />
+    /// <seealso cref="GrampsView.Data.DataView.IDataViewBase{T, U, H}"/>
     /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="System.ComponentViewModel.INotifyPropertyChanged" />
+    /// <seealso cref="System.ComponentViewModel.INotifyPropertyChanged"/>
     public abstract class DataViewBase<TB, TU, TH> : CommonBindableBase, IDataViewBase<TB, TU, TH>, INotifyPropertyChanged
         where TH : HLinkBaseCollection<TU>, new()
         where TB : ModelBase, new()
@@ -67,12 +67,14 @@ namespace GrampsView.Data.DataView
         public virtual RepositoryModelType<TB, TU> DataViewData
         {
             get;
-            set;
         }
 
-        /// <summary>Gets the get groups by letter.
-        /// Default to empty list.</summary>
-        /// <value>The get groups by letter.</value>
+        /// <summary>
+        /// Gets the get groups by letter. Default to empty list.
+        /// </summary>
+        /// <value>
+        /// The get groups by letter.
+        /// </value>
         public virtual List<CommonGroupInfoCollection<TB>> GetGroupsByLetter
         {
             get
@@ -185,7 +187,7 @@ namespace GrampsView.Data.DataView
                {
                  new CardListLine("Handle:", argModel.Handle),
                  new CardListLine("Id:", argModel.Id),
-                 new CardListLine("Change:", argModel.Change.ToString()),
+                 new CardListLine("Change:", argModel.Change.ToString(System.Globalization.CultureInfo.CurrentCulture)),
                  new CardListLine("Private Object:", argModel.PrivAsString),
                };
 

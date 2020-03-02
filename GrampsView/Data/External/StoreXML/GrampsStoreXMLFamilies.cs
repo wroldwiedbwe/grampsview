@@ -20,6 +20,7 @@ namespace GrampsView.Data.ExternalStorageNS
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
+    using Xamarin.Forms;
 
     /// <summary>
     /// Private Storage Routines.
@@ -42,6 +43,10 @@ namespace GrampsView.Data.ExternalStorageNS
                 argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
             }
 
+            // Get colour
+            Application.Current.Resources.TryGetValue("CardBackGroundFamily", out var varCardColour);
+            argModel.HomeImageHLink.HomeSymbolColour = (Color)varCardColour;
+
             return argModel;
         }
 
@@ -59,6 +64,7 @@ namespace GrampsView.Data.ExternalStorageNS
             // RepositoryModelType<FamilyModel, HLinkFamilyModel>
             await DataStore.CN.MajorStatusAdd("Loading Family data").ConfigureAwait(false);
             {
+                // Load notes
                 try
                 {
                     // Run query
@@ -140,15 +146,13 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         loadFamily.GTagRefCollection = GetTagCollection(familyElement);
 
-                        // set the Home image or symbol now that everythign is laoded
+                        // set the Home image or symbol now that everything is laoded
                         loadFamily = SetHomeImage(loadFamily);
 
                         // save the family
                         DV.FamilyDV.FamilyData.Add(loadFamily);
                         localGrampsCommonLogging.LogVariable("Family Name", loadFamily.Handle);
                     }
-
-                    // sort the collection familyRepository.Items.Sort(FamilyModel => FamilyModel);
                 }
                 catch (Exception e)
                 {

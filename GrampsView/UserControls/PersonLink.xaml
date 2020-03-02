@@ -6,7 +6,6 @@
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     BackgroundColor="{DynamicResource CardBackGroundPerson}"
- 
     Style="{DynamicResource FrameCardStyle}"
     WidthRequest="100">
 
@@ -23,7 +22,7 @@
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer prism:Navigation.CanNavigate="{Binding IsValid, Mode=OneWay}" Command="{prism:NavigateTo 'PersonDetailPage'}">
                     <TapGestureRecognizer.CommandParameter>
-                        <prism:NavigationParameter Key="hlink" Value="{Binding , Mode=OneWay}" />
+                        <prism:NavigationParameter Key="hlink" Value="{Binding ., Mode=OneWay}" />
                     </TapGestureRecognizer.CommandParameter>
                 </TapGestureRecognizer>
             </Grid.GestureRecognizers>

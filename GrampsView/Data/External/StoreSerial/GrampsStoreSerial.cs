@@ -81,9 +81,9 @@ namespace GrampsView.Data.External.StoreSerial
                         DataInstance t = (DataInstance)serializer.Deserialize(file, typeof(DataInstance));
 
                         // Check for nulls
-                        if (t.BookMarkData != null)
+                        if (t.BookMarkCollection != null)
                         {
-                            DataStore.DS.BookMarkData = t.BookMarkData;
+                            DataStore.DS.BookMarkCollection = t.BookMarkCollection;
                         }
                         else
                         {
@@ -200,7 +200,7 @@ namespace GrampsView.Data.External.StoreSerial
         /// </param>
         /// <returns>
         /// </returns>
-        public async Task<bool> SerializeObject(object theObject)
+        public bool SerializeObject(object theObject)
         {
             try
             {

@@ -12,7 +12,7 @@
             <conv:IconPath x:Key="IconPath" />
         </ResourceDictionary>
 
-        <ResourceDictionary Source="Assets/Styles/DarkTheme.xaml" />
+        <ResourceDictionary Source="Assets/Styles/DarkThemeDictionary.xaml" />
 
         <ResourceDictionary Source="Assets/Styles/_Glyphs.xaml" />
 
@@ -28,8 +28,8 @@
 
         <ResourceDictionary Source="Assets/Styles/_FontSizes.xaml" />
 
-        <ResourceDictionary Source="Assets/Styles/SmallCardTemplates.xaml" />
+        <ResourceDictionary Source="Assets/Styles/SmallCardTemplatesDictionary.xaml" />
 
-        <ResourceDictionary Source="Assets/Styles/LargeCardDictionary.xaml" />
+        <ResourceDictionary Source="Assets/Styles/LargeCardTemplatesDictionary.xaml" />
     </Application.Resources>
 </prism:PrismApplication>

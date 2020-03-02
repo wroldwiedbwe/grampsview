@@ -18,6 +18,7 @@ namespace GrampsView.Data.ExternalStorageNS
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
+    using Xamarin.Forms;
 
     /// <summary>
     /// Private Storage Routines.
@@ -37,6 +38,11 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             await DataStore.CN.MajorStatusAdd("Loading Note data").ConfigureAwait(false);
             {
+                // Get colour
+                Application.Current.Resources.TryGetValue("CardBackGroundNote", out var varCardColour);
+                Color cardColour = (Color)varCardColour;
+
+                // Load notes
                 try
                 {
                     // Run query
@@ -74,6 +80,7 @@ namespace GrampsView.Data.ExternalStorageNS
                         // set the Home image or symbol
                         loadNote.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
                         loadNote.HomeImageHLink.HomeSymbol = CommonConstants.IconNotes;
+                        loadNote.HomeImageHLink.HomeSymbolColour = cardColour;
 
                         DV.NoteDV.NoteData.Add(loadNote);
                     }

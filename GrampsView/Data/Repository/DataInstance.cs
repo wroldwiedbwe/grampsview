@@ -7,17 +7,22 @@
 namespace GrampsView.Data.Repository
 {
     using GrampsView.Common;
+    using GrampsView.Data.Collections;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repositories;
+
     using Plugin.FilePicker.Abstractions;
+
+    using System.Collections.ObjectModel;
     using System.IO;
     using System.Runtime.Serialization;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Static Data Store.
     /// </summary>
     [DataContract]
+    [KnownType(typeof(ObservableCollection<HLinkBackLink>))]
+    [KnownType(typeof(HLinkBackLink))]
     public class DataInstance : CommonBindableBase
     {
         /// <summary>
@@ -72,7 +77,9 @@ namespace GrampsView.Data.Repository
         /// The local book mark data.
         /// </summary>
 
-        private RepositoryModelType<BookMarkModel, HLinkBookMarkModel> _BookMarkData = new RepositoryModelType<BookMarkModel, HLinkBookMarkModel>();
+        //private RepositoryModelType<BookMarkModel, HLinkBookMarkModel> _BookMarkData = new RepositoryModelType<BookMarkModel, HLinkBookMarkModel>();
+
+        private HLinkBackLinkModelCollection _BookMarkCollection = new HLinkBackLinkModelCollection();
 
         private RepositoryModelType<CitationModel, HLinkCitationModel> _CitationData = new RepositoryModelType<CitationModel, HLinkCitationModel>();
 
@@ -87,11 +94,11 @@ namespace GrampsView.Data.Repository
         /// </summary>
         private RepositoryModelType<EventModel, HLinkEventModel> _EventData = new RepositoryModelType<EventModel, HLinkEventModel>();
 
-        private RepositoryModelType<FamilyModel, HLinkFamilyModel> _FamilyData = new RepositoryModelType<FamilyModel, HLinkFamilyModel>();
-
         /// <summary>
         /// The local family data.
         /// </summary>
+        private RepositoryModelType<FamilyModel, HLinkFamilyModel> _FamilyData = new RepositoryModelType<FamilyModel, HLinkFamilyModel>();
+
         /// <summary>
         /// The local source data.
         /// </summary>
@@ -104,23 +111,17 @@ namespace GrampsView.Data.Repository
         {
         }
 
-        /// <summary>
-        /// Gets or sets the book mark data.
-        /// </summary>
-        /// <value>
-        /// The book mark data.
-        /// </value>
         [DataMember]
-        public RepositoryModelType<BookMarkModel, HLinkBookMarkModel> BookMarkData
+        public HLinkBackLinkModelCollection BookMarkCollection
         {
             get
             {
-                return _BookMarkData;
+                return _BookMarkCollection;
             }
 
             set
             {
-                SetProperty(ref _BookMarkData, value);
+                SetProperty(ref _BookMarkCollection, value);
             }
         }
 
@@ -271,7 +272,7 @@ namespace GrampsView.Data.Repository
         /// <summary>
         /// Loads the data store from existign known details
         /// </summary>
-        public async Task LoadDataStore()
+        public void LoadDataStore()
         {
             //await StoreFileNames.DataFolderSetToExistingAsync().ConfigureAwait(false);
 

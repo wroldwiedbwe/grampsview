@@ -11,7 +11,9 @@ namespace GrampsView.Data.Model
 {
     using GrampsView.Common;
     using GrampsView.Data.Collections;
+
     using System;
+    using System.Collections.ObjectModel;
     using System.Globalization;
     using System.Runtime.Serialization;
 
@@ -23,8 +25,9 @@ namespace GrampsView.Data.Model
     /// /// ///
     /// <seealso cref="GrampsView.Data.ViewModel.IModelBase"/>
     [DataContract]
+    [KnownType(typeof(ObservableCollection<HLinkBackLink>))]
     [KnownType(typeof(HLinkBackLink))]
-    [KnownType(typeof(HLinkBookMarkModel))]
+    //[KnownType(typeof(HLinkBookMarkModel))]
     [KnownType(typeof(HLinkCitationModel))]
     [KnownType(typeof(HLinkEventModel))]
     [KnownType(typeof(HLinkFamilyModel))]

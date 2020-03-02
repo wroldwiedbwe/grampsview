@@ -12,7 +12,7 @@ namespace GrampsView.Common
     /// <summary>
     /// Logger Facade for Prism.
     /// </summary>
-    /// <seealso cref="Prism.Logging.ILoggerFacade" />
+    /// <seealso cref="Prism.Logging.ILoggerFacade"/>
     public class CommonLogPrism : ILoggerFacade
     {
         /// <summary>
@@ -29,7 +29,7 @@ namespace GrampsView.Common
         /// </param>
         public void Log(string message, Category category, Priority priority)
         {
-            string now = DateTime.Now.Ticks.ToString();
+            string now = DateTime.Now.Ticks.ToString(System.Globalization.CultureInfo.CurrentCulture);
 
             switch (category)
             {

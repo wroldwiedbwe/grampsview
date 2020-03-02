@@ -17,6 +17,7 @@ namespace GrampsView.Data.ExternalStorageNS
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
+    using Xamarin.Forms;
 
     /// <summary>
     /// Load Citations from external storage routines.
@@ -65,6 +66,12 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             await DataStore.CN.MajorStatusAdd("Loading Citation data").ConfigureAwait(false);
             {
+                // Get colour
+                Application.Current.Resources.TryGetValue("CardBackGroundCitation", out var varCardColour);
+                Color cardColour = (Color)varCardColour;
+
+                // Load notes
+
                 try
                 {
                     // Run query
@@ -105,6 +112,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // set the Home image or symbol now that everything is laoded
                         loadCitation = SetHomeImage(loadCitation);
+                        loadCitation.HomeImageHLink.HomeSymbolColour = cardColour;
 
                         // save the event
                         DV.CitationDV.CitationData.Add(loadCitation);

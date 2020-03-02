@@ -20,7 +20,7 @@ namespace GrampsView.Data.Model
         private string localValue = string.Empty;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CardListLine" /> class.
+        /// Initializes a new instance of the <see cref="CardListLine"/> class.
         /// </summary>
         /// <param name="LabelArg">
         /// The label argument.
@@ -35,33 +35,33 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CardListLine" /> class.
+        /// Initializes a new instance of the <see cref="CardListLine"/> class.
         /// </summary>
         /// <param name="LabelArg">
         /// The label argument.
         /// </param>
         /// <param name="ValueArg">
-        /// if set to <c> true </c> [value argument].
+        /// if set to <c>true</c> [value argument].
         /// </param>
         public CardListLine(string LabelArg, bool ValueArg)
         {
             Label = LabelArg;
-            Value = ValueArg.ToString();
+            Value = ValueArg.ToString(System.Globalization.CultureInfo.CurrentCulture);
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CardListLine" /> class.
+        /// Initializes a new instance of the <see cref="CardListLine"/> class.
         /// </summary>
         /// <param name="LabelArg">
         /// The label argument.
         /// </param>
         /// <param name="ValueArg">
-        /// if set to <c> true </c> [value argument].
+        /// if set to <c>true</c> [value argument].
         /// </param>
         public CardListLine(string LabelArg, int ValueArg)
         {
             Label = LabelArg;
-            Value = ValueArg.ToString();
+            Value = ValueArg.ToString(System.Globalization.CultureInfo.CurrentCulture);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

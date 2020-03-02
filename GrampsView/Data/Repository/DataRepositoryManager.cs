@@ -62,13 +62,27 @@ namespace GrampsView.Data.Repository
         /// </summary>
         private IGrampsStoreSerial localStoreSerial;
 
-        /// <summary>Initializes a new instance of the <see cref="DataRepositoryManager"/> class.</summary>
-        /// <param name="iocCommonLogging">The ioc common logging.</param>
-        /// <param name="iocEventAggregator">The ioc event aggregator.</param>
-        /// <param name="iocExternalStorage">The ioc external storage.</param>
-        /// <param name="iocGrampsStorePostLoad">The ioc gramps store post load.</param>
-        /// <param name="iocGrampsStoreSerial">The ioc gramps store serial.</param>
-        /// <param name="iocStoreFile">The ioc store file.</param>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DataRepositoryManager"/> class.
+        /// </summary>
+        /// <param name="iocCommonLogging">
+        /// The ioc common logging.
+        /// </param>
+        /// <param name="iocEventAggregator">
+        /// The ioc event aggregator.
+        /// </param>
+        /// <param name="iocExternalStorage">
+        /// The ioc external storage.
+        /// </param>
+        /// <param name="iocGrampsStorePostLoad">
+        /// The ioc gramps store post load.
+        /// </param>
+        /// <param name="iocGrampsStoreSerial">
+        /// The ioc gramps store serial.
+        /// </param>
+        /// <param name="iocStoreFile">
+        /// The ioc store file.
+        /// </param>
         public DataRepositoryManager(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, IGrampsStoreXML iocExternalStorage, IStorePostLoad iocGrampsStorePostLoad, IGrampsStoreSerial iocGrampsStoreSerial, IStoreFile iocStoreFile)
         {
             _CL = iocCommonLogging ?? throw new ArgumentNullException(nameof(iocCommonLogging));
@@ -105,7 +119,7 @@ namespace GrampsView.Data.Repository
         public static void ClearRepositories()
         {
             // clear existing data TODO this.iocHeaderDataSource.DataClear();
-            DV.BookMarkDV.BookMarkData.Clear();
+            DV.BookMarkCollection.Clear(); ;
             DV.CitationDV.CitationData.Clear();
             DV.EventDV.EventData.Clear();
             DV.FamilyDV.FamilyData.Clear();
@@ -141,7 +155,7 @@ namespace GrampsView.Data.Repository
         {
             await DataStore.CN.MajorStatusAdd("Serialising Data").ConfigureAwait(false);
 
-            await localStoreSerial.SerializeObject(DataStore.DS).ConfigureAwait(false);
+            localStoreSerial.SerializeObject(DataStore.DS);
 
             CommonLocalSettings.DataSerialised = true;
         }
@@ -150,7 +164,7 @@ namespace GrampsView.Data.Repository
         /// Starts the data load.
         /// </summary>
         /// <param name="unUsed">
-        /// if set to <c> true </c> [un used].
+        /// if set to <c>true</c> [un used].
         /// </param>
         public void StartDataLoad(bool unUsed)
         {
@@ -186,7 +200,7 @@ namespace GrampsView.Data.Repository
         {
             await DataStore.CN.ChangeLoadingMessage("Loading Data...").ConfigureAwait(false);
 
-            await DataStore.DS.LoadDataStore().ConfigureAwait(false);
+            DataStore.DS.LoadDataStore();
 
             if (DataStore.DS.CurrentDataFolderValid)
             {
@@ -264,7 +278,7 @@ namespace GrampsView.Data.Repository
         /// Triggers the load GPKG file asynchronous.
         /// </summary>
         /// <param name="deleteOld">
-        /// if set to <c> true </c> [delete old].
+        /// if set to <c>true</c> [delete old].
         /// </param>
         /// <param name="gpkgFileName">
         /// Name of the GPKG file.

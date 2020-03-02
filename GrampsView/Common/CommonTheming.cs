@@ -67,21 +67,21 @@ namespace GrampsView.Common
 
         public static void SetThemeDark()
         {
-            Prism.PrismApplicationBase.Current.Resources.Add(new DarkTheme());
+            Prism.PrismApplicationBase.Current.Resources.Add(new DarkThemeDictionary());
 
             CommonLocalSettings.ApplicationTheme = AppTheme.Dark;
         }
 
         public static void SetThemeLight()
         {
-            Prism.PrismApplicationBase.Current.Resources.Add(new LightTheme());
+            Prism.PrismApplicationBase.Current.Resources.Add(new LightThemeDictionary());
 
             CommonLocalSettings.ApplicationTheme = AppTheme.Light;
         }
 
         public static void SetThemeSystem()
         {
-            Prism.PrismApplicationBase.Current.Resources.Add(new SystemTheme());
+            Prism.PrismApplicationBase.Current.Resources.Add(new SystemThemeDictionary());
 
             CommonLocalSettings.ApplicationTheme = AppTheme.Unspecified;
         }

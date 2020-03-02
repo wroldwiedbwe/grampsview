@@ -20,7 +20,7 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<AddressModel>))]
     public class OCAddressModelCollection : ModelBaseCollection<AddressModel>
     {
-        public CardGroup GetCardGroup()
+        public override CardGroup GetCardGroup()
         {
             return base.GetCardGroup("Address Collection");
         }

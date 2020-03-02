@@ -34,188 +34,36 @@ namespace GrampsView.Data.Model
     /// BookMark ViewModel.
     /// ---- Finished.
     /// </summary>
-    /// <seealso cref="ModelBase" />
+    /// <seealso cref="ModelBase"/>
     /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="IBookMarkModel" />
+    /// <seealso cref="IBookMarkModel"/>
     /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="IComparable" />
+    /// <seealso cref="IComparable"/>
     /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="IComparer" />
+    /// <seealso cref="IComparer"/>
     [DataContract]
     public sealed class BookMarkModel : ModelBase, IBookMarkModel, IComparable, IComparer
     {
+        private HLinkBackLink _HLinkBookMarkTarget = new HLinkBackLink();
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="BookMarkModel" /> class.
+        /// Initializes a new instance of the <see cref="BookMarkModel"/> class.
         /// </summary>
         public BookMarkModel()
         {
             HomeImageHLink.HomeSymbol = CommonConstants.IconBookMark;
         }
 
-        /// <summary>
-        /// Sets the book mark h link.
-        /// </summary>
-        /// <value>
-        /// The book mark h link.
-        /// </value>
-        [DataMember]
-        public string BookMarkHLink
-        {
-            private get;
-            set;
-        }
+        //public string DetailPage { get; set; } = string.Empty;
 
-            = null;
-
-        public string DetailPage { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Gets the get book mark h link.
-        /// </summary>
-        /// <value>
-        /// The get book mark h link.
-        /// </value>
-        public HLinkBase GetBookMarkHLink
+        public override string GetDefaultText
         {
             get
             {
-                switch (GTarget)
-                {
-                    case "person":
-                        {
-                            HLinkPersonModel t = new HLinkPersonModel
-                            {
-                                HLinkKey = BookMarkHLink,
-                            };
-
-                            DetailPage = nameof(PersonDetailPage);
-
-                            return t;
-                        }
-
-                    case "family":
-                        {
-                            HLinkFamilyModel t = new HLinkFamilyModel
-                            {
-                                HLinkKey = BookMarkHLink,
-                            };
-
-                            DetailPage = nameof(FamilyDetailPage);
-
-                            return t;
-                        }
-
-                    case "event":
-                        {
-                            HLinkEventModel t = new HLinkEventModel
-                            {
-                                HLinkKey = BookMarkHLink,
-                            };
-
-                            DetailPage = nameof(EventDetailPage);
-
-                            return t;
-                        }
-
-                    case "source":
-                        {
-                            HLinkSourceModel t = new HLinkSourceModel
-                            {
-                                HLinkKey = BookMarkHLink,
-                            };
-
-                            DetailPage = nameof(SourceDetailPage);
-
-                            return t;
-                        }
-
-                    case "citation":
-                        {
-                            HLinkCitationModel t = new HLinkCitationModel
-                            {
-                                HLinkKey = BookMarkHLink,
-                            };
-
-                            DetailPage = nameof(CitationDetailPage);
-
-                            return t;
-                        }
-
-                    case "place":
-                        {
-                            HLinkPlaceModel t = new HLinkPlaceModel
-                            {
-                                HLinkKey = BookMarkHLink,
-                            };
-
-                            DetailPage = nameof(PlaceDetailPage);
-
-                            return t;
-                        }
-
-                    case "media":
-                        {
-                            HLinkMediaModel t = new HLinkMediaModel
-                            {
-                                HLinkKey = BookMarkHLink,
-                            };
-
-                            DetailPage = nameof(MediaDetailPage);
-
-                            return t;
-                        }
-
-                    case "repository":
-                        {
-                            HLinkRepositoryModel t = new HLinkRepositoryModel
-                            {
-                                HLinkKey = BookMarkHLink,
-                            };
-
-                            DetailPage = nameof(RepositoryDetailPage);
-
-                            return t;
-                        }
-
-                    case "note":
-                        {
-                            HLinkNoteModel t = new HLinkNoteModel
-                            {
-                                HLinkKey = BookMarkHLink,
-                            };
-
-                            DetailPage = nameof(NoteDetailPage);
-
-                            return t;
-                        }
-                }
-
-                // TODO handle error
-                return null;
+                return HLinkBookMarkTarget.HLink().ToString();
             }
         }
 
-        /// <summary>
-        /// Gets or sets the target attribute.
-        /// </summary>
-        /// <value>
-        /// The target.
-        /// </value>
-        [DataMember]
-        public string GTarget
-        {
-            get;
-            set;
-        }
-
-            = null;
-
-        /// <summary>
-        /// Gets the get h link.
-        /// </summary>
-        /// <value>
-        /// The get h link.
-        /// </value>
         public HLinkBookMarkModel HLink
         {
             get
@@ -228,12 +76,23 @@ namespace GrampsView.Data.Model
             }
         }
 
-        public string TargetDecoded
+        /// <summary>
+        /// Sets the book mark h link.
+        /// </summary>
+        /// <value>
+        /// The book mark h link.
+        /// </value>
+        [DataMember]
+        public HLinkBackLink HLinkBookMarkTarget
         {
             get
             {
-                return GTarget[0].ToString().ToUpper()
-                    + GTarget.Substring(1);
+                return _HLinkBookMarkTarget;
+            }
+
+            set
+            {
+                SetProperty(ref _HLinkBookMarkTarget, value);
             }
         }
 
@@ -362,7 +221,7 @@ namespace GrampsView.Data.Model
             BookMarkModel secondEvent = (BookMarkModel)b;
 
             // compare on Priority first
-            int testFlag = string.Compare(firstEvent.GTarget, secondEvent.GTarget, StringComparison.CurrentCulture);
+            int testFlag = string.Compare(firstEvent.HLinkBookMarkTarget.ToString(), secondEvent.HLinkBookMarkTarget.ToString(), StringComparison.CurrentCulture);
 
             return testFlag;
         }
@@ -381,7 +240,7 @@ namespace GrampsView.Data.Model
             BookMarkModel secondEvent = (BookMarkModel)obj;
 
             // compare on Target first
-            int testFlag = string.Compare(GTarget, secondEvent.GTarget, StringComparison.CurrentCulture);
+            int testFlag = string.Compare(HLinkBookMarkTarget.ToString(), secondEvent.HLinkBookMarkTarget.ToString(), StringComparison.CurrentCulture);
 
             return testFlag;
         }
@@ -396,20 +255,19 @@ namespace GrampsView.Data.Model
         /// </returns>
         public int CompareTo(BookMarkModel right)
         {
-            int testFlag = string.Compare(GTarget, right.GTarget, StringComparison.CurrentCulture);
+            int testFlag = string.Compare(HLinkBookMarkTarget.ToString(), right.HLinkBookMarkTarget.ToString(), StringComparison.CurrentCulture);
 
             return testFlag;
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="object" />, is equal to this instance.
+        /// Determines whether the specified <see cref="object"/>, is equal to this instance.
         /// </summary>
         /// <param name="obj">
-        /// The <see cref="object" /> to compare with this instance.
+        /// The <see cref="object"/> to compare with this instance.
         /// </param>
         /// <returns>
-        /// <c> true </c> if the specified <see cref="object" /> is equal to this instance;
-        /// otherwise, <c> false </c>.
+        /// <c>true</c> if the specified <see cref="object"/> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
         public override bool Equals(object obj)
         {
@@ -423,12 +281,12 @@ namespace GrampsView.Data.Model
                 return true;
             }
 
-            if (!HLink.Valid || !(obj is BookMarkModel))
+            if (!Valid || !(obj is BookMarkModel))
             {
                 return false;
             }
 
-            if (HLink == (obj as BookMarkModel).HLink)
+            if (HLinkBookMarkTarget.ToString() == (obj as BookMarkModel).HLinkBookMarkTarget.ToString())
             {
                 return true;
             }
@@ -440,8 +298,8 @@ namespace GrampsView.Data.Model
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures
-        /// like a hash table.
+        /// A hash code for this instance, suitable for use in hashing algorithms and data
+        /// structures like a hash table.
         /// </returns>
         /// <exception cref="NotImplementedException">
         /// </exception>
@@ -449,5 +307,12 @@ namespace GrampsView.Data.Model
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// Gets the get book mark h link.
+        /// </summary>
+        /// <value>
+        /// The get book mark h link.
+        /// </value>
     }
 }

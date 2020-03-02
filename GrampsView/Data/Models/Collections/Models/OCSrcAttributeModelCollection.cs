@@ -14,12 +14,12 @@ namespace GrampsView.Data.Collections
 
     /// <summary>
     /// </summary>
-    /// <seealso cref="System.Collections.ObjectViewModel.ObservableCollection{GrampsView.Data.ViewModel.SrcAttributeModel}" />
+    /// <seealso cref="System.Collections.ObjectViewModel.ObservableCollection{GrampsView.Data.ViewModel.SrcAttributeModel}"/>
     [CollectionDataContract]
     [KnownType(typeof(ObservableCollection<SrcAttributeModel>))]
     public class OCSrcAttributeModelCollection : ModelBaseCollection<SrcAttributeModel>
     {
-        public CardGroup GetCardGroup()
+        public override CardGroup GetCardGroup()
         {
             return base.GetCardGroup("Attribute Collection");
         }

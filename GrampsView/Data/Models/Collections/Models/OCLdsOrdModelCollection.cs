@@ -18,7 +18,7 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<LdsOrdModel>))]
     public class OCLdsOrdModelCollection : ModelBaseCollection<LdsOrdModel>
     {
-        public CardGroup GetCardGroup()
+        public override CardGroup GetCardGroup()
         {
             return base.GetCardGroup("LDS Ordination Collection");
         }

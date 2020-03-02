@@ -17,26 +17,10 @@ namespace GrampsView.Data.Model
         /// <summary>
         /// Sets the book mark h link.
         /// </summary>
-        /// <value> The book mark h link. </value>
-        string BookMarkHLink
-        {
-            set;
-        }
-
-        /// <summary>
-        /// Gets the get book mark h link.
-        /// </summary>
-        /// <value> The get book mark h link. </value>
-        HLinkBase GetBookMarkHLink
-        {
-            get;
-        }
-
-        /// <summary>
-        /// Gets or sets the target.
-        /// </summary>
-        /// <value> The target. </value>
-        string GTarget
+        /// <value>
+        /// The book mark h link.
+        /// </value>
+        HLinkBackLink HLinkBookMarkTarget
         {
             get;
             set;

@@ -6,7 +6,6 @@
     xmlns:common="clr-namespace:GrampsView.Common"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     x:Name="PersonCardSmallRoot"
-    BackgroundColor="{DynamicResource CardBackGroundPerson}"
     Style="{DynamicResource FrameLargeFixedCardStyle}"
     WidthRequest="{x:DynamicResource common:CardWidths.CardLargeWidth}">
     <Frame.Content>

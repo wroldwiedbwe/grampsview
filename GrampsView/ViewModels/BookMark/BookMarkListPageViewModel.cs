@@ -9,10 +9,9 @@
 
 namespace GrampsView.ViewModels
 {
-    using System.Collections.ObjectModel;
-
     using GrampsView.Common;
     using GrampsView.Data.DataView;
+    using GrampsView.Data.Model;
 
     using Prism.Events;
     using Prism.Navigation;
@@ -23,7 +22,7 @@ namespace GrampsView.ViewModels
     public class BookMarkListViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BookMarkListViewModel" /> class.
+        /// Initializes a new instance of the <see cref="BookMarkListViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The common logging.
@@ -40,13 +39,13 @@ namespace GrampsView.ViewModels
             BaseTitle = "BookMark List";
         }
 
-        public CardGroup BookMarkSource
+        public CardGroupCollection BookMarkSource
         {
             get
             {
-                CardGroup t = new CardGroup();
+                CardGroupCollection t = new CardGroupCollection();
 
-                t.Cards.AddRange(new ObservableCollection<object>(DV.BookMarkDV.GetAllAsHLink));
+                t.Add(DV.BookMarkCollection.GetCardGroup());
 
                 return t;
             }

@@ -25,12 +25,12 @@ namespace GrampsView.Common
         {
             get
             {
-                return (AppTheme)Enum.ToObject(typeof(AppTheme), GetInt("ApplicationTheme", Convert.ToInt32(AppTheme.Unspecified)));
+                return (AppTheme)Enum.ToObject(typeof(AppTheme), GetInt("ApplicationTheme", Convert.ToInt32(AppTheme.Unspecified, System.Globalization.CultureInfo.CurrentCulture)));
             }
 
             set
             {
-                SetInt("ApplicationTheme", Convert.ToInt32(value));
+                SetInt("ApplicationTheme", Convert.ToInt32(value, System.Globalization.CultureInfo.CurrentCulture));
             }
         }
 

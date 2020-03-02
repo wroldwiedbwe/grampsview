@@ -46,7 +46,7 @@ namespace GrampsView.Data
                 DateTime fileDateTime = FileGetDateTimeModified(fileToCheck);
 
                 // Need to reparse it so the ticks ar ethe same
-                fileDateTime = DateTime.Parse(fileDateTime.ToString());
+                fileDateTime = DateTime.Parse(fileDateTime.ToString(System.Globalization.CultureInfo.CurrentCulture), System.Globalization.CultureInfo.CurrentCulture);
 
                 // Save a fresh copy if null so we can load next time
                 string oldDateTime = Preferences.Get(settingsKey, string.Empty);
@@ -61,7 +61,7 @@ namespace GrampsView.Data
                 else
                 {
                     DateTime settingsStoredDateTime;
-                    settingsStoredDateTime = DateTime.Parse(oldDateTime);
+                    settingsStoredDateTime = DateTime.Parse(oldDateTime, System.Globalization.CultureInfo.CurrentCulture);
 
                     int t = fileDateTime.CompareTo(settingsStoredDateTime);
                     if (t > 0)
@@ -92,7 +92,7 @@ namespace GrampsView.Data
         /// </param>
         public static void SaveFileModifiedSinceLastSave(string settingsKey, FileInfoEx filename)
         {
-            Preferences.Set(settingsKey, filename.FInfo.LastWriteTimeUtc.ToString());
+            Preferences.Set(settingsKey, filename.FInfo.LastWriteTimeUtc.ToString(System.Globalization.CultureInfo.CurrentCulture));
         }
 
         /// <summary>

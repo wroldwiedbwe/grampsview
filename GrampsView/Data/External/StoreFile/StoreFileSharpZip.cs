@@ -29,7 +29,7 @@ namespace GrampsView.Data
         /// </param>
         /// <returns>
         /// </returns>
-        public static async Task<bool> ExtractGZip(FileInfoEx argInputFile)
+        public static bool ExtractGZip(FileInfoEx argInputFile)
         {
             if (argInputFile is null)
             {

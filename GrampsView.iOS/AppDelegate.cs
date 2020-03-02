@@ -1,7 +1,6 @@
 ﻿using FFImageLoading.Forms.Platform;
 
 using Foundation;
-using GrampsView.Common;
 using GrampsView.Data.Repository;
 using Microsoft.AppCenter.Distribute;
 using Prism;
@@ -29,11 +28,7 @@ namespace GrampsView.iOS
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
 
-            // Only Start App Center if there
-            if (!CommonRoutines.IsEmulator())
-            {
-                Distribute.DontCheckForUpdatesInDebug();
-            }
+            Distribute.DontCheckForUpdatesInDebug();
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 
@@ -46,20 +41,16 @@ namespace GrampsView.iOS
             return base.FinishedLaunching(app, options);
         }
 
-        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
-        {
-            var newExc = new Exception(nameof(CurrentDomainOnUnhandledException), unhandledExceptionEventArgs.ExceptionObject as Exception);
-
-            DataStore.CN.NotifyException("CurrentDomainOnUnhandledException", newExc);
-        }
-
         private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
         {
-            var newExc = new Exception(nameof(TaskSchedulerOnUnobservedTaskException), unobservedTaskExceptionEventArgs.Exception);
-
+            var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
             DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
+        }
 
-            CommonLocalSettings.DataSerialised = false;
+        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+        {
+            var newExc = new Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as Exception);
+            DataStore.CN.NotifyException("CurrentDomainOnUnhandledException", newExc);
         }
     }
 

@@ -143,7 +143,7 @@ namespace GrampsView
         protected override void RegisterTypes(IContainerRegistry container)
         {
             container.RegisterForNavigation<AboutPage, AboutViewModel>();
-            container.RegisterForNavigation<BookMarkDetailPage, BookMarkDetailViewModel>();
+            //container.RegisterForNavigation<BookMarkDetailPage, BookMarkDetailViewModel>();
             container.RegisterForNavigation<BookMarkListPage, BookMarkListViewModel>();
             container.RegisterForNavigation<CitationDetailPage, CitationDetailViewModel>();
             container.RegisterForNavigation<CitationListPage, CitationListViewModel>();
@@ -243,6 +243,8 @@ namespace GrampsView
 
             AppCenter.Start(initString,
                             typeof(Analytics), typeof(Crashes), typeof(Distribute));
+
+            Distribute.SetEnabledAsync(true);
         }
     }
 }

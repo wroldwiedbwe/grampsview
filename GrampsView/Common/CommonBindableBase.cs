@@ -21,7 +21,7 @@ namespace GrampsView.Common
     using Prism.Mvvm;
 
     /// <summary>
-    /// Implementation of <see cref="INotifyPropertyChanged" /> to simplify models.
+    /// Implementation of <see cref="INotifyPropertyChanged"/> to simplify models.
     /// </summary>
     [DataContract]
     public abstract class CommonBindableBase : INotifyPropertyChanged
@@ -35,8 +35,8 @@ namespace GrampsView.Common
         /// Notifies listeners that a property value has changed.
         /// </summary>
         /// <param name="propertyName">
-        /// Name of the property used to notify listeners. This value is optional and can be provided
-        /// automatically when invoked from compilers that support <see cref="CallerMemberNameAttribute" />.
+        /// Name of the property used to notify listeners. This value is optional and can be
+        /// provided automatically when invoked from compilers that support <see cref="CallerMemberNameAttribute"/>.
         /// </param>
         protected void OnPropertyChanged(string propertyName)
         {
@@ -72,8 +72,8 @@ namespace GrampsView.Common
         /// Desired value for the property.
         /// </param>
         /// <param name="propertyName">
-        /// Name of the property used to notify listeners. This value is optional and can be provided
-        /// automatically when invoked from compilers that support CallerMemberName.
+        /// Name of the property used to notify listeners. This value is optional and can be
+        /// provided automatically when invoked from compilers that support CallerMemberName.
         /// </param>
         /// <returns>
         /// True if the value was changed, false if the existing value matched the desired value.
@@ -105,6 +105,7 @@ namespace GrampsView.Common
             {
                 Debug.Fail(
                     string.Format(
+                        System.Globalization.CultureInfo.CurrentCulture,
                             "Invalid property name. Type: {0}, Name: {1}",
                             GetType(),
                             propertyName));

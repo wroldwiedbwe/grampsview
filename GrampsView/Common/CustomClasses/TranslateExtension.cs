@@ -38,7 +38,9 @@
             {
 #if DEBUG
                 throw new ArgumentException(
-                    string.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", nameof(Text), ResourceId, ci.Name),
+                    string.Format(
+                        System.Globalization.CultureInfo.CurrentCulture,
+                        "Key '{0}' was not found in resources '{1}' for culture '{2}'.", nameof(Text), ResourceId, ci.Name),
                     "Text");
 #else
 				translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER

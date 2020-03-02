@@ -58,7 +58,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataViewData.Items.OrderBy(BookMarkModel => BookMarkModel.GTarget).ToList();
+                return DataViewData.Items.ToList(); // .OrderBy(BookMarkModel => BookMarkModel.HLinkBookMarkTarget.ToString).ToList();
             }
         }
 
@@ -109,7 +109,7 @@ namespace GrampsView.Data.DataView
 
             foreach (var item in DataDefaultSort)
             {
-                t.Add(item.GetBookMarkHLink);
+                t.Add(item.HLinkBookMarkTarget);
             }
 
             return t;
@@ -125,7 +125,7 @@ namespace GrampsView.Data.DataView
 
             foreach (BookMarkModel item in tt)
             {
-                returnCardGroup.Cards.Add(item.HLink);
+                returnCardGroup.Cards.Add(item.HLinkBookMarkTarget);
             }
 
             returnCardGroup.Title = "Latest Bookmark Changes";
@@ -149,7 +149,7 @@ namespace GrampsView.Data.DataView
                 return null;
             }
 
-            IOrderedEnumerable<HLinkBookMarkModel> t = collectionArg.OrderBy(HLinkBookMarkModel => HLinkBookMarkModel.DeRef.GTarget);
+            IOrderedEnumerable<HLinkBookMarkModel> t = collectionArg.OrderBy(HLinkBookMarkModel => HLinkBookMarkModel.DeRef.HLinkBookMarkTarget.ToString());
 
             HLinkBookMarkModelCollection tt = new HLinkBookMarkModelCollection();
 
@@ -171,7 +171,7 @@ namespace GrampsView.Data.DataView
             {
                 itemsFound.Add(new SearchItem
                 {
-                    HLink = tempMO.HLink,
+                    HLink = tempMO.HLinkBookMarkTarget,
                     Text = tempMO.GetDefaultText,
                 });
             }

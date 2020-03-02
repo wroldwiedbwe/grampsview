@@ -37,17 +37,17 @@ namespace GrampsView.Common
             set;
         }
 
-        /// <summary>
-        /// Gets or sets the book mark template.
-        /// </summary>
-        /// <value>
-        /// The book mark template.
-        /// </value>
-        public DataTemplate BookMarkTemplate
-        {
-            get;
-            set;
-        }
+        ///// <summary>
+        ///// Gets or sets the book mark template.
+        ///// </summary>
+        ///// <value>
+        ///// The book mark template.
+        ///// </value>
+        //public DataTemplate BookMarkTemplate
+        //{
+        //    get;
+        //    set;
+        //}
 
         /// <summary>
         /// Gets or sets the List Line template.
@@ -416,14 +416,6 @@ namespace GrampsView.Common
             set;
         }
 
-        ///// <summary>
-        ///// Gets or sets the tag reference template.
-        ///// </summary>
-        ///// <value>
-        ///// The tag reference template.
-        ///// </value>
-        // public DataTemplate TagRefTemplate { get; set; }
-
         /// <summary>
         /// Selects the template core.
         /// </summary>
@@ -448,10 +440,10 @@ namespace GrampsView.Common
                 return AttributeTemplate;
             }
 
-            if (item is BookMarkModel)
-            {
-                return BookMarkTemplate;
-            }
+            //if (item is BookMarkModel)
+            //{
+            //    return BookMarkTemplate;
+            //}
 
             if (item is CitationModel)
             {
@@ -468,10 +460,10 @@ namespace GrampsView.Common
                 return CardListLineTemplate;
             }
 
-            if (item is HLinkBookMarkModel)
-            {
-                return BookMarkTemplate;
-            }
+            //if (item is HLinkBookMarkModel)
+            //{
+            //    return BookMarkTemplate;
+            //}
 
             if (item is HLinkCitationModel)
             {

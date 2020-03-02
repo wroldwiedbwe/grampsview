@@ -151,7 +151,7 @@ namespace GrampsView.Data
 
             try
             {
-                await ExtractGZip(inputFile).ConfigureAwait(false);
+                ExtractGZip(inputFile);
 
                 await DataStore.CN.MinorStatusAdd("GRAMPS file decompressing complete").ConfigureAwait(false);
                 return true;

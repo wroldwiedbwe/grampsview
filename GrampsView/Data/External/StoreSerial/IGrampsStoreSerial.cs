@@ -29,6 +29,6 @@ namespace GrampsView.Data.External.StoreSerial
         /// </param>
         /// <returns>
         /// </returns>
-        Task<bool> SerializeObject(object theObject);
+        bool SerializeObject(object theObject);
     }
 }

@@ -24,7 +24,7 @@
                         FontFamily="{DynamicResource MaterialFontFamily}"
                         Glyph="{Binding BaseTitleIcon}"
                         Size="44"
-                        Color="{DynamicResource IconMenu}" />
+                        Color="{DynamicResource PrimaryColor}" />
                 </Image.Source>
             </Image>
 

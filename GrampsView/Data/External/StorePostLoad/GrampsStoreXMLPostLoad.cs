@@ -95,10 +95,10 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             DataStore.CN.MajorStatusAdd("Organising BookMark data");
 
-            foreach (BookMarkModel argModel in DV.BookMarkDV.BookMarkData)
-            {
-                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
-            }
+            //foreach (BookMarkModel argModel in DV.BookMarkDV.BookMarkData)
+            //{
+            //    argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+            //}
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Citation Collection
                 foreach (HLinkCitationModel citationRef in eventModel.GCitationRefCollection)
                 {
-                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Media Collection

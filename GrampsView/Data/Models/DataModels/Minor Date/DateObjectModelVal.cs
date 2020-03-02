@@ -16,7 +16,9 @@ namespace GrampsView.Data.Model
 
     public partial class DateObjectModel
     {
-        /// <summary>The value g value type</summary>
+        /// <summary>
+        /// The value g value type
+        /// </summary>
         private string _ValGValType;
 
         public int ValGetAge
@@ -95,7 +97,7 @@ namespace GrampsView.Data.Model
             {
                 if (Valid)
                 {
-                    return NotionalDate.Year.ToString();
+                    return NotionalDate.Year.ToString(System.Globalization.CultureInfo.CurrentCulture);
                 }
                 else
                 {

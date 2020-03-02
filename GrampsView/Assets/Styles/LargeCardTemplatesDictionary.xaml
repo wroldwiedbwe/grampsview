@@ -1,28 +1,24 @@
 ﻿<ResourceDictionary
-    x:Class="GrampsView.Assets.Styles.LargeCardDictionary"
+    x:Class="GrampsView.Assets.Styles.LargeCardTemplatesDictionary"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:common="clr-namespace:GrampsView.Common"
     xmlns:model="using:GrampsView.Data.Model"
     xmlns:usercontrols="clr-namespace:GrampsView.UserControls">
 
-    <DataTemplate
-        x:Key="AddressCardLargeDT">
+    <DataTemplate x:Key="AddressCardLargeDT">
         <usercontrols:AddressCardSmall />
     </DataTemplate>
 
-    <DataTemplate
-        x:Key="AttributeCardLargeDT">
+    <DataTemplate x:Key="AttributeCardLargeDT">
         <usercontrols:AttributeCardLarge />
     </DataTemplate>
 
-    <DataTemplate
-        x:Key="BookMarkCardLargeDT">
+    <!--<DataTemplate x:Key="BookMarkCardLargeDT">
         <usercontrols:BookMarkCardSmall />
-    </DataTemplate>
+    </DataTemplate>-->
 
-    <DataTemplate
-        x:Key="CitationCardLargeDT">
+    <DataTemplate x:Key="CitationCardLargeDT">
         <usercontrols:CitationCardSmall />
     </DataTemplate>
 
@@ -30,18 +26,15 @@
         <userControls:CitationRefCardLarge />
     </DataTemplate>-->
 
-    <DataTemplate
-        x:Key="EventCardLargeDT">
+    <DataTemplate x:Key="EventCardLargeDT">
         <usercontrols:EventCardLarge />
     </DataTemplate>
 
-    <DataTemplate
-        x:Key="FamilyCardLargeDT">
+    <DataTemplate x:Key="FamilyCardLargeDT">
         <usercontrols:FamilyCardLarge />
     </DataTemplate>
 
-    <DataTemplate
-        x:Key="ListLineCardLargeDT">
+    <DataTemplate x:Key="ListLineCardLargeDT">
         <usercontrols:ListLineCardLarge />
     </DataTemplate>
 
@@ -49,8 +42,7 @@
         <userControls:MediaRefCardLarge />
     </DataTemplate>-->
 
-    <DataTemplate
-        x:Key="MediaCardLargeDT">
+    <DataTemplate x:Key="MediaCardLargeDT">
         <usercontrols:MediaCardLarge />
     </DataTemplate>
 
@@ -58,8 +50,7 @@
         <userControls:NameMapCardLarge />
     </DataTemplate>-->
 
-    <DataTemplate
-        x:Key="NoteCardLargeDT">
+    <DataTemplate x:Key="NoteCardLargeDT">
         <usercontrols:NoteCardLarge />
     </DataTemplate>
 
@@ -67,28 +58,23 @@
         <userControls:NoteRefCardLarge />
     </DataTemplate>-->
 
-    <DataTemplate
-        x:Key="PersonCardLargeDT">
+    <DataTemplate x:Key="PersonCardLargeDT">
         <usercontrols:PersonCardLarge />
     </DataTemplate>
 
-    <DataTemplate
-        x:Key="PlaceCardLargeDT">
+    <DataTemplate x:Key="PlaceCardLargeDT">
         <usercontrols:PlaceCardSmall />
     </DataTemplate>
 
-    <DataTemplate
-        x:Key="RepositoryCardLargeDT">
+    <DataTemplate x:Key="RepositoryCardLargeDT">
         <usercontrols:RepositoryCardLarge />
     </DataTemplate>
 
-    <DataTemplate
-        x:Key="TagCardLargeDT">
+    <DataTemplate x:Key="TagCardLargeDT">
         <usercontrols:TagCardSmall />
     </DataTemplate>
 
-    <DataTemplate
-        x:Key="SourceCardLargeDT">
+    <DataTemplate x:Key="SourceCardLargeDT">
         <usercontrols:SourceCardLarge />
     </DataTemplate>
 
@@ -96,8 +82,7 @@
         <userControls:TagRefCardLarge />
     </DataTemplate>-->
 
-    <DataTemplate
-        x:Key="URLCardLargeDT">
+    <DataTemplate x:Key="URLCardLargeDT">
         <usercontrols:URLCardSmall />
     </DataTemplate>
 
@@ -105,7 +90,6 @@
         x:Key="CardGroupTemplateSelectorLarge"
         AddressTemplate="{StaticResource AddressCardLargeDT}"
         AttributeTemplate="{StaticResource AttributeCardLargeDT}"
-        BookMarkTemplate="{StaticResource BookMarkCardLargeDT}"
         CitationTemplate="{StaticResource CitationCardLargeDT}"
         EventTemplate="{StaticResource EventCardLargeDT}"
         FamilyTemplate="{StaticResource FamilyCardLargeDT}"

@@ -6,7 +6,7 @@
 
     <ResourceDictionary.MergedDictionaries>
 
-        <ResourceDictionary Source="DarkTheme.xaml" />
+        <ResourceDictionary Source="DarkThemeDictionary.xaml" />
 
         <ResourceDictionary Source="_Thickness.xaml" />
 
@@ -116,7 +116,7 @@
     <!--  Create a Frame Card Style  -->
     <Style x:Key="FrameCardStyle" TargetType="Frame">
         <Setter Property="BorderColor" Value="{DynamicResource SecondaryColor}" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryVariantLightColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDarkColor}" />
         <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Margin" Value="10" />
@@ -190,6 +190,7 @@
         BasedOn="{StaticResource FrameCardSmallStyle}"
         TargetType="Frame">
         <Setter Property="HeightRequest" Value="{DynamicResource GVDetailCardHeightSmall}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceColor}" />
     </Style>
 
     <Style
@@ -215,6 +216,7 @@
         BasedOn="{StaticResource FrameCardLargeStyle}"
         TargetType="Frame">
         <Setter Property="HeightRequest" Value="{DynamicResource GVDetailCardHeightLarge}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceColor}" />
     </Style>
 
     <!--  Create a Variable Height Large Card Style  -->
@@ -238,7 +240,7 @@
         <Setter Property="HasShadow" Value="False" />
         <Setter Property="Margin" Value="5" />
         <Setter Property="Padding" Value="2" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDarkColor}" />
         <Setter Property="CornerRadius" Value="10" />
     </Style>
 
@@ -247,7 +249,7 @@
         <Setter Property="Margin" Value="1,5,1,1" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="CornerRadius" Value="10" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDarkColor}" />
     </Style>
 
     <Style x:Key="FlexMultiCollection" TargetType="Frame">
@@ -383,7 +385,7 @@
         <Setter Property="LineBreakMode" Value="TailTruncation" />
         <Setter Property="FontSize" Value="Medium" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
-        <Setter Property="TextColor" Value="{DynamicResource OnSecondaryColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryVariantDarkColor}" />
     </Style>
 
     <!--  Create a Large Style for a Text Block Header  -->

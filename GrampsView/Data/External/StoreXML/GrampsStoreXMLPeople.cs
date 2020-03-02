@@ -8,15 +8,16 @@
 //-----------------------------------------------------------------------
 namespace GrampsView.Data.ExternalStorageNS
 {
+    using GrampsView.Data.DataView;
+    using GrampsView.Data.Model;
+    using GrampsView.Data.Repository;
+
     using System;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Xml.Linq;
 
-    using GrampsView.Data.DataView;
-
-    using GrampsView.Data.Model;
-    using GrampsView.Data.Repository;
+    using Xamarin.Forms;
 
     /// <summary>
     /// People load Routines.
@@ -40,7 +41,11 @@ namespace GrampsView.Data.ExternalStorageNS
             {
                 string defaultImage = string.Empty;
 
-                // Run query
+                // Get colour
+                Application.Current.Resources.TryGetValue("CardBackGroundPerson", out var varCardColour);
+                Color cardColour = (Color)varCardColour;
+
+                // Load notes Run query
                 var de =
                     from el in localGrampsXMLdoc.Descendants(ns + "person")
                     select el;
@@ -122,6 +127,9 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // URL
                         loadPerson.GURLCollection = GetURLCollection(pname);
+
+                        // HomeImageLink
+                        loadPerson.HomeImageHLink.HomeSymbolColour = cardColour;
 
                         // PersonRef TODO
 

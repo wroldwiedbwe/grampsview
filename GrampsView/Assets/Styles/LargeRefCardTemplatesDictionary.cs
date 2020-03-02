@@ -16,12 +16,12 @@ namespace GrampsView.Assets.Styles
     /// /// /// ///
     /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector2" />
     ///
-    public partial class LargeRefCardTemplates
+    public partial class LargeRefCardTemplatesDictionary
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LargeRefCardTemplates"/> class.
+        /// Initializes a new instance of the <see cref="LargeRefCardTemplatesDictionary"/> class.
         /// </summary>
-        public LargeRefCardTemplates()
+        public LargeRefCardTemplatesDictionary()
         {
             InitializeComponent();
         }

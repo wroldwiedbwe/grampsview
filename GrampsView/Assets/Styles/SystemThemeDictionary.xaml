@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary
-    x:Class="GrampsView.Assets.Styles.SystemTheme"
+    x:Class="GrampsView.Assets.Styles.SystemThemeDictionary"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
@@ -34,6 +34,10 @@
 
     <Color x:Key="SurfaceColor">
         #bdbdbd
+    </Color>
+
+    <Color x:Key="SurfaceVariantDarkColor">
+        #C8C8C8
     </Color>
 
     <Color x:Key="ErrorColor">

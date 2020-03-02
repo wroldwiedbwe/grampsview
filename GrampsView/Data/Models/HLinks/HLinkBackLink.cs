@@ -15,10 +15,7 @@
 
 namespace GrampsView.Data.Model
 {
-    using System;
     using System.Runtime.Serialization;
-
-    using GrampsView.Data.DataView;
 
     /// <summary>
     /// GRAMPS $$(hlink)$$ element class.
@@ -26,8 +23,8 @@ namespace GrampsView.Data.Model
     [DataContract]
     public class HLinkBackLink : HLinkBase
     {
-        [DataMember]
-        private HLinkBookMarkModel _HLinkBookMarkModel;
+        //[DataMember]
+        //private HLinkBookMarkModel _HLinkBookMarkModel;
 
         [DataMember]
         private HLinkCitationModel _HLinkCitationModel;
@@ -62,12 +59,12 @@ namespace GrampsView.Data.Model
         [DataMember]
         private HLinkTagModel _HLinkTagModel;
 
-        public HLinkBackLink(HLinkBookMarkModel ArgHLinkLink)
-        {
-            _HLinkBookMarkModel = ArgHLinkLink;
+        //public HLinkBackLink(HLinkBookMarkModel ArgHLinkLink)
+        //{
+        //    _HLinkBookMarkModel = ArgHLinkLink;
 
-            HLinkType = HLinkBackLinkEnum.HLinkBookMarkModel;
-        }
+        //    HLinkType = HLinkBackLinkEnum.HLinkBookMarkModel;
+        //}
 
         public HLinkBackLink()
         {
@@ -169,14 +166,22 @@ namespace GrampsView.Data.Model
         }
 
         [DataMember]
-        public HLinkBackLinkEnum HLinkType { get; set; }
+        public HLinkBackLinkEnum HLinkType { get; set; } = HLinkBackLinkEnum.Unknown;
+
+        public override bool Valid
+        {
+            get
+            {
+                return !(HLinkType == HLinkBackLinkEnum.Unknown);
+            }
+        }
 
         public HLinkBase HLink()
         {
             switch (HLinkType)
             {
-                case HLinkBackLinkEnum.HLinkBookMarkModel:
-                    return _HLinkBookMarkModel;
+                //case HLinkBackLinkEnum.HLinkBookMarkModel:
+                //    return _HLinkBookMarkModel;
 
                 case HLinkBackLinkEnum.HLinkCitationModel:
                     return _HLinkCitationModel;

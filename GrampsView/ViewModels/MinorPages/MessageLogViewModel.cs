@@ -60,7 +60,7 @@ namespace GrampsView.ViewModels
 
             if (entry != null)
             {
-                t.Label = string.Format("{0:HH: mm:ss}", System.DateTime.Now);
+                t.Label = string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:HH: mm:ss}", System.DateTime.Now);
                 t.Text = entry;
 
                 lock (this)

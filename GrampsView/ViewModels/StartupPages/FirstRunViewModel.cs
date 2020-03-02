@@ -63,7 +63,7 @@ namespace GrampsView.ViewModels
         /// <param name="parameter">
         /// The parameter.
         /// </param>
-        public async void LoadSampleFileButton(object sender, object parameter)
+        public void LoadSampleFileButton(object sender, object parameter)
         {
             // TODO add the sample button back
 

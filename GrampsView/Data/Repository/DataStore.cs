@@ -37,7 +37,5 @@ namespace GrampsView.Data.Repository
         public static DataInstance DS { get; } = new DataInstance();
 
         public static NavCmd NV { get; set; } = new NavCmd();
-
-        //public static CommonLogging CL { get; set; } = new CommonLogging();
     }
 }

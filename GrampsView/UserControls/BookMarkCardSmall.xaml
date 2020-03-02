@@ -17,7 +17,7 @@
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{prism:NavigateTo 'PersonDetailPage'}">
                     <TapGestureRecognizer.CommandParameter>
-                        <prism:NavigationParameter Key="hlink" Value="{Binding GetBookMarkHLink}" />
+                        <prism:NavigationParameter Key="hlink" Value="{Binding HLinkBookMarkTarget}" />
                     </TapGestureRecognizer.CommandParameter>
                 </TapGestureRecognizer>
             </Grid.GestureRecognizers>
@@ -57,7 +57,7 @@
                 HorizontalOptions="StartAndExpand"
                 HorizontalTextAlignment="End"
                 Style="{DynamicResource GVCardLabelStyleSmall}"
-                Text="{Binding Deref.GetBookMarkHLink.DeRef.GetDefaultText, Mode=OneWay}" />
+                Text="{Binding Deref.GetDefaultText, Mode=OneWay}" />
 
             <Image
                 Grid.Row="1"

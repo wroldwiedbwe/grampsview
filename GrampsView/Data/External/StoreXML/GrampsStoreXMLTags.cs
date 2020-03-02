@@ -53,7 +53,7 @@ namespace GrampsView.Data.ExternalStorageNS
                         // Tag fields
                         loadTag.GColor = GetColour(pcitation, "color");
                         loadTag.GName = GetAttribute(pcitation, "name");
-                        loadTag.GPriority = int.Parse(GetAttribute(pcitation, "priority"));
+                        loadTag.GPriority = int.Parse(GetAttribute(pcitation, "priority"), System.Globalization.CultureInfo.CurrentCulture);
 
                         // set the Home image or symbol
                         loadTag.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;

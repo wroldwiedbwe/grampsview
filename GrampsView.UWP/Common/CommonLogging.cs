@@ -12,6 +12,7 @@ namespace GrampsView.Common
     using System;
     using System.Collections;
     using System.Diagnostics;
+    using System.Globalization;
     using System.Runtime.Serialization;
     using System.Threading.Tasks;
 
@@ -138,7 +139,7 @@ namespace GrampsView.Common
         /// </summary>
         public void CloseLogging()
         {
-            Task.Run(async () => await CloseSessionSaveFinalLogFile().ConfigureAwait(false));
+            Task.Run(async () => await CloseSessionSaveFinalLogFile());
         }
 
         /// <summary>
@@ -454,7 +455,7 @@ namespace GrampsView.Common
                        CreationCollisionOption.OpenIfExists);
 
                     // Create a new log file name based on a date/time stamp.
-                    string newLogFileName = string.Format("{0}-{1}.etl", CommonConstants.LogAppLogFileBaseName, GetTimeStamp());
+                    string newLogFileName = string.Format(CultureInfo.CurrentCulture, "{0}-{1}.etl", CommonConstants.LogAppLogFileBaseName, GetTimeStamp());
 
                     // Move the final log into the app-defined log file folder.
                     await finalFileBeforeSuspend.MoveAsync(sampleAppDefinedLogFolder, newLogFileName);
@@ -503,7 +504,7 @@ namespace GrampsView.Common
                 CommonConstants.LogAppLogFolderName,
                 CreationCollisionOption.OpenIfExists);
 
-            string newLogFileName = string.Format("{0}-{1}.etl", CommonConstants.LogAppLogFileBaseName, GetTimeStamp());
+            string newLogFileName = string.Format(CultureInfo.CurrentCulture, "{0}-{1}.etl", CommonConstants.LogAppLogFileBaseName, GetTimeStamp());
             await args.File.MoveAsync(sampleAppDefinedLogFolder, newLogFileName);
 
             // TODO fu why this code exists if (IsPreparingForSuspend == false) { string

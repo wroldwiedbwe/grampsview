@@ -15,7 +15,7 @@ namespace GrampsView.Data.Collections
     /// <summary>
     /// Attribute model collection.
     /// </summary>
-    /// <seealso cref="System.Collections.ObjectViewModel.ObservableCollection{GrampsView.Data.ViewModel.AttributeModel}" />
+    /// <seealso cref="System.Collections.ObjectViewModel.ObservableCollection{GrampsView.Data.ViewModel.AttributeModel}"/>
     [CollectionDataContract]
     [KnownType(typeof(ObservableCollection<SurnameModel>))]
     public class SurnameModelCollection : ModelBaseCollection<SurnameModel>
@@ -35,7 +35,7 @@ namespace GrampsView.Data.Collections
             }
         }
 
-        public CardGroup GetCardGroup()
+        public override CardGroup GetCardGroup()
         {
             return base.GetCardGroup("Surname Model Collection");
         }

@@ -341,9 +341,12 @@ namespace GrampsView.ViewModels
             return;
         }
 
-        public virtual async Task PopulateViewModelAsync()
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+
+        public virtual async Task<bool> PopulateViewModelAsync()
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
-            return;
+            return true;
         }
     }
 }

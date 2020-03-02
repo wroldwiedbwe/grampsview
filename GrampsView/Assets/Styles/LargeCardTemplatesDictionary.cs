@@ -10,17 +10,17 @@ namespace GrampsView.Assets.Styles
     /// <summary>
     /// Large Card templates.
     /// </summary>
-    /// <seealso cref="Windows.UI.Xaml.ResourceDictionary" />
+    /// <seealso cref="Windows.UI.Xaml.ResourceDictionary"/>
     /// /// ///
-    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector" />
+    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector"/>
     /// /// ///
-    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector2" />
-    public partial class LargeCardDictionary
+    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector2"/>
+    public partial class LargeCardTemplatesDictionary
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LargeCardDictionary" /> class.
+        /// Initializes a new instance of the <see cref="LargeCardTemplatesDictionary"/> class.
         /// </summary>
-        public LargeCardDictionary()
+        public LargeCardTemplatesDictionary()
         {
             InitializeComponent();
         }

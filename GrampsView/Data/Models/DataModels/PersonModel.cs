@@ -472,7 +472,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return _IsLiving.ToString();
+                return _IsLiving.ToString(System.Globalization.CultureInfo.CurrentCulture);
             }
         }
 
