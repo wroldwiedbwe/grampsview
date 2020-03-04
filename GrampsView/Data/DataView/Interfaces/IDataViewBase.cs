@@ -64,7 +64,7 @@ namespace GrampsView.Data.DataView
         /// </param>
         /// <returns>
         /// </returns>
-        HLinkMediaModel GetFirstImageFromCollection(TH theCollection);
+        HLinkHomeImageModel GetFirstImageFromCollection(TH theCollection);
 
         //T GetModelFromHLinkString(string hLinkString);
 
@@ -111,15 +111,6 @@ namespace GrampsView.Data.DataView
         /// </returns>
         TH HLinkCollectionSort(TH collectionArg);
 
-        ///// <summary>
-        ///// Gets the model information formatted.
-        ///// </summary>
-        ///// <param name="argHLink">
-        ///// The argument h link.
-        ///// </param>
-        ///// <returns>
-        ///// </returns>
-        // ListDetailCardModel GetModelInfoFormatted(HLinkBase argHLink);
         /// <summary>
         /// News this instance.
         /// </summary>
@@ -128,7 +119,5 @@ namespace GrampsView.Data.DataView
         T NewModel();
 
         List<SearchItem> Search(string queryString);
-
-        //IReadOnlyList<T> VirtualReader(int startItem, int itemCount);
     }
 }

@@ -41,7 +41,7 @@ namespace GrampsView.UserControls
             set { SetValue(UConHideSymbolProperty, value); }
         }
 
-        private HLinkMediaModel HLinkMedia { get; set; }
+        private HLinkHomeImageModel HLinkMedia { get; set; }
 
         private static void MediaImage_UConPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -57,7 +57,7 @@ namespace GrampsView.UserControls
 
         private void mediaImage_BindingContextChanged(object sender, EventArgs e)
         {
-            HLinkMediaModel qq = this.BindingContext as HLinkMediaModel;
+            HLinkHomeImageModel qq = this.BindingContext as HLinkHomeImageModel;
             if ((qq is null) || (!qq.Valid))
             {
                 return;

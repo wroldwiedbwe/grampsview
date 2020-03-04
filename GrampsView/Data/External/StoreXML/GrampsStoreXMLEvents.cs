@@ -19,6 +19,8 @@ namespace GrampsView.Data.ExternalStorageNS
     using System.Threading.Tasks;
     using System.Xml.Linq;
 
+    using Xamarin.Forms;
+
     /// <summary>
     /// Private Storage Routines.
     /// </summary>
@@ -31,7 +33,12 @@ namespace GrampsView.Data.ExternalStorageNS
                 throw new ArgumentNullException(nameof(argModel));
             }
 
-            HLinkMediaModel hlink = argModel.GMediaRefCollection.FirstHLink;
+            // Get colour
+            Application.Current.Resources.TryGetValue("CardBackGroundEvent", out var varCardColour);
+            Color cardColour = (Color)varCardColour;
+
+            // Set links
+            HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLink;
             if (!hlink.Valid)
             {
                 argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
@@ -42,6 +49,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
             }
 
+            argModel.HomeImageHLink.HomeSymbolColour = cardColour;
             return argModel;
         }
 

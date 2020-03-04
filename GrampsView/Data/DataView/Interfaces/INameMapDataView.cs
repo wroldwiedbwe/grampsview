@@ -27,7 +27,7 @@ namespace GrampsView.Data.DataView
         /// </value>
         RepositoryModelType<NameMapModel, HLinkNameMapModel> NameMapData
         {
-            get; set;
+            get;
         }
 
         /// <summary>

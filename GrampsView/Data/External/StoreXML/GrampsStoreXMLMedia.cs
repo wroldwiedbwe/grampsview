@@ -9,7 +9,6 @@
 
 namespace GrampsView.Data.ExternalStorageNS
 {
-    using GrampsView.Common;
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
@@ -18,6 +17,8 @@ namespace GrampsView.Data.ExternalStorageNS
     using System.Linq;
     using System.Threading.Tasks;
     using System.Xml.Linq;
+
+    using Xamarin.Forms;
 
     /// <summary>
     /// Private Storage Routines.
@@ -42,9 +43,11 @@ namespace GrampsView.Data.ExternalStorageNS
                 // start file load
                 await DataStore.CN.MajorStatusAdd("Loading Media").ConfigureAwait(false);
 
-                // setup the XML namespace XNamespace ns = grampsXMLNameSpace;
+                // Get colour
+                Application.Current.Resources.TryGetValue("CardBackGroundMedia", out var varCardColour);
+                Color cardColour = (Color)varCardColour;
 
-                // Run query
+                // Load notes Run query
                 var de =
                     from el in localGrampsXMLdoc.Descendants(ns + "object")
                     select el;
@@ -53,9 +56,9 @@ namespace GrampsView.Data.ExternalStorageNS
                 {
                     foreach (XElement pname in de)
                     {
-                        // <code> < define name = "object-content" > <ref name= "SecondaryColor-object" />
-                        // < element name = "file" > < attribute name = "src" > < text /> </
-                        // attribute > < attribute name = "mime" >
+                        // <code> < define name = "object-content" > <ref name=
+                        // "SecondaryColor-object" /> < element name = "file" > < attribute name =
+                        // "src" > < text /> </ attribute > < attribute name = "mime" >
 
                         // < text />
 
@@ -213,6 +216,8 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // < zeroOrMore > < element name = "tagref" > <ref name="tagref-content" />
                         loadObject.GTagRefCollection = GetTagCollection(pname);
+
+                        loadObject.HomeImageHLink.HomeSymbolColour = cardColour;
 
                         // save the object
                         DV.MediaDV.MediaData.Add(loadObject);

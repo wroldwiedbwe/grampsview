@@ -20,6 +20,6 @@ namespace GrampsView.Data.Model
         /// <value>
         /// The first image h link.
         /// </value>
-        HLinkMediaModel FirstHLink { get; set; }
+        HLinkHomeImageModel FirstHLink { get; set; }
     }
 }

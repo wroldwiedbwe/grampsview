@@ -74,12 +74,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataStore.DS.localPlaceData;
-            }
-
-            set
-            {
-                SetProperty(ref DataStore.DS.localPlaceData, value);
+                return DataStore.DS.PlaceData;
             }
         }
 

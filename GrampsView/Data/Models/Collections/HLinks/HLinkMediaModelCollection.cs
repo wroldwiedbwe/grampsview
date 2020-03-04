@@ -47,7 +47,8 @@ namespace GrampsView.Data.Collections
 
                     if (tempMediaModel.IsMediaFile)
                     {
-                        FirstHLink = this[i];
+                        FirstHLink.ConvertHLinkMediaModel(this[i]);
+
                         break;
                     }
                 }

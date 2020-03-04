@@ -137,7 +137,7 @@ namespace GrampsView.Data.DataView
         /// </param>
         /// <returns>
         /// </returns>
-        public new HLinkMediaModel GetFirstImageFromCollection(HLinkCitationModelCollection theCollection)
+        public new HLinkHomeImageModel GetFirstImageFromCollection(HLinkCitationModelCollection theCollection)
         {
             // handle null argument
             if (theCollection == null)
@@ -145,7 +145,7 @@ namespace GrampsView.Data.DataView
                 return null;
             }
 
-            HLinkMediaModel returnMediaModel = new HLinkMediaModel();
+            HLinkHomeImageModel returnMediaModel = new HLinkHomeImageModel();
 
             if (theCollection.Count > 0)
             {

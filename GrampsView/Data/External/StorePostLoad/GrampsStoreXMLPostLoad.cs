@@ -66,7 +66,7 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </param>
         /// <returns>
         /// </returns>
-        public static HLinkMediaModel SetHomeHLink(HLinkMediaModel argStartHLink, HLinkMediaModel argHLink)
+        public static HLinkHomeImageModel SetHomeHLink(HLinkHomeImageModel argStartHLink, HLinkHomeImageModel argHLink)
         {
             if (argStartHLink is null)
             {
@@ -150,7 +150,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 // -- Organise Home Images -----------------------
 
                 // Try media reference collection first
-                HLinkMediaModel hlink = citationModel.GMediaRefCollection.FirstHLink;
+                HLinkHomeImageModel hlink = citationModel.GMediaRefCollection.FirstHLink;
 
                 // Check Source for Image
                 if (!hlink.Valid)
@@ -219,7 +219,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Setup home images
 
                 // Try media reference collection first
-                HLinkMediaModel hlink = eventModel.GMediaRefCollection.FirstHLink;
+                HLinkHomeImageModel hlink = eventModel.GMediaRefCollection.FirstHLink;
 
                 // Check Media for Images
                 if (!hlink.Valid)
@@ -309,7 +309,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 // -- Organse Home Image ---------------------
 
                 // Try media reference collection first
-                HLinkMediaModel hlink = familyModel.GMediaRefCollection.FirstHLink;
+                HLinkHomeImageModel hlink = familyModel.GMediaRefCollection.FirstHLink;
 
                 if (!hlink.Valid)
                 {
@@ -358,14 +358,6 @@ namespace GrampsView.Data.ExternalStorageNS
             {
                 HLinkMediaModel t = mediaObject.HLink;
 
-                // Event Collection
-                mediaObject.GEventRefCollection = DV.EventDV.HLinkCollectionSort(mediaObject.GEventRefCollection);
-
-                // TODO Change to SortAndSetFirst
-
-                // Family Collection
-                mediaObject.GFamilyRefCollection = DV.FamilyDV.HLinkCollectionSort(mediaObject.GFamilyRefCollection);
-
                 // TODO Change to SortAndSetFirst
 
                 // Back Reference Citation HLinks
@@ -385,9 +377,6 @@ namespace GrampsView.Data.ExternalStorageNS
                 {
                     DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
-
-                // Person Collection
-                mediaObject.GPersonRefCollection = DV.PersonDV.HLinkCollectionSort(mediaObject.GPersonRefCollection);
 
                 // TODO Change to SortAndSetFirst
 
@@ -581,7 +570,7 @@ namespace GrampsView.Data.ExternalStorageNS
                     //}
 
                     // Get default image if available
-                    HLinkMediaModel hlink = DV.PersonDV.GetDefaultImageFromCollection(argModel);
+                    HLinkHomeImageModel hlink = DV.PersonDV.GetDefaultImageFromCollection(argModel);
 
                     // Check Media for Images
                     if (!hlink.Valid)
@@ -745,7 +734,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 // TODO First and Sort for Notes, Repositories and Tags
 
                 // Get default image if available
-                HLinkMediaModel hlink = sourceObject.GMediaRefCollection.FirstHLink;
+                HLinkHomeImageModel hlink = sourceObject.GMediaRefCollection.FirstHLink;
 
                 // Action default media image
                 if (!hlink.Valid)
@@ -775,7 +764,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
             foreach (TagModel argModel in DV.TagDV.TagData)
             {
-                HLinkMediaModel hlink = null;
+                HLinkHomeImageModel hlink = null;
 
                 // Set default
                 if (hlink is null)

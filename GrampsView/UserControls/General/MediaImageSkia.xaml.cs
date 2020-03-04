@@ -38,7 +38,7 @@ namespace GrampsView.UserControls
             set { SetValue(UConHideSymbolProperty, value); }
         }
 
-        private HLinkMediaModel HLinkMedia { get; set; }
+        private HLinkHomeImageModel HLinkMedia { get; set; }
 
         // This code added to correctly implement the disposable pattern.
         public void Dispose()
@@ -79,7 +79,7 @@ namespace GrampsView.UserControls
 
         private void MediaImageSkia_BindingContextChanged(object sender, EventArgs e)
         {
-            HLinkMedia = this.BindingContext as HLinkMediaModel;
+            HLinkMedia = this.BindingContext as HLinkHomeImageModel;
 
             if (HLinkMedia is null)
             {

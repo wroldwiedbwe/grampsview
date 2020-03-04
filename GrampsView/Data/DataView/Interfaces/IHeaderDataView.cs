@@ -36,7 +36,7 @@ namespace GrampsView.Data.DataView
         /// </value>
         RepositoryModelType<HeaderModel, HLinkHeaderModel> HeaderData
         {
-            get; set;
+            get;
         }
 
         /// <summary>

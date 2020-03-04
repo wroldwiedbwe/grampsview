@@ -6,7 +6,9 @@
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="MediaCardLargeRoot"
-    Style="{DynamicResource FrameLargeFixedCardStyle}">
+    Style="{DynamicResource MediaLargeImageStyle}">
+    <!--  Set Backgroudn colour to help media images stand out  -->
+
     <Frame.Content>
 
         <Grid

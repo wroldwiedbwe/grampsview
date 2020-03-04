@@ -27,7 +27,7 @@ namespace GrampsView.Data.DataView
         /// </value>
         RepositoryModelType<PlaceModel, HLinkPlaceModel> PlaceData
         {
-            get; set;
+            get;
         }
 
         /// <summary>

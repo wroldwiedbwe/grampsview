@@ -16,6 +16,20 @@ namespace GrampsView.Data.Model
     using System.Collections;
     using System.Runtime.Serialization;
 
+    //// gramps XML 1.71
+    ////
+    //// "primary-object"
+    //// "file"
+    //// - "src"
+    //// - "mime"
+    //// - "checksum"
+    //// - "description"
+    //// "attribute"
+    //// "noteref"
+    //// "date-content"
+    //// "citationref"
+    //// "tagref">
+
     /// <summary>
     /// Data model for a media object.
     /// </summary>
@@ -26,16 +40,6 @@ namespace GrampsView.Data.Model
         /// The local date value.
         /// </summary>
         private DateObjectModel _DateValue = new DateObjectModel();
-
-        /// <summary>
-        /// The local event collection.
-        /// </summary>
-        private HLinkEventModelCollection _EventCollection = new HLinkEventModelCollection();
-
-        /// <summary>
-        /// The local family collection.
-        /// </summary>
-        private HLinkFamilyModelCollection _FamilyCollection = new HLinkFamilyModelCollection();
 
         private string _FileContentType;
 
@@ -49,20 +53,12 @@ namespace GrampsView.Data.Model
         /// </summary>
         private FileInfoEx _MediaStorageFile = null;
 
-        /// <summary>
-        /// The local note reference collection.
-        /// </summary>
         private HLinkNoteModelCollection _NoteReferenceCollection = new HLinkNoteModelCollection();
 
         /// <summary>
         /// The local original file path.
         /// </summary>
         private string _OriginalFilePath = string.Empty;
-
-        /// <summary>
-        /// The local person collection.
-        /// </summary>
-        private HLinkPersonModelCollection _PersonCollection = new HLinkPersonModelCollection();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MediaModel"/> class.
@@ -197,50 +193,6 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets or sets the event reference collection, i.e. person models that reference this
-        /// media object. These are not part of the normal GRAMPS XML file and are added after the
-        /// media models are loaded.
-        /// </summary>
-        /// <value>
-        /// The person reference collection.
-        /// </value>
-        [DataMember]
-        public HLinkEventModelCollection GEventRefCollection
-        {
-            get
-            {
-                return _EventCollection;
-            }
-
-            set
-            {
-                SetProperty(ref _EventCollection, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the event reference collection, i.e. person models that reference this
-        /// media object. These are not part of the normal GRAMPS XML file and are added after the
-        /// media models are loaded.
-        /// </summary>
-        /// <value>
-        /// The person reference collection.
-        /// </value>
-        [DataMember]
-        public HLinkFamilyModelCollection GFamilyRefCollection
-        {
-            get
-            {
-                return _FamilyCollection;
-            }
-
-            set
-            {
-                SetProperty(ref _FamilyCollection, value);
-            }
-        }
-
-        /// <summary>
         /// Gets or sets the note reference collection.
         /// </summary>
         /// <value>
@@ -257,28 +209,6 @@ namespace GrampsView.Data.Model
             set
             {
                 SetProperty(ref _NoteReferenceCollection, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the person reference collection, i.e. person models that reference this
-        /// media object. These are not part of the normal GRAMPS XML file and are added after the
-        /// media models are loaded.
-        /// </summary>
-        /// <value>
-        /// The person reference collection.
-        /// </value>
-        [DataMember]
-        public HLinkPersonModelCollection GPersonRefCollection
-        {
-            get
-            {
-                return _PersonCollection;
-            }
-
-            set
-            {
-                SetProperty(ref _PersonCollection, value);
             }
         }
 

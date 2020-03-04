@@ -25,64 +25,13 @@ namespace GrampsView.Data.Repository
     [KnownType(typeof(HLinkBackLink))]
     public class DataInstance : CommonBindableBase
     {
-        /// <summary>
-        /// The local header data.
-        /// </summary>
-        [DataMember]
-        public RepositoryModelType<HeaderModel, HLinkHeaderModel> localHeaderData = new RepositoryModelType<HeaderModel, HLinkHeaderModel>();
-
-        /// <summary>
-        /// The local media data.
-        /// </summary>
-        [DataMember]
-        public RepositoryModelType<MediaModel, HLinkMediaModel> localMediaData = new RepositoryModelType<MediaModel, HLinkMediaModel>();
-
-        /// <summary>
-        /// The local name map data.
-        /// </summary>
-        [DataMember]
-        public RepositoryModelType<NameMapModel, HLinkNameMapModel> localNameMapData = new RepositoryModelType<NameMapModel, HLinkNameMapModel>();
-
-        /// <summary>
-        /// The local note data.
-        /// </summary>
-        [DataMember]
-        public RepositoryModelType<NoteModel, HLinkNoteModel> localNoteData = new RepositoryModelType<NoteModel, HLinkNoteModel>();
-
-        /// <summary>
-        /// The local person data.
-        /// </summary>
-        [DataMember]
-        public RepositoryModelType<PersonModel, HLinkPersonModel> localPersonData = new RepositoryModelType<PersonModel, HLinkPersonModel>();
-
-        /// <summary>
-        /// The local place data.
-        /// </summary>
-        [DataMember]
-        public RepositoryModelType<PlaceModel, HLinkPlaceModel> localPlaceData = new RepositoryModelType<PlaceModel, HLinkPlaceModel>();
-
-        /// <summary>
-        /// The local repository data.
-        /// </summary>
-        [DataMember]
-        public RepositoryModelType<RepositoryModel, HLinkRepositoryModel> localRepositoryData = new RepositoryModelType<RepositoryModel, HLinkRepositoryModel>();
-
-        /// <summary>
-        /// The local tag data.
-        /// </summary>
-        [DataMember]
-        public RepositoryModelType<TagModel, HLinkTagModel> localTagData = new RepositoryModelType<TagModel, HLinkTagModel>();
-
-        /// <summary>
-        /// The local book mark data.
-        /// </summary>
-
-        //private RepositoryModelType<BookMarkModel, HLinkBookMarkModel> _BookMarkData = new RepositoryModelType<BookMarkModel, HLinkBookMarkModel>();
-
         private HLinkBackLinkModelCollection _BookMarkCollection = new HLinkBackLinkModelCollection();
 
         private RepositoryModelType<CitationModel, HLinkCitationModel> _CitationData = new RepositoryModelType<CitationModel, HLinkCitationModel>();
 
+        /// <summary>
+        /// The local book mark data.
+        /// </summary>
         private DirectoryInfo _CurrentDataFolder;
 
         private FileData _CurrentInputFile = null;
@@ -100,9 +49,49 @@ namespace GrampsView.Data.Repository
         private RepositoryModelType<FamilyModel, HLinkFamilyModel> _FamilyData = new RepositoryModelType<FamilyModel, HLinkFamilyModel>();
 
         /// <summary>
+        /// The local header data.
+        /// </summary>
+        private RepositoryModelType<HeaderModel, HLinkHeaderModel> _HeaderData = new RepositoryModelType<HeaderModel, HLinkHeaderModel>();
+
+        /// <summary>
+        /// The local media data.
+        /// </summary>
+        private RepositoryModelType<MediaModel, HLinkMediaModel> _MediaData = new RepositoryModelType<MediaModel, HLinkMediaModel>();
+
+        /// <summary>
+        /// The local name map data.
+        /// </summary>
+        private RepositoryModelType<NameMapModel, HLinkNameMapModel> _NameMapData = new RepositoryModelType<NameMapModel, HLinkNameMapModel>();
+
+        /// <summary>
+        /// The local note data.
+        /// </summary>
+        private RepositoryModelType<NoteModel, HLinkNoteModel> _NoteData = new RepositoryModelType<NoteModel, HLinkNoteModel>();
+
+        /// <summary>
+        /// The local person data.
+        /// </summary>
+        private RepositoryModelType<PersonModel, HLinkPersonModel> _PersonData = new RepositoryModelType<PersonModel, HLinkPersonModel>();
+
+        /// <summary>
+        /// The local place data.
+        /// </summary>
+        private RepositoryModelType<PlaceModel, HLinkPlaceModel> _PlaceData = new RepositoryModelType<PlaceModel, HLinkPlaceModel>();
+
+        /// <summary>
+        /// The local repository data.
+        /// </summary>
+        private RepositoryModelType<RepositoryModel, HLinkRepositoryModel> _RepositoryData = new RepositoryModelType<RepositoryModel, HLinkRepositoryModel>();
+
+        /// <summary>
         /// The local source data.
         /// </summary>
         private RepositoryModelType<SourceModel, HLinkSourceModel> _SourceData = new RepositoryModelType<SourceModel, HLinkSourceModel>();
+
+        /// <summary>
+        /// The local tag data.
+        /// </summary>
+        private RepositoryModelType<TagModel, HLinkTagModel> _TagData = new RepositoryModelType<TagModel, HLinkTagModel>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DataInstance"/> class.
@@ -238,6 +227,23 @@ namespace GrampsView.Data.Repository
         }
 
         /// <summary>
+        /// The local Header data.
+        /// </summary>
+        [DataMember]
+        public RepositoryModelType<HeaderModel, HLinkHeaderModel> HeaderData
+        {
+            get
+            {
+                return _HeaderData;
+            }
+
+            set
+            {
+                SetProperty(ref _HeaderData, value);
+            }
+        }
+
+        /// <summary>
         /// Gets or sets a value indicating whether this instance is data loaded.
         /// </summary>
         /// <value>
@@ -251,6 +257,108 @@ namespace GrampsView.Data.Repository
         }
 
         = false;
+
+        /// <summary>
+        /// The local Media data.
+        /// </summary>
+        [DataMember]
+        public RepositoryModelType<MediaModel, HLinkMediaModel> MediaData
+        {
+            get
+            {
+                return _MediaData;
+            }
+
+            set
+            {
+                SetProperty(ref _MediaData, value);
+            }
+        }
+
+        /// <summary>
+        /// The local NameMap data.
+        /// </summary>
+        [DataMember]
+        public RepositoryModelType<NameMapModel, HLinkNameMapModel> NameMapData
+        {
+            get
+            {
+                return _NameMapData;
+            }
+
+            set
+            {
+                SetProperty(ref _NameMapData, value);
+            }
+        }
+
+        /// <summary>
+        /// The local Note data.
+        /// </summary>
+        [DataMember]
+        public RepositoryModelType<NoteModel, HLinkNoteModel> NoteData
+        {
+            get
+            {
+                return _NoteData;
+            }
+
+            set
+            {
+                SetProperty(ref _NoteData, value);
+            }
+        }
+
+        /// <summary>
+        /// The local Person data.
+        /// </summary>
+        [DataMember]
+        public RepositoryModelType<PersonModel, HLinkPersonModel> PersonData
+        {
+            get
+            {
+                return _PersonData;
+            }
+
+            set
+            {
+                SetProperty(ref _PersonData, value);
+            }
+        }
+
+        /// <summary>
+        /// The local Place data.
+        /// </summary>
+        [DataMember]
+        public RepositoryModelType<PlaceModel, HLinkPlaceModel> PlaceData
+        {
+            get
+            {
+                return _PlaceData;
+            }
+
+            set
+            {
+                SetProperty(ref _PlaceData, value);
+            }
+        }
+
+        /// <summary>
+        /// The local Place data.
+        /// </summary>
+        [DataMember]
+        public RepositoryModelType<RepositoryModel, HLinkRepositoryModel> RepositoryData
+        {
+            get
+            {
+                return _RepositoryData;
+            }
+
+            set
+            {
+                SetProperty(ref _RepositoryData, value);
+            }
+        }
 
         /// <summary>
         /// Gets or sets source Data repository.
@@ -270,12 +378,27 @@ namespace GrampsView.Data.Repository
         }
 
         /// <summary>
+        /// The local tag data.
+        /// </summary>
+        [DataMember]
+        public RepositoryModelType<TagModel, HLinkTagModel> TagData
+        {
+            get
+            {
+                return _TagData;
+            }
+
+            set
+            {
+                SetProperty(ref _TagData, value);
+            }
+        }
+
+        /// <summary>
         /// Loads the data store from existign known details
         /// </summary>
         public void LoadDataStore()
         {
-            //await StoreFileNames.DataFolderSetToExistingAsync().ConfigureAwait(false);
-
             CurrentDataFolder = new DirectoryInfo(Xamarin.Essentials.FileSystem.CacheDirectory);
         }
     }

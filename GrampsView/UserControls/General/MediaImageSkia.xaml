@@ -10,7 +10,8 @@
     BindingContextChanged="MediaImageSkia_BindingContextChanged"
     BorderColor="Transparent"
     HeightRequest="100"
-    VerticalOptions="Fill"
+    HorizontalOptions="FillAndExpand"
+    VerticalOptions="FillAndExpand"
     WidthRequest="100">
 
     <Frame.Content>
@@ -18,20 +19,23 @@
         <Grid
             x:Name="skiaHostControl"
             Margin="0"
-            Padding="0">
+            Padding="3"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
 
             <Image
                 x:Name="daSymbol"
+                Margin="5"
                 Aspect="AspectFit"
                 BackgroundColor="Transparent"
                 IsVisible="True"
-                VerticalOptions="CenterAndExpand">
+                VerticalOptions="FillAndExpand">
                 <Image.Source>
                     <FontImageSource FontFamily="{DynamicResource MaterialFontFamily}" />
                 </Image.Source>
             </Image>
 
-            <Image x:Name="skiaBitMapImage" />
+            <Image x:Name="skiaBitMapImage" VerticalOptions="FillAndExpand" />
 
             <ffimageloading:CachedImage
                 x:Name="daImage"
@@ -39,10 +43,12 @@
                 BackgroundColor="Transparent"
                 CacheType="All"
                 Error="DaImage_Error"
+                HorizontalOptions="FillAndExpand"
                 IsVisible="False"
                 LoadingPlaceholder="ic_launcher.png"
                 RetryCount="3"
-                RetryDelay="1000" />
+                RetryDelay="1000"
+                VerticalOptions="FillAndExpand" />
         </Grid>
     </Frame.Content>
 </Frame>

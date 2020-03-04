@@ -6,7 +6,8 @@
 
     <ResourceDictionary.MergedDictionaries>
 
-        <ResourceDictionary Source="DarkThemeDictionary.xaml" />
+        <!--  Default dictionary  -->
+        <ResourceDictionary Source="SystemThemeDictionary.xaml" />
 
         <ResourceDictionary Source="_Thickness.xaml" />
 
@@ -116,11 +117,10 @@
     <!--  Create a Frame Card Style  -->
     <Style x:Key="FrameCardStyle" TargetType="Frame">
         <Setter Property="BorderColor" Value="{DynamicResource SecondaryColor}" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDarkColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceColor}" />
         <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Margin" Value="10" />
-
         <Setter Property="CornerRadius" Value="10" />
     </Style>
 
@@ -128,7 +128,6 @@
         x:Key="FrameCardSmallStyle"
         BasedOn="{StaticResource FrameCardStyle}"
         TargetType="Frame">
-        <!--<Setter Property="WidthRequest" Value="{DynamicResource GVDetailCardWidthSmall}" />-->
         <Setter Property="WidthRequest" Value="{x:Static Member='common:CardWidths.CardSmallWidth'}" />
         <Setter Property="Padding" Value="3" />
         <Setter Property="Margin" Value="2" />
@@ -138,7 +137,6 @@
         x:Key="FrameCardMediumStyle"
         BasedOn="{StaticResource FrameCardStyle}"
         TargetType="Frame">
-        <!--<Setter Property="WidthRequest" Value="{DynamicResource GVDetailCardWidthLarge}" />-->
         <Setter Property="WidthRequest" Value="{x:Static Member='common:CardWidths.CardMediumWidth'}" />
         <Setter Property="Padding" Value="4" />
         <Setter Property="Margin" Value="3" />
@@ -159,13 +157,12 @@
 
     <!--  Create a MediaImage Style  -->
     <Style x:Key="MediaImageStyle" TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryVariantLightColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDarkColor}" />
         <Setter Property="BorderColor" Value="{DynamicResource SecondaryVariantLightColor}" />
         <Setter Property="HasShadow" Value="False" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="1" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <!--<Setter Property="VerticalOptions" Value="Center" />-->
         <Setter Property="CornerRadius" Value="0" />
     </Style>
 
@@ -190,7 +187,6 @@
         BasedOn="{StaticResource FrameCardSmallStyle}"
         TargetType="Frame">
         <Setter Property="HeightRequest" Value="{DynamicResource GVDetailCardHeightSmall}" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceColor}" />
     </Style>
 
     <Style
@@ -219,6 +215,20 @@
         <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceColor}" />
     </Style>
 
+    <Style
+        x:Key="FrameLargeFixedCardStyleNS"
+        BasedOn="{StaticResource FrameLargeFixedCardStyle}"
+        TargetType="Frame">
+        <Setter Property="BorderColor" Value="Transparent" />
+    </Style>
+
+    <Style
+        x:Key="MediaLargeImageStyle"
+        BasedOn="{StaticResource FrameLargeFixedCardStyle}"
+        TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDarkColor}" />
+    </Style>
+
     <!--  Create a Variable Height Large Card Style  -->
     <Style
         x:Key="FrameLargeVariableCardStyle"
@@ -235,7 +245,7 @@
         <Setter Property="BorderColor" Value="Transparent" />
     </Style>
 
-    <!--  Flex Cards  -->
+    <!--  Card Group and Flex Cards  -->
     <Style x:Key="CardGroupStyle" TargetType="Frame">
         <Setter Property="HasShadow" Value="False" />
         <Setter Property="Margin" Value="5" />

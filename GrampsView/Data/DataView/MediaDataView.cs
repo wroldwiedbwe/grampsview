@@ -132,12 +132,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataStore.DS.localMediaData;
-            }
-
-            set
-            {
-                SetProperty(ref DataStore.DS.localMediaData, value);
+                return DataStore.DS.MediaData;
             }
         }
 
@@ -195,7 +190,7 @@ namespace GrampsView.Data.DataView
         /// </param>
         /// <returns>
         /// </returns>
-        public new HLinkMediaModel GetFirstImageFromCollection(HLinkMediaModelCollection argCollection)
+        public new HLinkHomeImageModel GetFirstImageFromCollection(HLinkMediaModelCollection argCollection)
         {
             // Handle null argument
             if (argCollection == null)
@@ -203,7 +198,7 @@ namespace GrampsView.Data.DataView
                 argCollection = GetAllAsHLink();
             }
 
-            HLinkMediaModel returnMediaModel = new HLinkMediaModel();
+            HLinkHomeImageModel returnMediaModel = new HLinkHomeImageModel();
 
             MediaModel tempMediaModel;
 
@@ -216,7 +211,7 @@ namespace GrampsView.Data.DataView
 
                     if (tempMediaModel.IsMediaFile)
                     {
-                        returnMediaModel = argCollection[i];
+                        returnMediaModel.ConvertHLinkMediaModel(argCollection[i]);
                         break;
                     }
                 }

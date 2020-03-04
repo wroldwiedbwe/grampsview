@@ -31,7 +31,7 @@ namespace GrampsView.Data.DataView
         /// </value>
         RepositoryModelType<NoteModel, HLinkNoteModel> NoteData
         {
-            get; set;
+            get;
         }
 
         /// <summary>

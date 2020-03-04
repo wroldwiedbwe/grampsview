@@ -121,9 +121,6 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Backgrounds\DarkGray.png" />
-    <Content Include="Assets\Backgrounds\LightGray.png" />
-    <Content Include="Assets\Backgrounds\MediumGray.png" />
     <AndroidResource Include="Assets\Icons\ic_launcher.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
@@ -133,8 +130,6 @@
     <Content Include="Assets\Icons\LargeTile.scale-150.png" />
     <Content Include="Assets\Icons\LargeTile.scale-200.png" />
     <Content Include="Assets\Icons\LargeTile.scale-400.png" />
-    <Content Include="Assets\Icons\logo\base.png" />
-    <Content Include="Assets\Icons\logo\icon.svg" />
     <Content Include="Assets\Icons\SmallTile.scale-100.png" />
     <Content Include="Assets\Icons\SmallTile.scale-125.png" />
     <Content Include="Assets\Icons\SmallTile.scale-150.png" />
@@ -150,6 +145,11 @@
     <Content Include="Assets\Icons\Square150x150Logo.scale-150.png" />
     <Content Include="Assets\Icons\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Icons\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Icons\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
+    <Content Include="Assets\Icons\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
+    <Content Include="Assets\Icons\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
+    <Content Include="Assets\Icons\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
+    <Content Include="Assets\Icons\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
     <Content Include="Assets\Icons\Square44x44Logo.altform-unplated_targetsize-16.png" />
     <Content Include="Assets\Icons\Square44x44Logo.altform-unplated_targetsize-24.png" />
     <Content Include="Assets\Icons\Square44x44Logo.altform-unplated_targetsize-256.png" />
@@ -175,15 +175,7 @@
     <Content Include="Assets\Icons\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Icons\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Icons\Wide310x150Logo.scale-400.png" />
-    <Content Include="Assets\Tiles\FlipCycleTileLarge.png" />
-    <Content Include="Assets\Tiles\FlipCycleTileMedium.png" />
-    <Content Include="Assets\Tiles\FlipCycleTileSmall.png" />
-    <Content Include="Assets\Tiles\IconicTileMediumLarge.png" />
-    <Content Include="Assets\Tiles\IconicTileSmall.png" />
-    <Content Include="Assets\Tiles\smalltilelogo.scale-100.png" />
-    <Content Include="Assets\Tiles\smalltilelogo.scale-140.png" />
-    <Content Include="Assets\Tiles\smalltilelogo.scale-180.png" />
-    <Content Include="Assets\Tiles\smalltilelogo.scale-80.png" />
+    <Content Include="ic_history_black_36dp.png" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -247,11 +239,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Backgrounds\Splash Screen background color  #FFFFFF" />
     <Content Include="Assets\Fonts\materialdesignicons-webfont.ttf" />
-    <None Include="Assets\Icons\logo\icon.pdf" />
     <None Include="Assets\Misc\UserActivityCard.json" />
-    <PRIResource Include="Assets\Strings\en-au\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainPage.xaml">
@@ -261,7 +250,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Interfaces\" />
-    <Folder Include="Data\External\StoreFile\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

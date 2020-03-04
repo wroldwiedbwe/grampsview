@@ -27,7 +27,7 @@ namespace GrampsView.Data.DataView
         /// </value>
         RepositoryModelType<MediaModel, HLinkMediaModel> MediaData
         {
-            get; set;
+            get;
         }
 
         /// <summary>

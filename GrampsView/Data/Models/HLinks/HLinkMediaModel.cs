@@ -8,50 +8,14 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-////<define name = "object-content" >
-////    <ref name="SecondaryColor-object" />
-////    <element name = "file" >
-////      < attribute name="src">
-////        <text />
-////      </attribute>
-////      <attribute name = "mime" >
-////        < text />
-////      </ attribute >
-////      < optional >
-////        < attribute name="checksum">
-////          <text />
-////        </attribute>
-////      </optional>
-////      <optional>
-////        <attribute name = "description" >
-////          < text />
-////        </ attribute >
-////      </ optional >
-////    </ element >
-////    < zeroOrMore >
-////      < element name="attribute">
-////        <ref name="attribute-content" />
-////      </element>
-////    </zeroOrMore>
-////    <zeroOrMore>
-////      <element name = "noteref" >
-////        <ref name="noteref-content" />
-////      </element>
-////    </zeroOrMore>
-////    <optional>
-////      <ref name="date-content" />
-////    </optional>
-////    <zeroOrMore>
-////      <element name = "citationref" >
-////        <ref name="citationref-content" />
-////      </element>
-////    </zeroOrMore>
-////    <zeroOrMore>
-////      <element name = "tagref" >
-////        <ref name="tagref-content" />
-////      </element>
-////    </zeroOrMore>
-////  </define>
+//// gramps XML 1.71 - Done
+////
+//// HLink
+//// Priv
+//// region
+//// attribute
+//// citationref
+//// noteref
 
 namespace GrampsView.Data.Model
 {
@@ -70,18 +34,18 @@ namespace GrampsView.Data.Model
     [DataContract]
     public class HLinkMediaModel : HLinkBase, IHLinkMediaModel
     {
-        private Color _HomeSymbolColour = Color.White;
-
         /// <summary>
         /// The local home use image.
         /// </summary>
-        private int localHomeImageType = CommonConstants.HomeImageTypeUnknown;
+        private int _HomeImageType = CommonConstants.HomeImageTypeUnknown;
+
+        private Color _HomeSymbolColour = Color.White;
 
         ///// <summary>
         ///// The local internal default character icon
         ///// </summary
         [EnumMember]
-        private string localIDefaultSymbol = CommonConstants.IconDDefault;
+        private string _IDefaultSymbol = CommonConstants.IconDDefault;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HLinkMediaModel"/> class.
@@ -113,13 +77,13 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets or sets the g attribute.
+        /// Gets or sets the Attribute.
         /// </summary>
         /// <value>
-        /// The g attribute.
+        /// The Attribute.
         /// </value>
         [DataMember]
-        public AttributeModel GAttribute { get; set; }
+        public OCAttributeModelCollection GAttributeRefCollection { get; set; } = new OCAttributeModelCollection();
 
         /// <summary>
         /// Gets or sets the g citation model collection.
@@ -128,7 +92,7 @@ namespace GrampsView.Data.Model
         /// The g citation model collection.
         /// </value>
         [DataMember]
-        public HLinkCitationModelCollection GCitationModelCollection { get; set; }
+        public HLinkCitationModelCollection GCitationRefCollection { get; set; } = new HLinkCitationModelCollection();
 
         /// <summary>
         /// Gets or sets the g corner1 x.
@@ -173,7 +137,7 @@ namespace GrampsView.Data.Model
         /// The g note model collection.
         /// </value>
         [DataMember]
-        public HLinkNoteModelCollection GNoteModelCollection { get; set; }
+        public HLinkNoteModelCollection GNoteRefCollection { get; set; } = new HLinkNoteModelCollection();
 
         /// <summary>
         /// Gets or sets the home image clipped bitmap.
@@ -196,7 +160,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                switch (localHomeImageType)
+                switch (_HomeImageType)
                 {
                     case CommonConstants.HomeImageTypeClippedBitmap:
                         {
@@ -229,12 +193,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localHomeImageType;
+                return _HomeImageType;
             }
 
             set
             {
-                SetProperty(ref localHomeImageType, value);
+                SetProperty(ref _HomeImageType, value);
             }
         }
 
@@ -250,12 +214,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localIDefaultSymbol;
+                return _IDefaultSymbol;
             }
 
             set
             {
-                SetProperty(ref localIDefaultSymbol, value);
+                SetProperty(ref _IDefaultSymbol, value);
             }
         }
 

@@ -32,20 +32,6 @@ namespace GrampsView.Data.DataView
             get; set;
         }
 
-        ///// <summary>
-        ///// Gets all as ViewModel.
-        ///// </summary>
-        ///// <returns>
-        ///// </returns>
-        //// List<PersonModel> GetAllAsModel();
-        ///// <summary>
-        ///// Gets the groups by letter.
-        ///// </summary>
-        ///// <returns>
-        ///// List
-        ///// </returns>
-        //List<CommonGroupInfoCollection<PersonModel>> GetGroupsByLetter { get; }
-
         /// <summary>
         /// Gets or sets the person data.
         /// </summary>
@@ -54,7 +40,7 @@ namespace GrampsView.Data.DataView
         /// </value>
         RepositoryModelType<PersonModel, HLinkPersonModel> PersonData
         {
-            get; set;
+            get;
         }
 
         /// <summary>
@@ -72,7 +58,7 @@ namespace GrampsView.Data.DataView
         /// </param>
         /// <returns>
         /// </returns>
-        HLinkMediaModel GetDefaultImageFromCollection(PersonModel argModel);
+        HLinkHomeImageModel GetDefaultImageFromCollection(PersonModel argModel);
 
         ///// <summary>
         ///// Gets the groups by category.

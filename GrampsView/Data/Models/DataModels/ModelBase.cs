@@ -70,7 +70,7 @@ namespace GrampsView.Data.Model
         /// <summary>
         /// The local image h link.
         /// </summary>
-        private HLinkMediaModel _ImageHLink = new HLinkMediaModel();
+        private HLinkHomeImageModel _ImageHLink = new HLinkHomeImageModel();
 
         /// <summary>
         /// The local priv.
@@ -202,7 +202,7 @@ namespace GrampsView.Data.Model
         /// The image h link key.
         /// </value>
         [DataMember]
-        public HLinkMediaModel HomeImageHLink
+        public HLinkHomeImageModel HomeImageHLink
         {
             get
             {

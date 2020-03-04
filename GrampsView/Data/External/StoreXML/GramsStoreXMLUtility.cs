@@ -11,17 +11,17 @@
 
 namespace GrampsView.Data.ExternalStorageNS
 {
+    using GrampsView.Common;
+    using GrampsView.Data.Collections;
+    using GrampsView.Data.Model;
+    using GrampsView.Data.Repository;
+
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Xml.Linq;
 
-    using GrampsView.Common;
-
-    using GrampsView.Data.Collections;
-    using GrampsView.Data.Model;
-    using GrampsView.Data.Repository;
     using Xamarin.Forms;
 
     /// <summary>
@@ -117,7 +117,7 @@ namespace GrampsView.Data.ExternalStorageNS
         /// <returns>
         /// Updatded HomeImageLink
         /// </returns>
-        private static HLinkMediaModel SetHomeHLink(HLinkMediaModel HomeImageHLink, HLinkMediaModel hlink)
+        private static HLinkHomeImageModel SetHomeHLink(HLinkHomeImageModel HomeImageHLink, HLinkHomeImageModel hlink)
         {
             HomeImageHLink.GCorner1X = hlink.GCorner1X;
             HomeImageHLink.GCorner1Y = hlink.GCorner1Y;
@@ -133,6 +133,11 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             OCAddressModelCollection t = new OCAddressModelCollection();
 
+            // Get colour
+            Application.Current.Resources.TryGetValue("CardBackGroundAddress", out var varCardColour);
+            Color cardColour = (Color)varCardColour;
+
+            // Run query
             var theERElement =
                     from orElementEl
                     in xmlData.Elements(ns + "address")
@@ -175,6 +180,7 @@ namespace GrampsView.Data.ExternalStorageNS
                     // set the Home image or symbol
                     newAddressModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
                     newAddressModel.HomeImageHLink.HomeSymbol = CommonConstants.IconAddress;
+                    newAddressModel.HomeImageHLink.HomeSymbolColour = cardColour;
 
                     t.Add(newAddressModel);
                 }
@@ -197,6 +203,11 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             OCAttributeModelCollection t = new OCAttributeModelCollection();
 
+            // Get colour
+            Application.Current.Resources.TryGetValue("CardBackGroundAttribute", out var varCardColour);
+            Color cardColour = (Color)varCardColour;
+
+            // Run query
             var theERElement =
                     from orElementEl
                     in xmlData.Elements(ns + "attribute")
@@ -225,6 +236,7 @@ namespace GrampsView.Data.ExternalStorageNS
                     // set the Home image or symbol
                     newAttributeModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
                     newAttributeModel.HomeImageHLink.HomeSymbol = CommonConstants.IconAttribute;
+                    newAttributeModel.HomeImageHLink.HomeSymbolColour = cardColour;
 
                     t.Add(newAttributeModel);
                 }
@@ -488,6 +500,11 @@ namespace GrampsView.Data.ExternalStorageNS
                         }
                     }
 
+                    // Get remaining fields
+                    t2.GAttributeRefCollection = GetAttributeCollection(theLoadORElement);
+                    t2.GCitationRefCollection = GetCitationCollection(theLoadORElement);
+                    t2.GNoteRefCollection = GetNoteCollection(theLoadORElement);
+
                     // TODO !ELEMENT objref (region?, attribute*, citationref*, noteref*)&gt;
                     // !ATTLIST objref hlink IDREF #REQUIRED priv (0|1) #IMPLIED
                     t.Add(t2);
@@ -750,6 +767,11 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             OCURLModelCollection t = new OCURLModelCollection();
 
+            // Get colour
+            Application.Current.Resources.TryGetValue("CardBackGroundUtility", out var varCardColour);
+            Color cardColour = (Color)varCardColour;
+
+            // Run query
             var theERElement =
                     from orElementEl
                     in xmlData.Elements(ns + "url")
@@ -757,7 +779,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
             if (theERElement.Any())
             {
-                HLinkMediaModel newHomeLink = new HLinkMediaModel
+                HLinkHomeImageModel newHomeLink = new HLinkHomeImageModel
                 {
                     HomeImageType = CommonConstants.HomeImageTypeSymbol,
                     HomeSymbol = CommonConstants.IconBookMark // TODO  Windows.UI.Xaml.Controls.Symbol.World,
@@ -784,6 +806,7 @@ namespace GrampsView.Data.ExternalStorageNS
                     // set the Home image or symbol
                     tt.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
                     tt.HomeImageHLink.HomeSymbol = IconFont.Link;
+                    tt.HomeImageHLink.HomeSymbolColour = cardColour;
 
                     t.Add(tt);
                 }

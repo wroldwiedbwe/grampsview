@@ -112,11 +112,19 @@
         #0080ff
     </Color>
 
+    <Color x:Key="CardBackGroundRepository">
+        #A9A9A9
+    </Color>
+
     <Color x:Key="CardBackGroundSource">
         #ff4000
     </Color>
 
     <Color x:Key="CardBackGroundTag">
+        #A9A9A9
+    </Color>
+
+    <Color x:Key="CardBackGroundUtility">
         #A9A9A9
     </Color>
 </ResourceDictionary>

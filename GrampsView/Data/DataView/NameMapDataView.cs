@@ -28,7 +28,7 @@ namespace GrampsView.Data.DataView
     public class NameMapDataView : DataViewBase<NameMapModel, HLinkNameMapModel, HLinkNameMapModelCollection>, INameMapDataView
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NameMapDataView" /> class.
+        /// Initializes a new instance of the <see cref="NameMapDataView"/> class.
         /// </summary>
         public NameMapDataView()
         {
@@ -70,12 +70,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataStore.DS.localNameMapData;
-            }
-
-            set
-            {
-                SetProperty(ref DataStore.DS.localNameMapData, value);
+                return DataStore.DS.NameMapData;
             }
         }
 

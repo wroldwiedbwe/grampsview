@@ -73,12 +73,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataStore.DS.localRepositoryData;
-            }
-
-            set
-            {
-                SetProperty(ref DataStore.DS.localRepositoryData, value);
+                return DataStore.DS.RepositoryData;
             }
         }
 

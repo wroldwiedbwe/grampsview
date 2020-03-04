@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    BackgroundColor="{DynamicResource CardBackGroundEvent}"
     Style="{DynamicResource FrameSmallFixedCardStyle}">
     <Frame.Content>
 

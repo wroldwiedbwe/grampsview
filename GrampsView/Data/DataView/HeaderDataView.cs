@@ -25,7 +25,7 @@ namespace GrampsView.Data.DataView
     public class HeaderDataView : DataViewBase<HeaderModel, HLinkHeaderModel, HLinkHeaderModelCollection>, IHeaderDataView
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HeaderDataView" /> class.
+        /// Initializes a new instance of the <see cref="HeaderDataView"/> class.
         /// </summary>
         public HeaderDataView()
         {
@@ -50,12 +50,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataStore.DS.localHeaderData;
-            }
-
-            set
-            {
-                SetProperty(ref DataStore.DS.localHeaderData, value);
+                return DataStore.DS.HeaderData;
             }
         }
 

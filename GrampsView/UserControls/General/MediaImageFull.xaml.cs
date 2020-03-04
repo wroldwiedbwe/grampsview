@@ -49,7 +49,7 @@ namespace GrampsView.UserControls
         {
             MediaImageFull mifModel = (bindable as MediaImageFull);
 
-            HLinkMediaModel imageHLinkMediaModel = newValue as HLinkMediaModel;
+            HLinkHomeImageModel imageHLinkMediaModel = newValue as HLinkHomeImageModel;
 
             if (!(imageHLinkMediaModel is null) && (imageHLinkMediaModel.Valid))
             {

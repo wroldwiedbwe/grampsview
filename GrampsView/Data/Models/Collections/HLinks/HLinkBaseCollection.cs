@@ -27,7 +27,7 @@ namespace GrampsView.Data.Model
         /// <summary>
         /// Gets or sets the first image h link.
         /// </summary>
-        public HLinkMediaModel FirstHLink { get; set; } = new HLinkMediaModel();
+        public HLinkHomeImageModel FirstHLink { get; set; } = new HLinkHomeImageModel();
 
         public virtual CardGroup GetCardGroup(string argTitle = "")
         {

@@ -74,12 +74,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataStore.DS.localTagData;
-            }
-
-            set
-            {
-                SetProperty(ref DataStore.DS.localTagData, value);
+                return DataStore.DS.TagData;
             }
         }
 

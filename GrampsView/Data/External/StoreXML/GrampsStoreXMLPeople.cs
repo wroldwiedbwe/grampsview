@@ -45,7 +45,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 Application.Current.Resources.TryGetValue("CardBackGroundPerson", out var varCardColour);
                 Color cardColour = (Color)varCardColour;
 
-                // Load notes Run query
+                // Run query
                 var de =
                     from el in localGrampsXMLdoc.Descendants(ns + "person")
                     select el;

@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    BackgroundColor="{DynamicResource CardBackGroundPerson}"
     Style="{DynamicResource FrameCardStyle}"
     WidthRequest="100">
 
@@ -17,10 +16,10 @@
             FlexLayout.Basis="{OnIdiom Phone='50%',
                                        Tablet='33%',
                                        Desktop='33%'}"
-            IsEnabled="{Binding IsValid, Mode=OneWay}">
+            IsEnabled="{Binding Valid, Mode=OneWay}">
 
             <Grid.GestureRecognizers>
-                <TapGestureRecognizer prism:Navigation.CanNavigate="{Binding IsValid, Mode=OneWay}" Command="{prism:NavigateTo 'PersonDetailPage'}">
+                <TapGestureRecognizer prism:Navigation.CanNavigate="{Binding Valid, Mode=OneWay}" Command="{prism:NavigateTo 'PersonDetailPage'}">
                     <TapGestureRecognizer.CommandParameter>
                         <prism:NavigationParameter Key="hlink" Value="{Binding ., Mode=OneWay}" />
                     </TapGestureRecognizer.CommandParameter>

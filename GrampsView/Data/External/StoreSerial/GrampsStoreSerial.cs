@@ -121,9 +121,9 @@ namespace GrampsView.Data.External.StoreSerial
                             DataStore.CN.NotifyError("Bad Family deserialisation error.  Data loading cancelled. Restart the program and reload the data.");
                         }
 
-                        if (t.localMediaData != null)
+                        if (t.MediaData != null)
                         {
-                            DV.MediaDV.MediaData = t.localMediaData;
+                            DataStore.DS.MediaData = t.MediaData;
                         }
                         else
                         {
@@ -131,9 +131,9 @@ namespace GrampsView.Data.External.StoreSerial
                             DataStore.CN.NotifyError("Bad Media deserialisation error.  Data loading cancelled. Restart the program and reload the data.");
                         }
 
-                        if (t.localPersonData != null)
+                        if (t.PersonData != null)
                         {
-                            DV.PersonDV.PersonData = t.localPersonData;
+                            DataStore.DS.PersonData = t.PersonData;
                         }
                         else
                         {
@@ -153,15 +153,9 @@ namespace GrampsView.Data.External.StoreSerial
                         }
 
                         // Check for nulls
-                        if (t.localTagData != null)
+                        if (t.TagData != null)
                         {
-                            //// Hack TODO Work out why xamarin not serilising color property
-                            //foreach (TagModel item in t.localTagData)
-                            //{
-                            //    item.HomeImageHLink.HomeSymbolColour = item.GColor;
-                            //}
-
-                            DataStore.DS.localTagData = t.localTagData;
+                            DataStore.DS.TagData = t.TagData;
                         }
                         else
                         {
@@ -170,12 +164,12 @@ namespace GrampsView.Data.External.StoreSerial
                         }
 
                         // TODO Finish setting the checks up on these
-                        DataStore.DS.localHeaderData = t.localHeaderData;
-                        DataStore.DS.localNameMapData = t.localNameMapData;
-                        DataStore.DS.localNoteData = t.localNoteData;
+                        DataStore.DS.HeaderData = t.HeaderData;
+                        DataStore.DS.NameMapData = t.NameMapData;
+                        DataStore.DS.NoteData = t.NoteData;
 
-                        DataStore.DS.localPlaceData = t.localPlaceData;
-                        DataStore.DS.localRepositoryData = t.localRepositoryData;
+                        DataStore.DS.PlaceData = t.PlaceData;
+                        DataStore.DS.RepositoryData = t.RepositoryData;
                     }
                 }
 

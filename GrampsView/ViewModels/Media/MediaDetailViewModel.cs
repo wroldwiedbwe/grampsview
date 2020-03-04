@@ -24,8 +24,7 @@ namespace GrampsView.ViewModels
     /// </summary>
     public class MediaDetailViewModel : ViewModelBase
     {
-        private readonly double mRatioPan = -0.0015f;
-        private readonly double mRatioZoom = 0.8f;
+        private HLinkMediaModel _CurrentHLinkMedia = new HLinkMediaModel();
 
         /// <summary>
         /// The local media object.
@@ -63,6 +62,19 @@ namespace GrampsView.ViewModels
             OpenImageCommand = new DelegateCommand(OpenImage, CanOpenImage);
         }
 
+        public HLinkMediaModel CurrentHLinkMedia
+        {
+            get
+            {
+                return _CurrentHLinkMedia;
+            }
+
+            set
+            {
+                SetProperty(ref _CurrentHLinkMedia, value);
+            }
+        }
+
         /// <summary>
         /// Gets or sets the current media object.
         /// </summary>
@@ -85,6 +97,7 @@ namespace GrampsView.ViewModels
         public double CurrentXOffset { get; set; }
 
         public double CurrentYOffset { get; set; }
+
         public double CurrentZoomFactor { get; set; }
 
         /// <summary>
@@ -134,9 +147,6 @@ namespace GrampsView.ViewModels
         {
             base.OnNavigatedFrom(parameters);
 
-            // dispose of Delegates to allow GC
-            //OpenImageCommand = null;
-
             // Clear large Bitmap Image
             if (CurrentMediaObject != null)
             {
@@ -155,17 +165,21 @@ namespace GrampsView.ViewModels
         {
             BaseCL.LogRoutineEntry("MediaDetailViewModel OnNavigatedTo");
 
-            CurrentMediaObject = DV.MediaDV.GetModelFromHLink(BaseNavParamsHLink);
+            CurrentHLinkMedia = BaseNavParamsHLink as HLinkMediaModel;
 
-            if (CurrentMediaObject != null)
+            if (!(CurrentHLinkMedia is null))
             {
-                BaseTitle = CurrentMediaObject.GetDefaultText;
-                BaseTitleIcon = CommonConstants.IconMedia;
+                CurrentMediaObject = DV.MediaDV.GetModelFromHLink(CurrentHLinkMedia);
 
-                // Get basic details
-                CardGroup t = new CardGroup { Title = "Header Details" };
+                if (!(CurrentMediaObject is null))
+                {
+                    BaseTitle = CurrentMediaObject.GetDefaultText;
+                    BaseTitleIcon = CommonConstants.IconMedia;
 
-                t.Cards.Add(new CardListLineCollection
+                    // Get basic details
+                    CardGroup t = new CardGroup { Title = "Header Details" };
+
+                    t.Cards.Add(new CardListLineCollection
                     {
                         new CardListLine("Card Type:", "Media Detail"),
                         new CardListLine("Date:", CurrentMediaObject.GDateValue.GetLongDateAsString),
@@ -176,31 +190,34 @@ namespace GrampsView.ViewModels
                         new CardListLine("OriginalFilePath:", CurrentMediaObject.OriginalFilePath),
                     });
 
-                // Set up note re opening in photo app
-                CardListLineCollection t1 = new CardListLineCollection
+                    // Set up note re opening in photo app
+                    CardListLineCollection t1 = new CardListLineCollection
                 {
                     new CardListLine(string.Empty, "Note: Double click the image to open it.")
                 };
 
-                t.Cards.Add(t1);
+                    t.Cards.Add(t1);
 
-                // Add standard details
-                t.Cards.Add(DV.MediaDV.GetModelInfoFormatted(CurrentMediaObject));
+                    // Add standard details
+                    t.Cards.Add(DV.MediaDV.GetModelInfoFormatted(CurrentMediaObject));
 
-                BaseHeader.Add(t);
+                    BaseHeader.Add(t);
 
-                // Setup Summary Models
-                BaseDetail.Add(CurrentMediaObject.GPersonRefCollection.GetCardGroup());
-                BaseDetail.Add(CurrentMediaObject.GCitationRefCollection.GetCardGroup());
-                BaseDetail.Add(CurrentMediaObject.GNoteRefCollection.GetCardGroup());
-                BaseDetail.Add(CurrentMediaObject.GEventRefCollection.GetCardGroup());
-                BaseDetail.Add(CurrentMediaObject.GFamilyRefCollection.GetCardGroup());
-                BaseDetail.Add(CurrentMediaObject.GTagRefCollection.GetCardGroup());
+                    // Add HLink Details
+                    BaseDetail.Add(CurrentHLinkMedia.GAttributeRefCollection.GetCardGroup("Hlink Attributes"));
+                    BaseDetail.Add(CurrentHLinkMedia.GCitationRefCollection.GetCardGroup("HLink Citations"));
+                    BaseDetail.Add(CurrentHLinkMedia.GNoteRefCollection.GetCardGroup("HLink Notes"));
 
-                BaseBackLinks.Add(CurrentMediaObject.BackHLinkReferenceCollection.GetCardGroup());
+                    // Add Model details
+                    BaseDetail.Add(CurrentMediaObject.GCitationRefCollection.GetCardGroup());
+                    BaseDetail.Add(CurrentMediaObject.GNoteRefCollection.GetCardGroup());
+                    BaseDetail.Add(CurrentMediaObject.GTagRefCollection.GetCardGroup());
+
+                    BaseBackLinks.Add(CurrentMediaObject.BackHLinkReferenceCollection.GetCardGroup());
+                }
+
+                BaseCL.LogRoutineExit("MediaDetailViewModel OnNavigatedTo");
             }
-
-            BaseCL.LogRoutineExit("MediaDetailViewModel OnNavigatedTo");
         }
 
         public void ReloadImage(CachedImage argmdp)

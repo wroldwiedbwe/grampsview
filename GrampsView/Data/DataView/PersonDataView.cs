@@ -139,12 +139,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataStore.DS.localPersonData;
-            }
-
-            set
-            {
-                SetProperty(ref DataStore.DS.localPersonData, value: value);
+                return DataStore.DS.PersonData;
             }
         }
 
@@ -196,9 +191,9 @@ namespace GrampsView.Data.DataView
         /// </param>
         /// <returns>
         /// </returns>
-        public HLinkMediaModel GetDefaultImageFromCollection(PersonModel argModel)
+        public HLinkHomeImageModel GetDefaultImageFromCollection(PersonModel argModel)
         {
-            HLinkMediaModel returnHLink = new HLinkMediaModel();
+            HLinkHomeImageModel returnHLink = new HLinkHomeImageModel();
 
             // ???? TODO "Default Image Citation"
             return returnHLink;

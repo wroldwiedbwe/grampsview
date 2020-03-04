@@ -24,10 +24,8 @@ namespace GrampsView.ViewModels
 
         public CropTransformationViewModel()
         {
-            // Alys - _c47a6bd13bb4288c272
-            // Ann - _c47a1a91aec7e625124
-            // Damon - _dc84f6a1f0b6400c49bf3370bbc
-            // Elliot - _c47ecf788120563f2b2
+            // Alys - _c47a6bd13bb4288c272 Ann - _c47a1a91aec7e625124 Damon -
+            // _dc84f6a1f0b6400c49bf3370bbc Elliot - _c47ecf788120563f2b2
 
             // do a
             pm = DV.PersonDV.GetModelFromHLink(new HLinkMediaModel { HLinkKey = "_c47a6bd13bb4288c272" });
@@ -63,9 +61,31 @@ namespace GrampsView.ViewModels
             cSource = tt.MediaStorageFilePath;
         }
 
+        public string aSource { get; set; } = string.Empty;
+
+        public List<ITransformation> aTransformations { get; set; } = new List<ITransformation>();
+
+        public string bSource { get; set; } = string.Empty;
+
+        public List<ITransformation> bTransformations { get; set; } = new List<ITransformation>();
+
+        public double CropHeightRatio { get; set; }
+
+        public double CropWidthRatio { get; set; }
+
+        public string cSource { get; set; } = string.Empty;
+
+        public List<ITransformation> cTransformations { get; set; } = new List<ITransformation>();
+
+        public double CurrentXOffset { get; set; }
+
+        public double CurrentYOffset { get; set; }
+
+        public double CurrentZoomFactor { get; set; }
+
         public void doCrop()
         {
-            HLinkMediaModel hlmm = pm.HomeImageHLink;
+            HLinkHomeImageModel hlmm = pm.HomeImageHLink;
 
             tt = hlmm.DeRef;
 
@@ -84,13 +104,14 @@ namespace GrampsView.ViewModels
 
             //CurrentXOffset = -1 * (50 - (hlmm.GCorner1X - (CropWidth / 2)));      // Convert to zero at 50 / 100 and edge of crop box
 
-            // CurrentXOffset = CurrentXOffset * (CropWidth / CropHeight);         // Scale to width/height
+            // CurrentXOffset = CurrentXOffset * (CropWidth / CropHeight); // Scale to width/height
 
             CurrentXOffset = (-50 + hlmm.GCorner1X + (CropWidth / 2));
 
             CurrentXOffset = CurrentXOffset * (tt.MetaDataWidth / tt.MetaDataHeight) * (CropHeight / CropWidth) / 100d;                              // Convert to percentage
 
-            // CurrentXOffset = (-50 + hlmm.GCorner1X + (CropWidth / 2)) * (CropWidth / CropHeight) / 100d;
+            // CurrentXOffset = (-50 + hlmm.GCorner1X + (CropWidth / 2)) * (CropWidth / CropHeight)
+            // / 100d;
 
             CurrentYOffset = (-50 + hlmm.GCorner1Y + (CropHeight / 2)) / 100d;
 
@@ -148,24 +169,5 @@ namespace GrampsView.ViewModels
             //    new CropTransformation(CurrentZoomFactor, CurrentXOffset, CurrentYOffset, CropWidthRatio, CropHeightRatio)
             //);
         }
-
-        public double CurrentXOffset { get; set; }
-        public double CurrentYOffset { get; set; }
-        public double CurrentZoomFactor { get; set; }
-
-        public double CropWidthRatio { get; set; }
-        public double CropHeightRatio { get; set; }
-
-        public string aSource { get; set; } = string.Empty;
-
-        public string bSource { get; set; } = string.Empty;
-
-        public string cSource { get; set; } = string.Empty;
-
-        public List<ITransformation> aTransformations { get; set; } = new List<ITransformation>();
-
-        public List<ITransformation> bTransformations { get; set; } = new List<ITransformation>();
-
-        public List<ITransformation> cTransformations { get; set; } = new List<ITransformation>();
     }
 }

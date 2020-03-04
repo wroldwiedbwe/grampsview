@@ -27,7 +27,7 @@ namespace GrampsView.Data.DataView
         /// </value>
         RepositoryModelType<TagModel, HLinkTagModel> TagData
         {
-            get; set;
+            get;
         }
 
         /// <summary>

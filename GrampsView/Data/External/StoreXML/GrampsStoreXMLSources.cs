@@ -17,6 +17,7 @@ namespace GrampsView.Data.ExternalStorageNS
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
+    using Xamarin.Forms;
 
     /// <summary>
     /// Private Storage Routines.
@@ -39,6 +40,10 @@ namespace GrampsView.Data.ExternalStorageNS
                 // XNamespace ns = grampsXMLNameSpace;
                 try
                 {
+                    // Get colour
+                    Application.Current.Resources.TryGetValue("CardBackGroundSource", out var varCardColour);
+                    Color cardColour = (Color)varCardColour;
+
                     // Run query
                     var de =
                         from el in localGrampsXMLdoc.Descendants(ns + "source")
@@ -78,6 +83,9 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // Repository refs
                         loadSource.GRepositoryRefCollection = GetRepositoryCollection(pSource);
+
+                        // Set HomeLink
+                        loadSource.HomeImageHLink.HomeSymbolColour = cardColour;
 
                         // save the event
                         DV.SourceDV.SourceData.Add(loadSource);
