@@ -44,12 +44,6 @@ namespace GrampsView.Droid
             //Connector.SetAuthenticationContinuationEventArgs(requestCode, resultCode, data);
         }
 
-        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
-        {
-            var newExc = new Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as Exception);
-            DataStore.CN.NotifyException("CurrentDomainOnUnhandledException", newExc);
-        }
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             //TabLayoutResource = Resource.Layout.Tabbar;
@@ -96,12 +90,6 @@ namespace GrampsView.Droid
             LoadApplication(new App(new AndroidInitializer()));
         }
 
-        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
-        {
-            var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
-            DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
-        }
-
         protected override void OnDestroy()
         {
             base.OnDestroy();
@@ -119,6 +107,18 @@ namespace GrampsView.Droid
             base.OnResume();
 
             //CrashManager.Register(this, GrampsView.Common.CommonConstants.HockeyAppId);
+        }
+
+        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+        {
+            var newExc = new Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as Exception);
+            DataStore.CN.NotifyException("CurrentDomainOnUnhandledException", newExc);
+        }
+
+        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
+        {
+            var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
+            DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
         }
 
         private void UnregisterManagers()
