@@ -23,7 +23,7 @@ namespace GrampsView.ViewModels
     public class NoteListViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NoteListViewModel" /> class.
+        /// Initializes a new instance of the <see cref="NoteListViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The ioc common logging.
@@ -35,6 +35,7 @@ namespace GrampsView.ViewModels
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "Note List";
+            BaseTitleIcon = CommonConstants.IconNotes;
         }
 
         public CardGroup NoteSource

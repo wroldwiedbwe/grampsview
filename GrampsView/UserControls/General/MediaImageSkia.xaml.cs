@@ -1,4 +1,4 @@
-﻿// <copyright file="MediaImage.xaml.cs" company="MeMyselfAndI">
+﻿// <copyright file="MediaImageSkia.xaml.cs" company="MeMyselfAndI">
 //     Copyright (c) MeMyselfAndI. All rights reserved.
 // </copyright>
 
@@ -19,7 +19,7 @@ namespace GrampsView.UserControls
     public partial class MediaImageSkia : Frame, IDisposable
     {
         public static readonly BindableProperty UConHideSymbolProperty
-               = BindableProperty.Create(returnType: typeof(bool), declaringType: typeof(MediaImage), propertyName: nameof(UConHideSymbol), defaultValue: false, propertyChanged: MediaImage_UConPropertyChanged);
+               = BindableProperty.Create(returnType: typeof(bool), declaringType: typeof(MediaImageSkia), propertyName: nameof(UConHideSymbol), defaultValue: false, propertyChanged: MediaImage_UConPropertyChanged);
 
         private bool disposedValue = false;
 
@@ -71,7 +71,7 @@ namespace GrampsView.UserControls
 
         private void DaImage_Error(object sender, FFImageLoading.Forms.CachedImageEvents.ErrorEventArgs e)
         {
-            DataStore.CN.NotifyError("Error in MediaImage.  Error is " + e.Exception.Message);
+            DataStore.CN.NotifyError("Error in MediaImageSkia.  Error is " + e.Exception.Message);
 
             (sender as FFImageLoading.Forms.CachedImage).Cancel();
             (sender as FFImageLoading.Forms.CachedImage).Source = null;
@@ -79,19 +79,26 @@ namespace GrampsView.UserControls
 
         private void MediaImageSkia_BindingContextChanged(object sender, EventArgs e)
         {
-            HLinkMedia = this.BindingContext as HLinkHomeImageModel;
+            HLinkHomeImageModel newHLinkMedia = this.BindingContext as HLinkHomeImageModel;
 
-            if (HLinkMedia is null)
+            if (newHLinkMedia is null)
             {
                 //DataStore.CN.NotifyError("Bad HlinkMediaModel (is null) passed to MediaImage");
                 return;
             }
 
-            if (!HLinkMedia.Valid)
+            if (!newHLinkMedia.Valid)
             {
                 //DataStore.CN.NotifyError("Invalid HlinkMediaModel (" + HLinkMedia.HLinkKey + ") passed to MediaImage");
                 return;
             }
+
+            if (newHLinkMedia == HLinkMedia)
+            {
+                return;
+            }
+
+            HLinkMedia = newHLinkMedia;
 
             theMediaModel = HLinkMedia.DeRef;
 
@@ -110,12 +117,12 @@ namespace GrampsView.UserControls
 
                 if (tt.Glyph == null)
                 {
-                    DataStore.CN.NotifyError("MediaImage (" + HLinkMedia.HLinkKey + ") Null Glyph");
+                    DataStore.CN.NotifyError("MediaImageSkia (" + HLinkMedia.HLinkKey + ") Null Glyph");
                 }
 
                 if (tt.Color == null)
                 {
-                    DataStore.CN.NotifyError("MediaImage (" + HLinkMedia.HLinkKey + ") Null Colour");
+                    DataStore.CN.NotifyError("MediaImageSkia (" + HLinkMedia.HLinkKey + ") Null Colour");
                 }
 
                 this.daSymbol.Source = tt;
@@ -130,7 +137,12 @@ namespace GrampsView.UserControls
             }
 
             // Have a media image to display
-            Debug.WriteLine(HLinkMedia.DeRef.MediaStorageFilePath, "MediaImage");
+            Debug.WriteLine(HLinkMedia.DeRef.MediaStorageFilePath, "MediaImageSkia");
+            if (string.IsNullOrEmpty(HLinkMedia.DeRef.MediaStorageFilePath))
+            {
+                DataStore.CN.NotifyError("The media file path is null for Id:" + HLinkMedia.DeRef.Id);
+                return;
+            }
 
             this.daSymbol.IsVisible = false;
 

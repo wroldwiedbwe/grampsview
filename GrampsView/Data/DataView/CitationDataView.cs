@@ -157,7 +157,7 @@ namespace GrampsView.Data.DataView
                 {
                     HLinkCitationModel currentHLink = theCollection[i];
 
-                    returnMediaModel = currentHLink.DeRef.GMediaRefCollection.FirstHLink;
+                    returnMediaModel = currentHLink.DeRef.GMediaRefCollection.FirstHLinkHomeImage;
 
                     //// Handle direct media reference
                     // if (currentHLink.DeRef.GMediaRefCollection.Count > 0) { foreach

@@ -11,6 +11,7 @@
 namespace GrampsView.Data.Model
 {
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Runtime.Serialization;
 
     using GrampsView.Common;
@@ -27,7 +28,7 @@ namespace GrampsView.Data.Model
         /// <summary>
         /// Gets or sets the first image h link.
         /// </summary>
-        public HLinkHomeImageModel FirstHLink { get; set; } = new HLinkHomeImageModel();
+        public HLinkHomeImageModel FirstHLinkHomeImage { get; set; } = new HLinkHomeImageModel();
 
         public virtual CardGroup GetCardGroup(string argTitle = "")
         {

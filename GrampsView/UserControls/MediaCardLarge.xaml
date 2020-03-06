@@ -7,7 +7,6 @@
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="MediaCardLargeRoot"
     Style="{DynamicResource MediaLargeImageStyle}">
-    <!--  Set Backgroudn colour to help media images stand out  -->
 
     <Frame.Content>
 
@@ -38,9 +37,6 @@
 
             <ucon:MediaImageSkia
                 x:Name="AnchorImage"
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
                 BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
                 HorizontalOptions="FillAndExpand"
                 Style="{DynamicResource MediaImageStyle}" />

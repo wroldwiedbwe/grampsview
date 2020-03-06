@@ -23,7 +23,7 @@ namespace GrampsView.ViewModels
     public class FamilyListViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FamilyListViewModel" /> class.
+        /// Initializes a new instance of the <see cref="FamilyListViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The common logging.
@@ -38,6 +38,7 @@ namespace GrampsView.ViewModels
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "Family List";
+            BaseTitleIcon = CommonConstants.IconFamilies;
         }
 
         public CardGroup FamilySource

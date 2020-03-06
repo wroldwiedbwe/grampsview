@@ -150,7 +150,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 // -- Organise Home Images -----------------------
 
                 // Try media reference collection first
-                HLinkHomeImageModel hlink = citationModel.GMediaRefCollection.FirstHLink;
+                HLinkHomeImageModel hlink = citationModel.GMediaRefCollection.FirstHLinkHomeImage;
 
                 // Check Source for Image
                 if (!hlink.Valid)
@@ -219,18 +219,18 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Setup home images
 
                 // Try media reference collection first
-                HLinkHomeImageModel hlink = eventModel.GMediaRefCollection.FirstHLink;
+                HLinkHomeImageModel hlink = eventModel.GMediaRefCollection.FirstHLinkHomeImage;
 
                 // Check Media for Images
                 if (!hlink.Valid)
                 {
-                    hlink = eventModel.GMediaRefCollection.FirstHLink;
+                    hlink = eventModel.GMediaRefCollection.FirstHLinkHomeImage;
                 }
 
                 // Check Citation for Images
                 if (!hlink.Valid)
                 {
-                    hlink = eventModel.GCitationRefCollection.FirstHLink;
+                    hlink = eventModel.GCitationRefCollection.FirstHLinkHomeImage;
 
                     //hlink = DV.CitationDV.GetFirstImageFromCollection(argModel.GCitationRefCollection);
                 }
@@ -309,21 +309,21 @@ namespace GrampsView.Data.ExternalStorageNS
                 // -- Organse Home Image ---------------------
 
                 // Try media reference collection first
-                HLinkHomeImageModel hlink = familyModel.GMediaRefCollection.FirstHLink;
+                HLinkHomeImageModel hlink = familyModel.GMediaRefCollection.FirstHLinkHomeImage;
 
                 if (!hlink.Valid)
                 {
-                    hlink = familyModel.GCitationRefCollection.FirstHLink;
+                    hlink = familyModel.GCitationRefCollection.FirstHLinkHomeImage;
                 }
 
                 if (!hlink.Valid)
                 {
-                    hlink = familyModel.GEventRefCollection.FirstHLink;
+                    hlink = familyModel.GEventRefCollection.FirstHLinkHomeImage;
                 }
 
                 if (!hlink.Valid)
                 {
-                    hlink = familyModel.GNoteRefCollection.FirstHLink;
+                    hlink = familyModel.GNoteRefCollection.FirstHLinkHomeImage;
                 }
 
                 // Set the image if available
@@ -575,13 +575,13 @@ namespace GrampsView.Data.ExternalStorageNS
                     // Check Media for Images
                     if (!hlink.Valid)
                     {
-                        hlink = argModel.GMediaRefCollection.FirstHLink;
+                        hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
                     }
 
                     // Check Citation for Images
                     if (!hlink.Valid)
                     {
-                        hlink = argModel.GCitationRefCollection.FirstHLink;
+                        hlink = argModel.GCitationRefCollection.FirstHLinkHomeImage;
                     }
 
                     // Action any Link
@@ -734,7 +734,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 // TODO First and Sort for Notes, Repositories and Tags
 
                 // Get default image if available
-                HLinkHomeImageModel hlink = sourceObject.GMediaRefCollection.FirstHLink;
+                HLinkHomeImageModel hlink = sourceObject.GMediaRefCollection.FirstHLinkHomeImage;
 
                 // Action default media image
                 if (!hlink.Valid)

@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  create commit change log:
+  create_commit_change_log:
     runs-on: ubuntu-latest
     steps:
   

@@ -37,6 +37,7 @@ namespace GrampsView.ViewModels
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "BookMark List";
+            BaseTitleIcon = CommonConstants.IconBookMark;
         }
 
         public CardGroupCollection BookMarkSource

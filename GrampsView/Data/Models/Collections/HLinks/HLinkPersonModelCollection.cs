@@ -67,7 +67,7 @@ namespace GrampsView.Data.Collections
 
                     if (tempModel.HomeImageHLink.HomeUseImage)
                     {
-                        FirstHLink = tempModel.HomeImageHLink;
+                        FirstHLinkHomeImage = tempModel.HomeImageHLink;
                         break;
                     }
                 }

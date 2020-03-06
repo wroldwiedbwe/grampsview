@@ -29,13 +29,17 @@
                 <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
 
-            <ucon:MediaImageSkia
-                x:Name="AnchorImage"
+            <Grid
                 Grid.Row="0"
                 Grid.RowSpan="2"
                 Grid.Column="0"
-                BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
-                Style="{DynamicResource MediaImageStyle}" />
+                Style="{DynamicResource CardImageBackground}">
+
+                <ucon:MediaImageSkia
+                    x:Name="AnchorImage"
+                    BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
+                    Style="{DynamicResource MediaImageStyle}" />
+            </Grid>
 
             <Label
                 x:Name="dateTextBlock"

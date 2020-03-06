@@ -22,7 +22,7 @@ namespace GrampsView.ViewModels
     public class RepositoryListViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RepositoryListViewModel" /> class.
+        /// Initializes a new instance of the <see cref="RepositoryListViewModel"/> class.
         /// </summary>
         /// <param name="iocNavigationService">
         /// The ioc navigation service.
@@ -34,6 +34,7 @@ namespace GrampsView.ViewModels
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "Repository List";
+            BaseTitleIcon = CommonConstants.IconRepository;
         }
 
         public CardGroup RepositorySource

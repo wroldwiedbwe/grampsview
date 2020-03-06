@@ -118,11 +118,11 @@ namespace GrampsView
         {
             string StartPage = string.Empty;
 
-            // Only Start App Center if physical
-            if (!CommonRoutines.IsEmulator())
-            {
-                AppCenterInit();
-            }
+            //// Only Start App Center if physical
+            //if (!CommonRoutines.IsEmulator())
+            //{
+            AppCenterInit();
+            //}
 
             CommonTheming.SetAppTheme();
 
@@ -245,6 +245,8 @@ namespace GrampsView
                             typeof(Analytics), typeof(Crashes), typeof(Distribute));
 
             Distribute.SetEnabledAsync(true);
+
+            var t = Distribute.UpdateTrack;
         }
     }
 }

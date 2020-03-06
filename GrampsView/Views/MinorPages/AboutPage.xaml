@@ -97,17 +97,19 @@
                     </Frame>
                 </StackLayout>
 
-                <Frame BackgroundColor="{DynamicResource SecondaryVariantLightColor}" Style="{DynamicResource FrameLargeVariableCardStyle}">
+                <!--  Theme change buttons  -->
+                <Frame Style="{DynamicResource FrameLargeVariableCardStyle}">
 
-                    <StackLayout Orientation="Horizontal">
+                    <StackLayout BackgroundColor="{DynamicResource PrimaryColor}" Orientation="Horizontal">
 
                         <Label
+                            BackgroundColor="Transparent"
                             HorizontalOptions="StartAndExpand"
                             Text="Application Color Theme"
                             TextColor="{DynamicResource OnPrimaryColor}"
                             VerticalOptions="CenterAndExpand" />
 
-                        <ucon:FormsRadioButton BackgroundColor="Accent" RadioItems="{Binding DaRadioItems}">
+                        <ucon:FormsRadioButton BackgroundColor="{DynamicResource SecondaryColor}" RadioItems="{Binding DaRadioItems}">
                             <ucon:FormsRadioButton.Behaviors>
                                 <behaviour:EventToCommandBehavior Command="{Binding RadioButtonToggledCommand}" EventName="ItemToggled" />
                             </ucon:FormsRadioButton.Behaviors>
@@ -115,6 +117,7 @@
                     </StackLayout>
                 </Frame>
 
+                <!--  Other buttons  -->
                 <Button
                     Command="{prismnav:NavigateTo 'MessageLogPage',
                                                   Animated=True}"

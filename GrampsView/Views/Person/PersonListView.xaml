@@ -7,6 +7,34 @@
     ControlTemplate="{StaticResource ListPageTemplate}"
     Style="{DynamicResource GVBaseContentPage}">
 
+    <NavigationPage.TitleView>
+        <Grid Style="{DynamicResource GVPageTitleStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{DynamicResource GVSymbolconPageHeaderType}">
+                <Image.Source>
+                    <FontImageSource
+                        FontFamily="{DynamicResource MaterialFontFamily}"
+                        Glyph="{Binding BaseTitleIcon}"
+                        Size="44"
+                        Color="{DynamicResource PrimaryColor}" />
+                </Image.Source>
+            </Image>
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Style="{DynamicResource GVLabelPageHeaderTitleStyle}"
+                Text="{Binding BaseTitle, Mode=OneWay}" />
+        </Grid>
+    </NavigationPage.TitleView>
+
     <!--  Content  -->
     <Grid>
 

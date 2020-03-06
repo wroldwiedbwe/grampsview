@@ -20,7 +20,7 @@ namespace GrampsView.ViewModels
     public class NameMapListViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NameMapListViewModel" /> class.
+        /// Initializes a new instance of the <see cref="NameMapListViewModel"/> class.
         /// </summary>
         /// <param name="iocEventAggregator">
         /// The ioc event aggregator.
@@ -31,6 +31,8 @@ namespace GrampsView.ViewModels
         public NameMapListViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
+            BaseTitle = "NameMap List";
+            BaseTitleIcon = CommonConstants.IconNameMaps;
         }
 
         public CardGroup NameMapSource

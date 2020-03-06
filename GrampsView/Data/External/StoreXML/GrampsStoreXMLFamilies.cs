@@ -32,7 +32,7 @@ namespace GrampsView.Data.ExternalStorageNS
     {
         public static FamilyModel SetHomeImage(FamilyModel argModel)
         {
-            HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLink;
+            HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
             if (!hlink.Valid)
             {
                 argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;

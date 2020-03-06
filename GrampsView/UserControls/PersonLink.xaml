@@ -36,12 +36,16 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <ucon:MediaImageSkia
-                x:Name="AnchorImage1"
+            <Grid
                 Grid.Row="0"
                 Grid.Column="0"
-                BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
-                Style="{DynamicResource MediaImageStyle}" />
+                Style="{DynamicResource CardImageBackground}">
+
+                <ucon:MediaImageSkia
+                    x:Name="AnchorImage1"
+                    BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
+                    Style="{DynamicResource MediaImageStyle}" />
+            </Grid>
 
             <Label
                 Grid.Row="1"

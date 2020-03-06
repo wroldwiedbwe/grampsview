@@ -186,6 +186,7 @@
         x:Key="FrameSmallFixedCardStyle"
         BasedOn="{StaticResource FrameCardSmallStyle}"
         TargetType="Frame">
+        <Setter Property="Padding" Value="0" />
         <Setter Property="HeightRequest" Value="{DynamicResource GVDetailCardHeightSmall}" />
     </Style>
 
@@ -295,6 +296,10 @@
     <!--  Create a Base Style for a Grid Style  -->
     <Style x:Key="GridStyle" TargetType="Grid" />
 
+    <Style x:Key="CardImageBackground" TargetType="Grid">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryVariantLightColor}" />
+    </Style>
     <!--
         ******************************************************
         Image  Styles
@@ -314,6 +319,7 @@
         <Setter Property="WidthRequest" Value="20" />
         <Setter Property="VerticalOptions" Value="End" />
         <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="Margin" Value="0,0,3,3" />
     </Style>
 
     <Style
@@ -324,6 +330,7 @@
         <Setter Property="WidthRequest" Value="30" />
         <Setter Property="VerticalOptions" Value="End" />
         <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="Margin" Value="0,0,3,3" />
     </Style>
 
     <Style
@@ -367,7 +374,9 @@
     <Style
         x:Key="GVCardLabelStyleSmall"
         BasedOn="{StaticResource GVCardLabelStyle}"
-        TargetType="Label" />
+        TargetType="Label">
+        <Setter Property="Margin" Value="0,0,3,3" />
+    </Style>
 
     <!--  Create a Large Style for a TextBlock  -->
     <Style

@@ -77,7 +77,7 @@ namespace GrampsView.Data.Collections
             if (Count > 0)
             {
                 // For Note collections just grab the first one
-                FirstHLink = this[0].DeRef.HomeImageHLink;
+                FirstHLinkHomeImage = this[0].DeRef.HomeImageHLink;
 
                 // Sort the collection
                 List<HLinkNoteModel> t = this.OrderBy(hlinkNoteModel => hlinkNoteModel.DeRef.GText).ToList();

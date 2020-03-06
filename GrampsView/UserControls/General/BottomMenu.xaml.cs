@@ -11,7 +11,7 @@
             InitializeComponent();
         }
 
-        public static string StatusText
+        public string StatusText
         {
             get
             {

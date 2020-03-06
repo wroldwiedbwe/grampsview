@@ -18,7 +18,7 @@ namespace GrampsView.ViewModels
     public class CitationListViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CitationListViewModel" /> class.
+        /// Initializes a new instance of the <see cref="CitationListViewModel"/> class.
         /// </summary>
         /// <param name="iocEventAggregator">
         /// The ioc event aggregator.
@@ -27,6 +27,7 @@ namespace GrampsView.ViewModels
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "Citation List";
+            BaseTitleIcon = CommonConstants.IconCitation;
         }
 
         public CardGroup CitationSource

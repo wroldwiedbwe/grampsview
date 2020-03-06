@@ -22,7 +22,7 @@ namespace GrampsView.ViewModels
     public class MediaListViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MediaListViewModel" /> class.
+        /// Initializes a new instance of the <see cref="MediaListViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The ioc common logging.
@@ -37,6 +37,7 @@ namespace GrampsView.ViewModels
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "Media List";
+            BaseTitleIcon = CommonConstants.IconMedia;
         }
 
         public CardGroup MediaSource

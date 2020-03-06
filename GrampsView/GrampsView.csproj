@@ -87,16 +87,24 @@
     <Compile Remove="Events\PageMenuPanelOpenEvent.cs" />
     <Compile Remove="Events\PageTitleChangedEvent.cs" />
     <Compile Remove="Events\PageTitleChangedEventArgs.cs" />
+    <Compile Remove="UserControls\AttributeCardLarge.xaml.cs" />
     <Compile Remove="UserControls\BookMarkCardSmall.xaml.cs" />
     <Compile Remove="UserControls\CitationRefCardSmall.xaml.cs" />
+    <Compile Remove="UserControls\EventCardLarge.xaml.cs" />
+    <Compile Remove="UserControls\FamilyCardLarge.xaml.cs" />
     <Compile Remove="UserControls\General\CardGridMultiType.xaml.cs" />
     <Compile Remove="UserControls\General\CardGridSingleType.xaml.cs" />
     <Compile Remove="UserControls\General\CheckBoxExtended.cs" />
     <Compile Remove="UserControls\General\FlexSingleCardGroup.xaml.cs" />
+    <Compile Remove="UserControls\General\MediaImage.xaml.cs" />
     <Compile Remove="UserControls\General\RadioButtonxExtended .cs" />
+    <Compile Remove="UserControls\GenTextCardLarge.xaml.cs" />
     <Compile Remove="UserControls\HLinkCitationCardSmall.xaml.cs" />
     <Compile Remove="UserControls\HLinkEventCardSmall.xaml.cs" />
     <Compile Remove="UserControls\MediaRefCardSmall.xaml.cs" />
+    <Compile Remove="UserControls\NoteCardLarge.xaml.cs" />
+    <Compile Remove="UserControls\PersonCardLarge.xaml.cs" />
+    <Compile Remove="UserControls\RepositoryCardLarge.xaml.cs" />
     <Compile Remove="UserControls\RepositoryRefCardLarge.xaml.cs" />
     <Compile Remove="UserControls\TagRefCardLarge.xaml.cs" />
     <Compile Remove="UserControls\TagRefCardSmall.xaml.cs" />
@@ -137,14 +145,22 @@
     <EmbeddedResource Remove="Assets\Styles\_Colors.xaml" />
     <EmbeddedResource Remove="Assets\Styles\_GenericOverride.xaml" />
     <EmbeddedResource Remove="Common\CommonPropertyDebug.xaml" />
+    <EmbeddedResource Remove="UserControls\AttributeCardLarge.xaml" />
     <EmbeddedResource Remove="UserControls\BookMarkCardSmall.xaml" />
     <EmbeddedResource Remove="UserControls\CitationRefCardSmall.xaml" />
+    <EmbeddedResource Remove="UserControls\EventCardLarge.xaml" />
+    <EmbeddedResource Remove="UserControls\FamilyCardLarge.xaml" />
     <EmbeddedResource Remove="UserControls\General\CardGridMultiType.xaml" />
     <EmbeddedResource Remove="UserControls\General\CardGridSingleType.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexSingleCardGroup.xaml" />
+    <EmbeddedResource Remove="UserControls\General\MediaImage.xaml" />
+    <EmbeddedResource Remove="UserControls\GenTextCardLarge.xaml" />
     <EmbeddedResource Remove="UserControls\HLinkCitationCardSmall.xaml" />
     <EmbeddedResource Remove="UserControls\HLinkEventCardSmall.xaml" />
     <EmbeddedResource Remove="UserControls\MediaRefCardSmall.xaml" />
+    <EmbeddedResource Remove="UserControls\NoteCardLarge.xaml" />
+    <EmbeddedResource Remove="UserControls\PersonCardLarge.xaml" />
+    <EmbeddedResource Remove="UserControls\RepositoryCardLarge.xaml" />
     <EmbeddedResource Remove="UserControls\RepositoryRefCardLarge.xaml" />
     <EmbeddedResource Remove="UserControls\TagRefCardLarge.xaml" />
     <EmbeddedResource Remove="UserControls\TagRefCardSmall.xaml" />
@@ -168,8 +184,13 @@
 
   <ItemGroup>
     <None Remove="AnythingElse\DeploymentTools\releasenotes.md" />
+    <None Remove="releasenotes.md" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.cs.OLD" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.OLD" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="releasenotes.md" />
   </ItemGroup>
 
   <ItemGroup>

@@ -22,7 +22,7 @@ namespace GrampsView.ViewModels
     public class PlaceListViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PlaceListViewModel" /> class.
+        /// Initializes a new instance of the <see cref="PlaceListViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The ioc common logging.
@@ -34,6 +34,7 @@ namespace GrampsView.ViewModels
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "Place List";
+            BaseTitleIcon = CommonConstants.IconPlace;
         }
 
         public CardGroup PlaceSource

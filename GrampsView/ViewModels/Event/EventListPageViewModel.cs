@@ -23,7 +23,7 @@ namespace GrampsView.ViewModels
     public class EventListViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EventListViewModel" /> class.
+        /// Initializes a new instance of the <see cref="EventListViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The common logging.
@@ -38,6 +38,7 @@ namespace GrampsView.ViewModels
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "Event List";
+            BaseTitleIcon = CommonConstants.IconEvents;
         }
 
         public CardGroup EventSource

@@ -25,22 +25,22 @@
             {
                 // TODO Show All Surnames
 
-                PersonNameCards.Add(new CardListLine("GType:", tt.GType));
+                PersonNameCards.Add(new CardListLine("Type:", tt.GType));
                 PersonNameCards.Add(new CardListLine("Full Name:", tt.FullName));
-                PersonNameCards.Add(new CardListLine("GTitle:", tt.GTitle));
-                PersonNameCards.Add(new CardListLine("GFirstName:", tt.GFirstName));
+                PersonNameCards.Add(new CardListLine("Title:", tt.GTitle));
+                PersonNameCards.Add(new CardListLine("FirstName:", tt.GFirstName));
                 PersonNameCards.Add(new CardListLine("GSurName:", tt.GSurName.GetPrimarySurname));
 
-                PersonNameCards.Add(new CardListLine("GAlt:", tt.GAlt.GetDefaultText));
-                PersonNameCards.Add(new CardListLine("GCall:", tt.GCall));
-                PersonNameCards.Add(new CardListLine("GDate:", tt.GDate.GetShortDateAsString));
-                PersonNameCards.Add(new CardListLine("GDisplay:", tt.GDisplay));
-                PersonNameCards.Add(new CardListLine("GFamilyNick:", tt.GFamilyNick));
+                PersonNameCards.Add(new CardListLine("Alt:", tt.GAlt.GetDefaultText));
+                PersonNameCards.Add(new CardListLine("Call:", tt.GCall));
+                PersonNameCards.Add(new CardListLine("Date:", tt.GDate.GetShortDateAsString));
+                PersonNameCards.Add(new CardListLine("Display:", tt.GDisplay));
+                PersonNameCards.Add(new CardListLine("Family Nick:", tt.GFamilyNick));
 
-                PersonNameCards.Add(new CardListLine("GGroup:", tt.GGroup));
-                PersonNameCards.Add(new CardListLine("GNick:", tt.GNick));
-                PersonNameCards.Add(new CardListLine("GPriv:", tt.GPriv));
-                PersonNameCards.Add(new CardListLine("GSort:", tt.GSort));
+                PersonNameCards.Add(new CardListLine("Group:", tt.GGroup));
+                PersonNameCards.Add(new CardListLine("Nick:", tt.GNick));
+                PersonNameCards.Add(new CardListLine("Priv:", tt.GPriv));
+                PersonNameCards.Add(new CardListLine("Sort:", tt.GSort));
 
                 //// Get extra name details
                 //if (PersonObject.GPersonNamesCollection.GetPrimaryName.GSurName.Count > 0)

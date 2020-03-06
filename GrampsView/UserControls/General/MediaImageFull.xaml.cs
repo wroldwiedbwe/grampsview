@@ -22,6 +22,8 @@ namespace GrampsView.UserControls
                                                         propertyChanged: HandleVMPropertyChanged
                                                         );
 
+        private HLinkHomeImageModel HLinkMediaModel = new HLinkHomeImageModel();
+
         public MediaImageFull()
         {
             InitializeComponent();
@@ -49,11 +51,18 @@ namespace GrampsView.UserControls
         {
             MediaImageFull mifModel = (bindable as MediaImageFull);
 
-            HLinkHomeImageModel imageHLinkMediaModel = newValue as HLinkHomeImageModel;
+            HLinkHomeImageModel argHLinkMediaModel = newValue as HLinkHomeImageModel;
 
-            if (!(imageHLinkMediaModel is null) && (imageHLinkMediaModel.Valid))
+            if (argHLinkMediaModel == mifModel.HLinkMediaModel)
             {
-                MediaModel t = imageHLinkMediaModel.DeRef;
+                return;
+            }
+
+            mifModel.HLinkMediaModel = argHLinkMediaModel;
+
+            if (!(argHLinkMediaModel is null) && (argHLinkMediaModel.Valid))
+            {
+                MediaModel t = argHLinkMediaModel.DeRef;
 
                 if ((t.IsMediaStorageFileValid) && (t.IsMediaFile))
                 {
@@ -65,7 +74,7 @@ namespace GrampsView.UserControls
                         mifModel.IsVisible = true;
 
                         // TODO cleanup code so does nto use bindignContext if possible
-                        mifModel.BindingContext = imageHLinkMediaModel;
+                        mifModel.BindingContext = argHLinkMediaModel;
 
                         return;
                     }

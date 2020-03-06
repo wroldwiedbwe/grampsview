@@ -38,7 +38,7 @@ namespace GrampsView.Data.ExternalStorageNS
             Color cardColour = (Color)varCardColour;
 
             // Set links
-            HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLink;
+            HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
             if (!hlink.Valid)
             {
                 argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;

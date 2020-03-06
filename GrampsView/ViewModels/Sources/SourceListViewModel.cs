@@ -23,7 +23,7 @@ namespace GrampsView.ViewModels
     public class SourceListViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SourceListViewModel" /> class.
+        /// Initializes a new instance of the <see cref="SourceListViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The ioc common logging.
@@ -34,6 +34,8 @@ namespace GrampsView.ViewModels
         public SourceListViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
+            BaseTitle = "Source List";
+            BaseTitleIcon = CommonConstants.IconSource;
         }
 
         public CardGroup SourceSource

@@ -57,13 +57,18 @@ namespace GrampsView.UserControls
 
         private void mediaImage_BindingContextChanged(object sender, EventArgs e)
         {
-            HLinkHomeImageModel qq = this.BindingContext as HLinkHomeImageModel;
-            if ((qq is null) || (!qq.Valid))
+            HLinkHomeImageModel newHLinkMedia = this.BindingContext as HLinkHomeImageModel;
+            if ((newHLinkMedia is null) || (!newHLinkMedia.Valid))
             {
                 return;
             }
 
-            HLinkMedia = qq;
+            if (HLinkMedia == newHLinkMedia)
+            {
+                return;
+            }
+
+            HLinkMedia = newHLinkMedia;
 
             if (HLinkMedia is null)
             {

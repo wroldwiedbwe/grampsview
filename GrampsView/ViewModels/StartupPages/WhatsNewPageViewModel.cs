@@ -10,6 +10,7 @@
 namespace GrampsView.ViewModels
 {
     using GrampsView.Common;
+    using GrampsView.Data.Repository;
     using GrampsView.Events;
 
     using Prism.Commands;
@@ -89,10 +90,18 @@ namespace GrampsView.ViewModels
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = "GrampsView.releasenotes.md";
 
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
+            try
             {
-                WhatsNewText = reader.ReadToEnd();
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    WhatsNewText = reader.ReadToEnd();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                DataStore.CN.NotifyException("Exception trying to open " + resourceName, ex);
             }
         }
     }

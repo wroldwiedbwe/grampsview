@@ -23,7 +23,7 @@ namespace GrampsView.ViewModels
     public class PersonListViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PersonListViewModel" /> class.
+        /// Initializes a new instance of the <see cref="PersonListViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The ioc common logging.
@@ -35,6 +35,7 @@ namespace GrampsView.ViewModels
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "Person List";
+            BaseTitleIcon = CommonConstants.IconPeople;
         }
 
         /// <summary>

@@ -291,10 +291,32 @@ namespace GrampsView.Data
                         // + tarEntry.Name + " does not need to be unTARed as its modified date is
                         // earlier than the one in the output folder").ConfigureAwait(false);
                     }
+
+                    // Check file ceated successfully
+                    bool checkFileExistsFlag = await StoreFolder.FolderFileExistsAsync(newFolder, filename).ConfigureAwait(false);
+                    if (!checkFileExistsFlag)
+                    {
+                        DataStore.CN.NotifyError("Error UnTaring file: "
+                            + newFolder.FullName + "-" + filename
+                            + ". File not created.  Perhaps the path is too long?");
+
+                        // TODO copy dummy file in its place
+                    }
                 }
             }
             catch (Exception ex)
             {
+                // Handle disk full errors
+                const int HR_ERROR_HANDLE_DISK_FULL = unchecked((int)0x80070027);
+                const int HR_ERROR_DISK_FULL = unchecked((int)0x80070070);
+
+                if (ex.HResult == HR_ERROR_HANDLE_DISK_FULL
+                    || ex.HResult == HR_ERROR_DISK_FULL)
+                {
+                    DataStore.CN.NotifyException("UnTar Disk Full Exception working on " + tarEntry.Name, ex);
+                }
+
+                // Handle other errors
                 if (tarEntry != null)
                 {
                     DataStore.CN.NotifyException("UnTar Exception working on " + tarEntry.Name, ex);

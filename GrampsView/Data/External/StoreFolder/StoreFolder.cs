@@ -21,7 +21,7 @@ namespace GrampsView.Data
     public partial class StoreFolder : CommonBindableBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="StoreFile" /> class.
+        /// Initializes a new instance of the <see cref="StoreFile"/> class.
         /// </summary>
         /// <param name="iocCommonProgress">
         /// The ioc common progress.
@@ -76,7 +76,6 @@ namespace GrampsView.Data
         /// </returns>
         public static async Task<bool> FolderFileExistsAsync(DirectoryInfo argBaseFolder, string argFileName)
         {
-
             // Check for relative path
             if (!StoreFileUtility.IsRelativeFilePathValid(argFileName))
             {
@@ -143,7 +142,13 @@ namespace GrampsView.Data
                 }
                 catch (FileNotFoundException ex)
                 {
-                    await DataStore.CN.MajorStatusAdd(ex.Message + ex.FileName).ConfigureAwait(false);
+                    DataStore.CN.NotifyError(ex.Message + ex.FileName);
+
+                    // default to a standard file marker
+                }
+                catch (DirectoryNotFoundException ex)
+                {
+                    DataStore.CN.NotifyError("Directory not found when deserialising the data.  Perahps the GPKG filenames are too long?" + ex.Message);
 
                     // default to a standard file marker
                 }

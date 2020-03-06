@@ -12,13 +12,33 @@
     <FlexLayout Direction="Column">
 
         <!--  Header  -->
-        <!--
+        <NavigationPage.TitleView>
+            <Grid Style="{DynamicResource GVPageTitleStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-        <Label
-            BackgroundColor="Aqua"
-            FontSize="Large"
-            HorizontalTextAlignment="Center"
-            Text="HEADER" />-->
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Style="{DynamicResource GVSymbolconPageHeaderType}">
+                    <Image.Source>
+                        <FontImageSource
+                            FontFamily="{DynamicResource MaterialFontFamily}"
+                            Glyph="{Binding BaseTitleIcon}"
+                            Size="44"
+                            Color="{DynamicResource PrimaryColor}" />
+                    </Image.Source>
+                </Image>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Style="{DynamicResource GVLabelPageHeaderTitleStyle}"
+                    Text="{Binding BaseTitle, Mode=OneWay}" />
+            </Grid>
+        </NavigationPage.TitleView>
 
         <!--  Body  -->
         <FlexLayout FlexLayout.Grow="1">

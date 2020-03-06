@@ -42,7 +42,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 throw new ArgumentNullException(nameof(argModel));
             }
 
-            HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLink;
+            HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
             if (hlink is null)
             {
                 argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
