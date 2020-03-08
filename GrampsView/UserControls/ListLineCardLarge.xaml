@@ -8,7 +8,7 @@
     Style="{DynamicResource FrameLargeVariableCardStyleNS}">
 
     <Frame.Content>
-        <Grid>
+        <Grid Padding="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -20,14 +20,15 @@
 
             <Frame
                 x:Name="LLCardLargeFrame"
-                Margin="0"
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,0,0,3"
                 Padding="0"
                 BackgroundColor="{DynamicResource PrimaryColor}"
                 CornerRadius="1">
                 <Label
                     x:Name="LLCardLargeTitle"
-                    Grid.Row="0"
-                    Grid.Column="0"
+                    Margin="3,0,3,0"
                     Style="{DynamicResource GVHeaderStyleLarge}" />
             </Frame>
 
@@ -35,6 +36,7 @@
                 x:Name="largeDetailList"
                 Grid.Row="1"
                 Grid.Column="0"
+                Margin="3"
                 ItemDataTemplate="{DynamicResource GVCardListLineLarge}" />
         </Grid>
     </Frame.Content>

@@ -8,82 +8,90 @@
     xmlns:i18n="clr-namespace:GrampsView.Common"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    Title="{Binding BaseTitle}"
     Appearing="ContentPage_Appearing"
     ControlTemplate="{StaticResource DetailPageTemplate}"
     Style="{DynamicResource GVBaseContentPage}"
     mc:Ignorable="d">
 
-    <FlexLayout Direction="Column">
+    <!--  Header  -->
+    <NavigationPage.TitleView>
+        <Grid Style="{DynamicResource GVPageTitleStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-        <!--  Header  -->
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{DynamicResource GVSymbolconPageHeaderType}">
+                <Image.Source>
+                    <FontImageSource
+                        FontFamily="{DynamicResource MaterialFontFamily}"
+                        Glyph="{Binding BaseTitleIcon}"
+                        Size="44"
+                        Color="{DynamicResource PrimaryColor}" />
+                </Image.Source>
+            </Image>
 
-        <!--  Body  -->
-        <FlexLayout FlexLayout.Grow="1">
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Style="{DynamicResource GVLabelPageHeaderTitleStyle}"
+                Text="{Binding BaseTitle, Mode=OneWay}" />
+        </Grid>
+    </NavigationPage.TitleView>
 
-            <!--  Content  -->
-            <Grid FlexLayout.Grow="1">
+    <!--  Content  -->
+    <Grid>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-                <Label
-                    x:Name="SearchPage_Instructions"
-                    x:Uid="SearchPage_Instructions"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Style="{DynamicResource GVLabelStyleInstructions}"
-                    Text="{i18n:Translate SearchPage_Instructions}" />
+        <Label
+            x:Name="SearchPage_Instructions"
+            x:Uid="SearchPage_Instructions"
+            Grid.Row="0"
+            Grid.Column="0"
+            Style="{DynamicResource GVLabelStyleInstructions}"
+            Text="{i18n:Translate SearchPage_Instructions}" />
 
-                <SearchBar
-                    x:Name="SearchBar"
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    BackgroundColor="{DynamicResource SurfaceColor}"
-                    HorizontalOptions="FillAndExpand"
-                    HorizontalTextAlignment="Start"
-                    IsTabStop="True"
-                    SearchCommand="{Binding SearchCommand}"
-                    SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
-                    TextColor="{DynamicResource OnSurfaceColor}">
-                    <SearchBar.Behaviors>
+        <SearchBar
+            x:Name="SearchBar"
+            Grid.Row="1"
+            Grid.Column="0"
+            BackgroundColor="{DynamicResource SurfaceColor}"
+            HorizontalOptions="FillAndExpand"
+            HorizontalTextAlignment="Start"
+            IsTabStop="True"
+            SearchCommand="{Binding SearchCommand}"
+            SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
+            TextColor="{DynamicResource OnSurfaceColor}">
+            <SearchBar.Behaviors>
 
-                        <behaviour:EventToCommandBehavior
-                            Command="{Binding SearchButtonCommand}"
-                            CommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
-                            EventName="SearchButtonPressed" />
-                    </SearchBar.Behaviors>
-                </SearchBar>
+                <behaviour:EventToCommandBehavior
+                    Command="{Binding SearchButtonCommand}"
+                    CommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
+                    EventName="SearchButtonPressed" />
+            </SearchBar.Behaviors>
+        </SearchBar>
 
-                <!--  Search Results  -->
+        <!--  Search Results  -->
 
-                <ScrollView
-                    x:Name="SearchViewBox"
-                    Grid.Row="3"
-                    Grid.Column="0">
+        <ScrollView
+            x:Name="SearchViewBox"
+            Grid.Row="3"
+            Grid.Column="0">
 
-                    <ucon:FlexMultiCardType x:Name="BaseHeader" FMultiSource="{Binding BaseDetail}" />
-                </ScrollView>
-            </Grid>
-
-            <!--  Navigation items  -->
-            <BoxView FlexLayout.Basis="50" FlexLayout.Order="-1" />
-
-            <!--  Aside items  -->
-            <BoxView FlexLayout.Basis="50" />
-        </FlexLayout>
-
-        <!--  Footer  -->
-
-        <!--  Footer  -->
-        <ucon:BottomMenu />
-    </FlexLayout>
+            <ucon:FlexMultiCardType x:Name="BaseHeader" FMultiSource="{Binding BaseDetail}" />
+        </ScrollView>
+    </Grid>
 </ContentPage>

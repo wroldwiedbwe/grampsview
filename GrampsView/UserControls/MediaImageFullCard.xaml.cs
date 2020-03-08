@@ -13,9 +13,9 @@ namespace GrampsView.UserControls
     public partial class MediaImageFullCard : Frame
     {
         public static readonly BindableProperty UCMediaProperty = BindableProperty.Create(propertyName: nameof(UCMedia),
-                                                                                                returnType: typeof(HLinkMediaModel),
+                                                                                                returnType: typeof(HLinkHomeImageModel),
                                                                                                 declaringType: typeof(MediaImageFullCard),
-                                                                                                defaultValue: new HLinkMediaModel(),
+                                                                                                defaultValue: new HLinkHomeImageModel(),
                                                                                                 defaultBindingMode: BindingMode.OneWay,
                                                                                                 propertyChanged: HandleVMPropertyChanged
                                                                                                 );
@@ -28,7 +28,7 @@ namespace GrampsView.UserControls
             InitializeComponent();
         }
 
-        public HLinkMediaModel UCMedia
+        public HLinkHomeImageModel UCMedia
         {
             get
             {
@@ -36,7 +36,7 @@ namespace GrampsView.UserControls
                 {
                 }
 
-                return (HLinkMediaModel)base.GetValue(UCMediaProperty);
+                return (HLinkHomeImageModel)base.GetValue(UCMediaProperty);
             }
 
             set
@@ -52,7 +52,7 @@ namespace GrampsView.UserControls
         {
             MediaImageFullCard mifModel = (bindable as MediaImageFullCard);
 
-            HLinkMediaModel imageMediaModel = newValue as HLinkMediaModel;
+            HLinkHomeImageModel imageMediaModel = newValue as HLinkHomeImageModel;
 
             if (!(imageMediaModel is null) && (imageMediaModel.Valid))
             {

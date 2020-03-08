@@ -47,6 +47,8 @@ namespace GrampsView.ViewModels
         {
             BaseTitle = "Search Page";
 
+            BaseTitleIcon = CommonConstants.IconSearch;
+
             SearchButtonCommand = new Command<string>(SearchProcessQuery);
         }
 

@@ -102,7 +102,7 @@ namespace GrampsView.UserControls
 
             theMediaModel = HLinkMedia.DeRef;
 
-            if (theMediaModel.Id == "O0196")
+            if (theMediaModel.Id == "S0351")
             {
             }
 

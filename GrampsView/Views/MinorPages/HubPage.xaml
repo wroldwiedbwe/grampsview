@@ -3,14 +3,14 @@
     x:Class="GrampsView.Views.HubPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i18n="clr-namespace:GrampsView.Common"
-    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="HubPageRoot"
-    Title="{Binding BaseTitle}"
-    prism:ViewModelLocator.AutowireViewModel="True"
     ControlTemplate="{StaticResource DetailPageTemplate}"
-    Style="{DynamicResource GVBaseContentPage}">
+    Style="{DynamicResource GVBaseContentPage}"
+    mc:Ignorable="d">
 
     <NavigationPage.TitleView>
         <Grid Style="{DynamicResource GVPageTitleStyle}">

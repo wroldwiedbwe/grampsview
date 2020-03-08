@@ -3,7 +3,6 @@
     x:Class="GrampsView.UserControls.NoteCardFull"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:markdown="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
     x:Name="NoteCardFullRoot"
     BindingContextChanged="PersonCardSmallRoot_BindingContextChanged"
     Style="{DynamicResource NoteFullTextStyle}">
@@ -24,11 +23,11 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <markdown:MarkdownView
-                x:Name="mdview"
+            <Label
                 Grid.Row="0"
+                BackgroundColor="{DynamicResource CardBackGroundNote}"
                 FlexLayout.Basis="75"
-                Markdown="{Binding DeRef.GText}" />
+                FormattedText="{Binding DeRef.GFormattedText}" />
         </Grid>
     </Frame.Content>
 </Frame>

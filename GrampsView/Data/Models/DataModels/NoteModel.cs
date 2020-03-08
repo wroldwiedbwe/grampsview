@@ -71,8 +71,10 @@ namespace GrampsView.Data.Model
     using System;
     using System.Collections;
     using System.Runtime.Serialization;
+    using System.Xml.Linq;
     using GrampsView.Common;
     using GrampsView.Data.Collections;
+    using Xamarin.Forms;
 
     /// <summary>
     /// data model for an event.
@@ -88,22 +90,16 @@ namespace GrampsView.Data.Model
         /// <summary>
         /// The local format.
         /// </summary>
-        private string localFormat = string.Empty;
+        private string _Format = string.Empty;
 
-        ///// <summary>
-        ///// The local tagreference collection.
-        ///// </summary>
-        // private HLinkTagModelCollection localTagReference = new HLinkTagModelCollection();
+        private FormattedString _FormattedText = new FormattedString();
 
-        /// <summary>
-        /// The local text.
-        /// </summary>
-        private string localText = string.Empty;
+        private string _GText = string.Empty;
 
         /// <summary>
         /// The local type.
         /// </summary>
-        private string localType = string.Empty;
+        private string _Type = string.Empty;
 
         public NoteModel()
         {
@@ -125,22 +121,53 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="NoteModel" /> is format (0|1) #IMPLIED.
+        /// Gets or sets a value indicating whether this <see cref="NoteModel"/> is format (0|1) #IMPLIED.
         /// </summary>
         /// <value>
-        /// <c> true </c> if format; otherwise, <c> false </c>.
+        /// <c>true</c> if format; otherwise, <c>false</c>.
         /// </value>
         [DataMember]
         public string GFormat
         {
             get
             {
-                return localFormat;
+                return _Format;
             }
 
             set
             {
-                SetProperty(ref localFormat, value);
+                SetProperty(ref _Format, value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the text.
+        /// </summary>
+        /// <value>
+        /// The text.
+        /// </value>
+
+        public FormattedString GFormattedText
+        {
+            get
+            {
+                // Cache the formatted string. Xamarin/NewtonSoft has problems serialising the
+                // string on the UI thread
+                if (_FormattedText.Spans.Count == 0)
+                {
+                    FormattedString loadString = new FormattedString();
+
+                    loadString.Spans.Add(new Span { Text = GText, FontSize = 12 });
+
+                    return loadString;
+                }
+
+                return _FormattedText;
+            }
+
+            set
+            {
+                SetProperty(ref _FormattedText, value);
             }
         }
 
@@ -170,12 +197,20 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localText;
+                return _GText;
+                //string returnString = string.Empty;
+
+                //foreach (Span item in GFormattedText.Spans)
+                //{
+                //    returnString += item.Text;
+                //}
+
+                //return returnString;
             }
 
             set
             {
-                SetProperty(ref localText, value);
+                SetProperty(ref _GText, value);
             }
         }
 
@@ -190,12 +225,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localType;
+                return _Type;
             }
 
             set
             {
-                SetProperty(ref localType, value);
+                SetProperty(ref _Type, value);
             }
         }
 
@@ -227,7 +262,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localText.Substring(0, Math.Min(localText.Length, 100));
+                return GText.Substring(0, Math.Min(GText.Length, 100));
             }
         }
 
