@@ -15,9 +15,9 @@ namespace GrampsView.UserControls
     {
         public static readonly BindableProperty UCHLinkMediaModelProperty = BindableProperty.Create(
                                                         propertyName: nameof(UCHLinkMediaModel),
-                                                        returnType: typeof(HLinkMediaModel),
+                                                        returnType: typeof(HLinkHomeImageModel),
                                                         declaringType: typeof(MediaImageFull),
-                                                        defaultValue: new HLinkMediaModel(),
+                                                        defaultValue: new HLinkHomeImageModel(),
                                                         defaultBindingMode: BindingMode.OneWay,
                                                         propertyChanged: HandleVMPropertyChanged
                                                         );
@@ -31,11 +31,11 @@ namespace GrampsView.UserControls
             //this.daImage.CacheKeyFactory = new CustomCacheKeyFactory();
         }
 
-        public HLinkMediaModel UCHLinkMediaModel
+        public HLinkHomeImageModel UCHLinkMediaModel
         {
             get
             {
-                return GetValue(UCHLinkMediaModelProperty) as HLinkMediaModel;
+                return GetValue(UCHLinkMediaModelProperty) as HLinkHomeImageModel;
             }
 
             set

@@ -19,8 +19,7 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
@@ -52,7 +51,7 @@
             <Label
                 x:Name="typeTextBlock"
                 Grid.Row="0"
-                Grid.Column="2"
+                Grid.Column="1"
                 Grid.ColumnSpan="2"
                 HorizontalOptions="EndAndExpand"
                 Style="{DynamicResource GVCardLabelStyleSmall}"
@@ -62,13 +61,12 @@
                 x:Name="descriptionTextBlock"
                 Grid.Row="1"
                 Grid.Column="1"
-                Grid.ColumnSpan="2"
                 Style="{DynamicResource GVCardLabelStyleSmall}"
                 Text="{Binding DeRef.GDescription, Mode=OneWay}" />
 
             <Image
                 Grid.Row="1"
-                Grid.Column="3"
+                Grid.Column="2"
                 Style="{DynamicResource GVSymbolIconSmallCardType}">
                 <Image.Source>
                     <FontImageSource

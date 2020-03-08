@@ -239,15 +239,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_history_black_36pt.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_history_black_36pt%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_history_black_36pt%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\ic_history_blue_light_36pt.png" />
   </ItemGroup>
   <ItemGroup>

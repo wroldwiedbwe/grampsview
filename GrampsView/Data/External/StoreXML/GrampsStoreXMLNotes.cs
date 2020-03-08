@@ -18,6 +18,7 @@ namespace GrampsView.Data.ExternalStorageNS
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
+    using Xamarin.Essentials;
     using Xamarin.Forms;
 
     /// <summary>
@@ -69,8 +70,17 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // Note fields
 
-                        // Load Text
+                        // Load Styled Text
+                        if (loadNote.Id == "N0170")
+                        {
+                        }
+
                         loadNote.GText = (string)pname.Element(ns + "text");
+
+                        //loadString.Spans.Add(new Span { Text = theText, FontSize = 12 });
+
+                        //loadNote = GetFormattedString(pname);
+                        ;
 
                         //// TODO Style
 
@@ -96,6 +106,17 @@ namespace GrampsView.Data.ExternalStorageNS
 
             await DataStore.CN.MajorStatusDelete().ConfigureAwait(false);
             return;
+        }
+
+        private FormattedString GetFormattedString(XElement argStyledText)
+        {
+            FormattedString loadString = new FormattedString();
+
+            string theText = (string)argStyledText.Element(ns + "text");
+
+            loadString.Spans.Add(new Span { Text = theText, FontSize = 12 });
+
+            return loadString;
         }
     }
 }

@@ -44,6 +44,8 @@ namespace GrampsView.ViewModels
             BaseEventAggregator.GetEvent<GVProgressMajorTextUpdate>().Subscribe(LogAdd, ThreadOption.UIThread);
 
             BaseTitle = "Message Log";
+
+            BaseTitleIcon = CommonConstants.IconLog;
         }
 
         /// <summary>

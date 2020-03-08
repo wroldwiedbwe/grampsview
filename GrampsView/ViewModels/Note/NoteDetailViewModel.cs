@@ -26,6 +26,8 @@ namespace GrampsView.ViewModels
         /// </summary>
         private HLinkNoteModel _HLinkNote;
 
+        private NoteModel _NoteObject = new NoteModel();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="NoteDetailViewModel"/> class. Common logging.
         /// </summary>
@@ -40,6 +42,7 @@ namespace GrampsView.ViewModels
         public NoteDetailViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
+            BaseTitleIcon = CommonConstants.IconNotes;
         }
 
         /// <summary>
@@ -62,6 +65,25 @@ namespace GrampsView.ViewModels
         }
 
         /// <summary>
+        /// Gets or sets the public Event ViewModel.
+        /// </summary>
+        /// <value>
+        /// The current event ViewModel.
+        /// </value>
+        public NoteModel NoteObject
+        {
+            get
+            {
+                return _NoteObject;
+            }
+
+            set
+            {
+                SetProperty(ref _NoteObject, value);
+            }
+        }
+
+        /// <summary>
         /// Handles navigation in wards and sets up the event model parameter.
         /// </summary>
         /// <param name="e">
@@ -72,14 +94,13 @@ namespace GrampsView.ViewModels
         /// </param>
         public override void PopulateViewModel()
         {
-            HLinkNote = BaseNavParamsHLink as HLinkNoteModel;
+            HLinkNoteModel HLinkObject = BaseNavParamsHLink as HLinkNoteModel;
 
-            if (HLinkNote.Valid)
+            if (!(HLinkObject is null) && (HLinkObject.Valid))
             {
-                NoteModel NoteModel = DV.NoteDV.GetModelFromHLink(BaseNavParamsHLink);
+                NoteObject = HLinkObject.DeRef;
 
-                BaseTitle = NoteModel.GetDefaultText;
-                BaseTitleIcon = CommonConstants.IconNotes;
+                BaseTitle = NoteObject.GetDefaultText;
 
                 // Get basic details
                 CardGroup t = new CardGroup { Title = "Header Details" };
@@ -87,17 +108,17 @@ namespace GrampsView.ViewModels
                 t.Cards.Add(new CardListLineCollection
                 {
                     new CardListLine("Card Type:", "Note Detail"),
-                    new CardListLine("Type:", NoteModel.GType),
+                    new CardListLine("Type:", NoteObject.GType),
                 });
 
                 // Add Model details
-                t.Cards.Add(DV.NoteDV.GetModelInfoFormatted(NoteModel));
+                t.Cards.Add(DV.NoteDV.GetModelInfoFormatted(NoteObject));
 
                 BaseHeader.Add(t);
 
-                BaseDetail.Add(NoteModel.GTagRefCollection.GetCardGroup());
+                BaseDetail.Add(NoteObject.GTagRefCollection.GetCardGroup());
 
-                BaseBackLinks.Add(NoteModel.BackHLinkReferenceCollection.GetCardGroup());
+                BaseBackLinks.Add(NoteObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

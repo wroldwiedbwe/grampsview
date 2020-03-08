@@ -22,12 +22,6 @@ namespace GrampsView.UserControls
         public NoteCardFull()
         {
             InitializeComponent();
-
-            // Set MarkdownView information that is not easily set in XAML
-            MarkdownTheme t = (MarkdownTheme)new DarkMarkdownTheme();
-            t.BackgroundColor = Common.CommonRoutines.ResourceColourGet("CardBackGroundNote");
-
-            this.mdview.Theme = t;
         }
 
         private void PersonCardSmallRoot_BindingContextChanged(object sender, System.EventArgs e)

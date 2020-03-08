@@ -50,8 +50,8 @@
                 Grid.Row="0"
                 Grid.RowSpan="2"
                 Grid.Column="1"
-                Style="{DynamicResource GVCardLabelStyleSmall}"
-                Text="{Binding DeRef.GText, Mode=OneWay}" />
+                FormattedText="{Binding DeRef.GFormattedText, Mode=OneWay}"
+                Style="{DynamicResource GVCardLabelStyleSmall}" />
 
             <Image
                 Grid.Row="1"
