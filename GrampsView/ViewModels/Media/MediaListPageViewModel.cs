@@ -10,7 +10,7 @@
 namespace GrampsView.ViewModels
 {
     using System.Collections.ObjectModel;
-
+    using System.Threading.Tasks;
     using GrampsView.Common;
     using GrampsView.Data.DataView;
 
@@ -40,16 +40,13 @@ namespace GrampsView.ViewModels
             BaseTitleIcon = CommonConstants.IconMedia;
         }
 
-        public CardGroup MediaSource
+        public CardGroup MediaSource { get; } = new CardGroup();
+
+        public override async Task<bool> PopulateViewModelAsync()
         {
-            get
-            {
-                CardGroup t = new CardGroup();
+            MediaSource.Cards.AddRange(new ObservableCollection<object>(DV.MediaDV.GetAllAsHLink()));
 
-                t.Cards.AddRange(new ObservableCollection<object>(DV.MediaDV.GetAllAsHLink()));
-
-                return t;
-            }
+            return true;
         }
     }
 }

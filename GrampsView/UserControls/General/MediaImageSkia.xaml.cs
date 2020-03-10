@@ -102,9 +102,16 @@ namespace GrampsView.UserControls
 
             theMediaModel = HLinkMedia.DeRef;
 
-            if (theMediaModel.Id == "S0351")
+            if (theMediaModel.Id == "O0003")
             {
             }
+
+            // Input valid so start work
+            this.daSymbol.IsVisible = false;
+            this.daImage.IsVisible = false;
+            this.daImage.Source = null;
+            this.skiaBitMapImage.IsVisible = false;
+            this.skiaBitMapImage.Source = null;
 
             if (!HLinkMedia.Valid || !HLinkMedia.HomeUseImage || !theMediaModel.IsMediaFile)
             {
@@ -148,8 +155,6 @@ namespace GrampsView.UserControls
 
             if (HLinkMedia.GCorner1X > 0 || HLinkMedia.GCorner1Y > 0 || HLinkMedia.GCorner2X > 0 || HLinkMedia.GCorner2Y > 0)
             {
-                this.daImage.IsVisible = false;
-                this.daSymbol.IsVisible = false;
                 this.skiaBitMapImage.IsVisible = true;
 
                 SKBitmapImageSource skiabmimage = new SKBitmapImageSource();
@@ -194,11 +199,7 @@ namespace GrampsView.UserControls
             else
             {
                 this.daImage.IsVisible = true;
-                this.daSymbol.IsVisible = false;
-                this.skiaBitMapImage.IsVisible = false;
-
                 this.daImage.DownsampleToViewSize = true;
-
                 this.daImage.Source = theMediaModel.MediaStorageFilePath;
             }
         }

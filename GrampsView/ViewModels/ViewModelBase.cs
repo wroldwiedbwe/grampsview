@@ -319,8 +319,10 @@ namespace GrampsView.ViewModels
 
                 PopulateViewModel();
 
-                var task = PopulateViewModelAsync();
-                task.WaitAndUnwrapException();
+                //var task = PopulateViewModelAsync();
+                //task.WaitAndUnwrapException();
+
+                PopulateViewModelAsync();
 
                 BaseIsLoading = false;
             }
