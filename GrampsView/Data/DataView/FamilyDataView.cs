@@ -36,7 +36,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataViewData.Items.OrderBy(FamilyModel => FamilyModel.FamilyDisplayNameSort).ToList();
+                return DataViewData.OrderBy(FamilyModel => FamilyModel.FamilyDisplayNameSort).ToList();
             }
         }
 
@@ -46,11 +46,11 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The data view data.
         /// </value>
-        public override RepositoryModelType<FamilyModel, HLinkFamilyModel> DataViewData
+        public override IReadOnlyList<FamilyModel> DataViewData
         {
             get
             {
-                return FamilyData;
+                return FamilyData.Values.ToList();
             }
         }
 
@@ -75,7 +75,7 @@ namespace GrampsView.Data.DataView
             {
                 List<CommonGroupInfoCollection<FamilyModel>> groups = new List<CommonGroupInfoCollection<FamilyModel>>();
 
-                var query = from item in FamilyData.Items
+                var query = from item in DataViewData
                             orderby item.GFather.DeRef.GPersonNamesCollection.GetPrimaryName.GSurName
                             group item by (item.GFather.DeRef.GPersonNamesCollection.GetPrimaryName.GSurName + " ").ToUpper(CultureInfo.CurrentCulture).Substring(0, 1) into g
                             select new { GroupName = g.Key, Items = g };
@@ -212,7 +212,7 @@ namespace GrampsView.Data.DataView
         {
             DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
 
-            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
+            IEnumerable tt = DataViewData.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 
@@ -224,6 +224,11 @@ namespace GrampsView.Data.DataView
             returnCardGroup.Title = "Latest Family Changes";
 
             return returnCardGroup;
+        }
+
+        public override FamilyModel GetModelFromHLinkString(string HLinkString)
+        {
+            return FamilyData[HLinkString];
         }
 
         /// <summary>
@@ -283,7 +288,7 @@ namespace GrampsView.Data.DataView
         {
             List<SearchItem> itemsFound = new List<SearchItem>();
 
-            var temp = FamilyData.Items.Where(x => x.FamilyDisplayName.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            var temp = DataViewData.Where(x => x.FamilyDisplayName.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (FamilyModel tempMO in temp)
             {

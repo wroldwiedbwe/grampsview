@@ -202,7 +202,7 @@ namespace GrampsView.Data.Model
         /// The image h link key.
         /// </value>
         [DataMember]
-        public HLinkHomeImageModel HomeImageHLink
+        public virtual HLinkHomeImageModel HomeImageHLink
         {
             get
             {

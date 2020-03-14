@@ -55,11 +55,6 @@ namespace GrampsView.Common
         public const int HeaderProcessAreaDisplayTime = 30000;
 
         /// <summary>
-        /// The home image type clipped bitmap.
-        /// </summary>
-        public const int HomeImageTypeClippedBitmap = 1;
-
-        /// <summary>
         /// The home image type symbol.
         /// </summary>
         public const int HomeImageTypeSymbol = 0;

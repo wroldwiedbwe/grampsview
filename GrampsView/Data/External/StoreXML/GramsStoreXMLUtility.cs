@@ -119,12 +119,7 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </returns>
         private static HLinkHomeImageModel SetHomeHLink(HLinkHomeImageModel HomeImageHLink, HLinkHomeImageModel hlink)
         {
-            HomeImageHLink.GCorner1X = hlink.GCorner1X;
-            HomeImageHLink.GCorner1Y = hlink.GCorner1Y;
-            HomeImageHLink.GCorner2X = hlink.GCorner2X;
-            HomeImageHLink.GCorner2Y = hlink.GCorner2Y;
-            HomeImageHLink.HLinkKey = hlink.HLinkKey;
-            HomeImageHLink.HomeImageType = hlink.HomeImageType;
+            HomeImageHLink = hlink;
 
             return HomeImageHLink;
         }
@@ -484,20 +479,6 @@ namespace GrampsView.Data.ExternalStorageNS
                         t2.GCorner1Y = (int)regionDetails.Attribute("corner1_y");
                         t2.GCorner2X = (int)regionDetails.Attribute("corner2_x");
                         t2.GCorner2Y = (int)regionDetails.Attribute("corner2_y");
-
-                        t2.HomeImageType = CommonConstants.HomeImageTypeClippedBitmap;
-
-                        // Gramps uses (0,0,0,0) or (0,0,100,100) for the entire bitmap . We point
-                        // to the mediaObject bitmap to save memory space.
-                        if ((t2.GCorner1X == 0) && (t2.GCorner1Y == 0) && (t2.GCorner2X == 0) && (t2.GCorner2Y == 0))
-                        {
-                            t2.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
-                        }
-
-                        if ((t2.GCorner1X == 0) && (t2.GCorner1Y == 0) && (t2.GCorner2X == 100) && (t2.GCorner2Y == 100))
-                        {
-                            t2.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
-                        }
                     }
 
                     // Get remaining fields

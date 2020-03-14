@@ -402,6 +402,24 @@ namespace GrampsView.Data.Model
             }
         }
 
+        public MediaModel Clone()
+        {
+            MediaModel t = new MediaModel
+            {
+                FileMimeType = this.FileMimeType,
+                GCitationRefCollection = this.GCitationRefCollection,
+                GDateValue = this.GDateValue,
+                GDescription = this.GDescription,
+                GNoteRefCollection = this.GNoteRefCollection,
+                GTagRefCollection = this.GTagRefCollection,
+                HomeImageHLink = this.HomeImageHLink,
+                MetaDataHeight = this.MetaDataHeight,
+                OriginalFilePath = this.OriginalFilePath
+            };
+
+            return t;
+        }
+
         /// <summary>
         /// Compares the specified a.
         /// </summary>
@@ -478,7 +496,5 @@ namespace GrampsView.Data.Model
             //IsFullImageLoaded = false;
             //ImageFullBitmap = null;
         }
-
-        public MediaModel GetImageModel() => throw new NotImplementedException();
     }
 }

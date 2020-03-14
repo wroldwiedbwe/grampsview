@@ -123,8 +123,8 @@ namespace GrampsView.Data.Repository
             DV.CitationDV.CitationData.Clear();
             DV.EventDV.EventData.Clear();
             DV.FamilyDV.FamilyData.Clear();
-            DV.HeaderDV.HeaderData.Clear();
-            DV.MediaDV.MediaData.Clear();
+            DataStore.DS.HeaderData.Clear();
+            DataStore.DS.MediaData.Clear();
             DV.NameMapDV.NameMapData.Clear();
             DV.NoteDV.NoteData.Clear();
             DV.PersonDV.PersonData.Clear();

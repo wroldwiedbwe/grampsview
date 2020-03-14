@@ -144,7 +144,8 @@ namespace GrampsView.Data.ExternalStorageNS
                 {
                     if (DV.PersonDV.PersonData.Count > 0)
                     {
-                        DataStore.CN.NotifyException("Loading person from GRAMPSXML storage.  The last person successfully loaded was " + DV.PersonDV.PersonData.Items[DV.PersonDV.PersonData.Count].GPersonNamesCollection.GetPrimaryName.FullName, ex);
+                        // TODO Add this back + DV.PersonDV.PersonData[DV.PersonDV.PersonData.Count].GPersonNamesCollection.GetPrimaryName.FullName
+                        DataStore.CN.NotifyException("Loading person from GRAMPSXML storage.  The last person successfully loaded was ", ex);
                         throw;
                     }
                     else

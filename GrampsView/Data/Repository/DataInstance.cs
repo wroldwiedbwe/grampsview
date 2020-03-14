@@ -400,6 +400,8 @@ namespace GrampsView.Data.Repository
         public void LoadDataStore()
         {
             CurrentDataFolder = new DirectoryInfo(Xamarin.Essentials.FileSystem.CacheDirectory);
+
+            CurrentDataFolder.CreateSubdirectory("Cropped");
         }
     }
 }

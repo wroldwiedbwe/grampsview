@@ -35,8 +35,6 @@
                 </Image.Source>
             </Image>
 
-            <Image x:Name="skiaBitMapImage" VerticalOptions="FillAndExpand" />
-
             <ffimageloading:CachedImage
                 x:Name="daImage"
                 Aspect="AspectFit"

@@ -42,7 +42,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataViewData.Items.OrderBy(PlaceModel => PlaceModel.GName).ToList();
+                return DataViewData.OrderBy(PlaceModel => PlaceModel.GName).ToList();
             }
         }
 
@@ -55,11 +55,11 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The data view data.
         /// </value>
-        public override RepositoryModelType<PlaceModel, HLinkPlaceModel> DataViewData
+        public override IReadOnlyList<PlaceModel> DataViewData
         {
             get
             {
-                return PlaceData;
+                return PlaceData.Values.ToList();
             }
         }
 
@@ -99,7 +99,7 @@ namespace GrampsView.Data.DataView
         {
             DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
 
-            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
+            IEnumerable tt = DataViewData.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 
@@ -111,6 +111,11 @@ namespace GrampsView.Data.DataView
             returnCardGroup.Title = "Latest Place Changes";
 
             return returnCardGroup;
+        }
+
+        public override PlaceModel GetModelFromHLinkString(string HLinkString)
+        {
+            return PlaceData[HLinkString];
         }
 
         /// <summary>
@@ -145,7 +150,7 @@ namespace GrampsView.Data.DataView
         {
             List<SearchItem> itemsFound = new List<SearchItem>();
 
-            var temp = PlaceData.Items.Where(x => x.GetDefaultText.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            var temp = DataViewData.Where(x => x.GetDefaultText.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (PlaceModel tempMO in temp)
             {

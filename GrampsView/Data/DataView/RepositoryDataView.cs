@@ -41,7 +41,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataViewData.Items.OrderBy(RepositoryModel => RepositoryModel.GRName).ToList();
+                return DataViewData.OrderBy(RepositoryModel => RepositoryModel.GRName).ToList();
             }
         }
 
@@ -54,11 +54,11 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The data view data.
         /// </value>
-        public override RepositoryModelType<RepositoryModel, HLinkRepositoryModel> DataViewData
+        public override IReadOnlyList<RepositoryModel> DataViewData
         {
             get
             {
-                return RepositoryData;
+                return RepositoryData.Values.ToList();
             }
         }
 
@@ -98,7 +98,7 @@ namespace GrampsView.Data.DataView
         {
             DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
 
-            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
+            IEnumerable tt = DataViewData.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 
@@ -110,6 +110,11 @@ namespace GrampsView.Data.DataView
             returnCardGroup.Title = "Latest Repository Changes";
 
             return returnCardGroup;
+        }
+
+        public override RepositoryModel GetModelFromHLinkString(string HLinkString)
+        {
+            return RepositoryData[HLinkString];
         }
 
         /// <summary>
@@ -144,7 +149,7 @@ namespace GrampsView.Data.DataView
         {
             List<SearchItem> itemsFound = new List<SearchItem>();
 
-            var temp = RepositoryData.Items.Where(x => x.GetDefaultText.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            var temp = DataViewData.Where(x => x.GetDefaultText.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (RepositoryModel tempMO in temp)
             {

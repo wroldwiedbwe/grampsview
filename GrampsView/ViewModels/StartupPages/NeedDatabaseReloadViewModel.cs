@@ -9,19 +9,18 @@
 
 namespace GrampsView.ViewModels
 {
-
     using GrampsView.Common;
 
     using Prism.Events;
     using Prism.Navigation;
 
     /// <summary>
-    /// <c> viewmodel </c> for the About <c> Flyout </c>.
+    /// <c>viewmodel</c> for the About <c>Flyout</c>.
     /// </summary>
     public class NeedDatabaseReloadViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NeedDatabaseReloadViewModel" /> class.
+        /// Initializes a new instance of the <see cref="NeedDatabaseReloadViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// Injected common loggeing.
@@ -35,6 +34,8 @@ namespace GrampsView.ViewModels
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "Database reload needed";
+
+            BaseTitleIcon = CommonConstants.IconSettings;
         }
     }
 }

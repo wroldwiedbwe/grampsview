@@ -25,7 +25,7 @@ namespace GrampsView.Data.Model
 
     using GrampsView.Data.Collections;
     using GrampsView.Data.DataView;
-
+    using GrampsView.Data.Repository;
     using Xamarin.Forms;
 
     /// <summary>
@@ -139,16 +139,16 @@ namespace GrampsView.Data.Model
         [DataMember]
         public HLinkNoteModelCollection GNoteRefCollection { get; set; } = new HLinkNoteModelCollection();
 
-        /// <summary>
-        /// Gets or sets the home image clipped bitmap.
-        /// </summary>
-        /// <value>
-        /// The home image clipped bitmap.
-        /// </value>
-        public Image HomeImageClippedBitmap
-        {
-            get; set;
-        }
+        ///// <summary>
+        ///// Gets or sets the home image clipped bitmap.
+        ///// </summary>
+        ///// <value>
+        ///// The home image clipped bitmap.
+        ///// </value>
+        //public Image HomeImageClippedBitmap
+        //{
+        //    get; set;
+        //}
 
         /// <summary>
         /// Gets the home image display bit map.
@@ -162,10 +162,10 @@ namespace GrampsView.Data.Model
             {
                 switch (_HomeImageType)
                 {
-                    case CommonConstants.HomeImageTypeClippedBitmap:
-                        {
-                            return HomeImageClippedBitmap;
-                        }
+                    //case CommonConstants.HomeImageTypeClippedBitmap:
+                    //    {
+                    //        return HomeImageClippedBitmap;
+                    //    }
 
                     case CommonConstants.HomeImageTypeThumbNail:
                         {
@@ -247,24 +247,24 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>
-        /// Gets a value indicating whether [home use image].
-        /// </summary>
-        /// <value>
-        /// <c>true</c> if [home use image]; otherwise, <c>false</c>.
-        /// </value>
-        public bool HomeUseImage
-        {
-            get
-            {
-                if (HomeImageType == CommonConstants.HomeImageTypeThumbNail || HomeImageType == CommonConstants.HomeImageTypeClippedBitmap)
-                {
-                    return true;
-                }
+        ///// <summary>
+        ///// Gets a value indicating whether [home use image].
+        ///// </summary>
+        ///// <value>
+        ///// <c>true</c> if [home use image]; otherwise, <c>false</c>.
+        ///// </value>
+        //public bool HomeUseImage
+        //{
+        //    get
+        //    {
+        //        if (HomeImageType == CommonConstants.HomeImageTypeThumbNail || HomeImageType == CommonConstants.HomeImageTypeClippedBitmap)
+        //        {
+        //            return true;
+        //        }
 
-                return false;
-            }
-        }
+        //        return false;
+        //    }
+        //}
 
         /// <summary>
         /// Gets a value indicating whether gets boolean showing if the $$(HLink)$$ is valid. <note
@@ -280,10 +280,10 @@ namespace GrampsView.Data.Model
             {
                 switch (HomeImageType)
                 {
-                    case CommonConstants.HomeImageTypeClippedBitmap:
-                        {
-                            return !string.IsNullOrEmpty(HLinkKey);
-                        }
+                    //case CommonConstants.HomeImageTypeClippedBitmap:
+                    //    {
+                    //        return !string.IsNullOrEmpty(HLinkKey);
+                    //    }
                     case CommonConstants.HomeImageTypeSymbol:
                         {
                             return true;

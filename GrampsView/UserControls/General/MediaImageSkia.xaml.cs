@@ -98,22 +98,14 @@ namespace GrampsView.UserControls
                 return;
             }
 
-            HLinkMedia = newHLinkMedia;
-
-            theMediaModel = HLinkMedia.DeRef;
-
-            if (theMediaModel.Id == "O0003")
-            {
-            }
-
             // Input valid so start work
             this.daSymbol.IsVisible = false;
             this.daImage.IsVisible = false;
             this.daImage.Source = null;
-            this.skiaBitMapImage.IsVisible = false;
-            this.skiaBitMapImage.Source = null;
 
-            if (!HLinkMedia.Valid || !HLinkMedia.HomeUseImage || !theMediaModel.IsMediaFile)
+            HLinkMedia = newHLinkMedia;
+
+            if (!HLinkMedia.Valid || !HLinkMedia.HomeUseImage)
             {
                 this.daSymbol.IsVisible = true;
 
@@ -144,6 +136,13 @@ namespace GrampsView.UserControls
             }
 
             // Have a media image to display
+
+            theMediaModel = HLinkMedia.DeRef;
+
+            if (theMediaModel.Id == "O0003")
+            {
+            }
+
             Debug.WriteLine(HLinkMedia.DeRef.MediaStorageFilePath, "MediaImageSkia");
             if (string.IsNullOrEmpty(HLinkMedia.DeRef.MediaStorageFilePath))
             {
@@ -153,55 +152,9 @@ namespace GrampsView.UserControls
 
             this.daSymbol.IsVisible = false;
 
-            if (HLinkMedia.GCorner1X > 0 || HLinkMedia.GCorner1Y > 0 || HLinkMedia.GCorner2X > 0 || HLinkMedia.GCorner2Y > 0)
-            {
-                this.skiaBitMapImage.IsVisible = true;
-
-                SKBitmapImageSource skiabmimage = new SKBitmapImageSource();
-
-                using (StreamReader stream = new StreamReader(HLinkMedia.DeRef.MediaStorageFilePath))
-                {
-                    resourceBitmap = SKBitmap.Decode(stream.BaseStream);
-                }
-
-                // Check for too large a bitmap
-                Debug.WriteLine("resourceBitmap size", resourceBitmap.ByteCount);
-                if (resourceBitmap.ByteCount > int.MaxValue - 1000)
-                {
-                    // TODO Handle this better. Perhaps resize? Delete for now
-                    resourceBitmap = new SKBitmap();
-                }
-
-                float crleft = (float)(HLinkMedia.GCorner1X / 100d * theMediaModel.MetaDataWidth);
-                float crright = (float)(HLinkMedia.GCorner2X / 100d * theMediaModel.MetaDataWidth);
-                float crtop = (float)(HLinkMedia.GCorner1Y / 100d * theMediaModel.MetaDataHeight);
-                float crbottom = (float)(HLinkMedia.GCorner2Y / 100d * theMediaModel.MetaDataHeight);
-
-                SKRect cropRect = new SKRect(crleft, crtop, crright, crbottom);
-
-                SKBitmap croppedBitmap = new SKBitmap((int)cropRect.Width,
-                                                  (int)cropRect.Height);
-                SKRect dest = new SKRect(0, 0, cropRect.Width, cropRect.Height);
-                SKRect source = new SKRect(cropRect.Left, cropRect.Top,
-                                           cropRect.Right, cropRect.Bottom);
-
-                using (SKCanvas canvas = new SKCanvas(croppedBitmap))
-                {
-                    canvas.DrawBitmap(resourceBitmap, source, dest);
-                }
-
-                resourceBitmap.Dispose();
-
-                skiabmimage.Bitmap = croppedBitmap;
-
-                skiaBitMapImage.Source = skiabmimage;
-            }
-            else
-            {
-                this.daImage.IsVisible = true;
-                this.daImage.DownsampleToViewSize = true;
-                this.daImage.Source = theMediaModel.MediaStorageFilePath;
-            }
+            this.daImage.IsVisible = true;
+            this.daImage.DownsampleToViewSize = true;
+            this.daImage.Source = theMediaModel.MediaStorageFilePath;
         }
 
         // To detect redundant calls

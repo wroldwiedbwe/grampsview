@@ -36,6 +36,10 @@ namespace GrampsView.ViewModels
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             LoadDataCommand = new DelegateCommand(FirstRunLoadAFileButton);
+
+            BaseTitle = "First Run";
+
+            BaseTitleIcon = CommonConstants.IconSettings;
         }
 
         public DelegateCommand LoadDataCommand { get; private set; }

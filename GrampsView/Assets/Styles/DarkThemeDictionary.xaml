@@ -33,11 +33,11 @@
     </Color>
 
     <Color x:Key="SurfaceColor">
-        #FFFFFF
+        #909090
     </Color>
 
     <Color x:Key="SurfaceVariantDarkColor">
-        #C8C8C8
+        #484848
     </Color>
 
     <Color x:Key="ErrorColor">
@@ -53,7 +53,7 @@
     </Color>
 
     <Color x:Key="OnBackgroundColor">
-        #888888
+        #404040
     </Color>
 
     <Color x:Key="OnSurfaceColor">

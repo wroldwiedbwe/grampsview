@@ -75,7 +75,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataViewData.Items.OrderBy(PersonModel => PersonModel.GPersonNamesCollection.GetPrimaryName.SortName).ToList();
+                return DataViewData.OrderBy(PersonModel => PersonModel.GPersonNamesCollection.GetPrimaryName.SortName).ToList();
             }
         }
 
@@ -85,11 +85,11 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The data view data.
         /// </value>
-        public override RepositoryModelType<PersonModel, HLinkPersonModel> DataViewData
+        public override IReadOnlyList<PersonModel> DataViewData
         {
             get
             {
-                return PersonData;
+                return PersonData.Values.ToList();
             }
         }
 
@@ -104,7 +104,7 @@ namespace GrampsView.Data.DataView
             {
                 List<CommonGroupInfoCollection<PersonModel>> groups = new List<CommonGroupInfoCollection<PersonModel>>();
 
-                var query = from item in PersonData.Items
+                var query = from item in DataViewData
                             orderby item.GPersonNamesCollection.GetPrimaryName.SortName
                             group item by (item.GPersonNamesCollection.GetPrimaryName.GSurName + " ").ToUpper(CultureInfo.CurrentCulture).Substring(0, 1) into g
                             select new { GroupName = g.Key, Items = g };
@@ -208,7 +208,7 @@ namespace GrampsView.Data.DataView
         {
             DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
 
-            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
+            IEnumerable tt = DataViewData.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 
@@ -316,7 +316,7 @@ namespace GrampsView.Data.DataView
             queryString = queryString.ToLower(CultureInfo.CurrentCulture);
 
             // Search by Full Name
-            var temp = PersonData.Items.Where(x => x.GPersonNamesCollection.GetPrimaryName.FullName.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            var temp = DataViewData.Where(x => x.GPersonNamesCollection.GetPrimaryName.FullName.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (PersonModel tempMO in temp)
             {
@@ -328,7 +328,7 @@ namespace GrampsView.Data.DataView
             }
 
             // Search by Called By
-            temp = PersonData.Items.Where(x => x.GPersonNamesCollection.GetPrimaryName.GCall.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            temp = DataViewData.Where(x => x.GPersonNamesCollection.GetPrimaryName.GCall.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (PersonModel tempMO in temp)
             {
@@ -340,7 +340,7 @@ namespace GrampsView.Data.DataView
             }
 
             // Search by Nick Name
-            temp = PersonData.Items.Where(x => x.GPersonNamesCollection.GetPrimaryName.GNick.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            temp = DataViewData.Where(x => x.GPersonNamesCollection.GetPrimaryName.GNick.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (PersonModel tempMO in temp)
             {

@@ -63,13 +63,13 @@ namespace GrampsView.Data.ExternalStorageNS
                             // Place attributes
                             loadPlace.Id = (string)placeData.Attribute("id");
 
-                            if (loadPlace.Id == "P0273")
-                            {
-                            }
-
                             loadPlace.Change = GetDateTime(placeData, "change");
                             loadPlace.Priv = SetPrivateObject((string)placeData.Attribute("priv"));
                             loadPlace.Handle = (string)placeData.Attribute("handle");
+
+                            if (String.IsNullOrEmpty(loadPlace.Handle))
+                            {
+                            }
 
                             loadPlace.GCode = GetElement(placeData, "code");
 

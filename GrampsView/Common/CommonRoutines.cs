@@ -9,6 +9,10 @@
 
 namespace GrampsView.Common
 {
+    using System;
+    using System.IO;
+    using System.Runtime.Serialization;
+    using System.Runtime.Serialization.Formatters.Binary;
     using System.Text.RegularExpressions;
 
     using Xamarin.Essentials;
@@ -17,6 +21,7 @@ namespace GrampsView.Common
     /// <summary>
     /// Various common routines.
     /// </summary>
+
     public static class CommonRoutines
     {
         public static bool IsEmulator()

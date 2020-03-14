@@ -21,7 +21,7 @@ namespace GrampsView.Data.Model
 {
     using GrampsView.Common;
     using GrampsView.Data.DataView;
-
+    using GrampsView.Data.Repository;
     using System.Runtime.Serialization;
 
     using Xamarin.Forms;
@@ -112,16 +112,16 @@ namespace GrampsView.Data.Model
         [DataMember]
         public int GCorner2Y { get; set; } = 0;
 
-        /// <summary>
-        /// Gets or sets the home image clipped bitmap.
-        /// </summary>
-        /// <value>
-        /// The home image clipped bitmap.
-        /// </value>
-        public Image HomeImageClippedBitmap
-        {
-            get; set;
-        }
+        ///// <summary>
+        ///// Gets or sets the home image clipped bitmap.
+        ///// </summary>
+        ///// <value>
+        ///// The home image clipped bitmap.
+        ///// </value>
+        //public Image HomeImageClippedBitmap
+        //{
+        //    get; set;
+        //}
 
         /// <summary>
         /// Gets the home image display bit map.
@@ -135,10 +135,10 @@ namespace GrampsView.Data.Model
             {
                 switch (_HomeImageType)
                 {
-                    case CommonConstants.HomeImageTypeClippedBitmap:
-                        {
-                            return HomeImageClippedBitmap;
-                        }
+                    //case CommonConstants.HomeImageTypeClippedBitmap:
+                    //    {
+                    //        return HomeImageClippedBitmap;
+                    //    }
 
                     case CommonConstants.HomeImageTypeThumbNail:
                         {
@@ -230,12 +230,31 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                if (HomeImageType == CommonConstants.HomeImageTypeThumbNail || HomeImageType == CommonConstants.HomeImageTypeClippedBitmap)
+                if (HomeImageType == CommonConstants.HomeImageTypeThumbNail)
                 {
                     return true;
                 }
 
                 return false;
+            }
+        }
+
+        // Gramps uses (0,0,0,0) or (0,0,100,100) for the entire bitmap.
+        public bool NeedsClipping
+        {
+            get
+            {
+                if ((GCorner1X == 0) && (GCorner1Y == 0) && (GCorner2X == 0) && (GCorner2Y == 0))
+                {
+                    return false;
+                }
+
+                if ((GCorner1X == 0) && (GCorner1Y == 0) && (GCorner2X == 100) && (GCorner2Y == 100))
+                {
+                    return false;
+                }
+
+                return true;
             }
         }
 
@@ -253,10 +272,6 @@ namespace GrampsView.Data.Model
             {
                 switch (HomeImageType)
                 {
-                    case CommonConstants.HomeImageTypeClippedBitmap:
-                        {
-                            return !string.IsNullOrEmpty(HLinkKey);
-                        }
                     case CommonConstants.HomeImageTypeSymbol:
                         {
                             return true;
@@ -288,7 +303,7 @@ namespace GrampsView.Data.Model
             GCorner2Y = argHLinkMediaModel.GCorner2Y;
             GPriv = argHLinkMediaModel.GPriv;
             HLinkKey = argHLinkMediaModel.HLinkKey;
-            HomeImageClippedBitmap = argHLinkMediaModel.HomeImageClippedBitmap;
+            //HomeImageClippedBitmap = argHLinkMediaModel.HomeImageClippedBitmap;
             HomeImageType = argHLinkMediaModel.HomeImageType;
             HomeSymbol = argHLinkMediaModel.HomeSymbol;
             HomeSymbolColour = argHLinkMediaModel.HomeSymbolColour;

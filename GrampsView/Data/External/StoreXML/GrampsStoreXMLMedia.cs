@@ -136,7 +136,7 @@ namespace GrampsView.Data.ExternalStorageNS
                             Change = GetDateTime(GetAttribute(pname, "change")),
                         };
 
-                        if (loadObject.Id == "O0220")
+                        if (loadObject.Id == "O0032")
                         {
                         }
 
@@ -220,7 +220,7 @@ namespace GrampsView.Data.ExternalStorageNS
                         loadObject.HomeImageHLink.HomeSymbolColour = cardColour;
 
                         // save the object
-                        DV.MediaDV.MediaData.Add(loadObject);
+                        DataStore.DS.MediaData.Add(loadObject);
 
                         localGrampsCommonLogging.LogVariable("LoadMedia", loadObject.GDescription);
                     }

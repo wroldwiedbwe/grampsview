@@ -9,7 +9,7 @@ namespace GrampsView.Data.Collections
     using GrampsView.Common;
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
-
+    using GrampsView.Data.Repository;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -43,7 +43,7 @@ namespace GrampsView.Data.Collections
                 // Step through each mediamodel hlink in the collection
                 for (int i = 0; i < Count; i++)
                 {
-                    tempMediaModel = DV.MediaDV.MediaData.GetModelFromHLink(this[i]);
+                    tempMediaModel = DataStore.DS.MediaData.GetModelFromHLink(this[i]);
 
                     if (tempMediaModel.IsMediaFile)
                     {

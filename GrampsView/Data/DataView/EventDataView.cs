@@ -58,11 +58,11 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The data view data.
         /// </value>
-        public override RepositoryModelType<EventModel, HLinkEventModel> DataViewData
+        public override IReadOnlyList<EventModel> DataViewData
         {
             get
             {
-                return EventData;
+                return EventData.Values.ToList();
             }
         }
 
@@ -98,7 +98,7 @@ namespace GrampsView.Data.DataView
             {
                 List<CommonGroupInfoCollection<EventModel>> groups = new List<CommonGroupInfoCollection<EventModel>>();
 
-                var query = from item in EventData.Items
+                var query = from item in DataViewData
                             orderby item.GDate
                             group item by item.GDate.GetDecade into g
                             select new { GroupName = g.Key, Items = g };
@@ -142,7 +142,7 @@ namespace GrampsView.Data.DataView
         {
             if (collectionArg == null)
             {
-                collectionArg = EventData.Items;
+                collectionArg = new ObservableCollection<EventModel>(DataViewData);
             }
 
             // sort the list
@@ -234,7 +234,7 @@ namespace GrampsView.Data.DataView
         /// </returns>
         public EventModel GetEventType(string eventType)
         {
-            var selectedEvents = from aEvent in EventData.Items
+            var selectedEvents = from aEvent in DataViewData
                                  where aEvent.GType == eventType
                                  select aEvent;
 
@@ -254,7 +254,7 @@ namespace GrampsView.Data.DataView
         {
             DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
 
-            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
+            IEnumerable tt = DataViewData.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 
@@ -266,6 +266,11 @@ namespace GrampsView.Data.DataView
             returnCardGroup.Title = "Latest Event Changes";
 
             return returnCardGroup;
+        }
+
+        public override EventModel GetModelFromHLinkString(string HLinkString)
+        {
+            return EventData[HLinkString];
         }
 
         /// <summary>
@@ -300,7 +305,7 @@ namespace GrampsView.Data.DataView
         {
             List<SearchItem> itemsFound = new List<SearchItem>();
 
-            IEnumerable<EventModel> temp = EventData.Items.Where(x => x.GDescription.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            IEnumerable<EventModel> temp = DataViewData.Where(x => x.GDescription.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (EventModel tempMO in temp)
             {

@@ -34,7 +34,7 @@ namespace GrampsView.ViewModels
         private CardListLineCollection localDataDetailList = new CardListLineCollection();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileInputHandlerViewModel" /> class.
+        /// Initializes a new instance of the <see cref="FileInputHandlerViewModel"/> class.
         /// </summary>
         /// <param name="iocDataRepositoryManager">
         /// The ioc data repository manager.
@@ -49,6 +49,8 @@ namespace GrampsView.ViewModels
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "File Input Handler";
+
+            BaseTitleIcon = CommonConstants.IconSettings;
 
             PickFileCommand = new DelegateCommand(PickFile).ObservesCanExecute(() => LocalCanHandleDataFolderChosen);
 

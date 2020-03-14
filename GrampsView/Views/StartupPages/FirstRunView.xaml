@@ -6,39 +6,51 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i18n="clr-namespace:GrampsView.Common"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="{Binding BaseTitle}"
+    ControlTemplate="{StaticResource DetailPageTemplate}"
     Style="{DynamicResource GVBaseContentPage}"
     mc:Ignorable="d">
 
-    <FlexLayout Direction="Column">
+    <NavigationPage.TitleView>
+        <Grid Style="{DynamicResource GVPageTitleStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-        <!--  Body  -->
-        <FlexLayout FlexLayout.Grow="1">
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{DynamicResource GVSymbolconPageHeaderType}">
+                <Image.Source>
+                    <FontImageSource
+                        FontFamily="{DynamicResource MaterialFontFamily}"
+                        Glyph="{Binding BaseTitleIcon}"
+                        Size="44"
+                        Color="{DynamicResource PrimaryColor}" />
+                </Image.Source>
+            </Image>
 
-            <ScrollView>
-                <FlexLayout Direction="Column">
-                    <Frame Style="{DynamicResource FrameLargeVariableCardStyle}">
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Style="{DynamicResource GVLabelPageHeaderTitleStyle}"
+                Text="{Binding BaseTitle, Mode=OneWay}" />
+        </Grid>
+    </NavigationPage.TitleView>
 
-                        <Frame Grid.Row="0" Style="{StaticResource FrameLargeVariableCardStyleNS}">
-                            <Label Style="{DynamicResource GVLabelStyleInstructions}" Text="{i18n:Translate FirstRun_IntroductionText}" />
-                        </Frame>
-                    </Frame>
+    <ScrollView>
+        <FlexLayout Direction="Column">
+            <Frame Style="{DynamicResource FrameLargeVariableCardStyle}">
 
-                    <Button
-                        Command="{Binding LoadDataCommand}"
-                        Style="{DynamicResource GVButtonStyle}"
-                        Text="Load Data" />
-                </FlexLayout>
-            </ScrollView>
-            <!--  Navigation items  -->
-            <BoxView FlexLayout.Basis="50" FlexLayout.Order="-1" />
+                <Frame Grid.Row="0" Style="{StaticResource FrameLargeVariableCardStyleNS}">
+                    <Label Style="{DynamicResource GVLabelStyleInstructions}" Text="{i18n:Translate FirstRun_IntroductionText}" />
+                </Frame>
+            </Frame>
 
-            <!--  Aside items  -->
-            <BoxView FlexLayout.Basis="50" />
-
-            <!--  Body End  -->
+            <Button
+                Command="{Binding LoadDataCommand}"
+                Style="{DynamicResource GVButtonStyle}"
+                Text="Load Data" />
         </FlexLayout>
-
-        <!--  Footer  -->
-    </FlexLayout>
+    </ScrollView>
 </ContentPage>

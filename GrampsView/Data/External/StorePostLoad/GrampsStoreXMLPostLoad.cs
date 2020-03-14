@@ -15,9 +15,12 @@ namespace GrampsView.Data.ExternalStorageNS
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
     using GrampsView.Events;
-
+    using SkiaSharp;
+    using SkiaSharp.Views.Forms;
     using System;
-
+    using System.Diagnostics;
+    using System.IO;
+    using System.Threading.Tasks;
     using Xamarin.Forms;
 
     /// <summary>
@@ -66,8 +69,17 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </param>
         /// <returns>
         /// </returns>
-        public static HLinkHomeImageModel SetHomeHLink(HLinkHomeImageModel argStartHLink, HLinkHomeImageModel argHLink)
+        public static async Task<HLinkHomeImageModel> SetHomeHLink(HLinkHomeImageModel argStartHLink, HLinkHomeImageModel argHLink)
         {
+            if (argHLink.HLinkKey == "_e5bfa72904e68ce059252b501df")
+            {
+            }
+
+            MediaModel theMediaModel = new MediaModel();
+
+            SKBitmap resourceBitmap = new SKBitmap();
+
+            // --------- Validate
             if (argStartHLink is null)
             {
                 throw new ArgumentNullException(nameof(argStartHLink));
@@ -78,12 +90,120 @@ namespace GrampsView.Data.ExternalStorageNS
                 throw new ArgumentNullException(nameof(argHLink));
             }
 
-            argStartHLink.GCorner1X = argHLink.GCorner1X;
-            argStartHLink.GCorner1Y = argHLink.GCorner1Y;
-            argStartHLink.GCorner2X = argHLink.GCorner2X;
-            argStartHLink.GCorner2Y = argHLink.GCorner2Y;
-            argStartHLink.HLinkKey = argHLink.HLinkKey;
-            argStartHLink.HomeImageType = argHLink.HomeImageType;
+            // --------- Copy link
+            argStartHLink = argHLink;
+
+            // --------- Check if media or symbol
+            if (argStartHLink.HomeImageType == CommonConstants.HomeImageTypeSymbol)
+            {
+                return argStartHLink;
+            }
+
+            // --------- Check if MediaObject already exists
+            theMediaModel = argStartHLink.DeRef;
+
+            if (!theMediaModel.Valid)
+            {
+                DataStore.CN.NotifyError("Invalid argStartHLink DeRef (" + argStartHLink.HLinkKey + ") passed to SetHomeHLink");
+                return argStartHLink;
+            }
+
+            if (theMediaModel.Id == "O0003")
+            {
+            }
+
+            Debug.WriteLine(theMediaModel.MediaStorageFilePath);
+
+            if (string.IsNullOrEmpty(theMediaModel.MediaStorageFilePath))
+            {
+                DataStore.CN.NotifyError("The media file path is null for Id:" + theMediaModel.Id);
+                return argStartHLink;
+            }
+
+            // --------- Save Cropped Image
+            string newHLinkKey = argStartHLink.HLinkKey + "-" + argStartHLink.GCorner1X + argStartHLink.GCorner1Y + argStartHLink.GCorner2X + argStartHLink.GCorner2Y;
+            string outFileName = Path.Combine("Cropped", newHLinkKey + ".png");
+            //string outFileName = Path.Combine("Cropped", argStartHLink.HLinkKey + ".png");
+
+            string outFilePath = Path.Combine(DataStore.DS.CurrentDataFolder.FullName, outFileName);
+
+            // Have a media image to display
+            if (argStartHLink.NeedsClipping)
+            {
+                // Check if already exists
+                MediaModel fileExists = DV.MediaDV.GetModelFromHLinkString(newHLinkKey);
+
+                if (!fileExists.Valid)
+                {
+                    // Needs clipping
+                    using (StreamReader stream = new StreamReader(theMediaModel.MediaStorageFilePath))
+                    {
+                        resourceBitmap = SKBitmap.Decode(stream.BaseStream);
+                    }
+
+                    // Check for too large a bitmap
+                    Debug.WriteLine("resourceBitmap size", resourceBitmap.ByteCount);
+                    if (resourceBitmap.ByteCount > int.MaxValue - 1000)
+                    {
+                        // TODO Handle this better. Perhaps resize? Delete for now
+                        resourceBitmap = new SKBitmap();
+                    }
+
+                    float crleft = (float)(argStartHLink.GCorner1X / 100d * theMediaModel.MetaDataWidth);
+                    float crright = (float)(argStartHLink.GCorner2X / 100d * theMediaModel.MetaDataWidth);
+                    float crtop = (float)(argStartHLink.GCorner1Y / 100d * theMediaModel.MetaDataHeight);
+                    float crbottom = (float)(argStartHLink.GCorner2Y / 100d * theMediaModel.MetaDataHeight);
+
+                    SKRect cropRect = new SKRect(crleft, crtop, crright, crbottom);
+
+                    SKBitmap croppedBitmap = new SKBitmap((int)cropRect.Width,
+                                                      (int)cropRect.Height);
+                    SKRect dest = new SKRect(0, 0, cropRect.Width, cropRect.Height);
+                    SKRect source = new SKRect(cropRect.Left, cropRect.Top,
+                                               cropRect.Right, cropRect.Bottom);
+
+                    using (SKCanvas canvas = new SKCanvas(croppedBitmap))
+                    {
+                        canvas.DrawBitmap(resourceBitmap, source, dest);
+                    }
+
+                    // create an image COPY
+                    SKImage image = SKImage.FromBitmap(croppedBitmap);
+
+                    // encode the image (defaults to PNG)
+                    SKData encoded = image.Encode();
+
+                    // get a stream over the encoded data
+
+                    using (Stream stream = File.Open(outFilePath, FileMode.OpenOrCreate, System.IO.FileAccess.Write, FileShare.ReadWrite))
+                    {
+                        encoded.SaveTo(stream);
+                    }
+
+                    croppedBitmap.Dispose();
+
+                    resourceBitmap.Dispose();
+
+                    // ------------ Save new MediaObject
+                    MediaModel newMediaObject = theMediaModel.Clone();
+
+                    newMediaObject.HLinkKey = newHLinkKey;
+                    newMediaObject.OriginalFilePath = outFileName;
+                    //newMediaObject.HomeImageHLink.HLinkKey = newHLinkKey;
+                    newMediaObject.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+
+                    DataStore.DS.MediaData.Add(newMediaObject);
+                    await fixMediaFile(newMediaObject).ConfigureAwait(false);
+                }
+
+                // ------------ Change HomeImageLink to point to new image
+                argStartHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+                argStartHLink.HLinkKey = newHLinkKey;
+                argStartHLink.GCorner1X = 0;
+                argStartHLink.GCorner1Y = 0;
+                argStartHLink.GCorner2X = 0;
+                argStartHLink.GCorner2Y = 0;
+            }
 
             return argStartHLink;
         }
@@ -104,11 +224,11 @@ namespace GrampsView.Data.ExternalStorageNS
         /// <summary>
         /// Organises the citation repository.
         /// </summary>
-        private static void OrganiseCitationRepository()
+        private static async Task<bool> OrganiseCitationRepository()
         {
             DataStore.CN.MajorStatusAdd("Organising Citation data");
 
-            foreach (CitationModel citationModel in DV.CitationDV.CitationData)
+            foreach (CitationModel citationModel in DV.CitationDV.DataViewData)
             {
                 if (citationModel.Id == "C0575")
                 {
@@ -121,31 +241,31 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Media Collection - Create backlinks in media models to citation models
                 foreach (HLinkMediaModel mediaRef in citationModel.GMediaRefCollection)
                 {
-                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Note HLinks
                 foreach (HLinkNoteModel noteRef in citationModel.GNoteRefCollection)
                 {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Source HLink
-                DV.SourceDV.SourceData[citationModel.GSourceRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                DataStore.DS.SourceData[citationModel.GSourceRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
 
                 // Back Reference Tag HLinks
                 foreach (HLinkTagModel tagRef in citationModel.GTagRef)
                 {
-                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // -- Organsie Default FirstLinks ------------------------------
 
                 // Sort media collection and get first link images
-                DV.CitationDV.CitationData[citationModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
+                DataStore.DS.CitationData[citationModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
 
                 // Sort note collection and get first link images
-                DV.CitationDV.CitationData[citationModel.HLinkKey].GNoteRefCollection.SortAndSetFirst();
+                DataStore.DS.CitationData[citationModel.HLinkKey].GNoteRefCollection.SortAndSetFirst();
 
                 // -- Organise Home Images -----------------------
 
@@ -168,19 +288,23 @@ namespace GrampsView.Data.ExternalStorageNS
                 }
                 else
                 {
-                    citationModel.HomeImageHLink = SetHomeHLink(citationModel.HomeImageHLink, hlink);
+                    citationModel.HomeImageHLink = await SetHomeHLink(citationModel.HomeImageHLink, hlink);
                 }
+
+                DataStore.DS.CitationData[citationModel.HLinkKey] = citationModel;
             }
+
+            return true;
         }
 
         /// <summary>
         /// Organises the event repository.
         /// </summary>
-        private static void OrganiseEventRepository()
+        private static async Task<bool> OrganiseEventRepository()
         {
             DataStore.CN.MajorStatusAdd("Organising Event data");
 
-            foreach (EventModel eventModel in DV.EventDV.EventData)
+            foreach (EventModel eventModel in DV.EventDV.DataViewData)
             {
                 HLinkEventModel t = eventModel.HLink;
 
@@ -197,23 +321,26 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Media Collection
                 foreach (HLinkMediaModel mediaRef in eventModel.GMediaRefCollection)
                 {
-                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Sort media collection and get first link images
-                DV.EventDV.EventData[eventModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
+                DataStore.DS.EventData[eventModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
 
                 // eventModel.GMediaRefCollection = DV.MediaDV.HLinkCollectionSort(eventModel.GMediaRefCollection);
 
                 // DV.EventDV.EventData[eventModel.HLinkKey].GMediaRefCollection.FirstHLink = DV.MediaDV.GetFirstImageFromCollection(DV.EventDV.EventData[eventModel.HLinkKey].GMediaRefCollection);
 
                 // Place Reference
-                DV.PlaceDV.PlaceData[eventModel.GPlace.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                if (eventModel.GPlace.Valid)
+                {
+                    DataStore.DS.PlaceData[eventModel.GPlace.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                }
 
                 // Back Reference Note HLinks
                 foreach (HLinkNoteModel noteRef in eventModel.GNoteRefCollection)
                 {
-                    DV.EventDV.GetModelFromHLinkString(noteRef.HLinkKey).BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.EventData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Setup home images
@@ -242,19 +369,23 @@ namespace GrampsView.Data.ExternalStorageNS
                 }
                 else
                 {
-                    eventModel.HomeImageHLink = SetHomeHLink(eventModel.HomeImageHLink, hlink);
+                    eventModel.HomeImageHLink = await SetHomeHLink(eventModel.HomeImageHLink, hlink);
                 }
+
+                DataStore.DS.EventData[eventModel.HLinkKey] = eventModel;
             }
+
+            return true;
         }
 
         /// <summary>
         /// Organises the family repository.
         /// </summary>
-        private static void OrganiseFamilyRepository()
+        private static async Task<bool> OrganiseFamilyRepository()
         {
             DataStore.CN.MajorStatusAdd("Organising Family data ");
 
-            foreach (FamilyModel familyModel in DV.FamilyDV.FamilyData)
+            foreach (FamilyModel familyModel in DV.FamilyDV.DataViewData)
             {
                 HLinkFamilyModel t = familyModel.HLink;
 
@@ -263,48 +394,48 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Child Collection
                 foreach (HLinkPersonModel personRef in familyModel.GChildRefCollection)
                 {
-                    DV.PersonDV.PersonData[personRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.PersonData[personRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Citation Collection
                 foreach (HLinkCitationModel citationRef in familyModel.GCitationRefCollection)
                 {
-                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Event HLinks
                 foreach (HLinkEventModel eventRef in familyModel.GEventRefCollection)
                 {
-                    DV.EventDV.EventData[eventRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.EventData[eventRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Media Collection
                 foreach (HLinkMediaModel mediaRef in familyModel.GMediaRefCollection)
                 {
-                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Note Collection
                 foreach (HLinkNoteModel noteRef in familyModel.GNoteRefCollection)
                 {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Tag Collection
                 foreach (HLinkTagModel tagRef in familyModel.GTagRefCollection)
                 {
-                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // -- Organse First and Sorts --------------------------
 
-                DV.FamilyDV.FamilyData[familyModel.HLinkKey].GCitationRefCollection.SortAndSetFirst();
+                DataStore.DS.FamilyData[familyModel.HLinkKey].GCitationRefCollection.SortAndSetFirst();
 
-                DV.FamilyDV.FamilyData[familyModel.HLinkKey].GEventRefCollection.SortAndSetFirst();
+                DataStore.DS.FamilyData[familyModel.HLinkKey].GEventRefCollection.SortAndSetFirst();
 
-                DV.FamilyDV.FamilyData[familyModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
+                DataStore.DS.FamilyData[familyModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
 
-                DV.FamilyDV.FamilyData[familyModel.HLinkKey].GNoteRefCollection.SortAndSetFirst();
+                DataStore.DS.FamilyData[familyModel.HLinkKey].GNoteRefCollection.SortAndSetFirst();
 
                 // -- Organse Home Image ---------------------
 
@@ -329,14 +460,18 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Set the image if available
                 if (hlink.Valid)
                 {
-                    familyModel.HomeImageHLink = SetHomeHLink(familyModel.HomeImageHLink, hlink);
+                    familyModel.HomeImageHLink = await SetHomeHLink(familyModel.HomeImageHLink, hlink);
                 }
                 else
                 {
                     // Set to default
                     familyModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
                 }
+
+                DataStore.DS.FamilyData[familyModel.HLinkKey] = familyModel;
             }
+
+            return true;
         }
 
         /// <summary>
@@ -354,28 +489,32 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             DataStore.CN.MajorStatusAdd("Organising Media data");
 
-            foreach (MediaModel mediaObject in DV.MediaDV.MediaData)
+            foreach (MediaModel mediaObject in DV.MediaDV.DataViewData)
             {
                 HLinkMediaModel t = mediaObject.HLink;
+
+                if (mediaObject.Id == "O0032")
+                {
+                }
 
                 // TODO Change to SortAndSetFirst
 
                 // Back Reference Citation HLinks
                 foreach (HLinkCitationModel citationRef in mediaObject.GCitationRefCollection)
                 {
-                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Note HLinks
                 foreach (HLinkNoteModel noteRef in mediaObject.GNoteRefCollection)
                 {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Tag HLinks
                 foreach (HLinkTagModel tagRef in mediaObject.GTagRefCollection)
                 {
-                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // TODO Change to SortAndSetFirst
@@ -442,6 +581,8 @@ namespace GrampsView.Data.ExternalStorageNS
                             break;
                         }
                 }
+
+                DataStore.DS.MediaData[mediaObject.HLinkKey] = mediaObject;
             }
         }
 
@@ -464,7 +605,7 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             DataStore.CN.MajorStatusAdd("Organising Note data");
 
-            foreach (NoteModel note in DV.NoteDV.NoteData)
+            foreach (NoteModel note in DV.NoteDV.DataViewData)
             {
                 HLinkNoteModel t = note.HLink;
 
@@ -474,7 +615,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                 foreach (HLinkTagModel tagnRef in note.GTagRefCollection)
                 {
-                    DV.TagDV.TagData[tagnRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.TagData[tagnRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
             }
         }
@@ -482,11 +623,11 @@ namespace GrampsView.Data.ExternalStorageNS
         /// <summary>
         /// Organises the person repository.
         /// </summary>
-        private static void OrganisePersonRepository()
+        private static async Task<bool> OrganisePersonRepository()
         {
             DataStore.CN.MajorStatusAdd("Organising Person data");
 
-            foreach (PersonModel person in DV.PersonDV.PersonData)
+            foreach (PersonModel person in DV.PersonDV.DataViewData)
             {
                 HLinkPersonModel t = person.HLink;
 
@@ -499,39 +640,39 @@ namespace GrampsView.Data.ExternalStorageNS
 
                 foreach (HLinkCitationModel citationRef in person.GCitationRefCollection)
                 {
-                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Event Collection
 
                 foreach (HLinkEventModel eventRef in person.GEventRefCollection)
                 {
-                    DV.EventDV.GetModelFromHLinkString(eventRef.HLinkKey).BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.EventData[eventRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 foreach (HLinkMediaModel mediaRef in person.GMediaRefCollection)
                 {
-                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Note Collection
                 foreach (HLinkNoteModel noteRef in person.GNoteRefCollection)
                 {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Parent RelationShip
 
                 foreach (HLinkFamilyModel familyRef in person.GParentInRefCollection)
                 {
-                    DV.FamilyDV.FamilyData[familyRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.FamilyData[familyRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Sibling Collection
 
                 foreach (HLinkPersonModel personRef in person.SiblingRefCollection)
                 {
-                    DV.PersonDV.PersonData[personRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.PersonData[personRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Tag HLinks
@@ -543,27 +684,27 @@ namespace GrampsView.Data.ExternalStorageNS
                     person.GTagRefCollection[i].HomeImageHLink = GetTagRefHomeLink(tagRef.DeRef, tagRef.HomeImageHLink);
 
                     // Set the backlinks
-                    DV.TagDV.GetModelFromHLinkString(tagRef.HLinkKey).BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // -- Organise First Image and Sorts ------------------------------
 
-                DV.PersonDV.PersonData[person.HLinkKey].GCitationRefCollection.SortAndSetFirst();
+                DataStore.DS.PersonData[person.HLinkKey].GCitationRefCollection.SortAndSetFirst();
 
-                DV.PersonDV.PersonData[person.HLinkKey].GEventRefCollection.SortAndSetFirst();
+                DataStore.DS.PersonData[person.HLinkKey].GEventRefCollection.SortAndSetFirst();
 
                 // Sort media collection and get first link images
-                DV.PersonDV.PersonData[person.HLinkKey].GMediaRefCollection.SortAndSetFirst();
+                DataStore.DS.PersonData[person.HLinkKey].GMediaRefCollection.SortAndSetFirst();
 
-                DV.PersonDV.PersonData[person.HLinkKey].GNoteRefCollection.SortAndSetFirst();
+                DataStore.DS.PersonData[person.HLinkKey].GNoteRefCollection.SortAndSetFirst();
 
-                DV.PersonDV.PersonData[person.HLinkKey].GParentInRefCollection.SortAndSetFirst();
+                DataStore.DS.PersonData[person.HLinkKey].GParentInRefCollection.SortAndSetFirst();
 
-                DV.PersonDV.PersonData[person.HLinkKey].SiblingRefCollection.SortAndSetFirst();
+                DataStore.DS.PersonData[person.HLinkKey].SiblingRefCollection.SortAndSetFirst();
 
                 // -- Organsie Home Image ------------------------------
 
-                foreach (PersonModel argModel in DV.PersonDV.PersonData)
+                foreach (PersonModel argModel in DV.PersonDV.PersonData.GetList)
                 {
                     //if (argModel.Id == "I0568")
                     //{
@@ -591,8 +732,10 @@ namespace GrampsView.Data.ExternalStorageNS
                     }
                     else
                     {
-                        argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
+                        argModel.HomeImageHLink = await SetHomeHLink(argModel.HomeImageHLink, hlink);
                     }
+
+                    DataStore.DS.PersonData[argModel.HLinkKey] = argModel;
                 }
 
                 // -- Setup some extra values ------------------------------
@@ -615,8 +758,15 @@ namespace GrampsView.Data.ExternalStorageNS
                 }
 
                 // set Sibling Collection
-                person.SiblingRefCollection = DV.FamilyDV.FamilyData[person.GChildOf.HLinkKey].GChildRefCollection;
+                if (person.GChildOf.Valid)
+                {
+                    person.SiblingRefCollection = DV.FamilyDV.FamilyData[person.GChildOf.HLinkKey].GChildRefCollection;
+                }
+
+                DataStore.DS.PersonData[person.HLinkKey] = person;
             }
+
+            return true;
         }
 
         /// <summary>
@@ -626,7 +776,7 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             DataStore.CN.MajorStatusAdd("Organising Place data");
 
-            foreach (PlaceModel placeObject in DV.PlaceDV.PlaceData)
+            foreach (PlaceModel placeObject in DV.PlaceDV.DataViewData)
             {
                 HLinkPlaceModel t = placeObject.HLink;
 
@@ -635,31 +785,31 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Back Reference Citation HLinks
                 foreach (HLinkCitationModel citationRef in placeObject.GCitationRefCollection)
                 {
-                    DV.CitationDV.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Note HLinks
                 foreach (HLinkNoteModel noteRef in placeObject.GNoteRefCollection)
                 {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Media HLinks
                 foreach (HLinkMediaModel mediaRef in placeObject.GMediaRefCollection)
                 {
-                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Place HLinks
                 foreach (HLinkPlaceModel placeRef in placeObject.GPlaceRefCollection)
                 {
-                    DV.PlaceDV.PlaceData[placeRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.PlaceData[placeRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Tag HLinks
                 foreach (HLinkTagModel tagRef in placeObject.GTagRefCollection)
                 {
-                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
             }
         }
@@ -671,98 +821,113 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             DataStore.CN.MajorStatusAdd("Organising Repository data");
 
-            foreach (RepositoryModel repositoryObject in DV.RepositoryDV.RepositoryData)
+            foreach (RepositoryModel repositoryObject in DV.RepositoryDV.DataViewData)
             {
                 HLinkRepositoryModel t = repositoryObject.HLink;
 
                 // Back Reference Note HLinks
                 foreach (HLinkNoteModel noteRef in repositoryObject.GNoteRefCollection)
                 {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
                 // Back Reference Tag HLinks
                 foreach (HLinkTagModel tagRef in repositoryObject.GTagRefCollection)
                 {
-                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    DataStore.DS.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
             }
         }
 
-        private static void OrganiseSourceRepository()
+        private static async Task<bool> OrganiseSourceRepository()
         {
             DataStore.CN.MajorStatusAdd("Organising Source data");
 
-            foreach (SourceModel sourceObject in DV.SourceDV.SourceData)
+            foreach (SourceModel sourceObject in DV.SourceDV.DataViewData)
             {
                 HLinkSourceModel t = sourceObject.HLink;
 
-                // -- Organse Back Links ---------------------
-
-                // Source Attribute Collection is model so no backlink
-
-                //// Media Collection
-
-                foreach (HLinkMediaModel mediaRef in sourceObject.GMediaRefCollection)
+                if (t.HLinkKey == "_c49238f73e868050e85")
                 {
-                    DV.MediaDV.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
-                // Note Collection
-                foreach (IHLinkNoteModel noteRef in sourceObject.GNoteRefCollection)
+                try
                 {
-                    DV.NoteDV.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    // -- Organse Back Links ---------------------
+
+                    // Source Attribute Collection is model so no backlink
+
+                    //// Media Collection
+
+                    foreach (HLinkMediaModel mediaRef in sourceObject.GMediaRefCollection)
+                    {
+                        DataStore.DS.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    }
+
+                    // Note Collection
+                    foreach (IHLinkNoteModel noteRef in sourceObject.GNoteRefCollection)
+                    {
+                        DataStore.DS.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    }
+
+                    // Repository Collection
+                    foreach (HLinkRepositoryModel repositoryRef in sourceObject.GRepositoryRefCollection)
+                    {
+                        DataStore.DS.RepositoryData[repositoryRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    }
+
+                    // Tag Collection
+                    foreach (HLinkTagModel tagRef in sourceObject.GTagRefCollection)
+                    {
+                        DataStore.DS.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    }
+
+                    // -- Organse First and Sorts ---------------------
+
+                    // Sort media collection and get first link images
+                    DataStore.DS.SourceData[sourceObject.HLinkKey].GMediaRefCollection.SortAndSetFirst();
+
+                    // TODO First and Sort for Notes, Repositories and Tags
+
+                    // Get default image if available
+                    HLinkHomeImageModel hlink = sourceObject.GMediaRefCollection.FirstHLinkHomeImage;
+
+                    // Action default media image
+                    if (!hlink.Valid)
+                    {
+                        // Check for icon
+                        hlink = DV.MediaDV.GetFirstImageFromCollection(sourceObject.GMediaRefCollection);
+                    }
+
+                    // Set default
+                    if (!hlink.Valid)
+                    {
+                        sourceObject.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                    }
+                    else
+                    {
+                        sourceObject.HomeImageHLink = await SetHomeHLink(sourceObject.HomeImageHLink, hlink);
+                    }
+
+                    DataStore.DS.SourceData[sourceObject.HLinkKey] = sourceObject;
                 }
-
-                // Repository Collection
-                foreach (HLinkRepositoryModel repositoryRef in sourceObject.GRepositoryRefCollection)
+                catch (Exception)
                 {
-                    DV.RepositoryDV.RepositoryData[repositoryRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
-                }
-
-                // Tag Collection
-                foreach (HLinkTagModel tagRef in sourceObject.GTagRefCollection)
-                {
-                    DV.TagDV.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
-                }
-
-                // -- Organse First and Sorts ---------------------
-
-                // Sort media collection and get first link images
-                DV.SourceDV.SourceData[sourceObject.HLinkKey].GMediaRefCollection.SortAndSetFirst();
-
-                // TODO First and Sort for Notes, Repositories and Tags
-
-                // Get default image if available
-                HLinkHomeImageModel hlink = sourceObject.GMediaRefCollection.FirstHLinkHomeImage;
-
-                // Action default media image
-                if (!hlink.Valid)
-                {
-                    // Check for icon
-                    hlink = DV.MediaDV.GetFirstImageFromCollection(sourceObject.GMediaRefCollection);
-                }
-
-                // Set default
-                if (!hlink.Valid)
-                {
-                    sourceObject.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
-                }
-                else
-                {
-                    sourceObject.HomeImageHLink = SetHomeHLink(sourceObject.HomeImageHLink, hlink);
+                    throw;
                 }
             }
+
+            return true;
         }
 
         /// <summary>
         /// Organises the tag repository.
         /// </summary>
-        private static void OrganiseTagRepository()
+        private static async Task<bool> OrganiseTagRepository()
         {
             DataStore.CN.MajorStatusAdd("Organising Tag data");
 
-            foreach (TagModel argModel in DV.TagDV.TagData)
+            foreach (TagModel argModel in DV.TagDV.DataViewData)
             {
                 HLinkHomeImageModel hlink = null;
 
@@ -774,9 +939,13 @@ namespace GrampsView.Data.ExternalStorageNS
                 }
                 else
                 {
-                    argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
+                    argModel.HomeImageHLink = await SetHomeHLink(argModel.HomeImageHLink, hlink);
                 }
+
+                DataStore.DS.TagData[argModel.HLinkKey] = argModel;
             }
+
+            return true;
         }
 
         /// <summary>
@@ -794,38 +963,10 @@ namespace GrampsView.Data.ExternalStorageNS
             {
                 await DataStore.CN.MajorStatusAdd("This will take a while...").ConfigureAwait(false);
                 {
-                    // Called in order of media linkages from Media outwards
-                    OrganiseMediaRepository();
-
-                    OrganiseSourceRepository();
-
-                    OrganiseCitationRepository();
-
-                    OrganiseEventRepository();
-
-                    OrganiseFamilyRepository();
-
-                    OrganiseHeaderRepository();
-
-                    OrganiseBookMarkRepository();
-
-                    OrganiseNameMapRepository();
-
-                    OrganiseNoteRepository();
-
-                    OrganisePlaceRepository();
-
-                    OrganiseRepositoryRepository();
-
-                    OrganiseTagRepository();
-
-                    // People last as they depend on everything
-                    OrganisePersonRepository();
-
                     // Preload image cache
                     StoreFile ttt = new StoreFile();
 
-                    foreach (MediaModel item in DV.MediaDV.MediaData)
+                    foreach (MediaModel item in DataStore.DS.MediaData.GetList)
                     {
                         //ImageInformation t = new ImageInformation();
 
@@ -855,6 +996,34 @@ namespace GrampsView.Data.ExternalStorageNS
                         item.MetaDataHeight = imageSize.Height;
                         item.MetaDataWidth = imageSize.Width;
                     }
+
+                    // Called in order of media linkages from Media outwards
+                    OrganiseMediaRepository();
+
+                    await OrganiseSourceRepository().ConfigureAwait(false);
+
+                    await OrganiseCitationRepository().ConfigureAwait(false);
+
+                    await OrganiseEventRepository().ConfigureAwait(false);
+
+                    await OrganiseFamilyRepository().ConfigureAwait(false);
+
+                    OrganiseHeaderRepository();
+
+                    OrganiseBookMarkRepository();
+
+                    OrganiseNameMapRepository();
+
+                    OrganiseNoteRepository();
+
+                    OrganisePlaceRepository();
+
+                    OrganiseRepositoryRepository();
+
+                    await OrganiseTagRepository().ConfigureAwait(false);
+
+                    // People last as they depend on everything
+                    await OrganisePersonRepository().ConfigureAwait(false);
                 }
 
                 await DataStore.CN.MajorStatusDelete().ConfigureAwait(false);

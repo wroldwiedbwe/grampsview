@@ -67,7 +67,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataViewData.Items.OrderBy(MediaModel => MediaModel.GDescription).ToList();
+                return DataViewData.OrderBy(MediaModel => MediaModel.GDescription).ToList();
             }
         }
 
@@ -77,11 +77,11 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The data view data.
         /// </value>
-        public override RepositoryModelType<MediaModel, HLinkMediaModel> DataViewData
+        public override IReadOnlyList<MediaModel> DataViewData
         {
             get
             {
-                return MediaData;
+                return MediaData.Values.ToList();
             }
         }
 
@@ -97,7 +97,7 @@ namespace GrampsView.Data.DataView
             {
                 List<CommonGroupInfoCollection<MediaModel>> groups = new List<CommonGroupInfoCollection<MediaModel>>();
 
-                var query = from item in MediaData.Items
+                var query = from item in DataViewData
                             orderby item.GDescription
                             group item by (item.GDescription + " ").ToUpper(CultureInfo.CurrentCulture).Substring(0, 1) into g
                             select new { GroupName = g.Key, Items = g };
@@ -147,9 +147,9 @@ namespace GrampsView.Data.DataView
         {
             HLinkMediaModelCollection t = new HLinkMediaModelCollection();
 
-            for (int i = 0; i < DataDefaultSort.Count; i++)
+            foreach (MediaModel item in DataDefaultSort)
             {
-                t.Add(MediaData.Get(i).HLink);
+                t.Add(item.HLink);
             }
 
             t = HLinkCollectionSort(t);
@@ -225,7 +225,7 @@ namespace GrampsView.Data.DataView
         {
             DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
 
-            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
+            IEnumerable tt = DataViewData.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 
@@ -237,6 +237,11 @@ namespace GrampsView.Data.DataView
             returnCardGroup.Title = "Latest Media Changes";
 
             return returnCardGroup;
+        }
+
+        public override MediaModel GetModelFromHLinkString(string HLinkString)
+        {
+            return MediaData[HLinkString];
         }
 
         /// <summary>
@@ -341,7 +346,7 @@ namespace GrampsView.Data.DataView
         {
             List<SearchItem> itemsFound = new List<SearchItem>();
 
-            var temp = MediaData.Items.Where(x => x.GDescription.ToLower(CultureInfo.CurrentCulture).Contains(argQueryString));
+            var temp = DataViewData.Where(x => x.GDescription.ToLower(CultureInfo.CurrentCulture).Contains(argQueryString));
 
             foreach (MediaModel tempMO in temp)
             {

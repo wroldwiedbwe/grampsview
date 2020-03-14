@@ -47,6 +47,8 @@ namespace GrampsView.ViewModels
             LoadDataCommand = new DelegateCommand(LoadDataAction);
 
             BaseTitle = "What's new";
+
+            BaseTitleIcon = CommonConstants.IconSettings;
         }
 
         public DelegateCommand LoadDataCommand { get; private set; }

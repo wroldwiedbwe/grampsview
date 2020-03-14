@@ -11,11 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
   
+    - name: Debug Action
+      uses: hmarr/debug-action@v1.0.0
+
     - name: Create_commit_change_log_file
       uses: TriPSs/conventional-changelog-action@v1.3.0
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         git-message: 'chore(release): {version}'
         preset: 'angular'
-        tag-prefix: ''
         output-file: 'changelog.md'

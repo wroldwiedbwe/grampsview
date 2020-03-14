@@ -42,6 +42,8 @@ namespace GrampsView.Data.DataView
             get;
         }
 
+        IReadOnlyList<T> DataViewData { get; }
+
         List<CommonGroupInfoCollection<T>> GetGroupsByLetter
         {
             get;

@@ -42,7 +42,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataViewData.Items.OrderBy(TagModel => TagModel.GName).ToList();
+                return DataViewData.OrderBy(TagModel => TagModel.GName).ToList();
             }
         }
 
@@ -55,11 +55,11 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The data view data.
         /// </value>
-        public override RepositoryModelType<TagModel, HLinkTagModel> DataViewData
+        public override IReadOnlyList<TagModel> DataViewData
         {
             get
             {
-                return TagData;
+                return TagData.Values.ToList();
             }
         }
 
@@ -100,7 +100,7 @@ namespace GrampsView.Data.DataView
         {
             DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
 
-            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
+            IEnumerable tt = DataViewData.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 
@@ -112,6 +112,11 @@ namespace GrampsView.Data.DataView
             returnCardGroup.Title = "Latest Tag Changes";
 
             return returnCardGroup;
+        }
+
+        public override TagModel GetModelFromHLinkString(string HLinkString)
+        {
+            return TagData[HLinkString];
         }
 
         /// <summary>
@@ -146,7 +151,7 @@ namespace GrampsView.Data.DataView
         {
             List<SearchItem> itemsFound = new List<SearchItem>();
 
-            var temp = TagData.Items.Where(x => x.GetDefaultText.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            var temp = DataViewData.Where(x => x.GetDefaultText.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (TagModel tempMO in temp)
             {

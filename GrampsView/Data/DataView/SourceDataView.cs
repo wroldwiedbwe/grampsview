@@ -38,7 +38,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataViewData.Items.OrderBy(SourceModel => SourceModel.GSTitle).ToList();
+                return DataViewData.OrderBy(SourceModel => SourceModel.GSTitle).ToList();
             }
         }
 
@@ -51,11 +51,11 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The data view data.
         /// </value>
-        public override RepositoryModelType<SourceModel, HLinkSourceModel> DataViewData
+        public override IReadOnlyList<SourceModel> DataViewData
         {
             get
             {
-                return SourceData;
+                return SourceData.Values.ToList();
             }
         }
 
@@ -97,7 +97,7 @@ namespace GrampsView.Data.DataView
         {
             DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
 
-            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
+            IEnumerable tt = DataViewData.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 
@@ -109,6 +109,11 @@ namespace GrampsView.Data.DataView
             returnCardGroup.Title = "Latest Source Changes";
 
             return returnCardGroup;
+        }
+
+        public override SourceModel GetModelFromHLinkString(string HLinkString)
+        {
+            return SourceData[HLinkString];
         }
 
         /// <summary>
@@ -143,7 +148,7 @@ namespace GrampsView.Data.DataView
         {
             List<SearchItem> itemsFound = new List<SearchItem>();
 
-            var temp = SourceData.Items.Where(x => x.GetDefaultText.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            var temp = DataViewData.Where(x => x.GetDefaultText.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (SourceModel tempMO in temp)
             {

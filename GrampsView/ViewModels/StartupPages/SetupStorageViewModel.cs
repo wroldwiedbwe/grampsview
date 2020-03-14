@@ -53,6 +53,8 @@ namespace GrampsView.ViewModels
 
             ButtonUnLocked = true;
 
+            BaseTitleIcon = CommonConstants.IconSettings;
+
             // BaseEventAggregator.GetEvent<PageTitleChangedEvent>().Publish(new
             // PageTitleChangedEventArgs { PageTitle = "Setup Storage Page", PageIcon =
             // CommonConstants.IconCitation });
@@ -101,7 +103,6 @@ namespace GrampsView.ViewModels
         // //bool allOk = await StoreFileUtility.GetCurrentInputFolder().ConfigureAwait(false);
 
         // //if (allOk) //{ // StorageFolder t = DataStore.DS.CurrentDataFolder;
-
         //    //    DataDetailList = new CardListLineCollection
         //    //{
         //    //    new CardListLine("Data Folder:", DataStore.DS.CurrentDataFolder.Path),

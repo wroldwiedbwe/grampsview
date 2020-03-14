@@ -38,7 +38,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataViewData.Items.OrderBy(NoteModel => NoteModel.GText).ToList();
+                return DataViewData.OrderBy(NoteModel => NoteModel.GText).ToList();
             }
         }
 
@@ -48,11 +48,11 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The data view data.
         /// </value>
-        public override RepositoryModelType<NoteModel, HLinkNoteModel> DataViewData
+        public override IReadOnlyList<NoteModel> DataViewData
         {
             get
             {
-                return NoteData;
+                return NoteData.Values.ToList();
             }
         }
 
@@ -62,7 +62,7 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The note data.
         /// </value>
-        [DataMember]
+
         public RepositoryModelType<NoteModel, HLinkNoteModel> NoteData
         {
             get
@@ -98,7 +98,7 @@ namespace GrampsView.Data.DataView
         /// </returns>
         public ObservableCollection<NoteModel> GetAllOfType(string argType)
         {
-            IEnumerable<NoteModel> q = NoteData.Items.Where(NoteModel => NoteModel.GType == argType);
+            IEnumerable<NoteModel> q = DataViewData.Where(NoteModel => NoteModel.GType == argType);
 
             return new ObservableCollection<NoteModel>(q);
         }
@@ -107,7 +107,7 @@ namespace GrampsView.Data.DataView
         {
             DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
 
-            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
+            IEnumerable tt = DataViewData.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 
@@ -119,6 +119,11 @@ namespace GrampsView.Data.DataView
             returnCardGroup.Title = "Latest Note Changes";
 
             return returnCardGroup;
+        }
+
+        public override NoteModel GetModelFromHLinkString(string HLinkString)
+        {
+            return NoteData[HLinkString];
         }
 
         /// <summary>
@@ -153,7 +158,7 @@ namespace GrampsView.Data.DataView
         {
             List<SearchItem> itemsFound = new List<SearchItem>();
 
-            var temp = NoteData.Items.Where(x => x.GText.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            var temp = DataViewData.Where(x => x.GText.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             if (temp.Any())
             {
@@ -174,7 +179,7 @@ namespace GrampsView.Data.DataView
         {
             List<SearchItem> itemsFound = new List<SearchItem>();
 
-            var temp = from gig in NoteData.Items
+            var temp = from gig in DataViewData
                        where gig.GTagRefCollection.Any(act => act.DeRef.GName == queryString)
                        select gig;
 

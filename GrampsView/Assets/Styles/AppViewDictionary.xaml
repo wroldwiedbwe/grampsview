@@ -116,7 +116,7 @@
 
     <!--  Create a Frame Card Style  -->
     <Style x:Key="FrameCardStyle" TargetType="Frame">
-        <Setter Property="BorderColor" Value="{DynamicResource SecondaryColor}" />
+        <!--<Setter Property="BorderColor" Value="{DynamicResource SecondaryColor}" />-->
         <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceColor}" />
         <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="Padding" Value="5" />

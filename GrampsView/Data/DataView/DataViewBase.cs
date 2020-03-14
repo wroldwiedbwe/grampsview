@@ -64,7 +64,7 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The data view data.
         /// </value>
-        public virtual RepositoryModelType<TB, TU> DataViewData
+        public virtual IReadOnlyList<TB> DataViewData
         {
             get;
         }
@@ -100,7 +100,7 @@ namespace GrampsView.Data.DataView
         /// </returns>
         public List<TB> GetAllAsModel()
         {
-            return DataViewData.Items.OrderBy(t => t).ToList();
+            return DataViewData.OrderBy(t => t).ToList();
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace GrampsView.Data.DataView
                 throw new ArgumentNullException(nameof(argHLink));
             }
 
-            return DataViewData.GetModelFromHLink(argHLink.HLinkKey);
+            return this.GetModelFromHLinkString(argHLink.HLinkKey);
         }
 
         ///// <summary>
@@ -161,10 +161,7 @@ namespace GrampsView.Data.DataView
         /// <returns>
         /// ModelBase.
         /// </returns>
-        public virtual TB GetModelFromHLinkString(string HLinkString)
-        {
-            return DataViewData.GetModelFromHLink(HLinkString);
-        }
+        public abstract TB GetModelFromHLinkString(string HLinkString);
 
         /// <summary>
         /// Gets the model information formatted.

@@ -38,7 +38,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataViewData.Items.OrderBy(NameMapModel => NameMapModel.Id).ToList();
+                return DataViewData.OrderBy(NameMapModel => NameMapModel.Id).ToList();
             }
         }
 
@@ -51,11 +51,11 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The data view data.
         /// </value>
-        public override RepositoryModelType<NameMapModel, HLinkNameMapModel> DataViewData
+        public override IReadOnlyList<NameMapModel> DataViewData
         {
             get
             {
-                return NameMapData;
+                return NameMapData.Values.ToList();
             }
         }
 
@@ -93,6 +93,11 @@ namespace GrampsView.Data.DataView
 
         public override CardGroup GetLatestChanges() => throw new System.NotImplementedException();
 
+        public override NameMapModel GetModelFromHLinkString(string HLinkString)
+        {
+            return NameMapData[HLinkString];
+        }
+
         /// <summary>
         /// hes the link collection sort.
         /// </summary>
@@ -125,7 +130,7 @@ namespace GrampsView.Data.DataView
         {
             List<SearchItem> itemsFound = new List<SearchItem>();
 
-            var temp = NameMapData.Items.Where(x => x.GetDefaultText.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            var temp = DataViewData.Where(x => x.GetDefaultText.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (NameMapModel tempMO in temp)
             {

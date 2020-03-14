@@ -35,7 +35,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataViewData.Items.OrderBy(HeaderModel => HeaderModel.GCreatedDate).ToList();
+                return DataViewData.OrderBy(HeaderModel => HeaderModel.GCreatedDate).ToList();
             }
         }
 
@@ -45,7 +45,15 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The header data.
         /// </value>
-        [DataMember]
+
+        public override IReadOnlyList<HeaderModel> DataViewData
+        {
+            get
+            {
+                return HeaderData.Values.ToList();
+            }
+        }
+
         public RepositoryModelType<HeaderModel, HLinkHeaderModel> HeaderData
         {
             get
@@ -66,7 +74,7 @@ namespace GrampsView.Data.DataView
             {
                 if (HeaderData.Count > 0)
                 {
-                    return HeaderData.Items[0];
+                    return DataViewData.First();
                 }
                 else
                 {
@@ -76,6 +84,11 @@ namespace GrampsView.Data.DataView
         }
 
         public override CardGroup GetLatestChanges() => throw new System.NotImplementedException();
+
+        public override HeaderModel GetModelFromHLinkString(string HLinkString)
+        {
+            return HeaderData.Values.First();
+        }
 
         /// <summary>
         /// hes the link collection sort.

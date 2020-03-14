@@ -57,7 +57,7 @@ namespace GrampsView.Data.DataView
         {
             get
             {
-                return DataViewData.Items.OrderBy(citationModel => citationModel.GSourceRef.DeRef.GSTitle).ToList();
+                return DataViewData.OrderBy(citationModel => citationModel.GSourceRef.DeRef.GSTitle).ToList();
             }
         }
 
@@ -67,11 +67,11 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The data view data.
         /// </value>
-        public override RepositoryModelType<CitationModel, HLinkCitationModel> DataViewData
+        public override IReadOnlyList<CitationModel> DataViewData
         {
             get
             {
-                return CitationData;
+                return CitationData.Values.ToList();
             }
         }
 
@@ -81,7 +81,7 @@ namespace GrampsView.Data.DataView
             {
                 List<CommonGroupInfoCollection<CitationModel>> groups = new List<CommonGroupInfoCollection<CitationModel>>();
 
-                var query = from item in CitationData.Items
+                var query = from item in DataViewData
                             orderby item.GDateContent.SortDate
                             group item by item.GDateContent.GetDecade into g
                             select new { GroupName = g.Key, Items = g };
@@ -162,7 +162,7 @@ namespace GrampsView.Data.DataView
                     //// Handle direct media reference
                     // if (currentHLink.DeRef.GMediaRefCollection.Count > 0) { foreach
                     // (HLinkMediaModel item in currentHLink.DeRef.GMediaRefCollection) {
-                    // tempMediaModel = DV.MediaDV.HLink(item.HLinkKey);
+                    // tempMediaModel = DataStore.DS.HLink(item.HLinkKey);
 
                     // if (tempMediaModel.IsMediaFile) { returnMediaModel = item; break; } } }
 
@@ -187,7 +187,7 @@ namespace GrampsView.Data.DataView
         {
             DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
 
-            IEnumerable tt = DataViewData.Items.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
+            IEnumerable tt = DataViewData.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 
@@ -199,6 +199,11 @@ namespace GrampsView.Data.DataView
             returnCardGroup.Title = "Latest Citation Changes";
 
             return returnCardGroup;
+        }
+
+        public override CitationModel GetModelFromHLinkString(string HLinkString)
+        {
+            return CitationData[HLinkString];
         }
 
         /// <summary>
@@ -233,7 +238,7 @@ namespace GrampsView.Data.DataView
         {
             List<SearchItem> itemsFound = new List<SearchItem>();
 
-            var temp = CitationData.Items.Where(x => x.GDateContent.GetShortDateAsString.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            var temp = DataViewData.Where(x => x.GDateContent.GetShortDateAsString.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
             foreach (CitationModel tempMO in temp)
             {

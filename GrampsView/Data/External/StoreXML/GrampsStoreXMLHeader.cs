@@ -19,9 +19,9 @@ namespace GrampsView.Data.ExternalStorageNS
 
     /// <summary>
     /// </summary>
-    /// <seealso cref="GrampsView.Common.CommonBindableBase" />
+    /// <seealso cref="GrampsView.Common.CommonBindableBase"/>
     /// /// ///
-    /// <seealso cref="GrampsView.Data.ExternalStorageNS.IGrampsStoreXML" />
+    /// <seealso cref="GrampsView.Data.ExternalStorageNS.IGrampsStoreXML"/>
     public partial class GrampsStoreXML : IGrampsStoreXML
     {
         /// <summary>
@@ -48,7 +48,10 @@ namespace GrampsView.Data.ExternalStorageNS
                     // there should only be one but ...
                     foreach (XElement pname in de)
                     {
-                        headerData = new HeaderModel();
+                        headerData = new HeaderModel
+                        {
+                            HLinkKey = "~HeaderData"
+                        };
 
                         // header element
                         XElement localcreated = pname.Element(ns + "created");
@@ -73,7 +76,7 @@ namespace GrampsView.Data.ExternalStorageNS
                         headerData.GMediaPath = (string)pname.Element(ns + "mediapath");
                     }
 
-                    DV.HeaderDV.HeaderData.Add(headerData);
+                    DataStore.DS.HeaderData.Add(headerData);
                 }
                 catch (System.Exception ex)
                 {
