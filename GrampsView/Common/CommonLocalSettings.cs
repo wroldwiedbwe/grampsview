@@ -21,16 +21,18 @@ namespace GrampsView.Common
 
         //private static readonly string SettingsDefault = string.Empty;
 
+        private const string SettingsAppTheme = "ApplicationTheme";
+
         public static AppTheme ApplicationTheme
         {
             get
             {
-                return (AppTheme)Enum.ToObject(typeof(AppTheme), GetInt("ApplicationTheme", Convert.ToInt32(AppTheme.Unspecified, System.Globalization.CultureInfo.CurrentCulture)));
+                return (AppTheme)Enum.ToObject(typeof(AppTheme), GetInt(SettingsAppTheme, Convert.ToInt32(AppTheme.Unspecified, System.Globalization.CultureInfo.CurrentCulture)));
             }
 
             set
             {
-                SetInt("ApplicationTheme", Convert.ToInt32(value, System.Globalization.CultureInfo.CurrentCulture));
+                SetInt(SettingsAppTheme, Convert.ToInt32(value, System.Globalization.CultureInfo.CurrentCulture));
             }
         }
 
@@ -54,9 +56,6 @@ namespace GrampsView.Common
             }
         }
 
-        //////////////////////////////////
-        /// OLD
-        /// //////////////////////////////
         /// <summary>
         /// Gets or sets the database version.
         /// </summary>

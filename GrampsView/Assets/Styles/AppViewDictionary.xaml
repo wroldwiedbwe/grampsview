@@ -121,7 +121,7 @@
         <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Margin" Value="10" />
-        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="CornerRadius" Value="{StaticResource GVCornerRadius}" />
     </Style>
 
     <Style
@@ -157,7 +157,7 @@
 
     <!--  Create a MediaImage Style  -->
     <Style x:Key="MediaImageStyle" TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDarkColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDark2Color}" />
         <Setter Property="BorderColor" Value="{DynamicResource SecondaryVariantLightColor}" />
         <Setter Property="HasShadow" Value="False" />
         <Setter Property="Margin" Value="0" />
@@ -227,7 +227,7 @@
         x:Key="MediaLargeImageStyle"
         BasedOn="{StaticResource FrameLargeFixedCardStyle}"
         TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDarkColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDark2Color}" />
     </Style>
 
     <!--  Create a Variable Height Large Card Style  -->
@@ -251,16 +251,16 @@
         <Setter Property="HasShadow" Value="False" />
         <Setter Property="Margin" Value="5" />
         <Setter Property="Padding" Value="2" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDarkColor}" />
-        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDark2Color}" />
+        <Setter Property="CornerRadius" Value="{StaticResource GVCornerRadius}" />
     </Style>
 
     <Style x:Key="FlexSingleCollection" TargetType="Frame">
         <Setter Property="HasShadow" Value="False" />
         <Setter Property="Margin" Value="1,5,1,1" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="CornerRadius" Value="10" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDarkColor}" />
+        <Setter Property="CornerRadius" Value="{StaticResource GVCornerRadius}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDark2Color}" />
     </Style>
 
     <Style x:Key="FlexMultiCollection" TargetType="Frame">
@@ -268,7 +268,7 @@
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="CornerRadius" Value="{StaticResource GVCornerRadius}" />
     </Style>
 
     <Style

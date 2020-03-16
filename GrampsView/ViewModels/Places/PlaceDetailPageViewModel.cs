@@ -87,6 +87,8 @@ namespace GrampsView.ViewModels
 
                 // Details
                 BaseDetail.Add(PlaceObject.GPlaceRefCollection.GetCardGroup("Enclosing Place"));
+                BaseDetail.Add(PlaceObject.PlaceChildCollection.GetCardGroup("Enclosed Places"));
+
                 BaseDetail.Add(PlaceObject.GCitationRefCollection.GetCardGroup());
                 BaseDetail.Add(PlaceObject.GTagRefCollection.GetCardGroup());
                 BaseDetail.Add(PlaceObject.GURLCollection.GetCardGroup());

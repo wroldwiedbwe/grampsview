@@ -18,6 +18,6 @@ jobs:
       uses: TriPSs/conventional-changelog-action@v1.3.0
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        git-message: 'chore(release): {version}'
-        preset: 'angular'
-        output-file: 'changelog.md'
+      
+    - name: Debuggging with tmate
+      uses: GitHub30/action-tmate@master2

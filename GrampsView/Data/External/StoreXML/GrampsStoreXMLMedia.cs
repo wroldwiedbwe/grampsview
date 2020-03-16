@@ -161,24 +161,7 @@ namespace GrampsView.Data.ExternalStorageNS
                                     await DataStore.CN.MajorStatusAdd("Loading media file: " + temp).ConfigureAwait(false);
                                     loadObject.OriginalFilePath = temp;
 
-                                    //loadObject.MediaStorageFile = await localStoreFile.GetStorageFileAsync(temp);
-
-                                    //if (loadObject.IsMediaStorageFileValid)
-                                    //{
-                                    //    await DataStore.CN.MajorStatusDelete();
-
-                                    // Check for null length
-                                    //    BasicProperties pro = await loadObject.MediaStorageFile.GetBasicPropertiesAsync();
-                                    //    if (pro.Size == 0)
-                                    //    {
-                                    //        DataStore.CN.NotifyError("Error trying to load a media file (" + loadObject.OriginalFilePath + ") listed in the GRAMPS file.  File is zero length");
-                                    //        loadObject.MediaStorageFile = null;
-                                    //    }
-                                    //}
-
                                     loadObject.GDescription = (string)filedetails.Attribute("description");
-
-                                    //}
                                 }
                                 catch (Exception ex)
                                 {
@@ -198,23 +181,9 @@ namespace GrampsView.Data.ExternalStorageNS
                         // Load NoteRefs
                         loadObject.GNoteRefCollection = GetNoteCollection(pname);
 
-                        // var localNoteElement = from ElementEl in pname.Descendants(ns +
-                        // "noteref") select ElementEl;
-
-                        // if (localNoteElement.Count() != 0) { // load note references foreach
-                        // (XElement loadNoteElement in localNoteElement) { HLinkNoteModel noteHLink
-                        // = new HLinkNoteModel { // object details HLinkKey =
-                        // (string)loadNoteElement.Attribute("hlink"), }; // localUnityContainer.Resolve<HLinkNoteModel>();
-
-                        // // save the object loadObject.NoteReferenceCollection.Add(noteHLink); }
-
-                        // // Don't sort here as the objects pointed to may not have been loaded. //
-                        // Sort in Post Load cleanup }
-
                         // citationref details TODO Event References
                         loadObject.GCitationRefCollection = GetCitationCollection(pname);
 
-                        // < zeroOrMore > < element name = "tagref" > <ref name="tagref-content" />
                         loadObject.GTagRefCollection = GetTagCollection(pname);
 
                         loadObject.HomeImageHLink.HomeSymbolColour = cardColour;
@@ -224,8 +193,6 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         localGrampsCommonLogging.LogVariable("LoadMedia", loadObject.GDescription);
                     }
-
-                    // sort the collection mediaRepository.Items.Sort(MediaModel => MediaModel);
                 }
                 catch (Exception e)
                 {

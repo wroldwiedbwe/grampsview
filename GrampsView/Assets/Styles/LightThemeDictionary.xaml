@@ -36,7 +36,11 @@
         #FFFFFF
     </Color>
 
-    <Color x:Key="SurfaceVariantDarkColor">
+    <Color x:Key="SurfaceVariantDark2Color">
+        #A8A8A8
+    </Color>
+
+    <Color x:Key="SurfaceVariantDark1Color">
         #C8C8C8
     </Color>
 

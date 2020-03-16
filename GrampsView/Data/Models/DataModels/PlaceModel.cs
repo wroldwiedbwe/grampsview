@@ -114,6 +114,8 @@ namespace GrampsView.Data.Model
     [DataContract]
     public sealed class PlaceModel : ModelBase, IPlaceModel, IComparable, IComparer
     {
+        private HLinkPlaceModelCollection _PlaceChildCollection = new HLinkPlaceModelCollection();
+
         /// <summary>
         /// The local g code field.
         /// </summary>
@@ -352,6 +354,20 @@ namespace GrampsView.Data.Model
                     HLinkKey = HLinkKey,
                 };
                 return t;
+            }
+        }
+
+        [DataMember]
+        public HLinkPlaceModelCollection PlaceChildCollection
+        {
+            get
+            {
+                return _PlaceChildCollection;
+            }
+
+            set
+            {
+                SetProperty(ref _PlaceChildCollection, value);
             }
         }
 

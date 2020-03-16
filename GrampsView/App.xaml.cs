@@ -199,7 +199,7 @@ namespace GrampsView
             container.RegisterSingleton<ICommonNotifications, CommonNotifications>();
             container.RegisterSingleton<IDataRepositoryManager, DataRepositoryManager>();
             container.RegisterSingleton<IEventAggregator, EventAggregator>();
-            container.RegisterSingleton<IStorePostLoad, GrampsStorePostLoad>();
+            container.RegisterSingleton<IStorePostLoad, StorePostLoad>();
             container.RegisterSingleton<IGrampsStoreSerial, GrampsStoreSerial>();
             container.RegisterSingleton<IGrampsStoreXML, GrampsStoreXML>();
             container.RegisterSingleton<IStoreFile, StoreFile>();

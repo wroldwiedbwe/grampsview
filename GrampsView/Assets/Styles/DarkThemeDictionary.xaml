@@ -36,7 +36,11 @@
         #909090
     </Color>
 
-    <Color x:Key="SurfaceVariantDarkColor">
+    <Color x:Key="SurfaceVariantDark2Color">
+        #303030
+    </Color>
+
+    <Color x:Key="SurfaceVariantDark1Color">
         #484848
     </Color>
 
@@ -57,7 +61,7 @@
     </Color>
 
     <Color x:Key="OnSurfaceColor">
-        #888888
+        #FFFFFF
     </Color>
 
     <Color x:Key="OnErrorColor">
