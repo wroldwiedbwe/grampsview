@@ -11,10 +11,6 @@
 // The Item Detail Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234232
 namespace GrampsView.Views
 {
-    using FFImageLoading.Forms;
-
-    using GrampsView.ViewModels;
-
     using Xamarin.Forms;
 
     /// <summary>
@@ -38,22 +34,6 @@ namespace GrampsView.Views
             image.LoadingPlaceholder = null;
         }
 
-        //private void OnPanUpdated(object sender, PanUpdatedEventArgs args)
-        //{
-        //    MediaDetailViewModel t = this.BindingContext as MediaDetailViewModel;
-
-        //    CachedImage tt = sender as CachedImage;
-
-        //    t.OnPanUpdated(tt, args);
-        //}
-
-        //private void OnPinchUpdated(object sender, PinchGestureUpdatedEventArgs args)
-        //{
-        //    MediaDetailViewModel t = this.BindingContext as MediaDetailViewModel;
-
-        //    CachedImage tt = sender as CachedImage;
-
-        //    t.OnPinchUpdated(tt, args);
-        //}
+      
     }
 }

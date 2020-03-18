@@ -21,7 +21,8 @@ namespace GrampsView.Data.Model
 {
     using GrampsView.Common;
     using GrampsView.Data.DataView;
-    using GrampsView.Data.Repository;
+
+    using System;
     using System.Runtime.Serialization;
 
     using Xamarin.Forms;
@@ -58,8 +59,7 @@ namespace GrampsView.Data.Model
         /// Gets the associated media model
         /// </summary>
         /// <value>
-        /// The media model. <note type="caution">This can not hold a local copy of the media model
-        /// as the Model Base has a hlinkmediamodel in it and this will cause a referene loop</note>
+        /// The media model.
         /// </value>
         public MediaModel DeRef
         {
@@ -296,17 +296,22 @@ namespace GrampsView.Data.Model
 
         public void ConvertHLinkMediaModel(HLinkMediaModel argHLinkMediaModel)
         {
+            if (argHLinkMediaModel is null)
+            {
+                throw new ArgumentNullException(nameof(argHLinkMediaModel));
+            }
+
             // Copy fields
-            GCorner1X = argHLinkMediaModel.GCorner1X;
-            GCorner1Y = argHLinkMediaModel.GCorner1Y;
-            GCorner2X = argHLinkMediaModel.GCorner2X;
-            GCorner2Y = argHLinkMediaModel.GCorner2Y;
+            GCorner1X = argHLinkMediaModel.LoadingClipInfo.GCorner1X;
+            GCorner1Y = argHLinkMediaModel.LoadingClipInfo.GCorner1Y;
+            GCorner2X = argHLinkMediaModel.LoadingClipInfo.GCorner2X;
+            GCorner2Y = argHLinkMediaModel.LoadingClipInfo.GCorner2Y;
             GPriv = argHLinkMediaModel.GPriv;
             HLinkKey = argHLinkMediaModel.HLinkKey;
-            //HomeImageClippedBitmap = argHLinkMediaModel.HomeImageClippedBitmap;
-            HomeImageType = argHLinkMediaModel.HomeImageType;
-            HomeSymbol = argHLinkMediaModel.HomeSymbol;
-            HomeSymbolColour = argHLinkMediaModel.HomeSymbolColour;
+            //HomeImageClippedBitmap = argHLinkMediaModel.LoadingClipInfo.HomeImageClippedBitmap;
+            HomeImageType = argHLinkMediaModel.LoadingClipInfo.HomeImageType;
+            HomeSymbol = argHLinkMediaModel.LoadingClipInfo.HomeSymbol;
+            HomeSymbolColour = argHLinkMediaModel.LoadingClipInfo.HomeSymbolColour;
         }
     }
 }

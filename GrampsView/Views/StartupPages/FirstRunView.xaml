@@ -47,10 +47,12 @@
                 </Frame>
             </Frame>
 
-            <Button
-                Command="{Binding LoadDataCommand}"
-                Style="{DynamicResource GVButtonStyle}"
-                Text="Load Data" />
+            <Frame Padding="0" BackgroundColor="Orange">
+                <Button
+                    Command="{Binding LoadDataCommand}"
+                    Style="{DynamicResource GVButtonStyle}"
+                    Text="Load Data" />
+            </Frame>
         </FlexLayout>
     </ScrollView>
 </ContentPage>

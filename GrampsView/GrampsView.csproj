@@ -138,6 +138,7 @@
     <Compile Remove="Views\Person\PersonListViewDesktop.xaml.cs" />
     <Compile Remove="Views\Person\PersonListViewPhone.xaml.cs" />
     <Compile Remove="Views\StartupPages\ExtendedSplashScreen.xaml.cs" />
+    <Compile Remove="Views\StartupPages\SetupStorageView.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -180,6 +181,7 @@
     <EmbeddedResource Remove="Views\Person\PersonListViewDesktop.xaml" />
     <EmbeddedResource Remove="Views\Person\PersonListViewPhone.xaml" />
     <EmbeddedResource Remove="Views\StartupPages\ExtendedSplashScreen.xaml" />
+    <EmbeddedResource Remove="Views\StartupPages\SetupStorageView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -238,6 +240,9 @@
     </Compile>
     <Compile Update="UserControls\General\MediaImageSkia.xaml.cs">
       <DependentUpon>MediaImageSkia.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\General\UWPButton.xaml.cs">
+      <DependentUpon>UWPButton.xaml</DependentUpon>
     </Compile>
     <Compile Update="UserControls\PersonNameCardSmall.xaml.cs">
       <DependentUpon>PersonNameCardSmall.xaml</DependentUpon>

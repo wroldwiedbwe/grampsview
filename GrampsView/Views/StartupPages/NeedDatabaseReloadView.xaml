@@ -54,13 +54,17 @@
             <Label Style="{DynamicResource GVLabelStyleInstructions}" Text="{i18n:Translate NeedDatabaseReloadPage_Instructions}" />
         </Frame>
 
-        <Button
+        <Frame
             Grid.Row="1"
-            Command="{prismnav:NavigateTo 'FileInputHandlerPage',
-                                          Animated=True}"
-            HorizontalOptions="Center"
-            Style="{DynamicResource GVButtonStyle}"
-            Text="Load Database"
-            VerticalOptions="Center" />
+            Padding="0"
+            BackgroundColor="Orange">
+            <Button
+                Command="{prismnav:NavigateTo 'FileInputHandlerPage',
+                                              Animated=True}"
+                HorizontalOptions="Center"
+                Style="{DynamicResource GVButtonStyle}"
+                Text="Load Database"
+                VerticalOptions="Center" />
+        </Frame>
     </Grid>
 </ContentPage>

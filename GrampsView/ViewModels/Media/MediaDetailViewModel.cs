@@ -94,45 +94,7 @@ namespace GrampsView.ViewModels
             }
         }
 
-        public double CurrentXOffset { get; set; }
-
-        public double CurrentYOffset { get; set; }
-
-        public double CurrentZoomFactor { get; set; }
-
-        /// <summary>
-        /// Gets or sets the media image bitmap.
-        /// </summary>
-        /// <value>
-        /// The media image bitmap.
-        /// </value>
-        public Image ImageFullBitmap
-        {
-            get
-            {
-                return localBitMapImage;
-            }
-
-            set
-            {
-                SetProperty(ref localBitMapImage, value);
-            }
-        }
-
         public DelegateCommand OpenImageCommand { get; private set; }
-
-        public List<ITransformation> Trans
-        {
-            get
-            {
-                return _Trans;
-            }
-
-            set
-            {
-                SetProperty(ref _Trans, value);
-            }
-        }
 
         /// <summary>
         /// Gets or sets the h link parameter.
@@ -152,8 +114,6 @@ namespace GrampsView.ViewModels
             {
                 CurrentMediaObject.FullImageClean();
             }
-
-            ImageFullBitmap = null;
         }
 
         /// <summary>
@@ -217,29 +177,6 @@ namespace GrampsView.ViewModels
                 }
 
                 BaseCL.LogRoutineExit("MediaDetailViewModel OnNavigatedTo");
-            }
-        }
-
-        public void ReloadImage(CachedImage argmdp)
-        {
-            if (argmdp is null)
-            {
-                throw new ArgumentNullException(nameof(argmdp));
-            }
-
-            Trans = new List<ITransformation>() {
-                new CropTransformation(CurrentZoomFactor, CurrentXOffset, CurrentYOffset, 1f, 1f)
-            };
-
-            try
-            {
-                argmdp.ReloadImage();
-
-                argmdp.LoadingPlaceholder = null;
-            }
-            catch (Exception)
-            {
-                throw;
             }
         }
 

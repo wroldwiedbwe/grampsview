@@ -31,7 +31,7 @@ namespace GrampsView.Data.Model
         /// <summary>
         /// The local image h link.
         /// </summary>
-        private HLinkMediaModel localImageHLink = new HLinkMediaModel { HomeSymbol = Common.CommonConstants.IconTag };
+        private HLinkMediaModel localImageHLink = new HLinkMediaModel();
 
         /// <summary>
         /// The local medium.
@@ -114,24 +114,24 @@ namespace GrampsView.Data.Model
 
         = new HLinkNoteModelCollection();
 
-        /// <summary>
-        /// Gets or sets the image h link key.
-        /// </summary>
-        /// <value>
-        /// The image h link key.
-        /// </value>
-        [DataMember]
-        public HLinkMediaModel HomeImageHLink
-        {
-            get
-            {
-                return localImageHLink;
-            }
+        ///// <summary>
+        ///// Gets or sets the image h link key.
+        ///// </summary>
+        ///// <value>
+        ///// The image h link key.
+        ///// </value>
+        //[DataMember]
+        //public HLinkMediaModel HomeImageHLink
+        //{
+        //    get
+        //    {
+        //        return localImageHLink;
+        //    }
 
-            set
-            {
-                SetProperty(ref localImageHLink, value);
-            }
-        }
+        //    set
+        //    {
+        //        SetProperty(ref localImageHLink, value);
+        //    }
+        //}
     }
 }

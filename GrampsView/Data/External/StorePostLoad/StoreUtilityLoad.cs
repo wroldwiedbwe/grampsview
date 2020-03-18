@@ -176,10 +176,10 @@ namespace GrampsView.Data.ExternalStorageNS
 
             HLinkMediaModel returnHLink = argHLink;
 
-            returnHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+            returnHLink.LoadingClipInfo.HomeImageType = CommonConstants.HomeImageTypeSymbol;
 
             // Set the colour of the tag ref to match the tag
-            returnHLink.HomeSymbolColour = argModel.GColor;
+            returnHLink.LoadingClipInfo.HomeSymbolColour = argModel.GColor;
 
             return returnHLink;
         }

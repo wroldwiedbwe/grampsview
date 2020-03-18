@@ -60,8 +60,7 @@
             x:Name="image"
             Grid.Row="1"
             Aspect="AspectFit"
-            Source="{Binding CurrentMediaObject.MediaStorageFilePath, Mode=OneWay}"
-            Transformations="{Binding Trans, Mode=OneWay}">
+            Source="{Binding CurrentMediaObject.MediaStorageFilePath, Mode=OneWay}">
             <ffimageloading:CachedImage.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding OpenImageCommand}" NumberOfTapsRequired="2" />
             </ffimageloading:CachedImage.GestureRecognizers>

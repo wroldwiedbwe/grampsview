@@ -94,41 +94,41 @@ namespace GrampsView.Data.Model
         [DataMember]
         public HLinkCitationModelCollection GCitationRefCollection { get; set; } = new HLinkCitationModelCollection();
 
-        /// <summary>
-        /// Gets or sets the g corner1 x.
-        /// </summary>
-        /// <value>
-        /// The g corner1 x.
-        /// </value>
-        [DataMember]
-        public int GCorner1X { get; set; } = 0;
+        ///// <summary>
+        ///// Gets or sets the g corner1 x.
+        ///// </summary>
+        ///// <value>
+        ///// The g corner1 x.
+        ///// </value>
+        //[DataMember]
+        //public int GCorner1X { get; set; } = 0;
 
-        /// <summary>
-        /// Gets or sets the g corner1 y.
-        /// </summary>
-        /// <value>
-        /// The g corner1 y.
-        /// </value>
-        [DataMember]
-        public int GCorner1Y { get; set; } = 0;
+        ///// <summary>
+        ///// Gets or sets the g corner1 y.
+        ///// </summary>
+        ///// <value>
+        ///// The g corner1 y.
+        ///// </value>
+        //[DataMember]
+        //public int GCorner1Y { get; set; } = 0;
 
-        /// <summary>
-        /// Gets or sets the g corner2 x.
-        /// </summary>
-        /// <value>
-        /// The g corner2 x.
-        /// </value>
-        [DataMember]
-        public int GCorner2X { get; set; } = 0;
+        ///// <summary>
+        ///// Gets or sets the g corner2 x.
+        ///// </summary>
+        ///// <value>
+        ///// The g corner2 x.
+        ///// </value>
+        //[DataMember]
+        //public int GCorner2X { get; set; } = 0;
 
-        /// <summary>
-        /// Gets or sets the g corner2 y.
-        /// </summary>
-        /// <value>
-        /// The g corner2 y.
-        /// </value>
-        [DataMember]
-        public int GCorner2Y { get; set; } = 0;
+        ///// <summary>
+        ///// Gets or sets the g corner2 y.
+        ///// </summary>
+        ///// <value>
+        ///// The g corner2 y.
+        ///// </value>
+        //[DataMember]
+        //public int GCorner2Y { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the g note model collection.
@@ -138,6 +138,15 @@ namespace GrampsView.Data.Model
         /// </value>
         [DataMember]
         public HLinkNoteModelCollection GNoteRefCollection { get; set; } = new HLinkNoteModelCollection();
+
+        /// <summary>
+        /// Gets or sets the loading clip information.
+        /// </summary>
+        /// <value>
+        /// Temporary field to store clipping information during the load process.
+        /// </value>
+
+        public HLinkHomeImageModel LoadingClipInfo { get; set; } = new HLinkHomeImageModel();
 
         ///// <summary>
         ///// Gets or sets the home image clipped bitmap.
@@ -150,102 +159,94 @@ namespace GrampsView.Data.Model
         //    get; set;
         //}
 
-        /// <summary>
-        /// Gets the home image display bit map.
-        /// </summary>
-        /// <value>
-        /// The home image display bit map.
-        /// </value>
-        public Image HomeImageDisplayBitMap
-        {
-            get
-            {
-                switch (_HomeImageType)
-                {
-                    //case CommonConstants.HomeImageTypeClippedBitmap:
-                    //    {
-                    //        return HomeImageClippedBitmap;
-                    //    }
+        ///// <summary>
+        ///// Gets the home image display bit map.
+        ///// </summary>
+        ///// <value>
+        ///// The home image display bit map.
+        ///// </value>
+        //public Image HomeImageDisplayBitMap
+        //{
+        //    get
+        //    {
+        //        switch (_HomeImageType)
+        //        {
+        //            //case CommonConstants.HomeImageTypeClippedBitmap:
+        //            //    {
+        //            //        return HomeImageClippedBitmap;
+        //            //    }
 
-                    case CommonConstants.HomeImageTypeThumbNail:
-                        {
-                            // TODO FIx this
-                            //return DeRef.ImageThumbNail;
-                            return null;
-                        }
+        // case CommonConstants.HomeImageTypeThumbNail: { // TODO FIx this //return
+        // DeRef.ImageThumbNail; return null; }
 
-                    default:
-                        {
-                            return null;
-                        }
-                }
-            }
-        }
+        //            default:
+        //                {
+        //                    return null;
+        //                }
+        //        }
+        //    }
+        //}
 
-        /// <summary>
-        /// Gets or sets a value indicating whether [home use image].
-        /// </summary>
-        /// <value>
-        /// <c>true</c> if [home use image]; otherwise, <c>false</c>.
-        /// </value>
-        [DataMember]
-        public int HomeImageType
-        {
-            get
-            {
-                return _HomeImageType;
-            }
+        ///// <summary>
+        ///// Gets or sets a value indicating whether [home use image].
+        ///// </summary>
+        ///// <value>
+        ///// <c>true</c> if [home use image]; otherwise, <c>false</c>.
+        ///// </value>
+        //[DataMember]
+        //public int HomeImageType
+        //{
+        //    get
+        //    {
+        //        return _HomeImageType;
+        //    }
 
-            set
-            {
-                SetProperty(ref _HomeImageType, value);
-            }
-        }
+        //    set
+        //    {
+        //        SetProperty(ref _HomeImageType, value);
+        //    }
+        //}
 
-        // TODO Change to use GV static styles
-        /// <summary>
-        /// Gets or sets the home symbol.
-        /// </summary>
-        /// <value>
-        /// The home symbol.
-        /// </value>
-        [DataMember]
-        public string HomeSymbol
-        {
-            get
-            {
-                return _IDefaultSymbol;
-            }
+        //// TODO Change to use GV static styles
+        ///// <summary>
+        ///// Gets or sets the home symbol.
+        ///// </summary>
+        ///// <value>
+        ///// The home symbol.
+        ///// </value>
+        //[DataMember]
+        //public string HomeSymbol
+        //{
+        //    get
+        //    {
+        //        return _IDefaultSymbol;
+        //    }
 
-            set
-            {
-                SetProperty(ref _IDefaultSymbol, value);
-            }
-        }
+        //    set
+        //    {
+        //        SetProperty(ref _IDefaultSymbol, value);
+        //    }
+        //}
 
-        /// <summary>
-        /// Gets or sets the background colour.
-        /// </summary>
-        /// <value>
-        /// The background colour.
-        /// </value>
-        [DataMember]
-        public Color HomeSymbolColour
-        {
-            get
-            {
-                return _HomeSymbolColour;
-            }
+        ///// <summary>
+        ///// Gets or sets the background colour.
+        ///// </summary>
+        ///// <value>
+        ///// The background colour.
+        ///// </value>
+        //[DataMember]
+        //public Color HomeSymbolColour
+        //{
+        //    get
+        //    {
+        //        return _HomeSymbolColour;
+        //    }
 
-            set
-            {
-                if (value != Color.Default)
-                {
-                }
+        // set { if (value != Color.Default) { }
 
-                SetProperty(ref _HomeSymbolColour, value);
-            }
-        }
+        //        SetProperty(ref _HomeSymbolColour, value);
+        //    }
+        //}
 
         ///// <summary>
         ///// Gets a value indicating whether [home use image].
@@ -278,31 +279,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                switch (HomeImageType)
-                {
-                    //case CommonConstants.HomeImageTypeClippedBitmap:
-                    //    {
-                    //        return !string.IsNullOrEmpty(HLinkKey);
-                    //    }
-                    case CommonConstants.HomeImageTypeSymbol:
-                        {
-                            return true;
-                        }
-                    case CommonConstants.HomeImageTypeThumbNail:
-                        {
-                            return !string.IsNullOrEmpty(HLinkKey);
-                        }
-                    case CommonConstants.HomeImageTypeUnknown:
-                        {
-                            return false;
-                        }
-
-                    default:
-                        {
-                            // TODO Unknown type
-                            return false;
-                        }
-                }
+                return !string.IsNullOrEmpty(HLinkKey);
             }
         }
     }

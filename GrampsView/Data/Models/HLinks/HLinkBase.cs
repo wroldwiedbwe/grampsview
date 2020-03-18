@@ -10,10 +10,9 @@
 
 namespace GrampsView.Data.Model
 {
-    using System;
     using GrampsView.Common;
-    using GrampsView.Data.DataView;
 
+    using System;
     using System.Collections;
     using System.Globalization;
     using System.Runtime.Serialization;

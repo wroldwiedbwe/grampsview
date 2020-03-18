@@ -4,7 +4,7 @@ on:
   push:
     # branches to consider in the event; optional, defaults to all
     branches:
-      - master
+      - refs/heads/master
 
 jobs:
   create_commit_change_log:
@@ -16,9 +16,9 @@ jobs:
 
 
 
-    - name: Checkout
-      uses: actions/checkout@v2.0.0
-      with:
+      # - name: Checkout
+      # uses: actions/checkout@v2.0.0
+      # with:
       # Repository name with owner. For example, actions/checkout
       # repository: # optional, default is ${{ github.repository }}
       # The branch, tag or SHA to checkout. When checking out the repository that triggered a workflow, this defaults to the reference or SHA for that event.  Otherwise, defaults to `master`.
@@ -46,5 +46,5 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
       
-    - name: Debuggging with tmate
-      uses: GitHub30/action-tmate@master2
+    #- name: Debuggging with tmate
+    #  uses: GitHub30/action-tmate@master2

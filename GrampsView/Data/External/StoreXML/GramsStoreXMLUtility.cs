@@ -468,17 +468,18 @@ namespace GrampsView.Data.ExternalStorageNS
                     HLinkMediaModel t2 = new HLinkMediaModel
                     {
                         HLinkKey = GetAttribute(theLoadORElement.Attribute("hlink")),
-                        HomeImageType = CommonConstants.HomeImageTypeThumbNail,
                     };
+
+                    t2.LoadingClipInfo.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
 
                     // Get region
                     XElement regionDetails = theLoadORElement.Element(ns + "region");
                     if (regionDetails != null)
                     {
-                        t2.GCorner1X = (int)regionDetails.Attribute("corner1_x");
-                        t2.GCorner1Y = (int)regionDetails.Attribute("corner1_y");
-                        t2.GCorner2X = (int)regionDetails.Attribute("corner2_x");
-                        t2.GCorner2Y = (int)regionDetails.Attribute("corner2_y");
+                        t2.LoadingClipInfo.GCorner1X = (int)regionDetails.Attribute("corner1_x");
+                        t2.LoadingClipInfo.GCorner1Y = (int)regionDetails.Attribute("corner1_y");
+                        t2.LoadingClipInfo.GCorner2X = (int)regionDetails.Attribute("corner2_x");
+                        t2.LoadingClipInfo.GCorner2Y = (int)regionDetails.Attribute("corner2_y");
                     }
 
                     // Get remaining fields

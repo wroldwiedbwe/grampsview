@@ -391,6 +391,8 @@
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
         <Setter Property="FontSize" Value="{DynamicResource GVThemeTextSizeMedium}" />
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryVariantDarkColor}" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
