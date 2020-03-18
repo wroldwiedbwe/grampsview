@@ -59,7 +59,7 @@ namespace GrampsView.Common
                 return _MajorStatusMessage;
             }
 
-            set
+            private set
             {
                 SetProperty(ref _MajorStatusMessage, value);
             }
@@ -72,7 +72,7 @@ namespace GrampsView.Common
                 return _MinorStatusMessage;
             }
 
-            set
+            private set
             {
                 SetProperty(ref _MinorStatusMessage, value);
             }
@@ -140,9 +140,9 @@ namespace GrampsView.Common
         /// </returns>
         public async Task MajorStatusDelete()
         {
-            MajorStatusMessage = string.Empty;
+            //MajorStatusMessage = string.Empty;
 
-            await MajorStatusAdd(string.Empty, false).ConfigureAwait(false);
+            //await MajorStatusAdd(string.Empty, false).ConfigureAwait(false);
 
             //// Pop top item
             // if (majorStatusQueue.Count > 0) { QueueItem oldItem = majorStatusQueue.Dequeue();
@@ -170,6 +170,13 @@ namespace GrampsView.Common
             return;
         }
 
+        public void NotifyAlert(string strMessage)
+        {
+            Dictionary<string, string> argErrorDetail = new Dictionary<string, string>();
+
+            NotifyDialogBox("Alert", strMessage, argErrorDetail);
+        }
+
         /// <summary>
         /// Handle DialogBox messages.
         /// </summary>
@@ -183,19 +190,6 @@ namespace GrampsView.Common
         }
 
         /// <summary>
-        /// Notifies the error.
-        /// </summary>
-        /// <param name="strMessage">
-        /// The string message.
-        /// </param>
-        public void NotifyError(string strMessage)
-        {
-            Dictionary<string, string> argErrorDetail = new Dictionary<string, string>();
-
-            NotifyError(strMessage, argErrorDetail);
-        }
-
-        /// <summary>
         /// Notifies the user of an error and logs it for further analysis.
         /// </summary>
         /// <param name="argMessage">
@@ -204,7 +198,7 @@ namespace GrampsView.Common
         /// <param name="argErrorDetail">
         /// The argument error detail.
         /// </param>
-        public void NotifyError(string argMessage, Dictionary<string, string> argErrorDetail)
+        public void NotifyDialogBox(string argHeader, string argMessage, Dictionary<string, string> argErrorDetail)
         {
             if (argErrorDetail is null)
             {
@@ -213,7 +207,7 @@ namespace GrampsView.Common
 
             ActionDialogArgs t = new ActionDialogArgs
             {
-                Name = "Error",
+                Name = argHeader,
                 Text = argMessage
             };
 
@@ -224,6 +218,29 @@ namespace GrampsView.Common
             argErrorDetail.Add("Error", argMessage);
 
             CommonLogging.LogError(argMessage, argErrorDetail);
+        }
+
+        public void NotifyError(string argMessage, Dictionary<string, string> argErrorDetail)
+        {
+            if (argErrorDetail is null)
+            {
+                argErrorDetail = new Dictionary<string, string>();
+            }
+
+            NotifyDialogBox("Error", argMessage, argErrorDetail);
+        }
+
+        /// <summary>
+        /// Notifies the error.
+        /// </summary>
+        /// <param name="strMessage">
+        /// The string message.
+        /// </param>
+        public void NotifyError(string strMessage)
+        {
+            Dictionary<string, string> argErrorDetail = new Dictionary<string, string>();
+
+            NotifyDialogBox("Error", strMessage, argErrorDetail);
         }
 
         /// <summary>

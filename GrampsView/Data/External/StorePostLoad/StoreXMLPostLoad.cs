@@ -512,7 +512,7 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </summary>
         private static async Task<bool> OrganiseTagRepository()
         {
-            DataStore.CN.MajorStatusAdd("Organising Tag data");
+            await DataStore.CN.MajorStatusAdd("Organising Tag data").ConfigureAwait(false);
 
             foreach (TagModel theTagModel in DV.TagDV.DataViewData)
             {

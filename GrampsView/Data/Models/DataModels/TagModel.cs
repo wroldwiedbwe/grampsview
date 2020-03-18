@@ -16,6 +16,7 @@
 
 namespace GrampsView.Data.Model
 {
+    using GrampsView.Common;
     using System;
     using System.Collections;
     using System.Runtime.Serialization;
@@ -43,10 +44,11 @@ namespace GrampsView.Data.Model
         private int _GPriority = 0;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TagModel" /> class.
+        /// Initializes a new instance of the <see cref="TagModel"/> class.
         /// </summary>
         public TagModel()
         {
+            HomeImageHLink.HomeSymbol = CommonConstants.IconTag;
         }
 
         /// <summary>
@@ -66,24 +68,6 @@ namespace GrampsView.Data.Model
             set
             {
                 SetProperty(ref _GColor, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets the get h link.
-        /// </summary>
-        /// <value>
-        /// The get h link.
-        /// </value>
-        public HLinkTagModel HLink
-        {
-            get
-            {
-                HLinkTagModel t = new HLinkTagModel
-                {
-                    HLinkKey = HLinkKey,
-                };
-                return t;
             }
         }
 
@@ -124,6 +108,24 @@ namespace GrampsView.Data.Model
             set
             {
                 SetProperty(ref _GPriority, value);
+            }
+        }
+
+        /// <summary>
+        /// Gets the get h link.
+        /// </summary>
+        /// <value>
+        /// The get h link.
+        /// </value>
+        public HLinkTagModel HLink
+        {
+            get
+            {
+                HLinkTagModel t = new HLinkTagModel
+                {
+                    HLinkKey = HLinkKey,
+                };
+                return t;
             }
         }
 

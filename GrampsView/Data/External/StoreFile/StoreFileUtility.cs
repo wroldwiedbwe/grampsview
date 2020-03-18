@@ -10,6 +10,7 @@
 namespace GrampsView.Data
 {
     using System;
+    using System.Diagnostics;
     using System.IO;
     using System.Threading.Tasks;
 
@@ -111,6 +112,9 @@ namespace GrampsView.Data
                 {
                     return false; // user canceled file picking
                 }
+
+                Debug.WriteLine("Picked file name is: " + DataStore.DS.CurrentInputFile.FileName);
+                // TODO Add platform specific fiel type checking
             }
 
             // TODO fix this. Fail and force reload next time.

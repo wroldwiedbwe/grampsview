@@ -46,6 +46,27 @@ namespace GrampsView.Data.Collections
         /// <value>
         /// The get summary.
         /// </value>
+        public NoteModel GetFirstModel
+        {
+            get
+            {
+                if (Count > 0)
+                {
+                    return this[0].DeRef;
+                }
+                else
+                {
+                    return new NoteModel();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the get summary.
+        /// </summary>
+        /// <value>
+        /// The get summary.
+        /// </value>
         public string GetSummary
         {
             get

@@ -122,8 +122,8 @@ namespace GrampsView.ViewModels
             }
             else
             {
-                BaseCL.LogProgress("Got folder picker error");
-                DataStore.CN.NotifyError("No input folder was selected");
+                BaseCL.LogProgress("File picker error");
+                DataStore.CN.NotifyAlert("No input file was selected");
 
                 // Allow another pick if required
                 LocalCanHandleDataFolderChosen = true;

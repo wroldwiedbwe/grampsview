@@ -29,7 +29,7 @@
                 PersonNameCards.Add(new CardListLine("Full Name:", tt.FullName));
                 PersonNameCards.Add(new CardListLine("Title:", tt.GTitle));
                 PersonNameCards.Add(new CardListLine("FirstName:", tt.GFirstName));
-                PersonNameCards.Add(new CardListLine("GSurName:", tt.GSurName.GetPrimarySurname));
+                PersonNameCards.Add(new CardListLine("SurName:", tt.GSurName.GetPrimarySurname));
 
                 PersonNameCards.Add(new CardListLine("Alt:", tt.GAlt.GetDefaultText));
                 PersonNameCards.Add(new CardListLine("Call:", tt.GCall));

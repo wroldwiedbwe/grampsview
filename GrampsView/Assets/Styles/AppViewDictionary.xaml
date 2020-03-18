@@ -51,12 +51,12 @@
 
     <!--  Create a Base Style for a Button Style  -->
     <Style x:Key="GVButtonStyle" TargetType="Button">
-        <Setter Property="BorderColor" Value="{DynamicResource SecondaryColor}" />
-        <Setter Property="BorderWidth" Value="2" />
-        <Setter Property="BorderRadius" Value="1" />
-        <Setter Property="WidthRequest" Value="{DynamicResource GVDetailCardWidthSmall}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+        <Setter Property="BorderColor" Value="{DynamicResource SecondaryColor}" />
+        <Setter Property="BorderRadius" Value="1" />
+        <Setter Property="BorderWidth" Value="2" />
         <Setter Property="TextColor" Value="{DynamicResource OnSecondaryColor}" />
+        <Setter Property="WidthRequest" Value="{DynamicResource GVDetailCardWidthSmall}" />
     </Style>
 
     <!--  Create a Menu Style Button Style  -->
@@ -64,9 +64,7 @@
         x:Key="GVButtonMenu"
         BasedOn="{StaticResource GVButtonStyle}"
         TargetType="Button">
-        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
         <Setter Property="BorderRadius" Value="0" />
-        <Setter Property="TextColor" Value="{DynamicResource OnSecondaryColor}" />
         <Setter Property="WidthRequest" Value="{DynamicResource GVDetailCardWidthLarge}" />
     </Style>
 
@@ -75,8 +73,8 @@
         x:Key="GVButtonFont"
         BasedOn="{StaticResource GVButtonStyle}"
         TargetType="Button">
-        <Setter Property="WidthRequest" Value="40" />
         <Setter Property="TextColor" Value="{DynamicResource OnPrimaryColor}" />
+        <Setter Property="WidthRequest" Value="40" />
     </Style>
 
     <!--

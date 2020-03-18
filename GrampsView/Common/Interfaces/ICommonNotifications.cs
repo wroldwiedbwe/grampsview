@@ -19,7 +19,7 @@ namespace GrampsView.Common
     /// </summary>
     public interface ICommonNotifications
     {
-        string MajorStatusMessage { get; set; }
+        string MajorStatusMessage { get; }
 
         /// <summary>
         /// Changes the loading message.
@@ -72,6 +72,8 @@ namespace GrampsView.Common
         /// if set to <c>true</c> [show progress ring].
         /// </param>
         Task MinorStatusAdd(string strMessage);
+
+        void NotifyAlert(string strMessage);
 
         /// <summary>
         /// Notifies the dialog box.

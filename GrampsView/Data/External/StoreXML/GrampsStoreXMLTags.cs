@@ -56,9 +56,6 @@ namespace GrampsView.Data.ExternalStorageNS
                         loadTag.GPriority = int.Parse(GetAttribute(pcitation, "priority"), System.Globalization.CultureInfo.CurrentCulture);
 
                         // set the Home image or symbol
-                        loadTag.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
-                        loadTag.HomeImageHLink.HomeSymbolColour = loadTag.GColor;
-                        loadTag.HomeImageHLink.HomeSymbol = CommonConstants.IconTag;
 
                         // save the event
                         DV.TagDV.TagData.Add(loadTag);

@@ -344,22 +344,17 @@ namespace GrampsView.Data.ExternalStorageNS
         }
 
         /// <summary>
-        /// Organises the tag repository.
+        /// Organises the tag images.
         /// </summary>
         private static async Task<HLinkHomeImageModel> OrganiseTagImage(TagModel argTagModel)
         {
-            HLinkHomeImageModel hlink = null;
+            if (argTagModel is null)
+            {
+                throw new System.ArgumentNullException(nameof(argTagModel));
+            }
 
-            // Set default
-            if (hlink is null)
-            {
-                argTagModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
-                argTagModel.HomeImageHLink.HomeSymbolColour = argTagModel.GColor;
-            }
-            else
-            {
-                argTagModel.HomeImageHLink = await SetHomeHLink(argTagModel.HomeImageHLink, hlink).ConfigureAwait(false);
-            }
+            argTagModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+            argTagModel.HomeImageHLink.HomeSymbolColour = argTagModel.GColor;
 
             return argTagModel.HomeImageHLink;
         }
