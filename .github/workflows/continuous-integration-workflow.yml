@@ -14,7 +14,6 @@ jobs:
     - name: Debug Action
       uses: hmarr/debug-action@v1.0.0
 
-
       # - name: Checkout
       # uses: actions/checkout@v2.0.0
       # with:
@@ -36,8 +35,6 @@ jobs:
       # fetch-depth: # optional, default is 1
       # Whether to download Git-LFS files
       # lfs: # optional
-
-
 
     - name: Create_commit_change_log_file
       uses: TriPSs/conventional-changelog-action@v1.3.0
