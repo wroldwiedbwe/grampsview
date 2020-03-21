@@ -35,6 +35,6 @@ steps:
   inputs:
     serverEndpoint: 'App Center'
     appSlug: 'phandcock-ilr0/GrampsView.IOS'
-    appFile: 
+    appFile: $(build.binariesdirectory)/$(BuildConfiguration)/*.apk
     releaseNotesOption: 'input'
     destinationType: 'groups'
