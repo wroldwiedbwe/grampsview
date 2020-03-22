@@ -9,7 +9,7 @@ namespace GrampsView.Events
     /// <summary>
     /// update the progress ring text.
     /// </summary>
-    public class AppStartEvent : PubSubEvent<bool>
+    public class AppStartLoadDataEvent : PubSubEvent
     {
     }
 }

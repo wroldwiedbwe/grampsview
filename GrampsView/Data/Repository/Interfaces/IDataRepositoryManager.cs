@@ -41,7 +41,7 @@ namespace GrampsView.Data.Repository
 
         void StartDataLoad(bool unUsed);
 
-        void StartDataLoad1(bool unUsed);
+        void StartDataLoad();
 
         /// <summary>
         /// Triggers the load gramps un zipped folder asynchronous.

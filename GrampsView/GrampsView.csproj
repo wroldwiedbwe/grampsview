@@ -98,7 +98,6 @@
     <Compile Remove="UserControls\General\FlexSingleCardGroup.xaml.cs" />
     <Compile Remove="UserControls\General\MediaImage.xaml.cs" />
     <Compile Remove="UserControls\General\RadioButtonxExtended .cs" />
-    <Compile Remove="UserControls\GenTextCardLarge.xaml.cs" />
     <Compile Remove="UserControls\HLinkCitationCardSmall.xaml.cs" />
     <Compile Remove="UserControls\HLinkEventCardSmall.xaml.cs" />
     <Compile Remove="UserControls\MediaRefCardSmall.xaml.cs" />
@@ -120,9 +119,9 @@
     <Compile Remove="ViewModels\MinorPages\AppShellViewModel.cs" />
     <Compile Remove="ViewModels\MinorPages\NavigationPageViewModel.cs" />
     <Compile Remove="ViewModels\MinorPages\SerialLoadViewModel.cs" />
-    <Compile Remove="ViewModels\MinorPages\SettingsViewModel.cs" />
     <Compile Remove="ViewModels\Person\Interfaces\IPersonHourGlassPageViewModel.cs" />
     <Compile Remove="ViewModels\Person\Interfaces\IPersonSummaryPageViewModel.cs" />
+    <Compile Remove="ViewModels\StartupPages\SetupStorageViewModel.cs" />
     <Compile Remove="Views\AboutPage.xaml.cs" />
     <Compile Remove="Views\BaseViewList.xaml.cs" />
     <Compile Remove="Views\BookMark\BookMarkDetailView.xaml.cs" />
@@ -138,6 +137,7 @@
     <Compile Remove="Views\Person\PersonListViewDesktop.xaml.cs" />
     <Compile Remove="Views\Person\PersonListViewPhone.xaml.cs" />
     <Compile Remove="Views\StartupPages\ExtendedSplashScreen.xaml.cs" />
+    <Compile Remove="Views\StartupPages\FirstRunDialog.xaml.cs" />
     <Compile Remove="Views\StartupPages\SetupStorageView.xaml.cs" />
   </ItemGroup>
 
@@ -155,7 +155,6 @@
     <EmbeddedResource Remove="UserControls\General\CardGridSingleType.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexSingleCardGroup.xaml" />
     <EmbeddedResource Remove="UserControls\General\MediaImage.xaml" />
-    <EmbeddedResource Remove="UserControls\GenTextCardLarge.xaml" />
     <EmbeddedResource Remove="UserControls\HLinkCitationCardSmall.xaml" />
     <EmbeddedResource Remove="UserControls\HLinkEventCardSmall.xaml" />
     <EmbeddedResource Remove="UserControls\MediaRefCardSmall.xaml" />
@@ -181,6 +180,7 @@
     <EmbeddedResource Remove="Views\Person\PersonListViewDesktop.xaml" />
     <EmbeddedResource Remove="Views\Person\PersonListViewPhone.xaml" />
     <EmbeddedResource Remove="Views\StartupPages\ExtendedSplashScreen.xaml" />
+    <EmbeddedResource Remove="Views\StartupPages\FirstRunDialog.xaml" />
     <EmbeddedResource Remove="Views\StartupPages\SetupStorageView.xaml" />
   </ItemGroup>
 
@@ -214,11 +214,11 @@
     <PackageReference Include="SkiaSharp" Version="1.68.1.1" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.1.1" />
     <PackageReference Include="Xam.Forms.MarkdownView" Version="0.6.1-pre" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.0" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />
     <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.34" />  
   </ItemGroup>
 
@@ -244,6 +244,9 @@
     <Compile Update="UserControls\General\UWPButton.xaml.cs">
       <DependentUpon>UWPButton.xaml</DependentUpon>
     </Compile>
+    <Compile Update="UserControls\InstructionCardLarge.xaml.cs">
+      <DependentUpon>InstructionCardLarge.xaml</DependentUpon>
+    </Compile>
     <Compile Update="UserControls\PersonNameCardSmall.xaml.cs">
       <DependentUpon>PersonNameCardSmall.xaml</DependentUpon>
     </Compile>
@@ -261,6 +264,9 @@
     </Compile>
     <Compile Update="UserControls\NoteCardFull.xaml.cs">
       <DependentUpon>NoteCardFull.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MinorPages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\MinorPages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -282,6 +288,9 @@
     </Compile>
     <Compile Update="Views\StartupPages\FileInputHandlerPage.xaml.cs">
       <DependentUpon>FileInputHandlerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StartupPages\FirstRunPage.xaml.cs">
+      <DependentUpon>FirstRunPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\StartupPages\WhatsNewPage.xaml.cs">
       <DependentUpon>WhatsNewPage.xaml</DependentUpon>

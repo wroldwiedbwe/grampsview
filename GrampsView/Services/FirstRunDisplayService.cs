@@ -30,10 +30,12 @@ namespace GrampsView.Services
                 return false;
             }
 
-            if (VersionTracking.IsFirstLaunchEver && !Common.CommonLocalSettings.FirstRunDisplay)
+            if (VersionTracking.IsFirstLaunchEver) //  && !Common.CommonLocalSettings.FirstRunDisplay)
             {
                 Common.CommonLocalSettings.FirstRunDisplay = true;
                 iocEventAggregator.GetEvent<PageNavigateEvent>().Publish(nameof(FirstRunPage));
+
+                return true;
             }
 
             return false;

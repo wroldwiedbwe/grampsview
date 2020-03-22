@@ -12,6 +12,7 @@ namespace GrampsView.Common
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -19,6 +20,7 @@ namespace GrampsView.Common
     /// </summary>
     public interface ICommonNotifications
     {
+        ObservableCollection<DataLogEntry> DataLoadLog { get; }
         string MajorStatusMessage { get; }
 
         /// <summary>
@@ -30,6 +32,8 @@ namespace GrampsView.Common
         /// <returns>
         /// </returns>
         Task ChangeLoadingMessage(string strMessage);
+
+        void DataLoadLogAdd(string entry);
 
         /// <summary>
         /// Notifies the general status.

@@ -74,7 +74,7 @@ namespace GrampsView.ViewModels
 
         public void LoadDataAction()
         {
-            BaseEventAggregator.GetEvent<AppStartWhatsNewEvent>().Publish();
+            BaseEventAggregator.GetEvent<AppStartReloadDatabaseEvent>().Publish();
         }
 
         /// <summary>

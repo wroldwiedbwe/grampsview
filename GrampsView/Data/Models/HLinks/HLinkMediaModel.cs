@@ -19,14 +19,10 @@
 
 namespace GrampsView.Data.Model
 {
-    using System.Runtime.Serialization;
-
-    using GrampsView.Common;
-
     using GrampsView.Data.Collections;
     using GrampsView.Data.DataView;
-    using GrampsView.Data.Repository;
-    using Xamarin.Forms;
+
+    using System.Runtime.Serialization;
 
     /// <summary>
     /// GRAMPS $$(hlink)$$ element class.
@@ -34,18 +30,18 @@ namespace GrampsView.Data.Model
     [DataContract]
     public class HLinkMediaModel : HLinkBase, IHLinkMediaModel
     {
-        /// <summary>
-        /// The local home use image.
-        /// </summary>
-        private int _HomeImageType = CommonConstants.HomeImageTypeUnknown;
+        ///// <summary>
+        ///// The local home use image.
+        ///// </summary>
+        //private int _HomeImageType = CommonConstants.HomeImageTypeUnknown;
 
-        private Color _HomeSymbolColour = Color.White;
+        //private Color _HomeSymbolColour = Color.White;
 
         ///// <summary>
         ///// The local internal default character icon
         ///// </summary
-        [EnumMember]
-        private string _IDefaultSymbol = CommonConstants.IconDDefault;
+        //[EnumMember]
+        //private string _IDefaultSymbol = CommonConstants.IconDDefault;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HLinkMediaModel"/> class.

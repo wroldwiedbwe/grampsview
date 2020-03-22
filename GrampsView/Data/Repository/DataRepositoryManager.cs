@@ -93,7 +93,7 @@ namespace GrampsView.Data.Repository
             _EventAggregator = iocEventAggregator;
 
             // Event Handlers
-            _EventAggregator.GetEvent<AppStartEvent>().Subscribe(StartDataLoad1, ThreadOption.BackgroundThread);
+            //_EventAggregator.GetEvent<AppStartLoadDataEvent>().Subscribe(StartDataLoad, ThreadOption.BackgroundThread);
             _EventAggregator.GetEvent<DataLoadStartEvent>().Subscribe(StartDataLoad, ThreadOption.BackgroundThread);
             _EventAggregator.GetEvent<DataSaveSerialEvent>().Subscribe(SerializeRepositoriesAsync, ThreadOption.BackgroundThread);
             _EventAggregator.GetEvent<DataLoadCompleteEvent>().Subscribe(DataLoadedSetTrue, ThreadOption.BackgroundThread);
@@ -176,7 +176,7 @@ namespace GrampsView.Data.Repository
             }
         }
 
-        public void StartDataLoad1(bool unUsed)
+        public void StartDataLoad()
         {
             Task<bool> t = Task.Run(() => StartDataLoadAsync());
 

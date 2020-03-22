@@ -38,19 +38,21 @@
 
             _dialogService = dialogService;
 
-            BaseEventAggregator.GetEvent<PageNavigateEvent>().Subscribe(OnNavigateCommandExecuted, ThreadOption.UIThread);
+            BaseEventAggregator.GetEvent<AppStartFirstRunEvent>().Subscribe(ServiceFirstRun, ThreadOption.UIThread);
 
-            BaseEventAggregator.GetEvent<PageNavigateParmsEvent>().Subscribe(OnNavigateParmsCommandExecuted, ThreadOption.UIThread);
+            BaseEventAggregator.GetEvent<AppStartLoadDataEvent>().Subscribe(ServiceLoadData, ThreadOption.UIThread);
+
+            BaseEventAggregator.GetEvent<AppStartReloadDatabaseEvent>().Subscribe(ServiceReloadDatabase, ThreadOption.UIThread);
+
+            BaseEventAggregator.GetEvent<AppStartWhatsNewEvent>().Subscribe(ServiceWhatsNew, ThreadOption.UIThread);
 
             BaseEventAggregator.GetEvent<DataLoadCompleteEvent>().Subscribe(LoadHubPage, ThreadOption.UIThread);
 
             BaseEventAggregator.GetEvent<GRAMPSDialogBoxEvent>().Subscribe(ActionDialog, ThreadOption.UIThread);
 
-            BaseEventAggregator.GetEvent<AppStartWhatsNewEvent>().Subscribe(ServiceFirstRun, ThreadOption.UIThread);
+            BaseEventAggregator.GetEvent<PageNavigateEvent>().Subscribe(OnNavigateCommandExecuted, ThreadOption.UIThread);
 
-            BaseEventAggregator.GetEvent<AppStartFirstRunEvent>().Subscribe(ServiceReloadDatabase, ThreadOption.UIThread);
-
-            BaseEventAggregator.GetEvent<AppStartReloadDatabaseEvent>().Subscribe(ServiceLoadData, ThreadOption.UIThread);
+            BaseEventAggregator.GetEvent<PageNavigateParmsEvent>().Subscribe(OnNavigateParmsCommandExecuted, ThreadOption.UIThread);
 
             // Build the Menu
             NavigateCommand = new DelegateCommand<string>(OnNavigateCommandExecuted);
@@ -100,7 +102,9 @@
 
                 new MainMenuItem() { Title = "Choose data file", Icon = CommonConstants.IconChooseDataFile, TargetType = nameof(FileInputHandlerPage) },
 
-                new MainMenuItem() { Title = "About", Icon = CommonConstants.IconSettings, TargetType = nameof(AboutPage) },
+                new MainMenuItem() { Title = "Settings", Icon = CommonConstants.IconSettings, TargetType = nameof(SettingsPage) },
+
+                new MainMenuItem() { Title = "About", Icon = CommonConstants.IconAbout, TargetType = nameof(AboutPage) },
             };
         }
 
@@ -145,17 +149,20 @@
         /// </returns>
         public override void PopulateViewModel()
         {
-            if (!localWhatsNewDisplayService.ShowIfAppropriate(BaseEventAggregator))
-            {
-                BaseEventAggregator.GetEvent<AppStartWhatsNewEvent>().Publish();
-            }
+            //// Start chain
+            ///     FirstRun
+            ///     Whats New
+            ///     DataBase Reload Needed
+            ///     Load Data
+            ///     Goto Hub Page
+            ServiceFirstRun();
         }
 
         public void ServiceFirstRun()
         {
             if (!localFirstRunDisplayService.ShowIfAppropriate(BaseEventAggregator))
             {
-                BaseEventAggregator.GetEvent<AppStartFirstRunEvent>().Publish();
+                BaseEventAggregator.GetEvent<AppStartWhatsNewEvent>().Publish();
             }
         }
 
@@ -163,10 +170,9 @@
         {
             if (CommonLocalSettings.DataSerialised)
             {
-                BaseEventAggregator.GetEvent<AppStartEvent>().Publish(false);
-
                 // Start data load
                 BaseEventAggregator.GetEvent<PageNavigateEvent>().Publish(nameof(MessageLogPage));
+                BaseEventAggregator.GetEvent<DataLoadStartEvent>().Publish(false);
                 return;
             }
 
@@ -178,6 +184,14 @@
         public void ServiceReloadDatabase()
         {
             if (!localDatabaseReloadDisplayService.ShowIfAppropriate(BaseEventAggregator))
+            {
+                BaseEventAggregator.GetEvent<AppStartLoadDataEvent>().Publish();
+            }
+        }
+
+        public void ServiceWhatsNew()
+        {
+            if (!localWhatsNewDisplayService.ShowIfAppropriate(BaseEventAggregator))
             {
                 BaseEventAggregator.GetEvent<AppStartReloadDatabaseEvent>().Publish();
             }

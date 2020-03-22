@@ -48,6 +48,8 @@ namespace GrampsView.Data.Model
         /// </summary>
         private string _FileDescription = string.Empty;
 
+        private bool _IsClippedFile = false;
+
         /// <summary>
         /// Local Storage File for media object.
         /// </summary>
@@ -237,6 +239,20 @@ namespace GrampsView.Data.Model
                     //HomeImageType = CommonConstants.HomeImageTypeThumbNail,
                 };
                 return t;
+            }
+        }
+
+        [DataMember]
+        public bool IsClippedFile
+        {
+            get
+            {
+                return _IsClippedFile;
+            }
+
+            set
+            {
+                SetProperty(ref _IsClippedFile, value);
             }
         }
 

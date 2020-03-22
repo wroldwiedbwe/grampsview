@@ -13,6 +13,10 @@
         <usercontrols:CitationCardSmall />
     </DataTemplate>
 
+    <DataTemplate x:Key="InstructionCardLargeDT">
+        <usercontrols:InstructionCardLarge />
+    </DataTemplate>
+
     <DataTemplate x:Key="ListLineCardLargeDT">
         <usercontrols:ListLineCardLarge />
     </DataTemplate>
@@ -40,6 +44,7 @@
     <common:CardGroupTemplateSelectorLarge
         x:Key="CardGroupTemplateSelectorLarge"
         AddressTemplate="{StaticResource AddressCardLargeDT}"
+        InstructTextTemplate="{StaticResource InstructionCardLargeDT}"
         ListLineTemplate="{StaticResource ListLineCardLargeDT}"
         MediaTemplate="{StaticResource MediaCardLargeDT}"
         PlaceTemplate="{StaticResource PlaceCardLargeDT}"

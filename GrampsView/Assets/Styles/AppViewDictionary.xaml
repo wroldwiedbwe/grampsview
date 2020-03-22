@@ -392,6 +392,7 @@
         TargetType="Label">
         <Setter Property="FontSize" Value="{DynamicResource GVThemeTextSizeMedium}" />
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="TextColor" Value="{DynamicResource OnSurfaceColor}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryVariantDarkColor}" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>

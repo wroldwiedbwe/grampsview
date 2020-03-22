@@ -157,6 +157,20 @@ namespace GrampsView.Data.DataView
             return t;
         }
 
+        public HLinkMediaModelCollection GetAllNotClippedAsHLink()
+        {
+            HLinkMediaModelCollection t = new HLinkMediaModelCollection();
+
+            foreach (MediaModel item in DataDefaultSort.Where(x => x.IsClippedFile == false))
+            {
+                t.Add(item.HLink);
+            }
+
+            t = HLinkCollectionSort(t);
+
+            return t;
+        }
+
         /// <summary>
         /// Gets the first icon from collection.
         /// </summary>

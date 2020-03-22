@@ -9,13 +9,13 @@
 
 namespace GrampsView.Common
 {
-    using GrampsView.Data.Repository;
     using GrampsView.Events;
 
     using Prism.Events;
 
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Runtime.Serialization;
     using System.Threading.Tasks;
 
@@ -35,9 +35,13 @@ namespace GrampsView.Common
         /// </summary>
         private readonly IEventAggregator _EventAggregator;
 
+        private readonly int maxCount = 8;
+
         private string _MajorStatusMessage = string.Empty;
 
         private string _MinorStatusMessage = string.Empty;
+
+        private int currentIndex = -1;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommonNotifications"/> class.
@@ -50,7 +54,17 @@ namespace GrampsView.Common
             _EventAggregator = iocEventAggregator;
 
             _CL = iocCommonLogging;
+
+            _EventAggregator.GetEvent<GVNotificationLogAdd>().Subscribe(DataLoadLogAdd, ThreadOption.UIThread);
         }
+
+        /// <summary>
+        /// Gets the data load log.
+        /// </summary>
+        /// <value>
+        /// The data load log.
+        /// </value>
+        public ObservableCollection<DataLogEntry> DataLoadLog { get; } = new ObservableCollection<DataLogEntry>();
 
         public string MajorStatusMessage
         {
@@ -97,6 +111,38 @@ namespace GrampsView.Common
             return;
         }
 
+        public void DataLoadLogAdd(string entry)
+        {
+            DataLogEntry t = default(DataLogEntry);
+
+            if (entry != null)
+            {
+                t.Label = string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:HH: mm:ss}", System.DateTime.Now);
+                t.Text = entry;
+
+                lock (this)
+                {
+                    currentIndex += 1;
+
+                    if (currentIndex > maxCount)
+                    {
+                        currentIndex = 0;
+                    }
+
+                    if (DataLoadLog.Count <= maxCount)
+                    {
+                        // Add if not full yet
+                        DataLoadLog.Add(t);
+                    }
+                    else
+                    {
+                        // Replace if full
+                        DataLoadLog[currentIndex] = t;
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Notifies the general status.
         /// </summary>
@@ -123,7 +169,7 @@ namespace GrampsView.Common
         /// </returns>
         public async Task MajorStatusAdd(string argMessage, bool argShowProgressRing)
         {
-            await Task.Run(() => _EventAggregator.GetEvent<GVProgressMajorTextUpdate>().Publish(argMessage)).ConfigureAwait(false);
+            await Task.Run(() => _EventAggregator.GetEvent<GVNotificationLogAdd>().Publish(argMessage)).ConfigureAwait(false);
 
             _CL.LogVariable("MajorStatusAdd", argMessage);
 
@@ -160,7 +206,7 @@ namespace GrampsView.Common
 
         public async Task MinorStatusAdd(string argMessage)
         {
-            await Task.Run(() => _EventAggregator.GetEvent<GVProgressMajorTextUpdate>().Publish(argMessage)).ConfigureAwait(false);
+            await Task.Run(() => _EventAggregator.GetEvent<GVNotificationLogAdd>().Publish(argMessage)).ConfigureAwait(false);
 
             _CL.LogVariable("MinorStatusAdd", argMessage);
 

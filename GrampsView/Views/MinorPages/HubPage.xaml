@@ -53,9 +53,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Frame Grid.Row="0" Style="{StaticResource FrameLargeVariableCardStyleNS}">
-            <Label Style="{DynamicResource GVLabelStyleInstructions}" Text="{i18n:Translate HubPage_IntroductionText}" />
-        </Frame>
+        <ucon:InstructionCardLarge Grid.Row="0" BindingContext="{i18n:Translate HubPage_IntroductionText}" />
 
         <ucon:MediaCardLarge Grid.Row="1" BindingContext="{Binding HeroImage, Mode=OneWay}" />
 

@@ -55,7 +55,7 @@ namespace GrampsView.ViewModels
         /// </param>
         public void FirstRunLoadAFileButton()
         {
-            BaseEventAggregator.GetEvent<AppStartFirstRunEvent>().Publish();
+            BaseEventAggregator.GetEvent<AppStartWhatsNewEvent>().Publish();
         }
 
         /// <summary>

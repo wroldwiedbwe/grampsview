@@ -44,7 +44,7 @@ namespace GrampsView.ViewModels
 
         public override async Task<bool> PopulateViewModelAsync()
         {
-            MediaSource.Cards.AddRange(new ObservableCollection<object>(DV.MediaDV.GetAllAsHLink()));
+            MediaSource.Cards.AddRange(new ObservableCollection<object>(DV.MediaDV.GetAllNotClippedAsHLink()));
 
             return true;
         }

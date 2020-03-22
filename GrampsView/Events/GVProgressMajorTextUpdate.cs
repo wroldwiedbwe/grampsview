@@ -12,9 +12,9 @@ namespace GrampsView.Events
     using Prism.Events;
 
     /// <summary>
-    /// update the progress ring text.
+    /// Update the notification log.
     /// </summary>
-    public class GVProgressMajorTextUpdate : PubSubEvent<string>
+    public class GVNotificationLogAdd : PubSubEvent<string>
     {
     }
 }

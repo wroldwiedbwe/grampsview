@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="GrampsView.Views.AboutPage"
+    x:Class="GrampsView.Views.SettingsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviour="clr-namespace:GrampsView.Behaviours"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i18n="clr-namespace:GrampsView.Common"
     xmlns:markdown="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prismnav="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     ControlTemplate="{StaticResource DetailPageTemplate}"
     Style="{DynamicResource GVBaseContentPage}"
@@ -43,52 +45,45 @@
     <!--  Content  -->
     <Grid FlexLayout.Grow="1">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackLayout Grid.Row="0" BackgroundColor="{DynamicResource SecondaryColor}">
-            <StackLayout
-                HorizontalOptions="Start"
-                Orientation="Horizontal"
-                VerticalOptions="Center">
+        <ScrollView Grid.Row="0">
 
-                <Image
-                    HeightRequest="64"
-                    HorizontalOptions="StartAndExpand"
-                    Source="ic_launcher.png"
-                    VerticalOptions="FillAndExpand" />
+            <StackLayout>
 
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="22"
-                    Style="{DynamicResource GVLabelStyleLarge}"
-                    Text="{Binding AppName, Mode=OneTime}"
-                    TextColor="White"
-                    VerticalOptions="Center" />
-            </StackLayout>
-        </StackLayout>
+                <!--  Theme change buttons  -->
+                <Frame Style="{DynamicResource FrameLargeVariableCardStyle}">
 
-        <ScrollView Grid.Row="1">
+                    <StackLayout BackgroundColor="{DynamicResource PrimaryColor}" Orientation="Horizontal">
 
-            <FlexLayout Direction="Column">
+                        <Label
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="StartAndExpand"
+                            Text="Application Color Theme"
+                            TextColor="{DynamicResource OnPrimaryColor}"
+                            VerticalOptions="CenterAndExpand" />
 
-                <ucon:ListLineCardLarge UCCardListLineCol="{Binding ApplicationVersionList, Mode=OneWay}" />
-
-                <ucon:HeaderCardLarge BindingContext="{Binding HeaderData, Mode=OneWay}" />
-
-                <ucon:InstructionCardLarge BindingContext="{i18n:Translate AboutPage_PrivacyPolicy}" />
-
-                <ucon:InstructionCardLarge BindingContext="{i18n:Translate AboutPage_AttributionText}" />
-
-                <Frame BackgroundColor="White" Style="{DynamicResource FrameLargeVariableCardStyle}">
-                    <markdown:MarkdownView
-                        x:Name="mdview"
-                        Grid.Row="0"
-                        FlexLayout.Basis="75"
-                        Markdown="{Binding DaText}" />
+                        <ucon:FormsRadioButton BackgroundColor="{DynamicResource SecondaryColor}" RadioItems="{Binding DaRadioItems}">
+                            <ucon:FormsRadioButton.Behaviors>
+                                <behaviour:EventToCommandBehavior Command="{Binding RadioButtonToggledCommand}" EventName="ItemToggled" />
+                            </ucon:FormsRadioButton.Behaviors>
+                        </ucon:FormsRadioButton>
+                    </StackLayout>
                 </Frame>
-            </FlexLayout>
+
+                <!--  Other buttons  -->
+                <Button
+                    Command="{prismnav:NavigateTo 'MessageLogPage',
+                                                  Animated=True}"
+                    Style="{DynamicResource GVButtonStyle}"
+                    Text="Go To MessageLog" />
+
+                <Button
+                    Command="{Binding TestPageCommand}"
+                    Style="{DynamicResource GVButtonStyle}"
+                    Text="Test Page" />
+            </StackLayout>
         </ScrollView>
     </Grid>
 </ContentPage>

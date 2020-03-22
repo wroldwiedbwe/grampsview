@@ -111,8 +111,8 @@ namespace GrampsView.Data.ExternalStorageNS
 
                 t.HLinkKey = newHLinkKey;
                 t.OriginalFilePath = outFileName;
-                //newMediaObject.HomeImageHLink.HLinkKey = newHLinkKey;
                 t.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+                t.IsClippedFile = true;
 
                 DataStore.DS.MediaData.Add(t);
                 await fixMediaFile(t).ConfigureAwait(false);

@@ -1,4 +1,4 @@
-﻿// <copyright file="TextDetailCardModel.cs" company="PlaceholderCompany">
+﻿// <copyright file="InstructCardModel.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -7,12 +7,12 @@ namespace GrampsView.Data.Model
     using System.Runtime.Serialization;
 
     [DataContract]
-    public class TextDetailCardModel : ModelBase, ITextDetailCardModel
+    public class InstructCardModel : ModelBase, IInstructCardModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TextDetailCardModel" /> class.
+        /// Initializes a new instance of the <see cref="InstructCardModel" /> class.
         /// </summary>
-        public TextDetailCardModel()
+        public InstructCardModel()
         {
         }
 

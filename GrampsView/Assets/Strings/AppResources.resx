@@ -5,7 +5,7 @@
     
     Version 2.0
     
-    The SecondaryColor goals of this format is to allow a simple XML format 
+    The primary goals of this format is to allow a simple XML format 
     that is mostly human readable. The generation and parsing of the 
     various data types are done through the TypeConverter classes 
     associated with the data types.
@@ -133,7 +133,7 @@
     <value>This program displays the information contained in a GRAMPS genealogy program export data file (the type that includes media).  No data file has been loaded.  Choose option from the menu to load one.</value>
   </data>
   <data name="FirstRun_IntroductionText" xml:space="preserve">
-    <value>This seems to be the first time this application has been run.  Congratulations!  You will need to load a Gramps (https://gramps-project.org/) data file.  These contain genealogy information.  A sample data file can be loaded by pressing the sample data button below or choose the normal load button from the menu to the left.</value>
+    <value>This seems to be the first time this application has been run.  Congratulations!  You will need to load a Gramps (https://gramps-project.org/) data file.  These contain genealogy information.  Press the button below to see what has recently changed.</value>
   </data>
   <data name="NeedDatabaseReloadPage_Instructions" xml:space="preserve">
     <value>Database reload required as the GrampsView internal database version has changed.</value>

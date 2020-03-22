@@ -24,7 +24,7 @@
                         Grid.Column="0"
                         FontSize="{StaticResource FontSizeSmall}"
                         Text="{Binding Label}"
-                        TextColor="{DynamicResource OnPrimaryColor}" />
+                        TextColor="{DynamicResource OnSecondaryColor}" />
                     <Label
                         Grid.Column="1"
                         Text="{Binding Text}"

@@ -33,6 +33,10 @@ namespace GrampsView.Data.Model
         /// </summary>
         private bool _Priv = default(bool);
 
+        public HLinkBase()
+        {
+        }
+
         [DataMember]
         public bool GPriv
         {

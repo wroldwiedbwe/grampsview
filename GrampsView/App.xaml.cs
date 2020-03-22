@@ -168,6 +168,7 @@ namespace GrampsView
             container.RegisterForNavigation<RepositoryDetailPage, RepositoryDetailViewModel>();
             container.RegisterForNavigation<RepositoryListPage, RepositoryListViewModel>();
             container.RegisterForNavigation<SearchPage, SearchViewModel>();
+            container.RegisterForNavigation<SettingsPage, SettingsViewModel>();
 
             //container.RegisterForNavigation<SettingsPage, SettingsViewModel>();
             //container.RegisterForNavigation<SetupStoragePage, SetupStorageViewModel>();

@@ -108,7 +108,7 @@ namespace GrampsView.Common
             set;
         }
 
-        public DataTemplate GenTextCardTemplate
+        public DataTemplate InstructTextTemplate
         {
             get;
             set;
@@ -321,9 +321,9 @@ namespace GrampsView.Common
                 return TagTemplate;
             }
 
-            if (item is TextDetailCardModel)
+            if (item is InstructCardModel)
             {
-                return GenTextCardTemplate;
+                return InstructTextTemplate;
             }
 
             if (item is URLModel)

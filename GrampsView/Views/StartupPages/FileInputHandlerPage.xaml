@@ -50,10 +50,10 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Label
+        <ucon:InstructionCardLarge
             Grid.Row="0"
-            Style="{DynamicResource GVLabelStyleInstructions}"
-            Text="{i18n:Translate FileInputHandlerPage_Instructions}" />
+            BindingContext="{i18n:Translate FileInputHandlerPage_Instructions}"
+            HorizontalOptions="Center" />
 
         <ucon:ListLineCardLarge
             Grid.Row="1"
