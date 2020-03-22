@@ -4,7 +4,7 @@ on:
   push:
     # branches to consider in the event; optional, defaults to all
     branches:
-      - refs/heads/master
+      - refs/heads/master 
 
 jobs:
   create_commit_change_log:
