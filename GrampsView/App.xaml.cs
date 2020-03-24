@@ -118,6 +118,11 @@ namespace GrampsView
         {
             string StartPage = string.Empty;
 
+            if (DataStore.DS.IsDataLoaded)
+            {
+                NavigationService.NavigateAsync("MainPage/NavigationPage/" + nameof(HubPage));
+            }
+
             //// Only Start App Center if physical
             //if (!CommonRoutines.IsEmulator())
             //{
@@ -143,49 +148,52 @@ namespace GrampsView
         protected override void RegisterTypes(IContainerRegistry container)
         {
             container.RegisterForNavigation<AboutPage, AboutViewModel>();
-            //container.RegisterForNavigation<BookMarkDetailPage, BookMarkDetailViewModel>();
+
             container.RegisterForNavigation<BookMarkListPage, BookMarkListViewModel>();
+
             container.RegisterForNavigation<CitationDetailPage, CitationDetailViewModel>();
             container.RegisterForNavigation<CitationListPage, CitationListViewModel>();
+
             container.RegisterForNavigation<EventDetailPage, EventDetailViewModel>();
             container.RegisterForNavigation<EventListPage, EventListViewModel>();
+
             container.RegisterForNavigation<FamilyDetailPage, FamilyDetailViewModel>();
             container.RegisterForNavigation<FamilyListPage, FamilyListViewModel>();
             container.RegisterForNavigation<FileInputHandlerPage, FileInputHandlerViewModel>();
             container.RegisterForNavigation<FirstRunPage, FirstRunViewModel>();
+
             container.RegisterForNavigation<HubPage, HubViewModel>();
+
             container.RegisterForNavigation<MediaDetailPage, MediaDetailViewModel>();
             container.RegisterForNavigation<MediaListPage, MediaListViewModel>();
             container.RegisterForNavigation<MessageLogPage, MessageLogViewModel>();
+
             container.RegisterForNavigation<NeedDatabaseReloadPage, NeedDatabaseReloadViewModel>();
             container.RegisterForNavigation<NoteDetailPage, NoteDetailViewModel>();
             container.RegisterForNavigation<NoteListPage, NoteListViewModel>();
+
             container.RegisterForNavigation<PeopleGraphPage, PeopleGraphViewModel>();
             container.RegisterForNavigation<PersonDetailPage, PersonDetailViewModel>();
             container.RegisterForNavigation<PersonListPage, PersonListViewModel>();
             container.RegisterForNavigation<PlaceDetailPage, PlaceDetailViewModel>();
             container.RegisterForNavigation<PlaceListPage, PlaceListViewModel>();
+
             container.RegisterForNavigation<RepositoryDetailPage, RepositoryDetailViewModel>();
             container.RegisterForNavigation<RepositoryListPage, RepositoryListViewModel>();
+
             container.RegisterForNavigation<SearchPage, SearchViewModel>();
             container.RegisterForNavigation<SettingsPage, SettingsViewModel>();
-
-            //container.RegisterForNavigation<SettingsPage, SettingsViewModel>();
-            //container.RegisterForNavigation<SetupStoragePage, SetupStorageViewModel>();
             container.RegisterForNavigation<SourceDetailPage, SourceDetailViewModel>();
             container.RegisterForNavigation<SourceListPage, SourceListViewModel>();
+
             container.RegisterForNavigation<TagDetailPage, TagDetailViewModel>();
             container.RegisterForNavigation<TagListPage, TagListViewModel>();
 
             container.RegisterForNavigation<NameMapDetailView, NameMapDetailViewModel>();
             container.RegisterForNavigation<NameMapListView, NameMapListViewModel>();
 
-            //container.RegisterForNavigation<TagListView, TagListViewModel>();
-            //container.RegisterForNavigation<TestCacheView, TestCacheViewModel>();
-
             container.RegisterForNavigation<NavigationPage>();
 
-            //container.RegisterForNavigation<MyNavigationPage>();
             container.RegisterForNavigation<MainPage, MainPageViewModel>();
 
             container.RegisterForNavigation<AShellPage>();
@@ -194,8 +202,6 @@ namespace GrampsView
 
             container.RegisterDialog<ErrorDialog, ErrorDialogViewModel>();
 
-            // container.Register<ICommonModelGridBuilder, CommonModelGridBuilder>();
-            //container.RegisterSingleton<ICommonCircularLog, CommonLogCircular>();
             container.RegisterSingleton<ICommonLogging, CommonLogging>();
             container.RegisterSingleton<ICommonNotifications, CommonNotifications>();
             container.RegisterSingleton<IDataRepositoryManager, DataRepositoryManager>();

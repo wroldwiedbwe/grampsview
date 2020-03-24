@@ -913,7 +913,7 @@ namespace GrampsView.Data.Model
 
         public override int GetHashCode()
         {
-            throw new NotImplementedException();
+            return this.NotionalDate.GetHashCode();
         }
 
         /// <summary>

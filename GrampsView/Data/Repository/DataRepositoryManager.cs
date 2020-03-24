@@ -200,6 +200,11 @@ namespace GrampsView.Data.Repository
         {
             await DataStore.CN.ChangeLoadingMessage("Loading Data...").ConfigureAwait(false);
 
+            if (DataStore.DS.IsDataLoaded)
+            {
+                return true;
+            }
+
             DataStore.DS.LoadDataStore();
 
             if (DataStore.DS.CurrentDataFolderValid)

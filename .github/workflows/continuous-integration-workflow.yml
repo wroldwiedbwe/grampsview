@@ -3,8 +3,8 @@ name: CI
 on:
   push:
     # branches to consider in the event; optional, defaults to all
-    branches:
-      - refs/heads/master 
+    # branches:
+    #  - refs/heads/master 
 
 jobs:
   create_commit_change_log:

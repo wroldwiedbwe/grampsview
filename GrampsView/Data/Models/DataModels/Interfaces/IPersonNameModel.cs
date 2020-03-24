@@ -29,11 +29,11 @@ namespace GrampsView.Data.Model
         /// <summary>
         /// Compares to.
         /// </summary>
-        /// <param name="obj">
+        /// <param name="argObj">
         /// The object.
         /// </param>
         /// <returns>
         /// </returns>
-        int CompareTo(object obj);
+        int CompareTo(object argObj);
     }
 }

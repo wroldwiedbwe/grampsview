@@ -45,7 +45,6 @@ namespace GrampsView.Data.Model
         ///// <summary>
         ///// The local internal default character icon
         ///// </summary
-        [EnumMember]
         private string _IDefaultSymbol = CommonConstants.IconDDefault;
 
         /// <summary>
@@ -111,17 +110,6 @@ namespace GrampsView.Data.Model
         /// </value>
         [DataMember]
         public int GCorner2Y { get; set; } = 0;
-
-        ///// <summary>
-        ///// Gets or sets the home image clipped bitmap.
-        ///// </summary>
-        ///// <value>
-        ///// The home image clipped bitmap.
-        ///// </value>
-        //public Image HomeImageClippedBitmap
-        //{
-        //    get; set;
-        //}
 
         /// <summary>
         /// Gets the home image display bit map.

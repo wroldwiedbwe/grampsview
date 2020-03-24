@@ -69,7 +69,7 @@
 
         public override int GetHashCode()
         {
-            throw new System.NotImplementedException();
+            return this.Label.GetHashCode() + this.Text.GetHashCode();
         }
     }
 }

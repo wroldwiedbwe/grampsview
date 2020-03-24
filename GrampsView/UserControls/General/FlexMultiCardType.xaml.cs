@@ -14,12 +14,12 @@
         public static readonly BindableProperty FMultiSourceProperty
                  = BindableProperty.Create(returnType: typeof(CardGroupCollection), declaringType: typeof(FlexMultiCardType), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FMultiSource));
 
-        public ObservableCollection<CardGroup> DisplayMultiList = new ObservableCollection<CardGroup>();
-
         public FlexMultiCardType()
         {
             InitializeComponent();
         }
+
+        public ObservableCollection<CardGroup> DisplayMultiList { get; } = new ObservableCollection<CardGroup>();
 
         public bool FlexMultiCardVisible
         {

@@ -10,22 +10,17 @@
 namespace GrampsView.ViewModels
 {
     using GrampsView.Common;
-    using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.UserControls;
-    using Microsoft.AppCenter.Distribute;
+
     using Prism.Commands;
     using Prism.Events;
     using Prism.Navigation;
 
-    using System.IO;
-    using System.Reflection;
+    using System;
     using System.Threading.Tasks;
 
-    using Xam.Forms.Markdown;
-
     using Xamarin.Essentials;
-    using Xamarin.Forms;
 
     public class SettingsViewModel : ViewModelBase
     {
@@ -95,10 +90,10 @@ namespace GrampsView.ViewModels
                 return _daRadioItems;
             }
 
-            set
-            {
-                SetProperty(ref _daRadioItems, value);
-            }
+            //set
+            //{
+            //    SetProperty(ref _daRadioItems, value);
+            //}
         }
 
         public string DaText
@@ -116,8 +111,13 @@ namespace GrampsView.ViewModels
 
         public DelegateCommand<RadioItemToggledEventArgs> RadioButtonToggledCommand { get; private set; }
 
-        public void HandleRadioToggle(RadioItemToggledEventArgs argRadioItem)
+        public static void HandleRadioToggle(RadioItemToggledEventArgs argRadioItem)
         {
+            if (argRadioItem is null)
+            {
+                throw new ArgumentNullException(nameof(argRadioItem));
+            }
+
             switch (argRadioItem.SelectedItem.Text)
             {
                 case "Dark Theme":
@@ -140,28 +140,28 @@ namespace GrampsView.ViewModels
             }
         }
 
-        /// <summary>
-        /// Raises the <see cref="NavigatedTo"/> event.
-        /// </summary>
-        /// <param name="e">
-        /// The <see cref="NavigatedToEventArgs"/> instance containing the event data.
-        /// </param>
-        /// <param name="viewModelState">
-        /// State of the view ViewModel.
-        /// </param>
-        /// <returns>
-        /// A <see cref="Task"/> representing the asynchronous operation.
-        /// </returns>
-        public override async Task<bool> PopulateViewModelAsync()
-        {
-            return true;
-        }
+        ///// <summary>
+        ///// Raises the <see cref="NavigatedTo"/> event.
+        ///// </summary>
+        ///// <param name="e">
+        ///// The <see cref="NavigatedToEventArgs"/> instance containing the event data.
+        ///// </param>
+        ///// <param name="viewModelState">
+        ///// State of the view ViewModel.
+        ///// </param>
+        ///// <returns>
+        ///// A <see cref="Task"/> representing the asynchronous operation.
+        ///// </returns>
+        //public override async Task<bool> PopulateViewModelAsync()
+        //{
+        //    return true;
+        //}
 
-        public void TestPage()
-        {
-            BaseNavigationService.NavigateAsync(nameof(TestPage));
+        //public void TestPage()
+        //{
+        //    BaseNavigationService.NavigateAsync(nameof(TestPage));
 
-            //BaseNavigationService.NavigateAsync(nameof(AShellPage));
-        }
+        //    //BaseNavigationService.NavigateAsync(nameof(AShellPage));
+        //}
     }
 }

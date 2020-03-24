@@ -249,7 +249,7 @@ namespace GrampsView.Data.Repository
         /// <value>
         /// <c>true</c> if this instance is data loaded; otherwise, <c>false</c>.
         /// </value>
-        [DataMember]
+
         public bool IsDataLoaded
         {
             get;

@@ -51,6 +51,11 @@ namespace GrampsView.Common
         /// </param>
         public CommonNotifications(IEventAggregator iocEventAggregator, ICommonLogging iocCommonLogging)
         {
+            if (iocEventAggregator is null)
+            {
+                throw new ArgumentNullException(nameof(iocEventAggregator));
+            }
+
             _EventAggregator = iocEventAggregator;
 
             _CL = iocCommonLogging;

@@ -14,8 +14,10 @@ namespace GrampsView.Data.Model
 
     public partial class DateObjectModel
     {
-        /// <summary>  Not a properly formatted date so return 0;</summary>
-        public int StrGetAge
+        /// <summary>
+        /// Not a properly formatted date so return 0;
+        /// </summary>
+        public static int StrGetAge
         {
             get
             {
@@ -23,8 +25,12 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>  Not a DateTime so return the String GVal.</summary>
-        /// <value>The get long date as string.</value>
+        /// <summary>
+        /// Not a DateTime so return the String GVal.
+        /// </summary>
+        /// <value>
+        /// The get long date as string.
+        /// </value>
         public string StrGetLongDateAsString
         {
             get
@@ -62,15 +68,31 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Initializes a new instance of the <see cref="DateObjectModelStr"/> class.
-        /// Date but stored as a string so can not be converted to a DateTime. </summary>
-        /// <param name="aCFormat">a c format.</param>
-        /// <param name="aDualDated">if set to <c> true </c> [a dual dated].</param>
-        /// <param name="aNewYear">a new year.</param>
-        /// <param name="aQuality">a quality.</param>
-        /// <param name="aStart">a start.</param>
-        /// <param name="aStop">a stop.</param>
-        /// <param name="aVal">a value.</param>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DateObjectModelStr"/> class. Date but
+        /// stored as a string so can not be converted to a DateTime.
+        /// </summary>
+        /// <param name="aCFormat">
+        /// a c format.
+        /// </param>
+        /// <param name="aDualDated">
+        /// if set to <c>true</c> [a dual dated].
+        /// </param>
+        /// <param name="aNewYear">
+        /// a new year.
+        /// </param>
+        /// <param name="aQuality">
+        /// a quality.
+        /// </param>
+        /// <param name="aStart">
+        /// a start.
+        /// </param>
+        /// <param name="aStop">
+        /// a stop.
+        /// </param>
+        /// <param name="aVal">
+        /// a value.
+        /// </param>
         public void DateObjectModelStr(string aVal)
         {
             try

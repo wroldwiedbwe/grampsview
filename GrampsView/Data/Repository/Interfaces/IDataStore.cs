@@ -9,6 +9,8 @@
 
 namespace GrampsView.Data.Repository
 {
+    using GrampsView.Common;
+
     /// <summary>
     /// Interface definitions for IGrampsRepository.
     /// </summary>

@@ -127,7 +127,7 @@ namespace GrampsView.ViewModels
             HeaderData = DV.HeaderDV.HeaderDataModel;
 
             // Load the full bitmap
-            HeroImage = DV.MediaDV.GetModelFromHLinkString(DV.MediaDV.GetRandomFromCollection(null).HLinkKey).HLink;
+            HeroImage = DV.MediaDV.GetRandomFromCollection(null);
 
             if (HeroImage == null)
             {
