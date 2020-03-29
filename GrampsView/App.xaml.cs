@@ -253,7 +253,7 @@ namespace GrampsView
 
             Distribute.SetEnabledAsync(true);
 
-            var t = Distribute.UpdateTrack;
+            //var t = Distribute.UpdateTrack;
         }
     }
 }

@@ -61,7 +61,7 @@ namespace GrampsView.Data.DataView
         /// The family data.
         /// </value>
         [DataMember]
-        public RepositoryModelType<FamilyModel, HLinkFamilyModel> FamilyData
+        public RepositoryModelDictionary<FamilyModel, HLinkFamilyModel> FamilyData
         {
             get
             {

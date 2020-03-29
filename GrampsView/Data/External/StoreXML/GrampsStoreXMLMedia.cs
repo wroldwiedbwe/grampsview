@@ -9,6 +9,7 @@
 
 namespace GrampsView.Data.ExternalStorageNS
 {
+    using GrampsView.Common;
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
@@ -25,6 +26,89 @@ namespace GrampsView.Data.ExternalStorageNS
     /// </summary>
     public partial class GrampsStoreXML : IGrampsStoreXML
     {
+        public static MediaModel SetHomeImage(MediaModel argModel)
+        {
+            // Setup HomeImage
+            argModel.HomeImageHLink.HLinkKey = argModel.HLinkKey;
+
+            switch (argModel.FileMimeType)
+            {
+                case "application":
+                    {
+                        switch (argModel.FileMimeSubType)
+                        {
+                            case "pdf":
+                                {
+                                    argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                                    argModel.HomeImageHLink.HomeSymbol = IconFont.FilePdf;
+                                    break;
+                                }
+
+                            case "x-zip-compressed":
+                                {
+                                    argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                                    argModel.HomeImageHLink.HomeSymbol = IconFont.ZipBox;
+                                    break;
+                                }
+
+                            case "zip":
+                                {
+                                    argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                                    argModel.HomeImageHLink.HomeSymbol = IconFont.ZipBox;
+                                    break;
+                                }
+
+                            default:
+                                {
+                                    argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                                    argModel.HomeImageHLink.HomeSymbol = IconFont.FileDocument;
+                                    break;
+                                }
+                        }
+
+                        break;
+                    }
+
+                case "image":
+                    {
+                        argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+                        argModel.HomeImageHLink.HomeSymbol = IconFont.Image;
+                        break;
+                    }
+
+                case "video":
+                    {
+                        argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                        argModel.HomeImageHLink.HomeSymbol = IconFont.Video;
+                        break;
+                    }
+
+                default:
+                    {
+                        argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+                        argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconMedia;
+                        break;
+                    }
+            }
+
+            //HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
+            //if (!hlink.Valid)
+            //{
+            //    argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+            //    argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconFamilies;
+            //}
+            //else
+            //{
+            //    argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
+            //}
+
+            // Get colour
+            Application.Current.Resources.TryGetValue("CardBackGroundMedia", out var varCardColour);
+            argModel.HomeImageHLink.HomeSymbolColour = (Color)varCardColour;
+
+            return argModel;
+        }
+
         /// <summary>
         /// load media objects from external storage.
         /// </summary>
@@ -43,9 +127,9 @@ namespace GrampsView.Data.ExternalStorageNS
                 // start file load
                 await DataStore.CN.MajorStatusAdd("Loading Media").ConfigureAwait(false);
 
-                // Get colour
-                Application.Current.Resources.TryGetValue("CardBackGroundMedia", out var varCardColour);
-                Color cardColour = (Color)varCardColour;
+                //// Get colour
+                //Application.Current.Resources.TryGetValue("CardBackGroundMedia", out var varCardColour);
+                //Color cardColour = (Color)varCardColour;
 
                 // Load notes Run query
                 var de =
@@ -136,7 +220,7 @@ namespace GrampsView.Data.ExternalStorageNS
                             Change = GetDateTime(GetAttribute(pname, "change")),
                         };
 
-                        if (loadObject.Id == "O0032")
+                        if (loadObject.Id == "O0200")
                         {
                         }
 
@@ -161,7 +245,13 @@ namespace GrampsView.Data.ExternalStorageNS
                                     await DataStore.CN.MajorStatusAdd("Loading media file: " + temp).ConfigureAwait(false);
                                     loadObject.OriginalFilePath = temp;
 
-                                    loadObject.GDescription = (string)filedetails.Attribute("description");
+                                    // Load FileInfoEx and metadata
+                                    loadObject.MediaStorageFile = await StoreFile.GetStorageFileAsync(loadObject.OriginalFilePath).ConfigureAwait(false);
+
+                                    var imageSize = DependencyService.Get<IImageResource>().GetSize(loadObject.MediaStorageFilePath);
+
+                                    loadObject.MetaDataHeight = imageSize.Height;
+                                    loadObject.MetaDataWidth = imageSize.Width;
                                 }
                                 catch (Exception ex)
                                 {
@@ -170,6 +260,8 @@ namespace GrampsView.Data.ExternalStorageNS
                                 }
                             }
                         }
+                        // Get description
+                        loadObject.GDescription = (string)filedetails.Attribute("description");
 
                         // date details
                         XElement dateval = pname.Element(ns + "dateval");
@@ -186,7 +278,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         loadObject.GTagRefCollection = GetTagCollection(pname);
 
-                        loadObject.HomeImageHLink.HomeSymbolColour = cardColour;
+                        loadObject = SetHomeImage(loadObject);
 
                         // save the object
                         DataStore.DS.MediaData.Add(loadObject);

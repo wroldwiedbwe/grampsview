@@ -27,7 +27,7 @@ namespace GrampsView.Data.Repository
     {
         private HLinkBackLinkModelCollection _BookMarkCollection = new HLinkBackLinkModelCollection();
 
-        private RepositoryModelType<CitationModel, HLinkCitationModel> _CitationData = new RepositoryModelType<CitationModel, HLinkCitationModel>();
+        private RepositoryModelDictionary<CitationModel, HLinkCitationModel> _CitationData = new RepositoryModelDictionary<CitationModel, HLinkCitationModel>();
 
         /// <summary>
         /// The local book mark data.
@@ -41,57 +41,57 @@ namespace GrampsView.Data.Repository
         /// <summary>
         /// The local event data.
         /// </summary>
-        private RepositoryModelType<EventModel, HLinkEventModel> _EventData = new RepositoryModelType<EventModel, HLinkEventModel>();
+        private RepositoryModelDictionary<EventModel, HLinkEventModel> _EventData = new RepositoryModelDictionary<EventModel, HLinkEventModel>();
 
         /// <summary>
         /// The local family data.
         /// </summary>
-        private RepositoryModelType<FamilyModel, HLinkFamilyModel> _FamilyData = new RepositoryModelType<FamilyModel, HLinkFamilyModel>();
+        private RepositoryModelDictionary<FamilyModel, HLinkFamilyModel> _FamilyData = new RepositoryModelDictionary<FamilyModel, HLinkFamilyModel>();
 
         /// <summary>
         /// The local header data.
         /// </summary>
-        private RepositoryModelType<HeaderModel, HLinkHeaderModel> _HeaderData = new RepositoryModelType<HeaderModel, HLinkHeaderModel>();
+        private RepositoryModelDictionary<HeaderModel, HLinkHeaderModel> _HeaderData = new RepositoryModelDictionary<HeaderModel, HLinkHeaderModel>();
 
         /// <summary>
         /// The local media data.
         /// </summary>
-        private RepositoryModelType<MediaModel, HLinkMediaModel> _MediaData = new RepositoryModelType<MediaModel, HLinkMediaModel>();
+        private RepositoryModelDictionary<MediaModel, HLinkMediaModel> _MediaData = new RepositoryModelDictionary<MediaModel, HLinkMediaModel>();
 
         /// <summary>
         /// The local name map data.
         /// </summary>
-        private RepositoryModelType<NameMapModel, HLinkNameMapModel> _NameMapData = new RepositoryModelType<NameMapModel, HLinkNameMapModel>();
+        private RepositoryModelDictionary<NameMapModel, HLinkNameMapModel> _NameMapData = new RepositoryModelDictionary<NameMapModel, HLinkNameMapModel>();
 
         /// <summary>
         /// The local note data.
         /// </summary>
-        private RepositoryModelType<NoteModel, HLinkNoteModel> _NoteData = new RepositoryModelType<NoteModel, HLinkNoteModel>();
+        private RepositoryModelDictionary<NoteModel, HLinkNoteModel> _NoteData = new RepositoryModelDictionary<NoteModel, HLinkNoteModel>();
 
         /// <summary>
         /// The local person data.
         /// </summary>
-        private RepositoryModelType<PersonModel, HLinkPersonModel> _PersonData = new RepositoryModelType<PersonModel, HLinkPersonModel>();
+        private RepositoryModelDictionary<PersonModel, HLinkPersonModel> _PersonData = new RepositoryModelDictionary<PersonModel, HLinkPersonModel>();
 
         /// <summary>
         /// The local place data.
         /// </summary>
-        private RepositoryModelType<PlaceModel, HLinkPlaceModel> _PlaceData = new RepositoryModelType<PlaceModel, HLinkPlaceModel>();
+        private RepositoryModelDictionary<PlaceModel, HLinkPlaceModel> _PlaceData = new RepositoryModelDictionary<PlaceModel, HLinkPlaceModel>();
 
         /// <summary>
         /// The local repository data.
         /// </summary>
-        private RepositoryModelType<RepositoryModel, HLinkRepositoryModel> _RepositoryData = new RepositoryModelType<RepositoryModel, HLinkRepositoryModel>();
+        private RepositoryModelDictionary<RepositoryModel, HLinkRepositoryModel> _RepositoryData = new RepositoryModelDictionary<RepositoryModel, HLinkRepositoryModel>();
 
         /// <summary>
         /// The local source data.
         /// </summary>
-        private RepositoryModelType<SourceModel, HLinkSourceModel> _SourceData = new RepositoryModelType<SourceModel, HLinkSourceModel>();
+        private RepositoryModelDictionary<SourceModel, HLinkSourceModel> _SourceData = new RepositoryModelDictionary<SourceModel, HLinkSourceModel>();
 
         /// <summary>
         /// The local tag data.
         /// </summary>
-        private RepositoryModelType<TagModel, HLinkTagModel> _TagData = new RepositoryModelType<TagModel, HLinkTagModel>();
+        private RepositoryModelDictionary<TagModel, HLinkTagModel> _TagData = new RepositoryModelDictionary<TagModel, HLinkTagModel>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DataInstance"/> class.
@@ -118,7 +118,7 @@ namespace GrampsView.Data.Repository
         /// The local citation data.
         /// </summary>
         [DataMember]
-        public RepositoryModelType<CitationModel, HLinkCitationModel> CitationData
+        public RepositoryModelDictionary<CitationModel, HLinkCitationModel> CitationData
         {
             get
             {
@@ -196,7 +196,7 @@ namespace GrampsView.Data.Repository
         /// The local Event data.
         /// </summary>
         [DataMember]
-        public RepositoryModelType<EventModel, HLinkEventModel> EventData
+        public RepositoryModelDictionary<EventModel, HLinkEventModel> EventData
         {
             get
             {
@@ -213,7 +213,7 @@ namespace GrampsView.Data.Repository
         /// The local Family data.
         /// </summary>
         [DataMember]
-        public RepositoryModelType<FamilyModel, HLinkFamilyModel> FamilyData
+        public RepositoryModelDictionary<FamilyModel, HLinkFamilyModel> FamilyData
         {
             get
             {
@@ -230,7 +230,7 @@ namespace GrampsView.Data.Repository
         /// The local Header data.
         /// </summary>
         [DataMember]
-        public RepositoryModelType<HeaderModel, HLinkHeaderModel> HeaderData
+        public RepositoryModelDictionary<HeaderModel, HLinkHeaderModel> HeaderData
         {
             get
             {
@@ -262,7 +262,7 @@ namespace GrampsView.Data.Repository
         /// The local Media data.
         /// </summary>
         [DataMember]
-        public RepositoryModelType<MediaModel, HLinkMediaModel> MediaData
+        public RepositoryModelDictionary<MediaModel, HLinkMediaModel> MediaData
         {
             get
             {
@@ -279,7 +279,7 @@ namespace GrampsView.Data.Repository
         /// The local NameMap data.
         /// </summary>
         [DataMember]
-        public RepositoryModelType<NameMapModel, HLinkNameMapModel> NameMapData
+        public RepositoryModelDictionary<NameMapModel, HLinkNameMapModel> NameMapData
         {
             get
             {
@@ -296,7 +296,7 @@ namespace GrampsView.Data.Repository
         /// The local Note data.
         /// </summary>
         [DataMember]
-        public RepositoryModelType<NoteModel, HLinkNoteModel> NoteData
+        public RepositoryModelDictionary<NoteModel, HLinkNoteModel> NoteData
         {
             get
             {
@@ -313,7 +313,7 @@ namespace GrampsView.Data.Repository
         /// The local Person data.
         /// </summary>
         [DataMember]
-        public RepositoryModelType<PersonModel, HLinkPersonModel> PersonData
+        public RepositoryModelDictionary<PersonModel, HLinkPersonModel> PersonData
         {
             get
             {
@@ -330,7 +330,7 @@ namespace GrampsView.Data.Repository
         /// The local Place data.
         /// </summary>
         [DataMember]
-        public RepositoryModelType<PlaceModel, HLinkPlaceModel> PlaceData
+        public RepositoryModelDictionary<PlaceModel, HLinkPlaceModel> PlaceData
         {
             get
             {
@@ -347,7 +347,7 @@ namespace GrampsView.Data.Repository
         /// The local Place data.
         /// </summary>
         [DataMember]
-        public RepositoryModelType<RepositoryModel, HLinkRepositoryModel> RepositoryData
+        public RepositoryModelDictionary<RepositoryModel, HLinkRepositoryModel> RepositoryData
         {
             get
             {
@@ -364,7 +364,7 @@ namespace GrampsView.Data.Repository
         /// Gets or sets source Data repository.
         /// </summary>
         [DataMember]
-        public RepositoryModelType<SourceModel, HLinkSourceModel> SourceData
+        public RepositoryModelDictionary<SourceModel, HLinkSourceModel> SourceData
         {
             get
             {
@@ -381,7 +381,7 @@ namespace GrampsView.Data.Repository
         /// The local tag data.
         /// </summary>
         [DataMember]
-        public RepositoryModelType<TagModel, HLinkTagModel> TagData
+        public RepositoryModelDictionary<TagModel, HLinkTagModel> TagData
         {
             get
             {

@@ -9,7 +9,10 @@
 
 namespace GrampsView.Common
 {
+    using GrampsView.Data.Repository;
+
     using System;
+
     using Xamarin.Essentials;
 
     /// <summary>
@@ -157,6 +160,8 @@ namespace GrampsView.Common
             Preferences.Remove(CommonConstants.SettingsGPKGFileLastDateTimeModified);
             Preferences.Remove(CommonConstants.SettingsGPRAMPSFileLastDateTimeModified);
             Preferences.Remove(CommonConstants.SettingsXMLFileLastDateTimeModified);
+
+            DataStore.DS.IsDataLoaded = false;
 
             DataSerialised = false;
         }

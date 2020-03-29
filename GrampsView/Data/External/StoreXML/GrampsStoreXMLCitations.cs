@@ -42,16 +42,29 @@ namespace GrampsView.Data.ExternalStorageNS
                 throw new ArgumentNullException(nameof(argModel));
             }
 
+            // Try media reference collection first
             HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
-            if (hlink is null)
+
+            // Check Source for Image
+            if ((!hlink.Valid) && (argModel.GSourceRef.DeRef.HomeImageHLink.HomeUseImage))
+            {
+                hlink = argModel.GSourceRef.DeRef.HomeImageHLink;
+            }
+
+            // Handle the link if we can
+            if (!hlink.Valid)
             {
                 argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
-                argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconCitation;
             }
             else
             {
-                argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
+                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+                argModel.HomeImageHLink.HLinkKey = hlink.HLinkKey;
             }
+
+            // Get colour
+            Application.Current.Resources.TryGetValue("CardBackGroundCitation", out var varCardColour);
+            argModel.HomeImageHLink.HomeSymbolColour = (Color)varCardColour;
 
             return argModel;
         }
@@ -66,10 +79,6 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             await DataStore.CN.MajorStatusAdd("Loading Citation data").ConfigureAwait(false);
             {
-                // Get colour
-                Application.Current.Resources.TryGetValue("CardBackGroundCitation", out var varCardColour);
-                Color cardColour = (Color)varCardColour;
-
                 // Load notes
 
                 try
@@ -91,6 +100,10 @@ namespace GrampsView.Data.ExternalStorageNS
                         loadCitation.Priv = SetPrivateObject(GetAttribute(pcitation, "priv"));
                         loadCitation.Handle = GetAttribute(pcitation, "handle");
 
+                        if (loadCitation.Id == "C0656")
+                        {
+                        }
+
                         // Citation fields
 
                         loadCitation.GDateContent = GetDate(pcitation);
@@ -102,7 +115,7 @@ namespace GrampsView.Data.ExternalStorageNS
                         loadCitation.GNoteRefCollection = GetNoteCollection(pcitation);
 
                         // ObjectRef loading
-                        loadCitation.GMediaRefCollection = GetObjectCollection(pcitation);
+                        loadCitation.GMediaRefCollection = await GetObjectCollection(pcitation).ConfigureAwait(false);
 
                         loadCitation.GSourceAttributeCollection = GetSrcAttributeCollection(pcitation);
 
@@ -112,7 +125,6 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // set the Home image or symbol now that everything is laoded
                         loadCitation = SetHomeImage(loadCitation);
-                        loadCitation.HomeImageHLink.HomeSymbolColour = cardColour;
 
                         // save the event
                         DV.CitationDV.CitationData.Add(loadCitation);

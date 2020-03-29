@@ -83,7 +83,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                             loadPlace.GCitationRefCollection = GetCitationCollection(placeData);
 
-                            loadPlace.GMediaRefCollection = GetObjectCollection(placeData);
+                            loadPlace.GMediaRefCollection = await GetObjectCollection(placeData).ConfigureAwait(false);
 
                             loadPlace.GNoteRefCollection = GetNoteCollection(placeData);
 

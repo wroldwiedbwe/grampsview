@@ -70,7 +70,7 @@ namespace GrampsView.Data.DataView
         /// The person data.
         /// </value>
         [DataMember]
-        public RepositoryModelType<PlaceModel, HLinkPlaceModel> PlaceData
+        public RepositoryModelDictionary<PlaceModel, HLinkPlaceModel> PlaceData
         {
             get
             {

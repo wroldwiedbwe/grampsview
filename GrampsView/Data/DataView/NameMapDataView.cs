@@ -66,7 +66,7 @@ namespace GrampsView.Data.DataView
         /// The citation data.
         /// </value>
         [DataMember]
-        public RepositoryModelType<NameMapModel, HLinkNameMapModel> NameMapData
+        public RepositoryModelDictionary<NameMapModel, HLinkNameMapModel> NameMapData
         {
             get
             {

@@ -25,7 +25,7 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The media data.
         /// </value>
-        RepositoryModelType<NameMapModel, HLinkNameMapModel> NameMapData
+        RepositoryModelDictionary<NameMapModel, HLinkNameMapModel> NameMapData
         {
             get;
         }

@@ -39,7 +39,7 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The citation data.
         /// </value>
-        public RepositoryModelType<CitationModel, HLinkCitationModel> CitationData
+        public RepositoryModelDictionary<CitationModel, HLinkCitationModel> CitationData
         {
             get
             {

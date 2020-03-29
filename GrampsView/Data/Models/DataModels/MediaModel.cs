@@ -221,7 +221,7 @@ namespace GrampsView.Data.Model
         /// The g tag reference collection.
         /// </value>
         [DataMember]
-        public HLinkTagModelCollection GTagRefCollection { get; set; }
+        public HLinkTagModelCollection GTagRefCollection { get; set; } = new HLinkTagModelCollection();
 
         /// <summary>
         /// Gets the get hlink.

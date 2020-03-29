@@ -63,19 +63,17 @@ namespace GrampsView.Data.ExternalStorageNS
                     // Preload image cache
                     StoreFile ttt = new StoreFile();
 
-                    foreach (MediaModel item in DataStore.DS.MediaData.GetList)
-                    {
-                        item.MediaStorageFile = await StoreFile.GetStorageFileAsync(item.OriginalFilePath).ConfigureAwait(false);
+                    //foreach (MediaModel item in DataStore.DS.MediaData.GetList)
+                    //{
+                    //    item.MediaStorageFile = await StoreFile.GetStorageFileAsync(item.OriginalFilePath).ConfigureAwait(false);
 
-                        //if (item.Id == "O0196")
-                        //{
-                        //}
+                    // //if (item.Id == "O0196") //{ //}
 
-                        var imageSize = DependencyService.Get<IImageResource>().GetSize(item.MediaStorageFilePath);
-                        //Debug.WriteLine(imageSize);
-                        item.MetaDataHeight = imageSize.Height;
-                        item.MetaDataWidth = imageSize.Width;
-                    }
+                    //    var imageSize = DependencyService.Get<IImageResource>().GetSize(item.MediaStorageFilePath);
+                    //    //Debug.WriteLine(imageSize);
+                    //    item.MetaDataHeight = imageSize.Height;
+                    //    item.MetaDataWidth = imageSize.Width;
+                    //}
 
                     // Called in order of media linkages from Media outwards
                     await OrganiseMediaRepository().ConfigureAwait(false);

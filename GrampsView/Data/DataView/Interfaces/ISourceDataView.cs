@@ -24,7 +24,7 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The person data.
         /// </value>
-        RepositoryModelType<SourceModel, HLinkSourceModel> SourceData
+        RepositoryModelDictionary<SourceModel, HLinkSourceModel> SourceData
         {
             get;
         }

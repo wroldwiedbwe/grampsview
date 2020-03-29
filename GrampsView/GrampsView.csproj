@@ -74,6 +74,7 @@
     <Compile Remove="Data\DataView\Interfaces\IBookMarkDataView.cs" />
     <Compile Remove="Data\External\StoreFile\IStoreFileDirectory.cs" />
     <Compile Remove="Data\External\StorePostLoad\GrampsStorePostLoadClippedBM.cs" />
+    <Compile Remove="Data\External\StorePostLoad\StoreImagePostLoad.cs" />
     <Compile Remove="Data\External\StorePostLoad\StorePostLoadHomeImage.cs" />
     <Compile Remove="Data\External\StorePostLoad\StorePostLoadImageSource.cs" />
     <Compile Remove="Data\Models\Collections\HLinks\HLinkBookMarkModelCollection.cs" />

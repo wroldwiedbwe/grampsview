@@ -35,9 +35,9 @@ namespace GrampsView.Data.ExternalStorageNS
 
             foreach (CitationModel theCitationModel in DV.CitationDV.DataViewData)
             {
-                if (theCitationModel.Id == "C0575")
-                {
-                }
+                //if (theCitationModel.Id == "C0351")
+                //{
+                //}
 
                 HLinkCitationModel t = theCitationModel.HLink;
 
@@ -63,11 +63,6 @@ namespace GrampsView.Data.ExternalStorageNS
                 {
                     DataStore.DS.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
-
-                // -- Organise Home Images -----------------------
-                theCitationModel.HomeImageHLink = await OrganiseCitationImage(theCitationModel).ConfigureAwait(false);
-
-                DataStore.DS.CitationData[theCitationModel.HLinkKey] = theCitationModel;
             }
 
             return true;
@@ -78,7 +73,7 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </summary>
         private static async Task<bool> OrganiseEventRepository()
         {
-            DataStore.CN.MajorStatusAdd("Organising Event data");
+            await DataStore.CN.MajorStatusAdd("Organising Event data").ConfigureAwait(false);
 
             foreach (EventModel theEventModel in DV.EventDV.DataViewData)
             {
@@ -100,13 +95,6 @@ namespace GrampsView.Data.ExternalStorageNS
                     DataStore.DS.MediaData[mediaRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
 
-                // Sort media collection and get first link images
-                DataStore.DS.EventData[theEventModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
-
-                // eventModel.GMediaRefCollection = DV.MediaDV.HLinkCollectionSort(eventModel.GMediaRefCollection);
-
-                // DV.EventDV.EventData[eventModel.HLinkKey].GMediaRefCollection.FirstHLink = DV.MediaDV.GetFirstImageFromCollection(DV.EventDV.EventData[eventModel.HLinkKey].GMediaRefCollection);
-
                 // Place Reference
                 if (theEventModel.GPlace.Valid)
                 {
@@ -118,11 +106,6 @@ namespace GrampsView.Data.ExternalStorageNS
                 {
                     DataStore.DS.EventData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
-
-                // Setup home images
-                theEventModel.HomeImageHLink = await OrganiseEventImage(theEventModel).ConfigureAwait(false);
-
-                DataStore.DS.EventData[theEventModel.HLinkKey] = theEventModel;
             }
 
             return true;
@@ -176,11 +159,6 @@ namespace GrampsView.Data.ExternalStorageNS
                 {
                     DataStore.DS.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
-
-                // -- Organse First and Sorts --------------------------
-                theFamilyModel.HomeImageHLink = await OrganiseFamilyImage(theFamilyModel).ConfigureAwait(false);
-
-                DataStore.DS.FamilyData[theFamilyModel.HLinkKey] = theFamilyModel;
             }
 
             return true;
@@ -191,7 +169,7 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </summary>
         private static async Task<bool> OrganiseHeaderRepository()
         {
-            DataStore.CN.MajorStatusAdd("Organising Header data");
+            await DataStore.CN.MajorStatusAdd("Organising Header data").ConfigureAwait(false);
 
             return true;
         }
@@ -201,40 +179,40 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </summary>
         private static async Task<bool> OrganiseMediaRepository()
         {
-            DataStore.CN.MajorStatusAdd("Organising Media data");
+            await DataStore.CN.MajorStatusAdd("Organising Media data").ConfigureAwait(false);
 
-            foreach (MediaModel theMediaObject in DV.MediaDV.DataViewData)
+            try
             {
-                HLinkMediaModel t = theMediaObject.HLink;
-
-                if (theMediaObject.Id == "O0032")
+                foreach (MediaModel theMediaObject in DV.MediaDV.DataViewData)
                 {
+                    HLinkMediaModel t = theMediaObject.HLink;
+
+                    //if (theMediaObject.Id == "O0032")
+                    //{
+                    //}
+
+                    // Back Reference Citation HLinks
+                    foreach (HLinkCitationModel citationRef in theMediaObject.GCitationRefCollection)
+                    {
+                        DataStore.DS.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    }
+
+                    // Back Reference Note HLinks
+                    foreach (HLinkNoteModel noteRef in theMediaObject.GNoteRefCollection)
+                    {
+                        DataStore.DS.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    }
+
+                    // Back Reference Tag HLinks
+                    foreach (HLinkTagModel tagRef in theMediaObject.GTagRefCollection)
+                    {
+                        DataStore.DS.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                    }
                 }
-
-                // TODO Change to SortAndSetFirst
-
-                // Back Reference Citation HLinks
-                foreach (HLinkCitationModel citationRef in theMediaObject.GCitationRefCollection)
-                {
-                    DataStore.DS.CitationData[citationRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
-                }
-
-                // Back Reference Note HLinks
-                foreach (HLinkNoteModel noteRef in theMediaObject.GNoteRefCollection)
-                {
-                    DataStore.DS.NoteData[noteRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
-                }
-
-                // Back Reference Tag HLinks
-                foreach (HLinkTagModel tagRef in theMediaObject.GTagRefCollection)
-                {
-                    DataStore.DS.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
-                }
-
-                // Setup HomeImage
-                theMediaObject.HomeImageHLink = await OrganiseMediaImage(theMediaObject).ConfigureAwait(false);
-
-                DataStore.DS.MediaData[theMediaObject.HLinkKey] = theMediaObject;
+            }
+            catch (Exception ex)
+            {
+                DataStore.CN.NotifyException("Exception in OrganiseMediaRepository", ex);
             }
 
             return true;
@@ -245,11 +223,7 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </summary>
         private static async Task<bool> OrganiseNameMapRepository()
         {
-            DataStore.CN.MajorStatusAdd("Organising NameMap data");
-
-            //foreach (NameMapModel nnameMapObject in DV.NameMapDV.NameMapData)
-            //{
-            //}
+            await DataStore.CN.MajorStatusAdd("Organising NameMap data").ConfigureAwait(false);
 
             return true;
         }
@@ -259,7 +233,7 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </summary>
         private static async Task<bool> OrganiseNoteRepository()
         {
-            DataStore.CN.MajorStatusAdd("Organising Note data");
+            await DataStore.CN.MajorStatusAdd("Organising Note data").ConfigureAwait(false);
 
             foreach (NoteModel theNoteModel in DV.NoteDV.DataViewData)
             {
@@ -267,7 +241,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                 // -- Organse Back Links ---------------------
 
-                // Citation Collection
+                // TODO Citation Collection
 
                 foreach (HLinkTagModel tagnRef in theNoteModel.GTagRefCollection)
                 {
@@ -283,15 +257,12 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </summary>
         private static async Task<bool> OrganisePersonRepository()
         {
-            DataStore.CN.MajorStatusAdd("Organising Person data");
+            await DataStore.CN.MajorStatusAdd("Organising Person data").ConfigureAwait(false);
 
             foreach (PersonModel thePersonModel in DV.PersonDV.DataViewData)
             {
                 HLinkPersonModel t = thePersonModel.HLink;
 
-                //if (person.Id == "I0568")
-                //{
-                //}
                 // -- Organse Back Links ---------------------
 
                 // Citation Collection
@@ -330,19 +301,11 @@ namespace GrampsView.Data.ExternalStorageNS
                 }
 
                 // Back Reference Tag HLinks
-                for (int i = 0; i < thePersonModel.GTagRefCollection.Count; i++)
+                foreach (HLinkTagModel tagRef in thePersonModel.GTagRefCollection)
                 {
-                    HLinkTagModel tagRef = thePersonModel.GTagRefCollection[i];
-
-                    // Update the tag ref with colours and symbols
-                    thePersonModel.GTagRefCollection[i].HomeImageHLink = GetTagRefHomeLink(tagRef.DeRef, tagRef.HomeImageHLink);
-
                     // Set the backlinks
                     DataStore.DS.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                 }
-
-                // -- Organise Home Image ------------------------------
-                thePersonModel.HomeImageHLink = await OrganisePersonImage(thePersonModel).ConfigureAwait(false);
 
                 // -- Setup some extra values ------------------------------
 
@@ -380,7 +343,7 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </summary>
         private static async Task<bool> OrganisePlaceRepository()
         {
-            DataStore.CN.MajorStatusAdd("Organising Place data");
+            await DataStore.CN.MajorStatusAdd("Organising Place data").ConfigureAwait(false);
 
             foreach (PlaceModel thePlaceModel in DV.PlaceDV.DataViewData)
             {
@@ -427,7 +390,7 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </summary>
         private static async Task<bool> OrganiseRepositoryRepository()
         {
-            DataStore.CN.MajorStatusAdd("Organising Repository data");
+            await DataStore.CN.MajorStatusAdd("Organising Repository data").ConfigureAwait(false);
 
             foreach (RepositoryModel theRepositoryModel in DV.RepositoryDV.DataViewData)
             {
@@ -451,15 +414,11 @@ namespace GrampsView.Data.ExternalStorageNS
 
         private static async Task<bool> OrganiseSourceRepository()
         {
-            DataStore.CN.MajorStatusAdd("Organising Source data");
+            await DataStore.CN.MajorStatusAdd("Organising Source data").ConfigureAwait(false);
 
             foreach (SourceModel theSourceModel in DV.SourceDV.DataViewData)
             {
                 HLinkSourceModel t = theSourceModel.HLink;
-
-                //if (t.HLinkKey == "_c49238f73e868050e85")
-                //{
-                //}
 
                 try
                 {
@@ -491,11 +450,6 @@ namespace GrampsView.Data.ExternalStorageNS
                     {
                         DataStore.DS.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
                     }
-
-                    // Get default image if available
-                    theSourceModel.HomeImageHLink = await OrganiseSourceImage(theSourceModel).ConfigureAwait(false);
-
-                    DataStore.DS.SourceData[theSourceModel.HLinkKey] = theSourceModel;
                 }
                 catch (Exception ex)
                 {
@@ -513,13 +467,6 @@ namespace GrampsView.Data.ExternalStorageNS
         private static async Task<bool> OrganiseTagRepository()
         {
             await DataStore.CN.MajorStatusAdd("Organising Tag data").ConfigureAwait(false);
-
-            foreach (TagModel theTagModel in DV.TagDV.DataViewData)
-            {
-                theTagModel.HomeImageHLink = await OrganiseTagImage(theTagModel).ConfigureAwait(false);
-
-                DataStore.DS.TagData[theTagModel.HLinkKey] = theTagModel;
-            }
 
             return true;
         }

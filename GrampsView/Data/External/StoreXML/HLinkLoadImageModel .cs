@@ -17,10 +17,11 @@
 //// citationref
 //// noteref
 
-namespace GrampsView.Data.Model
+namespace GrampsView.Data.ExternalStorageNS
 {
     using GrampsView.Common;
     using GrampsView.Data.DataView;
+    using GrampsView.Data.Model;
 
     using System;
     using System.Runtime.Serialization;
@@ -32,8 +33,8 @@ namespace GrampsView.Data.Model
     ///
     /// Cut down model that only has image code without the dependencies that muck things up by recursion.
     /// </summary>
-    [DataContract]
-    public class HLinkHomeImageModel : HLinkBase, IHLinkHomeImageModel
+
+    public class HLinkLoadImageModel : HLinkBase
     {
         /// <summary>
         /// The local home use image.
@@ -50,7 +51,7 @@ namespace GrampsView.Data.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="HLinkMediaModel"/> class.
         /// </summary>
-        public HLinkHomeImageModel()
+        public HLinkLoadImageModel()
         {
         }
 
@@ -74,6 +75,42 @@ namespace GrampsView.Data.Model
                 }
             }
         }
+
+        /// <summary>
+        /// Gets or sets the g corner1 x.
+        /// </summary>
+        /// <value>
+        /// The g corner1 x.
+        /// </value>
+
+        public int GCorner1X { get; set; } = 0;
+
+        /// <summary>
+        /// Gets or sets the g corner1 y.
+        /// </summary>
+        /// <value>
+        /// The g corner1 y.
+        /// </value>
+
+        public int GCorner1Y { get; set; } = 0;
+
+        /// <summary>
+        /// Gets or sets the g corner2 x.
+        /// </summary>
+        /// <value>
+        /// The g corner2 x.
+        /// </value>
+
+        public int GCorner2X { get; set; } = 0;
+
+        /// <summary>
+        /// Gets or sets the g corner2 y.
+        /// </summary>
+        /// <value>
+        /// The g corner2 y.
+        /// </value>
+
+        public int GCorner2Y { get; set; } = 0;
 
         /// <summary>
         /// Gets the home image display bit map.
@@ -191,6 +228,25 @@ namespace GrampsView.Data.Model
             }
         }
 
+        // Gramps uses (0,0,0,0) or (0,0,100,100) for the entire bitmap.
+        public bool NeedsClipping
+        {
+            get
+            {
+                if ((GCorner1X == 0) && (GCorner1Y == 0) && (GCorner2X == 0) && (GCorner2Y == 0))
+                {
+                    return false;
+                }
+
+                if ((GCorner1X == 0) && (GCorner1Y == 0) && (GCorner2X == 100) && (GCorner2Y == 100))
+                {
+                    return false;
+                }
+
+                return true;
+            }
+        }
+
         /// <summary>
         /// Gets a value indicating whether gets boolean showing if the $$(HLink)$$ is valid. <note
         /// type="note">Can have a HLink or be a pointer to an image. <br/><br/> So, MUST be valid
@@ -227,17 +283,19 @@ namespace GrampsView.Data.Model
             }
         }
 
-        public void ConvertFromMediaModel(MediaModel argMediaModel)
+        public HLinkHomeImageModel GetHLinkHomeImageModel()
         {
-            if (argMediaModel is null)
-            {
-                throw new ArgumentNullException(nameof(argMediaModel));
-            }
+            HLinkHomeImageModel returnHLinkHomeImageModel = new HLinkHomeImageModel();
 
             // Copy fields
-            GPriv = argMediaModel.Priv;
-            HLinkKey = argMediaModel.HLinkKey;
-            HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+            returnHLinkHomeImageModel.GPriv = GPriv;
+            returnHLinkHomeImageModel.HLinkKey = HLinkKey;
+            //HomeImageClippedBitmap = argHLinkMediaModel.LoadingClipInfo.HomeImageClippedBitmap;
+            returnHLinkHomeImageModel.HomeImageType = HomeImageType;
+            returnHLinkHomeImageModel.HomeSymbol = HomeSymbol;
+            returnHLinkHomeImageModel.HomeSymbolColour = HomeSymbolColour;
+
+            return returnHLinkHomeImageModel;
         }
     }
 }

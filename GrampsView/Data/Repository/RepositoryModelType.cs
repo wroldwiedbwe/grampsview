@@ -26,11 +26,11 @@ namespace GrampsView.Data.Repositories
     /// </typeparam>
     /// <seealso cref="GrampsView.Common.CommonBindableBase"/>
     /// /// /// /// /// /// /// ///
-    /// <seealso cref="GrampsView.Data.Repositories.IRepositoryModelType{T, U}"/>
+    /// <seealso cref="GrampsView.Data.Repositories.IRepositoryModelDictionary{T, U}"/>
     /// /// /// /// /// /// /// ///
     /// <seealso cref="System.ComponentViewModel.INotifyPropertyChanged"/>
     [DataContract]
-    public class RepositoryModelType<T1, T2> : Dictionary<string, T1>, IRepositoryModelType<T1, T2>
+    public class RepositoryModelDictionary<T1, T2> : Dictionary<string, T1>, IRepositoryModelDictionary<T1, T2>
         where T1 : ModelBase, new()
         where T2 : HLinkBase, new()
     {
@@ -40,9 +40,9 @@ namespace GrampsView.Data.Repositories
         private readonly Random localRandomNumberGenerator = new Random();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RepositoryModelType{T, U}"/> class.
+        /// Initializes a new instance of the <see cref="RepositoryModelDictionary{T, U}"/> class.
         /// </summary>
-        public RepositoryModelType()
+        public RepositoryModelDictionary()
         {
         }
 
@@ -78,7 +78,7 @@ namespace GrampsView.Data.Repositories
                 {
                 }
 
-                return Get(key);
+                return Find(key);
             }
 
             set
@@ -119,7 +119,7 @@ namespace GrampsView.Data.Repositories
                 {
                 }
 
-                return Get(hLink.HLinkKey);
+                return Find(hLink.HLinkKey);
             }
         }
 
@@ -142,7 +142,7 @@ namespace GrampsView.Data.Repositories
             {
             }
 
-            var key = _keySelector(arg);
+            var key = KeySelector(arg);
             if (base.ContainsKey(key))
             {
                 throw new DuplicateKeyException(key);
@@ -151,25 +151,7 @@ namespace GrampsView.Data.Repositories
             base.Add(arg.HLinkKey, arg);
         }
 
-        ///// <summary>
-        ///// Determines whether the specified key contains key.
-        ///// </summary>
-        ///// <param name="key">
-        ///// The key.
-        ///// </param>
-        ///// <returns>
-        ///// </returns>
-        //public virtual bool ContainsKey(string key)
-        //{
-        //    if (key != null)
-        //    {
-        //        return base.ContainsKey(key);
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
+      
 
         /// <summary>
         /// Gets or sets the element with the specified key. If setting a new value, new value must
@@ -180,7 +162,7 @@ namespace GrampsView.Data.Repositories
         /// </param>
         /// <returns>
         /// </returns>
-        public T1 Get(string key)
+        public T1 Find(string key)
         {
             if (ContainsKey(key) == true)
             {
@@ -249,14 +231,14 @@ namespace GrampsView.Data.Repositories
         /// <summary>
         /// Keys the selector.
         /// </summary>
-        /// <param name="arg">
+        /// <param name="argModel">
         /// The argument.
         /// </param>
         /// <returns>
         /// </returns>
-        private string _keySelector(T1 arg)
+        private string KeySelector(T1 argModel)
         {
-            return arg.HLinkKey;
+            return argModel.HLinkKey;
         }
     }
 }

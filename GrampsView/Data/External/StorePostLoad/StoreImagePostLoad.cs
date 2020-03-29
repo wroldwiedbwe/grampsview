@@ -22,46 +22,32 @@ namespace GrampsView.Data.ExternalStorageNS
     /// </summary>
     public partial class StorePostLoad : IStorePostLoad
     {
-        /// <summary>
-        /// Organises the citation repository.
-        /// </summary>
-        private static async Task<HLinkHomeImageModel> OrganiseCitationImage(CitationModel argCitationModel)
-        {
-            // -- Organsie Default FirstLinks ------------------------------
+        ///// <summary>
+        ///// Organises the citation repository.
+        ///// </summary>
+        //private static async Task<HLinkHomeImageModel> OrganiseCitationImage(CitationModel argCitationModel)
+        //{
+        //    // -- Organsie Default FirstLinks ------------------------------
 
-            // Sort media collection and get first link images
-            DataStore.DS.CitationData[argCitationModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
+        // //// Sort media collection and get first link images //DataStore.DS.CitationData[argCitationModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
 
-            // Sort note collection and get first link images
-            DataStore.DS.CitationData[argCitationModel.HLinkKey].GNoteRefCollection.SortAndSetFirst();
+        // //// Sort note collection and get first link images //DataStore.DS.CitationData[argCitationModel.HLinkKey].GNoteRefCollection.SortAndSetFirst();
 
-            // -- Organise Home Images -----------------------
+        // // -- Organise Home Images -----------------------
 
-            // Try media reference collection first
-            HLinkHomeImageModel hlink = argCitationModel.GMediaRefCollection.FirstHLinkHomeImage;
+        // // Try media reference collection first HLinkHomeImageModel hlink = argCitationModel.GMediaRefCollection.FirstHLinkHomeImage;
 
-            // Check Source for Image
-            if (!hlink.Valid)
-            {
-                if (argCitationModel.GSourceRef.DeRef.HomeImageHLink.HomeUseImage)
-                {
-                    hlink = argCitationModel.GSourceRef.DeRef.HomeImageHLink;
-                }
-            }
+        // // Check Source for Image if (!hlink.Valid) { if
+        // (argCitationModel.GSourceRef.DeRef.HomeImageHLink.HomeUseImage) { hlink =
+        // argCitationModel.GSourceRef.DeRef.HomeImageHLink; } }
 
-            // Handle the link if we can
-            if (!hlink.Valid)
-            {
-                argCitationModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
-                argCitationModel.HomeImageHLink.HomeSymbol = CommonConstants.IconCitation;
-            }
-            else
-            {
-                argCitationModel.HomeImageHLink = await SetHomeHLink(argCitationModel.HomeImageHLink, hlink).ConfigureAwait(false);
-            }
+        // // Handle the link if we can if (!hlink.Valid) {
+        // argCitationModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+        // argCitationModel.HomeImageHLink.HomeSymbol = CommonConstants.IconCitation; } else {
+        // argCitationModel.HomeImageHLink = hlink; }
 
-            return argCitationModel.HomeImageHLink;
-        }
+        //    return argCitationModel.HomeImageHLink;
+        //}
 
         /// <summary>
         /// Organises the event repository.
@@ -94,7 +80,7 @@ namespace GrampsView.Data.ExternalStorageNS
             }
             else
             {
-                argEventModel.HomeImageHLink = await SetHomeHLink(argEventModel.HomeImageHLink, hlink).ConfigureAwait(false);
+                argEventModel.HomeImageHLink = hlink;
             }
 
             return argEventModel.HomeImageHLink;
@@ -107,13 +93,13 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             // -- Organse First and Sorts --------------------------
 
-            DataStore.DS.FamilyData[argFamilyModel.HLinkKey].GCitationRefCollection.SortAndSetFirst();
+            //DataStore.DS.FamilyData[argFamilyModel.HLinkKey].GCitationRefCollection.SortAndSetFirst();
 
-            DataStore.DS.FamilyData[argFamilyModel.HLinkKey].GEventRefCollection.SortAndSetFirst();
+            //DataStore.DS.FamilyData[argFamilyModel.HLinkKey].GEventRefCollection.SortAndSetFirst();
 
-            DataStore.DS.FamilyData[argFamilyModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
+            //DataStore.DS.FamilyData[argFamilyModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
 
-            DataStore.DS.FamilyData[argFamilyModel.HLinkKey].GNoteRefCollection.SortAndSetFirst();
+            //DataStore.DS.FamilyData[argFamilyModel.HLinkKey].GNoteRefCollection.SortAndSetFirst();
 
             // -- Organse Home Image ---------------------
 
@@ -138,7 +124,7 @@ namespace GrampsView.Data.ExternalStorageNS
             // Set the image if available
             if (hlink.Valid)
             {
-                argFamilyModel.HomeImageHLink = await SetHomeHLink(argFamilyModel.HomeImageHLink, hlink).ConfigureAwait(false);
+                argFamilyModel.HomeImageHLink = hlink;
             }
             else
             {
@@ -248,18 +234,18 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </summary>
         private static async Task<HLinkHomeImageModel> OrganisePersonImage(PersonModel arrgPersonModel)
         {
-            // -- Organise First Image and Sorts ------------------------------
-            DataStore.DS.PersonData[arrgPersonModel.HLinkKey].GCitationRefCollection.SortAndSetFirst();
+            //// -- Organise First Image and Sorts ------------------------------
+            //DataStore.DS.PersonData[arrgPersonModel.HLinkKey].GCitationRefCollection.SortAndSetFirst();
 
-            DataStore.DS.PersonData[arrgPersonModel.HLinkKey].GEventRefCollection.SortAndSetFirst();
+            //DataStore.DS.PersonData[arrgPersonModel.HLinkKey].GEventRefCollection.SortAndSetFirst();
 
-            DataStore.DS.PersonData[arrgPersonModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
+            //DataStore.DS.PersonData[arrgPersonModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
 
-            DataStore.DS.PersonData[arrgPersonModel.HLinkKey].GNoteRefCollection.SortAndSetFirst();
+            //DataStore.DS.PersonData[arrgPersonModel.HLinkKey].GNoteRefCollection.SortAndSetFirst();
 
-            DataStore.DS.PersonData[arrgPersonModel.HLinkKey].GParentInRefCollection.SortAndSetFirst();
+            //DataStore.DS.PersonData[arrgPersonModel.HLinkKey].GParentInRefCollection.SortAndSetFirst();
 
-            DataStore.DS.PersonData[arrgPersonModel.HLinkKey].SiblingRefCollection.SortAndSetFirst();
+            //DataStore.DS.PersonData[arrgPersonModel.HLinkKey].SiblingRefCollection.SortAndSetFirst();
 
             // -- Organise Home Image ------------------------------
 
@@ -289,7 +275,7 @@ namespace GrampsView.Data.ExternalStorageNS
             }
             else
             {
-                arrgPersonModel.HomeImageHLink = await SetHomeHLink(arrgPersonModel.HomeImageHLink, hlink).ConfigureAwait(false);
+                arrgPersonModel.HomeImageHLink = hlink;
             }
 
             return arrgPersonModel.HomeImageHLink;
@@ -311,37 +297,24 @@ namespace GrampsView.Data.ExternalStorageNS
             return true;
         }
 
-        private static async Task<HLinkHomeImageModel> OrganiseSourceImage(SourceModel argSourceModel)
-        {
-            // -- Organse First and Sorts ---------------------
+        //private static async Task<HLinkHomeImageModel> OrganiseSourceImage(SourceModel argSourceModel)
+        //{
+        //    // -- Organse First and Sorts ---------------------
 
-            // Sort media collection and get first link images
-            DataStore.DS.SourceData[argSourceModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
+        // //// Sort media collection and get first link images //DataStore.DS.SourceData[argSourceModel.HLinkKey].GMediaRefCollection.SortAndSetFirst();
 
-            // TODO First and Sort for Notes, Repositories and Tags
+        // // TODO First and Sort for Notes, Repositories and Tags
 
-            // Get default image if available
-            HLinkHomeImageModel hlink = argSourceModel.GMediaRefCollection.FirstHLinkHomeImage;
+        // // Get default image if available HLinkHomeImageModel hlink = argSourceModel.GMediaRefCollection.FirstHLinkHomeImage;
 
-            // Action default media image
-            if (!hlink.Valid)
-            {
-                // Check for icon
-                hlink = DV.MediaDV.GetFirstImageFromCollection(argSourceModel.GMediaRefCollection);
-            }
+        // // Action default media image if (!hlink.Valid) { // Check for icon hlink =
+        // DV.MediaDV.GetFirstImageFromCollection(argSourceModel.GMediaRefCollection); }
 
-            // Set default
-            if (!hlink.Valid)
-            {
-                argSourceModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
-            }
-            else
-            {
-                argSourceModel.HomeImageHLink = await SetHomeHLink(argSourceModel.HomeImageHLink, hlink).ConfigureAwait(false);
-            }
+        // // Set default if (!hlink.Valid) { argSourceModel.HomeImageHLink.HomeImageType =
+        // CommonConstants.HomeImageTypeSymbol; } else { argSourceModel.HomeImageHLink = hlink; }
 
-            return argSourceModel.HomeImageHLink;
-        }
+        //    return argSourceModel.HomeImageHLink;
+        //}
 
         /// <summary>
         /// Organises the tag images.

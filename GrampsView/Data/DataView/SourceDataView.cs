@@ -66,7 +66,7 @@ namespace GrampsView.Data.DataView
         /// The person data.
         /// </value>
         [DataMember]
-        public RepositoryModelType<SourceModel, HLinkSourceModel> SourceData
+        public RepositoryModelDictionary<SourceModel, HLinkSourceModel> SourceData
         {
             get
             {

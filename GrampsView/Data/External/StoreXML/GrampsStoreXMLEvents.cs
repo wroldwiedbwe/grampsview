@@ -37,17 +37,47 @@ namespace GrampsView.Data.ExternalStorageNS
             Application.Current.Resources.TryGetValue("CardBackGroundEvent", out var varCardColour);
             Color cardColour = (Color)varCardColour;
 
-            // Set links
+            // Setup home images
+
+            // Try media reference collection first
             HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
+
+            // Check Media for Images
+            if (!hlink.Valid)
+            {
+                hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
+            }
+
+            // Check Citation for Images
+            if (!hlink.Valid)
+            {
+                hlink = argModel.GCitationRefCollection.FirstHLinkHomeImage;
+
+                //hlink = DV.CitationDV.GetFirstImageFromCollection(argModel.GCitationRefCollection);
+            }
+
+            // Handle the link if we can
             if (!hlink.Valid)
             {
                 argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
-                argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconEvents;
             }
             else
             {
-                argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
+                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+                argModel.HomeImageHLink.HLinkKey = hlink.HLinkKey;
             }
+
+            //// Set links
+            //HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
+            //if (!hlink.Valid)
+            //{
+            //    argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+            //    argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconEvents;
+            //}
+            //else
+            //{
+            //    argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
+            //}
 
             argModel.HomeImageHLink.HomeSymbolColour = cardColour;
             return argModel;
@@ -99,7 +129,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         loadEvent.GDescription = GetElement(pname.Element(ns + "description"));
 
-                        loadEvent.GMediaRefCollection = GetObjectCollection(pname);
+                        loadEvent.GMediaRefCollection = await GetObjectCollection(pname).ConfigureAwait(false);
 
                         loadEvent.GNoteRefCollection = GetNoteCollection(pname);
 

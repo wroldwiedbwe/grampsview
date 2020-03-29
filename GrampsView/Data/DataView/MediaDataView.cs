@@ -128,7 +128,7 @@ namespace GrampsView.Data.DataView
         /// The media data.
         /// </value>
         [DataMember]
-        public RepositoryModelType<MediaModel, HLinkMediaModel> MediaData
+        public RepositoryModelDictionary<MediaModel, HLinkMediaModel> MediaData
         {
             get
             {
@@ -225,7 +225,7 @@ namespace GrampsView.Data.DataView
 
                     if (tempMediaModel.IsMediaFile)
                     {
-                        returnMediaModel.ConvertHLinkMediaModel(argCollection[i]);
+                        returnMediaModel.ConvertFromMediaModel(argCollection[i].DeRef);
                         break;
                     }
                 }
@@ -239,7 +239,7 @@ namespace GrampsView.Data.DataView
         {
             DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
 
-            IEnumerable tt = DataViewData.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
+            IEnumerable tt = DataViewData.OrderByDescending(GetLatestChangest => GetLatestChangest.Change).Where(NotClipped => NotClipped.IsClippedFile == false).Where(GetLatestChangestt => GetLatestChangestt.Change > lastSixtyDays).Take(3);
 
             CardGroup returnCardGroup = new CardGroup();
 

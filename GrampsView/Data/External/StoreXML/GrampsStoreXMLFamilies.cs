@@ -32,15 +32,35 @@ namespace GrampsView.Data.ExternalStorageNS
     {
         public static FamilyModel SetHomeImage(FamilyModel argModel)
         {
+            // Try media reference collection first
             HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
+
             if (!hlink.Valid)
             {
-                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
-                argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconFamilies;
+                hlink = argModel.GCitationRefCollection.FirstHLinkHomeImage;
+            }
+
+            if (!hlink.Valid)
+            {
+                hlink = argModel.GEventRefCollection.FirstHLinkHomeImage;
+            }
+
+            if (!hlink.Valid)
+            {
+                hlink = argModel.GNoteRefCollection.FirstHLinkHomeImage;
+            }
+
+            // Set the image if available
+            if (hlink.Valid)
+            {
+                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+                argModel.HomeImageHLink.HLinkKey = hlink.HLinkKey;
             }
             else
             {
-                argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
+                // Set to default
+                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconFamilies;
             }
 
             // Get colour
@@ -82,10 +102,9 @@ namespace GrampsView.Data.ExternalStorageNS
                         // Family attributes
                         loadFamily.Id = (string)familyElement.Attribute("id");
 
-                        if ((loadFamily.Id == "F0153") || (loadFamily.Id == "F0186"))
-                        {
-                            var t = loadFamily.HomeImageHLink.HomeSymbol.ToCharArray();
-                        }
+                        //if (loadFamily.Id == "F0152")
+                        //{
+                        //}
 
                         loadFamily.Handle = (string)familyElement.Attribute("handle");
                         loadFamily.Change = GetDateTime((string)familyElement.Attribute("change"));
@@ -140,7 +159,7 @@ namespace GrampsView.Data.ExternalStorageNS
                         loadFamily.GEventRefCollection = GetEventCollection(familyElement);
 
                         // ObjectRef loading
-                        loadFamily.GMediaRefCollection = GetObjectCollection(familyElement);
+                        loadFamily.GMediaRefCollection = await GetObjectCollection(familyElement).ConfigureAwait(false);
 
                         loadFamily.GNoteRefCollection = GetNoteCollection(familyElement);
 

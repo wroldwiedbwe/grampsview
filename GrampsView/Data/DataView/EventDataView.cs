@@ -73,7 +73,7 @@ namespace GrampsView.Data.DataView
         /// The event data.
         /// </value>
         [DataMember]
-        public RepositoryModelType<EventModel, HLinkEventModel> EventData
+        public RepositoryModelDictionary<EventModel, HLinkEventModel> EventData
         {
             get
             {

@@ -19,6 +19,25 @@ namespace GrampsView.Data.ExternalStorageNS
     /// </summary>
     public partial class GrampsStoreXML : IGrampsStoreXML
     {
+        public static TagModel SetHomeImage(TagModel argModel)
+        {
+            argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+            argModel.HomeImageHLink.HomeSymbolColour = argModel.GColor;
+
+            //HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
+            //if (!hlink.Valid)
+            //{
+            //    argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+            //    argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconFamilies;
+            //}
+            //else
+            //{
+            //    argModel.HomeImageHLink = SetHomeHLink(argModel.HomeImageHLink, hlink);
+            //}
+
+            return argModel;
+        }
+
         /// <summary>
         /// Loads the tags from Gramps XML file asynchronously.
         /// </summary>
@@ -56,6 +75,7 @@ namespace GrampsView.Data.ExternalStorageNS
                         loadTag.GPriority = int.Parse(GetAttribute(pcitation, "priority"), System.Globalization.CultureInfo.CurrentCulture);
 
                         // set the Home image or symbol
+                        loadTag = SetHomeImage(loadTag);
 
                         // save the event
                         DV.TagDV.TagData.Add(loadTag);

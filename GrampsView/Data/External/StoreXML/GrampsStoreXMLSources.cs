@@ -13,7 +13,7 @@ namespace GrampsView.Data.ExternalStorageNS
     using System.Linq;
     using System.Threading.Tasks;
     using System.Xml.Linq;
-
+    using GrampsView.Common;
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
@@ -24,6 +24,35 @@ namespace GrampsView.Data.ExternalStorageNS
     /// </summary>
     public partial class GrampsStoreXML : IGrampsStoreXML
     {
+        public static SourceModel SetHomeImage(SourceModel argModel)
+        {
+            if (argModel is null)
+            {
+                throw new ArgumentNullException(nameof(argModel));
+            }
+
+            // Get default image if available
+            HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
+
+            // Set default
+            if (!hlink.Valid)
+            {
+                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+                argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconSource;
+            }
+            else
+            {
+                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+                argModel.HomeImageHLink.HLinkKey = hlink.HLinkKey;
+            }
+
+            // Get colour Get colour
+            Application.Current.Resources.TryGetValue("CardBackGroundSource", out var varCardColour);
+            argModel.HomeImageHLink.HomeSymbolColour = (Color)varCardColour;
+
+            return argModel;
+        }
+
         /// <summary>
         /// load events from external storage.
         /// </summary>
@@ -40,10 +69,6 @@ namespace GrampsView.Data.ExternalStorageNS
                 // XNamespace ns = grampsXMLNameSpace;
                 try
                 {
-                    // Get colour
-                    Application.Current.Resources.TryGetValue("CardBackGroundSource", out var varCardColour);
-                    Color cardColour = (Color)varCardColour;
-
                     // Run query
                     var de =
                         from el in localGrampsXMLdoc.Descendants(ns + "source")
@@ -62,10 +87,14 @@ namespace GrampsView.Data.ExternalStorageNS
                         loadSource.Priv = SetPrivateObject((string)pSource.Attribute("priv"));
                         loadSource.Handle = (string)pSource.Attribute("handle");
 
+                        if (loadSource.Id == "S0102")
+                        {
+                        }
+
                         loadSource.GSourceAttributeCollection = GetAttributeCollection(pSource);
 
                         // Media refs
-                        loadSource.GMediaRefCollection = GetObjectCollection(pSource);
+                        loadSource.GMediaRefCollection = await GetObjectCollection(pSource).ConfigureAwait(false);
 
                         // Note refs
                         loadSource.GNoteRefCollection = GetNoteCollection(pSource);
@@ -84,8 +113,8 @@ namespace GrampsView.Data.ExternalStorageNS
                         // Repository refs
                         loadSource.GRepositoryRefCollection = GetRepositoryCollection(pSource);
 
-                        // Set HomeLink
-                        loadSource.HomeImageHLink.HomeSymbolColour = cardColour;
+                        // set the Home image or symbol now that everything is laoded
+                        loadSource = SetHomeImage(loadSource);
 
                         // save the event
                         DV.SourceDV.SourceData.Add(loadSource);

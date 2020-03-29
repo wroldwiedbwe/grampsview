@@ -21,7 +21,7 @@ namespace GrampsView.Data.Repositories
     /// <typeparam name="U">
     /// $$(HLink)$$ ViewModel.
     /// </typeparam>
-    public interface IRepositoryModelType<out T, TU>
+    public interface IRepositoryModelDictionary<out T, TU>
     {
         /// <summary>
         /// Gets the count.
@@ -73,7 +73,7 @@ namespace GrampsView.Data.Repositories
         /// </param>
         /// <returns>
         /// </returns>
-        T Get(string key);
+        T Find(string key);
 
         ///// <summary>
         ///// Gets the h link string collection.

@@ -142,7 +142,7 @@ namespace GrampsView.Data.Model
         /// Temporary field to store clipping information during the load process.
         /// </value>
 
-        public HLinkHomeImageModel LoadingClipInfo { get; set; } = new HLinkHomeImageModel();
+        //public HLinkHomeImageModel LoadingClipInfo { get; set; } = new HLinkHomeImageModel();
 
         ///// <summary>
         ///// Gets or sets the home image clipped bitmap.

@@ -25,7 +25,7 @@ namespace GrampsView.Data.DataView
         /// <param name="HLinkString">
         /// The h link string.
         /// </param>
-        RepositoryModelType<CitationModel, HLinkCitationModel> CitationData
+        RepositoryModelDictionary<CitationModel, HLinkCitationModel> CitationData
         {
             get;
         }

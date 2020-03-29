@@ -45,14 +45,18 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </summary>
         private XNamespace ns;
 
-        /// <summary>Initializes a new instance of the <see cref="GrampsStoreXML"/> class.</summary>
-        /// <param name="iocCommonLogging">The gramps view common logging.</param>
-        /// <param name="iocGrampsStorePostLoad">The ioc gramps store post load.</param>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GrampsStoreXML"/> class.
+        /// </summary>
+        /// <param name="iocCommonLogging">
+        /// The gramps view common logging.
+        /// </param>
+        /// <param name="iocGrampsStorePostLoad">
+        /// The ioc gramps store post load.
+        /// </param>
         public GrampsStoreXML(ICommonLogging iocCommonLogging)
         {
             localGrampsCommonLogging = iocCommonLogging;
-
-            //localStoreFile = iocStoreFile;
 
             ns = CommonConstants.GrampsXMLNameSpace;
         }
@@ -152,21 +156,29 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </returns>
         public async Task<bool> LoadXMLDataAsync()
         {
-            // load the data
+            // load media because we need it for hlink cropping later
+            await LoadMediaObjectsAsync().ConfigureAwait(false);
+
+            // load the rest of the data in dependency order
+            await LoadSourcesAsync().ConfigureAwait(false);
+
             await LoadBookMarksAsync().ConfigureAwait(false);
             await LoadCitationsAsync().ConfigureAwait(false);
             await LoadEventsAsync().ConfigureAwait(false);
-            await LoadFamiliesAsync().ConfigureAwait(false);
+
             await LoadHeaderDataAsync().ConfigureAwait(false);
-            await LoadMediaObjectsAsync().ConfigureAwait(false);
             await LoadNameMapsAsync().ConfigureAwait(false);
             await LoadNotesAsync().ConfigureAwait(false);
-            await LoadPeopleDataAsync().ConfigureAwait(false);
+
             await LoadPlacesAsync().ConfigureAwait(false);
             await LoadRepositoriesAsync().ConfigureAwait(false);
-            await LoadSourcesAsync().ConfigureAwait(false);
+
             await LoadTagsAsync().ConfigureAwait(false);
 
+            await LoadFamiliesAsync().ConfigureAwait(false);
+
+            // People last because they rely on pretty much everything else
+            await LoadPeopleDataAsync().ConfigureAwait(false);
             return true;
         }
 

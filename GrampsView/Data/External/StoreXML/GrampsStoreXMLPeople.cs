@@ -8,6 +8,7 @@
 //-----------------------------------------------------------------------
 namespace GrampsView.Data.ExternalStorageNS
 {
+    using GrampsView.Common;
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
@@ -24,6 +25,41 @@ namespace GrampsView.Data.ExternalStorageNS
     /// </summary>
     public partial class GrampsStoreXML : IGrampsStoreXML
     {
+        public static PersonModel SetHomeImage(PersonModel argModel)
+        {
+            // Get default image if available
+            HLinkHomeImageModel hlink = DV.PersonDV.GetDefaultImageFromCollection(argModel);
+
+            // Check Media for Images
+            if (!hlink.Valid)
+            {
+                hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
+            }
+
+            // Check Citation for Images
+            if (!hlink.Valid)
+            {
+                hlink = argModel.GCitationRefCollection.FirstHLinkHomeImage;
+            }
+
+            // Action any Link
+            if (!hlink.Valid)
+            {
+                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
+            }
+            else
+            {
+                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+                argModel.HomeImageHLink.HLinkKey = hlink.HLinkKey;
+            }
+
+            // Get colour
+            Application.Current.Resources.TryGetValue("CardBackGroundPerson", out var varCardColour);
+            argModel.HomeImageHLink.HomeSymbolColour = (Color)varCardColour;
+
+            return argModel;
+        }
+
         /// <summary>
         /// load the person data from the external storage XML file.
         /// </summary>
@@ -41,9 +77,9 @@ namespace GrampsView.Data.ExternalStorageNS
             {
                 string defaultImage = string.Empty;
 
-                // Get colour
-                Application.Current.Resources.TryGetValue("CardBackGroundPerson", out var varCardColour);
-                Color cardColour = (Color)varCardColour;
+                //// Get colour
+                //Application.Current.Resources.TryGetValue("CardBackGroundPerson", out var varCardColour);
+                //Color cardColour = (Color)varCardColour;
 
                 // Run query
                 var de =
@@ -60,7 +96,7 @@ namespace GrampsView.Data.ExternalStorageNS
                         // Person attributes
                         loadPerson.Id = GetAttribute(pname.Attribute("id"));
 
-                        if (loadPerson.Id == "I1140")
+                        if (loadPerson.Id == "I0291")
                         {
                         }
 
@@ -93,7 +129,7 @@ namespace GrampsView.Data.ExternalStorageNS
                         // TODO load LDS collection
 
                         // media object collection loading
-                        loadPerson.GMediaRefCollection = GetObjectCollection(pname);
+                        loadPerson.GMediaRefCollection = await GetObjectCollection(pname).ConfigureAwait(false);
 
                         // Name
                         if (loadPerson.Id == "I0571")
@@ -120,6 +156,8 @@ namespace GrampsView.Data.ExternalStorageNS
                                 };
                                 loadPerson.GParentInRefCollection.Add(t);
                             }
+
+                            loadPerson.GParentInRefCollection.SortAndSetFirst();
                         }
 
                         // TagRef
@@ -129,7 +167,7 @@ namespace GrampsView.Data.ExternalStorageNS
                         loadPerson.GURLCollection = GetURLCollection(pname);
 
                         // HomeImageLink
-                        loadPerson.HomeImageHLink.HomeSymbolColour = cardColour;
+                        loadPerson = SetHomeImage(loadPerson);
 
                         // PersonRef TODO
 

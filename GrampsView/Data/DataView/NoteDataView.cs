@@ -63,7 +63,7 @@ namespace GrampsView.Data.DataView
         /// The note data.
         /// </value>
 
-        public RepositoryModelType<NoteModel, HLinkNoteModel> NoteData
+        public RepositoryModelDictionary<NoteModel, HLinkNoteModel> NoteData
         {
             get
             {

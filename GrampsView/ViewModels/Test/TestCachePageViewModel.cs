@@ -11,6 +11,7 @@ namespace GrampsView.ViewModels
     using FFImageLoading.Work;
 
     using GrampsView.Data.DataView;
+    using GrampsView.Data.ExternalStorageNS;
     using GrampsView.Data.Model;
 
     using System;
@@ -85,7 +86,7 @@ namespace GrampsView.ViewModels
 
         public void doCrop()
         {
-            HLinkHomeImageModel hlmm = pm.HomeImageHLink;
+            HLinkLoadImageModel hlmm = new HLinkLoadImageModel(); // TODO Fix this  pm.HomeImageHLink;
 
             tt = hlmm.DeRef;
 

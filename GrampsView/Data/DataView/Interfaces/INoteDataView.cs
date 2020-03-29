@@ -29,7 +29,7 @@ namespace GrampsView.Data.DataView
         /// <value>
         /// The note data.
         /// </value>
-        RepositoryModelType<NoteModel, HLinkNoteModel> NoteData
+        RepositoryModelDictionary<NoteModel, HLinkNoteModel> NoteData
         {
             get;
         }

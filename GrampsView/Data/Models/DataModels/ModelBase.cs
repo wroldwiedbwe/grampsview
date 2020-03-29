@@ -432,7 +432,7 @@ namespace GrampsView.Data.Model
 
         public override int GetHashCode()
         {
-            throw new System.NotImplementedException();
+            return HLinkKey.GetHashCode();
         }
     }
 }

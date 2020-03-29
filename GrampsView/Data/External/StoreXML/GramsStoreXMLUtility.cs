@@ -13,13 +13,17 @@ namespace GrampsView.Data.ExternalStorageNS
 {
     using GrampsView.Common;
     using GrampsView.Data.Collections;
+    using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
-
+    using SkiaSharp;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.IO;
     using System.Linq;
     using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
     using System.Xml.Linq;
 
     using Xamarin.Forms;
@@ -38,6 +42,115 @@ namespace GrampsView.Data.ExternalStorageNS
     /// <seealso cref="IGrampsStoreXML"/>
     public partial class GrampsStoreXML : IGrampsStoreXML
     {
+        public static async Task<HLinkMediaModel> CreateClippedMediaModel(HLinkLoadImageModel argHLinkLoadImageModel)
+        {
+            if (argHLinkLoadImageModel is null)
+            {
+                throw new ArgumentNullException(nameof(argHLinkLoadImageModel));
+            }
+
+            if (!argHLinkLoadImageModel.DeRef.Valid)
+            {
+                throw new ArgumentException("CreateClippedMediaModel argument is invalid", nameof(argHLinkLoadImageModel));
+            }
+
+            // TODO cleanup code. Multiple copies of things in use
+
+            MediaModel theMediaModel = argHLinkLoadImageModel.DeRef;
+
+            SKBitmap resourceBitmap = new SKBitmap();
+
+            MediaModel newMediaModel = new MediaModel();
+
+            string newHLinkKey = argHLinkLoadImageModel.HLinkKey + "-" + argHLinkLoadImageModel.GCorner1X + argHLinkLoadImageModel.GCorner1Y + argHLinkLoadImageModel.GCorner2X + argHLinkLoadImageModel.GCorner2Y;
+            string outFileName = Path.Combine("Cropped", newHLinkKey + ".png");
+
+            string outFilePath = Path.Combine(DataStore.DS.CurrentDataFolder.FullName, outFileName);
+
+            Debug.WriteLine(argHLinkLoadImageModel.DeRef.MediaStorageFilePath);
+
+            // Check if already exists
+            MediaModel fileExists = DV.MediaDV.GetModelFromHLinkString(newHLinkKey);
+
+            if (!fileExists.Valid)
+            {
+                // Needs clipping
+                using (StreamReader stream = new StreamReader(theMediaModel.MediaStorageFilePath))
+                {
+                    resourceBitmap = SKBitmap.Decode(stream.BaseStream);
+                }
+
+                // Check for too large a bitmap
+                Debug.WriteLine("Image ResourceBitmap size: " + resourceBitmap.ByteCount);
+                if (resourceBitmap.ByteCount > int.MaxValue - 1000)
+                {
+                    // TODO Handle this better. Perhaps resize? Delete for now
+                    resourceBitmap = new SKBitmap();
+                }
+
+                float crleft = (float)(argHLinkLoadImageModel.GCorner1X / 100d * theMediaModel.MetaDataWidth);
+                float crright = (float)(argHLinkLoadImageModel.GCorner2X / 100d * theMediaModel.MetaDataWidth);
+                float crtop = (float)(argHLinkLoadImageModel.GCorner1Y / 100d * theMediaModel.MetaDataHeight);
+                float crbottom = (float)(argHLinkLoadImageModel.GCorner2Y / 100d * theMediaModel.MetaDataHeight);
+
+                SKRect cropRect = new SKRect(crleft, crtop, crright, crbottom);
+
+                SKBitmap croppedBitmap = new SKBitmap(
+                                                    (int)cropRect.Width,
+                                                    (int)cropRect.Height
+                                                    );
+
+                SKRect dest = new SKRect(
+                                        0,
+                                        0,
+                                        cropRect.Width,
+                                        cropRect.Height
+                                        );
+
+                SKRect source = new SKRect(
+                                        cropRect.Left,
+                                        cropRect.Top,
+                                        cropRect.Right,
+                                        cropRect.Bottom);
+
+                using (SKCanvas canvas = new SKCanvas(croppedBitmap))
+                {
+                    canvas.DrawBitmap(resourceBitmap, source, dest);
+                }
+
+                // create an image COPY
+                SKImage image = SKImage.FromBitmap(croppedBitmap);
+
+                // encode the image (defaults to PNG)
+                SKData encoded = image.Encode();
+
+                // get a stream over the encoded data
+
+                using (Stream stream = File.Open(outFilePath, FileMode.OpenOrCreate, System.IO.FileAccess.Write, FileShare.ReadWrite))
+                {
+                    encoded.SaveTo(stream);
+                }
+
+                croppedBitmap.Dispose();
+
+                // ------------ Save new MediaObject
+                newMediaModel = theMediaModel.Copy();
+                newMediaModel.HLinkKey = newHLinkKey;
+                newMediaModel.HomeImageHLink.HLinkKey = newHLinkKey;
+                newMediaModel.OriginalFilePath = outFileName;
+                newMediaModel.MediaStorageFile = await StoreFolder.FolderGetFileAsync(DataStore.DS.CurrentDataFolder, outFileName).ConfigureAwait(false);
+                newMediaModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+                newMediaModel.IsClippedFile = true;
+
+                DataStore.DS.MediaData.Add(newMediaModel);
+                //await StorePostLoad.fixMediaFile(newMediaModel).ConfigureAwait(false);
+            }
+
+            resourceBitmap.Dispose();
+
+            return newMediaModel.HLink;
+        }
+
         /// <summary>
         /// Gets the bool.
         /// </summary>
@@ -87,7 +200,7 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             xmlData = xmlData.Trim();
 
-            // Handle sites with no leading http or https (Assumes they are all http...)
+            // Handle sites with no leading http or https ( TODO Assumes they are all http...)
             if ((xmlData.Substring(0, 7) != "http://") && (xmlData.Substring(0, 8) != "https://"))
             {
                 xmlData = "http://" + xmlData;
@@ -108,20 +221,24 @@ namespace GrampsView.Data.ExternalStorageNS
         /// <summary>
         /// Sets the home h link.
         /// </summary>
-        /// <param name="HomeImageHLink">
+        /// <param name="argBaseHLink">
         /// The home image h link.
         /// </param>
-        /// <param name="hlink">
+        /// <param name="argNewHLink">
         /// The hlink.
         /// </param>
         /// <returns>
         /// Updatded HomeImageLink
         /// </returns>
-        private static HLinkHomeImageModel SetHomeHLink(HLinkHomeImageModel HomeImageHLink, HLinkHomeImageModel hlink)
+        private static HLinkHomeImageModel SetHomeHLink(HLinkHomeImageModel argBaseHLink, HLinkHomeImageModel argNewHLink)
         {
-            HomeImageHLink = hlink;
+            HLinkHomeImageModel returnHLink = argBaseHLink;
 
-            return HomeImageHLink;
+            returnHLink.HLinkKey = argNewHLink.HLinkKey;
+            returnHLink.HomeImageType = argNewHLink.HomeImageType;
+            returnHLink.HomeSymbol = argNewHLink.HomeSymbol;
+
+            return returnHLink;
         }
 
         private OCAddressModelCollection GetAddressCollection(XElement xmlData)
@@ -281,7 +398,7 @@ namespace GrampsView.Data.ExternalStorageNS
             }
 
             // Return sorted by the default text
-            t.Sort(T => T.DeRef.GetDefaultText);
+            t.SortAndSetFirst();
 
             return t;
         }
@@ -400,7 +517,7 @@ namespace GrampsView.Data.ExternalStorageNS
             }
 
             // Return sorted by the default text
-            t.Sort(T => T.DeRef.GetDefaultText);
+            t.SortAndSetFirst();
 
             return t;
         }
@@ -439,7 +556,7 @@ namespace GrampsView.Data.ExternalStorageNS
             }
 
             // Return sorted by the default text
-            t.Sort(T => T.DeRef.GetDefaultText);
+            t.SortAndSetFirst();
 
             return t;
         }
@@ -452,7 +569,7 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </param>
         /// <returns>
         /// </returns>
-        private HLinkMediaModelCollection GetObjectCollection(XElement xmlData)
+        private async Task<HLinkMediaModelCollection> GetObjectCollection(XElement xmlData)
         {
             HLinkMediaModelCollection t = new HLinkMediaModelCollection();
 
@@ -470,16 +587,22 @@ namespace GrampsView.Data.ExternalStorageNS
                         HLinkKey = GetAttribute(theLoadORElement.Attribute("hlink")),
                     };
 
-                    t2.LoadingClipInfo.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
-
                     // Get region
                     XElement regionDetails = theLoadORElement.Element(ns + "region");
                     if (regionDetails != null)
                     {
-                        t2.LoadingClipInfo.GCorner1X = (int)regionDetails.Attribute("corner1_x");
-                        t2.LoadingClipInfo.GCorner1Y = (int)regionDetails.Attribute("corner1_y");
-                        t2.LoadingClipInfo.GCorner2X = (int)regionDetails.Attribute("corner2_x");
-                        t2.LoadingClipInfo.GCorner2Y = (int)regionDetails.Attribute("corner2_y");
+                        HLinkLoadImageModel t3 = new HLinkLoadImageModel
+                        {
+                            HLinkKey = t2.HLinkKey,
+                            HomeImageType = CommonConstants.HomeImageTypeThumbNail,
+
+                            GCorner1X = (int)regionDetails.Attribute("corner1_x"),
+                            GCorner1Y = (int)regionDetails.Attribute("corner1_y"),
+                            GCorner2X = (int)regionDetails.Attribute("corner2_x"),
+                            GCorner2Y = (int)regionDetails.Attribute("corner2_y"),
+                        };
+
+                        t2 = await CreateClippedMediaModel(t3).ConfigureAwait(false);
                     }
 
                     // Get remaining fields
@@ -494,7 +617,7 @@ namespace GrampsView.Data.ExternalStorageNS
             }
 
             // Return sorted by the default text
-            t.Sort(T => T.DeRef.GetDefaultText);
+            t.SortAndSetFirst();
 
             return t;
         }
