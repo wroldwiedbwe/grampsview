@@ -139,7 +139,6 @@ namespace GrampsView.Data.DataView
         /// </returns>
         public new HLinkHomeImageModel GetFirstImageFromCollection(HLinkCitationModelCollection theCollection)
         {
-            // handle null argument
             if (theCollection == null)
             {
                 return null;
@@ -150,7 +149,7 @@ namespace GrampsView.Data.DataView
             if (theCollection.Count > 0)
             {
                 // step through each mediamodel hlink in the collection Accept either a direct
-                // mediamodel reference or a hlink to a Source media reference bool mediaFoundFlag = false;
+                // mediamodel reference or a hlink to a Source media reference.
 
                 // do { } while (!mediaFoundFlag);
                 for (int i = 0; i < theCollection.Count; i++)
@@ -159,15 +158,8 @@ namespace GrampsView.Data.DataView
 
                     returnMediaModel = currentHLink.DeRef.GMediaRefCollection.FirstHLinkHomeImage;
 
-                    //// Handle direct media reference
-                    // if (currentHLink.DeRef.GMediaRefCollection.Count > 0) { foreach
-                    // (HLinkMediaModel item in currentHLink.DeRef.GMediaRefCollection) {
-                    // tempMediaModel = DataStore.DS.HLink(item.HLinkKey);
-
-                    // if (tempMediaModel.IsMediaFile) { returnMediaModel = item; break; } } }
-
                     // Handle Source Links
-                    if (currentHLink.DeRef.HomeImageHLink.HomeUseImage)
+                    if (currentHLink.DeRef.HomeImageHLink.LinkToImage)
                     {
                         returnMediaModel = currentHLink.DeRef.HomeImageHLink;
                     }
@@ -183,6 +175,11 @@ namespace GrampsView.Data.DataView
             return returnMediaModel;
         }
 
+        /// <summary>
+        /// Gets the latest changes.
+        /// </summary>
+        /// <returns>
+        /// </returns>
         public override CardGroup GetLatestChanges()
         {
             DateTime lastSixtyDays = DateTime.Now.Subtract(new TimeSpan(60, 0, 0, 0, 0));
@@ -191,7 +188,7 @@ namespace GrampsView.Data.DataView
 
             CardGroup returnCardGroup = new CardGroup();
 
-            foreach (CitationModel item in tt)
+            foreach (ICitationModel item in tt)
             {
                 returnCardGroup.Cards.Add(item.HLink);
             }
@@ -240,7 +237,7 @@ namespace GrampsView.Data.DataView
 
             var temp = DataViewData.Where(x => x.GDateContent.GetShortDateAsString.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
 
-            foreach (CitationModel tempMO in temp)
+            foreach (ICitationModel tempMO in temp)
             {
                 itemsFound.Add(new SearchItem
                 {

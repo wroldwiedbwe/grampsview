@@ -9,6 +9,8 @@
 
 namespace GrampsView.Data.Model
 {
+    using GrampsView.Common;
+    using GrampsView.Data.Collections;
     using System;
 
     /// <summary>
@@ -16,6 +18,12 @@ namespace GrampsView.Data.Model
     /// </summary>
     public interface IModelBase : IComparable<ModelBase>
     {
+        HLinkBackLinkModelCollection BackHLinkReferenceCollection { get; }
+
+        DateTime Change { get; set; }
+
+        ModelBase DeRef { get; }
+
         /// <summary>
         /// Gets the default text.
         /// </summary>
@@ -23,6 +31,8 @@ namespace GrampsView.Data.Model
         /// The get default text.
         /// </value>
         string GetDefaultText { get; }
+
+        string Handle { get; }
 
         /// <summary>
         /// Gets or sets the h link key.
@@ -34,6 +44,16 @@ namespace GrampsView.Data.Model
         {
             get; set;
         }
+
+        HLinkHomeImageModel HomeImageHLink { get; set; }
+        string Id { get; set; }
+        ICommonLogging ModelCommonLogging { get; set; }
+
+        bool Priv { get; set; }
+
+        string PrivAsString { get; }
+
+        bool Valid { get; }
 
         ///// <summary>
         ///// Gets or sets the model user activity.

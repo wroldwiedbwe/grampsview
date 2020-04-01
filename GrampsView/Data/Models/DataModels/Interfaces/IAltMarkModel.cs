@@ -9,10 +9,16 @@
 
 namespace GrampsView.Data.Model
 {
-    /// <summary>
-    /// Public interfaces for the Tag elements.
-    /// </summary>
     public interface IAltModel : IModelBase
     {
+        bool GAlt { get; set; }
+
+        /// <summary>
+        /// turn the string 0 or 1 into true or false.
+        /// </summary>
+        /// <param name="altString">
+        /// returns the string version of the Alt value.
+        /// </param>
+        void SetAlt(string altString);
     }
 }

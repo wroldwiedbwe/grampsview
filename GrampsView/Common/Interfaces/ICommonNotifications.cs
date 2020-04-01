@@ -23,6 +23,8 @@ namespace GrampsView.Common
         ObservableCollection<DataLogEntry> DataLoadLog { get; }
         string MajorStatusMessage { get; }
 
+        string MinorStatusMessage { get; }
+
         /// <summary>
         /// Changes the loading message.
         /// </summary>

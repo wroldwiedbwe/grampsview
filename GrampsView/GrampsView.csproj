@@ -85,6 +85,8 @@
     <Compile Remove="Data\PluginStorageFileSystem.cs" />
     <Compile Remove="Data\PluginStorageFolder.cs" />
     <Compile Remove="Events\DataLoadSerialEvent.cs" />
+    <Compile Remove="Events\GVProgressMajorTextUpdate.cs" />
+    <Compile Remove="Events\GVProgressMinorTextUpdate.cs" />
     <Compile Remove="Events\PageMenuPanelOpenEvent.cs" />
     <Compile Remove="Events\PageTitleChangedEvent.cs" />
     <Compile Remove="Events\PageTitleChangedEventArgs.cs" />

@@ -25,9 +25,9 @@
 
             <Label
                 Grid.Row="0"
-                BackgroundColor="{DynamicResource CardBackGroundNote}"
                 FlexLayout.Basis="75"
-                FormattedText="{Binding DeRef.GFormattedText}" />
+                FormattedText="{Binding DeRef.GFormattedText}"
+                Style="{DynamicResource GVLabelStyleNoteFull}" />
         </Grid>
     </Frame.Content>
 </Frame>

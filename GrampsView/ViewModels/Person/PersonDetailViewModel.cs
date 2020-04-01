@@ -108,7 +108,7 @@ namespace GrampsView.ViewModels
                 BaseTitle = PersonObject.GPersonNamesCollection.GetPrimaryName.GetDefaultText;
 
                 // Get Header Details
-                CardGroup t = new CardGroup { Title = "Header Details" };
+                CardGroup headerCardGroup = new CardGroup { Title = "Header Details" };
 
                 // Get the Name Details
 
@@ -117,59 +117,59 @@ namespace GrampsView.ViewModels
                     new CardListLine("Card Type:", "Person Detail"),
                 };
 
-                t.Cards.Add(nameDetails);
+                headerCardGroup.Cards.Add(nameDetails);
 
                 // Handle the common case where there is only one name
                 if (PersonObject.GPersonNamesCollection.Count == 1)
                 {
-                    t.Cards.Add(PersonObject.GPersonNamesCollection[0]);
+                    headerCardGroup.Cards.Add(PersonObject.GPersonNamesCollection[0]);
                 }
 
                 // Get extra details
-                CardListLineCollection tt = new CardListLineCollection
+                CardListLineCollection extraDetailsCard = new CardListLineCollection
                 {
                         new CardListLine("Gender:", PersonObject.GGenderAsString),
                 };
 
                 if (PersonObject.BirthDate != null)
                 {
-                    tt.Add(new CardListLine("Birth Date:", PersonObject.BirthDate.GetLongDateAsString));
+                    extraDetailsCard.Add(new CardListLine("Birth Date:", PersonObject.BirthDate.GetLongDateAsString));
 
                     if (PersonObject.IsLiving)
                     {
-                        tt.Add(new CardListLine("Age:", PersonObject.BirthDate.GetAge));
+                        extraDetailsCard.Add(new CardListLine("Age:", PersonObject.BirthDate.GetAge));
                     }
                     else
                     {
-                        tt.Add(new CardListLine("Years Since Birth:", PersonObject.BirthDate.GetAge));
+                        extraDetailsCard.Add(new CardListLine("Years Since Birth:", PersonObject.BirthDate.GetAge));
 
                         EventModel ageAtDeath = DV.EventDV.GetEventType(PersonObject.GEventRefCollection, "Death");
                         if (ageAtDeath.Valid)
                         {
-                            tt.Add(new CardListLine("Age at Death:", ageAtDeath.GDate.DateDifferenceDecoded(PersonObject.BirthDate)));
+                            extraDetailsCard.Add(new CardListLine("Age at Death:", ageAtDeath.GDate.DateDifferenceDecoded(PersonObject.BirthDate)));
                         }
                     }
                 }
                 else
                 {
-                    tt.Add(new CardListLine("Birth Date:", "Unknown"));
+                    extraDetailsCard.Add(new CardListLine("Birth Date:", "Unknown"));
                 }
 
-                tt.Add(new CardListLine("Is Living:", PersonObject.IsLivingAsString));
+                extraDetailsCard.Add(new CardListLine("Is Living:", PersonObject.IsLivingAsString));
 
-                t.Cards.Add(tt);
+                headerCardGroup.Cards.Add(extraDetailsCard);
 
-                // Get children details
-                t.Cards.Add(
+                // Get parent details
+                headerCardGroup.Cards.Add(
                     new ParentLinkModel
                     {
                         Parents = PersonObject.GChildOf.DeRef,
                     });
 
                 // Add Standard details
-                t.Cards.Add(DV.PersonDV.GetModelInfoFormatted(PersonObject));
+                headerCardGroup.Cards.Add(DV.PersonDV.GetModelInfoFormatted(PersonObject));
 
-                BaseHeader.Add(t);
+                BaseHeader.Add(headerCardGroup);
 
                 // Handle the uncommon case where there is more than one name
                 if (PersonObject.GPersonNamesCollection.Count > 1)
@@ -181,7 +181,6 @@ namespace GrampsView.ViewModels
                 // Add details
                 BaseDetail.Add(PersonObject.GParentInRefCollection.GetCardGroup());
                 BaseDetail.Add(PersonObject.GEventRefCollection.GetCardGroup());
-
                 BaseDetail.Add(PersonObject.GCitationRefCollection.GetCardGroup());
                 BaseDetail.Add(PersonObject.GNoteRefCollection.GetCardGroup());
                 BaseDetail.Add(PersonObject.GMediaRefCollection.GetCardGroup());
@@ -190,6 +189,7 @@ namespace GrampsView.ViewModels
                 BaseDetail.Add(PersonObject.GTagRefCollection.GetCardGroup());
                 BaseDetail.Add(PersonObject.GURLCollection.GetCardGroup());
                 BaseDetail.Add(PersonObject.GLDSCollection.GetCardGroup());
+                BaseDetail.Add(PersonObject.GPersonRefCollection.GetCardGroup());
 
                 BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GCitationRefCollection.GetCardGroup("Name Citations"));
                 BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GNoteReferenceCollection.GetCardGroup("Name Notes"));

@@ -218,28 +218,27 @@ namespace GrampsView.Data.ExternalStorageNS
             }
         }
 
-        /// <summary>
-        /// Sets the home h link.
-        /// </summary>
-        /// <param name="argBaseHLink">
-        /// The home image h link.
-        /// </param>
-        /// <param name="argNewHLink">
-        /// The hlink.
-        /// </param>
-        /// <returns>
-        /// Updatded HomeImageLink
-        /// </returns>
-        private static HLinkHomeImageModel SetHomeHLink(HLinkHomeImageModel argBaseHLink, HLinkHomeImageModel argNewHLink)
-        {
-            HLinkHomeImageModel returnHLink = argBaseHLink;
+        ///// <summary>
+        ///// Sets the home h link.
+        ///// </summary>
+        ///// <param name="argBaseHLink">
+        ///// The home image h link.
+        ///// </param>
+        ///// <param name="argNewHLink">
+        ///// The hlink.
+        ///// </param>
+        ///// <returns>
+        ///// Updatded HomeImageLink
+        ///// </returns>
+        //private static HLinkHomeImageModel SetHomeHLink(HLinkHomeImageModel argBaseHLink, HLinkHomeImageModel argNewHLink)
+        //{
+        //    HLinkHomeImageModel returnHLink = argBaseHLink;
 
-            returnHLink.HLinkKey = argNewHLink.HLinkKey;
-            returnHLink.HomeImageType = argNewHLink.HomeImageType;
-            returnHLink.HomeSymbol = argNewHLink.HomeSymbol;
+        // returnHLink.HLinkKey = argNewHLink.HLinkKey; returnHLink.HomeImageType =
+        // argNewHLink.HomeImageType; returnHLink.HomeSymbol = argNewHLink.HomeSymbol;
 
-            return returnHLink;
-        }
+        //    return returnHLink;
+        //}
 
         private OCAddressModelCollection GetAddressCollection(XElement xmlData)
         {
@@ -260,7 +259,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Load address object references
                 foreach (XElement theLoadORElement in theERElement)
                 {
-                    AddressModel newAddressModel = new AddressModel
+                    IAddressModel newAddressModel = new AddressModel
                     {
                         Handle = "AddressCollection",
 
@@ -682,6 +681,38 @@ namespace GrampsView.Data.ExternalStorageNS
 
             // Return sorted by the default text
             t.Sort(T => T.DeRef.GetDefaultText);
+
+            return t;
+        }
+
+        private PersonRefModelCollection GetPersonRefCollection(XElement xmlData)
+        {
+            // TODO < define name = "personref-content" > < data type = "IDREF" /> < attribute name
+            // = "priv" > < attribute name = "rel" > < element name = "citationref" > < element name
+            // = "noteref" > < ref name = "noteref-content" />
+
+            PersonRefModelCollection t = new PersonRefModelCollection();
+
+            IEnumerable<XElement> theERElement =
+                    from ORElementEl in xmlData.Elements(ns + "personref")
+                    select ORElementEl;
+
+            if (theERElement.Any())
+            {
+                // load person object references
+                foreach (XElement theLoadORElement in theERElement)
+                {
+                    PersonRefModel t2 = new PersonRefModel
+                    {
+                        HLinkKey = GetAttribute(theLoadORElement.Attribute("hlink")),
+                        Id = GetAttribute(theLoadORElement.Attribute("id")),
+                        Change = GetDateTime(theLoadORElement, "change"),
+                        Priv = SetPrivateObject(GetAttribute(theLoadORElement.Attribute("priv"))),
+                        Handle = GetAttribute(theLoadORElement, "handle"),
+                    };
+                    t.Add(t2);
+                }
+            }
 
             return t;
         }

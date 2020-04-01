@@ -62,12 +62,12 @@ namespace GrampsView.Data.Collections
 
             if (Count > 0)
             {
-                // Step through each citationmodel hlink in the collection
+                // Step through each eventmodel hlink in the collection
                 for (int i = 0; i < Count; i++)
                 {
                     tempModel = DV.EventDV.EventData.GetModelFromHLink(this[i]);
 
-                    if (tempModel.HomeImageHLink.HomeUseImage)
+                    if (tempModel.HomeImageHLink.LinkToImage)
                     {
                         FirstHLinkHomeImage = tempModel.HomeImageHLink;
                         break;

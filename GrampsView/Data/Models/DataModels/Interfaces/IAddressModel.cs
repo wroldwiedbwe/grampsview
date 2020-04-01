@@ -9,10 +9,48 @@
 
 namespace GrampsView.Data.Model
 {
+    using GrampsView.Data.Collections;
+
     /// <summary>
     /// </summary>
     /// <seealso cref="GrampsView.Data.ViewModel.IModelBase"/>
-    public interface IAttributeModel : IModelBase
+    public interface IAddressModel : IModelBase
     {
+        /// <summary>
+        /// Gets the formatted.
+        /// </summary>
+        /// <value>
+        /// The formatted address.
+        /// </value>
+        string Formatted { get; }
+
+        /// <summary>
+        /// Gets or sets the g citation reference collection.
+        /// </summary>
+        /// <value>
+        /// The g citation reference collection.
+        /// </value>
+
+        HLinkCitationModelCollection GCitationRefCollection { get; }
+
+        string GCity { get; set; }
+
+        string GCountry { get; set; }
+
+        string GCounty { get; set; }
+
+        DateObjectModel GDate { get; set; }
+
+        string GLocality { get; set; }
+
+        HLinkNoteModelCollection GNoteRefCollection { get; }
+
+        string GPhone { get; set; }
+
+        string GPostal { get; set; }
+
+        string GState { get; set; }
+
+        string GStreet { get; set; }
     }
 }

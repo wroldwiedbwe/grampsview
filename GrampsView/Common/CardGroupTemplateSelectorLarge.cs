@@ -251,7 +251,7 @@ namespace GrampsView.Common
                 return CardListLineCollectionTemplate;
             }
 
-            if (item is CitationModel)
+            if (item is ICitationModel)
             {
                 return CitationTemplate;
             }

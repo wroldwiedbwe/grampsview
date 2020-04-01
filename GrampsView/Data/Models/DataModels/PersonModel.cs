@@ -1,33 +1,28 @@
 ﻿//-----------------------------------------------------------------------
 //
-// Storage routines for the PersonModel
+// Storage model for the PersonModel
 //
 // <copyright file="PersonModel.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
 
-////    -- Completed
-////    - SecondaryColor-object
-////    - name
-////    - gender
-////    - citationref
-////    - eventref
-////    - noteref
-////    - tagref
-////    - parentin
-////    - lds_ord
+////    -- All Completed (Version 1.71)
 ////    - address
 ////    - attribute
 ////    - childof
+////    - citationref
+////    - eventref
+////    - gender
+////    - lds_ord
+////    - name
+////    - noteref
+////    - parentin
+////    - personref
+////    - primary-object
+////    - tagref
 ////    - url
 ////
-////   <zeroOrMore>
-////     <element name = "personref" >
-////       <ref name="personref-content" />
-////     </element>
-////   </zeroOrMore>
-////   <zeroOrMore>
 
 namespace GrampsView.Data.Model
 {
@@ -39,7 +34,7 @@ namespace GrampsView.Data.Model
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// data model for a person.
+    /// Data model for a person.
     /// </summary>
     [DataContract]
     [KnownType(typeof(HLinkFamilyModel))]
@@ -403,7 +398,7 @@ namespace GrampsView.Data.Model
         /// The g person reference collection.
         /// </value>
         [DataMember]
-        public HLinkPersonModelCollection GPersonRefCollection { get; set; } = new HLinkPersonModelCollection();
+        public PersonRefModelCollection GPersonRefCollection { get; set; } = new PersonRefModelCollection();
 
         /// <summary>
         /// Gets or sets the g tag reference collection.

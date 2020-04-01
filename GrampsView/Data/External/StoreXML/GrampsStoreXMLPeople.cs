@@ -27,14 +27,15 @@ namespace GrampsView.Data.ExternalStorageNS
     {
         public static PersonModel SetHomeImage(PersonModel argModel)
         {
-            // Get default image if available
-            HLinkHomeImageModel hlink = DV.PersonDV.GetDefaultImageFromCollection(argModel);
-
-            // Check Media for Images
-            if (!hlink.Valid)
+            if (argModel is null)
             {
-                hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
+                throw new ArgumentNullException(nameof(argModel));
             }
+
+            //// Get default image if available
+            //HLinkHomeImageModel hlink = DV.PersonDV.GetDefaultImageFromCollection(argModel);
+
+            HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
 
             // Check Citation for Images
             if (!hlink.Valid)
@@ -43,14 +44,14 @@ namespace GrampsView.Data.ExternalStorageNS
             }
 
             // Action any Link
-            if (!hlink.Valid)
-            {
-                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
-            }
-            else
+            if (hlink.Valid)
             {
                 argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
                 argModel.HomeImageHLink.HLinkKey = hlink.HLinkKey;
+            }
+            else
+            {
+                argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
             }
 
             // Get colour
@@ -77,16 +78,11 @@ namespace GrampsView.Data.ExternalStorageNS
             {
                 string defaultImage = string.Empty;
 
-                //// Get colour
-                //Application.Current.Resources.TryGetValue("CardBackGroundPerson", out var varCardColour);
-                //Color cardColour = (Color)varCardColour;
-
                 // Run query
                 var de =
                     from el in localGrampsXMLdoc.Descendants(ns + "person")
                     select el;
 
-                // get People fields TODO
                 try
                 {
                     foreach (XElement pname in de)
@@ -96,9 +92,9 @@ namespace GrampsView.Data.ExternalStorageNS
                         // Person attributes
                         loadPerson.Id = GetAttribute(pname.Attribute("id"));
 
-                        if (loadPerson.Id == "I0291")
-                        {
-                        }
+                        //if (loadPerson.Id == "I0291")
+                        //{
+                        //}
 
                         loadPerson.Change = GetDateTime(pname, "change");
                         loadPerson.Priv = SetPrivateObject(GetAttribute(pname.Attribute("priv")));
@@ -132,9 +128,6 @@ namespace GrampsView.Data.ExternalStorageNS
                         loadPerson.GMediaRefCollection = await GetObjectCollection(pname).ConfigureAwait(false);
 
                         // Name
-                        if (loadPerson.Id == "I0571")
-                        {
-                        }
                         loadPerson.GPersonNamesCollection = GetPersonNameCollection(pname);
 
                         // NoteRefs Collection
@@ -160,6 +153,9 @@ namespace GrampsView.Data.ExternalStorageNS
                             loadPerson.GParentInRefCollection.SortAndSetFirst();
                         }
 
+                        // PersonRef
+                        loadPerson.GPersonRefCollection = GetPersonRefCollection(pname);
+
                         // TagRef
                         loadPerson.GTagRefCollection = GetTagCollection(pname);
 
@@ -168,8 +164,6 @@ namespace GrampsView.Data.ExternalStorageNS
 
                         // HomeImageLink
                         loadPerson = SetHomeImage(loadPerson);
-
-                        // PersonRef TODO
 
                         // load the person
                         DV.PersonDV.PersonData.Add(loadPerson);

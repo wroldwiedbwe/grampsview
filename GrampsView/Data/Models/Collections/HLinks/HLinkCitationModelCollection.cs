@@ -34,7 +34,7 @@ namespace GrampsView.Data.Collections
         {
             // Set the first image link. Assumes main image is manually set to the first image in
             // Gramps if we need it to be, e.g. Citations.
-            CitationModel tempCitationModel = new CitationModel();
+            ICitationModel tempCitationModel = new CitationModel();
 
             if (Count > 0)
             {
@@ -43,7 +43,7 @@ namespace GrampsView.Data.Collections
                 {
                     tempCitationModel = DV.CitationDV.CitationData.GetModelFromHLink(this[i]);
 
-                    if (tempCitationModel.HomeImageHLink.HomeUseImage)
+                    if (tempCitationModel.HomeImageHLink.LinkToImage)
                     {
                         FirstHLinkHomeImage = tempCitationModel.HomeImageHLink;
                         break;

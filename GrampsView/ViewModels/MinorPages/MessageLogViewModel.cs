@@ -44,7 +44,15 @@ namespace GrampsView.ViewModels
         /// The data load log.
         /// </value>
 
-        public ObservableCollection<DataLogEntry> DataLoadLog
+        public ObservableCollection<DataLogEntry> MajorStatusList
+        {
+            get
+            {
+                return DataStore.CN.DataLoadLog;
+            }
+        }
+
+        public ObservableCollection<DataLogEntry> MinorStatusList
         {
             get
             {

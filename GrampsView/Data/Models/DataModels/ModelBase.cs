@@ -167,14 +167,6 @@ namespace GrampsView.Data.Model
             }
         }
 
-        //public virtual HLinkBase HLink
-        //{
-        //    get
-        //    {
-        //        return new HLinkBase();
-        //    }
-        //}
-
         /// <summary>
         /// Gets or sets the h link key.
         /// </summary>

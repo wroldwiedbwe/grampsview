@@ -50,15 +50,15 @@ namespace GrampsView.Data.DataView
         /// </returns>
         HLinkPersonModelCollection GetAllAsHLink();
 
-        /// <summary>
-        /// Gets the default image from collection.
-        /// </summary>
-        /// <param name="argModel">
-        /// The argument ViewModel.
-        /// </param>
-        /// <returns>
-        /// </returns>
-        HLinkHomeImageModel GetDefaultImageFromCollection(PersonModel argModel);
+        ///// <summary>
+        ///// Gets the default image from collection.
+        ///// </summary>
+        ///// <param name="argModel">
+        ///// The argument ViewModel.
+        ///// </param>
+        ///// <returns>
+        ///// </returns>
+        //HLinkHomeImageModel GetDefaultImageFromCollection(PersonModel argModel);
 
         ///// <summary>
         ///// Gets the groups by category.

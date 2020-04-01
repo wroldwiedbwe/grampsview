@@ -3,7 +3,7 @@
 // Various data modesl to small to be worth putting in their own file
 // is first launched.
 //
-// <copyright file="HLinkMediaModel.cs" company="PlaceholderCompany">
+// <copyright file="HLinkHomeImageModel.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
@@ -35,20 +35,14 @@ namespace GrampsView.Data.Model
     [DataContract]
     public class HLinkHomeImageModel : HLinkBase, IHLinkHomeImageModel
     {
-        /// <summary>
-        /// The local home use image.
-        /// </summary>
         private int _HomeImageType = CommonConstants.HomeImageTypeUnknown;
 
         private Color _HomeSymbolColour = Color.White;
 
-        ///// <summary>
-        ///// The local internal default character icon
-        ///// </summary
         private string _IDefaultSymbol = CommonConstants.IconDDefault;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HLinkMediaModel"/> class.
+        /// Initializes a new instance of the <see cref="HLinkHomeImageModel"/> class.
         /// </summary>
         public HLinkHomeImageModel()
         {
@@ -64,7 +58,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                if (Valid)
+                if ((Valid) && !string.IsNullOrEmpty(HLinkKey))
                 {
                     return DV.MediaDV.GetModelFromHLinkString(HLinkKey);
                 }
@@ -75,37 +69,33 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>
-        /// Gets the home image display bit map.
-        /// </summary>
-        /// <value>
-        /// The home image display bit map.
-        /// </value>
-        public Image HomeImageDisplayBitMap
-        {
-            get
-            {
-                switch (_HomeImageType)
-                {
-                    //case CommonConstants.HomeImageTypeClippedBitmap:
-                    //    {
-                    //        return HomeImageClippedBitmap;
-                    //    }
+        ///// <summary>
+        ///// Gets the home image display bit map.
+        ///// </summary>
+        ///// <value>
+        ///// The home image display bit map.
+        ///// </value>
+        //public Image HomeImageDisplayBitMap
+        //{
+        //    get
+        //    {
+        //        switch (_HomeImageType)
+        //        {
+        //            //case CommonConstants.HomeImageTypeClippedBitmap:
+        //            //    {
+        //            //        return HomeImageClippedBitmap;
+        //            //    }
 
-                    case CommonConstants.HomeImageTypeThumbNail:
-                        {
-                            // TODO FIx this
-                            //return DeRef.ImageThumbNail;
-                            return null;
-                        }
+        // case CommonConstants.HomeImageTypeThumbNail: { // TODO FIx this //return
+        // DeRef.ImageThumbNail; return null; }
 
-                    default:
-                        {
-                            return null;
-                        }
-                }
-            }
-        }
+        //            default:
+        //                {
+        //                    return null;
+        //                }
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Gets or sets a value indicating whether [home use image].
@@ -127,9 +117,8 @@ namespace GrampsView.Data.Model
             }
         }
 
-        // TODO Change to use GV static styles
         /// <summary>
-        /// Gets or sets the home symbol.
+        /// Gets or sets the home symbol font glyph.
         /// </summary>
         /// <value>
         /// The home symbol.
@@ -149,7 +138,7 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets or sets the background colour.
+        /// Gets or sets the Home Symbol background colour.
         /// </summary>
         /// <value>
         /// The background colour.
@@ -173,12 +162,12 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets a value indicating whether [home use image].
+        /// Gets a value indicating whether this is for an image or a symbol.
         /// </summary>
         /// <value>
-        /// <c>true</c> if [home use image]; otherwise, <c>false</c>.
+        /// <c>true</c> if image; otherwise, <c>false</c>.
         /// </value>
-        public bool HomeUseImage
+        public bool LinkToImage
         {
             get
             {
@@ -227,6 +216,15 @@ namespace GrampsView.Data.Model
             }
         }
 
+        /// <summary>
+        /// Converts from media model.
+        /// </summary>
+        /// <param name="argMediaModel">
+        /// The argument media model.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// argMediaModel
+        /// </exception>
         public void ConvertFromMediaModel(MediaModel argMediaModel)
         {
             if (argMediaModel is null)

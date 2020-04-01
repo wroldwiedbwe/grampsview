@@ -157,7 +157,9 @@ namespace GrampsView.Data.Model
                 {
                     FormattedString loadString = new FormattedString();
 
-                    loadString.Spans.Add(new Span { Text = GText, FontSize = 12 });
+                    Application.Current.Resources.TryGetValue("FontSizeSmall", out var varFontSize);
+
+                    loadString.Spans.Add(new Span { Text = GText, FontSize = (double)varFontSize });
 
                     return loadString;
                 }
@@ -186,6 +188,7 @@ namespace GrampsView.Data.Model
         = new HLinkTagModelCollection();
 
         // TODO add field style*
+
         /// <summary>
         /// Gets or sets the text.
         /// </summary>
@@ -198,14 +201,6 @@ namespace GrampsView.Data.Model
             get
             {
                 return _GText;
-                //string returnString = string.Empty;
-
-                //foreach (Span item in GFormattedText.Spans)
-                //{
-                //    returnString += item.Text;
-                //}
-
-                //return returnString;
             }
 
             set
@@ -235,7 +230,7 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets the get h link.
+        /// Gets the get hlink.
         /// </summary>
         /// <value>
         /// The get h link.
@@ -280,6 +275,16 @@ namespace GrampsView.Data.Model
         /// </returns>
         public new int Compare(object a, object b)
         {
+            if (a is null)
+            {
+                throw new ArgumentNullException(nameof(a));
+            }
+
+            if (b is null)
+            {
+                throw new ArgumentNullException(nameof(b));
+            }
+
             NoteModel firstEvent = (NoteModel)a;
             NoteModel secondEvent = (NoteModel)b;
 

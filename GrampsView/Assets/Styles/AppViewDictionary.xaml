@@ -221,6 +221,15 @@
         <Setter Property="BorderColor" Value="Transparent" />
     </Style>
 
+    <!--  Create a Note Full Text Card Style  -->
+    <Style
+        x:Key="NoteFullTextStyle"
+        BasedOn="{StaticResource FrameCardLargeStyle}"
+        TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{DynamicResource CardBackGroundNote}" />
+        <Setter Property="MinimumWidthRequest" Value="{DynamicResource GVDetailCardWidthLarge}" />
+    </Style>
+
     <Style
         x:Key="MediaLargeImageStyle"
         BasedOn="{StaticResource FrameLargeFixedCardStyle}"
@@ -274,15 +283,6 @@
         BasedOn="{StaticResource FlexMultiCollection}"
         TargetType="Frame">
         <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryVariantDarkColor}" />
-    </Style>
-
-    <!--  Create a Note Full Text Card Style  -->
-    <Style
-        x:Key="NoteFullTextStyle"
-        BasedOn="{StaticResource FrameCardLargeStyle}"
-        TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="{DynamicResource CardBackGroundNote}" />
-        <Setter Property="MinimumWidthRequest" Value="{DynamicResource GVDetailCardWidthLarge}" />
     </Style>
 
     <!--
@@ -414,6 +414,14 @@
         BasedOn="{StaticResource GVLabelStyleLarge}"
         TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource OnSecondaryColor}" />
+    </Style>
+
+    <!--  Create a Large Style for a Full Text Note  -->
+    <Style
+        x:Key="GVLabelStyleNoteFull"
+        BasedOn="{StaticResource GVCardLabelStyle}"
+        TargetType="Label">
+        <Setter Property="BackgroundColor" Value="Transparent" />
     </Style>
 
     <!--

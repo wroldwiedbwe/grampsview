@@ -18,6 +18,7 @@ namespace GrampsView.Common
     using System.Collections.ObjectModel;
     using System.Runtime.Serialization;
     using System.Threading.Tasks;
+    using Xamarin.Essentials;
 
     /// <summary>
     /// Common Progress routines.
@@ -60,7 +61,7 @@ namespace GrampsView.Common
 
             _CL = iocCommonLogging;
 
-            _EventAggregator.GetEvent<GVNotificationLogAdd>().Subscribe(DataLoadLogAdd, ThreadOption.UIThread);
+            //_EventAggregator.GetEvent<GVNotificationLogAdd>().Subscribe(DataLoadLogAdd, ThreadOption.UIThread);
         }
 
         /// <summary>
@@ -174,7 +175,12 @@ namespace GrampsView.Common
         /// </returns>
         public async Task MajorStatusAdd(string argMessage, bool argShowProgressRing)
         {
-            await Task.Run(() => _EventAggregator.GetEvent<GVNotificationLogAdd>().Publish(argMessage)).ConfigureAwait(false);
+            //await Task.Run(() => _EventAggregator.GetEvent<GVNotificationLogAdd>().Publish(argMessage)).ConfigureAwait(false);
+
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                DataLoadLogAdd(argMessage);
+            });
 
             _CL.LogVariable("MajorStatusAdd", argMessage);
 
@@ -211,7 +217,12 @@ namespace GrampsView.Common
 
         public async Task MinorStatusAdd(string argMessage)
         {
-            await Task.Run(() => _EventAggregator.GetEvent<GVNotificationLogAdd>().Publish(argMessage)).ConfigureAwait(false);
+            //await Task.Run(() => _EventAggregator.GetEvent<GVNotificationLogAdd>().Publish(argMessage)).ConfigureAwait(false);
+
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                DataLoadLogAdd(argMessage);
+            });
 
             _CL.LogVariable("MinorStatusAdd", argMessage);
 

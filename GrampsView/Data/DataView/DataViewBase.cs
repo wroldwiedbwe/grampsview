@@ -87,7 +87,12 @@ namespace GrampsView.Data.DataView
         {
             CardGroup t = new CardGroup();
 
-            t.Cards.AddRange(new ObservableCollection<object>(argReadOnlyList));
+            foreach (var item in argReadOnlyList)
+            {
+                t.Cards.Add(item);
+            }
+
+            //t.Cards.AddRange(new ObservableCollection<TB>(argReadOnlyList));
 
             return t;
         }
@@ -137,20 +142,6 @@ namespace GrampsView.Data.DataView
 
             return this.GetModelFromHLinkString(argHLink.HLinkKey);
         }
-
-        ///// <summary>
-        ///// Gets the specified h link string.
-        ///// </summary>
-        ///// <param name="hLinkString">
-        ///// The h link string.
-        ///// </param>
-        ///// <returns>
-        ///// ModelBase.
-        ///// </returns>
-        //public TB GetModelFromHLinkString(string hLinkString)
-        //{
-        //    return DataViewData.GetModelFromHLink(hLinkString);
-        //}
 
         /// <summary>
         /// Gets the specified h link string.

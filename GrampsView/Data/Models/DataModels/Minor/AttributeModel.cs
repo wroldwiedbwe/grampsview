@@ -80,16 +80,6 @@ namespace GrampsView.Data.Model
 
             = new HLinkNoteModelCollection();
 
-        ///// <summary>
-        ///// Gets or sets a value indicating whether [g priv].
-        ///// </summary>
-        ///// <value>
-        ///// <c> true </c> if [g priv]; otherwise, <c> false </c>.
-        ///// </value>
-        // [DataMember] public bool GPriv { get; set; }
-
-        // = false;
-
         /// <summary>
         /// Gets or sets the g text.
         /// </summary>

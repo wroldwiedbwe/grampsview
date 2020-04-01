@@ -46,7 +46,7 @@ namespace GrampsView.Data.ExternalStorageNS
             HLinkHomeImageModel hlink = argModel.GMediaRefCollection.FirstHLinkHomeImage;
 
             // Check Source for Image
-            if ((!hlink.Valid) && (argModel.GSourceRef.DeRef.HomeImageHLink.HomeUseImage))
+            if ((!hlink.Valid) && (argModel.GSourceRef.DeRef.HomeImageHLink.LinkToImage))
             {
                 hlink = argModel.GSourceRef.DeRef.HomeImageHLink;
             }

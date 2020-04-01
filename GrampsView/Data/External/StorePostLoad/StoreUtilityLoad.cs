@@ -22,7 +22,7 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             try
             {
-                if ((argMediaModel.HomeImageHLink.HomeUseImage == true) && argMediaModel.IsOriginalFilePathValid)
+                if ((argMediaModel.HomeImageHLink.LinkToImage == true) && argMediaModel.IsOriginalFilePathValid)
                 {
                     //_CL.LogVariable("tt.OriginalFilePath", argMediaModel.OriginalFilePath); //
                     //_CL.LogVariable("localMediaFolder.path", DataStore.DS.CurrentDataFolder.FullName); //

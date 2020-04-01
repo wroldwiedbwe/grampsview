@@ -209,24 +209,24 @@ namespace GrampsView.Data.ExternalStorageNS
             }
         }
 
-        /// <summary>
-        /// Gets a value indicating whether [home use image].
-        /// </summary>
-        /// <value>
-        /// <c>true</c> if [home use image]; otherwise, <c>false</c>.
-        /// </value>
-        public bool HomeUseImage
-        {
-            get
-            {
-                if (HomeImageType == CommonConstants.HomeImageTypeThumbNail)
-                {
-                    return true;
-                }
+        ///// <summary>
+        ///// Gets a value indicating whether [home use image].
+        ///// </summary>
+        ///// <value>
+        ///// <c>true</c> if [home use image]; otherwise, <c>false</c>.
+        ///// </value>
+        //public bool HomeUseImage
+        //{
+        //    get
+        //    {
+        //        if (HomeImageType == CommonConstants.HomeImageTypeThumbNail)
+        //        {
+        //            return true;
+        //        }
 
-                return false;
-            }
-        }
+        //        return false;
+        //    }
+        //}
 
         // Gramps uses (0,0,0,0) or (0,0,100,100) for the entire bitmap.
         public bool NeedsClipping
@@ -285,15 +285,16 @@ namespace GrampsView.Data.ExternalStorageNS
 
         public HLinkHomeImageModel GetHLinkHomeImageModel()
         {
-            HLinkHomeImageModel returnHLinkHomeImageModel = new HLinkHomeImageModel();
-
-            // Copy fields
-            returnHLinkHomeImageModel.GPriv = GPriv;
-            returnHLinkHomeImageModel.HLinkKey = HLinkKey;
-            //HomeImageClippedBitmap = argHLinkMediaModel.LoadingClipInfo.HomeImageClippedBitmap;
-            returnHLinkHomeImageModel.HomeImageType = HomeImageType;
-            returnHLinkHomeImageModel.HomeSymbol = HomeSymbol;
-            returnHLinkHomeImageModel.HomeSymbolColour = HomeSymbolColour;
+            HLinkHomeImageModel returnHLinkHomeImageModel = new HLinkHomeImageModel
+            {
+                // Copy fields
+                GPriv = GPriv,
+                HLinkKey = HLinkKey,
+                //HomeImageClippedBitmap = argHLinkMediaModel.LoadingClipInfo.HomeImageClippedBitmap;
+                HomeImageType = HomeImageType,
+                HomeSymbol = HomeSymbol,
+                HomeSymbolColour = HomeSymbolColour
+            };
 
             return returnHLinkHomeImageModel;
         }

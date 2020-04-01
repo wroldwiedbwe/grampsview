@@ -45,12 +45,21 @@
         </Grid.RowDefinitions>
 
         <ScrollView Grid.Row="0">
-            <ListView
-                x:Name="largeDetailList"
-                HasUnevenRows="True"
-                ItemTemplate="{StaticResource DataLogEntryLarge}"
-                ItemsSource="{Binding DataLoadLog, Mode=OneWay}"
-                Style="{StaticResource ListViewLabel}" />
+            <StackLayout>
+                <ListView
+                    x:Name="MajorStatusList"
+                    HasUnevenRows="True"
+                    ItemTemplate="{StaticResource DataLogEntryLarge}"
+                    ItemsSource="{Binding MajorStatusList, Mode=OneWay}"
+                    Style="{StaticResource ListViewLabel}" />
+
+                <ListView
+                    x:Name="MinorStatusList"
+                    HasUnevenRows="True"
+                    ItemTemplate="{StaticResource DataLogEntryLarge}"
+                    ItemsSource="{Binding MinorStatusList, Mode=OneWay}"
+                    Style="{StaticResource ListViewLabel}" />
+            </StackLayout>
         </ScrollView>
     </Grid>
 </ContentPage>

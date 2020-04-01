@@ -105,7 +105,7 @@ namespace GrampsView.UserControls
 
             HLinkMedia = newHLinkMedia;
 
-            if (!HLinkMedia.Valid || !HLinkMedia.HomeUseImage)
+            if (!HLinkMedia.Valid || !HLinkMedia.LinkToImage)
             {
                 this.daSymbol.IsVisible = true;
 

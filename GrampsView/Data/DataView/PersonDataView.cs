@@ -183,21 +183,21 @@ namespace GrampsView.Data.DataView
             return t;
         }
 
-        /// <summary>
-        /// Gets the default image from collection.
-        /// </summary>
-        /// <param name="argModel">
-        /// The argument ViewModel.
-        /// </param>
-        /// <returns>
-        /// </returns>
-        public HLinkHomeImageModel GetDefaultImageFromCollection(PersonModel argModel)
-        {
-            HLinkHomeImageModel returnHLink = new HLinkHomeImageModel();
+        ///// <summary>
+        ///// Gets the default image from collection.
+        ///// </summary>
+        ///// <param name="argModel">
+        ///// The argument ViewModel.
+        ///// </param>
+        ///// <returns>
+        ///// </returns>
+        //public HLinkHomeImageModel GetDefaultImageFromCollection(PersonModel argModel)
+        //{
+        //    HLinkHomeImageModel returnHLink = new HLinkHomeImageModel();
 
-            // ???? TODO "Default Image Citation"
-            return returnHLink;
-        }
+        //    // ???? TODO "Default Image Citation"
+        //    return returnHLink;
+        //}
 
         /// <summary>
         /// Gets the latest changes for the Person Data View.

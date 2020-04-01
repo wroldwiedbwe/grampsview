@@ -7,6 +7,7 @@
 /// </summary>
 namespace GrampsView.Data.Collections
 {
+    using System;
     using System.Collections.ObjectModel;
     using System.Runtime.Serialization;
 
@@ -23,6 +24,11 @@ namespace GrampsView.Data.Collections
         public override CardGroup GetCardGroup()
         {
             return base.GetCardGroup("Address Collection");
+        }
+
+        internal void Add(IAddressModel newAddressModel)
+        {
+            this.Add(newAddressModel);
         }
     }
 }

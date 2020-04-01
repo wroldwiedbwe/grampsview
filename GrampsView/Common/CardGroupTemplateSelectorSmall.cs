@@ -445,7 +445,7 @@ namespace GrampsView.Common
             //    return BookMarkTemplate;
             //}
 
-            if (item is CitationModel)
+            if (item is ICitationModel)
             {
                 return CitationTemplate;
             }

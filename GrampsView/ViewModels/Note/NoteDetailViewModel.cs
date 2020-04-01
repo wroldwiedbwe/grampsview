@@ -84,14 +84,8 @@ namespace GrampsView.ViewModels
         }
 
         /// <summary>
-        /// Handles navigation in wards and sets up the event model parameter.
+        /// Populates the view ViewModel.
         /// </summary>
-        /// <param name="e">
-        /// The <see cref="NavigatedToEventArgs"/> instance containing the event data.
-        /// </param>
-        /// <param name="viewModelState">
-        /// The parameter is not used.
-        /// </param>
         public override void PopulateViewModel()
         {
             HLinkNoteModel HLinkObject = BaseNavParamsHLink as HLinkNoteModel;
@@ -103,18 +97,20 @@ namespace GrampsView.ViewModels
                 BaseTitle = NoteObject.GetDefaultText;
 
                 // Get basic details
-                CardGroup t = new CardGroup { Title = "Header Details" };
+                CardGroup basicHeaderDetails = new CardGroup { Title = "Header Details" };
 
-                t.Cards.Add(new CardListLineCollection
+                basicHeaderDetails.Cards.Add(new CardListLineCollection
                 {
                     new CardListLine("Card Type:", "Note Detail"),
                     new CardListLine("Type:", NoteObject.GType),
                 });
 
                 // Add Model details
-                t.Cards.Add(DV.NoteDV.GetModelInfoFormatted(NoteObject));
+                basicHeaderDetails.Cards.Add(DV.NoteDV.GetModelInfoFormatted(NoteObject));
 
-                BaseHeader.Add(t);
+                BaseHeader.Add(basicHeaderDetails);
+
+                HLinkNote = NoteObject.HLink;
 
                 BaseDetail.Add(NoteObject.GTagRefCollection.GetCardGroup());
 

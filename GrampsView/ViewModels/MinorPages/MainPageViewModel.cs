@@ -210,15 +210,13 @@
             {
                 CurrentPage = page;
 
-                var result = await BaseNavigationService.NavigateAsync(nameof(NavigationPage) + "/" + page.Trim()).ConfigureAwait(false);
+                INavigationResult result = await BaseNavigationService.NavigateAsync(nameof(NavigationPage) + "/" + page.Trim()).ConfigureAwait(false);
 
                 if (!result.Success)
                 {
                     DataStore.CN.NotifyException("OnNavigateCommandExecuted", result.Exception);
                 }
             }
-
-            //await BaseNavigationService.NavigateAsync("MainPage/NavigationPage/" + page.Trim());
         }
 
         private async void OnNavigateParmsCommandExecuted(INavigationParameters obj)
@@ -231,7 +229,7 @@
 
                 string t = nameof(NavigationPage) + "/" + target.Trim();
 
-                var result = await BaseNavigationService.NavigateAsync(t, obj).ConfigureAwait(false);
+                INavigationResult result = await BaseNavigationService.NavigateAsync(t, obj).ConfigureAwait(false);
 
                 if (!result.Success)
                 {

@@ -33,7 +33,7 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             DataStore.CN.MajorStatusAdd("Organising Citation data");
 
-            foreach (CitationModel theCitationModel in DV.CitationDV.DataViewData)
+            foreach (ICitationModel theCitationModel in DV.CitationDV.DataViewData)
             {
                 //if (theCitationModel.Id == "C0351")
                 //{
@@ -379,6 +379,15 @@ namespace GrampsView.Data.ExternalStorageNS
                 foreach (HLinkTagModel tagRef in thePlaceModel.GTagRefCollection)
                 {
                     DataStore.DS.TagData[tagRef.HLinkKey].BackHLinkReferenceCollection.Add(new HLinkBackLink(t));
+                }
+            }
+
+            // Now that all of the Enclosed Places have been added
+            foreach (PlaceModel thePlaceModel in DV.PlaceDV.DataViewData)
+            {
+                if (thePlaceModel.PlaceChildCollection.Count > 0)
+                {
+                    thePlaceModel.PlaceChildCollection.SortAndSetFirst();
                 }
             }
 

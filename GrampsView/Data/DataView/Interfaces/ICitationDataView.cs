@@ -55,12 +55,5 @@ namespace GrampsView.Data.DataView
         /// <returns>
         /// </returns>
         new HLinkCitationModelCollection HLinkCollectionSort(HLinkCitationModelCollection collectionArg);
-
-        /// <summary>
-        /// News this instance.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-        // CitationModel New();
     }
 }

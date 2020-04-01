@@ -65,7 +65,7 @@ namespace GrampsView.Data.Collections
                 {
                     tempModel = DV.PersonDV.PersonData.GetModelFromHLink(this[i]);
 
-                    if (tempModel.HomeImageHLink.HomeUseImage)
+                    if (tempModel.HomeImageHLink.LinkToImage)
                     {
                         FirstHLinkHomeImage = tempModel.HomeImageHLink;
                         break;

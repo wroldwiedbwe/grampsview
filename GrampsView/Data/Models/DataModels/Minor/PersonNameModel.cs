@@ -52,7 +52,7 @@ namespace GrampsView.Data.Model
         /// The g alt.
         /// </value>
         [DataMember]
-        public AltModel GAlt { get; set; } = new AltModel();
+        public IAltModel GAlt { get; set; } = new AltModel();
 
         /// <summary>
         /// Gets or sets the call details.
