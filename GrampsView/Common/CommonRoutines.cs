@@ -9,10 +9,6 @@
 
 namespace GrampsView.Common
 {
-    using System;
-    using System.IO;
-    using System.Runtime.Serialization;
-    using System.Runtime.Serialization.Formatters.Binary;
     using System.Text.RegularExpressions;
 
     using Xamarin.Essentials;

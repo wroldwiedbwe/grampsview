@@ -14,7 +14,7 @@ using GrampsView.Data.Repository;
 using GrampsView.Droid.Common;
 
 using Microsoft.AppCenter.Distribute;
-
+using Microsoft.Device.Display;
 using Plugin.CurrentActivity;
 
 using Prism;
@@ -81,6 +81,9 @@ namespace GrampsView.Droid
             CachedImageRenderer.InitImageViewHandler();
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+
+            ScreenHelper screenHelper = new ScreenHelper();
+            bool isDuo = screenHelper.Initialize(this);
 
             //GrampsView.UserControls.Droid.Renderers.BorderlessEntryRenderer.Init();
 

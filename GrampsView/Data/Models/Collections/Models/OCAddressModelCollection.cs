@@ -25,10 +25,5 @@ namespace GrampsView.Data.Collections
         {
             return base.GetCardGroup("Address Collection");
         }
-
-        internal void Add(IAddressModel newAddressModel)
-        {
-            this.Add(newAddressModel);
-        }
     }
 }

@@ -82,7 +82,7 @@
                 Grid.Column="1"
                 HorizontalTextAlignment="End"
                 Text="{Binding Value}"
-                TextColor="{StaticResource OnSecondaryColor}" />
+                TextColor="{StaticResource OnPrimaryColor}" />
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

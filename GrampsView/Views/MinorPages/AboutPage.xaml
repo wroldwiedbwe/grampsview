@@ -3,6 +3,7 @@
     x:Class="GrampsView.Views.AboutPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:common="clr-namespace:GrampsView.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i18n="clr-namespace:GrampsView.Common"
     xmlns:markdown="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
@@ -41,54 +42,54 @@
     </NavigationPage.TitleView>
 
     <!--  Content  -->
-    <Grid FlexLayout.Grow="1">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <ScrollView WidthRequest="110">
+        <Frame Style="{StaticResource CardGroupStyle}">
+            <Grid FlexLayout.Grow="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-        <StackLayout Grid.Row="0" BackgroundColor="{DynamicResource SecondaryColor}">
-            <StackLayout
-                HorizontalOptions="Start"
-                Orientation="Horizontal"
-                VerticalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="110" />
+                </Grid.ColumnDefinitions>
 
-                <Image
-                    HeightRequest="64"
-                    HorizontalOptions="StartAndExpand"
-                    Source="ic_launcher.png"
-                    VerticalOptions="FillAndExpand" />
+                <StackLayout Grid.Row="0" Orientation="Horizontal">
 
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="22"
-                    Style="{DynamicResource GVLabelStyleLarge}"
-                    Text="{Binding AppName, Mode=OneTime}"
-                    TextColor="White"
-                    VerticalOptions="Center" />
-            </StackLayout>
-        </StackLayout>
+                    <Image
+                        HeightRequest="64"
+                        HorizontalOptions="StartAndExpand"
+                        Source="ic_launcher.png"
+                        VerticalOptions="FillAndExpand" />
 
-        <ScrollView Grid.Row="1">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="22"
+                        Style="{DynamicResource GVLabelStyleLarge}"
+                        Text="{Binding AppName, Mode=OneTime}"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </StackLayout>
 
-            <FlexLayout Direction="Column">
+                <FlexLayout Grid.Row="1" Direction="Column">
 
-                <ucon:ListLineCardLarge UCCardListLineCol="{Binding ApplicationVersionList, Mode=OneWay}" />
+                    <ucon:ListLineCardLarge UCCardListLineCol="{Binding ApplicationVersionList, Mode=OneWay}" />
 
-                <ucon:HeaderCardLarge BindingContext="{Binding HeaderData, Mode=OneWay}" />
+                    <ucon:HeaderCardLarge BindingContext="{Binding HeaderData, Mode=OneWay}" />
 
-                <ucon:InstructionCardLarge BindingContext="{i18n:Translate AboutPage_PrivacyPolicy}" />
+                    <ucon:InstructionCardLarge BindingContext="{i18n:Translate AboutPage_PrivacyPolicy}" />
 
-                <ucon:InstructionCardLarge BindingContext="{i18n:Translate AboutPage_AttributionText}" />
+                    <ucon:InstructionCardLarge BindingContext="{i18n:Translate AboutPage_AttributionText}" />
 
-                <Frame BackgroundColor="White" Style="{DynamicResource FrameLargeVariableCardStyle}">
-                    <markdown:MarkdownView
-                        x:Name="mdview"
-                        Grid.Row="0"
-                        FlexLayout.Basis="75"
-                        Markdown="{Binding DaText}" />
-                </Frame>
-            </FlexLayout>
-        </ScrollView>
-    </Grid>
+                    <Frame BackgroundColor="White" Style="{DynamicResource FrameLargeVariableCardStyle}">
+                        <markdown:MarkdownView
+                            x:Name="mdview"
+                            Grid.Row="0"
+                            FlexLayout.Basis="75"
+                            Markdown="{Binding DaText}" />
+                    </Frame>
+                </FlexLayout>
+            </Grid>
+        </Frame>
+    </ScrollView>
 </ContentPage>

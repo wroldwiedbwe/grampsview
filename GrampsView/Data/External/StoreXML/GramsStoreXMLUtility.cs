@@ -259,7 +259,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 // Load address object references
                 foreach (XElement theLoadORElement in theERElement)
                 {
-                    IAddressModel newAddressModel = new AddressModel
+                    AddressModel newAddressModel = new AddressModel
                     {
                         Handle = "AddressCollection",
 

@@ -1,7 +1,8 @@
-﻿using Xamarin.Forms;
-
-namespace GrampsView.Common
+﻿namespace GrampsView.Common
 {
+    using Xamarin.Forms;
+    using Xamarin.Forms.DualScreen;
+
     internal static class CardWidths
     {
         public static double CardLargeWidth
@@ -23,6 +24,7 @@ namespace GrampsView.Common
                         break;
 
                     case TargetIdiom.Phone:
+
                         outVal = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Width;
                         break;
 
@@ -55,6 +57,7 @@ namespace GrampsView.Common
 
                     case TargetIdiom.Phone:
                         outVal = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Width;
+
                         break;
 
                     default:
