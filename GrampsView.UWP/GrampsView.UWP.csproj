@@ -240,7 +240,6 @@
   <ItemGroup>
     <Content Include="Assets\Fonts\materialdesignicons-webfont.ttf" />
     <None Include="Assets\Misc\UserActivityCard.json" />
-    <None Include="GrampsView.UWP_TemporaryKey.pfx" />
     <None Include="GrampsViewUWP.pfx" />
   </ItemGroup>
   <ItemGroup>

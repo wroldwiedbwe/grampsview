@@ -200,7 +200,7 @@ namespace GrampsView.ViewModels
 
             // Load Resource
             var assemblyExec = Assembly.GetExecutingAssembly();
-            var resourceName = "GrampsView.releasenotes.md";
+            var resourceName = "GrampsView.CHANGELOG.md";
 
             using (Stream stream = assemblyExec.GetManifestResourceStream(resourceName))
             {
