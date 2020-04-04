@@ -348,5 +348,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# GrampsViewFiles
 /GrampsView/GrampsView/Common/Secret.cs
-/GrampsView/UserControls/FormsRadioButton/RadioItemToggledEventArgs.cs
+/GrampsView/CHANGELOG.md
+
+/GrampsView/Assets/Font

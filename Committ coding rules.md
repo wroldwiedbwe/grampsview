@@ -1,6 +1,6 @@
 #Sample#
 
-**fix(common): fix this thing
+fix(common): fix this thing
 
 Fixing the thing 
 

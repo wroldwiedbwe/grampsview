@@ -90,15 +90,23 @@ namespace GrampsView.ViewModels
 
             // Load Resource
             var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "GrampsView.releasenotes.md";
+            var resourceName = "CHANGELOG.md";
 
             try
             {
                 using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-
-                using (StreamReader reader = new StreamReader(stream))
                 {
-                    WhatsNewText = reader.ReadToEnd();
+                    if (!(stream is null))
+                    {
+                        using (StreamReader reader = new StreamReader(stream))
+                        {
+                            WhatsNewText = reader.ReadToEnd();
+                        }
+                    }
+                    else
+                    {
+                        DataStore.CN.NotifyError("CHANGELOG.md not found");
+                    }
                 }
             }
             catch (System.Exception ex)
