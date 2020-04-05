@@ -24,9 +24,9 @@ namespace GrampsView.Services
                 return false;
             }
 
-            if (VersionTracking.IsFirstLaunchForCurrentBuild && !Common.CommonLocalSettings.WhatsNewDisplayed)
+            if (VersionTracking.IsFirstLaunchForCurrentBuild)
             {
-                Common.CommonLocalSettings.WhatsNewDisplayed = true;
+                //Common.CommonLocalSettings.WhatsNewDisplayed = true;
                 iocEventAggregator.GetEvent<PageNavigateEvent>().Publish(nameof(WhatsNewPage));
 
                 return true;

@@ -90,7 +90,7 @@ namespace GrampsView.ViewModels
 
             // Load Resource
             var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "CHANGELOG.md";
+            var resourceName = "GrampsView.CHANGELOG.md";
 
             try
             {
@@ -105,7 +105,7 @@ namespace GrampsView.ViewModels
                     }
                     else
                     {
-                        DataStore.CN.NotifyError("CHANGELOG.md not found");
+                        DataStore.CN.NotifyError("GrampsView.CHANGELOG.md not found");
                     }
                 }
             }

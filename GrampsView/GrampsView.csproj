@@ -188,12 +188,14 @@
 
   <ItemGroup>
     <None Remove="Assets\Font\materialdesignicons-webfont.ttf" />
+    <None Remove="CHANGELOG.md" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.cs.OLD" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.OLD" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Assets\Font\materialdesignicons-webfont.ttf" />
+    <EmbeddedResource Include="CHANGELOG.md" />
   </ItemGroup>
 
   <ItemGroup>
