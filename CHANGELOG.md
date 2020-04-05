@@ -1,9 +1,9 @@
-## 5.0.6 (2020-04-04)
+## 5.0.7 (2020-04-05)
 
 
 ### Bug Fixes
 
-* **common:** fixes, andoirdX and nuget updates ([e41abeb](https://github.com/phandcock/grampsview/commit/e41abeb8909315371f2079fb217dcc8ac761651c))
+* **common:** fix WhatsNew display ([2dd3c0b](https://github.com/phandcock/grampsview/commit/2dd3c0b65241872d85134a16877528518d60b429))
 
 
 
