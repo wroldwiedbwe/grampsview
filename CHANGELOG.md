@@ -1,9 +1,9 @@
-## 5.0.7 (2020-04-05)
+## 5.0.8 (2020-04-06)
 
 
 ### Bug Fixes
 
-* **common:** fix WhatsNew display ([2dd3c0b](https://github.com/phandcock/grampsview/commit/2dd3c0b65241872d85134a16877528518d60b429))
+* **common:** tweaks, fix themeing ([ece784d](https://github.com/phandcock/grampsview/commit/ece784d670f3c73719e9a1aa4026077beca05514))
 
 
 
