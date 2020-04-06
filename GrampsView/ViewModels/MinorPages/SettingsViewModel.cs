@@ -122,19 +122,22 @@ namespace GrampsView.ViewModels
             {
                 case "Dark Theme":
                     {
-                        CommonTheming.SetThemeDark();
+                        CommonTheming.ThemeDarkSet();
+                        CommonTheming.ThemeDarkSave();
                         break;
                     }
 
                 case "Light Theme":
                     {
-                        CommonTheming.SetThemeLight();
+                        CommonTheming.ThemeLightSet();
+                        CommonTheming.ThemeLightSave();
                         break;
                     }
 
                 default:
                     {
-                        CommonTheming.SetThemeSystem();
+                        CommonTheming.ThemeSystemSet();
+                        CommonTheming.ThemeSystemSave();
                         break;
                     }
             }
