@@ -26,6 +26,8 @@ namespace GrampsView.UserControls
         public MediaImageFullCard()
         {
             InitializeComponent();
+
+            this.IsVisible = false;
         }
 
         public HLinkHomeImageModel UCMedia
@@ -63,11 +65,6 @@ namespace GrampsView.UserControls
             if (mifModel.mediaFull.IsVisible)
             {
                 mifModel.IsVisible = true;
-            }
-            else
-            {
-                // Nothing to display so hide
-                mifModel.IsVisible = false;
             }
         }
     }
