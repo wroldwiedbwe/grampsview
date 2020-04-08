@@ -1,9 +1,9 @@
-# 5.1.0 (2020-04-07)
+## 5.1.1 (2020-04-08)
 
 
-### Features
+### Bug Fixes
 
-* tweaks ([0d83edf](https://github.com/phandcock/grampsview/commit/0d83edf86aa0438977b4dda8b8b1afafac15a30f))
+* fix display of MediaCardFull images ([d1169e7](https://github.com/phandcock/grampsview/commit/d1169e7c43edd50dffdaee28d819af4ab8b6cd3a))
 
 
 
