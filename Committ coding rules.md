@@ -1,6 +1,6 @@
 #Sample#
 
-fix(common): fix this thing
+fix(*): fix this thing
 
 Fixing the thing 
 

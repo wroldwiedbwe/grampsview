@@ -51,7 +51,10 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ucon:MediaImageSkia Grid.Row="0" BindingContext="{Binding PersonObject.HomeImageHLink, Mode=OneWay}" />
+        <ucon:MediaCardLarge
+            Grid.Row="0"
+            BindingContext="{Binding PersonObject.HomeImageHLink.DeRef.HLink, Mode=OneWay}"
+            HorizontalOptions="Center" />
 
         <ucon:FlexMultiCardType
             x:Name="BaseHeader"

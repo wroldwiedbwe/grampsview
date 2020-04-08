@@ -236,7 +236,6 @@ namespace GrampsView.Data.Model
                 HLinkMediaModel t = new HLinkMediaModel
                 {
                     HLinkKey = HLinkKey,
-                    //HomeImageType = CommonConstants.HomeImageTypeThumbNail,
                 };
                 return t;
             }

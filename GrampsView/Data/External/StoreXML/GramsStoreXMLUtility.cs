@@ -136,7 +136,11 @@ namespace GrampsView.Data.ExternalStorageNS
                 // ------------ Save new MediaObject
                 newMediaModel = theMediaModel.Copy();
                 newMediaModel.HLinkKey = newHLinkKey;
+
                 newMediaModel.HomeImageHLink.HLinkKey = newHLinkKey;
+                newMediaModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+                newMediaModel.HomeImageHLink.HomeSymbol = CommonConstants.IconMedia;
+
                 newMediaModel.OriginalFilePath = outFileName;
                 newMediaModel.MediaStorageFile = await StoreFolder.FolderGetFileAsync(DataStore.DS.CurrentDataFolder, outFileName).ConfigureAwait(false);
                 newMediaModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;

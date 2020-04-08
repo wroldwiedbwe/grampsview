@@ -69,34 +69,6 @@ namespace GrampsView.Data.Model
             }
         }
 
-        ///// <summary>
-        ///// Gets the home image display bit map.
-        ///// </summary>
-        ///// <value>
-        ///// The home image display bit map.
-        ///// </value>
-        //public Image HomeImageDisplayBitMap
-        //{
-        //    get
-        //    {
-        //        switch (_HomeImageType)
-        //        {
-        //            //case CommonConstants.HomeImageTypeClippedBitmap:
-        //            //    {
-        //            //        return HomeImageClippedBitmap;
-        //            //    }
-
-        // case CommonConstants.HomeImageTypeThumbNail: { // TODO FIx this //return
-        // DeRef.ImageThumbNail; return null; }
-
-        //            default:
-        //                {
-        //                    return null;
-        //                }
-        //        }
-        //    }
-        //}
-
         /// <summary>
         /// Gets or sets a value indicating whether [home use image].
         /// </summary>
