@@ -23,6 +23,7 @@ jobs:
     - uses: nuuday/github-changelog-action@v1.0.0
       with:
         next_version: "1.0.0"  
+        filename:
 
  #  - name: Generate changelog
  #    uses: charmixer/auto-changelog-action@v1
