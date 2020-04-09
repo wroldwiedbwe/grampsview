@@ -19,6 +19,31 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN_ACTION  }}
 
+
+    - name: Create a release draft for a version tag
+      id: create-release-draft
+      uses: ecampidoglio/auto-release-draft@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - uses: vemel/update-changelog@0.0.1
+      id: changelog
+      with:
+        version: ${{ steps.version.outputs.version }}
+
+    - name: Print the URL of the release draft
+      if: steps.create-release-draft.outputs.release-url != ''
+      run: echo ${{ steps.create-release-draft.outputs.release-url }}
+
+    - uses: nuuday/github-changelog-action@v1.0.0
+      with:
+      next_version: "1.0.0"  
+
+    - name: Generate changelog
+      uses: charmixer/auto-changelog-action@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
       # with:
       # Repository name with owner. For example, actions/checkout
       # repository: # optional, default is ${{ github.repository }}
