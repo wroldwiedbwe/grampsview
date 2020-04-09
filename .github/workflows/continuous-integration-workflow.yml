@@ -24,10 +24,10 @@ jobs:
       with:
         next_version: "1.0.0"  
 
-    - name: Generate changelog
-      uses: charmixer/auto-changelog-action@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+ #  - name: Generate changelog
+ #    uses: charmixer/auto-changelog-action@v1
+ #    with:
+ #      token: ${{ secrets.GITHUB_TOKEN }}
 
       # with:
       # Repository name with owner. For example, actions/checkout
@@ -48,12 +48,12 @@ jobs:
       # Whether to download Git-LFS files
       # lfs: # optional
 
-    - name: Create_commit_change_log_file
-      uses: TriPSs/conventional-changelog-action@v1.3.0
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        tag-prefix: ''
-        changelog-release-count: 5
+ #  - name: Create_commit_change_log_file
+#     uses: TriPSs/conventional-changelog-action@v1.3.0
+ #    with:
+ #      github-token: ${{ secrets.GITHUB_TOKEN }}
+ #      tag-prefix: ''
+ #      changelog-release-count: 5
 
     #- name: Debuggging with tmate
     #  uses: GitHub30/action-tmate@master2
