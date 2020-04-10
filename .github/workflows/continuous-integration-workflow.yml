@@ -18,9 +18,9 @@ jobs:
 
     - name: Create_commit_change_log_file
       uses: TriPSs/conventional-changelog-action@v1.3.0
-     with:
-       github-token: ${{ secrets.GITHUB_TOKEN }}
-       tag-prefix: ''
-       changelog-release-count: 5
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        tag-prefix: 'v'
+        changelog-release-count: 5
 
 
