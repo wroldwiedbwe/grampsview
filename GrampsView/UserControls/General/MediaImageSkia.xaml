@@ -39,7 +39,7 @@
                 x:Name="daImage"
                 Aspect="AspectFit"
                 BackgroundColor="Transparent"
-                CacheType="All"
+                CacheType="Memory"
                 Error="DaImage_Error"
                 HorizontalOptions="FillAndExpand"
                 IsVisible="False"

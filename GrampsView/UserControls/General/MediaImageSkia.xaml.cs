@@ -13,7 +13,7 @@ namespace GrampsView.UserControls
     using System;
     using System.Diagnostics;
     using System.IO;
-
+    using System.Threading;
     using Xamarin.Forms;
 
     public partial class MediaImageSkia : Frame, IDisposable

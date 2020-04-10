@@ -9,6 +9,7 @@ namespace GrampsView.ViewModels
 
     using Prism.Events;
     using Prism.Navigation;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// ViewModel for the Person Detail page.
@@ -97,7 +98,7 @@ namespace GrampsView.ViewModels
         /// </summary>
         /// <returns>
         /// </returns>
-        public override void PopulateViewModel()
+        public override async Task<bool> PopulateViewModelAsync()
         {
             BaseCL.LogRoutineEntry("PersonDetailViewModel");
 
@@ -202,6 +203,8 @@ namespace GrampsView.ViewModels
 
                 PersonBio = PersonObject.GNoteRefCollection.GetBio;
             }
+
+            return true;
         }
     }
 }

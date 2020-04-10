@@ -11,8 +11,6 @@
 
     public partial class FlexSingleCardType : Frame
     {
-        public const int virtualItemGet = 5;
-
         public static readonly BindableProperty FsctSourceProperty
                  = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexSingleCardType), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FsctSource));
 
@@ -20,19 +18,22 @@
             = BindableProperty.Create(nameof(FsctTemplate), typeof(DataTemplate), typeof(FlexSingleCardType), propertyChanged: OnItemTemplateChanged);
 
         private static int startItemGet = 0;
+        private static int virtualItemGet = 5;
 
         public FlexSingleCardType()
         {
             InitializeComponent();
 
             // Get start length
-            if (Xamarin.Forms.Device.Idiom == TargetIdiom.Phone)
+            if (Device.Idiom == TargetIdiom.Phone)
             {
                 startItemGet = 20;
+                virtualItemGet = 20;
             }
             else
             {
                 startItemGet = 120;
+                virtualItemGet = 60;
             }
 
             IndexLength = startItemGet;
@@ -138,7 +139,7 @@
 
             foreach (var item in DisplayList)
             {
-                View view = null;
+                View view;
 
                 if (FsctTemplate is DataTemplateSelector)
                 {
@@ -233,9 +234,6 @@
         private void Scroller_Scrolled(object sender, ScrolledEventArgs e)
         {
             var t = sender as ScrollView;
-
-            //Debug.WriteLine(t.ScrollY);
-            //Debug.WriteLine(t.ContentSize.Height);
 
             if (t.ContentSize.Height - t.Height <= (e.ScrollY + 10))
             {
