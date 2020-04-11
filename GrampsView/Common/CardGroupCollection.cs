@@ -8,15 +8,13 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace GrampsView.Data.Model
+namespace GrampsView.Common
 {
     using System;
     using System.Collections.ObjectModel;
     using System.Collections.Specialized;
     using System.ComponentModel;
     using System.Runtime.Serialization;
-
-    using GrampsView.Common;
 
     /// <summary>
     /// GRAMPS $$(Hlink)$$ element class.
@@ -51,10 +49,18 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <summary>Adds the specified argument card group but using the supplied title.</summary>
-        /// <param name="argCardGroup">The argument card group.</param>
-        /// <param name="argTitle">The argument title.</param>
-        /// <exception cref="ArgumentNullException">argCardGroup</exception>
+        /// <summary>
+        /// Adds the specified argument card group but using the supplied title.
+        /// </summary>
+        /// <param name="argCardGroup">
+        /// The argument card group.
+        /// </param>
+        /// <param name="argTitle">
+        /// The argument title.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// argCardGroup
+        /// </exception>
         public void Add(CardGroup argCardGroup, string argTitle)
         {
             if (argCardGroup is null)

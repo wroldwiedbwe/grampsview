@@ -30,7 +30,7 @@ namespace GrampsView.ViewModels
 
         private string _DaText = string.Empty;
 
-        private CardGroup _HeaderDetailList = new CardGroup();
+        private CardGroupCollection _HeaderDetailList = new CardGroupCollection();
 
         private HeaderModel _HeaderModel = null;
 

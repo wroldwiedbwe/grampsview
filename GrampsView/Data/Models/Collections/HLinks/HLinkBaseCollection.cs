@@ -10,20 +10,29 @@
 
 namespace GrampsView.Data.Model
 {
-    using System.Collections.ObjectModel;
-    using System.Linq;
-    using System.Runtime.Serialization;
-
     using GrampsView.Common;
+    using System.Collections;
+    using System.Collections.ObjectModel;
+    using System.Runtime.Serialization;
 
     /// <summary>
     /// GRAMPS $$(Hlink)$$ element class.
     /// </summary>
     [CollectionDataContract]
-    public class HLinkBaseCollection<T> : ObservableCollection<T>, IHLinkCollectionBase<T>
+    public class HLinkBaseCollection<T> : ObservableCollection<T>, IHLinkCollectionBase<T>, IEnumerable, IEnumerator
          where T : HLinkBase, new()
     {
         // TODO Handle HLink collections properly by handling all their data
+
+        private int Position = -1;
+
+        public object Current
+        {
+            get
+            {
+                return this[Position];
+            }
+        }
 
         /// <summary>
         /// Gets or sets the first image h link.
@@ -39,9 +48,33 @@ namespace GrampsView.Data.Model
                 t.Title = argTitle;
             };
 
-            t.Cards.AddRange(new ObservableCollection<object>(Items));
+            foreach (T item in Items)
+            {
+                t.Cards.Add(item);
+            }
 
             return t;
+        }
+
+        public IEnumerator GetCardGroupEnumerator()
+        {
+            return (IEnumerator)this;
+        }
+
+        public bool MoveNext()
+        {
+            if (Position < this.Count - 1)
+            {
+                ++Position;
+                return true;
+            }
+
+            return false;
+        }
+
+        public void Reset()
+        {
+            Position = -1;
         }
     }
 }

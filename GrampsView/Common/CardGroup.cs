@@ -2,7 +2,7 @@
 //
 // Various routines used by the App class that are put here to keep the App class cleaner
 //
-// <copyright file="CardGroup.cs" company="PlaceholderCompany">
+// <copyright file="CardGroupCollection.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
@@ -11,17 +11,22 @@
 /// </summary>
 namespace GrampsView.Common
 {
+    using GrampsView.Data.Model;
     using Newtonsoft.Json;
 
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Collections.Specialized;
     using System.ComponentModel;
 
     /// <summary>
     /// </summary>
-    public class CardGroup : INotifyPropertyChanged, INotifyCollectionChanged
+    public class CardGroup : INotifyPropertyChanged, INotifyCollectionChanged, IEnumerable, IEnumerator, IEnumerable<HLinkBase>
     {
         private ObservableCollection<object> data = new ObservableCollection<object>();
+
+        private int Position = -1;
 
         public event NotifyCollectionChangedEventHandler CollectionChanged
         {
@@ -81,9 +86,17 @@ namespace GrampsView.Common
         {
             get
             {
-                // TODO Handle Hlinks properly so they have their own data
+                // TODO Handle HLinks properly so they have their own data
 
                 return data;
+            }
+        }
+
+        public object Current
+        {
+            get
+            {
+                return Cards[Position];
             }
         }
 
@@ -106,5 +119,27 @@ namespace GrampsView.Common
         /// The title.
         /// </value>
         public string Title { get; set; }
+
+        public IEnumerator GetEnumerator()
+        {
+            return (IEnumerator)this;
+        }
+
+        IEnumerator<HLinkBase> IEnumerable<HLinkBase>.GetEnumerator() => ((IEnumerable<HLinkBase>)Cards).GetEnumerator();
+
+        public bool MoveNext()
+        {
+            if (Position < Cards.Count - 1)
+            {
+                ++Position;
+                return true;
+            }
+            return false;
+        }
+
+        public void Reset()
+        {
+            Position = -1;
+        }
     }
 }

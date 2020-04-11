@@ -225,6 +225,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="UserControls\General\FlexMultiCardEnum.xaml.cs">
+      <DependentUpon>FlexMultiCardEnum.xaml</DependentUpon>
+    </Compile>
     <Compile Update="UserControls\General\TopMenu.xaml.cs">
       <DependentUpon>TopMenu.xaml</DependentUpon>
     </Compile>

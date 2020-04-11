@@ -12,7 +12,7 @@
     public partial class FlexSingleCardType : Frame
     {
         public static readonly BindableProperty FsctSourceProperty
-                 = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexSingleCardType), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FsctSource));
+                 = BindableProperty.Create(returnType: typeof(CardGroupCollection), declaringType: typeof(FlexSingleCardType), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FsctSource));
 
         public static readonly BindableProperty FsctTemplateProperty
             = BindableProperty.Create(nameof(FsctTemplate), typeof(DataTemplate), typeof(FlexSingleCardType), propertyChanged: OnItemTemplateChanged);

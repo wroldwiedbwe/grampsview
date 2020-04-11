@@ -49,7 +49,7 @@ namespace GrampsView.Data.DataView
             get;
         }
 
-        CardGroup AsCardGroup(IReadOnlyList<T> argReadOnlyList);
+        CardGroup AsCardGroup(IReadOnlyList<TU> argReadOnlyList);
 
         /// <summary>
         /// Gets all as ViewModel.
@@ -67,8 +67,6 @@ namespace GrampsView.Data.DataView
         /// <returns>
         /// </returns>
         HLinkHomeImageModel GetFirstImageFromCollection(TH theCollection);
-
-        //T GetModelFromHLinkString(string hLinkString);
 
         CardGroup GetLatestChanges();
 

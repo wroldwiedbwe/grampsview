@@ -83,7 +83,7 @@ namespace GrampsView.Data.DataView
             }
         }
 
-        public virtual CardGroup AsCardGroup(IReadOnlyList<TB> argReadOnlyList)
+        public virtual CardGroup AsCardGroup(IReadOnlyList<TU> argReadOnlyList)
         {
             CardGroup t = new CardGroup();
 
@@ -123,6 +123,8 @@ namespace GrampsView.Data.DataView
         }
 
         public abstract CardGroup GetLatestChanges();
+
+        CardGroup IDataViewBase<TB, TU, TH>.GetLatestChanges() => throw new NotImplementedException();
 
         /// <summary>
         /// Gets the model.

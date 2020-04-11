@@ -15,6 +15,7 @@ namespace GrampsView.ViewModels
 
     using Prism.Events;
     using Prism.Navigation;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Defines the EVent Detail Page View ViewModel.
@@ -91,7 +92,7 @@ namespace GrampsView.ViewModels
         /// <param name="viewModelState">
         /// The parameter is not used.
         /// </param>
-        public override void PopulateViewModel()
+        public override async Task<bool> PopulateViewModelAsync()
         {
             TagObject = DV.TagDV.GetModelFromHLinkString(BaseNavParamsHLink.HLinkKey);
 
@@ -118,6 +119,8 @@ namespace GrampsView.ViewModels
                 // Add Details BackHLinkRefNavArgument = localNavigationHelper.HLinkModelCollectionAdd(NoteObject.BackHLinkReferenceCollection);
                 BaseBackLinks.Add(TagObject.BackHLinkReferenceCollection.GetCardGroup());
             }
+
+            return true;
         }
     }
 }
