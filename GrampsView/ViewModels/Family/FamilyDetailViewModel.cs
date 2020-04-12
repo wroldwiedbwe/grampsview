@@ -88,7 +88,7 @@ namespace GrampsView.ViewModels
                 // Get basic details
                 CardGroup t = new CardGroup { Title = "Header Details" };
 
-                t.Cards.Add(new CardListLineCollection
+                t.Add(new CardListLineCollection
             {
                 new CardListLine("Card Type:", "Family Detail"),
                 new CardListLine("Family Display Name:", FamilyObject.FamilyDisplayName),
@@ -98,15 +98,15 @@ namespace GrampsView.ViewModels
             });
 
                 // Add Model details
-                t.Cards.Add(DV.FamilyDV.GetModelInfoFormatted(FamilyObject));
+                t.Add(DV.FamilyDV.GetModelInfoFormatted(FamilyObject));
 
                 // Add parent link
-                t.Cards.Add(new ParentLinkModel
+                t.Add(new ParentLinkModel
                 {
                     Parents = localFamilyModel,
                 });
 
-                BaseHeader.Cards.Add(t);
+                BaseHeader.Add(t);
 
                 // Detail reference
                 BaseDetail.Add(FamilyObject.GEventRefCollection.GetCardGroup());

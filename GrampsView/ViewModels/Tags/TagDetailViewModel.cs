@@ -104,7 +104,7 @@ namespace GrampsView.ViewModels
                 // Get Headers
                 CardGroup t = new CardGroup { Title = "Header Details" };
 
-                t.Cards.Add(new CardListLineCollection
+                t.Add(new CardListLineCollection
                 {
                         new CardListLine("Card Type:", "Tag Detail"),
                         new CardListLine("Name:", TagObject.GName),
@@ -112,9 +112,9 @@ namespace GrampsView.ViewModels
                         new CardListLine("Private:", TagObject.PrivAsString),
                 });
 
-                t.Cards.Add(DV.TagDV.GetModelInfoFormatted(TagObject));
+                t.Add(DV.TagDV.GetModelInfoFormatted(TagObject));
 
-                BaseHeader.Cards.Add(t);
+                BaseHeader.Add(t);
 
                 // Add Details BackHLinkRefNavArgument = localNavigationHelper.HLinkModelCollectionAdd(NoteObject.BackHLinkReferenceCollection);
                 BaseBackLinks.Add(TagObject.BackHLinkReferenceCollection.GetCardGroup());

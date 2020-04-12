@@ -99,7 +99,7 @@
     <Compile Remove="UserControls\General\CardGridSingleType.xaml.cs" />
     <Compile Remove="UserControls\General\CheckBoxExtended.cs" />
     <Compile Remove="UserControls\General\FlexMultiCardEnum.xaml.cs" />
-    <Compile Remove="UserControls\General\FlexMultiCardType.xaml.cs" />
+    <Compile Remove="UserControls\General\FlexMultiCardType - Copy.xaml.cs" />
     <Compile Remove="UserControls\General\FlexSingleCardGroup.xaml.cs" />
     <Compile Remove="UserControls\General\MediaImage.xaml.cs" />
     <Compile Remove="UserControls\General\RadioButtonxExtended .cs" />

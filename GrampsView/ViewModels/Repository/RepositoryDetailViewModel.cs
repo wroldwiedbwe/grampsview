@@ -76,24 +76,24 @@ namespace GrampsView.ViewModels
                 // Get basic details
                 CardGroup t = new CardGroup { Title = "Header Details" };
 
-                t.Cards.Add(new CardListLineCollection
+                t.Add(new CardListLineCollection
                     {
                         new CardListLine("Card Type:", "Repository Detail"),
                         new CardListLine("Name:", RepositoryObject.GRName),
                         new CardListLine("Type:", RepositoryObject.GType),
                     });
 
-                t.Cards.Add(DV.RepositoryDV.GetModelInfoFormatted(RepositoryObject));
+                t.Add(DV.RepositoryDV.GetModelInfoFormatted(RepositoryObject));
 
-                BaseHeader.Cards.Add(t);
+                BaseHeader.Add(t);
 
                 // Add details
-                BaseDetail.Cards.Add(RepositoryObject.GNoteRefCollection.GetCardGroup());
-                BaseDetail.Cards.Add(RepositoryObject.GTagRefCollection.GetCardGroup());
-                BaseDetail.Cards.Add(RepositoryObject.BackHLinkReferenceCollection.GetCardGroup());
-                BaseDetail.Cards.Add(RepositoryObject.GAddress.GetCardGroup());
+                BaseDetail.Add(RepositoryObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Add(RepositoryObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Add(RepositoryObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseDetail.Add(RepositoryObject.GAddress.GetCardGroup());
 
-                BaseBackLinks.Cards.Add(RepositoryObject.GURL.GetCardGroup());
+                BaseBackLinks.Add(RepositoryObject.GURL.GetCardGroup());
             }
         }
     }

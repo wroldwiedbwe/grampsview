@@ -91,19 +91,19 @@ namespace GrampsView.ViewModels
             // Get basic details
             CardGroup t = new CardGroup { Title = "Header Details" };
 
-            t.Cards.Add(new CardListLineCollection
+            t.Add(new CardListLineCollection
             {
                 new CardListLine("Card Type:", "Name Map Detail"),
                 new CardListLine("Private:", NameMapObject.PrivAsString),
             });
 
             // Add Model details
-            t.Cards.Add(DV.NameMapDV.GetModelInfoFormatted(NameMapObject));
+            t.Add(DV.NameMapDV.GetModelInfoFormatted(NameMapObject));
 
-            BaseHeader.Cards.Add(t);
+            BaseHeader.Add(t);
 
             // BackHLinkRefNavArgument = localNavigationHelper.HLinkModelCollectionAdd(NoteObject.BackHLinkReferenceCollection);
-            BaseBackLinks.Cards.Add(NameMapObject.BackHLinkReferenceCollection.GetCardGroup());
+            BaseBackLinks.Add(NameMapObject.BackHLinkReferenceCollection.GetCardGroup());
         }
     }
 }

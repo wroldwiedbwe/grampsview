@@ -77,7 +77,7 @@ namespace GrampsView.ViewModels
                 // Header Card
                 CardGroup t = new CardGroup { Title = "Header Details" };
 
-                t.Cards.Add(new CardListLineCollection
+                t.Add(new CardListLineCollection
                     {
                        new CardListLine("Card Type:", "Source Detail"),
                        new CardListLine("Title:", SourceObject.GSTitle),
@@ -87,17 +87,17 @@ namespace GrampsView.ViewModels
                     });
 
                 // Add Model details
-                t.Cards.Add(DV.SourceDV.GetModelInfoFormatted(SourceObject));
+                t.Add(DV.SourceDV.GetModelInfoFormatted(SourceObject));
 
-                BaseHeader.Cards.Add(t);
+                BaseHeader.Add(t);
 
                 // Add bulk items
-                BaseDetail.Cards.Add(SourceObject.GMediaRefCollection.GetCardGroup());
-                BaseDetail.Cards.Add(SourceObject.GNoteRefCollection.GetCardGroup());
-                BaseDetail.Cards.Add(SourceObject.GTagRefCollection.GetCardGroup());
-                BaseDetail.Cards.Add(SourceObject.GRepositoryRefCollection.GetCardGroup());
-                BaseDetail.Cards.Add(SourceObject.GSourceAttributeCollection.GetCardGroup());
-                BaseBackLinks.Cards.Add(SourceObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseDetail.Add(SourceObject.GMediaRefCollection.GetCardGroup());
+                BaseDetail.Add(SourceObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Add(SourceObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Add(SourceObject.GRepositoryRefCollection.GetCardGroup());
+                BaseDetail.Add(SourceObject.GSourceAttributeCollection.GetCardGroup());
+                BaseBackLinks.Add(SourceObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

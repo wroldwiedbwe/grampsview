@@ -50,7 +50,7 @@ namespace GrampsView.Data.Model
 
             foreach (T item in Items)
             {
-                t.Cards.Add(item);
+                t.Add(item);
             }
 
             return t;

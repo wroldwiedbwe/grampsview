@@ -209,13 +209,6 @@ namespace GrampsView.Common
             set;
         }
 
-        ///// <summary>
-        ///// Gets or sets the note template.
-        ///// </summary>
-        ///// <value>
-        ///// The note template.
-        ///// </value>
-        // public DataTemplate NoteRefTemplate { get; set; }
         /// <summary>
         /// Gets or sets the person template.
         /// </summary>

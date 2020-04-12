@@ -73,7 +73,7 @@ namespace GrampsView.ViewModels
                 // Get Header details
                 CardGroup t = new CardGroup { Title = "Header Details" };
 
-                t.Cards.Add(new CardListLineCollection
+                t.Add(new CardListLineCollection
                     {
                         new CardListLine("Card Type:", "Place Detail"),
                         new CardListLine("Title:", PlaceObject.GPTitle),
@@ -81,19 +81,19 @@ namespace GrampsView.ViewModels
                         new CardListLine("Type:", PlaceObject.GType),
                     });
 
-                t.Cards.Add(DV.PlaceDV.GetModelInfoFormatted(PlaceObject));
+                t.Add(DV.PlaceDV.GetModelInfoFormatted(PlaceObject));
 
-                BaseHeader.Cards.Add(t);
+                BaseHeader.Add(t);
 
                 // Details
-                BaseDetail.Cards.Add(PlaceObject.GPlaceRefCollection.GetCardGroup("Enclosing Place"));
-                BaseDetail.Cards.Add(PlaceObject.PlaceChildCollection.GetCardGroup("Enclosed Places"));
+                BaseDetail.Add(PlaceObject.GPlaceRefCollection.GetCardGroup("Enclosing Place"));
+                BaseDetail.Add(PlaceObject.PlaceChildCollection.GetCardGroup("Enclosed Places"));
 
-                BaseDetail.Cards.Add(PlaceObject.GCitationRefCollection.GetCardGroup());
-                BaseDetail.Cards.Add(PlaceObject.GTagRefCollection.GetCardGroup());
-                BaseDetail.Cards.Add(PlaceObject.GURLCollection.GetCardGroup());
+                BaseDetail.Add(PlaceObject.GCitationRefCollection.GetCardGroup());
+                BaseDetail.Add(PlaceObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Add(PlaceObject.GURLCollection.GetCardGroup());
 
-                BaseBackLinks.Cards.Add(PlaceObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseBackLinks.Add(PlaceObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

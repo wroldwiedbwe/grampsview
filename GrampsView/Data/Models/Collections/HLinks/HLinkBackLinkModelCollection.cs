@@ -27,7 +27,7 @@ namespace GrampsView.Data.Collections
 
             foreach (var item in Items)
             {
-                t.Cards.Add(item.HLink());
+                t.Add(item.HLink());
             }
 
             return t;

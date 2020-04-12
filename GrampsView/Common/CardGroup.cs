@@ -11,8 +11,9 @@
 /// </summary>
 namespace GrampsView.Common
 {
+    using GrampsView.Data.Model;
     using Newtonsoft.Json;
-
+    using System;
     using System.Collections.ObjectModel;
     using System.Collections.Specialized;
     using System.ComponentModel;
@@ -118,13 +119,44 @@ namespace GrampsView.Common
 
         public void Add(CardGroup argCardGroup)
         {
-            this.Cards.Add(argCardGroup);
+            if (argCardGroup is null)
+            {
+                throw new ArgumentNullException(nameof(argCardGroup));
+            }
+
+            if (argCardGroup.Cards.Count > 0)
+            {
+                this.Cards.Add(argCardGroup);
+            }
+        }
+
+        public void Add(object argCardObject)
+        {
+            if (argCardObject is null)
+            {
+                throw new ArgumentNullException(nameof(argCardObject));
+            }
+
+            this.Cards.Add(argCardObject);
         }
 
         public void Add(CardGroup argCardGroup, string argTitle)
         {
-            this.Cards.Add(argCardGroup);
-            this.Title = argTitle;
+            if (argCardGroup is null)
+            {
+                throw new ArgumentNullException(nameof(argCardGroup));
+            }
+
+            if (argTitle is null)
+            {
+                throw new ArgumentNullException(nameof(argTitle));
+            }
+
+            if (argCardGroup.Cards.Count > 0)
+            {
+                this.Cards.Add(argCardGroup);
+                this.Title = argTitle;
+            }
         }
 
         public void Clear()

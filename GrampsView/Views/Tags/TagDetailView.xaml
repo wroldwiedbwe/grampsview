@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    ControlTemplate="{StaticResource DetailPageTemplate}"
+    ControlTemplate="{StaticResource ListPageTemplate}"
     Style="{DynamicResource GVBaseContentPage}"
     mc:Ignorable="d">
 
@@ -64,6 +64,6 @@
             x:Name="BaseBackLinks"
             Grid.Row="2"
             FMultiSource="{Binding BaseBackLinks}"
-            Style="{DynamicResource BackLinkCollection}" />
+            FsctTemplate="{StaticResource CardGroupTemplateSelectorSmall}" />
     </Grid>
 </ContentPage>

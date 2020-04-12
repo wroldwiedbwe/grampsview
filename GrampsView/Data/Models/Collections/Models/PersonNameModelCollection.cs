@@ -50,13 +50,13 @@ namespace GrampsView.Data.Collections
 
             foreach (PersonNameModel item in Items)
             {
-                t.Cards.Add(item);
+                t.Add(item);
 
                 if (item.GCitationRefCollection.Count > 0)
                 {
                     foreach (HLinkCitationModel citem in item.GCitationRefCollection)
                     {
-                        t.Cards.Add(citem);
+                        t.Add(citem);
                     }
                 }
 
@@ -64,7 +64,7 @@ namespace GrampsView.Data.Collections
                 {
                     foreach (HLinkNoteModel nitem in item.GNoteReferenceCollection)
                     {
-                        t.Cards.Add(nitem);
+                        t.Add(nitem);
                     }
                 }
             }

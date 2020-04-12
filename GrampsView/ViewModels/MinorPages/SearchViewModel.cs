@@ -125,10 +125,10 @@ namespace GrampsView.ViewModels
                 {
                     if (SearchCards.Cards.Count < argLimit)
                     {
-                        SearchCards.Cards.Add(item.HLink);
+                        SearchCards.Add(item.HLink);
                     }
                 }
-                BaseDetail.Cards.Add(SearchCards);
+                BaseDetail.Add(SearchCards);
 
                 // Create Family Cards
                 SearchCards = new CardGroup
@@ -140,10 +140,10 @@ namespace GrampsView.ViewModels
                 {
                     if (SearchCards.Cards.Count < argLimit)
                     {
-                        SearchCards.Cards.Add(item.HLink);
+                        SearchCards.Add(item.HLink);
                     }
                 }
-                BaseDetail.Cards.Add(SearchCards);
+                BaseDetail.Add(SearchCards);
 
                 // Create Event Cards
                 SearchCards = new CardGroup
@@ -155,10 +155,10 @@ namespace GrampsView.ViewModels
                 {
                     if (SearchCards.Cards.Count < argLimit)
                     {
-                        SearchCards.Cards.Add(item.HLink);
+                        SearchCards.Add(item.HLink);
                     }
                 }
-                BaseDetail.Cards.Add(SearchCards);
+                BaseDetail.Add(SearchCards);
 
                 // Create Note cards
                 SearchCards = new CardGroup
@@ -170,10 +170,10 @@ namespace GrampsView.ViewModels
                 {
                     if (SearchCards.Cards.Count < argLimit)
                     {
-                        SearchCards.Cards.Add(item.HLink);
+                        SearchCards.Add(item.HLink);
                     }
                 }
-                BaseDetail.Cards.Add(SearchCards);
+                BaseDetail.Add(SearchCards);
 
                 // Create Citation cards
                 SearchCards = new CardGroup
@@ -185,10 +185,10 @@ namespace GrampsView.ViewModels
                 {
                     if (SearchCards.Cards.Count < argLimit)
                     {
-                        SearchCards.Cards.Add(item.HLink);
+                        SearchCards.Add(item.HLink);
                     }
                 }
-                BaseDetail.Cards.Add(SearchCards);
+                BaseDetail.Add(SearchCards);
 
                 // Create Media Cards
                 SearchCards = new CardGroup
@@ -200,10 +200,10 @@ namespace GrampsView.ViewModels
                 {
                     if (SearchCards.Cards.Count < argLimit)
                     {
-                        SearchCards.Cards.Add(item.HLink);
+                        SearchCards.Add(item.HLink);
                     }
                 }
-                BaseDetail.Cards.Add(SearchCards);
+                BaseDetail.Add(SearchCards);
 
                 // Create Place Cards
                 SearchCards = new CardGroup
@@ -215,10 +215,10 @@ namespace GrampsView.ViewModels
                 {
                     if (SearchCards.Cards.Count < argLimit)
                     {
-                        SearchCards.Cards.Add(item.HLink);
+                        SearchCards.Add(item.HLink);
                     }
                 }
-                BaseDetail.Cards.Add(SearchCards);
+                BaseDetail.Add(SearchCards);
             }
         }
 

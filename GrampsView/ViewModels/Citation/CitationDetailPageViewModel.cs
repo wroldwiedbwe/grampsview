@@ -105,7 +105,7 @@ namespace GrampsView.ViewModels
                 // Get basic details
                 CardGroup t = new CardGroup { Title = "Header Details" };
 
-                t.Cards.Add(new CardListLineCollection
+                t.Add(new CardListLineCollection
             {
                     new CardListLine("Card Type:", "Citation Detail"),
                     new CardListLine("Date:", CitationObject.GDateContent.GetLongDateAsString),
@@ -113,9 +113,9 @@ namespace GrampsView.ViewModels
                     new CardListLine("Confidence:", CitationObject.GConfidence.ToString(CultureInfo.CurrentCulture)),
             });
 
-                t.Cards.Add(DV.CitationDV.GetModelInfoFormatted(CitationObject));
+                t.Add(DV.CitationDV.GetModelInfoFormatted(CitationObject));
 
-                BaseHeader.Cards.Add(t);
+                BaseHeader.Add(t);
 
                 // Add Source details
                 SourceObject = CitationObject.GSourceRef;
@@ -128,12 +128,12 @@ namespace GrampsView.ViewModels
                 }
 
                 // Add remaining details
-                BaseDetail.Cards.Add(CitationObject.GMediaRefCollection.GetCardGroup());
-                BaseDetail.Cards.Add(CitationObject.GNoteRefCollection.GetCardGroup());
-                BaseDetail.Cards.Add(CitationObject.GTagRef.GetCardGroup());
-                BaseDetail.Cards.Add(CitationObject.GSourceAttributeCollection.GetCardGroup());
+                BaseDetail.Add(CitationObject.GMediaRefCollection.GetCardGroup());
+                BaseDetail.Add(CitationObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Add(CitationObject.GTagRef.GetCardGroup());
+                BaseDetail.Add(CitationObject.GSourceAttributeCollection.GetCardGroup());
 
-                BaseBackLinks.Cards.Add(CitationObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseBackLinks.Add(CitationObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

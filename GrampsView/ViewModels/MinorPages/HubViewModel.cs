@@ -141,11 +141,11 @@ namespace GrampsView.ViewModels
 
             foreach (NoteModel item in t)
             {
-                temp.Cards.Add(item.HLink);
+                temp.Add(item.HLink);
             }
 
             temp.Title = "ToDo list";
-            LatestChanges.Cards.Add(temp);
+            LatestChanges.Add(temp);
 
             // Setup Latest Changes list
 
@@ -167,7 +167,7 @@ namespace GrampsView.ViewModels
 
             LatestChanges.Add(DV.SourceDV.GetLatestChanges());
 
-            LatestChanges.Cards.Add(DV.TagDV.GetLatestChanges());
+            LatestChanges.Add(DV.TagDV.GetLatestChanges());
         }
     }
 }

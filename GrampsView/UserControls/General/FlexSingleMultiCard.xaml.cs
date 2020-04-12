@@ -11,8 +11,9 @@
 
     public partial class FlexSingleMultiCard : Frame
     {
-        public static readonly BindableProperty FMultiSourceProperty
-                 = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexSingleMultiCard), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FMultiSource));
+        public static readonly BindableProperty FMultiSourceProperty = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexSingleMultiCard), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FMultiSource));
+
+        public static readonly BindableProperty FsctTemplateProperty = BindableProperty.Create(nameof(FsctTemplate), typeof(DataTemplateSelector), typeof(FlexSingleMultiCard), propertyChanged: OnItemTemplateChanged);
 
         private static int startItemGet = 0;
         private static int virtualItemGet = 5;
@@ -36,7 +37,7 @@
             IndexLength = startItemGet;
         }
 
-        public ObservableCollection<object> DisplayList { get; set; } = new ObservableCollection<object>();
+        public CardGroup DisplayList { get; set; } = new CardGroup();
 
         public bool FlexSingleCardVisible
         {
@@ -59,10 +60,19 @@
             set { SetValue(FMultiSourceProperty, value); }
         }
 
-        public int IndexLength { get; set; }  // Gota start with enough so scrollbar is visible on the desktop
+        public DataTemplateSelector FsctTemplate
+        {
+            get { return (DataTemplateSelector)GetValue(FsctTemplateProperty); }
+            set { SetValue(FsctTemplateProperty, value); }
+        }
+
+        public int IndexLength { get; set; }
 
         public int IndexStart { get; set; } = 0;
 
+        private CardGroup ActualDisplayList { get; set; } = new CardGroup();
+
+        // Gota start with enough so scrollbar is visible on the desktop
         private static void OnItemsSourceChanged(BindableObject obj, object oldValue, object newValue)
         {
             var layout = obj as FlexSingleMultiCard;
@@ -73,32 +83,38 @@
                 observableCollection.CollectionChanged += layout.OnItemsSourceCollectionChanged;
             }
 
-            layout.DisplayList.CollectionChanged += layout.OnDisplayListCollectionChanged;
+            // layout.ActualDisplayList.CollectionChanged += layout.OnActualDisplayListCollectionChanged;
 
             // Layout out children
             if (layout?.FMultiSource != null)
             {
                 layout.IndexStart = 0;
                 layout.IndexLength = startItemGet;
+            }
+        }
 
-                layout.AddToDisplay();
+        private static void OnItemTemplateChanged(BindableObject obj, object oldValue, object newValue)
+        {
+            var layout = obj as FlexSingleMultiCard;
+
+            if (layout?.FMultiSource != null && layout?.FsctTemplate != null)
 
                 layout.BuildLayout();
-            }
         }
 
         private void AddToDisplay()
         {
             //Debug.WriteLine("GetIt");
 
-            if (DisplayList.Count == FMultiSource.Cards.Count)
+            if (DisplayList.Cards.Count == FMultiSource.Cards.Count)
             {
                 return;
             }
 
-            foreach (var item in FMultiSource.Cards.Skip(IndexStart).Take(IndexLength).ToList())
+            foreach (var item in ActualDisplayList.Cards.Skip(IndexStart).Take(IndexLength).ToList())
             {
                 DisplayList.Add(item);
+                this.flexer.Children.Add(CreateChildView(item));
             }
 
             IndexStart = IndexStart + IndexLength;
@@ -119,7 +135,7 @@
 
             this.flexer.Children.Clear();
 
-            foreach (var item in DisplayList)
+            foreach (var item in DisplayList.Cards)
             {
                 this.flexer.Children.Add(CreateChildView(item));
             }
@@ -127,18 +143,13 @@
 
         private View CreateChildView(object item)
         {
-            Application.Current.Resources.TryGetValue("CardGroupTemplate", out var cardGroupTemplate);
-
-            DataTemplate t = cardGroupTemplate as DataTemplate;
-
-            View view = (View)t.CreateContent(item, null);
-
-            view.BindingContext = item;
-
-            return view;
+            var dts = FsctTemplate as DataTemplateSelector;
+            var itemTemplate = dts.SelectTemplate(item, null);
+            itemTemplate.SetValue(BindableObject.BindingContextProperty, item);
+            return (View)itemTemplate.CreateContent();
         }
 
-        private void OnDisplayListCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private void OnActualDisplayListCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Reset)
             {
@@ -154,14 +165,16 @@
 
             if (e.NewItems != null)
             {
-                CardGroup newCards = e.NewItems as CardGroup;
-
-                // Item(s) added.
-                foreach (var item in newCards.Cards)
+                foreach (CardGroup argCardGroup in e.NewItems)
                 {
-                    var view = CreateChildView(item);
-                    this.flexer.Children.Add(view);
+                    // Item(s) added.
+                    foreach (var item in argCardGroup.Cards)
+                    {
+                        ActualDisplayList.Add(item);
+                    }
                 }
+
+                AddToDisplay();
             }
         }
 
@@ -171,6 +184,7 @@
             {
                 // Items cleared
                 this.DisplayList.Clear();
+                this.ActualDisplayList.Clear();
             }
 
             if (e.OldItems != null)
@@ -180,13 +194,18 @@
 
             if (e.NewItems != null)
             {
-                CardGroup newCards = e.NewItems as CardGroup;
-
-                // Item(s) added.
-                foreach (var item in newCards.Cards)
+                foreach (CardGroup argCardGroup in e.NewItems)
                 {
-                    this.DisplayList.Add(item);
+                    // Item(s) added.
+                    foreach (var item in argCardGroup.Cards)
+                    {
+                        ActualDisplayList.Add(item);
+                    }
                 }
+
+                AddToDisplay();
+
+                BuildLayout();
             }
         }
 

@@ -99,22 +99,22 @@ namespace GrampsView.ViewModels
                 // Get basic details
                 CardGroup basicHeaderDetails = new CardGroup { Title = "Header Details" };
 
-                basicHeaderDetails.Cards.Add(new CardListLineCollection
+                basicHeaderDetails.Add(new CardListLineCollection
                 {
                     new CardListLine("Card Type:", "Note Detail"),
                     new CardListLine("Type:", NoteObject.GType),
                 });
 
                 // Add Model details
-                basicHeaderDetails.Cards.Add(DV.NoteDV.GetModelInfoFormatted(NoteObject));
+                basicHeaderDetails.Add(DV.NoteDV.GetModelInfoFormatted(NoteObject));
 
-                BaseHeader.Cards.Add(basicHeaderDetails);
+                BaseHeader.Add(basicHeaderDetails);
 
                 HLinkNote = NoteObject.HLink;
 
-                BaseDetail.Cards.Add(NoteObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Add(NoteObject.GTagRefCollection.GetCardGroup());
 
-                BaseBackLinks.Cards.Add(NoteObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseBackLinks.Add(NoteObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }
