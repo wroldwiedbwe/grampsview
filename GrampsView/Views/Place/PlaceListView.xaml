@@ -38,7 +38,7 @@
     <!--  Content  -->
     <Grid>
 
-        <ucon:FlexSingleCardType
+        <ucon:FlexSingleGroupSingleCard
             x:Name="flexLayout"
             FsctSource="{Binding PlaceSource, Mode=OneWay}"
             FsctTemplate="{StaticResource PlaceCardSmallDT}" />

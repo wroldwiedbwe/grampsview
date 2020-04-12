@@ -1,5 +1,5 @@
 ﻿<Frame
-    x:Class="GrampsView.UserControls.FlexSingleCardType"
+    x:Class="GrampsView.UserControls.FlexSingleGroupMultiCard"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Name="FlexSingleCardTypeRoot"
@@ -26,7 +26,6 @@
             <FlexLayout
                 x:Name="flexer"
                 Grid.Row="1"
-                BindableLayout.ItemTemplate="{Binding FsctTemplate, Mode=OneWay}"
                 BindableLayout.ItemsSource="{Binding DisplayList, Mode=OneWay}"
                 IsEnabled="{Binding FlexSingleCardVisible, Mode=OneWay}"
                 Style="{DynamicResource FlexLayoutCards}" />

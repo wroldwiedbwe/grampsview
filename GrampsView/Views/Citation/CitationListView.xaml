@@ -40,7 +40,7 @@
 
     <!--  Content  -->
     <Grid>
-        <ucon:FlexSingleCardType
+        <ucon:FlexSingleGroupSingleCard
             x:Name="flexLayout"
             FsctSource="{Binding CitationSource, Mode=OneWay}"
             FsctTemplate="{StaticResource CitationCardSmallDT}" />

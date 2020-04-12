@@ -38,7 +38,7 @@
     <!--  Content  -->
     <Grid>
 
-        <ucon:FlexSingleCardType
+        <ucon:FlexSingleGroupSingleCard
             x:Name="flexLayout"
             FsctSource="{Binding NoteSource, Mode=OneWay}"
             FsctTemplate="{StaticResource NoteCardSmallDT}" />

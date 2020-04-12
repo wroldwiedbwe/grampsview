@@ -41,7 +41,7 @@
     <!--  Content  -->
     <Grid>
 
-        <ucon:FlexSingleCardType
+        <ucon:FlexSingleGroupSingleCard
             x:Name="flexLayout"
             FsctSource="{Binding MediaSource, Mode=OneWay}"
             FsctTemplate="{StaticResource MediaCardSmallDT}" />

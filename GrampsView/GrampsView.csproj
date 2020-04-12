@@ -233,8 +233,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="UserControls\General\FlexSingleMultiCard.xaml.cs">
-      <DependentUpon>FlexSingleMultiCard.xaml</DependentUpon>
+    <Compile Update="UserControls\General\FlexMultiGroupMultiCard.xaml.cs">
+      <DependentUpon>FlexMultiGroupMultiCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\General\FlexSingleGroupMultiCard.xaml.cs">
+      <DependentUpon>FlexSingleGroupMultiCard.xaml</DependentUpon>
     </Compile>
     <Compile Update="UserControls\General\TopMenu.xaml.cs">
       <DependentUpon>TopMenu.xaml</DependentUpon>
@@ -242,8 +245,8 @@
     <Compile Update="UserControls\General\FlexSingleCardTypeA.xaml.cs">
       <DependentUpon>FlexSingleCardTypeA.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UserControls\General\FlexSingleCardType.xaml.cs">
-      <DependentUpon>FlexSingleCardType.xaml</DependentUpon>
+    <Compile Update="UserControls\General\FlexSingleGroupSingleCard.xaml.cs">
+      <DependentUpon>FlexSingleGroupSingleCard.xaml</DependentUpon>
     </Compile>
     <Compile Update="UserControls\General\BottomMenu.xaml.cs">
       <DependentUpon>BottomMenu.xaml</DependentUpon>

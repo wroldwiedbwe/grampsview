@@ -2,23 +2,21 @@
 {
     using GrampsView.Common;
 
-    using System.Collections.ObjectModel;
     using System.Collections.Specialized;
     using System.Linq;
 
     using Xamarin.Forms;
-    using Xamarin.Forms.Internals;
 
-    public partial class FlexSingleMultiCard : Frame
+    public partial class FlexSingleGroupMultiCard : Frame
     {
-        public static readonly BindableProperty FMultiSourceProperty = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexSingleMultiCard), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FMultiSource));
+        public static readonly BindableProperty FMultiSourceProperty = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexSingleGroupMultiCard), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FMultiSource));
 
-        public static readonly BindableProperty FsctTemplateProperty = BindableProperty.Create(nameof(FsctTemplate), typeof(DataTemplateSelector), typeof(FlexSingleMultiCard), propertyChanged: OnItemTemplateChanged);
+        public static readonly BindableProperty FsctTemplateProperty = BindableProperty.Create(nameof(FsctTemplate), typeof(DataTemplateSelector), typeof(FlexSingleGroupMultiCard), propertyChanged: OnItemTemplateChanged);
 
         private static int startItemGet = 0;
         private static int virtualItemGet = 5;
 
-        public FlexSingleMultiCard()
+        public FlexSingleGroupMultiCard()
         {
             InitializeComponent();
 
@@ -75,7 +73,7 @@
         // Gota start with enough so scrollbar is visible on the desktop
         private static void OnItemsSourceChanged(BindableObject obj, object oldValue, object newValue)
         {
-            var layout = obj as FlexSingleMultiCard;
+            var layout = obj as FlexSingleGroupMultiCard;
 
             // Register for items changed
             if (newValue is INotifyCollectionChanged observableCollection)
@@ -95,7 +93,7 @@
 
         private static void OnItemTemplateChanged(BindableObject obj, object oldValue, object newValue)
         {
-            var layout = obj as FlexSingleMultiCard;
+            var layout = obj as FlexSingleGroupMultiCard;
 
             if (layout?.FMultiSource != null && layout?.FsctTemplate != null)
 

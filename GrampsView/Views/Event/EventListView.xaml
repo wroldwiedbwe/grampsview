@@ -38,7 +38,7 @@
     <!--  Content  -->
     <Grid>
 
-        <userControls:FlexSingleCardType
+        <userControls:FlexSingleGroupSingleCard
             x:Name="flexLayout"
             FsctSource="{Binding EventSource, Mode=OneWay}"
             FsctTemplate="{StaticResource EventCardSmallDT}" />

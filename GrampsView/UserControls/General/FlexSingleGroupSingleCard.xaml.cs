@@ -9,18 +9,18 @@
     using Xamarin.Forms;
     using Xamarin.Forms.Internals;
 
-    public partial class FlexSingleCardType : Frame
+    public partial class FlexSingleGroupSingleCard : Frame
     {
         public static readonly BindableProperty FsctSourceProperty
-                 = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexSingleCardType), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FsctSource));
+                 = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexSingleGroupSingleCard), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FsctSource));
 
         public static readonly BindableProperty FsctTemplateProperty
-            = BindableProperty.Create(nameof(FsctTemplate), typeof(DataTemplate), typeof(FlexSingleCardType), propertyChanged: OnItemTemplateChanged);
+            = BindableProperty.Create(nameof(FsctTemplate), typeof(DataTemplate), typeof(FlexSingleGroupSingleCard), propertyChanged: OnItemTemplateChanged);
 
         private static int startItemGet = 0;
         private static int virtualItemGet = 5;
 
-        public FlexSingleCardType()
+        public FlexSingleGroupSingleCard()
         {
             InitializeComponent();
 
@@ -74,7 +74,7 @@
 
         private static void OnItemsSourceChanged(BindableObject obj, object oldValue, object newValue)
         {
-            var layout = obj as FlexSingleCardType;
+            var layout = obj as FlexSingleGroupSingleCard;
 
             // Register for items changed
             if (newValue is INotifyCollectionChanged observableCollection)
@@ -98,7 +98,7 @@
 
         private static void OnItemTemplateChanged(BindableObject obj, object oldValue, object newValue)
         {
-            var layout = obj as FlexSingleCardType;
+            var layout = obj as FlexSingleGroupSingleCard;
 
             if (layout?.FsctSource != null && layout?.FsctTemplate != null)
 
