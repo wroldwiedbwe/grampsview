@@ -108,13 +108,13 @@ namespace GrampsView.ViewModels
                 // Add Model details
                 basicHeaderDetails.Cards.Add(DV.NoteDV.GetModelInfoFormatted(NoteObject));
 
-                BaseHeader.Add(basicHeaderDetails);
+                BaseHeader.Cards.Add(basicHeaderDetails);
 
                 HLinkNote = NoteObject.HLink;
 
-                BaseDetail.Add(NoteObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(NoteObject.GTagRefCollection.GetCardGroup());
 
-                BaseBackLinks.Add(NoteObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseBackLinks.Cards.Add(NoteObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

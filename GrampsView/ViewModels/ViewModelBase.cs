@@ -14,12 +14,12 @@ namespace GrampsView.ViewModels
 {
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible, IInitialize
     {
-        private CardGroupCollection _BaseBackLinks = new CardGroupCollection();
+        private CardGroup _BaseBackLinks = new CardGroup();
 
         /// <summary>
         /// The local base header
         /// </summary>
-        private CardGroupCollection _BaseHeader = new CardGroupCollection();
+        private CardGroup _BaseHeader = new CardGroup();
 
         private bool _BaseIsLoading;
 
@@ -70,7 +70,7 @@ namespace GrampsView.ViewModels
             BaseNavigationService = iocNavigationService;
         }
 
-        public CardGroupCollection BaseBackLinks
+        public CardGroup BaseBackLinks
         {
             get
             {
@@ -110,7 +110,7 @@ namespace GrampsView.ViewModels
         /// <value>
         /// The model grid view.
         /// </value>
-        public CardGroupCollection BaseDetail
+        public CardGroup BaseDetail
         {
             get;
 
@@ -120,7 +120,7 @@ namespace GrampsView.ViewModels
             //}
         }
 
-        = new CardGroupCollection();
+        = new CardGroup();
 
         /// <summary>
         /// Gets or sets the base event aggregator.
@@ -149,7 +149,7 @@ namespace GrampsView.ViewModels
         /// <value>
         /// The base header collection.
         /// </value>
-        public CardGroupCollection BaseHeader
+        public CardGroup BaseHeader
         {
             get
             {

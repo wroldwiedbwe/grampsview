@@ -32,7 +32,7 @@ namespace GrampsView.ViewModels
 
         private string _DaText = string.Empty;
 
-        private CardGroupCollection _HeaderDetailList = new CardGroupCollection();
+        private CardGroup _HeaderDetailList = new CardGroup();
 
         private HeaderModel _HeaderModel = null;
 
@@ -111,7 +111,7 @@ namespace GrampsView.ViewModels
         /// The header detail list.
         /// </value>
         // [RestorableState]
-        public CardGroupCollection HeaderDetailList
+        public CardGroup HeaderDetailList
         {
             get
             {

@@ -161,19 +161,19 @@ namespace GrampsView.ViewModels
                     // Add standard details
                     t.Cards.Add(DV.MediaDV.GetModelInfoFormatted(CurrentMediaObject));
 
-                    BaseHeader.Add(t);
+                    BaseHeader.Cards.Add(t);
 
                     // Add HLink Details
-                    BaseDetail.Add(CurrentHLinkMedia.GAttributeRefCollection.GetCardGroup("Hlink Attributes"));
-                    BaseDetail.Add(CurrentHLinkMedia.GCitationRefCollection.GetCardGroup("HLink Citations"));
-                    BaseDetail.Add(CurrentHLinkMedia.GNoteRefCollection.GetCardGroup("HLink Notes"));
+                    BaseDetail.Cards.Add(CurrentHLinkMedia.GAttributeRefCollection.GetCardGroup("Hlink Attributes"));
+                    BaseDetail.Cards.Add(CurrentHLinkMedia.GCitationRefCollection.GetCardGroup("HLink Citations"));
+                    BaseDetail.Cards.Add(CurrentHLinkMedia.GNoteRefCollection.GetCardGroup("HLink Notes"));
 
                     // Add Model details
-                    BaseDetail.Add(CurrentMediaObject.GCitationRefCollection.GetCardGroup());
-                    BaseDetail.Add(CurrentMediaObject.GNoteRefCollection.GetCardGroup());
-                    BaseDetail.Add(CurrentMediaObject.GTagRefCollection.GetCardGroup());
+                    BaseDetail.Cards.Add(CurrentMediaObject.GCitationRefCollection.GetCardGroup());
+                    BaseDetail.Cards.Add(CurrentMediaObject.GNoteRefCollection.GetCardGroup());
+                    BaseDetail.Cards.Add(CurrentMediaObject.GTagRefCollection.GetCardGroup());
 
-                    BaseBackLinks.Add(CurrentMediaObject.BackHLinkReferenceCollection.GetCardGroup());
+                    BaseBackLinks.Cards.Add(CurrentMediaObject.BackHLinkReferenceCollection.GetCardGroup());
                 }
 
                 BaseCL.LogRoutineExit("MediaDetailViewModel OnNavigatedTo");

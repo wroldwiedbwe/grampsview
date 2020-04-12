@@ -11,7 +11,7 @@
 namespace GrampsView.Data.Model
 {
     using GrampsView.Common;
-    using System.Collections;
+
     using System.Collections.ObjectModel;
     using System.Runtime.Serialization;
 
@@ -19,20 +19,20 @@ namespace GrampsView.Data.Model
     /// GRAMPS $$(Hlink)$$ element class.
     /// </summary>
     [CollectionDataContract]
-    public class HLinkBaseCollection<T> : ObservableCollection<T>, IHLinkCollectionBase<T>, IEnumerable, IEnumerator
+    public class HLinkBaseCollection<T> : ObservableCollection<T>, IHLinkCollectionBase<T>   // , IEnumerable, IEnumerator
          where T : HLinkBase, new()
     {
         // TODO Handle HLink collections properly by handling all their data
 
-        private int Position = -1;
+        //private int Position = -1;
 
-        public object Current
-        {
-            get
-            {
-                return this[Position];
-            }
-        }
+        //public object Current
+        //{
+        //    get
+        //    {
+        //        return this[Position];
+        //    }
+        //}
 
         /// <summary>
         /// Gets or sets the first image h link.
@@ -56,25 +56,25 @@ namespace GrampsView.Data.Model
             return t;
         }
 
-        public IEnumerator GetCardGroupEnumerator()
-        {
-            return (IEnumerator)this;
-        }
+        //public IEnumerator GetCardGroupEnumerator()
+        //{
+        //    return (IEnumerator)this;
+        //}
 
-        public bool MoveNext()
-        {
-            if (Position < this.Count - 1)
-            {
-                ++Position;
-                return true;
-            }
+        //public bool MoveNext()
+        //{
+        //    if (Position < this.Count - 1)
+        //    {
+        //        ++Position;
+        //        return true;
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
-        public void Reset()
-        {
-            Position = -1;
-        }
+        //public void Reset()
+        //{
+        //    Position = -1;
+        //}
     }
 }

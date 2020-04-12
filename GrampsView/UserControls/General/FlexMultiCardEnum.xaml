@@ -12,7 +12,7 @@
             x:Name="multiflexer"
             BindableLayout.ItemsSource="{Binding DisplayMultiList, Mode=OneWay}"
             HorizontalOptions="Start"
-            IsEnabled="{Binding FlexMultiCardVisible, Mode=OneWay}"
+            IsEnabled="{Binding UconVisible, Mode=OneWay}"
             Style="{DynamicResource FlexLayoutCards}" />
     </StackLayout>
 </Frame>

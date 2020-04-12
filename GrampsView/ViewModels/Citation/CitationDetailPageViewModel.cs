@@ -115,7 +115,7 @@ namespace GrampsView.ViewModels
 
                 t.Cards.Add(DV.CitationDV.GetModelInfoFormatted(CitationObject));
 
-                BaseHeader.Add(t);
+                BaseHeader.Cards.Add(t);
 
                 // Add Source details
                 SourceObject = CitationObject.GSourceRef;
@@ -128,12 +128,12 @@ namespace GrampsView.ViewModels
                 }
 
                 // Add remaining details
-                BaseDetail.Add(CitationObject.GMediaRefCollection.GetCardGroup());
-                BaseDetail.Add(CitationObject.GNoteRefCollection.GetCardGroup());
-                BaseDetail.Add(CitationObject.GTagRef.GetCardGroup());
-                BaseDetail.Add(CitationObject.GSourceAttributeCollection.GetCardGroup());
+                BaseDetail.Cards.Add(CitationObject.GMediaRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(CitationObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(CitationObject.GTagRef.GetCardGroup());
+                BaseDetail.Cards.Add(CitationObject.GSourceAttributeCollection.GetCardGroup());
 
-                BaseBackLinks.Add(CitationObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseBackLinks.Cards.Add(CitationObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

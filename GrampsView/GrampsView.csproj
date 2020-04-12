@@ -38,6 +38,7 @@
     <Compile Remove="Behaviours\ListViewAutoSizeBehaviour.cs" />
     <Compile Remove="Behaviours\RadioButtonBehaviour.cs" />
     <Compile Remove="Common\AppExtension.cs" />
+    <Compile Remove="Common\CardGroupCollection.cs" />
     <Compile Remove="Common\CardGroupTemplateSelectorRefLarge.cs" />
     <Compile Remove="Common\CommonCropBitmap.cs" />
     <Compile Remove="Common\CommonLogCircular.cs" />
@@ -97,6 +98,8 @@
     <Compile Remove="UserControls\General\CardGridMultiType.xaml.cs" />
     <Compile Remove="UserControls\General\CardGridSingleType.xaml.cs" />
     <Compile Remove="UserControls\General\CheckBoxExtended.cs" />
+    <Compile Remove="UserControls\General\FlexMultiCardEnum.xaml.cs" />
+    <Compile Remove="UserControls\General\FlexMultiCardType.xaml.cs" />
     <Compile Remove="UserControls\General\FlexSingleCardGroup.xaml.cs" />
     <Compile Remove="UserControls\General\MediaImage.xaml.cs" />
     <Compile Remove="UserControls\General\RadioButtonxExtended .cs" />
@@ -155,6 +158,7 @@
     <EmbeddedResource Remove="UserControls\FamilyCardLarge.xaml" />
     <EmbeddedResource Remove="UserControls\General\CardGridMultiType.xaml" />
     <EmbeddedResource Remove="UserControls\General\CardGridSingleType.xaml" />
+    <EmbeddedResource Remove="UserControls\General\FlexMultiCardEnum.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexSingleCardGroup.xaml" />
     <EmbeddedResource Remove="UserControls\General\MediaImage.xaml" />
     <EmbeddedResource Remove="UserControls\HLinkCitationCardSmall.xaml" />
@@ -197,6 +201,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="UserControls\General\FlexMultiCardType.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.1.0" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.1.0" />
     <PackageReference Include="Microsoft.AppCenter.Distribute" Version="3.1.0" />
@@ -225,14 +233,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="UserControls\General\FlexMultiCardEnum.xaml.cs">
-      <DependentUpon>FlexMultiCardEnum.xaml</DependentUpon>
+    <Compile Update="UserControls\General\FlexSingleMultiCard.xaml.cs">
+      <DependentUpon>FlexSingleMultiCard.xaml</DependentUpon>
     </Compile>
     <Compile Update="UserControls\General\TopMenu.xaml.cs">
       <DependentUpon>TopMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="UserControls\General\FlexMultiCardType.xaml.cs">
-      <DependentUpon>FlexMultiCardType.xaml</DependentUpon>
     </Compile>
     <Compile Update="UserControls\General\FlexSingleCardTypeA.xaml.cs">
       <DependentUpon>FlexSingleCardTypeA.xaml</DependentUpon>

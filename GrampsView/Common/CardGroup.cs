@@ -11,22 +11,19 @@
 /// </summary>
 namespace GrampsView.Common
 {
-    using GrampsView.Data.Model;
     using Newtonsoft.Json;
 
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Collections.Specialized;
     using System.ComponentModel;
 
     /// <summary>
     /// </summary>
-    public class CardGroup : INotifyPropertyChanged, INotifyCollectionChanged, IEnumerable, IEnumerator, IEnumerable<HLinkBase>
+    public class CardGroup : INotifyPropertyChanged, INotifyCollectionChanged  //, IEnumerable, IEnumerator, IEnumerable<HLinkBase>
     {
         private ObservableCollection<object> data = new ObservableCollection<object>();
 
-        private int Position = -1;
+        //private int Position = -1;
 
         public event NotifyCollectionChangedEventHandler CollectionChanged
         {
@@ -92,14 +89,6 @@ namespace GrampsView.Common
             }
         }
 
-        public object Current
-        {
-            get
-            {
-                return Cards[Position];
-            }
-        }
-
         public string SerializedData
         {
             get
@@ -112,6 +101,13 @@ namespace GrampsView.Common
             }
         }
 
+        //public object Current
+        //{
+        //    get
+        //    {
+        //        return Cards[Position];
+        //    }
+        //}
         /// <summary>
         /// Gets or sets the title.
         /// </summary>
@@ -120,26 +116,42 @@ namespace GrampsView.Common
         /// </value>
         public string Title { get; set; }
 
-        public IEnumerator GetEnumerator()
+        public void Add(CardGroup argCardGroup)
         {
-            return (IEnumerator)this;
+            this.Cards.Add(argCardGroup);
         }
 
-        IEnumerator<HLinkBase> IEnumerable<HLinkBase>.GetEnumerator() => ((IEnumerable<HLinkBase>)Cards).GetEnumerator();
-
-        public bool MoveNext()
+        public void Add(CardGroup argCardGroup, string argTitle)
         {
-            if (Position < Cards.Count - 1)
-            {
-                ++Position;
-                return true;
-            }
-            return false;
+            this.Cards.Add(argCardGroup);
+            this.Title = argTitle;
         }
 
-        public void Reset()
+        public void Clear()
         {
-            Position = -1;
+            this.Cards.Clear();
         }
+
+        //public IEnumerator GetEnumerator()
+        //{
+        //    return (IEnumerator)this;
+        //}
+
+        //IEnumerator<HLinkBase> IEnumerable<HLinkBase>.GetEnumerator() => ((IEnumerable<HLinkBase>)Cards).GetEnumerator();
+
+        //public bool MoveNext()
+        //{
+        //    if (Position < Cards.Count - 1)
+        //    {
+        //        ++Position;
+        //        return true;
+        //    }
+        //    return false;
+        //}
+
+        //public void Reset()
+        //{
+        //    Position = -1;
+        //}
     }
 }

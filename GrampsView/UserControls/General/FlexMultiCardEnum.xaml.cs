@@ -12,7 +12,7 @@
     public partial class FlexMultiCardEnum : Frame
     {
         public static readonly BindableProperty UconSourceProperty
-                 = BindableProperty.Create(returnType: typeof(IEnumerator), declaringType: typeof(FlexMultiCardEnum), propertyChanged: OnItemsSourceChanged, propertyName: nameof(UconSource));
+                 = BindableProperty.Create(returnType: typeof(IEnumerable), declaringType: typeof(FlexMultiCardEnum), propertyChanged: OnItemsSourceChanged, propertyName: nameof(UconSource));
 
         private bool UconSourceAtEnd;
 
@@ -23,11 +23,11 @@
             UconSourceAtEnd = false;
         }
 
-        public ObservableCollection<CardGroupCollection> DisplayMultiList { get; } = new ObservableCollection<CardGroupCollection>();
+        public ObservableCollection<CardGroup> DisplayMultiList { get; } = new ObservableCollection<CardGroup>();
 
-        public IEnumerator UconSource
+        public IEnumerable UconSource
         {
-            get { return (IEnumerator)GetValue(UconSourceProperty); }
+            get { return (IEnumerable)GetValue(UconSourceProperty); }
             set { SetValue(UconSourceProperty, value); }
         }
 
@@ -46,7 +46,7 @@
             }
         }
 
-        private static View CreateChildView(CardGroupCollection item)
+        private static View CreateChildView(CardGroup item)
         {
             Application.Current.Resources.TryGetValue("CardGroupTemplate", out var cardGroupTemplate);
 
@@ -84,17 +84,17 @@
         {
             //Debug.WriteLine("GetIt");
 
-            //foreach (CardGroupCollection item in UconSource)
-            //{
-            //    DisplayMultiList.Add(item);
-            //}
+            foreach (CardGroup item in UconSource)
+            {
+                DisplayMultiList.Add(item);
+            }
         }
 
         private void BuildLayout()
         {
             this.multiflexer.Children.Clear();
 
-            foreach (CardGroupCollection item in DisplayMultiList)
+            foreach (CardGroup item in DisplayMultiList)
             {
                 this.multiflexer.Children.Add(CreateChildView(item));
             }
@@ -119,7 +119,7 @@
                 // Item(s) added.
                 for (int i = 0; i < e.NewItems.Count; i++)
                 {
-                    CardGroupCollection item = e.NewItems[i] as CardGroupCollection;
+                    CardGroup item = e.NewItems[i] as CardGroup;
                     View view = CreateChildView(item);
                     this.multiflexer.Children.Insert(e.NewStartingIndex + i, view);
                 }
@@ -145,7 +145,7 @@
                 // Item(s) added.
                 for (int i = 0; i < e.NewItems.Count; i++)
                 {
-                    CardGroupCollection item = e.NewItems[i] as CardGroupCollection;
+                    CardGroup item = e.NewItems[i] as CardGroup;
 
                     DisplayMultiList.Add(item);
                 }

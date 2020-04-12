@@ -29,7 +29,7 @@ namespace GrampsView.ViewModels
         /// </summary>
         private HLinkMediaModel _HeroImage = new HLinkMediaModel();
 
-        private CardGroupCollection _LatestChanges = new CardGroupCollection();
+        private CardGroup _LatestChanges = new CardGroup();
 
         /// <summary>
         /// The local header ViewModel.
@@ -95,7 +95,7 @@ namespace GrampsView.ViewModels
             }
         }
 
-        public CardGroupCollection LatestChanges
+        public CardGroup LatestChanges
         {
             get
             {
@@ -145,7 +145,7 @@ namespace GrampsView.ViewModels
             }
 
             temp.Title = "ToDo list";
-            LatestChanges.Add(temp);
+            LatestChanges.Cards.Add(temp);
 
             // Setup Latest Changes list
 
@@ -167,7 +167,7 @@ namespace GrampsView.ViewModels
 
             LatestChanges.Add(DV.SourceDV.GetLatestChanges());
 
-            LatestChanges.Add(DV.TagDV.GetLatestChanges());
+            LatestChanges.Cards.Add(DV.TagDV.GetLatestChanges());
         }
     }
 }

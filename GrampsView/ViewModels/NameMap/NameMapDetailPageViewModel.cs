@@ -100,10 +100,10 @@ namespace GrampsView.ViewModels
             // Add Model details
             t.Cards.Add(DV.NameMapDV.GetModelInfoFormatted(NameMapObject));
 
-            BaseHeader.Add(t);
+            BaseHeader.Cards.Add(t);
 
             // BackHLinkRefNavArgument = localNavigationHelper.HLinkModelCollectionAdd(NoteObject.BackHLinkReferenceCollection);
-            BaseBackLinks.Add(NameMapObject.BackHLinkReferenceCollection.GetCardGroup());
+            BaseBackLinks.Cards.Add(NameMapObject.BackHLinkReferenceCollection.GetCardGroup());
         }
     }
 }

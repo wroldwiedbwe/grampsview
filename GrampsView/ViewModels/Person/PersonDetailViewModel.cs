@@ -170,32 +170,32 @@ namespace GrampsView.ViewModels
                 // Add Standard details
                 headerCardGroup.Cards.Add(DV.PersonDV.GetModelInfoFormatted(PersonObject));
 
-                BaseHeader.Add(headerCardGroup);
+                BaseHeader.Cards.Add(headerCardGroup);
 
                 // Handle the uncommon case where there is more than one name
                 if (PersonObject.GPersonNamesCollection.Count > 1)
                 {
                     // Add extra name details
-                    BaseHeader.Add(PersonObject.GPersonNamesCollection.GetCardGroup());
+                    BaseHeader.Cards.Add(PersonObject.GPersonNamesCollection.GetCardGroup());
                 }
 
                 // Add details
-                BaseDetail.Add(PersonObject.GParentInRefCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GEventRefCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GCitationRefCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GNoteRefCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GMediaRefCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GAttributeCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GAddress.GetCardGroup());
-                BaseDetail.Add(PersonObject.GTagRefCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GURLCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GLDSCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GPersonRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(PersonObject.GParentInRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(PersonObject.GEventRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(PersonObject.GCitationRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(PersonObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(PersonObject.GMediaRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(PersonObject.GAttributeCollection.GetCardGroup());
+                BaseDetail.Cards.Add(PersonObject.GAddress.GetCardGroup());
+                BaseDetail.Cards.Add(PersonObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(PersonObject.GURLCollection.GetCardGroup());
+                BaseDetail.Cards.Add(PersonObject.GLDSCollection.GetCardGroup());
+                BaseDetail.Cards.Add(PersonObject.GPersonRefCollection.GetCardGroup());
 
-                BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GCitationRefCollection.GetCardGroup("Name Citations"));
-                BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GNoteReferenceCollection.GetCardGroup("Name Notes"));
+                BaseDetail.Cards.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GCitationRefCollection.GetCardGroup("Name Citations"));
+                BaseDetail.Cards.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GNoteReferenceCollection.GetCardGroup("Name Notes"));
 
-                BaseBackLinks.Add(PersonObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseBackLinks.Cards.Add(PersonObject.BackHLinkReferenceCollection.GetCardGroup());
 
                 // TODO localActivitySession = await CommonTimeline.AddToTimeLine("Person",
                 // PersonObject, PersonObject.HomeImageHLink.DeRef.MediaStorageFilePath, "Person: "

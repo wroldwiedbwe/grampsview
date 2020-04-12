@@ -106,7 +106,7 @@ namespace GrampsView.ViewModels
                     Parents = localFamilyModel,
                 });
 
-                BaseHeader.Add(t);
+                BaseHeader.Cards.Add(t);
 
                 // Detail reference
                 BaseDetail.Add(FamilyObject.GEventRefCollection.GetCardGroup());

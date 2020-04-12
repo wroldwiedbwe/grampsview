@@ -40,13 +40,13 @@ namespace GrampsView.ViewModels
             BaseTitleIcon = CommonConstants.IconBookMark;
         }
 
-        public CardGroupCollection BookMarkSource
+        public CardGroup BookMarkSource
         {
             get
             {
-                CardGroupCollection t = new CardGroupCollection();
+                CardGroup t = new CardGroup();
 
-                t.Add(DV.BookMarkCollection.GetCardGroup());
+                t.Cards.Add(DV.BookMarkCollection.GetCardGroup());
 
                 return t;
             }

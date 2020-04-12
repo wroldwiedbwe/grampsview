@@ -9,18 +9,15 @@
     using Xamarin.Forms;
     using Xamarin.Forms.Internals;
 
-    public partial class FlexSingleCardType : Frame
+    public partial class FlexSingleMultiCard : Frame
     {
-        public static readonly BindableProperty FsctSourceProperty
-                 = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexSingleCardType), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FsctSource));
-
-        public static readonly BindableProperty FsctTemplateProperty
-            = BindableProperty.Create(nameof(FsctTemplate), typeof(DataTemplate), typeof(FlexSingleCardType), propertyChanged: OnItemTemplateChanged);
+        public static readonly BindableProperty FMultiSourceProperty
+                 = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexSingleMultiCard), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FMultiSource));
 
         private static int startItemGet = 0;
         private static int virtualItemGet = 5;
 
-        public FlexSingleCardType()
+        public FlexSingleMultiCard()
         {
             InitializeComponent();
 
@@ -45,7 +42,7 @@
         {
             get
             {
-                if (!(FsctSource is null) && (FsctSource.Cards.Count > 0))
+                if (!(FMultiSource is null) && (FMultiSource.Cards.Count > 0))
                 {
                     return true;
                 }
@@ -56,16 +53,10 @@
             }
         }
 
-        public CardGroup FsctSource
+        public CardGroup FMultiSource
         {
-            get { return (CardGroup)GetValue(FsctSourceProperty); }
-            set { SetValue(FsctSourceProperty, value); }
-        }
-
-        public DataTemplate FsctTemplate
-        {
-            get { return (DataTemplate)GetValue(FsctTemplateProperty); }
-            set { SetValue(FsctTemplateProperty, value); }
+            get { return (CardGroup)GetValue(FMultiSourceProperty); }
+            set { SetValue(FMultiSourceProperty, value); }
         }
 
         public int IndexLength { get; set; }  // Gota start with enough so scrollbar is visible on the desktop
@@ -74,7 +65,7 @@
 
         private static void OnItemsSourceChanged(BindableObject obj, object oldValue, object newValue)
         {
-            var layout = obj as FlexSingleCardType;
+            var layout = obj as FlexSingleMultiCard;
 
             // Register for items changed
             if (newValue is INotifyCollectionChanged observableCollection)
@@ -85,7 +76,7 @@
             layout.DisplayList.CollectionChanged += layout.OnDisplayListCollectionChanged;
 
             // Layout out children
-            if (layout?.FsctSource != null && layout?.FsctTemplate != null)
+            if (layout?.FMultiSource != null)
             {
                 layout.IndexStart = 0;
                 layout.IndexLength = startItemGet;
@@ -96,25 +87,16 @@
             }
         }
 
-        private static void OnItemTemplateChanged(BindableObject obj, object oldValue, object newValue)
-        {
-            var layout = obj as FlexSingleCardType;
-
-            if (layout?.FsctSource != null && layout?.FsctTemplate != null)
-
-                layout.BuildLayout();
-        }
-
         private void AddToDisplay()
         {
             //Debug.WriteLine("GetIt");
 
-            if (DisplayList.Count == FsctSource.Cards.Count)
+            if (DisplayList.Count == FMultiSource.Cards.Count)
             {
                 return;
             }
 
-            foreach (var item in FsctSource.Cards.Skip(IndexStart).Take(IndexLength).ToList())
+            foreach (var item in FMultiSource.Cards.Skip(IndexStart).Take(IndexLength).ToList())
             {
                 DisplayList.Add(item);
             }
@@ -125,13 +107,13 @@
 
         private void BuildLayout()
         {
-            if (string.IsNullOrWhiteSpace(FsctSource.Title))
+            if (string.IsNullOrWhiteSpace(FMultiSource.Title))
             {
                 this.flextitle.IsVisible = false;
             }
             else
             {
-                this.flextitle.Text = FsctSource.Title;
+                this.flextitle.Text = FMultiSource.Title;
                 this.flextitle.IsVisible = true;
             }
 
@@ -139,36 +121,21 @@
 
             foreach (var item in DisplayList)
             {
-                View view;
-
-                if (FsctTemplate is DataTemplateSelector)
-                {
-                    view = (View)FsctTemplate.CreateContent(item, null);
-                }
-                else
-                {
-                    view = (View)FsctTemplate.CreateContent();
-                }
-
-                view.BindingContext = item;
-                this.flexer.Children.Add(view);
+                this.flexer.Children.Add(CreateChildView(item));
             }
         }
 
         private View CreateChildView(object item)
         {
-            if (FsctTemplate is DataTemplateSelector)
-            {
-                var dts = FsctTemplate as DataTemplateSelector;
-                var itemTemplate = dts.SelectTemplate(item, null);
-                itemTemplate.SetValue(BindableObject.BindingContextProperty, item);
-                return (View)itemTemplate.CreateContent();
-            }
-            else
-            {
-                FsctTemplate.SetValue(BindableObject.BindingContextProperty, item);
-                return (View)FsctTemplate.CreateContent();
-            }
+            Application.Current.Resources.TryGetValue("CardGroupTemplate", out var cardGroupTemplate);
+
+            DataTemplate t = cardGroupTemplate as DataTemplate;
+
+            View view = (View)t.CreateContent(item, null);
+
+            view.BindingContext = item;
+
+            return view;
         }
 
         private void OnDisplayListCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -187,12 +154,13 @@
 
             if (e.NewItems != null)
             {
+                CardGroup newCards = e.NewItems as CardGroup;
+
                 // Item(s) added.
-                for (int i = 0; i < e.NewItems.Count; i++)
+                foreach (var item in newCards.Cards)
                 {
-                    var item = e.NewItems[i];
                     var view = CreateChildView(item);
-                    this.flexer.Children.Insert(e.NewStartingIndex + i, view);
+                    this.flexer.Children.Add(view);
                 }
             }
         }
@@ -212,11 +180,11 @@
 
             if (e.NewItems != null)
             {
-                // Item(s) added.
-                for (int i = 0; i < e.NewItems.Count; i++)
-                {
-                    var item = e.NewItems[i];
+                CardGroup newCards = e.NewItems as CardGroup;
 
+                // Item(s) added.
+                foreach (var item in newCards.Cards)
+                {
                     this.DisplayList.Add(item);
                 }
             }

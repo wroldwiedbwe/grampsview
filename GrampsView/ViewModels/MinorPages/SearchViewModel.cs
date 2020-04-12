@@ -128,7 +128,7 @@ namespace GrampsView.ViewModels
                         SearchCards.Cards.Add(item.HLink);
                     }
                 }
-                BaseDetail.Add(SearchCards);
+                BaseDetail.Cards.Add(SearchCards);
 
                 // Create Family Cards
                 SearchCards = new CardGroup
@@ -143,7 +143,7 @@ namespace GrampsView.ViewModels
                         SearchCards.Cards.Add(item.HLink);
                     }
                 }
-                BaseDetail.Add(SearchCards);
+                BaseDetail.Cards.Add(SearchCards);
 
                 // Create Event Cards
                 SearchCards = new CardGroup
@@ -158,7 +158,7 @@ namespace GrampsView.ViewModels
                         SearchCards.Cards.Add(item.HLink);
                     }
                 }
-                BaseDetail.Add(SearchCards);
+                BaseDetail.Cards.Add(SearchCards);
 
                 // Create Note cards
                 SearchCards = new CardGroup
@@ -173,7 +173,7 @@ namespace GrampsView.ViewModels
                         SearchCards.Cards.Add(item.HLink);
                     }
                 }
-                BaseDetail.Add(SearchCards);
+                BaseDetail.Cards.Add(SearchCards);
 
                 // Create Citation cards
                 SearchCards = new CardGroup
@@ -188,7 +188,7 @@ namespace GrampsView.ViewModels
                         SearchCards.Cards.Add(item.HLink);
                     }
                 }
-                BaseDetail.Add(SearchCards);
+                BaseDetail.Cards.Add(SearchCards);
 
                 // Create Media Cards
                 SearchCards = new CardGroup
@@ -203,7 +203,7 @@ namespace GrampsView.ViewModels
                         SearchCards.Cards.Add(item.HLink);
                     }
                 }
-                BaseDetail.Add(SearchCards);
+                BaseDetail.Cards.Add(SearchCards);
 
                 // Create Place Cards
                 SearchCards = new CardGroup
@@ -218,7 +218,7 @@ namespace GrampsView.ViewModels
                         SearchCards.Cards.Add(item.HLink);
                     }
                 }
-                BaseDetail.Add(SearchCards);
+                BaseDetail.Cards.Add(SearchCards);
             }
         }
 

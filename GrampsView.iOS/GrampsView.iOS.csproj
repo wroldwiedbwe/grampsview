@@ -73,7 +73,6 @@
     <AppExtensionDebugBundleId />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Common\Configs.ios.cs" />
     <Compile Include="Common\Localize.cs" />
     <Compile Include="Common\PlatformSpecific.cs" />
     <Compile Include="Main.cs" />

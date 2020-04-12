@@ -60,7 +60,7 @@
             Grid.Row="1"
             FMultiSource="{Binding BaseDetail}" />
 
-        <ucon:FlexMultiCardType
+        <ucon:FlexSingleMultiCard
             x:Name="BaseBackLinks"
             Grid.Row="2"
             FMultiSource="{Binding BaseBackLinks}"

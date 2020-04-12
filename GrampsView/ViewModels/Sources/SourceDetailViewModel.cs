@@ -89,15 +89,15 @@ namespace GrampsView.ViewModels
                 // Add Model details
                 t.Cards.Add(DV.SourceDV.GetModelInfoFormatted(SourceObject));
 
-                BaseHeader.Add(t);
+                BaseHeader.Cards.Add(t);
 
                 // Add bulk items
-                BaseDetail.Add(SourceObject.GMediaRefCollection.GetCardGroup());
-                BaseDetail.Add(SourceObject.GNoteRefCollection.GetCardGroup());
-                BaseDetail.Add(SourceObject.GTagRefCollection.GetCardGroup());
-                BaseDetail.Add(SourceObject.GRepositoryRefCollection.GetCardGroup());
-                BaseDetail.Add(SourceObject.GSourceAttributeCollection.GetCardGroup());
-                BaseBackLinks.Add(SourceObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseDetail.Cards.Add(SourceObject.GMediaRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(SourceObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(SourceObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(SourceObject.GRepositoryRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(SourceObject.GSourceAttributeCollection.GetCardGroup());
+                BaseBackLinks.Cards.Add(SourceObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

@@ -85,15 +85,15 @@ namespace GrampsView.ViewModels
 
                 t.Cards.Add(DV.RepositoryDV.GetModelInfoFormatted(RepositoryObject));
 
-                BaseHeader.Add(t);
+                BaseHeader.Cards.Add(t);
 
                 // Add details
-                BaseDetail.Add(RepositoryObject.GNoteRefCollection.GetCardGroup());
-                BaseDetail.Add(RepositoryObject.GTagRefCollection.GetCardGroup());
-                BaseDetail.Add(RepositoryObject.BackHLinkReferenceCollection.GetCardGroup());
-                BaseDetail.Add(RepositoryObject.GAddress.GetCardGroup());
+                BaseDetail.Cards.Add(RepositoryObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(RepositoryObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Cards.Add(RepositoryObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseDetail.Cards.Add(RepositoryObject.GAddress.GetCardGroup());
 
-                BaseBackLinks.Add(RepositoryObject.GURL.GetCardGroup());
+                BaseBackLinks.Cards.Add(RepositoryObject.GURL.GetCardGroup());
             }
         }
     }
