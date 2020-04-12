@@ -1,9 +1,9 @@
-# 5.2.0 (2020-04-11)
+## 5.2.1 (2020-04-12)
 
 
-### Features
+### Bug Fixes
 
-* Add enumerable and rename cardgroupcollection ([0e2dfef](https://github.com/phandcock/grampsview/commit/0e2dfef314bd4826538448ba137e0c8f83d002e9))
+* Refactor MultiCard controls ([c119eb7](https://github.com/phandcock/grampsview/commit/c119eb7d66912d484c1ad8c4b75cd642ddc3cd3a))
 
 
 
