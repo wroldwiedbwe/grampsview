@@ -15,13 +15,13 @@ namespace GrampsView.Data.DataView
     using GrampsView.Data.Model;
     using GrampsView.Data.Repositories;
     using GrampsView.Data.Repository;
+
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Globalization;
     using System.Linq;
-    using System.Runtime.Serialization;
 
     /// <summary>
     // Event repository </summary>
@@ -56,13 +56,6 @@ namespace GrampsView.Data.DataView
             }
         }
 
-        /// <summary>
-        /// Gets or sets the note data.
-        /// </summary>
-        /// <value>
-        /// The note data.
-        /// </value>
-
         public RepositoryModelDictionary<NoteModel, HLinkNoteModel> NoteData
         {
             get
@@ -71,6 +64,26 @@ namespace GrampsView.Data.DataView
             }
         }
 
+        public override CardGroup GetAllAsCardGroup()
+        {
+            CardGroup t = new CardGroup();
+
+            foreach (var item in DataDefaultSort)
+            {
+                t.Add(item.HLink);
+            }
+
+            // Sort TODO Sort t = HLinkCollectionSort(t);
+
+            return t;
+        }
+
+        /// <summary>
+        /// Gets or sets the note data.
+        /// </summary>
+        /// <value>
+        /// The note data.
+        /// </value>
         /// <summary>
         /// Gets all as hlink.
         /// </summary>

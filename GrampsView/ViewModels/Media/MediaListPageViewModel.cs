@@ -40,12 +40,16 @@ namespace GrampsView.ViewModels
             BaseTitleIcon = CommonConstants.IconMedia;
         }
 
-        public CardGroup MediaSource { get; } = new CardGroup();
+        public CardGroup MediaSource
+        {
+            get
+            {
+                return DV.MediaDV.GetAllAsCardGroup();
+            }
+        }
 
         public override async Task<bool> PopulateViewModelAsync()
         {
-            MediaSource.Cards.AddRange(new ObservableCollection<object>(DV.MediaDV.GetAllNotClippedAsHLink()));
-
             return true;
         }
     }

@@ -4,18 +4,18 @@
 
 namespace GrampsView.Data.DataView
 {
+    using GrampsView.Common;
+    using GrampsView.Data.Collections;
+    using GrampsView.Data.Model;
+    using GrampsView.Data.Repositories;
+    using GrampsView.Data.Repository;
+
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Runtime.Serialization;
-
-    using GrampsView.Common;
-    using GrampsView.Data.Collections;
-    using GrampsView.Data.Model;
-    using GrampsView.Data.Repositories;
-    using GrampsView.Data.Repository;
 
     /// <summary>
     /// Tag Data View.
@@ -76,6 +76,20 @@ namespace GrampsView.Data.DataView
             {
                 return DataStore.DS.TagData;
             }
+        }
+
+        public override CardGroup GetAllAsCardGroup()
+        {
+            CardGroup t = new CardGroup();
+
+            foreach (var item in DataDefaultSort)
+            {
+                t.Add(item.HLink);
+            }
+
+            // Sort TODO Sort t = HLinkCollectionSort(t);
+
+            return t;
         }
 
         /// <summary>

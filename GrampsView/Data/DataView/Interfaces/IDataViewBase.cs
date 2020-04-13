@@ -51,6 +51,8 @@ namespace GrampsView.Data.DataView
 
         CardGroup AsCardGroup(IReadOnlyList<TU> argReadOnlyList);
 
+        CardGroup GetAllAsCardGroup();
+
         /// <summary>
         /// Gets all as ViewModel.
         /// </summary>

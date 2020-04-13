@@ -74,22 +74,22 @@ namespace GrampsView.Data.Repositories
                     DataStore.CN.NotifyError("Null or empty HLinkKey");
                 }
 
-                if (key == "_e5bfa72904e68ce059252b501df" || key == "_e5bfa72904e68ce059252b501df")
-                {
-                }
+                //if (key == "_e5bfa72904e68ce059252b501df" || key == "_e5bfa72904e68ce059252b501df")
+                //{
+                //}
 
                 return Find(key);
             }
 
             set
             {
-                if (string.IsNullOrEmpty(key))
-                {
-                }
+                //if (string.IsNullOrEmpty(key))
+                //{
+                //}
 
-                if (key == "_e5bfa72904e68ce059252b501df" || key == "_e5bfa72904e68ce059252b501df")
-                {
-                }
+                //if (key == "_e5bfa72904e68ce059252b501df" || key == "_e5bfa72904e68ce059252b501df")
+                //{
+                //}
 
                 base[key] = value;
             }
@@ -150,8 +150,6 @@ namespace GrampsView.Data.Repositories
 
             base.Add(arg.HLinkKey, arg);
         }
-
-      
 
         /// <summary>
         /// Gets or sets the element with the specified key. If setting a new value, new value must

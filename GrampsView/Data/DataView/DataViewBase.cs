@@ -97,6 +97,8 @@ namespace GrampsView.Data.DataView
             return t;
         }
 
+        public abstract CardGroup GetAllAsCardGroup();
+
         /// <summary>
         /// Gets all as ViewModel.
         /// </summary>

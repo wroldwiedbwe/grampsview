@@ -112,6 +112,20 @@ namespace GrampsView.Data.DataView
             }
         }
 
+        public override CardGroup GetAllAsCardGroup()
+        {
+            CardGroup t = new CardGroup();
+
+            foreach (var item in DataDefaultSort)
+            {
+                t.Add(item.HLink);
+            }
+
+            // Sort TODO Sort t = HLinkCollectionSort(t);
+
+            return t;
+        }
+
         /// <summary>
         /// Gets all as hlink.
         /// </summary>

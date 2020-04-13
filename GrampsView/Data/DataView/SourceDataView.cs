@@ -76,6 +76,20 @@ namespace GrampsView.Data.DataView
             // set { this.SetProperty(ref DataStore.DS.SourceData, value); }
         }
 
+        public override CardGroup GetAllAsCardGroup()
+        {
+            CardGroup t = new CardGroup();
+
+            foreach (var item in DataDefaultSort)
+            {
+                t.Add(item.HLink);
+            }
+
+            // Sort TODO Sort t = HLinkCollectionSort(t);
+
+            return t;
+        }
+
         /// <summary>
         /// Gets all as hlink.
         /// </summary>

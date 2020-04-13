@@ -41,11 +41,7 @@ namespace GrampsView.ViewModels
         {
             get
             {
-                CardGroup t = new CardGroup();
-
-                t.Cards.AddRange(new ObservableCollection<object>(DV.RepositoryDV.GetAllAsHLink()));
-
-                return t;
+                return DV.RepositoryDV.GetAllAsCardGroup();
             }
         }
     }

@@ -164,6 +164,20 @@ namespace GrampsView.Data.DataView
             return new ObservableCollection<PersonModel>(sortedList);
         }
 
+        public override CardGroup GetAllAsCardGroup()
+        {
+            CardGroup t = new CardGroup();
+
+            foreach (var item in DataDefaultSort)
+            {
+                t.Add(item.HLink);
+            }
+
+            // Sort TODO Sort t = HLinkCollectionSort(t);
+
+            return t;
+        }
+
         /// <summary>
         /// Gets all as hlink.
         /// </summary>
@@ -250,7 +264,6 @@ namespace GrampsView.Data.DataView
             return t;
         }
 
-        // groups.Add(info); }
         /// <summary>
         /// hes the link collection sort.
         /// </summary>
@@ -279,12 +292,6 @@ namespace GrampsView.Data.DataView
             return tt;
         }
 
-        // var query = from item in PersonData.Items orderby
-        // ((PersonModel)item).GPersonNamesCollection.GetPrimaryName.SortName group item by
-        // ((PersonModel)item).GPersonNamesCollection.GetPrimaryName.SortName into g select new {
-        // GroupName = g.Key, Items = g, }; foreach (var g in query) { CommonGroupInfoCollection
-        // info = new CommonGroupInfoCollection { Key = g.GroupName, }; foreach (var item in
-        // g.Items) { info.Add(item); }
         /// <summary>
         /// Searches the items.
         /// </summary>

@@ -137,6 +137,29 @@ namespace GrampsView.Data.DataView
         }
 
         /// <summary>
+        /// Gets all as card group.
+        /// </summary>
+        /// <returns>
+        /// CardGroup of all non-clipped media items
+        /// </returns>
+        /// <remarks>
+        /// Only returns the original mediaitems and not the clipped ones added to speed things up.
+        /// </remarks>
+        public override CardGroup GetAllAsCardGroup()
+        {
+            CardGroup t = new CardGroup();
+
+            foreach (MediaModel item in DataDefaultSort.Where(x => x.IsClippedFile == false))
+            {
+                t.Add(item.HLink);
+            }
+
+            // Sort TODO Sort t = HLinkCollectionSort(t);
+
+            return t;
+        }
+
+        /// <summary>
         /// Gets all as hlink.
         ///
         /// Skip first few which are HLink Defaults.

@@ -83,6 +83,26 @@ namespace GrampsView.Data.DataView
             }
         }
 
+        /// <summary>
+        /// Gets header as card group.
+        /// </summary>
+        /// <returns>
+        /// CardGroup
+        /// </returns>
+        /// <remarks>
+        /// Assume sonly one header as per the spec.
+        /// </remarks>
+        public override CardGroup GetAllAsCardGroup()
+        {
+            CardGroup t = new CardGroup();
+
+            t.Add(HeaderDataModel);
+
+            // Sort TODO Sort t = HLinkCollectionSort(t);
+
+            return t;
+        }
+
         public override CardGroup GetLatestChanges() => throw new System.NotImplementedException();
 
         public override HeaderModel GetModelFromHLinkString(string HLinkString)

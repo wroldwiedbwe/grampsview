@@ -9,13 +9,14 @@
 
 namespace GrampsView.ViewModels
 {
-    using System.Collections.ObjectModel;
-
     using GrampsView.Common;
+    using GrampsView.Data.Collections;
     using GrampsView.Data.DataView;
 
     using Prism.Events;
     using Prism.Navigation;
+
+    using System.Collections.ObjectModel;
 
     /// <summary>
     /// People Page View ViewModel.
@@ -48,11 +49,11 @@ namespace GrampsView.ViewModels
         {
             get
             {
-                CardGroup t = new CardGroup();
+                //CardGroup t = new CardGroup();
 
-                t.Cards.AddRange(new ObservableCollection<object>(DV.PersonDV.GetAllAsHLink()));
+                //t.Cards.AddRange<HLinkPersonModelCollection>(DV.PersonDV.GetAllAsHLink());
 
-                return t;
+                return DV.PersonDV.GetAllAsCardGroup();
             }
         }
     }
