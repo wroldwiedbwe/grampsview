@@ -1,9 +1,9 @@
-## 5.2.4 (2020-04-13)
+## 5.2.5 (2020-04-13)
 
 
 ### Bug Fixes
 
-* speedup object ListView ([3ae16d8](https://github.com/phandcock/grampsview/commit/3ae16d867ed9d3ee0b64102d4e9456165647da0c))
+* Remove BackLink cardgroup backgroudn color and cleanup font sizes ([5d91b53](https://github.com/phandcock/grampsview/commit/5d91b53a198cf146f8baba8aff0230ec15e689a8))
 
 
 
