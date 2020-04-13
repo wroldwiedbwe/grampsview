@@ -149,6 +149,7 @@
   <ItemGroup>
     <EmbeddedResource Remove="Assets\Styles\LargeRefCardTemplates.xaml" />
     <EmbeddedResource Remove="Assets\Styles\_Colors.xaml" />
+    <EmbeddedResource Remove="Assets\Styles\_FontSizes.xaml" />
     <EmbeddedResource Remove="Assets\Styles\_GenericOverride.xaml" />
     <EmbeddedResource Remove="Common\CommonPropertyDebug.xaml" />
     <EmbeddedResource Remove="UserControls\AttributeCardLarge.xaml" />
@@ -198,10 +199,6 @@
 
   <ItemGroup>
     <EmbeddedResource Include="CHANGELOG.md" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="UserControls\General\FlexMultiCardType.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>

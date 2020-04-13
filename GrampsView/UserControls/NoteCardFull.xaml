@@ -26,7 +26,7 @@
             <Label
                 Grid.Row="0"
                 FlexLayout.Basis="75"
-                FormattedText="{Binding DeRef.GFormattedText}"
+                FormattedText="{Binding DeRef.GFormattedTextSmall}"
                 Style="{DynamicResource GVLabelStyleNoteFull}" />
         </Grid>
     </Frame.Content>

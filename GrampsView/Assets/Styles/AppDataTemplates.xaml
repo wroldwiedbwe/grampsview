@@ -22,11 +22,12 @@
 
                     <Label
                         Grid.Column="0"
-                        FontSize="{StaticResource FontSizeSmall}"
+                        FontSize="Micro"
                         Text="{Binding Label}"
                         TextColor="{DynamicResource OnSecondaryColor}" />
                     <Label
                         Grid.Column="1"
+                        FontSize="Micro"
                         Text="{Binding Text}"
                         TextColor="{StaticResource OnSecondaryColor}" />
                 </Grid>
@@ -75,11 +76,12 @@
 
             <Label
                 Grid.Column="0"
-                FontSize="{StaticResource FontSizeSmall}"
+                FontSize="Micro"
                 Text="{Binding Label}"
                 TextColor="{DynamicResource OnPrimaryColor}" />
             <Label
                 Grid.Column="1"
+                FontSize="Micro"
                 HorizontalTextAlignment="End"
                 Text="{Binding Value}"
                 TextColor="{StaticResource OnPrimaryColor}" />

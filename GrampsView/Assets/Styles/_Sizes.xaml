@@ -18,9 +18,9 @@
         5
     </x:Double>
 
-    <x:Double x:Key="GVThemeTextSizeVerySmall">
+    <!--<x:Double x:Key="GVThemeTextSizeVerySmall">
         8
-    </x:Double>
+    </x:Double>-->
 
     <x:Single x:Key="GVCornerRadius">
         8
@@ -29,13 +29,13 @@
     <!--<x:Double x:Key="GVThemeTextSizeSmall">12</x:Double>-->
     <!--<x:Double x:Key="GVThemeTextSizeLarge">15</x:Double>-->
 
-    <OnIdiom
+    <!--<OnIdiom
         x:Key="GVThemeTextSizeMedium"
         x:TypeArguments="x:Double"
         Default="13"
         Desktop="18"
         Phone="13"
-        Tablet="13" />
+        Tablet="13" />-->
 
     <!--  Ration of Height to width is 3 times  -->
     <x:Double x:Key="GVDetailCardHeightSmall">

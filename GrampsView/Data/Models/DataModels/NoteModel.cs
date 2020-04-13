@@ -147,29 +147,19 @@ namespace GrampsView.Data.Model
         /// The text.
         /// </value>
 
-        public FormattedString GFormattedText
+        public FormattedString GFormattedTextMedium
         {
             get
             {
-                // Cache the formatted string. Xamarin/NewtonSoft has problems serialising the
-                // string on the UI thread
-                if (_FormattedText.Spans.Count == 0)
-                {
-                    FormattedString loadString = new FormattedString();
-
-                    Application.Current.Resources.TryGetValue("FontSizeSmall", out var varFontSize);
-
-                    loadString.Spans.Add(new Span { Text = GText, FontSize = (double)varFontSize });
-
-                    return loadString;
-                }
-
-                return _FormattedText;
+                return GetFormatted(NamedSize.Small);
             }
+        }
 
-            set
+        public FormattedString GFormattedTextSmall
+        {
+            get
             {
-                SetProperty(ref _FormattedText, value);
+                return GetFormatted(NamedSize.Micro);
             }
         }
 
@@ -186,8 +176,6 @@ namespace GrampsView.Data.Model
         }
 
         = new HLinkTagModelCollection();
-
-        // TODO add field style*
 
         /// <summary>
         /// Gets or sets the text.
@@ -209,6 +197,7 @@ namespace GrampsView.Data.Model
             }
         }
 
+        // TODO add field style*
         /// <summary>
         /// Gets or sets the type CDATA #REQUIRED.
         /// </summary>
@@ -316,6 +305,31 @@ namespace GrampsView.Data.Model
             int testFlag = string.Compare(GText, secondEvent.GText, StringComparison.CurrentCulture);
 
             return testFlag;
+        }
+
+        private FormattedString GetFormatted(NamedSize argFontSize)
+        {
+            // Cache the formatted string. Xamarin/NewtonSoft has problems serialising the string on
+            // the UI thread
+            if (_FormattedText.Spans.Count == 0)
+            {
+                FormattedString loadString = new FormattedString();
+
+                //Application.Current.Resources.TryGetValue(argFontSize, out var varFontSize);
+
+                Double _fontSize = Device.GetNamedSize(argFontSize, typeof(FormattedString));
+
+                loadString.Spans.Add(new Span { Text = GText, FontSize = _fontSize });
+
+                return loadString;
+            }
+
+            return _FormattedText;
+
+            //set
+            //{
+            //    SetProperty(ref _FormattedText, value);
+            //}
         }
     }
 }

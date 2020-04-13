@@ -13,7 +13,7 @@
 
         <ResourceDictionary Source="_Sizes.xaml" />
 
-        <ResourceDictionary Source="_FontSizes.xaml" />
+        <!--<ResourceDictionary Source="_FontSizes.xaml" />-->
     </ResourceDictionary.MergedDictionaries>
 
     <!--
@@ -282,7 +282,8 @@
         x:Key="BackLinkCollection"
         BasedOn="{StaticResource FlexMultiCollection}"
         TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryVariantDarkColor}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="Padding" Value="0" />
     </Style>
 
     <!--
@@ -374,6 +375,7 @@
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
         <Setter Property="Margin" Value="0,0,3,3" />
+        <Setter Property="FontSize" Value="Micro" />
     </Style>
 
     <!--  Create a Large Style for a TextBlock  -->
@@ -381,7 +383,7 @@
         x:Key="GVLabelStyleLarge"
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
-        <Setter Property="FontSize" Value="Large" />
+        <Setter Property="FontSize" Value="Medium" />
         <Setter Property="MaxLines" Value="4" />
     </Style>
 
@@ -390,7 +392,7 @@
         x:Key="GVLabelStyleInstructions"
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
-        <Setter Property="FontSize" Value="{DynamicResource GVThemeTextSizeMedium}" />
+        <Setter Property="FontSize" Value="Medium" />
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
         <Setter Property="TextColor" Value="{DynamicResource OnSurfaceColor}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryVariantDarkColor}" />
@@ -422,6 +424,7 @@
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
         <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontSize" Value="Large" />
     </Style>
 
     <!--
