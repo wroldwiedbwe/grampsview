@@ -21,6 +21,6 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         tag-prefix: 'v'
-        changelog-release-count: 5
+        changelog-release-count: 0
 
 
