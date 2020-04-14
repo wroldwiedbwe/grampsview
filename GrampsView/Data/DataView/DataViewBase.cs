@@ -126,7 +126,7 @@ namespace GrampsView.Data.DataView
 
         public abstract CardGroup GetLatestChanges();
 
-        CardGroup IDataViewBase<TB, TU, TH>.GetLatestChanges() => throw new NotImplementedException();
+        //CardGroup IDataViewBase<TB, TU, TH>.GetLatestChanges() => throw new NotImplementedException();
 
         /// <summary>
         /// Gets the model.

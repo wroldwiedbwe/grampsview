@@ -122,6 +122,7 @@ namespace GrampsView
             if (DataStore.DS.IsDataLoaded)
             {
                 NavigationService.NavigateAsync("MainPage/NavigationPage/" + nameof(HubPage));
+                return;
             }
 
             //// Only Start App Center if physical

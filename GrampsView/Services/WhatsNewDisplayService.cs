@@ -6,8 +6,8 @@ namespace GrampsView.Services
 {
     using GrampsView.Events;
     using GrampsView.Views;
+
     using Prism.Events;
-    using Prism.Navigation;
 
     using Xamarin.Essentials;
 
@@ -24,9 +24,11 @@ namespace GrampsView.Services
                 return false;
             }
 
-            if (VersionTracking.IsFirstLaunchForCurrentBuild)
+            // VersionTracking.IsFirstLaunchForCurrentBuild returns true every time called when
+            // first run. If this service is called multiple times then it will need the flag.
+            if ((VersionTracking.IsFirstLaunchForCurrentBuild) && (!Common.CommonLocalSettings.WhatsNewDisplayed))
             {
-                //Common.CommonLocalSettings.WhatsNewDisplayed = true;
+                Common.CommonLocalSettings.WhatsNewDisplayed = true;
                 iocEventAggregator.GetEvent<PageNavigateEvent>().Publish(nameof(WhatsNewPage));
 
                 return true;

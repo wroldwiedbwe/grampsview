@@ -205,6 +205,9 @@ namespace GrampsView.Data.Repository
                 return true;
             }
 
+            // Clear the repositories in case we had to restart after being interupted.
+            ClearRepositories();
+
             DataStore.DS.LoadDataStore();
 
             if (DataStore.DS.CurrentDataFolderValid)

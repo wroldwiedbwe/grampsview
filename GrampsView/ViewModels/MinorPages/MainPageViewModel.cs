@@ -150,11 +150,18 @@
         public override void PopulateViewModel()
         {
             //// Start chain
+            ///     Check if data already loaded
             ///     FirstRun
             ///     Whats New
             ///     DataBase Reload Needed
             ///     Load Data
             ///     Goto Hub Page
+            if (DataStore.DS.IsDataLoaded)
+            {
+                OnNavigateCommandExecuted(nameof(HubPage));
+                return;
+            }
+
             ServiceFirstRun();
         }
 
