@@ -23,21 +23,21 @@ jobs:
 #        tag-prefix: 'v'
 #        changelog-release-count: 0
 
-#    - name: Generate Auto Changelog
-#      uses: ahmadawais/action-auto-changelog@master
-#      with:
-#        github_token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Generate changelog
-      uses: charmixer/auto-changelog-action@v1
+    - name: Generate Auto Changelog
+      uses: ahmadawais/action-auto-changelog@master
       with:
-        token: ${{ secrets.GITHUB_TOKEN_ACTION }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Commit files
-      env:
-         CI_USER: ${{ secrets.YOUR_GITHUB_USER }}
-         CI_EMAIL: ${{ secrets.YOUR_GITHUB_EMAIL }}
-      run: |
-          git config --local user.email "phandcockregister@gmail.com"
-          git config --local user.name "phandcock"
-          git add CHANGELOG.md && git commit -m 'Updated CHANGELOG.md' && echo ::set-env name=push::1 || echo "No changes to CHANGELOG.md"
+#    - name: Generate changelog
+#      uses: charmixer/auto-changelog-action@v1
+#      with:
+#        token: ${{ secrets.GITHUB_TOKEN_ACTION }}
+
+#    - name: Commit files
+#      env:
+#         CI_USER: ${{ secrets.YOUR_GITHUB_USER }}
+##         CI_EMAIL: ${{ secrets.YOUR_GITHUB_EMAIL }}
+#      run: |
+#          git config --local user.email "phandcockregister@gmail.com"
+#          git config --local user.name "phandcock"
+#          git add CHANGELOG.md && git commit -m 'Updated CHANGELOG.md' && echo ::set-env name=push::1 || echo "No changes to CHANGELOG.md"
