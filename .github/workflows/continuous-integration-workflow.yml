@@ -16,14 +16,28 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN_ACTION  }}
 
-    - name: Create_commit_change_log_file
-      uses: TriPSs/conventional-changelog-action@v1.3.0
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        tag-prefix: 'v'
-        changelog-release-count: 0
+  #  - name: Create_commit_change_log_file
+   #   uses: TriPSs/conventional-changelog-action@v1.3.0
+ #     with:
+#        github-token: ${{ secrets.GITHUB_TOKEN }}
+#        tag-prefix: 'v'
+#        changelog-release-count: 0
 
-    - name: Generate Auto Changelog
-      uses: ahmadawais/action-auto-changelog@master
+#    - name: Generate Auto Changelog
+#      uses: ahmadawais/action-auto-changelog@master
+#      with:
+#        github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Generate changelog
+      uses: charmixer/auto-changelog-action@v1
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ s secrets.GITHUB_TOKEN_ACTION }}
+
+    - name: Commit files
+      env:
+         CI_USER: ${{ secrets.YOUR_GITHUB_USER }}
+         CI_EMAIL: ${{ secrets.YOUR_GITHUB_EMAIL }}
+      run: |
+          git config --local user.email "$CI_EMAIL"
+          git config --local user.name "$CI_USER"
+          git add CHANGELOG.md && git commit -m 'Updated CHANGELOG.md' && echo ::set-env name=push::1 || echo "No changes to CHANGELOG.md"
