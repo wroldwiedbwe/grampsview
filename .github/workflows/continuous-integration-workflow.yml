@@ -31,7 +31,7 @@ jobs:
     - name: Generate changelog
       uses: charmixer/auto-changelog-action@v1
       with:
-        token: ${{ s secrets.GITHUB_TOKEN_ACTION }}
+        token: ${{ secrets.GITHUB_TOKEN_ACTION }}
 
     - name: Commit files
       env:
