@@ -76,43 +76,5 @@ namespace GrampsView.ViewModels
         {
             BaseEventAggregator.GetEvent<AppStartReloadDatabaseEvent>().Publish();
         }
-
-        /// <summary>
-        /// Load the data.
-        /// </summary>
-        public override void PopulateViewModel()
-        {
-            // Set MarkdownView information that is not easily set in XAML
-            MarkdownTheme t = (MarkdownTheme)new DarkMarkdownTheme();
-            t.BackgroundColor = Common.CommonRoutines.ResourceColourGet("CardBackGroundNote");
-
-            //this.mdview.Theme = t;
-
-            // Load Resource
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "GrampsView.CHANGELOG.md";
-
-            try
-            {
-                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                {
-                    if (!(stream is null))
-                    {
-                        using (StreamReader reader = new StreamReader(stream))
-                        {
-                            WhatsNewText = reader.ReadToEnd();
-                        }
-                    }
-                    else
-                    {
-                        DataStore.CN.NotifyError("GrampsView.CHANGELOG.md not found");
-                    }
-                }
-            }
-            catch (System.Exception ex)
-            {
-                DataStore.CN.NotifyException("Exception trying to open " + resourceName, ex);
-            }
-        }
     }
 }

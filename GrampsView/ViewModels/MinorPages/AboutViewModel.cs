@@ -71,19 +71,6 @@ namespace GrampsView.ViewModels
             }
         }
 
-        public string DaText
-        {
-            get
-            {
-                return _DaText;
-            }
-
-            set
-            {
-                SetProperty(ref _DaText, value);
-            }
-        }
-
         /// <summary>
         /// Gets or sets the header data.
         /// </summary>
@@ -197,21 +184,6 @@ namespace GrampsView.ViewModels
             tt.BackgroundColor = CommonRoutines.ResourceColourGet("CardBackGroundNote");
 
             //this.mdview.Theme = t;
-
-            // Load Resource
-            var assemblyExec = Assembly.GetExecutingAssembly();
-            var resourceName = "GrampsView.CHANGELOG.md";
-
-            using (Stream stream = assemblyExec.GetManifestResourceStream(resourceName))
-            {
-                if (!(stream is null))
-                {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        DaText = reader.ReadToEnd();
-                    }
-                }
-            }
 
             return true;
         }

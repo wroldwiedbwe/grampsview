@@ -192,13 +192,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="CHANGELOG.md" />
+    <None Remove="changelog.md" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.cs.OLD" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.OLD" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="CHANGELOG.md" />
+    <EmbeddedResource Include="changelog.md" />
   </ItemGroup>
 
   <ItemGroup>
@@ -253,6 +253,9 @@
     </Compile>
     <Compile Update="UserControls\General\UWPButton.xaml.cs">
       <DependentUpon>UWPButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\ChangeLogCardLarge.xaml.cs">
+      <DependentUpon>ChangeLogCardLarge.xaml</DependentUpon>
     </Compile>
     <Compile Update="UserControls\InstructionCardLarge.xaml.cs">
       <DependentUpon>InstructionCardLarge.xaml</DependentUpon>

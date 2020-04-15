@@ -3,10 +3,8 @@
     x:Class="GrampsView.Views.AboutPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:common="clr-namespace:GrampsView.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i18n="clr-namespace:GrampsView.Common"
-    xmlns:markdown="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     ControlTemplate="{StaticResource DetailPageTemplate}"
@@ -85,16 +83,7 @@
 
             <ucon:InstructionCardLarge Grid.Row="4" BindingContext="{i18n:Translate AboutPage_AttributionText}" />
 
-            <Frame
-                Grid.Row="5"
-                BackgroundColor="White"
-                Style="{DynamicResource FrameLargeVariableCardStyle}">
-                <markdown:MarkdownView
-                    x:Name="mdview"
-                    Grid.Row="0"
-                    FlexLayout.Basis="75"
-                    Markdown="{Binding DaText}" />
-            </Frame>
+            <ucon:ChangeLogCardLarge Grid.Row="5" />
         </Grid>
     </ScrollView>
 </ContentPage>
