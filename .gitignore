@@ -350,5 +350,5 @@ MigrationBackup/
 .ionide/
 
 # GrampsViewFiles
-/GrampsView/GrampsView/Common/Secret.cs
+GrampsView/Common/Secret.cs
 
