@@ -107,7 +107,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\CommonLogging.cs" />
     <Compile Include="Common\CommonTileUpdate.cs" />
     <Compile Include="Common\PlatformSpecific.cs" />
     <Compile Include="Common\XamarinUtil.cs" />

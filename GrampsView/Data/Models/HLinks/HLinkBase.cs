@@ -217,6 +217,16 @@ namespace GrampsView.Data.Model
         /// </returns>
         protected int Compare(object x, object y)
         {
+            if (x is null)
+            {
+                throw new ArgumentNullException(nameof(x));
+            }
+
+            if (y is null)
+            {
+                throw new ArgumentNullException(nameof(y));
+            }
+
             return (x as HLinkBase).HLinkKey.CompareTo((y as HLinkBase).HLinkKey);
         }
     }

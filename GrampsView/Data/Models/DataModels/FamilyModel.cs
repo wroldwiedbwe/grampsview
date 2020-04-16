@@ -445,6 +445,16 @@ namespace GrampsView.Data.Model
         /// </returns>
         public new int Compare(object x, object y)
         {
+            if (x is null)
+            {
+                throw new ArgumentNullException(nameof(x));
+            }
+
+            if (y is null)
+            {
+                throw new ArgumentNullException(nameof(y));
+            }
+
             FamilyModel c1 = (FamilyModel)x;
             FamilyModel c2 = (FamilyModel)y;
 
@@ -471,6 +481,11 @@ namespace GrampsView.Data.Model
         /// </returns>
         public int CompareTo(object obj)
         {
+            if (obj is null)
+            {
+                throw new ArgumentNullException(nameof(obj));
+            }
+
             FamilyModel secondFamilyModel = (FamilyModel)obj;
 
             // compare on fathers name first TODO use culture related sort

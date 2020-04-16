@@ -200,7 +200,7 @@ namespace GrampsView
 
             container.RegisterForNavigation<AShellPage>();
             container.RegisterForNavigation<TestPage>();
-            container.RegisterForNavigation<CropTransformationPage, CropTransformationViewModel>();
+            //container.RegisterForNavigation<CropTransformationPage, CropTransformationViewModel>();
 
             container.RegisterDialog<ErrorDialog, ErrorDialogViewModel>();
 

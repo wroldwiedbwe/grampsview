@@ -44,13 +44,13 @@ namespace GrampsView.Data.Model
     /// <summary>
     /// Event ViewModel.
     /// </summary>
-    /// <seealso cref="GrampsView.Data.ViewModel.ModelBase" />
+    /// <seealso cref="GrampsView.Data.ViewModel.ModelBase"/>
     /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="GrampsView.Data.ViewModel.IEventModel" />
+    /// <seealso cref="GrampsView.Data.ViewModel.IEventModel"/>
     /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="System.IComparable" />
+    /// <seealso cref="System.IComparable"/>
     /// /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="System.Collections.IComparer" />
+    /// <seealso cref="System.Collections.IComparer"/>
     [DataContract]
     public sealed class EventModel : ModelBase, IEventModel, IComparable, IComparer
     {
@@ -95,7 +95,7 @@ namespace GrampsView.Data.Model
         private string _GType = "Unknown";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EventModel" /> class.
+        /// Initializes a new instance of the <see cref="EventModel"/> class.
         /// </summary>
         public EventModel()
         {
@@ -178,24 +178,6 @@ namespace GrampsView.Data.Model
             set
             {
                 SetProperty(ref _GDescription, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets the get h link.
-        /// </summary>
-        /// <value>
-        /// The get h link.
-        /// </value>
-        public HLinkEventModel HLink
-        {
-            get
-            {
-                HLinkEventModel t = new HLinkEventModel
-                {
-                    HLinkKey = HLinkKey,
-                };
-                return t;
             }
         }
 
@@ -300,6 +282,24 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
+        /// Gets the get h link.
+        /// </summary>
+        /// <value>
+        /// The get h link.
+        /// </value>
+        public HLinkEventModel HLink
+        {
+            get
+            {
+                HLinkEventModel t = new HLinkEventModel
+                {
+                    HLinkKey = HLinkKey,
+                };
+                return t;
+            }
+        }
+
+        /// <summary>
         /// Compares two objects.
         /// </summary>
         /// <param name="a">
@@ -313,6 +313,16 @@ namespace GrampsView.Data.Model
         /// </returns>
         public new int Compare(object a, object b)
         {
+            if (a is null)
+            {
+                throw new ArgumentNullException(nameof(a));
+            }
+
+            if (b is null)
+            {
+                throw new ArgumentNullException(nameof(b));
+            }
+
             EventModel firstEvent = (EventModel)a;
             EventModel secondEvent = (EventModel)b;
 
@@ -339,6 +349,11 @@ namespace GrampsView.Data.Model
         /// </returns>
         public int CompareTo(object obj)
         {
+            if (obj is null)
+            {
+                throw new ArgumentNullException(nameof(obj));
+            }
+
             EventModel secondEvent = (EventModel)obj;
 
             // compare on Date first

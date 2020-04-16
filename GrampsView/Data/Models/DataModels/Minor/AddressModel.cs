@@ -142,11 +142,21 @@ namespace GrampsView.Data.Model
 
         public int CompareTo(AddressModel other)
         {
+            if (other is null)
+            {
+                throw new ArgumentNullException(nameof(other));
+            }
+
             return GDate.CompareTo(other.GDate);
         }
 
         public bool Equals(AddressModel other)
         {
+            if (other is null)
+            {
+                return false;
+            }
+
             if (GDate == other.GDate)
             {
                 return true;

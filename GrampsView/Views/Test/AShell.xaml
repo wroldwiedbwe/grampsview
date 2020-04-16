@@ -64,7 +64,7 @@
 
     <FlyoutItem Title="Crop Test Page 3" Icon="icon.png">
         <ShellContent Title="Crop Test Page 2" Icon="icon.png">
-            <views:CropTransformationPage />
+            <!--<views:CropTransformationPage />-->
         </ShellContent>
     </FlyoutItem>
 
@@ -78,7 +78,7 @@
         </Tab>
 
         <Tab Title="Crop Test Tab 3" Icon="icon.png">
-            <ShellContent ContentTemplate="{DataTemplate views:CropTransformationPage}" />
+            <!--<ShellContent ContentTemplate="{DataTemplate views:CropTransformationPage}" />-->
         </Tab>
     </TabBar>
 </Shell>

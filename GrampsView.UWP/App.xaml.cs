@@ -37,19 +37,6 @@
             Current.UnhandledException += new Windows.UI.Xaml.UnhandledExceptionEventHandler(UnhandledExceptionHandler);
         }
 
-        private static void UnhandledExceptionHandler(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs args)
-        {
-            Exception e = args.Exception;
-
-            DataStore.CN.NotifyException("UnhandledExceptionHandler", e);
-        }
-
-        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
-        {
-            var newExc = new Exception(nameof(TaskSchedulerOnUnobservedTaskException), unobservedTaskExceptionEventArgs.Exception);
-            DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
-        }
-
         /// <summary>
         /// Invoked when the application is launched normally by the end user. Other entry points
         /// will be used such as when the application is launched to open a specific file.
@@ -59,8 +46,8 @@
         /// </param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            // Do not repeat app initialization when the Window already has content, just ensure that
-            // the window is active
+            // Do not repeat app initialization when the Window already has content, just ensure
+            // that the window is active
             if (!(Window.Current.Content is Frame rootFrame))
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
@@ -126,6 +113,19 @@
             Window.Current.Activate();
         }
 
+        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
+        {
+            var newExc = new Exception(nameof(TaskSchedulerOnUnobservedTaskException), unobservedTaskExceptionEventArgs.Exception);
+            DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
+        }
+
+        private static void UnhandledExceptionHandler(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs args)
+        {
+            Exception e = args.Exception;
+
+            DataStore.CN.NotifyException("UnhandledExceptionHandler", e);
+        }
+
         /// <summary>
         /// Invoked when Navigation to a certain page fails
         /// </summary>
@@ -141,9 +141,9 @@
         }
 
         /// <summary>
-        /// Invoked when application execution is being suspended. Application state is saved without
-        /// knowing whether the application will be terminated or resumed with the contents of memory
-        /// still intact.
+        /// Invoked when application execution is being suspended. Application state is saved
+        /// without knowing whether the application will be terminated or resumed with the contents
+        /// of memory still intact.
         /// </summary>
         /// <param name="sender">
         /// The source of the suspend request.

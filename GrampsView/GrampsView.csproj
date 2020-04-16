@@ -127,6 +127,7 @@
     <Compile Remove="ViewModels\Person\Interfaces\IPersonHourGlassPageViewModel.cs" />
     <Compile Remove="ViewModels\Person\Interfaces\IPersonSummaryPageViewModel.cs" />
     <Compile Remove="ViewModels\StartupPages\SetupStorageViewModel.cs" />
+    <Compile Remove="ViewModels\Test\TestCachePageViewModel.cs" />
     <Compile Remove="Views\AboutPage.xaml.cs" />
     <Compile Remove="Views\BaseViewList.xaml.cs" />
     <Compile Remove="Views\BookMark\BookMarkDetailView.xaml.cs" />
@@ -144,6 +145,7 @@
     <Compile Remove="Views\StartupPages\ExtendedSplashScreen.xaml.cs" />
     <Compile Remove="Views\StartupPages\FirstRunDialog.xaml.cs" />
     <Compile Remove="Views\StartupPages\SetupStorageView.xaml.cs" />
+    <Compile Remove="Views\Test\CropTransformationPage.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -189,6 +191,7 @@
     <EmbeddedResource Remove="Views\StartupPages\ExtendedSplashScreen.xaml" />
     <EmbeddedResource Remove="Views\StartupPages\FirstRunDialog.xaml" />
     <EmbeddedResource Remove="Views\StartupPages\SetupStorageView.xaml" />
+    <EmbeddedResource Remove="Views\Test\CropTransformationPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -308,9 +311,6 @@
     <Compile Update="Views\StartupPages\WhatsNewPage.xaml.cs">
       <DependentUpon>WhatsNewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Test\CropTransformationPage.xaml.cs">
-      <DependentUpon>CropTransformationPage.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -323,5 +323,9 @@
     <EmbeddedResource Update="Views\MinorPages\ErrorDialog.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\Test\" />
   </ItemGroup>
 </Project>

@@ -19,7 +19,7 @@ namespace GrampsView.ViewModels
     /// <summary>
     /// View Model for People Graph.
     /// </summary>
-    /// <seealso cref="Prism.Mvvm.ViewModelBase" />
+    /// <seealso cref="Prism.Mvvm.ViewModelBase"/>
     public class PeopleGraphViewModel : ViewModelBase
     {
         /// <summary>
@@ -98,7 +98,7 @@ namespace GrampsView.ViewModels
         private int numLevels;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PeopleGraphViewModel" /> class.
+        /// Initializes a new instance of the <see cref="PeopleGraphViewModel"/> class.
         /// </summary>
         /// <param name="iocCommonLogging">
         /// The ioc common logging.
@@ -214,6 +214,16 @@ namespace GrampsView.ViewModels
         /// </param>
         public void AddHLink(HLinkBase argFrom, HLinkBase argTo, int argJumpsFromStart, int argLevel)
         {
+            if (argFrom is null)
+            {
+                throw new ArgumentNullException(nameof(argFrom));
+            }
+
+            if (argTo is null)
+            {
+                throw new ArgumentNullException(nameof(argTo));
+            }
+
             if (argJumpsFromStart > 0)
             {
                 if (!nodeVisited.ContainsKey(argFrom.HLinkKey))
@@ -266,8 +276,8 @@ namespace GrampsView.ViewModels
 
         // // Assume person PersonModel t = DV.PersonDV.GetModel(item.nodeHLink.HLinkKey);
 
-        // if (t.HLink.Valid == true) { PersonCardSmall tt = new PersonCardSmall { DataContext =
-        // t, Background = new SolidColorBrush(Colors.AliceBlue), }; theGraph.Children.Add(tt);
+        // if (t.HLink.Valid == true) { PersonCardSmall tt = new PersonCardSmall { DataContext = t,
+        // Background = new SolidColorBrush(Colors.AliceBlue), }; theGraph.Children.Add(tt);
 
         // tt.SetValue(Canvas.LeftProperty, item.xStart); tt.SetValue(Canvas.TopProperty,
         // item.yStart); } else { // Assume Family FamilyModel tf =
@@ -397,12 +407,12 @@ namespace GrampsView.ViewModels
             // StrokeThickness = 2, }; tt.TheLine.SetValue(Canvas.ZIndexProperty, -10); // Default
             // for control nodes is -1
 
-            // // Fnd the end node centres PeopleGraphNode startNode = TreeGraph.FirstOrDefault(iq =>
-            // iq.nodeHLink.HLinkKey == tt.From); PeopleGraphNode endNode =
+            // // Fnd the end node centres PeopleGraphNode startNode = TreeGraph.FirstOrDefault(iq
+            // => iq.nodeHLink.HLinkKey == tt.From); PeopleGraphNode endNode =
             // TreeGraph.FirstOrDefault(iq => iq.nodeHLink.HLinkKey == tt.To);
 
-            // // Draw the nodes from bottom of control to the top tt.TheLine.X1 = startNode.xStart +
-            // (NodeX / 2); tt.TheLine.Y1 = startNode.yStart + NodeY;
+            // // Draw the nodes from bottom of control to the top tt.TheLine.X1 = startNode.xStart
+            // + (NodeX / 2); tt.TheLine.Y1 = startNode.yStart + NodeY;
 
             // tt.TheLine.X2 = endNode.xStart + (NodeX / 2); tt.TheLine.Y2 = endNode.yStart;
 
@@ -525,7 +535,9 @@ namespace GrampsView.ViewModels
             maxXNodes = tempMaxX;
         }
 
-        /// <summary>Override for the OnNavigatedTo Prism method.</summary>
+        /// <summary>
+        /// Override for the OnNavigatedTo Prism method.
+        /// </summary>
         public override void PopulateViewModel()
         {
             BaseCL.LogRoutineEntry("PeopleGraphViewModel");
@@ -584,7 +596,7 @@ namespace GrampsView.ViewModels
         /// The argument h link.
         /// </param>
         /// <param name="argBool">
-        /// if set to <c> true </c> [argument bool].
+        /// if set to <c>true</c> [argument bool].
         /// </param>
         private void AddVisited(string argHLink, bool argBool)
         {

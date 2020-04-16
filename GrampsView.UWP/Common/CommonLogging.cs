@@ -63,7 +63,7 @@ namespace GrampsView.Common
         private Stack RoutineNameStack = new Stack();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CommonLogging" /> class.
+        /// Initializes a new instance of the <see cref="CommonLogging"/> class.
         /// <para>
         /// Disallow creation of instances beyond the one instance for the process. The one instance
         /// is accessible via GetLoggingScenarioSingleton() (see below).
@@ -89,7 +89,7 @@ namespace GrampsView.Common
         /// Gets a value indicating whether logging is enabled.
         /// </summary>
         /// <value>
-        /// <c> true </c> if this instance is logging enabled; otherwise, <c> false </c>.
+        /// <c>true</c> if this instance is logging enabled; otherwise, <c>false</c>.
         /// </value>
         public bool IsLoggingEnabled
         {
@@ -103,7 +103,7 @@ namespace GrampsView.Common
         /// Gets a value indicating whether this instance is preparing for suspend.
         /// </summary>
         /// <value>
-        /// <c> true </c> if this instance is preparing for suspend; otherwise, <c> false </c>.
+        /// <c>true</c> if this instance is preparing for suspend; otherwise, <c>false</c>.
         /// </value>
         public bool IsPreparingForSuspend
         {
@@ -302,9 +302,9 @@ namespace GrampsView.Common
         }
 
         /// <summary>
-        /// This is called when the app is either resuming or starting. It will enable logging if the
-        /// app has never been started before or if logging had been enabled the last time the app
-        /// was running.
+        /// This is called when the app is either resuming or starting. It will enable logging if
+        /// the app has never been started before or if logging had been enabled the last time the
+        /// app was running.
         /// </summary>
         public void ResumeLoggingIfApplicable()
         {
@@ -320,9 +320,9 @@ namespace GrampsView.Common
                 StartLogging(true);
             }
 
-            // When the sample suspends, it retains state as to whether or not it had generated a new
-            // log file at the last suspension. This allows any UI to be updated on resume to reflect
-            // that fact.
+            // When the sample suspends, it retains state as to whether or not it had generated a
+            // new log file at the last suspension. This allows any UI to be updated on resume to
+            // reflect that fact.
             if (ApplicationData.Current.LocalSettings.Values.TryGetValue("LogFileGeneratedBeforeSuspend", out object logFileGeneratedBeforeSuspendObject) &&
                 logFileGeneratedBeforeSuspendObject != null &&
                 logFileGeneratedBeforeSuspendObject is string)
@@ -337,7 +337,7 @@ namespace GrampsView.Common
         /// Starts the logging.
         /// </summary>
         /// <param name="logToFile">
-        /// if set to <c> true </c> [log to file].
+        /// if set to <c>true</c> [log to file].
         /// </param>
         public void StartLogging(bool logToFile)
         {
@@ -347,9 +347,9 @@ namespace GrampsView.Common
             // NOTE: There are use cases where an application may want to create only a channel for
             // sessions outside of the application itself. See MSDN for details. This sample is the
             // common scenario of an app logging events which it wants to place in its own log file,
-            // so it creates a this.localFileLogSession and channel as a pair. The channel is created
-            // during construction of this LoggingScenario class so it already exists by the time
-            // this function is called.
+            // so it creates a this.localFileLogSession and channel as a pair. The channel is
+            // created during construction of this LoggingScenario class so it already exists by the
+            // time this function is called.
             if (localFileLogSession == null)
             {
                 if (logToFile == true)
@@ -371,7 +371,7 @@ namespace GrampsView.Common
         /// Releases unmanaged and - optionally - managed resources.
         /// </summary>
         /// <param name="disposing">
-        /// <c> true </c> to release both managed and unmanaged resources; <c> false </c> to release
+        /// <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release
         /// only unmanaged resources.
         /// </param>
         protected virtual void Dispose(bool disposing)

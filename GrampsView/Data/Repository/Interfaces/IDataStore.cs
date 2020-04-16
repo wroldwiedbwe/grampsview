@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------
 //
-// Interface defintion for IGrampsRepository.cs
+// Interface defintion for IDataStore.cs
 //
 // <copyright file="IDataStore.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
@@ -16,5 +16,10 @@ namespace GrampsView.Data.Repository
     /// </summary>
     public interface IDataStore
     {
+        //ICommonNotifications CN { get; set; }
+
+        //static DataInstance DS { get; }
+
+        //NavCmd NV { get; set; }
     }
 }

@@ -38,7 +38,7 @@ namespace GrampsView.ViewModels
             BaseTitleIcon = CommonConstants.IconNotes;
         }
 
-        public CardGroup NoteSource
+        public static CardGroup NoteSource
         {
             get
             {
