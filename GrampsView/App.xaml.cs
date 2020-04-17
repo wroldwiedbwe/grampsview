@@ -82,7 +82,7 @@ namespace GrampsView
         {
             get
             {
-                return new CommonLogPrism();
+                return new CommonLogPrism(App.Current.Container.Resolve<ICommonLogging>());
             }
         }
 

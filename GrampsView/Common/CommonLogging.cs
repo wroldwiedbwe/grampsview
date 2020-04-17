@@ -11,23 +11,26 @@ namespace GrampsView.Common
 {
     using Microsoft.AppCenter.Analytics;
     using Microsoft.AppCenter.Crashes;
-
-    using Prism.Logging;
+    using Microsoft.Extensions.Logging;
 
     using System;
     using System.Collections.Generic;
 
     public class CommonLogging : ICommonLogging
     {
-        private readonly CommonLogPrism Log = new CommonLogPrism();
+        private static ILogger Log;
+        private readonly ILoggerFactory LogFactory = LoggerFactory.Create(builder => { builder.SetMinimumLevel(LogLevel.Trace).AddConsole().AddDebug(); });
 
         public CommonLogging()
         {
+            Log = LogFactory.CreateLogger("GrampsView");
+
+            Log.LogInformation("Log started");
         }
 
         public static void LogError(string argMessage, Dictionary<string, string> argErrorDetail)
         {
-            //argErrorDetail.Add("Error", argMessage);
+            Log.LogError(argMessage, argErrorDetail);
 
             // Only Start App Center if there
             if (!Common.CommonRoutines.IsEmulator())
@@ -45,41 +48,67 @@ namespace GrampsView.Common
                 throw new ArgumentNullException(nameof(ex));
             }
 
-            string exceptionMessage = strMessage + " - Exception:" + ex.Message + " - " + ex.Source + " - " + ex.InnerException + " - " + ex.StackTrace;
+            Dictionary<string, string> errorDetail = new Dictionary<string, string>
+            {
+                { "Message", ex.Message },
+                { "Source", ex.Source },
+                { "Inner Exception", ex.InnerException.Message },
+                { "StackTrace", ex.StackTrace }
+            };
+
+            Log.LogCritical(strMessage, errorDetail);
 
             // Only Start App Center if there
+            string exceptionMessage = strMessage + " - Exception:" + ex.Message + " - " + ex.Source + " - " + ex.InnerException + " - " + ex.StackTrace;
+
             if (!Common.CommonRoutines.IsEmulator())
             {
                 Crashes.TrackError(ex,
                 new Dictionary<string, string>{
-                { "Message", strMessage},
-                 { "Exception Message", exceptionMessage},
+                { "Message", strMessage },
+                { "Exception Message", exceptionMessage },
                 });
             }
         }
 
-        void ICommonLogging.CloseLogging()
+        public void LogGeneral(string argMessage)
         {
+            Dictionary<string, string> errorDetail = new Dictionary<string, string>
+            {
+                //{ "Message", ex.Message },
+            };
+
+            LogGeneral(argMessage, errorDetail);
+        }
+
+        public void LogGeneral(string argMessage, Dictionary<string, string> argDetails)
+        {
+            Log.LogDebug(argMessage, argDetails);
         }
 
         public void LogProgress(string value)
         {
-            Log.Log(value, Category.Debug, Priority.Low);
+            Log.LogTrace(value);
         }
 
         public void LogRoutineEntry(string routine)
         {
-            Log.Log("Start=> " + routine, Category.Debug, Priority.Low);
+            Log.LogTrace("Start=> " + routine);
         }
 
         public void LogRoutineExit(string message)
         {
-            Log.Log("End <= " + message, Category.Debug, Priority.Low);
+            Log.LogTrace("End <= " + message);
         }
 
         public void LogVariable(string name, string value)
         {
-            Log.Log(name + " = " + value, Category.Debug, Priority.Low);
+            Dictionary<string, string> moreDetail = new Dictionary<string, string>
+            {
+                //{ "Message", ex.Message },
+            };
+
+            Log.LogDebug(name + " = " + value, moreDetail);
         }
 
         // TODO detect redundant calls

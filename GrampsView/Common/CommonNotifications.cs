@@ -182,7 +182,7 @@ namespace GrampsView.Common
                 DataLoadLogAdd(argMessage);
             });
 
-            _CL.LogVariable("MajorStatusAdd", argMessage);
+            _CL.LogProgress("MajorStatusAdd" + argMessage);
 
             MajorStatusMessage = argMessage;
 
@@ -289,43 +289,45 @@ namespace GrampsView.Common
                 argErrorDetail = new Dictionary<string, string>();
             }
 
+            CommonLogging.LogError(argMessage, argErrorDetail);
+
             NotifyDialogBox("Error", argMessage, argErrorDetail);
         }
 
         /// <summary>
         /// Notifies the error.
         /// </summary>
-        /// <param name="strMessage">
+        /// <param name="argMessage">
         /// The string message.
         /// </param>
-        public void NotifyError(string strMessage)
+        public void NotifyError(string argMessage)
         {
             Dictionary<string, string> argErrorDetail = new Dictionary<string, string>();
 
-            NotifyDialogBox("Error", strMessage, argErrorDetail);
+            NotifyError(argMessage, argErrorDetail);
         }
 
         /// <summary>
         /// notify the user about an Exception.
         /// </summary>
-        /// <param name="strMessage">
+        /// <param name="argMessage">
         /// general description of where the Exception occurred.
         /// </param>
         /// <param name="ex">
         /// Exception object.
         /// </param>
-        public void NotifyException(string strMessage, Exception ex)
+        public void NotifyException(string argMessage, Exception ex)
         {
             if (ex is null)
             {
                 throw new ArgumentNullException(nameof(ex));
             }
 
-            string exceptionMessage = strMessage + " - Exception:" + ex.Message + " - " + ex.Source + " - " + ex.InnerException + " - " + ex.StackTrace;
+            string exceptionMessage = argMessage + " - Exception:" + ex.Message + " - " + ex.Source + " - " + ex.InnerException + " - " + ex.StackTrace;
 
             NotifyError(exceptionMessage);
 
-            CommonLogging.LogException(strMessage, ex);
+            CommonLogging.LogException(argMessage, ex);
 
             // Remove serialised data in case it is the issue
             CommonLocalSettings.DataSerialised = false;

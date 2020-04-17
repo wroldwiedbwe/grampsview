@@ -6,15 +6,23 @@ namespace GrampsView.Common
 {
     using System;
     using System.Diagnostics;
-
+    using GrampsView.Data.Repository;
     using Prism.Logging;
 
     /// <summary>
     /// Logger Facade for Prism.
+    /// TODO: Only until made obsolete in Prism 8
     /// </summary>
     /// <seealso cref="Prism.Logging.ILoggerFacade"/>
     public class CommonLogPrism : ILoggerFacade
     {
+        private ICommonLogging Logger;
+
+        public CommonLogPrism(ICommonLogging iocCommonLogging)
+        {
+            Logger = iocCommonLogging;
+        }
+
         /// <summary>
         /// Writes a log message.
         /// </summary>
@@ -34,23 +42,23 @@ namespace GrampsView.Common
             switch (category)
             {
                 case Category.Debug:
-                    Debug.WriteLine(now + "Debug:" + message);
+                    Logger.LogGeneral(now + "Debug:" + message);
                     break;
 
                 case Category.Warn:
-                    Debug.WriteLine(now + "Warn:" + message);
+                    Logger.LogGeneral(now + "Warn:" + message);
                     break;
 
                 case Category.Exception:
-                    Debug.WriteLine(now + "Exception:" + message);
+                    Logger.LogGeneral(now + "Exception:" + message);
                     break;
 
                 case Category.Info:
-                    Debug.WriteLine(now + "Info:" + message);
+                    Logger.LogGeneral(now + "Info:" + message);
                     break;
 
                 default:
-                    Debug.WriteLine(now + "Unknown category:" + category + ":" + message);
+                    Logger.LogGeneral(now + "Unknown category:" + category + ":" + message);
                     break;
             }
         }

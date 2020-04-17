@@ -8,6 +8,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace GrampsView.Common
 {
     /// <summary>
@@ -15,19 +17,9 @@ namespace GrampsView.Common
     /// </summary>
     public interface ICommonLogging
     {
-        ///// <summary>
-        ///// Gets the log channel.
-        ///// </summary>
-        ///// <value>The log channel.</value>
-        //LoggingChannel LogChannel
-        //{
-        //    get;
-        //}
+        void LogGeneral(string argMessage);
 
-        /// <summary>
-        /// Closes the logging.
-        /// </summary>
-        void CloseLogging();
+        void LogGeneral(string argMessage, Dictionary<string, string> argDetails);
 
         /// <summary>
         /// Logs the progress.
