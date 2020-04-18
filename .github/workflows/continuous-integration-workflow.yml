@@ -33,7 +33,7 @@ jobs:
         commit_message: Update changelog
 
         # Optional glob pattern of files which should be added to the commit
-        file_pattern: *.md
+        file_pattern: /*.md
 
 
         # Optional commit user and author settings
