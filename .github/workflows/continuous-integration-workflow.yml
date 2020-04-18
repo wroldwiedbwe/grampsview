@@ -28,6 +28,19 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
+    - uses: stefanzweifel/git-auto-commit-action@v4.1.2
+      with:
+        commit_message: Update changelog
+
+        # Optional glob pattern of files which should be added to the commit
+        file_pattern: /github/workspace/*.md
+
+
+        # Optional commit user and author settings
+        commit_user_name: phandcock
+        commit_user_email: phandcockregister@gmail.com
+        commit_author: phandcock <phandcockregister@gmail.com>
+    
 #    - name: Generate Auto Changelog
 #      uses: ahmadawais/action-auto-changelog@master
 #      with:
