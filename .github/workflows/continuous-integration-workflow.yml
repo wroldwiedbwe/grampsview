@@ -23,10 +23,15 @@ jobs:
 #        tag-prefix: 'v'
 #        changelog-release-count: 0
 
-    - name: Generate Auto Changelog
-      uses: ahmadawais/action-auto-changelog@master
+    - name: Generate changelog
+      uses: heinrichreimer/action-github-changelog-generator@v2.1.1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+
+#    - name: Generate Auto Changelog
+#      uses: ahmadawais/action-auto-changelog@master
+#      with:
+#        github_token: ${{ secrets.GITHUB_TOKEN }}
 
 #    - name: Generate changelog
 #      uses: charmixer/auto-changelog-action@v1
