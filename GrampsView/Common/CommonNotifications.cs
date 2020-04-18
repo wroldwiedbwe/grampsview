@@ -29,12 +29,12 @@ namespace GrampsView.Common
         /// <summary>
         /// Common logging routines.
         /// </summary>
-        private readonly ICommonLogging _CL;
+        private readonly ICommonLogging _iocCommonLogging;
 
         /// <summary>
         /// Injected Event Aggregator.
         /// </summary>
-        private readonly IEventAggregator _EventAggregator;
+        private readonly IEventAggregator _iocEventAggregator;
 
         private readonly int maxCount = 8;
 
@@ -47,19 +47,23 @@ namespace GrampsView.Common
         /// <summary>
         /// Initializes a new instance of the <see cref="CommonNotifications"/> class.
         /// </summary>
-        /// <param name="iocEventAggregator">
-        /// The ioc event aggregator.
+        /// <param name="iocCommonLogging">
+        /// Common Logging routines
         /// </param>
-        public CommonNotifications(IEventAggregator iocEventAggregator, ICommonLogging iocCommonLogging)
+        /// <param name="iocEventAggregator">
+        /// The event aggregator.
+        /// </param>
+        public CommonNotifications(ICommonLogging iocCommonLogging,
+                                   IEventAggregator iocEventAggregator)
         {
             if (iocEventAggregator is null)
             {
                 throw new ArgumentNullException(nameof(iocEventAggregator));
             }
 
-            _EventAggregator = iocEventAggregator;
+            _iocEventAggregator = iocEventAggregator;
 
-            _CL = iocCommonLogging;
+            _iocCommonLogging = iocCommonLogging;
 
             //_EventAggregator.GetEvent<GVNotificationLogAdd>().Subscribe(DataLoadLogAdd, ThreadOption.UIThread);
         }
@@ -101,18 +105,21 @@ namespace GrampsView.Common
         /// <summary>
         /// Changes the loading message.
         /// </summary>
-        /// <param name="strMessage">
+        /// <param name="argMessage">
         /// The string message.
         /// </param>
         /// <returns>
         /// </returns>
-        public async Task ChangeLoadingMessage(string strMessage)
+        public async Task ChangeLoadingMessage(string argMessage)
         {
-            _EventAggregator.GetEvent<GVProgressLoading>().Publish(strMessage);
+            _iocEventAggregator.GetEvent<GVProgressLoading>().Publish(argMessage);
 
-            _CL.LogVariable("ChangeLoadingMessage", strMessage);
+            if (!string.IsNullOrEmpty(argMessage))
+            {
+                _iocCommonLogging.LogVariable("ChangeLoadingMessage", argMessage);
 
-            await MajorStatusAdd(strMessage).ConfigureAwait(false);
+                await MajorStatusAdd(argMessage).ConfigureAwait(false);
+            }
 
             return;
         }
@@ -182,7 +189,7 @@ namespace GrampsView.Common
                 DataLoadLogAdd(argMessage);
             });
 
-            _CL.LogProgress("MajorStatusAdd" + argMessage);
+            _iocCommonLogging.LogProgress("MajorStatusAdd" + argMessage);
 
             MajorStatusMessage = argMessage;
 
@@ -224,7 +231,7 @@ namespace GrampsView.Common
                 DataLoadLogAdd(argMessage);
             });
 
-            _CL.LogVariable("MinorStatusAdd", argMessage);
+            _iocCommonLogging.LogVariable("MinorStatusAdd", argMessage);
 
             MinorStatusMessage = argMessage;
 
@@ -248,7 +255,7 @@ namespace GrampsView.Common
         public void NotifyDialogBox(ActionDialogArgs argADA)
         {
             // TODO not very clean but what to do when displaying messages before hub page is loaded
-            _EventAggregator.GetEvent<GRAMPSDialogBoxEvent>().Publish(argADA);
+            _iocEventAggregator.GetEvent<GRAMPSDialogBoxEvent>().Publish(argADA);
         }
 
         /// <summary>

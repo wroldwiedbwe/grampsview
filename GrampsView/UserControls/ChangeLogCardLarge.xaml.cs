@@ -25,7 +25,7 @@ namespace GrampsView.UserControls
             {
                 // Load Resource
                 var assemblyExec = Assembly.GetExecutingAssembly();
-                var resourceName = "GrampsView.changelog.md";
+                var resourceName = "GrampsView.CHANGELOG.md";
 
                 using (Stream stream = assemblyExec.GetManifestResourceStream(resourceName))
                 {
@@ -35,6 +35,10 @@ namespace GrampsView.UserControls
                         {
                             this.mdview.Markdown = reader.ReadToEnd();
                         }
+                    }
+                    else
+                    {
+                        DataStore.CN.NotifyError("Error trying to open GrampsView.changelog.md");
                     }
                 }
             }

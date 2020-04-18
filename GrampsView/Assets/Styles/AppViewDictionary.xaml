@@ -123,15 +123,6 @@
     </Style>
 
     <Style
-        x:Key="FrameCardSmallStyle"
-        BasedOn="{StaticResource FrameCardStyle}"
-        TargetType="Frame">
-        <Setter Property="WidthRequest" Value="{x:Static Member='common:CardWidths.CardSmallWidth'}" />
-        <Setter Property="Padding" Value="3" />
-        <Setter Property="Margin" Value="2" />
-    </Style>
-
-    <Style
         x:Key="FrameCardMediumStyle"
         BasedOn="{StaticResource FrameCardStyle}"
         TargetType="Frame">
@@ -165,6 +156,15 @@
     </Style>
 
     <!--  Create a Small Card Style  -->
+    <Style
+        x:Key="FrameCardSmallStyle"
+        BasedOn="{StaticResource FrameCardStyle}"
+        TargetType="Frame">
+        <Setter Property="WidthRequest" Value="{x:Static Member='common:CardWidths.CardSmallWidth'}" />
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="Margin" Value="2" />
+    </Style>
+
     <Style
         x:Key="FrameSmallVariableCardStyle"
         BasedOn="{StaticResource FrameCardSmallStyle}"
@@ -227,7 +227,7 @@
         BasedOn="{StaticResource FrameCardLargeStyle}"
         TargetType="Frame">
         <Setter Property="BackgroundColor" Value="{DynamicResource CardBackGroundNote}" />
-        <Setter Property="MinimumWidthRequest" Value="{DynamicResource GVDetailCardWidthLarge}" />
+        <Setter Property="WidthRequest" Value="{DynamicResource GVDetailCardWidthLarge}" />
     </Style>
 
     <Style

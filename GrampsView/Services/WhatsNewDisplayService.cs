@@ -26,9 +26,9 @@ namespace GrampsView.Services
 
             // VersionTracking.IsFirstLaunchForCurrentBuild returns true every time called when
             // first run. If this service is called multiple times then it will need the flag.
-            if ((VersionTracking.IsFirstLaunchForCurrentBuild) && (!Common.CommonLocalSettings.WhatsNewDisplayed))
+            if ((VersionTracking.IsFirstLaunchForCurrentBuild)) // && (!Common.CommonLocalSettings.WhatsNewDisplayed))
             {
-                Common.CommonLocalSettings.WhatsNewDisplayed = true;
+                // Common.CommonLocalSettings.WhatsNewDisplayed = true;
                 iocEventAggregator.GetEvent<PageNavigateEvent>().Publish(nameof(WhatsNewPage));
 
                 return true;

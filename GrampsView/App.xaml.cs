@@ -59,6 +59,9 @@ namespace GrampsView
                 // Assets.Strings.AppResources.Culture = ci; // ODO set the RESX for resource localization
                 DependencyService.Get<Common.ILocalize>().SetLocale(ci); // set the Thread for locale-aware methods
             }
+
+            // Subscribe to changes of screen metrics
+            DeviceDisplay.MainDisplayInfoChanged += CardWidths.OnMainDisplayInfoChanged;
         }
 
         public App(IPlatformInitializer initializer)

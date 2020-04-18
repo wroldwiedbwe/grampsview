@@ -195,13 +195,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="changelog.md" />
+    <None Remove="CHANGELOG.md" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.cs.OLD" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.OLD" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="changelog.md" />
+    <EmbeddedResource Include="CHANGELOG.md" />
   </ItemGroup>
 
   <ItemGroup>

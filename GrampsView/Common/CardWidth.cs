@@ -1,10 +1,12 @@
 ﻿namespace GrampsView.Common
 {
+    using Xamarin.Essentials;
     using Xamarin.Forms;
-    using Xamarin.Forms.DualScreen;
 
     internal static class CardWidths
     {
+        private static DisplayOrientation thisDeviceOrientation = DisplayOrientation.Portrait;
+
         public static double CardLargeWidth
         {
             get
@@ -25,7 +27,25 @@
 
                     case TargetIdiom.Phone:
 
-                        outVal = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Width;
+                        switch (thisDeviceOrientation)
+                        {
+                            case DisplayOrientation.Portrait:
+                                {
+                                    outVal = DeviceDisplay.MainDisplayInfo.Width;
+                                    break;
+                                }
+                            case DisplayOrientation.Landscape:
+                                {
+                                    outVal = 400;
+                                    break;
+                                }
+                            default:
+                                {
+                                    outVal = DeviceDisplay.MainDisplayInfo.Width;
+                                    break;
+                                }
+                        }
+
                         break;
 
                     default:
@@ -56,7 +76,24 @@
                         break;
 
                     case TargetIdiom.Phone:
-                        outVal = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Width;
+                        switch (thisDeviceOrientation)
+                        {
+                            case DisplayOrientation.Portrait:
+                                {
+                                    outVal = DeviceDisplay.MainDisplayInfo.Width;
+                                    break;
+                                }
+                            case DisplayOrientation.Landscape:
+                                {
+                                    outVal = 110;
+                                    break;
+                                }
+                            default:
+                                {
+                                    outVal = DeviceDisplay.MainDisplayInfo.Width;
+                                    break;
+                                }
+                        }
 
                         break;
 
@@ -85,7 +122,24 @@
                         break;
 
                     case TargetIdiom.Phone:
-                        outVal = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Width;
+                        switch (thisDeviceOrientation)
+                        {
+                            case DisplayOrientation.Portrait:
+                                {
+                                    outVal = DeviceDisplay.MainDisplayInfo.Width;
+                                    break;
+                                }
+                            case DisplayOrientation.Landscape:
+                                {
+                                    outVal = 200;
+                                    break;
+                                }
+                            default:
+                                {
+                                    outVal = DeviceDisplay.MainDisplayInfo.Width;
+                                    break;
+                                }
+                        }
                         break;
 
                     default:
@@ -94,6 +148,28 @@
                 };
 
                 return outVal;
+            }
+        }
+
+        public static void OnMainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
+        {
+            switch (e.DisplayInfo.Orientation)
+            {
+                case DisplayOrientation.Portrait:
+                    {
+                        thisDeviceOrientation = DisplayOrientation.Portrait;
+                        break;
+                    }
+                case DisplayOrientation.Landscape:
+                    {
+                        thisDeviceOrientation = DisplayOrientation.Landscape;
+                        break;
+                    }
+                default:
+                    {
+                        thisDeviceOrientation = DisplayOrientation.Portrait;
+                        break;
+                    }
             }
         }
     }

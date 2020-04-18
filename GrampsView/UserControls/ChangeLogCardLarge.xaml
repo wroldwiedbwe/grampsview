@@ -24,7 +24,7 @@
             <markdown:MarkdownView
                 x:Name="mdview"
                 Grid.Row="0"
-                FlexLayout.Basis="75" />
+                Grid.Column="0" />
         </Grid>
     </Frame.Content>
 </Frame>
