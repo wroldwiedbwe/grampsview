@@ -351,4 +351,7 @@ MigrationBackup/
 
 # GrampsViewFiles
 GrampsView/Common/Secret.cs
+GrampsView/CHANGELOG.md
+
+
 
