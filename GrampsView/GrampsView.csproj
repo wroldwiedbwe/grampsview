@@ -99,7 +99,7 @@
     <Compile Remove="UserControls\General\CardGridSingleType.xaml.cs" />
     <Compile Remove="UserControls\General\CheckBoxExtended.cs" />
     <Compile Remove="UserControls\General\FlexMultiCardEnum.xaml.cs" />
-    <Compile Remove="UserControls\General\FlexMultiCardType - Copy.xaml.cs" />
+    <Compile Remove="UserControls\General\FlexMultiGroupMultiCard - Copy.xaml.cs" />
     <Compile Remove="UserControls\General\FlexSingleCardGroup.xaml.cs" />
     <Compile Remove="UserControls\General\MediaImage.xaml.cs" />
     <Compile Remove="UserControls\General\RadioButtonxExtended .cs" />
@@ -195,13 +195,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="CHANGELOG.md" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.cs.OLD" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.OLD" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="CHANGELOG.md" />
   </ItemGroup>
 
   <ItemGroup>
@@ -330,5 +325,9 @@
 
   <ItemGroup>
     <Folder Include="ViewModels\Test\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\CHANGELOG.md" Link="CHANGELOG.md" />
   </ItemGroup>
 </Project>

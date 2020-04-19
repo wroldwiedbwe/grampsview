@@ -35,7 +35,7 @@
         </ViewCell>
     </DataTemplate>
 
-    <!--  FlexMulti data template Large  -->
+    <!--  Card Group data template  -->
     <DataTemplate x:Key="CardGroupTemplate" x:Name="CardGroupTemplate">
 
         <Frame IsEnabled="{Binding CardGroupVisible}" Style="{StaticResource CardGroupStyle}">
@@ -52,7 +52,7 @@
                     TextColor="{DynamicResource OnSurfaceColor}" />
 
                 <FlexLayout
-                    x:Name="flexer"
+                    x:Name="CardGroupTemplateFlexer"
                     Grid.Row="1"
                     BindableLayout.ItemTemplateSelector="{StaticResource CardGroupTemplateSelectorSmall}"
                     BindableLayout.ItemsSource="{Binding Cards, Mode=OneWay}"

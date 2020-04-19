@@ -49,7 +49,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <ucon:MediaCardLarge Grid.Row="0" BindingContext="{Binding CitationObject.HomeImageHLink.DeRef.HLink, Mode=OneWay}" />
