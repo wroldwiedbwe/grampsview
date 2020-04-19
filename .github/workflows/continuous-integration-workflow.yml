@@ -31,7 +31,7 @@ jobs:
     - name: git Actions
       uses: srt32/git-actions@v0.0.3
       with:
-        args: git log --pretty --oneline --decorate -n 10 > CHANGELOG.md
+        args: git log --pretty --oneline --decorate -n 10 --format=medium > CHANGELOG.md
 
 
     - uses: stefanzweifel/git-auto-commit-action@v4.1.2
