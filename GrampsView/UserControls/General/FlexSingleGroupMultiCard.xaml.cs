@@ -6,6 +6,7 @@
     using System.Linq;
 
     using Xamarin.Forms;
+    using Xamarin.Forms.Internals;
 
     public partial class FlexSingleGroupMultiCard : Frame
     {
@@ -14,6 +15,7 @@
         public static readonly BindableProperty FsctTemplateProperty = BindableProperty.Create(nameof(FsctTemplate), typeof(DataTemplateSelector), typeof(FlexSingleGroupMultiCard), propertyChanged: OnItemTemplateChanged);
 
         private static int startItemGet = 0;
+
         private static int virtualItemGet = 5;
 
         public FlexSingleGroupMultiCard()
@@ -35,7 +37,7 @@
             IndexLength = startItemGet;
         }
 
-        public CardGroup DisplayList { get; set; } = new CardGroup();
+        public CardGroup DisplayList { get; } = new CardGroup();
 
         public bool FlexSingleCardVisible
         {
@@ -68,9 +70,7 @@
 
         public int IndexStart { get; set; } = 0;
 
-        private CardGroup ActualDisplayList { get; set; } = new CardGroup();
-
-        // Gota start with enough so scrollbar is visible on the desktop
+        // Got to start with enough so scrollbar is visible on the desktop
         private static void OnItemsSourceChanged(BindableObject obj, object oldValue, object newValue)
         {
             var layout = obj as FlexSingleGroupMultiCard;
@@ -80,8 +80,6 @@
             {
                 observableCollection.CollectionChanged += layout.OnItemsSourceCollectionChanged;
             }
-
-            // layout.ActualDisplayList.CollectionChanged += layout.OnActualDisplayListCollectionChanged;
 
             // Layout out children
             if (layout?.FMultiSource != null)
@@ -102,20 +100,17 @@
 
         private void AddToDisplay()
         {
-            //Debug.WriteLine("GetIt");
-
             if (DisplayList.Cards.Count == FMultiSource.Cards.Count)
             {
                 return;
             }
 
-            foreach (var item in ActualDisplayList.Cards.Skip(IndexStart).Take(IndexLength).ToList())
+            foreach (var item in FMultiSource.Cards.Skip(IndexStart).Take(IndexLength).ToList())
             {
                 DisplayList.Add(item);
-                this.flexer.Children.Add(CreateChildView(item));
+                IndexStart += 1;
             }
 
-            IndexStart = IndexStart + IndexLength;
             IndexLength = virtualItemGet;
         }
 
@@ -141,68 +136,38 @@
 
         private View CreateChildView(object item)
         {
-            var dts = FsctTemplate as DataTemplateSelector;
-            var itemTemplate = dts.SelectTemplate(item, null);
-            itemTemplate.SetValue(BindableObject.BindingContextProperty, item);
-            return (View)itemTemplate.CreateContent();
-        }
+            //var dts = FsctTemplate as DataTemplateSelector;
+            //var itemTemplate = dts.SelectTemplate(item, null);
+            //itemTemplate.SetValue(BindableObject.BindingContextProperty, item);
+            //return (View)itemTemplate.CreateContent();
 
-        private void OnActualDisplayListCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.Action == NotifyCollectionChangedAction.Reset)
-            {
-                // Items cleared
-                this.flexer.Children.Clear();
-            }
+            Application.Current.Resources.TryGetValue("CardGroupTemplate", out var cardGroupTemplate);
 
-            if (e.OldItems != null)
-            {
-                // Items removed
-                this.flexer.Children.RemoveAt(e.OldStartingIndex);
-            }
+            DataTemplate t = cardGroupTemplate as DataTemplate;
 
-            if (e.NewItems != null)
-            {
-                foreach (CardGroup argCardGroup in e.NewItems)
-                {
-                    // Item(s) added.
-                    foreach (var item in argCardGroup.Cards)
-                    {
-                        ActualDisplayList.Add(item);
-                    }
-                }
+            View view = (View)t.CreateContent(item, null);
 
-                AddToDisplay();
-            }
+            view.BindingContext = item;
+
+            return view;
         }
 
         private void OnItemsSourceCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Reset)
             {
-                // Items cleared
+                // Items cleared TODO Should this be FSource?
                 this.DisplayList.Clear();
-                this.ActualDisplayList.Clear();
             }
 
             if (e.OldItems != null)
             {
-                // Items removed this.DisplayList..Children.RemoveAt(e.OldStartingIndex);
+                // ODO Handle this Items removed this.DisplayList..Children.RemoveAt(e.OldStartingIndex);
             }
 
             if (e.NewItems != null)
             {
-                foreach (CardGroup argCardGroup in e.NewItems)
-                {
-                    // Item(s) added.
-                    foreach (var item in argCardGroup.Cards)
-                    {
-                        ActualDisplayList.Add(item);
-                    }
-                }
-
                 AddToDisplay();
-
                 BuildLayout();
             }
         }

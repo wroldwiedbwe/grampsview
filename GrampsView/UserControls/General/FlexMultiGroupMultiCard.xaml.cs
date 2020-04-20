@@ -36,7 +36,7 @@
             IndexLength = startItemGet;
         }
 
-        public ObservableCollection<object> DisplayMultiList { get; set; } = new ObservableCollection<object>();
+        public ObservableCollection<object> DisplayMultiList { get; } = new ObservableCollection<object>();
 
         public bool FlexMultiCardVisible
         {
@@ -73,8 +73,6 @@
                 observableCollection.CollectionChanged += layout.OnItemsSourceCollectionChanged;
             }
 
-            layout.DisplayMultiList.CollectionChanged += layout.OnDisplayListCollectionChanged;
-
             // Layout out children
             if (layout?.FMultiSource != null)
             {
@@ -99,9 +97,9 @@
             foreach (var item in FMultiSource.Cards.Skip(IndexStart).Take(IndexLength).ToList())
             {
                 DisplayMultiList.Add(item);
+                IndexStart += 1;
             }
 
-            IndexStart = IndexStart + IndexLength;
             IndexLength = virtualItemGet;
         }
 
@@ -138,54 +136,23 @@
             return view;
         }
 
-        private void OnDisplayListCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.Action == NotifyCollectionChangedAction.Reset)
-            {
-                // Items cleared
-                this.multiflexer.Children.Clear();
-            }
-
-            if (e.OldItems != null)
-            {
-                // Items removed
-                this.multiflexer.Children.RemoveAt(e.OldStartingIndex);
-            }
-
-            if (e.NewItems != null)
-            {
-                // Item(s) added.
-                for (int i = 0; i < e.NewItems.Count; i++)
-                {
-                    var item = e.NewItems[i];
-                    var view = CreateChildView(item);
-                    this.multiflexer.Children.Insert(e.NewStartingIndex + i, view);
-                }
-            }
-        }
-
         private void OnItemsSourceCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Reset)
             {
-                // Items cleared
+                // Items cleared TODO SHould this be FSource?
                 this.DisplayMultiList.Clear();
             }
 
             if (e.OldItems != null)
             {
-                // Items removed this.DisplayList..Children.RemoveAt(e.OldStartingIndex);
+                // TODO Handle this Items removed this.DisplayList..Children.RemoveAt(e.OldStartingIndex);
             }
 
             if (e.NewItems != null)
             {
-                // Item(s) added.
-                for (int i = 0; i < e.NewItems.Count; i++)
-                {
-                    var item = e.NewItems[i];
-
-                    this.DisplayMultiList.Add(item);
-                }
+                AddToDisplay();
+                BuildLayout();
             }
         }
 

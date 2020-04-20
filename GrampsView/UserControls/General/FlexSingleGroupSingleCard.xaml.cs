@@ -18,6 +18,7 @@
             = BindableProperty.Create(nameof(FsctTemplate), typeof(DataTemplate), typeof(FlexSingleGroupSingleCard), propertyChanged: OnItemTemplateChanged);
 
         private static int startItemGet = 0;
+
         private static int virtualItemGet = 5;
 
         public FlexSingleGroupSingleCard()
@@ -39,7 +40,7 @@
             IndexLength = startItemGet;
         }
 
-        public ObservableCollection<object> DisplayList { get; set; } = new ObservableCollection<object>();
+        public ObservableCollection<object> DisplayList { get; } = new ObservableCollection<object>();
 
         public bool FlexSingleCardVisible
         {
@@ -82,8 +83,6 @@
                 observableCollection.CollectionChanged += layout.OnItemsSourceCollectionChanged;
             }
 
-            layout.DisplayList.CollectionChanged += layout.OnDisplayListCollectionChanged;
-
             // Layout out children
             if (layout?.FsctSource != null && layout?.FsctTemplate != null)
             {
@@ -117,9 +116,9 @@
             foreach (var item in FsctSource.Cards.Skip(IndexStart).Take(IndexLength).ToList())
             {
                 DisplayList.Add(item);
+                IndexStart += 1;
             }
 
-            IndexStart = IndexStart + IndexLength;
             IndexLength = virtualItemGet;
         }
 
@@ -155,70 +154,23 @@
             }
         }
 
-        private View CreateChildView(object item)
-        {
-            if (FsctTemplate is DataTemplateSelector)
-            {
-                var dts = FsctTemplate as DataTemplateSelector;
-                var itemTemplate = dts.SelectTemplate(item, null);
-                itemTemplate.SetValue(BindableObject.BindingContextProperty, item);
-                return (View)itemTemplate.CreateContent();
-            }
-            else
-            {
-                FsctTemplate.SetValue(BindableObject.BindingContextProperty, item);
-                return (View)FsctTemplate.CreateContent();
-            }
-        }
-
-        private void OnDisplayListCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.Action == NotifyCollectionChangedAction.Reset)
-            {
-                // Items cleared
-                this.flexer.Children.Clear();
-            }
-
-            if (e.OldItems != null)
-            {
-                // Items removed
-                this.flexer.Children.RemoveAt(e.OldStartingIndex);
-            }
-
-            if (e.NewItems != null)
-            {
-                // Item(s) added.
-                for (int i = 0; i < e.NewItems.Count; i++)
-                {
-                    var item = e.NewItems[i];
-                    var view = CreateChildView(item);
-                    this.flexer.Children.Insert(e.NewStartingIndex + i, view);
-                }
-            }
-        }
-
         private void OnItemsSourceCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Reset)
             {
-                // Items cleared
+                // Items cleared TODO Should this be FSource?
                 this.DisplayList.Clear();
             }
 
             if (e.OldItems != null)
             {
-                // Items removed this.DisplayList..Children.RemoveAt(e.OldStartingIndex);
+                // TODO Handle this Items removed this.DisplayList..Children.RemoveAt(e.OldStartingIndex);
             }
 
             if (e.NewItems != null)
             {
-                // Item(s) added.
-                for (int i = 0; i < e.NewItems.Count; i++)
-                {
-                    var item = e.NewItems[i];
-
-                    this.DisplayList.Add(item);
-                }
+                AddToDisplay();
+                BuildLayout();
             }
         }
 
