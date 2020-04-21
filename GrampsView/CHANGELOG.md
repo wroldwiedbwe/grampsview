@@ -1,5 +1,7 @@
-commit b3e5eff (grafted, HEAD -> master, origin/master)
-Author: phandcock <phandcock@users.noreply.github.com>
-Date:   Tue Apr 21 21:16:41 2020 +0800
+commit 1ab2662 (grafted, HEAD -> master, origin/master)
+Author: paul handcock <phandcock@live.com.au>
+Date:   Tue Apr 21 21:59:50 2020 +0800
 
-    Delete changelog.md
+    fix: Add more attribution text
+    
+    fix: CHange look of button colours
