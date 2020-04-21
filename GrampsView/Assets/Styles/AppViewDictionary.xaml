@@ -51,11 +51,11 @@
 
     <!--  Create a Base Style for a Button Style  -->
     <Style x:Key="GVButtonStyle" TargetType="Button">
-        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
-        <Setter Property="BorderColor" Value="{DynamicResource SecondaryColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceColor}" />
+        <Setter Property="BorderColor" Value="{DynamicResource SurfaceColor}" />
         <Setter Property="BorderRadius" Value="1" />
         <Setter Property="BorderWidth" Value="2" />
-        <Setter Property="TextColor" Value="{DynamicResource OnSecondaryColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource OnSurfaceColor}" />
         <Setter Property="WidthRequest" Value="{DynamicResource GVDetailCardWidthSmall}" />
     </Style>
 
@@ -73,7 +73,6 @@
         x:Key="GVButtonFont"
         BasedOn="{StaticResource GVButtonStyle}"
         TargetType="Button">
-        <Setter Property="TextColor" Value="{DynamicResource OnPrimaryColor}" />
         <Setter Property="WidthRequest" Value="40" />
     </Style>
 
