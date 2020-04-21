@@ -1,5 +1,5 @@
-commit bf364c9 (grafted, HEAD -> master, origin/master)
-Author: paul handcock <phandcock@live.com.au>
-Date:   Tue Apr 21 21:13:05 2020 +0800
+commit b3e5eff (grafted, HEAD -> master, origin/master)
+Author: phandcock <phandcock@users.noreply.github.com>
+Date:   Tue Apr 21 21:16:41 2020 +0800
 
-    fix: Remove use of Sahred Runtime with Android
+    Delete changelog.md
