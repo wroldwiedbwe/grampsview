@@ -1,7 +1,7 @@
-commit 1ab2662 (grafted, HEAD -> master, origin/master)
+commit c0c1efa (grafted, HEAD -> master, origin/master)
 Author: paul handcock <phandcock@live.com.au>
-Date:   Tue Apr 21 21:59:50 2020 +0800
+Date:   Wed Apr 22 21:59:24 2020 +0800
 
-    fix: Add more attribution text
+    fix: setup base class for Flex User Controls.
     
-    fix: CHange look of button colours
+    fox: scrolling of Flex cards
