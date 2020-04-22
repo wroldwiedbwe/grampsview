@@ -201,6 +201,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="CHANGELOG.md" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.1.0" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.1.0" />
     <PackageReference Include="Microsoft.AppCenter.Distribute" Version="3.1.0" />
@@ -237,6 +241,9 @@
     </Compile>
     <Compile Update="UserControls\General\FlexSingleGroupMultiCard.xaml.cs">
       <DependentUpon>FlexSingleGroupMultiCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\General\FlexBase.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
     <Compile Update="UserControls\General\TopMenu.xaml.cs">
       <DependentUpon>TopMenu.xaml</DependentUpon>

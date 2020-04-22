@@ -1,7 +1,8 @@
-﻿<Frame
+﻿<ucon:FlexBase
     x:Class="GrampsView.UserControls.FlexSingleGroupMultiCard"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="FlexSingleCardTypeRoot"
     Style="{StaticResource FlexMultiCollection}">
 
@@ -31,4 +32,4 @@
                 Style="{DynamicResource FlexLayoutCards}" />
         </Grid>
     </ScrollView>
-</Frame>
+</ucon:FlexBase>

@@ -38,13 +38,13 @@ namespace GrampsView.UserControls
                     }
                     else
                     {
-                        DataStore.CN.NotifyError("Error trying to open GrampsView.changelog.md");
+                        DataStore.CN.NotifyError("Error trying to open GrampsView.CHANGELOG.md");
                     }
                 }
             }
             catch (FileNotFoundException ex)
             {
-                DataStore.CN.NotifyException("File not Found Exception trying to open GrampsView.changelog.md", ex);
+                DataStore.CN.NotifyException("File not Found Exception trying to open GrampsView.CHANGELOG.md", ex);
             }
         }
     };
