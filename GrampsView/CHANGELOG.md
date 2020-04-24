@@ -1,7 +1,9 @@
-commit c0c1efa (grafted, HEAD -> master, origin/master)
+commit 3adef98 (grafted, HEAD -> master, origin/master)
 Author: paul handcock <phandcock@live.com.au>
-Date:   Wed Apr 22 21:59:24 2020 +0800
+Date:   Fri Apr 24 23:14:51 2020 +0800
 
-    fix: setup base class for Flex User Controls.
+    feat" change Medium font to Default
     
-    fox: scrolling of Flex cards
+    feat: Remove blank spaces either side of Android main menu
+    
+    fix: tweak orientation code
