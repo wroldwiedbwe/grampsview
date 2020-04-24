@@ -159,7 +159,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return GetFormatted(NamedSize.Micro);
+                return GetFormatted(NamedSize.Default);
             }
         }
 

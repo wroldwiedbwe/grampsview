@@ -12,6 +12,7 @@ using FFImageLoading.Forms.Platform;
 using GrampsView.Common.CustomClasses;
 using GrampsView.Data.Repository;
 using GrampsView.Droid.Common;
+using GrampsView.Common;
 
 using Microsoft.AppCenter.Distribute;
 using Microsoft.Device.Display;
@@ -27,9 +28,16 @@ using System.Threading.Tasks;
 
 namespace GrampsView.Droid
 {
-    [Activity(MainLauncher = false, Label = "GrampsView", Icon = "@mipmap/icon", Theme = "@style/MainTheme")]
+    [Activity(MainLauncher = false, Label = "GrampsView", Icon = "@mipmap/icon", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.UiMode | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)
+        {
+            //CommonTheming.SetAppTheme();
+
+            base.OnConfigurationChanged(newConfig);
+        }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -45,6 +53,7 @@ namespace GrampsView.Droid
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
+
         {
             //TabLayoutResource = Resource.Layout.Tabbar;
             //ToolbarResource = Resource.Layout.Toolbar;

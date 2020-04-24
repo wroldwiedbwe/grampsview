@@ -150,7 +150,7 @@ namespace GrampsView.Data.DataView
             // Handle the case where there is no data.
             if (FamilyData.Count == 0)
             {
-                return t;
+                return new HLinkPersonModelCollection();
             }
 
             // TODO fix this

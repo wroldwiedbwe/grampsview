@@ -365,6 +365,7 @@
         <Setter Property="HorizontalOptions" Value="StartAndExpand" />
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="LineBreakMode" Value="WordWrap" />
+        <Setter Property="FontSize" Value="Default" />
         <Setter Property="TextColor" Value="{DynamicResource OnPrimaryColor}" />
     </Style>
 
@@ -374,7 +375,7 @@
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
         <Setter Property="Margin" Value="0,0,3,3" />
-        <Setter Property="FontSize" Value="Micro" />
+        <Setter Property="FontSize" Value="Default" />
     </Style>
 
     <!--  Create a Large Style for a TextBlock  -->
@@ -382,7 +383,7 @@
         x:Key="GVLabelStyleLarge"
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
-        <Setter Property="FontSize" Value="Medium" />
+        <Setter Property="FontSize" Value="Default" />
         <Setter Property="MaxLines" Value="4" />
     </Style>
 
@@ -391,7 +392,7 @@
         x:Key="GVLabelStyleInstructions"
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
-        <Setter Property="FontSize" Value="Medium" />
+        <Setter Property="FontSize" Value="Default" />
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
         <Setter Property="TextColor" Value="{DynamicResource OnSurfaceColor}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryVariantDarkColor}" />
@@ -404,7 +405,7 @@
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
         <Setter Property="LineBreakMode" Value="TailTruncation" />
-        <Setter Property="FontSize" Value="Medium" />
+        <Setter Property="FontSize" Value="Default" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="TextColor" Value="{DynamicResource PrimaryVariantDarkColor}" />
     </Style>

@@ -169,7 +169,5 @@ namespace GrampsView.Common
 
             Log.LogDebug(argName + " = " + argValue, moreDetail);
         }
-
-        // TODO detect redundant calls
     }
 }
