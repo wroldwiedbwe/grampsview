@@ -6,17 +6,13 @@
     x:Name="BottomMenueRoot"
     Style="{StaticResource FrameBottomMenu}">
 
-    <StackLayout
-        HorizontalOptions="Start"
-        Orientation="Horizontal">
+    <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
         <Button
             Padding="0"
             Command="{prism:GoBack GoBackType=ToRoot}"
             Style="{StaticResource GVButtonFont}">
             <Button.ImageSource>
-                <FontImageSource
-                    FontFamily="{StaticResource MaterialFontFamily}"
-                    Glyph="&#xf2dc;" />
+                <FontImageSource FontFamily="{StaticResource MaterialFontFamily}" Glyph="&#xf2dc;" />
             </Button.ImageSource>
         </Button>
 
@@ -26,14 +22,10 @@
             FontFamily="{StaticResource MaterialFontFamily}"
             Style="{StaticResource GVButtonFont}">
             <Button.ImageSource>
-                <FontImageSource
-                    FontFamily="{StaticResource MaterialFontFamily}"
-                    Glyph="&#xf21e;" />
+                <FontImageSource FontFamily="{StaticResource MaterialFontFamily}" Glyph="&#xf21e;" />
             </Button.ImageSource>
         </Button>
 
-        <Label
-            Text="{Binding StatusText, Source={x:Reference BottomMenueRoot}, Mode=OneWay}"
-            TextColor="{StaticResource OnSecondaryColor}" />
+        <Label Text="{Binding StatusText, Source={x:Reference BottomMenueRoot}, Mode=OneWay}" TextColor="{StaticResource OnSecondaryColor}" />
     </StackLayout>
 </Frame>

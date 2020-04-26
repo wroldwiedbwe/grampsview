@@ -4,6 +4,7 @@ using GrampsView.Data;
 using GrampsView.Data.External.StoreSerial;
 using GrampsView.Data.ExternalStorageNS;
 using GrampsView.Data.Repository;
+using GrampsView.Events;
 using GrampsView.Services;
 using GrampsView.ViewModels;
 using GrampsView.Views;
@@ -95,7 +96,9 @@ namespace GrampsView
             }
 
             // Subscribe to changes of screen metrics
-            DeviceDisplay.MainDisplayInfoChanged += CardWidths.OnMainDisplayInfoChanged;
+            DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
+
+            // Update Card widths CardWidths.ResetCardWidths();
 
             VersionTracking.Track();
         }
@@ -259,6 +262,28 @@ namespace GrampsView
             Distribute.SetEnabledAsync(true);
 
             //var t = Distribute.UpdateTrack;
+
+            Distribute.CheckForUpdate();
+        }
+
+        private void OnMainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
+        {
+            // Process changes
+            EventAggregator ea = this.Container.Resolve<EventAggregator>();
+
+            if (!(ea is null))
+            {
+                // TODO Is this needed?
+                ea.GetEvent<OrientationChanged>().Publish(e.DisplayInfo.Orientation);
+
+                // TODO fu because seems to be one rotation behind
+                //DataStore.AD.CurrentOrientation = e.DisplayInfo.Orientation;
+
+                //// Fake set to reset them
+                //CardWidths.Current.CardSmallWidth = 0;
+                //CardWidths.Current.CardMediumWidth = 0;
+                //CardWidths.Current.CardLargeWidth = 0;
+            }
         }
     }
 }

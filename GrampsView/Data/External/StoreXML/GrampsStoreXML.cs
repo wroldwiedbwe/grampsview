@@ -100,7 +100,7 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             try
             {
-                FileInfoEx inputFile = await StoreFolder.FolderGetFileAsync(DataStore.DS.CurrentDataFolder, CommonConstants.StorageXMLFileName).ConfigureAwait(false);
+                FileInfoEx inputFile = await StoreFolder.FolderGetFileAsync(DataStore.AD.CurrentDataFolder, CommonConstants.StorageXMLFileName).ConfigureAwait(false);
 
                 await DataStore.CN.MajorStatusAdd("Loading existing local copy of the GRAMPS data").ConfigureAwait(false);
                 {

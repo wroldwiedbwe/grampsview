@@ -1,18 +1,20 @@
 ﻿//-----------------------------------------------------------------------
 //
-// Loading COntrol Visible event
+// Status CHanged Event
 //
-// <copyright file="GVProgressLoading.cs" company="PlaceholderCompany">
+// <copyright file="GVProgressMajorTextUpdate.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
 
 namespace GrampsView.Events
 {
+    using Prism.Events;
+
     /// <summary>
-    /// Update the visibility of the  Loading Control.
+    /// Notification that the Status has changed.
     /// </summary>
-    public class GVProgressLoading : Prism.Events.PubSubEvent<string>
+    public class StatusUpdated : PubSubEvent<string>
     {
     }
 }

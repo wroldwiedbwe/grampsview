@@ -1,20 +1,21 @@
 ﻿//-----------------------------------------------------------------------
 //
+// Various routines used by the App class that are put here to keep the App class cleaner
 //
-//
-// <copyright file="GrampsSaveSerial.cs" company="PlaceholderCompany">
+// <copyright file="GRAMPSLoadMediaBitmapEvent.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
 
 namespace GrampsView.Events
 {
+    using GrampsView.Data.Model;
     using Prism.Events;
 
     /// <summary>
-    /// update the progress ring text.
+    /// Pub Sub Gramps Data Loaded Event.
     /// </summary>
-    public class GrampsSaveSerial : PubSubEvent<object>
+    public class LoadMediaBitmapEvent : PubSubEvent<HLinkMediaModel>
     {
     }
 }

@@ -6,9 +6,12 @@
 /// </summary>
 namespace GrampsView.Data.Repository
 {
+    using System.IO;
     using System.Runtime.Serialization;
 
     using GrampsView.Common;
+    using Plugin.FilePicker.Abstractions;
+    using Xamarin.Essentials;
 
     /// <summary>
     /// Static Data Store.
@@ -19,6 +22,14 @@ namespace GrampsView.Data.Repository
         private DataStore()
         {
         }
+
+        /// <summary>
+        /// Gets or sets the Application Wide Data Store.
+        /// </summary>
+        /// <value>
+        /// The ad.
+        /// </value>
+        public static ApplicationWideData AD { get; set; } = new ApplicationWideData();
 
         /// <summary>
         /// Gets or sets the cn.

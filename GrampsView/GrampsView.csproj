@@ -205,9 +205,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.1.0" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.1.0" />
-    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.2.1" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.2.1" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="3.2.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -226,12 +226,12 @@
     <PackageReference Include="SkiaSharp" Version="1.68.1.1" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.1.1" />
     <PackageReference Include="Xam.Forms.MarkdownView" Version="0.6.1-pre" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.1" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.617" />
-    <PackageReference Include="Xamarin.Forms.DualScreen" Version="4.5.0.617" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.657" />
+    <PackageReference Include="Xamarin.Forms.DualScreen" Version="4.5.0.657" />
     <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.34" />
   </ItemGroup>
 

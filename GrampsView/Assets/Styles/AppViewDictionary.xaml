@@ -111,25 +111,6 @@
         ******************************************************
     -->
 
-    <!--  Create a Frame Card Style  -->
-    <Style x:Key="FrameCardStyle" TargetType="Frame">
-        <!--<Setter Property="BorderColor" Value="{DynamicResource SecondaryColor}" />-->
-        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceColor}" />
-        <Setter Property="HorizontalOptions" Value="Start" />
-        <Setter Property="Padding" Value="5" />
-        <Setter Property="Margin" Value="10" />
-        <Setter Property="CornerRadius" Value="{StaticResource GVCornerRadius}" />
-    </Style>
-
-    <Style
-        x:Key="FrameCardMediumStyle"
-        BasedOn="{StaticResource FrameCardStyle}"
-        TargetType="Frame">
-        <Setter Property="WidthRequest" Value="{x:Static Member='common:CardWidths.CardMediumWidth'}" />
-        <Setter Property="Padding" Value="4" />
-        <Setter Property="Margin" Value="3" />
-    </Style>
-
     <!--  Create a FrameBottomMenu Style  -->
     <Style x:Key="FrameBottomMenu" TargetType="Frame">
         <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
@@ -154,12 +135,65 @@
         <Setter Property="CornerRadius" Value="0" />
     </Style>
 
-    <!--  Create a Small Card Style  -->
+    <!--
+        ******************************************************
+        Frame Card Styles
+        ******************************************************
+    -->
+
+    <!--
+        Create a Frame Card Style
+    -->
+    <Style x:Key="FrameCardStyle" TargetType="Frame">
+        <!--<Setter Property="BorderColor" Value="{DynamicResource SecondaryColor}" />-->
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceColor}" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="CornerRadius" Value="{StaticResource GVCornerRadius}" />
+    </Style>
+
+    <!--  Card Group and Flex Cards  -->
+    <Style x:Key="CardGroupStyle" TargetType="Frame">
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDark2Color}" />
+        <Setter Property="CornerRadius" Value="{StaticResource GVCornerRadius}" />
+    </Style>
+
+    <Style x:Key="FlexSingleCollection" TargetType="Frame">
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="Margin" Value="1,5,1,1" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="CornerRadius" Value="{StaticResource GVCornerRadius}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDark2Color}" />
+    </Style>
+
+    <Style x:Key="FlexMultiCollection" TargetType="Frame">
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="CornerRadius" Value="{StaticResource GVCornerRadius}" />
+    </Style>
+
+    <Style
+        x:Key="BackLinkCollection"
+        BasedOn="{StaticResource FlexMultiCollection}"
+        TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <!--
+        Create Small Card Styles
+    -->
     <Style
         x:Key="FrameCardSmallStyle"
         BasedOn="{StaticResource FrameCardStyle}"
         TargetType="Frame">
-        <Setter Property="WidthRequest" Value="{x:Static Member='common:CardWidths.CardSmallWidth'}" />
+        <Setter Property="WidthRequest" Value="{Binding CardSmallWidth, Source={x:Static common:CardWidths.Current}}" />
         <Setter Property="Padding" Value="3" />
         <Setter Property="Margin" Value="2" />
     </Style>
@@ -194,13 +228,28 @@
         <Setter Property="BorderColor" Value="Transparent" />
     </Style>
 
-    <!--  Create a Large Card Style  -->
+    <!--
+        Create Medium Card Styles
+    -->
+
+    <Style
+        x:Key="FrameCardMediumStyle"
+        BasedOn="{StaticResource FrameCardStyle}"
+        TargetType="Frame">
+        <Setter Property="WidthRequest" Value="{Binding CardMediumWidth, Source={x:Static common:CardWidths.Current}}" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="Margin" Value="3" />
+    </Style>
+
+    <!--
+        Create Large Card Styles
+    -->
 
     <Style
         x:Key="FrameCardLargeStyle"
         BasedOn="{StaticResource FrameCardStyle}"
         TargetType="Frame">
-        <Setter Property="WidthRequest" Value="{x:Static Member='common:CardWidths.CardLargeWidth'}" />
+        <Setter Property="WidthRequest" Value="{Binding CardLargeWidth, Source={x:Static common:CardWidths.Current}}" />
         <Setter Property="Padding" Value="4" />
         <Setter Property="Margin" Value="3" />
     </Style>
@@ -220,7 +269,6 @@
         <Setter Property="BorderColor" Value="Transparent" />
     </Style>
 
-    <!--  Create a Note Full Text Card Style  -->
     <Style
         x:Key="NoteFullTextStyle"
         BasedOn="{StaticResource FrameCardLargeStyle}"
@@ -250,39 +298,6 @@
         BasedOn="{StaticResource FrameCardLargeStyle}"
         TargetType="Frame">
         <Setter Property="BorderColor" Value="Transparent" />
-    </Style>
-
-    <!--  Card Group and Flex Cards  -->
-    <Style x:Key="CardGroupStyle" TargetType="Frame">
-        <Setter Property="HasShadow" Value="False" />
-        <Setter Property="Margin" Value="5" />
-        <Setter Property="Padding" Value="2" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDark2Color}" />
-        <Setter Property="CornerRadius" Value="{StaticResource GVCornerRadius}" />
-    </Style>
-
-    <Style x:Key="FlexSingleCollection" TargetType="Frame">
-        <Setter Property="HasShadow" Value="False" />
-        <Setter Property="Margin" Value="1,5,1,1" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="CornerRadius" Value="{StaticResource GVCornerRadius}" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDark2Color}" />
-    </Style>
-
-    <Style x:Key="FlexMultiCollection" TargetType="Frame">
-        <Setter Property="HasShadow" Value="False" />
-        <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="CornerRadius" Value="{StaticResource GVCornerRadius}" />
-    </Style>
-
-    <Style
-        x:Key="BackLinkCollection"
-        BasedOn="{StaticResource FlexMultiCollection}"
-        TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="Padding" Value="0" />
     </Style>
 
     <!--
@@ -365,7 +380,7 @@
         <Setter Property="HorizontalOptions" Value="StartAndExpand" />
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="LineBreakMode" Value="WordWrap" />
-        <Setter Property="FontSize" Value="Default" />
+        <Setter Property="FontSize" Value="{x:Static common:CommonFontSize.FontMedium}" />
         <Setter Property="TextColor" Value="{DynamicResource OnPrimaryColor}" />
     </Style>
 
@@ -375,7 +390,7 @@
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
         <Setter Property="Margin" Value="0,0,3,3" />
-        <Setter Property="FontSize" Value="Default" />
+        <Setter Property="FontSize" Value="{x:Static common:CommonFontSize.FontMedium}" />
     </Style>
 
     <!--  Create a Large Style for a TextBlock  -->
@@ -383,7 +398,7 @@
         x:Key="GVLabelStyleLarge"
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
-        <Setter Property="FontSize" Value="Default" />
+        <Setter Property="FontSize" Value="{x:Static common:CommonFontSize.FontLarge}" />
         <Setter Property="MaxLines" Value="4" />
     </Style>
 
@@ -392,7 +407,7 @@
         x:Key="GVLabelStyleInstructions"
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
-        <Setter Property="FontSize" Value="Default" />
+        <Setter Property="FontSize" Value="{x:Static common:CommonFontSize.FontMedium}" />
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
         <Setter Property="TextColor" Value="{DynamicResource OnSurfaceColor}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryVariantDarkColor}" />
@@ -405,7 +420,7 @@
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
         <Setter Property="LineBreakMode" Value="TailTruncation" />
-        <Setter Property="FontSize" Value="Default" />
+        <Setter Property="FontSize" Value="{x:Static common:CommonFontSize.FontMedium}" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="TextColor" Value="{DynamicResource PrimaryVariantDarkColor}" />
     </Style>
@@ -424,7 +439,7 @@
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="FontSize" Value="Large" />
+        <Setter Property="FontSize" Value="{x:Static common:CommonFontSize.FontLarge}" />
     </Style>
 
     <!--

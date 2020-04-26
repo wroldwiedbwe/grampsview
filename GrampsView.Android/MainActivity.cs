@@ -8,14 +8,14 @@ using Android.Support.V4.App;
 using Android.Support.V4.Content;
 
 using FFImageLoading.Forms.Platform;
-
+using GrampsView.Common;
 using GrampsView.Common.CustomClasses;
 using GrampsView.Data.Repository;
 using GrampsView.Droid.Common;
-using GrampsView.Common;
 
 using Microsoft.AppCenter.Distribute;
 using Microsoft.Device.Display;
+
 using Plugin.CurrentActivity;
 
 using Prism;
@@ -23,19 +23,53 @@ using Prism.Ioc;
 
 using System;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 //using Xamarin.OneDrive;
 
 namespace GrampsView.Droid
 {
-    [Activity(MainLauncher = false, Label = "GrampsView", Icon = "@mipmap/icon", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.UiMode | ConfigChanges.Orientation)]
+    [Activity(MainLauncher = false, Label = "GrampsView", Icon = "@mipmap/icon", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.UiMode | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.FullSensor)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)
+        /// <summary>
+        /// Called when system configuration is changed.
+        /// </summary>
+        /// <param name="argNewConfig">
+        /// The new configuration.
+        /// </param>
+        public override void OnConfigurationChanged(Android.Content.Res.Configuration argNewConfig)
         {
-            //CommonTheming.SetAppTheme();
+            if (!(argNewConfig is null))
+            {
+                switch (argNewConfig.Orientation)
+                {
+                    case Android.Content.Res.Orientation.Landscape:
+                        DataStore.AD.CurrentOrientation = DisplayOrientation.Landscape;
+                        break;
 
-            base.OnConfigurationChanged(newConfig);
+                    case Android.Content.Res.Orientation.Portrait:
+                        DataStore.AD.CurrentOrientation = DisplayOrientation.Portrait;
+                        break;
+
+                    case Android.Content.Res.Orientation.Square:
+
+                    case Android.Content.Res.Orientation.Undefined:
+
+                    default:
+                        DataStore.AD.CurrentOrientation = DisplayOrientation.Portrait;
+                        break;
+                }
+
+                CommonTheming.SetAppTheme();
+
+                // Fake set to reset them
+                CardWidths.Current.CardSmallWidth = 0;
+                CardWidths.Current.CardMediumWidth = 0;
+                CardWidths.Current.CardLargeWidth = 0;
+            }
+
+            base.OnConfigurationChanged(argNewConfig);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

@@ -1,15 +1,40 @@
 ﻿namespace GrampsView.Common
 {
+    using GrampsView.Data.Repository;
+    using System.ComponentModel;
+    using System.Diagnostics;
     using Xamarin.Essentials;
     using Xamarin.Forms;
 
-    internal static class CardWidths
+    public class CardWidths : INotifyPropertyChanged
     {
-        private static DisplayOrientation thisDeviceOrientation = DisplayOrientation.Portrait;
+        private const double CardLargeWidthDefault = 400;
 
-        public static double CardLargeWidth
+        private const double CardMediumWidthDefault = 300;
+
+        private const double CardSmallWidthDefault = 270;
+
+        private static double _CardLargeWidth = CardLargeWidthDefault;
+
+        private static double _CardMediumWidth = CardMediumWidthDefault;
+
+        private static double _CardSmallWidth = CardSmallWidthDefault;
+
+        // Singleton
+        private static CardWidths _current;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public static CardWidths Current => _current ?? (_current = new CardWidths());
+
+        public double CardLargeWidth
         {
             get
+            {
+                return _CardLargeWidth;
+            }
+
+            set
             {
                 double outVal;
 
@@ -27,7 +52,7 @@
 
                     case TargetIdiom.Phone:
 
-                        switch (thisDeviceOrientation)
+                        switch (DataStore.AD.CurrentOrientation)
                         {
                             case DisplayOrientation.Portrait:
                                 {
@@ -36,7 +61,7 @@
                                 }
                             case DisplayOrientation.Landscape:
                                 {
-                                    outVal = 400;
+                                    outVal = CardLargeWidthDefault;
                                     break;
                                 }
                             default:
@@ -49,17 +74,24 @@
                         break;
 
                     default:
-                        outVal = 400;
+                        outVal = CardLargeWidthDefault;
                         break;
                 };
 
-                return outVal;
+                _CardSmallWidth = outVal;
+
+                OnPropertyChanged("CardLargeWidth");
             }
         }
 
-        public static double CardMediumWidth
+        public double CardMediumWidth
         {
             get
+            {
+                return _CardMediumWidth;
+            }
+
+            set
             {
                 double outVal;
 
@@ -76,7 +108,7 @@
                         break;
 
                     case TargetIdiom.Phone:
-                        switch (thisDeviceOrientation)
+                        switch (DataStore.AD.CurrentOrientation)
                         {
                             case DisplayOrientation.Portrait:
                                 {
@@ -85,7 +117,7 @@
                                 }
                             case DisplayOrientation.Landscape:
                                 {
-                                    outVal = 110;
+                                    outVal = CardMediumWidthDefault;
                                     break;
                                 }
                             default:
@@ -98,17 +130,24 @@
                         break;
 
                     default:
-                        outVal = 110;
+                        outVal = CardMediumWidthDefault;
                         break;
                 };
 
-                return outVal;
+                _CardMediumWidth = outVal;
+
+                OnPropertyChanged("CardMediumWidth");
             }
         }
 
-        public static double CardSmallWidth
+        public double CardSmallWidth
         {
             get
+            {
+                return _CardSmallWidth;
+            }
+
+            set
             {
                 double outVal;
 
@@ -118,11 +157,11 @@
 
                     case TargetIdiom.Desktop:
                     case TargetIdiom.Tablet:
-                        outVal = 270;
+                        outVal = CardSmallWidthDefault;
                         break;
 
                     case TargetIdiom.Phone:
-                        switch (thisDeviceOrientation)
+                        switch (DataStore.AD.CurrentOrientation)
                         {
                             case DisplayOrientation.Portrait:
                                 {
@@ -131,46 +170,35 @@
                                 }
                             case DisplayOrientation.Landscape:
                                 {
-                                    outVal = 200;
+                                    outVal = CardSmallWidthDefault;
                                     break;
                                 }
                             default:
                                 {
-                                    outVal = DeviceDisplay.MainDisplayInfo.Width;
+                                    outVal = CardSmallWidthDefault;
                                     break;
                                 }
                         }
                         break;
 
                     default:
-                        outVal = 200;
+                        outVal = CardSmallWidthDefault;
                         break;
                 };
 
-                return outVal;
+                Debug.WriteLine("Card Width changed to " + outVal.ToString());
+                _CardSmallWidth = outVal;
+
+                OnPropertyChanged("CardSmallWidth");
             }
         }
 
-        public static void OnMainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
+        protected virtual void OnPropertyChanged(string propertyName)
         {
-            switch (e.DisplayInfo.Orientation)
-            {
-                case DisplayOrientation.Portrait:
-                    {
-                        thisDeviceOrientation = DisplayOrientation.Portrait;
-                        break;
-                    }
-                case DisplayOrientation.Landscape:
-                    {
-                        thisDeviceOrientation = DisplayOrientation.Landscape;
-                        break;
-                    }
-                default:
-                    {
-                        thisDeviceOrientation = DisplayOrientation.Portrait;
-                        break;
-                    }
-            }
+            if (PropertyChanged == null)
+                return;
+
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

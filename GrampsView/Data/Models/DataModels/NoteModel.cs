@@ -151,7 +151,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return GetFormatted(NamedSize.Small);
+                return GetFormatted(CommonFontSize.FontMedium);
             }
         }
 
@@ -159,7 +159,7 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return GetFormatted(NamedSize.Default);
+                return GetFormatted(CommonFontSize.FontSmall);
             }
         }
 
@@ -307,7 +307,7 @@ namespace GrampsView.Data.Model
             return testFlag;
         }
 
-        private FormattedString GetFormatted(NamedSize argFontSize)
+        private FormattedString GetFormatted(double argFontSize)
         {
             // Cache the formatted string. Xamarin/NewtonSoft has problems serialising the string on
             // the UI thread
@@ -315,11 +315,7 @@ namespace GrampsView.Data.Model
             {
                 FormattedString loadString = new FormattedString();
 
-                //Application.Current.Resources.TryGetValue(argFontSize, out var varFontSize);
-
-                Double _fontSize = Device.GetNamedSize(argFontSize, typeof(FormattedString));
-
-                loadString.Spans.Add(new Span { Text = GText, FontSize = _fontSize });
+                loadString.Spans.Add(new Span { Text = GText, FontSize = argFontSize });
 
                 return loadString;
             }

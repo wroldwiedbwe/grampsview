@@ -3,6 +3,7 @@
     x:Class="GrampsView.Views.AboutPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:common="clr-namespace:GrampsView.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i18n="clr-namespace:GrampsView.Common"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -68,7 +69,7 @@
 
                 <Label
                     FontAttributes="Bold"
-                    FontSize="22"
+                    FontSize="{x:Static common:CommonFontSize.FontLarge}"
                     Style="{DynamicResource GVLabelStyleLarge}"
                     Text="{Binding AppName, Mode=OneTime}"
                     TextColor="{DynamicResource OnSurfaceColor}"

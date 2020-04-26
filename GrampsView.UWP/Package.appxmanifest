@@ -26,8 +26,7 @@
         <uap:SplashScreen Image="Assets\Icons\SplashScreen.png" />
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="landscape"/>
-          <uap:Rotation Preference="portrait"/>
-          <uap:Rotation Preference="portraitFlipped"/></uap:InitialRotationPreference>
+          <uap:Rotation Preference="portrait"/></uap:InitialRotationPreference>
       </uap:VisualElements>
       <Extensions>
         <uap:Extension Category="windows.fileOpenPicker">

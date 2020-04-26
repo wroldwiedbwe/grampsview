@@ -79,19 +79,19 @@ namespace GrampsView.Data
         // TODO WHen NetStandard 2.3 out then Path.MakeRelative
         public static string MakeRelativePath(string argPath)
         {
-            if (DataStore.DS.CurrentDataFolder.FullName == argPath)
+            if (DataStore.AD.CurrentDataFolder.FullName == argPath)
             {
                 return string.Empty;
             }
 
-            if (argPath.Length < DataStore.DS.CurrentDataFolder.FullName.Length)
+            if (argPath.Length < DataStore.AD.CurrentDataFolder.FullName.Length)
             {
                 return argPath;
             }
 
-            if (argPath.Substring(0, DataStore.DS.CurrentDataFolder.FullName.Length) == DataStore.DS.CurrentDataFolder.FullName)
+            if (argPath.Substring(0, DataStore.AD.CurrentDataFolder.FullName.Length) == DataStore.AD.CurrentDataFolder.FullName)
             {
-                return argPath.Substring(DataStore.DS.CurrentDataFolder.FullName.Length, argPath.Length - DataStore.DS.CurrentDataFolder.FullName.Length);
+                return argPath.Substring(DataStore.AD.CurrentDataFolder.FullName.Length, argPath.Length - DataStore.AD.CurrentDataFolder.FullName.Length);
             }
 
             return argPath;
@@ -107,13 +107,13 @@ namespace GrampsView.Data
         {
             try
             {
-                DataStore.DS.CurrentInputFile = await CrossFilePicker.Current.PickFile().ConfigureAwait(false);
-                if (DataStore.DS.CurrentInputFile == null)
+                DataStore.AD.CurrentInputFile = await CrossFilePicker.Current.PickFile().ConfigureAwait(false);
+                if (DataStore.AD.CurrentInputFile == null)
                 {
                     return false; // user canceled file picking
                 }
 
-                Debug.WriteLine("Picked file name is: " + DataStore.DS.CurrentInputFile.FileName);
+                Debug.WriteLine("Picked file name is: " + DataStore.AD.CurrentInputFile.FileName);
                 // TODO Add platform specific fiel type checking
             }
 

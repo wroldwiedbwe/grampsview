@@ -136,15 +136,15 @@ namespace GrampsView.ViewModels
         /// </summary>
         public override void PopulateViewModel()
         {
-            BaseEventAggregator.GetEvent<GVProgressLoading>().Publish(null);
+            BaseEventAggregator.GetEvent<ProgressLoading>().Publish(null);
 
-            if (DataStore.DS.CurrentDataFolderValid)
+            if (DataStore.AD.CurrentDataFolderValid)
             {
                 DataDetailList = new CardListLineCollection
                 {
                     new CardListLine(
                         "Data Folder:",
-                        DataStore.DS.CurrentDataFolder.FullName),
+                        DataStore.AD.CurrentDataFolder.FullName),
                 };
 
                 LocalCanHandleUseExistingFolder = true;
@@ -175,7 +175,7 @@ namespace GrampsView.ViewModels
         {
             LocalCanHandleDataFolderChosen = false;
 
-            if (DataStore.DS.CurrentDataFolderValid)
+            if (DataStore.AD.CurrentDataFolderValid)
             {
                 BaseCL.LogProgress("Tell someone to load the file");
 

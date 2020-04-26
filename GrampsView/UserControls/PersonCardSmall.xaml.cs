@@ -5,8 +5,9 @@ namespace GrampsView.UserControls
 {
     using Xamarin.Forms;
 
-    /// <summary></summary>
-    /// <seealso cref="Xamarin.Forms.Frame" />
+    /// <summary>
+    /// </summary>
+    /// <seealso cref="Xamarin.Forms.Frame"/>
     public partial class PersonCardSmall : Frame
     {
         public PersonCardSmall()

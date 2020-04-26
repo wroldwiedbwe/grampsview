@@ -9,12 +9,15 @@
         public BottomMenu()
         {
             InitializeComponent();
+
+            // BaseEventAggregator.GetEvent<DataLoadCompleteEvent>().Subscribe(CheckHeroImageLoad, ThreadOption.BackgroundThread);
         }
 
         public string StatusText
         {
             get
             {
+                // TODO fix this so it changes as the status message changes
                 return DataStore.CN.MajorStatusMessage;
             }
         }

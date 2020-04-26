@@ -154,7 +154,7 @@ namespace GrampsView.Data
                     // Apply further name transformations here as necessary
                     string filename = Path.GetFileName(tarName);
 
-                    string outName = Path.Combine(DataStore.DS.CurrentDataFolder.FullName, tarName);
+                    string outName = Path.Combine(DataStore.AD.CurrentDataFolder.FullName, tarName);
 
                     string relativePath = Path.GetDirectoryName(tarEntry.Name);
 
@@ -164,11 +164,11 @@ namespace GrampsView.Data
 
                     if (relativePath.Length > 0)
                     {
-                        newFolder = Directory.CreateDirectory(Path.Combine(DataStore.DS.CurrentDataFolder.FullName, relativePath));
+                        newFolder = Directory.CreateDirectory(Path.Combine(DataStore.AD.CurrentDataFolder.FullName, relativePath));
                     }
                     else
                     {
-                        newFolder = DataStore.DS.CurrentDataFolder;
+                        newFolder = DataStore.AD.CurrentDataFolder;
                     }
 
                     // Check if the folder was created successfully.

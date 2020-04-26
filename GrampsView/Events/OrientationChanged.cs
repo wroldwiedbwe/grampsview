@@ -1,20 +1,20 @@
 ﻿//-----------------------------------------------------------------------
 //
-// Major message event
+// Update the Application Orientation
 //
-// <copyright file="GVProgressMajorTextUpdate.cs" company="PlaceholderCompany">
+// <copyright file="GVProgressLoading.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
 
 namespace GrampsView.Events
 {
-    using Prism.Events;
+    using Xamarin.Essentials;
 
     /// <summary>
-    /// Update the notification log.
+    /// Update the Application Orientation.
     /// </summary>
-    public class GVNotificationLogAdd : PubSubEvent<string>
+    public class OrientationChanged : Prism.Events.PubSubEvent<DisplayOrientation>
     {
     }
 }

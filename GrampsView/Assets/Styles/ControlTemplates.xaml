@@ -23,13 +23,12 @@
                 </ScrollView>
 
                 <!--  Navigation items  -->
-                <!--
-                <BoxView FlexLayout.Basis="50" FlexLayout.Order="-1" />
 
-                -->
+                <BoxView FlexLayout.Basis="5" FlexLayout.Order="-1" />
+
                 <!--  Aside items  -->
-                <!--
-                <BoxView FlexLayout.Basis="50" />-->
+
+                <BoxView FlexLayout.Basis="5" />
 
                 <!--  Body End  -->
             </FlexLayout>

@@ -1,21 +1,22 @@
 ﻿//-----------------------------------------------------------------------
 //
-// Various routines used by the App class that are put here to keep the App class cleaner
 //
-// <copyright file="GRAMPSLoadMediaBitmapEvent.cs" company="PlaceholderCompany">
+//
+// <copyright file="GRAMPSDialogBoxEvent.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
 
 namespace GrampsView.Events
 {
-    using GrampsView.Data.Model;
+    using GrampsView.Common;
+
     using Prism.Events;
 
     /// <summary>
-    /// Pub Sub Gramps Data Loaded Event.
+    /// Show an Dialog Box.
     /// </summary>
-    public class GRAMPSLoadMediaBitmapEvent : PubSubEvent<HLinkMediaModel>
+    public class DialogBoxEvent : PubSubEvent<ActionDialogArgs>
     {
     }
 }

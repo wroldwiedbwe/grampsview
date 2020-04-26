@@ -25,10 +25,10 @@ namespace GrampsView.Data.ExternalStorageNS
                 if ((argMediaModel.HomeImageHLink.LinkToImage == true) && argMediaModel.IsOriginalFilePathValid)
                 {
                     //_CL.LogVariable("tt.OriginalFilePath", argMediaModel.OriginalFilePath); //
-                    //_CL.LogVariable("localMediaFolder.path", DataStore.DS.CurrentDataFolder.FullName); //
-                    //_CL.LogVariable("path", DataStore.DS.CurrentDataFolder.FullName + "\\" + argMediaModel.OriginalFilePath);
+                    //_CL.LogVariable("localMediaFolder.path", DataStore.AD.CurrentDataFolder.FullName); //
+                    //_CL.LogVariable("path", DataStore.AD.CurrentDataFolder.FullName + "\\" + argMediaModel.OriginalFilePath);
 
-                    DataStore.DS.MediaData[argMediaModel.HLinkKey].MediaStorageFile = await StoreFolder.FolderGetFileAsync(DataStore.DS.CurrentDataFolder, argMediaModel.OriginalFilePath).ConfigureAwait(false);
+                    DataStore.DS.MediaData[argMediaModel.HLinkKey].MediaStorageFile = await StoreFolder.FolderGetFileAsync(DataStore.AD.CurrentDataFolder, argMediaModel.OriginalFilePath).ConfigureAwait(false);
                 }
             }
             catch (FileNotFoundException ex)
@@ -86,7 +86,7 @@ namespace GrampsView.Data.ExternalStorageNS
         {
             _CommonLogging.LogRoutineEntry("FixMediaFiles");
 
-            DirectoryInfo localMediaFolder = DataStore.DS.CurrentDataFolder;
+            DirectoryInfo localMediaFolder = DataStore.AD.CurrentDataFolder;
 
             if (localMediaFolder != null)
             {

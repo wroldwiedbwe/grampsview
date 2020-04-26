@@ -1,22 +1,18 @@
 ﻿//-----------------------------------------------------------------------
 //
+// Loading COntrol Visible event
 //
-//
-// <copyright file="GRAMPSDialogBoxEvent.cs" company="PlaceholderCompany">
+// <copyright file="GVProgressLoading.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
 
 namespace GrampsView.Events
 {
-    using GrampsView.Common;
-
-    using Prism.Events;
-
     /// <summary>
-    /// Show an Dialog Box.
+    /// Update the visibility of the Loading Control.
     /// </summary>
-    public class GRAMPSDialogBoxEvent : PubSubEvent<ActionDialogArgs>
+    public class ProgressLoading : Prism.Events.PubSubEvent<string>
     {
     }
 }

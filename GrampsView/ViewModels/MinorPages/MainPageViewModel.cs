@@ -48,7 +48,7 @@
 
             BaseEventAggregator.GetEvent<DataLoadCompleteEvent>().Subscribe(LoadHubPage, ThreadOption.UIThread);
 
-            BaseEventAggregator.GetEvent<GRAMPSDialogBoxEvent>().Subscribe(ActionDialog, ThreadOption.UIThread);
+            BaseEventAggregator.GetEvent<DialogBoxEvent>().Subscribe(ActionDialog, ThreadOption.UIThread);
 
             BaseEventAggregator.GetEvent<PageNavigateEvent>().Subscribe(OnNavigateCommandExecuted, ThreadOption.UIThread);
 

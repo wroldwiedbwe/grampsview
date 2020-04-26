@@ -1,4 +1,7 @@
-﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+﻿<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:common="clr-namespace:GrampsView.Common">
 
     <!--  DataLog data template Large  -->
     <DataTemplate x:Key="DataLogEntryLarge" x:Name="DataLogEntryLarge">
@@ -22,12 +25,12 @@
 
                     <Label
                         Grid.Column="0"
-                        FontSize="Micro"
+                        FontSize="{x:Static common:CommonFontSize.FontMedium}"
                         Text="{Binding Label}"
                         TextColor="{DynamicResource OnSecondaryColor}" />
                     <Label
                         Grid.Column="1"
-                        FontSize="Micro"
+                        FontSize="{x:Static common:CommonFontSize.FontMedium}"
                         Text="{Binding Text}"
                         TextColor="{StaticResource OnSecondaryColor}" />
                 </Grid>
@@ -76,12 +79,12 @@
 
             <Label
                 Grid.Column="0"
-                FontSize="Micro"
+                FontSize="{x:Static common:CommonFontSize.FontSmall}"
                 Text="{Binding Label}"
                 TextColor="{DynamicResource OnPrimaryColor}" />
             <Label
                 Grid.Column="1"
-                FontSize="Micro"
+                FontSize="{x:Static common:CommonFontSize.FontSmall}"
                 HorizontalTextAlignment="End"
                 Text="{Binding Value}"
                 TextColor="{StaticResource OnPrimaryColor}" />

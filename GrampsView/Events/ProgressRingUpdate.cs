@@ -12,9 +12,9 @@ using Prism.Events;
 namespace GrampsView.Events
 {
     /// <summary>
-    /// update the progress ring text 
+    /// update the progress ring text
     /// </summary>
-    public class GVProgressRingUpdate : PubSubEvent<bool>
+    public class ProgressRingUpdate : PubSubEvent<bool>
     {
     }
 }

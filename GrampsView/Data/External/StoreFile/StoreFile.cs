@@ -59,7 +59,7 @@ namespace GrampsView.Data
             }
 
             // load the real file
-            DirectoryInfo tt = DataStore.DS.CurrentDataFolder;
+            DirectoryInfo tt = DataStore.AD.CurrentDataFolder;
             if (tt != null)
             {
                 try
@@ -178,13 +178,13 @@ namespace GrampsView.Data
             await DataStore.CN.MajorStatusAdd("Decompressing GRAMPS TAR file").ConfigureAwait(false);
 
             // Check arguments
-            if (DataStore.DS.CurrentInputFile == null)
+            if (DataStore.AD.CurrentInputFile == null)
             {
                 DataStore.CN.NotifyError("The input file is invalid");
                 return false;
             }
 
-            Stream originalFileStream = DataStore.DS.CurrentInputFile.GetStream();
+            Stream originalFileStream = DataStore.AD.CurrentInputFile.GetStream();
 
             // open the gzip and extract the tar file
             await DataStore.CN.MinorStatusAdd("Decompressing individual TAR files").ConfigureAwait(false);

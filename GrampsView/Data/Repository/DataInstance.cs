@@ -30,15 +30,6 @@ namespace GrampsView.Data.Repository
         private RepositoryModelDictionary<CitationModel, HLinkCitationModel> _CitationData = new RepositoryModelDictionary<CitationModel, HLinkCitationModel>();
 
         /// <summary>
-        /// The local book mark data.
-        /// </summary>
-        private DirectoryInfo _CurrentDataFolder;
-
-        private FileData _CurrentInputFile = null;
-
-        private DirectoryInfo _CurrentInputFolder;
-
-        /// <summary>
         /// The local event data.
         /// </summary>
         private RepositoryModelDictionary<EventModel, HLinkEventModel> _EventData = new RepositoryModelDictionary<EventModel, HLinkEventModel>();
@@ -128,67 +119,6 @@ namespace GrampsView.Data.Repository
             set
             {
                 SetProperty(ref _CitationData, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the get current data folder.
-        /// </summary>
-        /// <value>
-        /// The get current data folder.
-        /// </value>
-        public DirectoryInfo CurrentDataFolder
-        {
-            get
-            {
-                return _CurrentDataFolder;
-            }
-
-            set
-            {
-                SetProperty(ref _CurrentDataFolder, value);
-            }
-        }
-
-        public bool CurrentDataFolderValid
-        {
-            get
-            {
-                return (!(CurrentDataFolder == null) && (CurrentDataFolder.Exists));
-            }
-        }
-
-        public FileData CurrentInputFile
-        {
-            get
-            {
-                return _CurrentInputFile;
-            }
-
-            set
-            {
-                SetProperty(ref _CurrentInputFile, value);
-            }
-        }
-
-        public bool CurrentInputFileValid
-        {
-            get
-            {
-                return (!(CurrentInputFile == null));
-            }
-        }
-
-        public DirectoryInfo CurrentInputFolder
-        {
-            get
-            {
-                return _CurrentInputFolder;
-            }
-
-            set
-            {
-                SetProperty(ref _CurrentInputFolder, value);
             }
         }
 
@@ -392,16 +322,6 @@ namespace GrampsView.Data.Repository
             {
                 SetProperty(ref _TagData, value);
             }
-        }
-
-        /// <summary>
-        /// Loads the data store from existign known details
-        /// </summary>
-        public void LoadDataStore()
-        {
-            CurrentDataFolder = new DirectoryInfo(Xamarin.Essentials.FileSystem.CacheDirectory);
-
-            CurrentDataFolder.CreateSubdirectory("Cropped");
         }
     }
 }

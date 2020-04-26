@@ -208,15 +208,15 @@ namespace GrampsView.Data.Repository
             // Clear the repositories in case we had to restart after being interupted.
             ClearRepositories();
 
-            DataStore.DS.LoadDataStore();
+            DataStore.AD.LoadDataStore();
 
-            if (DataStore.DS.CurrentDataFolderValid)
+            if (DataStore.AD.CurrentDataFolderValid)
             {
-                // 1) UnTar *.GPKG file DataStore.DS.CurrentInputFile = await StoreFileNames.FileGetFirstGPKG().ConfigureAwait(false);
+                // 1) UnTar *.GPKG file DataStore.AD.CurrentInputFile = await StoreFileNames.FileGetFirstGPKG().ConfigureAwait(false);
 
-                if (DataStore.DS.CurrentInputFile != null)
+                if (DataStore.AD.CurrentInputFile != null)
                 {
-                    //if (await StoreFileNames.FileModifiedSinceLastSaveAsync(CommonConstants.SettingsGPKGFileLastDateTimeModified, DataStore.DS.CurrentInputFile.).ConfigureAwait(false))
+                    //if (await StoreFileNames.FileModifiedSinceLastSaveAsync(CommonConstants.SettingsGPKGFileLastDateTimeModified, DataStore.AD.CurrentInputFile.).ConfigureAwait(false))
                     //{
                     await DataStore.CN.ChangeLoadingMessage("Later version of Gramps XML data plus Media  compressed file found. Loading it into the program").ConfigureAwait(false);
 
@@ -227,7 +227,7 @@ namespace GrampsView.Data.Repository
                 }
 
                 // 2) UnZip new data.GRAMPS file
-                FileInfoEx GrampsFile = await StoreFolder.FolderGetFileAsync(DataStore.DS.CurrentDataFolder, CommonConstants.StorageGRAMPSFileName).ConfigureAwait(false);
+                FileInfoEx GrampsFile = await StoreFolder.FolderGetFileAsync(DataStore.AD.CurrentDataFolder, CommonConstants.StorageGRAMPSFileName).ConfigureAwait(false);
 
                 if (GrampsFile.Valid)
                 {
@@ -240,7 +240,7 @@ namespace GrampsView.Data.Repository
                 }
 
                 // 3) Load new data.XML file
-                FileInfoEx dataXML = await StoreFolder.FolderGetFileAsync(DataStore.DS.CurrentDataFolder, CommonConstants.StorageXMLFileName).ConfigureAwait(false);
+                FileInfoEx dataXML = await StoreFolder.FolderGetFileAsync(DataStore.AD.CurrentDataFolder, CommonConstants.StorageXMLFileName).ConfigureAwait(false);
 
                 if (dataXML.Valid)
                 {
@@ -267,9 +267,9 @@ namespace GrampsView.Data.Repository
             }
             else
             {
-                //if (!(DataStore.DS.CurrentDataFolder.Status.LatestException is null))
+                //if (!(DataStore.AD.CurrentDataFolder.Status.LatestException is null))
                 //{
-                //    DataStore.CN.NotifyException("StartDataLoadAsync", DataStore.DS.CurrentDataFolder.Status.LatestException);
+                //    DataStore.CN.NotifyException("StartDataLoadAsync", DataStore.AD.CurrentDataFolder.Status.LatestException);
                 //}
 
                 DataStore.CN.NotifyError("DataStorageFolder not valid.  It will need to be reloaded...");
@@ -297,10 +297,10 @@ namespace GrampsView.Data.Repository
         {
             Analytics.TrackEvent("TriggerLoadGPKGFileAsync",
                 new Dictionary<string, string> {
-                { "FileName", DataStore.DS.CurrentInputFile.FilePath },
+                { "FileName", DataStore.AD.CurrentInputFile.FilePath },
                 });
 
-            if (!DataStore.DS.CurrentInputFileValid)
+            if (!DataStore.AD.CurrentInputFileValid)
             {
                 return false;
             }
@@ -310,7 +310,7 @@ namespace GrampsView.Data.Repository
 
             // await DataStore.CN.MajorStatusAdd("Loading GRAMPS XML data");
             {
-                if (DataStore.DS.CurrentInputFileValid)
+                if (DataStore.AD.CurrentInputFileValid)
                 {
                     // TODO create data folder await localStoreFile.SetDataFolderLocalStorage();
 
@@ -325,14 +325,14 @@ namespace GrampsView.Data.Repository
 
                     // TODO work out how to delte excess files based on keepign the ones in the GPKG file
                     //// Delete directories of files. Assume files in root are ok
-                    // IReadOnlyList<StorageFolder> t = await DataStore.DS.CurrentDataFolder.GetFoldersAsync();
+                    // IReadOnlyList<StorageFolder> t = await DataStore.AD.CurrentDataFolder.GetFoldersAsync();
 
                     // foreach (StorageFolder item in t) { await item.DeleteAsync(); }
                     await localStoreFile.DecompressTAR().ConfigureAwait(false);
 
                     // Save the current Index File modified date for later checking TODO How doe
                     // sthis work if only loading picked file?
-                    // StoreFileNames.SaveFileModifiedSinceLastSave(CommonConstants.SettingsGPKGFileLastDateTimeModified, DataStore.DS.CurrentInputFile);
+                    // StoreFileNames.SaveFileModifiedSinceLastSave(CommonConstants.SettingsGPKGFileLastDateTimeModified, DataStore.AD.CurrentInputFile);
                 }
             }
 
@@ -351,14 +351,14 @@ namespace GrampsView.Data.Repository
         /// </returns>
         public async Task<bool> TriggerLoadGRAMPSFileAsync(bool deleteOld)
         {
-            FileInfoEx fileGrampsDataInput = await StoreFolder.FolderGetFileAsync(DataStore.DS.CurrentDataFolder, CommonConstants.StorageGRAMPSFileName).ConfigureAwait(false);
+            FileInfoEx fileGrampsDataInput = await StoreFolder.FolderGetFileAsync(DataStore.AD.CurrentDataFolder, CommonConstants.StorageGRAMPSFileName).ConfigureAwait(false);
 
             if (fileGrampsDataInput != null)
             {
                 if (deleteOld)
                 {
                     // TODO fix this
-                    //await localStoreFile.DataStorageInitialiseAsync(DataStore.DS.CurrentDataFolder).ConfigureAwait(false);
+                    //await localStoreFile.DataStorageInitialiseAsync(DataStore.AD.CurrentDataFolder).ConfigureAwait(false);
                 }
 
                 await localStoreFile.DecompressGZIP(fileGrampsDataInput).ConfigureAwait(false);
@@ -396,7 +396,7 @@ namespace GrampsView.Data.Repository
 
                     await DataStore.CN.MajorStatusAdd("Finished loading GRAMPS XML data").ConfigureAwait(false);
 
-                    FileInfoEx t = await StoreFolder.FolderGetFileAsync(DataStore.DS.CurrentDataFolder, CommonConstants.StorageXMLFileName).ConfigureAwait(false);
+                    FileInfoEx t = await StoreFolder.FolderGetFileAsync(DataStore.AD.CurrentDataFolder, CommonConstants.StorageXMLFileName).ConfigureAwait(false);
 
                     if (t.Valid)
                     {

@@ -112,7 +112,7 @@ namespace GrampsView.Common
         /// </returns>
         public async Task ChangeLoadingMessage(string argMessage)
         {
-            _iocEventAggregator.GetEvent<GVProgressLoading>().Publish(argMessage);
+            _iocEventAggregator.GetEvent<ProgressLoading>().Publish(argMessage);
 
             if (!string.IsNullOrEmpty(argMessage))
             {
@@ -182,7 +182,7 @@ namespace GrampsView.Common
         /// </returns>
         public async Task MajorStatusAdd(string argMessage, bool argShowProgressRing)
         {
-            //await Task.Run(() => _EventAggregator.GetEvent<GVNotificationLogAdd>().Publish(argMessage)).ConfigureAwait(false);
+            await Task.Run(() => _iocEventAggregator.GetEvent<StatusUpdated>().Publish(argMessage)).ConfigureAwait(false);
 
             MainThread.BeginInvokeOnMainThread(() =>
             {
@@ -224,7 +224,7 @@ namespace GrampsView.Common
 
         public async Task MinorStatusAdd(string argMessage)
         {
-            //await Task.Run(() => _EventAggregator.GetEvent<GVNotificationLogAdd>().Publish(argMessage)).ConfigureAwait(false);
+            await Task.Run(() => _iocEventAggregator.GetEvent<StatusUpdated>().Publish(argMessage)).ConfigureAwait(false);
 
             MainThread.BeginInvokeOnMainThread(() =>
             {
@@ -255,7 +255,7 @@ namespace GrampsView.Common
         public void NotifyDialogBox(ActionDialogArgs argADA)
         {
             // TODO not very clean but what to do when displaying messages before hub page is loaded
-            _iocEventAggregator.GetEvent<GRAMPSDialogBoxEvent>().Publish(argADA);
+            _iocEventAggregator.GetEvent<DialogBoxEvent>().Publish(argADA);
         }
 
         /// <summary>

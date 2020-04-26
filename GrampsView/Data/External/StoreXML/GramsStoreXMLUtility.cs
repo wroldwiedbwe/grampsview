@@ -65,7 +65,7 @@ namespace GrampsView.Data.ExternalStorageNS
             string newHLinkKey = argHLinkLoadImageModel.HLinkKey + "-" + argHLinkLoadImageModel.GCorner1X + argHLinkLoadImageModel.GCorner1Y + argHLinkLoadImageModel.GCorner2X + argHLinkLoadImageModel.GCorner2Y;
             string outFileName = Path.Combine("Cropped", newHLinkKey + ".png");
 
-            string outFilePath = Path.Combine(DataStore.DS.CurrentDataFolder.FullName, outFileName);
+            string outFilePath = Path.Combine(DataStore.AD.CurrentDataFolder.FullName, outFileName);
 
             Debug.WriteLine(argHLinkLoadImageModel.DeRef.MediaStorageFilePath);
 
@@ -142,7 +142,7 @@ namespace GrampsView.Data.ExternalStorageNS
                 newMediaModel.HomeImageHLink.HomeSymbol = CommonConstants.IconMedia;
 
                 newMediaModel.OriginalFilePath = outFileName;
-                newMediaModel.MediaStorageFile = await StoreFolder.FolderGetFileAsync(DataStore.DS.CurrentDataFolder, outFileName).ConfigureAwait(false);
+                newMediaModel.MediaStorageFile = await StoreFolder.FolderGetFileAsync(DataStore.AD.CurrentDataFolder, outFileName).ConfigureAwait(false);
                 newMediaModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
                 newMediaModel.IsClippedFile = true;
 

@@ -114,7 +114,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
             string theText = (string)argStyledText.Element(ns + "text");
 
-            loadString.Spans.Add(new Span { Text = theText, FontSize = 12 });
+            loadString.Spans.Add(new Span { Text = theText, FontSize = CommonFontSize.FontMedium });
 
             return loadString;
         }
