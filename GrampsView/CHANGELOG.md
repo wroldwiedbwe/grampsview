@@ -1,9 +1,15 @@
-commit 3adef98 (grafted, HEAD -> master, origin/master)
+commit ddefe1d (grafted, HEAD -> master, origin/master)
 Author: paul handcock <phandcock@live.com.au>
-Date:   Fri Apr 24 23:14:51 2020 +0800
+Date:   Sun Apr 26 22:32:20 2020 +0800
 
-    feat" change Medium font to Default
+    feat: create FontSize routines to get good font sizes
     
-    feat: Remove blank spaces either side of Android main menu
+    feat: add basic text copy to notefull card
     
-    fix: tweak orientation code
+    feat: add LabelExtended to allow for text copy
+    
+    update: refactor DataStore
+    
+    update: upgarde Nugets
+    
+    fix: manually check for App Center updates
