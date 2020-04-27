@@ -42,31 +42,7 @@ namespace GrampsView.Droid
         {
             if (!(argNewConfig is null))
             {
-                switch (argNewConfig.Orientation)
-                {
-                    case Android.Content.Res.Orientation.Landscape:
-                        DataStore.AD.CurrentOrientation = DisplayOrientation.Landscape;
-                        break;
-
-                    case Android.Content.Res.Orientation.Portrait:
-                        DataStore.AD.CurrentOrientation = DisplayOrientation.Portrait;
-                        break;
-
-                    case Android.Content.Res.Orientation.Square:
-
-                    case Android.Content.Res.Orientation.Undefined:
-
-                    default:
-                        DataStore.AD.CurrentOrientation = DisplayOrientation.Portrait;
-                        break;
-                }
-
                 CommonTheming.SetAppTheme();
-
-                // Fake set to reset them
-                CardWidths.Current.CardSmallWidth = 0;
-                CardWidths.Current.CardMediumWidth = 0;
-                CardWidths.Current.CardLargeWidth = 0;
             }
 
             base.OnConfigurationChanged(argNewConfig);

@@ -15,21 +15,13 @@ namespace GrampsView.ViewModels
     using System.Collections.ObjectModel;
 
     /// <summary>
-    /// <c>viewmodel</c> for the Message Log Page.
+    /// <c>Viewmodel</c> for the Message Log Page.
     /// </summary>
     public class MessageLogViewModel : ViewModelBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MessageLogViewModel"/> class.
         /// </summary>
-        /// <param name="iocCommonLogging">
-        /// The ioc common logging.
-        /// </param>
-        /// <param name="iocEventAggregator">
-        /// The ioc event aggregator.
-        /// </param>
-        /// <param name="iocNavigationService">
-        /// </param>
         public MessageLogViewModel()
         {
             BaseTitle = "Message Log";

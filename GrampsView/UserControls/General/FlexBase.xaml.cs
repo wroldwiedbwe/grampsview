@@ -9,11 +9,14 @@
     using Xamarin.Forms;
     using Xamarin.Forms.Internals;
 
+    /// <summary>
+    /// Base class for the Flex User Controls.
+    /// </summary>
     public partial class FlexBase : Frame
     {
-        public static int startItemGet = 0;
+        internal static int startItemGet = 0;
 
-        public static int virtualItemGet = 5;
+        internal static int virtualItemGet = 5;
 
         public FlexBase()
         {
@@ -42,9 +45,9 @@
 
         public int IndexStart { get; set; } = 0;
 
-        public static void OnItemsSourceChanged(BindableObject obj, object oldValue, object newValue)
+        public static void OnItemsSourceChanged(BindableObject argSource, object oldValue, object newValue)
         {
-            var layout = obj as FlexBase;
+            var layout = argSource as FlexBase;
 
             // Register for items changed
             if (newValue is INotifyCollectionChanged observableCollection)
@@ -64,9 +67,9 @@
             }
         }
 
-        public static void OnItemTemplateChanged(BindableObject obj, object oldValue, object newValue)
+        public static void OnItemTemplateChanged(BindableObject argSource, object oldValue, object newValue)
         {
-            var layout = obj as FlexBase;
+            var layout = argSource as FlexBase;
 
             if (layout?.FsctSource != null && layout?.FsctTemplate != null)
 
@@ -122,21 +125,29 @@
         /// <summary>
         /// Handles the Scrolled event of the Scroller control.
         /// </summary>
-        /// <param name="sender">
+        /// <param name="argSender">
         /// The source of the event.
         /// </param>
-        /// <param name="e">
+        /// <param name="argEventArgs">
         /// The <see cref="ScrolledEventArgs"/> instance containing the event data.
         /// </param>
-        public void Scroller_Scrolled(object sender, ScrolledEventArgs e)
+        public void Scroller_Scrolled(object argSender, ScrolledEventArgs argEventArgs)
         {
-            var t = sender as ScrollView;
-
-            if (t.ContentSize.Height - t.Height <= (e.ScrollY + 10))
+            if (argEventArgs is null)
             {
-                int currentEnd = IndexStart;
-                AddToDisplay();
-                AddToLayout(currentEnd);
+                return;
+            }
+
+            ScrollView t = argSender as ScrollView;
+
+            if (!(t is null))
+            {
+                if (t.ContentSize.Height - t.Height <= (argEventArgs.ScrollY + 20))
+                {
+                    int currentEnd = IndexStart;
+                    AddToDisplay();
+                    AddToLayout(currentEnd);
+                }
             }
         }
     }
