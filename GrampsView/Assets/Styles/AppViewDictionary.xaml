@@ -193,7 +193,7 @@
         x:Key="FrameCardSmallStyle"
         BasedOn="{StaticResource FrameCardStyle}"
         TargetType="Frame">
-        <Setter Property="WidthRequest" Value="{Binding CardSmallWidth, Source={x:Static common:CardWidths.Current}}" />
+        <Setter Property="WidthRequest" Value="{Binding CardSmallWidth, Source={x:Static common:CardWidths.Current}, Mode=OneWay}" />
         <Setter Property="Padding" Value="3" />
         <Setter Property="Margin" Value="2" />
     </Style>
@@ -236,7 +236,7 @@
         x:Key="FrameCardMediumStyle"
         BasedOn="{StaticResource FrameCardStyle}"
         TargetType="Frame">
-        <Setter Property="WidthRequest" Value="{Binding CardMediumWidth, Source={x:Static common:CardWidths.Current}}" />
+        <Setter Property="WidthRequest" Value="{Binding CardMediumWidth, Source={x:Static common:CardWidths.Current}, Mode=OneWay}" />
         <Setter Property="Padding" Value="4" />
         <Setter Property="Margin" Value="3" />
     </Style>
@@ -249,7 +249,7 @@
         x:Key="FrameCardLargeStyle"
         BasedOn="{StaticResource FrameCardStyle}"
         TargetType="Frame">
-        <Setter Property="WidthRequest" Value="{Binding CardLargeWidth, Source={x:Static common:CardWidths.Current}}" />
+        <Setter Property="WidthRequest" Value="{Binding CardLargeWidth, Source={x:Static common:CardWidths.Current}, Mode=OneWay}" />
         <Setter Property="Padding" Value="4" />
         <Setter Property="Margin" Value="3" />
     </Style>

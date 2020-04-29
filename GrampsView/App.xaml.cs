@@ -277,20 +277,21 @@ namespace GrampsView
                 ea.GetEvent<OrientationChanged>().Publish(e.DisplayInfo.Orientation);
 
                 // TODO fu because seems to be one rotation behind
-                switch (e.DisplayInfo.Orientation)
-                {
-                    case DisplayOrientation.Landscape:
-                        DataStore.AD.CurrentOrientation = DisplayOrientation.Portrait;
-                        break;
+                DataStore.AD.CurrentOrientation = e.DisplayInfo.Orientation;
 
-                    case DisplayOrientation.Portrait:
-                        DataStore.AD.CurrentOrientation = DisplayOrientation.Landscape;
-                        break;
+                //switch (e.DisplayInfo.Orientation)
+                //{
+                //    case DisplayOrientation.Landscape:
+                //        DataStore.AD.CurrentOrientation = DisplayOrientation.Portrait;
+                //        break;
 
-                    default:
-                        DataStore.AD.CurrentOrientation = DisplayOrientation.Portrait;
-                        break;
-                }
+                // case DisplayOrientation.Portrait: DataStore.AD.CurrentOrientation =
+                // DisplayOrientation.Landscape; break;
+
+                //    default:
+                //        DataStore.AD.CurrentOrientation = DisplayOrientation.Portrait;
+                //        break;
+                //}
 
                 // Fake set to reset them
                 CardWidths.Current.CardSmallWidth = 0;
