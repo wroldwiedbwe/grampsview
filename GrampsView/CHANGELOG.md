@@ -1,5 +1,5 @@
-commit 517c917 (grafted, HEAD -> master, origin/master)
+commit 3c0c08e (grafted, HEAD -> master, origin/master)
 Author: paul handcock <phandcock@live.com.au>
-Date:   Wed Apr 29 16:53:50 2020 +0800
+Date:   Wed Apr 29 22:32:44 2020 +0800
 
-    tweaks
+    Tweak Android orientation
