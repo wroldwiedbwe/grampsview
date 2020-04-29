@@ -9,7 +9,7 @@ using System.Threading;
 
 using Xamarin.Forms;
 
-[assembly: Xamarin.Forms.Dependency(typeof(GrampsView.Droid.Localize))]
+[assembly: Dependency(typeof(Localize))]
 [assembly: Dependency(typeof(ImageResource))]
 
 namespace GrampsView.Droid
@@ -26,9 +26,14 @@ namespace GrampsView.Droid
             //fileName = fileName.Replace('-', '_').Replace(".png", "").Replace(".jpg", "");
             //var resId = Forms.Context.Resources.GetIdentifier(fileName, "drawable", Forms.Context.PackageName);
             //BitmapFactory.DecodeResource(Forms.Context.Resources, resId, options);
+
             BitmapFactory.DecodeFile(fileName, options);
 
-            return new Size((double)options.OutWidth, (double)options.OutHeight);
+            Size outArg = new Size((double)options.OutWidth, (double)options.OutHeight);
+
+            options.Dispose();
+
+            return outArg;
         }
     }
 
@@ -36,15 +41,16 @@ namespace GrampsView.Droid
     {
         public CultureInfo GetCurrentCultureInfo()
         {
-            var netLanguage = "en";
+            string netLanguage; // = "en";
             var androidLocale = Java.Util.Locale.Default;
             netLanguage = AndroidToDotnetLanguage(androidLocale.ToString().Replace("_", "-"));
 
             // TODO this gets called a lot - try/catch can be expensive so consider caching or something
-            System.Globalization.CultureInfo ci = null;
+            CultureInfo ci;
+
             try
             {
-                ci = new System.Globalization.CultureInfo(netLanguage);
+                ci = new CultureInfo(netLanguage);
             }
             catch (CultureNotFoundException e1)
             {
@@ -54,13 +60,13 @@ namespace GrampsView.Droid
                 {
                     var fallback = ToDotnetFallbackLanguage(new PlatformCulture(netLanguage));
                     Console.WriteLine(netLanguage + " failed, trying " + fallback + " (" + e1.Message + ")");
-                    ci = new System.Globalization.CultureInfo(fallback);
+                    ci = new CultureInfo(fallback);
                 }
                 catch (CultureNotFoundException e2)
                 {
                     // iOS language not valid .NET culture, falling back to English
                     Console.WriteLine(netLanguage + " couldn't be set, using 'en' (" + e2.Message + ")");
-                    ci = new System.Globalization.CultureInfo("en");
+                    ci = new CultureInfo("en");
                 }
             }
 

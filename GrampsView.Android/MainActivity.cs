@@ -1,34 +1,65 @@
-﻿using Android;
-using Android.App;
-using Android.Content;
-using Android.Content.PM;
-using Android.OS;
-using Android.Runtime;
-using Android.Support.V4.App;
-using Android.Support.V4.Content;
-
-using FFImageLoading.Forms.Platform;
-using GrampsView.Common;
-using GrampsView.Common.CustomClasses;
-using GrampsView.Data.Repository;
-using GrampsView.Droid.Common;
-
-using Microsoft.AppCenter.Distribute;
-using Microsoft.Device.Display;
-
-using Plugin.CurrentActivity;
-
-using Prism;
-using Prism.Ioc;
-
-using System;
-using System.Threading.Tasks;
-using Xamarin.Essentials;
-
-//using Xamarin.OneDrive;
-
-namespace GrampsView.Droid
+﻿namespace GrampsView.Droid
 {
+    using Android;
+    using Android.App;
+    using Android.Content;
+    using Android.Content.PM;
+    using Android.OS;
+    using Android.Runtime;
+    using Android.Support.V4.App;
+    using Android.Support.V4.Content;
+
+    using FFImageLoading.Forms.Platform;
+
+    using GrampsView.Common;
+    using GrampsView.Common.CustomClasses;
+    using GrampsView.Data.Repository;
+    using GrampsView.Droid.Common;
+
+    using Microsoft.AppCenter.Distribute;
+    using Microsoft.Device.Display;
+
+    using Plugin.CurrentActivity;
+
+    using Prism;
+    using Prism.Ioc;
+
+    using System;
+    using System.Threading.Tasks;
+
+    using Xamarin.Essentials;
+
+    public class AndroidInitializer : IPlatformInitializer
+    {
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            // Register any platform specific implementations
+            containerRegistry.RegisterSingleton<IPlatformSpecific, PlatformSpecific>();
+        }
+    }
+
+    public class CustomLogger : FFImageLoading.Helpers.IMiniLogger
+
+    {
+        public void Debug(string message)
+
+        {
+            Console.WriteLine(message);
+        }
+
+        public void Error(string errorMessage)
+
+        {
+            Console.WriteLine(errorMessage);
+        }
+
+        public void Error(string errorMessage, Exception ex)
+
+        {
+            Error(errorMessage + System.Environment.NewLine + ex.ToString());
+        }
+    }
+
     [Activity(MainLauncher = false, Label = "GrampsView", Icon = "@mipmap/icon", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.UiMode | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.FullSensor)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
@@ -95,11 +126,11 @@ namespace GrampsView.Droid
 
             // FFImageLoading Init
 
-            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: false);
+            CachedImageRenderer.Init(enableFastRenderer: false);
 
             CachedImageRenderer.InitImageViewHandler();
 
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            Platform.Init(this, savedInstanceState);
 
             ScreenHelper screenHelper = new ScreenHelper();
             bool isDuo = screenHelper.Initialize(this);
@@ -146,37 +177,6 @@ namespace GrampsView.Droid
         private void UnregisterManagers()
         {
             //UpdateManager.Unregister();
-        }
-
-        public class AndroidInitializer : IPlatformInitializer
-        {
-            public void RegisterTypes(IContainerRegistry containerRegistry)
-            {
-                // Register any platform specific implementations
-                containerRegistry.RegisterSingleton<IPlatformSpecific, PlatformSpecific>();
-            }
-        }
-
-        public class CustomLogger : FFImageLoading.Helpers.IMiniLogger
-
-        {
-            public void Debug(string message)
-
-            {
-                Console.WriteLine(message);
-            }
-
-            public void Error(string errorMessage)
-
-            {
-                Console.WriteLine(errorMessage);
-            }
-
-            public void Error(string errorMessage, Exception ex)
-
-            {
-                Error(errorMessage + System.Environment.NewLine + ex.ToString());
-            }
         }
     }
 }
