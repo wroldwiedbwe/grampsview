@@ -91,7 +91,7 @@
             Grid.Row="3"
             Grid.Column="0">
 
-            <ucon:FlexMultiCardType x:Name="BaseHeader" FMultiSource="{Binding BaseDetail}" />
+            <ucon:FlexMultiGroupMultiCard x:Name="BaseHeader" FsctSource="{Binding BaseDetail}" />
         </ScrollView>
     </Grid>
 </ContentPage>

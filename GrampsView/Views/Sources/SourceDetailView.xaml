@@ -52,20 +52,20 @@
 
         <ucon:MediaImageFullCard Grid.Row="0" UCMedia="{Binding SourceObject.HomeImageHLink, Mode=OneWay}" />
 
-        <ucon:FlexMultiCardType
+        <ucon:FlexMultiGroupMultiCard
             x:Name="BaseHeader"
             Grid.Row="1"
-            FMultiSource="{Binding BaseHeader}" />
+            FsctSource="{Binding BaseHeader}" />
 
-        <ucon:FlexMultiCardType
+        <ucon:FlexMultiGroupMultiCard
             x:Name="BaseDetail"
             Grid.Row="2"
-            FMultiSource="{Binding BaseDetail}" />
+            FsctSource="{Binding BaseDetail}" />
 
-        <ucon:FlexMultiCardType
+        <ucon:FlexMultiGroupMultiCard
             x:Name="BaseBackLinks"
             Grid.Row="3"
-            FMultiSource="{Binding BaseBackLinks}"
+            FsctSource="{Binding BaseBackLinks}"
             Style="{DynamicResource BackLinkCollection}" />
     </Grid>
 </ContentPage>

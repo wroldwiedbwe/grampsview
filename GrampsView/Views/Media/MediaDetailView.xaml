@@ -51,10 +51,10 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ucon:FlexMultiCardType
+        <ucon:FlexMultiGroupMultiCard
             x:Name="BaseHeader"
             Grid.Row="0"
-            FMultiSource="{Binding BaseHeader}" />
+            FsctSource="{Binding BaseHeader}" />
 
         <ffimageloading:CachedImage
             x:Name="image"
@@ -66,15 +66,15 @@
             </ffimageloading:CachedImage.GestureRecognizers>
         </ffimageloading:CachedImage>
 
-        <ucon:FlexMultiCardType
+        <ucon:FlexMultiGroupMultiCard
             x:Name="BaseDetail"
             Grid.Row="2"
-            FMultiSource="{Binding BaseDetail}" />
+            FsctSource="{Binding BaseDetail}" />
 
-        <ucon:FlexMultiCardType
+        <ucon:FlexMultiGroupMultiCard
             x:Name="BaseBackLinks"
             Grid.Row="3"
-            FMultiSource="{Binding BaseBackLinks}"
+            FsctSource="{Binding BaseBackLinks}"
             Style="{DynamicResource BackLinkCollection}" />
     </Grid>
 

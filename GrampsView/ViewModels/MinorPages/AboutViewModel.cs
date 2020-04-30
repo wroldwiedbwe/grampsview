@@ -179,11 +179,14 @@ namespace GrampsView.ViewModels
 
             ApplicationVersionList = t;       // TODO Ugly -  Trigger SetProperty
 
-            // Set WhatsNew text Set MarkdownView information that is not easily set in XAML
-            MarkdownTheme tt = (MarkdownTheme)new DarkMarkdownTheme();
-            tt.BackgroundColor = CommonRoutines.ResourceColourGet("CardBackGroundNote");
+            //// Set WhatsNew text Set MarkdownView information that is not easily set in XAML
+            //MarkdownTheme tt = new DarkMarkdownTheme
+            //{
+            //    BackgroundColor = CommonRoutines.ResourceColourGet("CardBackGroundNote")
+            //};
 
-            //this.mdview.Theme = t;
+            // Check for updates
+            Distribute.CheckForUpdate();
 
             return true;
         }

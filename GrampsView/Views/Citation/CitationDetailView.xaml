@@ -56,22 +56,22 @@
 
         <ucon:NoteCardFull Grid.Row="1" BindingContext="{Binding CitationObject.GetFirstModel, Mode=OneWay}" />
 
-        <ucon:FlexMultiCardType
+        <ucon:FlexMultiGroupMultiCard
             x:Name="BaseHeader"
             Grid.Row="2"
-            FMultiSource="{Binding BaseHeader}" />
+            FsctSource="{Binding BaseHeader}" />
 
         <ucon:SourceCardSmall Grid.Row="3" BindingContext="{Binding SourceObject, Mode=OneWay}" />
 
-        <ucon:FlexMultiCardType
+        <ucon:FlexMultiGroupMultiCard
             x:Name="BaseDetail"
             Grid.Row="4"
-            FMultiSource="{Binding BaseDetail}" />
+            FsctSource="{Binding BaseDetail}" />
 
-        <ucon:FlexMultiCardType
+        <ucon:FlexMultiGroupMultiCard
             x:Name="BaseBackLinks"
             Grid.Row="5"
-            FMultiSource="{Binding BaseBackLinks}"
+            FsctSource="{Binding BaseBackLinks}"
             Style="{DynamicResource BackLinkCollection}" />
     </Grid>
 </ContentPage>

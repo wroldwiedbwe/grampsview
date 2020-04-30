@@ -40,7 +40,6 @@
 
     <!--  Content  -->
     <Grid>
-
-        <ucon:FlexMultiCardType x:Name="BaseBackLinks" FMultiSource="{Binding BookMarkSource, Mode=OneWay}" />
+        <ucon:FlexMultiGroupMultiCard x:Name="BaseBackLinks" FsctSource="{Binding BookMarkSource, Mode=OneWay}" />
     </Grid>
 </ContentPage>

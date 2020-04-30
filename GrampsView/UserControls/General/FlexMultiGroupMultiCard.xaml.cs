@@ -2,19 +2,15 @@
 {
     using GrampsView.Common;
 
-    using System.Collections.ObjectModel;
-    using System.Collections.Specialized;
-    using System.Linq;
-
     using Xamarin.Forms;
     using Xamarin.Forms.Internals;
 
-    public partial class FlexMultiCardType : FlexBase
+    public partial class FlexMultiGroupMultiCard : FlexBase
     {
-        public static readonly BindableProperty FMultiSourceProperty
-                   = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexMultiCardType), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FsctSource));
+        public static readonly BindableProperty FsctSourceProperty
+                   = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexMultiGroupMultiCard), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FsctSource), defaultValue: new CardGroup());
 
-        public FlexMultiCardType()
+        public FlexMultiGroupMultiCard()
         {
             InitializeComponent();
         }
@@ -36,8 +32,8 @@
 
         public override CardGroup FsctSource
         {
-            get { return (CardGroup)GetValue(FMultiSourceProperty); }
-            set { SetValue(FMultiSourceProperty, value); }
+            get { return (CardGroup)GetValue(FsctSourceProperty); }
+            set { SetValue(FsctSourceProperty, value); }
         }
 
         public override void BuildLayout()
