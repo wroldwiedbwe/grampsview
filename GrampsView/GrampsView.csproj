@@ -195,13 +195,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="CHANGELOG.md" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.cs.OLD" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.OLD" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="CHANGELOG.md" />
   </ItemGroup>
 
   <ItemGroup>
@@ -333,5 +328,9 @@
 
   <ItemGroup>
     <Folder Include="ViewModels\Test\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\CHANGELOG.md" Link="CHANGELOG.md" />
   </ItemGroup>
 </Project>
