@@ -16,22 +16,17 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN_ACTION  }}
 
-  #  - name: Create_commit_change_log_file
-   #   uses: TriPSs/conventional-changelog-action@v1.3.0
- #     with:
-#        github-token: ${{ secrets.GITHUB_TOKEN }}
-#        tag-prefix: 'v'
-#        changelog-release-count: 0
-
-#    - name: Generate changelog
-#      uses: heinrichreimer/action-github-changelog-generator@v2.1.1
-#      with:
-#        github_token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: git Actions
-      uses: srt32/git-actions@v0.0.3
+    - name: Conventional Changelog Action
+      uses: TriPSs/conventional-changelog-action@v2.1.1
       with:
-        args: git log --pretty --oneline --decorate -n 10 --format=medium > GrampsView/CHANGELOG.md
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        tag-prefix: 'v'
+        changelog-release-count: 0
+
+#    - name: git Actions
+#      uses: srt32/git-actions@v0.0.3
+#      with:
+ #       args: git log --pretty --oneline --decorate -n 10 --format=medium > GrampsView/CHANGELOG.md
 
 
     - uses: stefanzweifel/git-auto-commit-action@v4.1.2
