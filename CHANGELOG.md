@@ -1,3 +1,12 @@
+# [5.5.0](https://github.com/phandcock/grampsview/compare/v5.4.1...v5.5.0) (2020-05-01)
+
+
+### Features
+
+* update CHANGELOG.md generation code ([81727f6](https://github.com/phandcock/grampsview/commit/81727f632c1371de94a6fb833ddf9f73ac745ac3))
+
+
+
 ## [5.4.1](https://github.com/phandcock/grampsview/compare/v5.4.0...v5.4.1) (2020-05-01)
 
 
@@ -41,10 +50,6 @@
 ### Features
 
 * cleanup Android rotation code ([d87f02a](https://github.com/phandcock/grampsview/commit/d87f02a9c0efd9bceccdc7e1f14afbf7e6f0f8ea))
-
-
-
-## [5.2.8](https://github.com/phandcock/grampsview/compare/v5.2.7...v5.2.8) (2020-04-14)
 
 
 
