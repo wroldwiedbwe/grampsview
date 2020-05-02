@@ -35,7 +35,7 @@ jobs:
       with:
         files: 'GrampsView.Android/Properties/AndroidManifest.xml'
       env:
-        Var1: "versionCode"
+        Var1: "android:versionCode"
         Var2.key1: steps.package-node-version.outputs.current-package-version
         SECRET: ${{ secrets.GITHUB_TOKEN }}
         
