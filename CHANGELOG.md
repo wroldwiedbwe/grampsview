@@ -1,3 +1,7 @@
+## [5.5.4](https://github.com/phandcock/grampsview/compare/v5.5.3...v5.5.4) (2020-05-02)
+
+
+
 ## [5.5.3](https://github.com/phandcock/grampsview/compare/v5.5.2...v5.5.3) (2020-05-02)
 
 
@@ -16,10 +20,6 @@
 ### Features
 
 * update CHANGELOG.md generation code ([81727f6](https://github.com/phandcock/grampsview/commit/81727f632c1371de94a6fb833ddf9f73ac745ac3))
-
-
-
-## [5.4.1](https://github.com/phandcock/grampsview/compare/v5.4.0...v5.4.1) (2020-05-01)
 
 
 
