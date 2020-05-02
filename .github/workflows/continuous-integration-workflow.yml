@@ -25,7 +25,7 @@ jobs:
 
     - name: Read package.json node version
       uses: culshaw/read-package-node-version-actions@v2.0.0
-      id: version-updated
+      id: package-node-version
       with:
         path: package.json
       env:
@@ -36,7 +36,7 @@ jobs:
         files: 'GrampsView.Android\Properties\AndroidManifest.xml'
       env:
         Var1: "versionCode"
-        Var2.key1: steps.version-updated.outputs.current-package-version
+        Var2.key1: steps.package-node-version.outputs.version
         SECRET: ${{ secrets.GITHUB_TOKEN }}
         
 #    - name: git Actions
