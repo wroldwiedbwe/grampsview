@@ -38,7 +38,15 @@ jobs:
         Var1: "android:versionCode"
         Var2.key1: steps.package-node-version.outputs.current-package-version
         SECRET: ${{ secrets.GITHUB_TOKEN }}
-        
+
+    - uses: microsoft/variable-substitution@v1 
+      with:
+        files: 'GrampsView.UWP/Package.appxmanifest'
+      env:
+        Var1: "Version"
+        Var2.key1: steps.package-node-version.outputs.current-package-version
+        SECRET: ${{ secrets.GITHUB_TOKEN }}
+    
 #    - name: git Actions
 #      uses: srt32/git-actions@v0.0.3
 #      with:
