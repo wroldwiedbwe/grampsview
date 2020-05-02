@@ -1,3 +1,7 @@
+## [5.5.2](https://github.com/phandcock/grampsview/compare/v5.5.1...v5.5.2) (2020-05-02)
+
+
+
 ## [5.5.1](https://github.com/phandcock/grampsview/compare/v5.5.0...v5.5.1) (2020-05-02)
 
 
@@ -41,10 +45,6 @@
 * create FontSize routines to get good font sizes ([ddefe1d](https://github.com/phandcock/grampsview/commit/ddefe1d3b0c9052333b4c291156d404fcb48b85d))
 * migrate to microsoft.extension.logging ([b4fae5c](https://github.com/phandcock/grampsview/commit/b4fae5c350458c4fd1947fb27b46400bf0c8722b))
 * Refactor Flex Controls ([abb6682](https://github.com/phandcock/grampsview/commit/abb668274f5c41f49d780ef9138ac9b4fa44b098))
-
-
-
-## [5.3.1](https://github.com/phandcock/grampsview/compare/v5.3.0...v5.3.1) (2020-04-14)
 
 
 
