@@ -23,8 +23,8 @@ jobs:
         tag-prefix: 'v'
         changelog-release-count: 0
 
-    - name: Read package.json node version
-      uses: culshaw/read-package-node-version-actions@v2.0.0
+    - name: Package Version Updated
+      uses: MontyD/package-json-updated-action@1.0.1
       id: package-node-version
       with:
         path: package.json
@@ -36,7 +36,7 @@ jobs:
         files: 'GrampsView.Android\Properties\AndroidManifest.xml'
       env:
         Var1: "versionCode"
-        Var2.key1: steps.package-node-version.outputs.version
+        Var2.key1: steps.package-node-version.outputs.current-package-version
         SECRET: ${{ secrets.GITHUB_TOKEN }}
         
 #    - name: git Actions
