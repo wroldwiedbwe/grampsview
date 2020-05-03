@@ -1,3 +1,12 @@
+## [5.5.10](https://github.com/phandcock/grampsview/compare/v5.5.9...v5.5.10) (2020-05-03)
+
+
+### Bug Fixes
+
+* ErrorDialog Ok Button style and text ([938bb43](https://github.com/phandcock/grampsview/commit/938bb433aa829cad12183ede90be5d4d21f48626))
+
+
+
 ## [5.5.9](https://github.com/phandcock/grampsview/compare/v5.5.8...v5.5.9) (2020-05-03)
 
 
@@ -16,10 +25,6 @@
 
 
 ## [5.5.6](https://github.com/phandcock/grampsview/compare/v5.5.5...v5.5.6) (2020-05-02)
-
-
-
-## [5.5.5](https://github.com/phandcock/grampsview/compare/v5.5.4...v5.5.5) (2020-05-02)
 
 
 
