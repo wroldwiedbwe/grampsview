@@ -56,7 +56,7 @@
             }
 
             // Layout out children
-            if (layout?.FsctSource != null && layout?.FsctTemplate != null)
+            if (layout?.FsctSource != null)
             {
                 layout.IndexStart = 0;
                 layout.IndexLength = startItemGet;

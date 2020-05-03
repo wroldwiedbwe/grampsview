@@ -2,15 +2,12 @@
 {
     using GrampsView.Common;
 
-    using System.Collections.Specialized;
-    using System.Linq;
-
     using Xamarin.Forms;
     using Xamarin.Forms.Internals;
 
     public partial class FlexSingleGroupMultiCard : FlexBase
     {
-        public static readonly BindableProperty FMultiSourceProperty = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexSingleGroupMultiCard), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FsctSource));
+        public static readonly BindableProperty FMultiSourceProperty = BindableProperty.Create(returnType: typeof(CardGroup), declaringType: typeof(FlexSingleGroupMultiCard), propertyChanged: OnItemsSourceChanged, propertyName: nameof(FsctSource), defaultValue: new CardGroup());
 
         public static readonly BindableProperty FsctTemplateProperty = BindableProperty.Create(nameof(FsctTemplate), typeof(DataTemplateSelector), typeof(FlexSingleGroupMultiCard), propertyChanged: OnItemTemplateChanged);
 

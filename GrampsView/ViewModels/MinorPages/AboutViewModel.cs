@@ -185,8 +185,9 @@ namespace GrampsView.ViewModels
             //    BackgroundColor = CommonRoutines.ResourceColourGet("CardBackGroundNote")
             //};
 
-            // Check for updates
-            Distribute.CheckForUpdate();
+            //// Check for updates
+            //await Distribute.SetEnabledAsync(true);
+            //Distribute.CheckForUpdate();
 
             return true;
         }

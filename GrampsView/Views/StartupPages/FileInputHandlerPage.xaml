@@ -60,14 +60,10 @@
             HorizontalOptions="CenterAndExpand"
             UCCardListLineCol="{Binding DataDetailList, Mode=OneWay}" />
 
-        <Frame
+        <Button
             Grid.Row="2"
-            Padding="0"
-            BackgroundColor="Orange">
-            <Button
-                Command="{Binding PickFileCommand}"
-                Style="{DynamicResource GVButtonStyle}"
-                Text="{i18n:Translate FileInputHandlerPage_Choose_Button_Text}" />
-        </Frame>
+            Command="{Binding PickFileCommand}"
+            Style="{DynamicResource GVButtonStyle}"
+            Text="{i18n:Translate FileInputHandlerPage_Choose_Button_Text}" />
     </Grid>
 </ContentPage>

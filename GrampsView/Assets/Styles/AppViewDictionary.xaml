@@ -57,6 +57,8 @@
         <Setter Property="BorderWidth" Value="2" />
         <Setter Property="TextColor" Value="{DynamicResource OnSurfaceColor}" />
         <Setter Property="WidthRequest" Value="{DynamicResource GVDetailCardWidthSmall}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Padding" Value="2" />
     </Style>
 
     <!--  Create a Menu Style Button Style  -->

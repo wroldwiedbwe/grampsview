@@ -49,6 +49,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <ucon:InstructionCardLarge
@@ -56,15 +57,16 @@
                 BindingContext="{i18n:Translate FirstRun_IntroductionText}"
                 HorizontalOptions="Center" />
 
-            <Frame
+            <ucon:InstructionCardLarge
                 Grid.Row="1"
-                Padding="0"
-                BackgroundColor="Orange">
-                <Button
-                    Command="{Binding LoadDataCommand}"
-                    Style="{DynamicResource GVButtonStyle}"
-                    Text="What's New" />
-            </Frame>
+                BindingContext="{i18n:Translate FirstRun_WhatsNext}"
+                HorizontalOptions="Center" />
+
+            <Button
+                Grid.Row="2"
+                Command="{Binding LoadDataCommand}"
+                Style="{DynamicResource GVButtonStyle}"
+                Text="{i18n:Translate FirstRun_WhatsNewButton}" />
         </Grid>
     </ScrollView>
 </ContentPage>

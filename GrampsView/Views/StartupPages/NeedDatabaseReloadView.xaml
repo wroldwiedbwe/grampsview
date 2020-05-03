@@ -50,21 +50,15 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Frame Grid.Row="0" Style="{StaticResource FrameLargeVariableCardStyleNS}">
-            <Label Style="{DynamicResource GVLabelStyleInstructions}" Text="{i18n:Translate NeedDatabaseReloadPage_Instructions}" />
-        </Frame>
+        <ucon:InstructionCardLarge BindingContext="{i18n:Translate NeedDatabaseReloadPage_Instructions}" HorizontalOptions="Center" />
 
-        <Frame
+        <Button
             Grid.Row="1"
-            Padding="0"
-            BackgroundColor="Orange">
-            <Button
-                Command="{prismnav:NavigateTo 'FileInputHandlerPage',
-                                              Animated=True}"
-                HorizontalOptions="Center"
-                Style="{DynamicResource GVButtonStyle}"
-                Text="Load Database"
-                VerticalOptions="Center" />
-        </Frame>
+            Command="{prismnav:NavigateTo 'FileInputHandlerPage',
+                                          Animated=True}"
+            HorizontalOptions="Center"
+            Style="{DynamicResource GVButtonStyle}"
+            Text="{i18n:Translate LoadDataBase_GotoLoadData}"
+            VerticalOptions="Center" />
     </Grid>
 </ContentPage>
