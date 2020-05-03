@@ -23,7 +23,7 @@
                 Style="{DynamicResource GVSymbolconPageHeaderType}">
                 <Image.Source>
                     <FontImageSource
-                        FontFamily="{DynamicResource MaterialFontFamily}"
+                        FontFamily="{StaticResource MaterialFontFamily}"
                         Glyph="{Binding BaseTitleIcon}"
                         Size="44"
                         Color="{DynamicResource PrimaryColor}" />

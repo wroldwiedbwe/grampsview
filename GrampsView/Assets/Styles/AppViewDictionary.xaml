@@ -392,7 +392,7 @@
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
         <Setter Property="Margin" Value="0,0,3,3" />
-        <Setter Property="FontSize" Value="{x:Static common:CommonFontSize.FontMedium}" />
+        <Setter Property="FontSize" Value="{x:Static common:CommonFontSize.FontSmall}" />
     </Style>
 
     <!--  Create a Large Style for a TextBlock  -->
@@ -441,7 +441,7 @@
         BasedOn="{StaticResource GVCardLabelStyle}"
         TargetType="Label">
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="FontSize" Value="{x:Static common:CommonFontSize.FontLarge}" />
+        <Setter Property="FontSize" Value="{x:Static common:CommonFontSize.FontMedium}" />
     </Style>
 
     <!--

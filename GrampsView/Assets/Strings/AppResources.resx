@@ -180,4 +180,7 @@
   <data name="WhatsNew_LoadDataButton" xml:space="preserve">
     <value>Goto Load Data page</value>
   </data>
+  <data name="ErrorDialog_Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
 </root>

@@ -1,11 +1,11 @@
 ﻿namespace GrampsView.Common
 {
-    using GrampsView.Common.ArrayExtensions;
     using System;
     using System.Collections.Generic;
     using System.Reflection;
+    using GrampsView.Common.Extensions;
 
-    namespace ArrayExtensions
+    namespace Extensions
     {
         public static class ArrayExtensions
         {

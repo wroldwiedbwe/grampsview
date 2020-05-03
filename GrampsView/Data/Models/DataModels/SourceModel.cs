@@ -30,20 +30,20 @@ namespace GrampsView.Data.Model
     /// <summary>
     /// Source ViewModel.
     /// </summary>
-    /// <seealso cref="GrampsView.Data.ViewModel.ModelBase" />
+    /// <seealso cref="GrampsView.Data.ViewModel.ModelBase"/>
     /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="GrampsView.Data.ViewModel.ISourceModel" />
+    /// <seealso cref="GrampsView.Data.ViewModel.ISourceModel"/>
     /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="System.IComparable" />
+    /// <seealso cref="System.IComparable"/>
     /// /// /// /// /// /// /// /// /// /// /// ///
-    /// <seealso cref="System.Collections.IComparer" />
+    /// <seealso cref="System.Collections.IComparer"/>
     [DataContract]
     public sealed class SourceModel : ModelBase, ISourceModel, IComparable, IComparer<SourceModel>
     {
         private HLinkMediaModelCollection localMediaCollection = new HLinkMediaModelCollection();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SourceModel" /> class.
+        /// Initializes a new instance of the <see cref="SourceModel"/> class.
         /// </summary>
         public SourceModel()
         {
@@ -65,28 +65,8 @@ namespace GrampsView.Data.Model
         }
 
         /// <summary>
-        /// Gets the get h link.
-        /// </summary>
-        /// <value>
-        /// The get h link.
-        /// </value>
-        public HLinkSourceModel HLink
-        {
-            get
-            {
-                HLinkSourceModel t = new HLinkSourceModel
-                {
-                    HLinkKey = HLinkKey,
-                };
-                return t;
-            }
-        }
-
-        /// <summary>
         /// Gets or sets the g media reference collection.
-        /// <code>
-        /// <zeroOrMore><element name="objref"><ref name="objref-content" /></element></zeroOrMore>
-        /// </code>
+        /// <code><zeroOrMore><element name="objref"><ref name="objref-content" /></element></zeroOrMore></code>
         /// </summary>
         /// <value>
         /// The g media reference collection.
@@ -105,14 +85,10 @@ namespace GrampsView.Data.Model
             }
         }
 
-        /// <code>
-        /// <ref name="SecondaryColor-object" />
-        /// </code>
+        /// <code><ref name="SecondaryColor-object" /></code>
         /// <summary>
         /// Gets or sets the g note reference.
-        /// <code>
-        /// <zeroOrMore><element name="noteref"><ref name="noteref-content" /></element></zeroOrMore>
-        /// </code>
+        /// <code><zeroOrMore><element name="noteref"><ref name="noteref-content" /></element></zeroOrMore></code>
         /// </summary>
         /// <value>
         /// The g note reference.
@@ -166,15 +142,31 @@ namespace GrampsView.Data.Model
 
         /// <summary>
         /// Gets or sets the gs title.
-        /// <code>
-        /// <zeroOrMore><element name="tagref"><ref name="tagref-content" /></element></zeroOrMore>
-        /// </code>
+        /// <code><zeroOrMore><element name="tagref"><ref name="tagref-content" /></element></zeroOrMore></code>
         /// </summary>
         /// <value>
         /// The source author.
         /// </value>
         [DataMember]
         public HLinkTagModelCollection GTagRefCollection { get; set; }
+
+        /// <summary>
+        /// Gets the get h link.
+        /// </summary>
+        /// <value>
+        /// The get h link.
+        /// </value>
+        public HLinkSourceModel HLink
+        {
+            get
+            {
+                HLinkSourceModel t = new HLinkSourceModel
+                {
+                    HLinkKey = HLinkKey,
+                };
+                return t;
+            }
+        }
 
         /// <summary>
         /// Compares two objects.
@@ -190,6 +182,11 @@ namespace GrampsView.Data.Model
         /// </returns>
         public new int Compare(object a, object b)
         {
+            if ((a is null) || (b is null))
+            {
+                return 0;   // equal
+            }
+
             SourceModel firstSource = (SourceModel)a;
             SourceModel secondSource = (SourceModel)b;
 

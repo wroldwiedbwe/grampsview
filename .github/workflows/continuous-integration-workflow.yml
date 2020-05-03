@@ -47,13 +47,6 @@ jobs:
 #        Var2.key1: steps.package-node-version.outputs.current-package-version
 #        SECRET: ${{ secrets.GITHUB_TOKEN }}
 
-    
-#    - name: git Actions
-#      uses: srt32/git-actions@v0.0.3
-#      with:
- #       args: git log --pretty --oneline --decorate -n 10 --format=medium > GrampsView/CHANGELOG.md
-
-
 #    - uses: stefanzweifel/git-auto-commit-action@v4.1.2
 #      with:
  #       commit_message: Update changelog
@@ -66,17 +59,6 @@ jobs:
 #        commit_user_email: phandcockregister@gmail.com
 #        commit_author: phandcock <phandcockregister@gmail.com>
     
-
-#    - name: Generate Auto Changelog
-#      uses: ahmadawais/action-auto-changelog@master
-#      with:
-#        github_token: ${{ secrets.GITHUB_TOKEN }}
-
-#    - name: Generate changelog
-#      uses: charmixer/auto-changelog-action@v1
-#      with:
-#        token: ${{ secrets.GITHUB_TOKEN_ACTION }}
-
 #    - name: Commit files
 #      env:
 #         CI_USER: ${{ secrets.YOUR_GITHUB_USER }}

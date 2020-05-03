@@ -60,7 +60,7 @@
             Grid.Row="1"
             FsctSource="{Binding BaseDetail}" />
 
-        <ucon:FlexSingleGroupMultiCard
+        <ucon:FlexMultiGroupMultiCard
             x:Name="BaseBackLinks"
             Grid.Row="2"
             FsctSource="{Binding BaseBackLinks}"

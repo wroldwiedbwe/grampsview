@@ -3,7 +3,6 @@
     using GrampsView.Common;
 
     using Xamarin.Forms;
-    using Xamarin.Forms.Internals;
 
     public partial class FlexSingleGroupMultiCard : FlexBase
     {
@@ -60,22 +59,22 @@
             AddToLayout(0);
         }
 
-        private View CreateChildView(object item)
-        {
-            //var dts = FsctTemplate as DataTemplateSelector;
-            //var itemTemplate = dts.SelectTemplate(item, null);
-            //itemTemplate.SetValue(BindableObject.BindingContextProperty, item);
-            //return (View)itemTemplate.CreateContent();
+        //private View CreateChildView(object item)
+        //{
+        //    //var dts = FsctTemplate as DataTemplateSelector;
+        //    //var itemTemplate = dts.SelectTemplate(item, null);
+        //    //itemTemplate.SetValue(BindableObject.BindingContextProperty, item);
+        //    //return (View)itemTemplate.CreateContent();
 
-            Application.Current.Resources.TryGetValue("CardGroupTemplate", out var cardGroupTemplate);
+        // Application.Current.Resources.TryGetValue("CardGroupTemplate", out var cardGroupTemplate);
 
-            DataTemplate t = cardGroupTemplate as DataTemplate;
+        // DataTemplate t = cardGroupTemplate as DataTemplate;
 
-            View view = (View)t.CreateContent(item, null);
+        // View view = (View)t.CreateContent(item, null);
 
-            view.BindingContext = item;
+        // view.BindingContext = item;
 
-            return view;
-        }
+        //    return view;
+        //}
     }
 }

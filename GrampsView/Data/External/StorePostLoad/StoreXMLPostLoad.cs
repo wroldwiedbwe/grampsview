@@ -213,6 +213,8 @@ namespace GrampsView.Data.ExternalStorageNS
             catch (Exception ex)
             {
                 DataStore.CN.NotifyException("Exception in OrganiseMediaRepository", ex);
+
+                throw;
             }
 
             return true;

@@ -381,6 +381,11 @@ namespace GrampsView.Data.Model
 
         public int CompareTo(ModelBase other)
         {
+            if (other is null)
+            {
+                return 1; // this is bigger
+            }
+
             // compare on Page first TODO compare on Page?
             int testFlag = Compare(HLinkKey, other.HLinkKey);
 

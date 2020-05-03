@@ -58,12 +58,12 @@
 
                     case Device.UWP:
                         {
-                            return 14.0;
+                            return 16; //  14.0;
                         }
 
                     default:
                         {
-                            return 14.0;
+                            return 16; // 14.0;
                         }
                 }
             }
@@ -77,22 +77,22 @@
                 {
                     case Device.Android:
                         {
-                            return 10.0;
+                            return 14; // 10.0;
                         }
 
                     case Device.iOS:
                         {
-                            return 11;
+                            return 16; // 11;
                         }
 
                     case Device.UWP:
                         {
-                            return 10;
+                            return 14; // 10;
                         }
 
                     default:
                         {
-                            return 12.0;
+                            return 14; // 12.0;
                         }
                 }
             }

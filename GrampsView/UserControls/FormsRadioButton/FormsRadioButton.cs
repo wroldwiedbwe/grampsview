@@ -5,7 +5,7 @@
 
     public class FormsRadioButton : ContentView
     {
-        public static BindableProperty RadioItemsProperty
+        public static readonly BindableProperty RadioItemsProperty
 
              = BindableProperty.Create(returnType: typeof(RadioItems), declaringType: typeof(FormsRadioButton), propertyChanged: OnItemsSourceChanged, propertyName: nameof(RadioItems));
 
@@ -23,7 +23,7 @@
         public RadioItems RadioItems
         {
             get => (RadioItems)GetValue(RadioItemsProperty);
-            set => SetValue(RadioItemsProperty, value);
+            //set => SetValue(RadioItemsProperty, value);
         }
 
         private static void OnItemsSourceChanged(BindableObject obj, object oldValue, object newValue)

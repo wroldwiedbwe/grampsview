@@ -24,12 +24,15 @@
   <ItemGroup>
     <Compile Remove="Common\ExtDLL\**" />
     <Compile Remove="Data\External\StoreCache\**" />
+    <Compile Remove="UserControls\FormsRadioButton\**" />
     <Compile Remove="UserControls\Handy Controls\**" />
     <EmbeddedResource Remove="Common\ExtDLL\**" />
     <EmbeddedResource Remove="Data\External\StoreCache\**" />
+    <EmbeddedResource Remove="UserControls\FormsRadioButton\**" />
     <EmbeddedResource Remove="UserControls\Handy Controls\**" />
     <None Remove="Common\ExtDLL\**" />
     <None Remove="Data\External\StoreCache\**" />
+    <None Remove="UserControls\FormsRadioButton\**" />
     <None Remove="UserControls\Handy Controls\**" />
   </ItemGroup>
 
@@ -84,12 +87,18 @@
     <Compile Remove="Data\PluginStorageFile.cs" />
     <Compile Remove="Data\PluginStorageFileSystem.cs" />
     <Compile Remove="Data\PluginStorageFolder.cs" />
+    <Compile Remove="Events\AppStartSaveSerial.cs" />
     <Compile Remove="Events\DataLoadSerialEvent.cs" />
+    <Compile Remove="Events\DataLoadUnzipped.cs" />
     <Compile Remove="Events\GVProgressMajorTextUpdate.cs" />
     <Compile Remove="Events\GVProgressMinorTextUpdate.cs" />
+    <Compile Remove="Events\LoadImageBitMapEvent.cs" />
+    <Compile Remove="Events\LoadMediaBitmapEvent.cs" />
     <Compile Remove="Events\PageMenuPanelOpenEvent.cs" />
     <Compile Remove="Events\PageTitleChangedEvent.cs" />
     <Compile Remove="Events\PageTitleChangedEventArgs.cs" />
+    <Compile Remove="Events\PersonCurrentChanged.cs" />
+    <Compile Remove="Events\ProgressRingUpdate.cs" />
     <Compile Remove="UserControls\AttributeCardLarge.xaml.cs" />
     <Compile Remove="UserControls\BookMarkCardSmall.xaml.cs" />
     <Compile Remove="UserControls\CitationRefCardSmall.xaml.cs" />
@@ -195,6 +204,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Fonts\materialdesignicons-webfont.ttf" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.cs.OLD" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.OLD" />
   </ItemGroup>
@@ -218,8 +228,8 @@
     <PackageReference Include="Nito.AsyncEx" Version="5.0.0" />
     <PackageReference Include="Prism.Unity.Forms" Version="7.2.0.1422" />
     <PackageReference Include="SharpZipLib.Portable" Version="0.86.0.3" />
-    <PackageReference Include="SkiaSharp" Version="1.68.2" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.2" />
+    <PackageReference Include="SkiaSharp" Version="1.68.2.1" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.2.1" />
     <PackageReference Include="Xam.Forms.MarkdownView" Version="0.6.1-pre" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.1" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
@@ -332,5 +342,6 @@
 
   <ItemGroup>
     <EmbeddedResource Include="..\CHANGELOG.md" Link="CHANGELOG.md" />
+    <EmbeddedResource Include="Assets\Fonts\materialdesignicons-webfont.ttf" />
   </ItemGroup>
 </Project>

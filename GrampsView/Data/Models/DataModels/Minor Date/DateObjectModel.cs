@@ -820,6 +820,11 @@ namespace GrampsView.Data.Model
         /// </returns>
         public int Compare(DateObjectModel x, DateObjectModel y)
         {
+            if ((x is null) || (y is null))
+            {
+                return 1; // this is bigger
+            }
+
             return DateTime.Compare(x.SortDate, y.SortDate);
         }
 

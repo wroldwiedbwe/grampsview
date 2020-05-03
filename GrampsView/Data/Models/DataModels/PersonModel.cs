@@ -504,6 +504,11 @@ namespace GrampsView.Data.Model
         /// </returns>
         public new int Compare(object a, object b)
         {
+            if ((a is null) || (b is null))
+            {
+                return 0;   // equal
+            }
+
             PersonModel firstPersonModel = (PersonModel)a;
             PersonModel secondPersonModel = (PersonModel)b;
 

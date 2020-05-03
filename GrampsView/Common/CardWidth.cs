@@ -80,7 +80,7 @@
 
                 _CardSmallWidth = outVal;
 
-                OnPropertyChanged("CardLargeWidth");
+                OnPropertyChanged(nameof(CardLargeWidth));
             }
         }
 
@@ -136,7 +136,7 @@
 
                 _CardMediumWidth = outVal;
 
-                OnPropertyChanged("CardMediumWidth");
+                OnPropertyChanged(nameof(CardMediumWidth));
             }
         }
 
@@ -186,10 +186,10 @@
                         break;
                 };
 
-                Debug.WriteLine("Card Width changed to " + outVal.ToString());
+                Debug.WriteLine("Card Width changed to " + outVal.ToString(System.Globalization.CultureInfo.CurrentCulture));
                 _CardSmallWidth = outVal;
 
-                OnPropertyChanged("CardSmallWidth");
+                OnPropertyChanged(nameof(CardSmallWidth));
             }
         }
 

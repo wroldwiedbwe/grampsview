@@ -79,10 +79,6 @@
                         typeof(FFImageLoading.Forms.Platform.CachedImageRenderer).GetTypeInfo().Assembly
                     };
 
-                // Shell
-                ////////////////////////////////////////////////////////////////////////////////////////////////
-                Xamarin.Forms.Forms.SetFlags("Shell_UWP_Experimental");
-
                 // App Center
                 ////////////////////////////////////////////////////////////////////////////////////////////////Debug.WriteLine(initString, "AppCenterInit");
                 Debug.WriteLine(AppCenter.SdkVersion, "UWP SDK");

@@ -26,7 +26,7 @@ namespace GrampsView.ViewModels
     {
         private CardListLineCollection _ApplicationVersionList = new CardListLineCollection();
 
-        private RadioItems _daRadioItems = new RadioItems();
+        //private RadioItems _daRadioItems = new RadioItems();
 
         private string _DaText = string.Empty;
 
@@ -34,66 +34,59 @@ namespace GrampsView.ViewModels
 
         private HeaderModel _HeaderModel = null;
 
+        private bool _ThemeButtonDarkChecked = false;
+
+        private bool _ThemeButtonLightChecked = false;
+
+        private bool _ThemeButtonSystemChecked = false;
+
         public SettingsViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
-                                            : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
+                                                                    : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "About";
             BaseTitleIcon = CommonConstants.IconSettings;
 
-            //Setup Theme radio buttons
-            RadioButtonToggledCommand = new DelegateCommand<RadioItemToggledEventArgs>(HandleRadioToggle);
+            ////Setup Theme radio buttons
+            //RadioButtonToggledCommand = new DelegateCommand<RadioItemToggledEventArgs>(HandleRadioToggle);
 
-            DaRadioItems.Add(new RadioItem
-            {
-                Text = "Light Theme",
-                Toggled = false
-            });
+            //DaRadioItems.Add(new RadioItem
+            //{
+            //    Text = "Light Theme",
+            //    Toggled = false
+            //});
 
-            DaRadioItems.Add(new RadioItem
-            {
-                Text = "Dark Theme",
-                Toggled = false
-            });
+            //DaRadioItems.Add(new RadioItem
+            //{
+            //    Text = "Dark Theme",
+            //    Toggled = false
+            //});
 
-            DaRadioItems.Add(new RadioItem
-            {
-                Text = "System Theme",
-                Toggled = false
-            });
+            //DaRadioItems.Add(new RadioItem
+            //{
+            //    Text = "System Theme",
+            //    Toggled = false
+            //});
 
             switch (CommonLocalSettings.ApplicationTheme)
             {
                 case AppTheme.Light:
                     {
-                        DaRadioItems[0].Toggled = true;
+                        ThemeButtonLightChecked = true;
                         break;
                     }
 
                 case AppTheme.Dark:
                     {
-                        DaRadioItems[1].Toggled = true;
+                        ThemeButtonDarkChecked = true;
                         break;
                     }
 
                 default:
                     {
-                        DaRadioItems[2].Toggled = true;
+                        ThemeButtonSystemChecked = true;
                         break;
                     }
             }
-        }
-
-        public RadioItems DaRadioItems
-        {
-            get
-            {
-                return _daRadioItems;
-            }
-
-            //set
-            //{
-            //    SetProperty(ref _daRadioItems, value);
-            //}
         }
 
         public string DaText
@@ -109,39 +102,105 @@ namespace GrampsView.ViewModels
             }
         }
 
-        public DelegateCommand<RadioItemToggledEventArgs> RadioButtonToggledCommand { get; private set; }
-
-        public static void HandleRadioToggle(RadioItemToggledEventArgs argRadioItem)
+        public bool ThemeButtonDarkChecked
         {
-            if (argRadioItem is null)
+            get
             {
-                throw new ArgumentNullException(nameof(argRadioItem));
+                return _ThemeButtonDarkChecked;
             }
 
-            switch (argRadioItem.SelectedItem.Text)
+            set
             {
-                case "Dark Theme":
-                    {
-                        CommonTheming.ThemeDarkSet();
-                        CommonTheming.ThemeDarkSave();
-                        break;
-                    }
+                if (_ThemeButtonDarkChecked != value)
+                {
+                    _ThemeButtonLightChecked = false;
+                    _ThemeButtonDarkChecked = true;
+                    _ThemeButtonSystemChecked = false;
 
-                case "Light Theme":
-                    {
-                        CommonTheming.ThemeLightSet();
-                        CommonTheming.ThemeLightSave();
-                        break;
-                    }
-
-                default:
-                    {
-                        CommonTheming.ThemeSystemSet();
-                        CommonTheming.ThemeSystemSave();
-                        break;
-                    }
+                    CommonTheming.ThemeDarkSet();
+                    CommonTheming.ThemeDarkSave();
+                }
             }
         }
+
+        public bool ThemeButtonLightChecked
+        {
+            get
+            {
+                return _ThemeButtonLightChecked;
+            }
+
+            set
+            {
+                if (_ThemeButtonLightChecked != value)
+                {
+                    _ThemeButtonLightChecked = true;
+                    _ThemeButtonDarkChecked = false;
+                    _ThemeButtonSystemChecked = false;
+
+                    CommonTheming.ThemeLightSet();
+                    CommonTheming.ThemeLightSave();
+                }
+            }
+        }
+
+        public bool ThemeButtonSystemChecked
+        {
+            get
+            {
+                return _ThemeButtonSystemChecked;
+            }
+
+            set
+            {
+                if (_ThemeButtonSystemChecked != value)
+                {
+                    _ThemeButtonLightChecked = false;
+                    _ThemeButtonDarkChecked = false;
+                    _ThemeButtonSystemChecked = true;
+
+                    CommonTheming.ThemeSystemSet();
+                    CommonTheming.ThemeSystemSave();
+                }
+            }
+        }
+
+        //public RadioItems DaRadioItems
+        //{
+        //    get
+        //    {
+        //        return _daRadioItems;
+        //    }
+
+        //    //set
+        //    //{
+        //    //    SetProperty(ref _daRadioItems, value);
+        //    //}
+        //}
+        //public DelegateCommand<RadioItemToggledEventArgs> RadioButtonToggledCommand { get; private set; }
+
+        //public static void HandleRadioToggle()
+        //{
+        //    switch (argRadioItem.SelectedItem.Text)
+        //    {
+        //        case "Dark Theme":
+        //            {
+        //                CommonTheming.ThemeDarkSet();
+        //                CommonTheming.ThemeDarkSave();
+        //                break;
+        //            }
+
+        // case "Light Theme": { CommonTheming.ThemeLightSet(); CommonTheming.ThemeLightSave();
+        // break; }
+
+        //        default:
+        //            {
+        //                CommonTheming.ThemeSystemSet();
+        //                CommonTheming.ThemeSystemSave();
+        //                break;
+        //            }
+        //    }
+        //}
 
         ///// <summary>
         ///// Raises the <see cref="NavigatedTo"/> event.

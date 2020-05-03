@@ -19,6 +19,6 @@ namespace GrampsView.Events
     /// </summary>
     public class DataLoadStartEvent : PubSubEvent<bool>
     {
-        internal void Subscribe(Task task, ThreadOption backgroundThread) => throw new NotImplementedException();
+        //internal void Subscribe(Task task, ThreadOption backgroundThread) => throw new NotImplementedException();
     }
 }

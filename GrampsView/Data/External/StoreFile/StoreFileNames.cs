@@ -53,7 +53,7 @@ namespace GrampsView.Data
 
                 if (string.IsNullOrEmpty(oldDateTime))
                 {
-                    Preferences.Set(settingsKey, fileDateTime.ToString());
+                    Preferences.Set(settingsKey, fileDateTime.ToString(System.Globalization.CultureInfo.CurrentCulture));
 
                     // No previous settings entry so do the load (it might be the FirstRun)
                     return true;

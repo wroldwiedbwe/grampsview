@@ -43,6 +43,10 @@ namespace GrampsView
         public App(IPlatformInitializer initializer)
                             : base(initializer)
         {
+            Xamarin.Forms.Device.SetFlags(new[] {
+                "RadioButton_Experimental",
+                "Shell_UWP_Experimental"
+                });
         }
 
         public App(IPlatformInitializer initializer, bool setFormsDependencyResolver)
