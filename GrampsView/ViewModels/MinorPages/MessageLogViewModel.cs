@@ -26,7 +26,7 @@ namespace GrampsView.ViewModels
         {
             BaseTitle = "Message Log";
 
-            BaseTitleIcon = CommonConstants.IconLog;
+            BaseTitleIcon = IconFont.MessageBulleted;
         }
 
         /// <summary>

@@ -3,26 +3,17 @@
     x:Class="GrampsView.Views.SettingsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:behaviour="clr-namespace:GrampsView.Behaviours"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prismnav="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
-    xmlns:ucon="clr-namespace:GrampsView.UserControls"
     ControlTemplate="{StaticResource DetailPageTemplate}"
     Style="{DynamicResource GVBaseContentPage}"
     mc:Ignorable="d">
 
     <NavigationPage.TitleView>
-        <Grid Style="{DynamicResource GVPageTitleStyle}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <StackLayout Orientation="Horizontal">
 
-            <Image
-                Grid.Row="0"
-                Grid.Column="0"
-                Style="{DynamicResource GVSymbolconPageHeaderType}">
+            <Image Style="{DynamicResource GVSymbolconPageHeaderType}">
                 <Image.Source>
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"
@@ -32,12 +23,8 @@
                 </Image.Source>
             </Image>
 
-            <Label
-                Grid.Row="0"
-                Grid.Column="1"
-                Style="{DynamicResource GVLabelPageHeaderTitleStyle}"
-                Text="{Binding BaseTitle, Mode=OneWay}" />
-        </Grid>
+            <Label Style="{DynamicResource GVLabelPageHeaderTitleStyle}" Text="{Binding BaseTitle, Mode=OneWay}" />
+        </StackLayout>
     </NavigationPage.TitleView>
 
     <!--  Content  -->
@@ -50,55 +37,6 @@
 
             <StackLayout>
 
-                <!--  Theme change buttons  -->
-                <!--<Frame HorizontalOptions="Center" Style="{DynamicResource FrameLargeVariableCardStyle}">
-
-                    <StackLayout BackgroundColor="{DynamicResource PrimaryColor}" Orientation="Horizontal">
-
-                        <Label
-                            BackgroundColor="Transparent"
-                            HorizontalOptions="StartAndExpand"
-                            Text="Application Color Theme"
-                            TextColor="{DynamicResource OnPrimaryColor}"
-                            VerticalOptions="CenterAndExpand" />
-
-                        <ucon:FormsRadioButton BackgroundColor="{DynamicResource SecondaryColor}" RadioItems="{Binding DaRadioItems}">
-                            <ucon:FormsRadioButton.Behaviors>
-                                <behaviour:EventToCommandBehavior Command="{Binding RadioButtonToggledCommand}" EventName="ItemToggled" />
-                            </ucon:FormsRadioButton.Behaviors>
-                        </ucon:FormsRadioButton>
-                    </StackLayout>
-                </Frame>-->
-
-                <Frame HorizontalOptions="Center" Style="{DynamicResource FrameLargeVariableCardStyle}">
-
-                    <StackLayout BackgroundColor="{DynamicResource PrimaryColor}" Orientation="Horizontal">
-
-                        <Label
-                            BackgroundColor="Transparent"
-                            HorizontalOptions="StartAndExpand"
-                            Text="Application Color Theme"
-                            TextColor="{DynamicResource OnPrimaryColor}"
-                            VerticalOptions="CenterAndExpand" />
-
-                        <StackLayout>
-                            <RadioButton
-                                GroupName="AppTheme"
-                                IsChecked="{Binding ThemeButtonLightChecked, Mode=TwoWay}"
-                                Text="Force Light" />
-                            <RadioButton
-                                GroupName="AppTheme"
-                                IsChecked="{Binding ThemeButtonDarkChecked, Mode=TwoWay}"
-                                Text="Force Dark" />
-                            <RadioButton
-                                GroupName="AppTheme"
-                                IsChecked="{Binding ThemeButtonSystemChecked, Mode=TwoWay}"
-                                Text="Use System" />
-                        </StackLayout>
-                    </StackLayout>
-                </Frame>
-
-                <!--  Other buttons  -->
                 <Button
                     Command="{prismnav:NavigateTo 'MessageLogPage',
                                                   Animated=True}"

@@ -78,7 +78,7 @@
                         break;
                 };
 
-                _CardSmallWidth = outVal;
+                _CardLargeWidth = outVal;
 
                 OnPropertyChanged(nameof(CardLargeWidth));
             }

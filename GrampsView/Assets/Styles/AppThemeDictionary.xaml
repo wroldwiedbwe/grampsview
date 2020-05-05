@@ -1,0 +1,145 @@
+﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <AppThemeColor
+        x:Key="PrimaryColor"
+        Dark="#aeea00"
+        Light="#40c4ff" />
+
+    <AppThemeColor
+        x:Key="BackgroundColor"
+        Dark="#000000"
+        Light="#000000" />
+
+    <!--  - Card Backgrounds  -->
+    <!--  Card Background colours  -->
+
+    <Color x:Key="CardBackGroundAddress">
+        #A9A9A9
+    </Color>
+
+    <Color x:Key="CardBackGroundAttribute">
+        #A9A9A9
+    </Color>
+
+    <Color x:Key="CardBackGroundCitation">
+        #e6b505
+    </Color>
+
+    <Color x:Key="CardBackGroundEvent">
+        #b120a2
+    </Color>
+
+    <Color x:Key="CardBackGroundFamily">
+        #0000ff
+    </Color>
+
+    <Color x:Key="CardBackGroundMedia">
+        #ce3d64
+    </Color>
+
+    <Color x:Key="CardBackGroundNote">
+        #ff00bf
+    </Color>
+
+    <Color x:Key="CardBackGroundPlace">
+        #ffa500
+    </Color>
+
+    <Color x:Key="CardBackGroundPerson">
+        #0080ff
+    </Color>
+
+    <Color x:Key="CardBackGroundRepository">
+        #A9A9A9
+    </Color>
+
+    <Color x:Key="CardBackGroundSource">
+        #ff4000
+    </Color>
+
+    <Color x:Key="CardBackGroundTag">
+        #A9A9A9
+    </Color>
+
+    <Color x:Key="CardBackGroundUtility">
+        #A9A9A9
+    </Color>
+
+    <AppThemeColor
+        x:Key="CardNotSelectable"
+        Dark="#FFFFFF"
+        Light="#FFFFFF" />
+
+    <AppThemeColor
+        x:Key="CardSelectable"
+        Dark="#ffa500"
+        Light="#dd2c00" />
+
+    <AppThemeColor
+        x:Key="ErrorColor"
+        Dark="#dd2c00"
+        Light="#dd2c00" />
+
+    <AppThemeColor
+        x:Key="OnBackgroundColor"
+        Dark="#404040"
+        Light="#888888" />
+    <AppThemeColor
+        x:Key="OnErrorColor"
+        Dark="#888888"
+        Light="#dd2c00" />
+
+    <AppThemeColor
+        x:Key="OnPrimaryColor"
+        Dark="#FFFFFF"
+        Light="#000000" />
+
+    <AppThemeColor
+        x:Key="OnSecondaryColor"
+        Dark="#000000"
+        Light="#000000" />
+
+    <AppThemeColor
+        x:Key="OnSurfaceColor"
+        Dark="#FFFFFF"
+        Light="#0094cc" />
+
+    <AppThemeColor
+        x:Key="PrimaryVariantDarkColor"
+        Dark="#79b700"
+        Light="#82f7ff" />
+
+    <AppThemeColor
+        x:Key="PrimaryVariantLightColor"
+        Dark="#e4ff54"
+        Light="#82f7ff" />
+    <AppThemeColor
+        x:Key="SecondaryColor"
+        Dark="#ffca28"
+        Light="#c77c02" />
+
+    <AppThemeColor
+        x:Key="SecondaryVariantDarkColor"
+        Dark="#c79a00"
+        Light="#ffdd71" />
+
+    <AppThemeColor
+        x:Key="SecondaryVariantLightColor"
+        Dark="#fffd61"
+        Light="#909090" />
+
+    <AppThemeColor
+        x:Key="SurfaceColor"
+        Dark="#909090"
+        Light="#d3d3d3" />
+
+    <AppThemeColor
+        x:Key="SurfaceVariantDark1Color"
+        Dark="#484848"
+        Light="#C8C8C8" />
+
+    <AppThemeColor
+        x:Key="SurfaceVariantDark2Color"
+        Dark="#303030"
+        Light="#A8A8A8" />
+</ResourceDictionary>

@@ -133,26 +133,23 @@ namespace GrampsView.Common
                 t.Label = string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:HH: mm:ss}", System.DateTime.Now);
                 t.Text = entry;
 
-                lock (this)
-                {
-                    currentIndex += 1;
+                //lock (this)
+                //{
+                //    currentIndex += 1;
 
-                    if (currentIndex > maxCount)
-                    {
-                        currentIndex = 0;
-                    }
+                // if (currentIndex > maxCount) { currentIndex = 0; }
 
-                    if (DataLoadLog.Count <= maxCount)
-                    {
-                        // Add if not full yet
-                        DataLoadLog.Add(t);
-                    }
-                    else
-                    {
-                        // Replace if full
-                        DataLoadLog[currentIndex] = t;
-                    }
-                }
+                //if (DataLoadLog.Count <= maxCount)
+                //{
+                // Add if not full yet
+                DataLoadLog.Insert(0, t);
+                //}
+                //else
+                //{
+                //    // Replace if full
+                //    DataLoadLog[currentIndex] = t;
+                //}
+                //}
             }
         }
 

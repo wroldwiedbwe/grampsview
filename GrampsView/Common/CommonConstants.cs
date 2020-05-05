@@ -118,7 +118,7 @@ namespace GrampsView.Common
         /// </summary>
         public const string IconHub = IconFont.Home;
 
-        public const string IconLog = IconFont.MessageBulleted;
+        public const string IconLog = "\uf82f";
 
         /// <summary>
         /// The icon media.

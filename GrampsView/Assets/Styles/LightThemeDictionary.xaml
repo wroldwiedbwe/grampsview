@@ -4,9 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <!--  Material Design colors  -->
-    <Color x:Key="PrimaryColor">
-        #40c4ff
-    </Color>
 
     <Color x:Key="PrimaryVariantLightColor">
         #82f7ff

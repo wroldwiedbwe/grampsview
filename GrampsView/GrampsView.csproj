@@ -37,7 +37,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Assets\Styles\DarkThemeDictionary.cs" />
     <Compile Remove="Assets\Styles\LargeRefCardTemplatesDictionary.cs" />
+    <Compile Remove="Assets\Styles\LightThemeDictionary.cs" />
+    <Compile Remove="Assets\Styles\SystemThemeDictionary.cs" />
     <Compile Remove="Behaviours\ListViewAutoSizeBehaviour.cs" />
     <Compile Remove="Behaviours\RadioButtonBehaviour.cs" />
     <Compile Remove="Common\AppExtension.cs" />
@@ -46,6 +49,7 @@
     <Compile Remove="Common\CommonCropBitmap.cs" />
     <Compile Remove="Common\CommonLogCircular.cs" />
     <Compile Remove="Common\CommonPropertyDebug.xaml.cs" />
+    <Compile Remove="Common\CommonTheming.cs" />
     <Compile Remove="Common\CustomClasses\BorderlessEditor.cs" />
     <Compile Remove="Common\CustomClasses\BorderlessEntry.cs" />
     <Compile Remove="Common\CustomClasses\CustomCacheKeyFactory .cs" />
@@ -158,10 +162,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="Assets\Styles\DarkThemeDictionary.xaml" />
     <EmbeddedResource Remove="Assets\Styles\LargeRefCardTemplates.xaml" />
+    <EmbeddedResource Remove="Assets\Styles\LightThemeDictionary.xaml" />
+    <EmbeddedResource Remove="Assets\Styles\SystemThemeDictionary.xaml" />
     <EmbeddedResource Remove="Assets\Styles\_Colors.xaml" />
     <EmbeddedResource Remove="Assets\Styles\_FontSizes.xaml" />
     <EmbeddedResource Remove="Assets\Styles\_GenericOverride.xaml" />
+    <EmbeddedResource Remove="Assets\Styles\_Glyphs.xaml" />
     <EmbeddedResource Remove="Common\CommonPropertyDebug.xaml" />
     <EmbeddedResource Remove="UserControls\AttributeCardLarge.xaml" />
     <EmbeddedResource Remove="UserControls\BookMarkCardSmall.xaml" />
@@ -204,6 +212,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Fonts\fa-solid-900.ttf" />
     <None Remove="Assets\Fonts\materialdesignicons-webfont.ttf" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.cs.OLD" />
     <None Remove="UserControls\CardListLineCollectionLarge.xaml.OLD" />

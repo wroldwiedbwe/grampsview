@@ -30,17 +30,17 @@ namespace GrampsView.Common
                         {
                             case AppTheme.Dark:
                                 {
-                                    ThemeDarkSet();
+                                    //ThemeDarkSet();
                                     break;
                                 }
                             case AppTheme.Light:
                                 {
-                                    ThemeLightSet();
+                                    //ThemeLightSet();
                                     break;
                                 }
                             default:
                                 {
-                                    ThemeSystemSet();
+                                    //ThemeSystemSet();
                                     break;
                                 }
                         }
@@ -49,19 +49,19 @@ namespace GrampsView.Common
 
                 case AppTheme.Light:
                     {
-                        ThemeLightSet();
+                        //ThemeLightSet();
 
                         break;
                     }
                 case AppTheme.Dark:
                     {
-                        ThemeDarkSet();
+                        //ThemeDarkSet();
 
                         break;
                     }
                 default:
                     {
-                        ThemeSystemSet();
+                        //ThemeSystemSet();
 
                         break;
                     }
@@ -73,29 +73,29 @@ namespace GrampsView.Common
             CommonLocalSettings.ApplicationTheme = AppTheme.Dark;
         }
 
-        public static void ThemeDarkSet()
-        {
-            Prism.PrismApplicationBase.Current.Resources.Add(new DarkThemeDictionary());
-        }
+        //public static void ThemeDarkSet()
+        //{
+        //    Prism.PrismApplicationBase.Current.Resources.Add(new DarkThemeDictionary());
+        //}
 
         public static void ThemeLightSave()
         {
             CommonLocalSettings.ApplicationTheme = AppTheme.Light;
         }
 
-        public static void ThemeLightSet()
-        {
-            Prism.PrismApplicationBase.Current.Resources.Add(new LightThemeDictionary());
-        }
+        //public static void ThemeLightSet()
+        //{
+        //    Prism.PrismApplicationBase.Current.Resources.Add(new LightThemeDictionary());
+        //}
 
         public static void ThemeSystemSave()
         {
             CommonLocalSettings.ApplicationTheme = AppTheme.Unspecified;
         }
 
-        public static void ThemeSystemSet()
-        {
-            Prism.PrismApplicationBase.Current.Resources.Add(new SystemThemeDictionary());
-        }
+        //public static void ThemeSystemSet()
+        //{
+        //    Prism.PrismApplicationBase.Current.Resources.Add(new SystemThemeDictionary());
+        //}
     }
 }

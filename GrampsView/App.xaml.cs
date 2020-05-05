@@ -30,7 +30,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-[assembly: ExportFont("materialdesignicons-webfont.ttf", Alias = "MaterialDesign")]
 
 namespace GrampsView
 {
@@ -44,6 +43,8 @@ namespace GrampsView
                             : base(initializer)
         {
             Xamarin.Forms.Device.SetFlags(new[] {
+                "AppTheme_Experimental",
+                "MediaElement_Experimental",
                 "RadioButton_Experimental",
                 "Shell_UWP_Experimental"
                 });
@@ -141,7 +142,12 @@ namespace GrampsView
             AppCenterInit();
             //}
 
-            CommonTheming.SetAppTheme();
+            //CommonTheming.SetAppTheme();
+
+            // Fake set to reset them
+            CardWidths.Current.CardSmallWidth = 0;
+            CardWidths.Current.CardMediumWidth = 0;
+            CardWidths.Current.CardLargeWidth = 0;
 
             IPlatformSpecific ps = Container.Resolve<IPlatformSpecific>();
 

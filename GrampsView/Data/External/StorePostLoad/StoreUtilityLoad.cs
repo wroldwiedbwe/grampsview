@@ -94,7 +94,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                 foreach (MediaModel item in DV.MediaDV.DataViewData)
                 {
-                    await DataStore.CN.MinorStatusAdd("Loading media file pointer: " + item.OriginalFilePath).ConfigureAwait(false);
+                    //await DataStore.CN.MinorStatusAdd("Loading media file pointer: " + item.OriginalFilePath).ConfigureAwait(false);
 
                     //if (item.Id == "O0004")
                     //{

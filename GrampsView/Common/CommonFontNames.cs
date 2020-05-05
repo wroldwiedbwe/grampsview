@@ -1,10 +1,14 @@
 ﻿// https://andreinitescu.github.io/IconFont2Code/
 //
 // https://materialdesignicons.com/
-//
+
+using Xamarin.Forms;
+
+[assembly: ExportFont("materialdesignicons-webfont.ttf", Alias = "MaterialDesign")]
+
 namespace GrampsView.Common
 {
-    internal static class IconFont
+    public static class IconFont
     {
         public const string AccessPoint = "\uf002";
         public const string AccessPointNetwork = "\uf003";
