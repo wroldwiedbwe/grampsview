@@ -1,3 +1,12 @@
+## [5.5.11](https://github.com/phandcock/grampsview/compare/v5.5.10...v5.5.11) (2020-05-05)
+
+
+### Bug Fixes
+
+* update card width on startup ([0370837](https://github.com/phandcock/grampsview/commit/03708376acdeaf33c271cf20392d048bb71a68f1))
+
+
+
 ## [5.5.10](https://github.com/phandcock/grampsview/compare/v5.5.9...v5.5.10) (2020-05-03)
 
 
@@ -21,10 +30,6 @@
 
 
 ## [5.5.7](https://github.com/phandcock/grampsview/compare/v5.5.6...v5.5.7) (2020-05-02)
-
-
-
-## [5.5.6](https://github.com/phandcock/grampsview/compare/v5.5.5...v5.5.6) (2020-05-02)
 
 
 
