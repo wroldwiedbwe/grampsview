@@ -1,3 +1,7 @@
+## [5.5.13](https://github.com/phandcock/grampsview/compare/v5.5.12...v5.5.13) (2020-05-07)
+
+
+
 ## [5.5.12](https://github.com/phandcock/grampsview/compare/v5.5.11...v5.5.12) (2020-05-07)
 
 
@@ -31,10 +35,6 @@
 ### Bug Fixes
 
 * Fix FlexCode to not require a templete before layout ([d97e759](https://github.com/phandcock/grampsview/commit/d97e75923dce119cd6e137b2ddd374ae2067468f))
-
-
-
-## [5.5.8](https://github.com/phandcock/grampsview/compare/v5.5.7...v5.5.8) (2020-05-02)
 
 
 
