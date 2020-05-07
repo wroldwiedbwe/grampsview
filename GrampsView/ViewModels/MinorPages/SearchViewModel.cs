@@ -25,6 +25,8 @@ namespace GrampsView.ViewModels
         /// </summary>
         private ICommand _searchCommand;
 
+        private bool _SearchNothingFound = false;
+
         /// <summary>
         /// The local search text.
         /// </summary>
@@ -78,6 +80,19 @@ namespace GrampsView.ViewModels
             }
         }
 
+        public bool SearchNothingFound
+        {
+            get
+            {
+                return _SearchNothingFound;
+            }
+
+            set
+            {
+                SetProperty(ref _SearchNothingFound, value);
+            }
+        }
+
         /// <summary>
         /// Gets or sets the search text.
         /// </summary>
@@ -109,6 +124,7 @@ namespace GrampsView.ViewModels
         public void ProcessQuery(string argSearch, int argLimit)
         {
             SearchText = argSearch;
+            SearchNothingFound = false;
             BaseDetail.Clear();
 
             CardGroup SearchCards;
@@ -219,6 +235,11 @@ namespace GrampsView.ViewModels
                     }
                 }
                 BaseDetail.Add(SearchCards);
+            }
+
+            if (BaseDetail.Cards.Count == 0)
+            {
+                SearchNothingFound = true;
             }
         }
 

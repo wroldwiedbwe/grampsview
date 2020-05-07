@@ -8,22 +8,20 @@ namespace GrampsView.UserControls
     using GrampsView.Data.Repository;
 
     using SkiaSharp;
-    using SkiaSharp.Views.Forms;
 
     using System;
     using System.Diagnostics;
-    using System.IO;
-    using System.Threading;
+
     using Xamarin.Forms;
 
-    public partial class MediaImageSkia : Frame, IDisposable
+    public partial class MediaImageSkia : Frame // , IDisposable
     {
         public static readonly BindableProperty UConHideSymbolProperty
                = BindableProperty.Create(returnType: typeof(bool), declaringType: typeof(MediaImageSkia), propertyName: nameof(UConHideSymbol), defaultValue: false, propertyChanged: MediaImage_UConPropertyChanged);
 
-        private bool disposedValue = false;
+        // private bool disposedValue = false;
 
-        private SKBitmap resourceBitmap = new SKBitmap();
+        //private SKBitmap resourceBitmap = new SKBitmap();
 
         private MediaModel theMediaModel = new MediaModel();
 
@@ -41,29 +39,29 @@ namespace GrampsView.UserControls
         private HLinkHomeImageModel HLinkMedia { get; set; }
 
         // This code added to correctly implement the disposable pattern.
-        public void Dispose()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above. GC.SuppressFinalize(this);
-        }
+        //public void Dispose()
+        //{
+        //    // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        //    Dispose(true);
+        //    // TODO: uncomment the following line if the finalizer is overridden above. GC.SuppressFinalize(this);
+        //}
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    // TODO: dispose managed state (managed objects).
-                    resourceBitmap.Dispose();
-                }
+        //protected virtual void Dispose(bool disposing)
+        //{
+        //    if (!disposedValue)
+        //    {
+        //        if (disposing)
+        //        {
+        //            // TODO: dispose managed state (managed objects).
+        //            resourceBitmap.Dispose();
+        //        }
 
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
+        // // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below. //
+        // TODO: set large fields to null.
 
-                disposedValue = true;
-            }
-        }
+        //        disposedValue = true;
+        //    }
+        //}
 
         private static void MediaImage_UConPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {

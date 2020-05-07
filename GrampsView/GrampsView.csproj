@@ -91,6 +91,7 @@
     <Compile Remove="Data\PluginStorageFile.cs" />
     <Compile Remove="Data\PluginStorageFileSystem.cs" />
     <Compile Remove="Data\PluginStorageFolder.cs" />
+    <Compile Remove="Data\Repository\IDataStore.cs" />
     <Compile Remove="Events\AppStartSaveSerial.cs" />
     <Compile Remove="Events\DataLoadSerialEvent.cs" />
     <Compile Remove="Events\DataLoadUnzipped.cs" />
@@ -103,6 +104,7 @@
     <Compile Remove="Events\PageTitleChangedEventArgs.cs" />
     <Compile Remove="Events\PersonCurrentChanged.cs" />
     <Compile Remove="Events\ProgressRingUpdate.cs" />
+    <Compile Remove="Services\MockDataStore.cs" />
     <Compile Remove="UserControls\AttributeCardLarge.xaml.cs" />
     <Compile Remove="UserControls\BookMarkCardSmall.xaml.cs" />
     <Compile Remove="UserControls\CitationRefCardSmall.xaml.cs" />

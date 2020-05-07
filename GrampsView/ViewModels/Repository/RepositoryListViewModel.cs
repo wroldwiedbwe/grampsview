@@ -24,11 +24,14 @@ namespace GrampsView.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="RepositoryListViewModel"/> class.
         /// </summary>
-        /// <param name="iocNavigationService">
-        /// The ioc navigation service.
+        /// <param name="iocCommonLogging">
+        /// The Common Logger
         /// </param>
         /// <param name="iocEventAggregator">
         /// The ioc event aggregator.
+        /// </param>
+        /// <param name="iocNavigationService">
+        /// The ioc navigation service.
         /// </param>
         public RepositoryListViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)

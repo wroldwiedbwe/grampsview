@@ -16,7 +16,7 @@ namespace GrampsView.Common
     /// <seealso cref="Prism.Logging.ILoggerFacade"/>
     public class CommonLogPrism : ILoggerFacade
     {
-        private ICommonLogging Logger;
+        private readonly ICommonLogging Logger;
 
         public CommonLogPrism(ICommonLogging iocCommonLogging)
         {

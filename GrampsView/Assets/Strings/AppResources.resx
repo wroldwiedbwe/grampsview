@@ -183,4 +183,7 @@
   <data name="ErrorDialog_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="SearchPage_NothingFound" xml:space="preserve">
+    <value>Nothing found that matches the search text.</value>
+  </data>
 </root>

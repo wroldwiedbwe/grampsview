@@ -73,7 +73,6 @@
             SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
             TextColor="{DynamicResource OnSurfaceColor}">
             <SearchBar.Behaviors>
-
                 <behaviour:EventToCommandBehavior
                     Command="{Binding SearchButtonCommand}"
                     CommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
@@ -82,12 +81,18 @@
         </SearchBar>
 
         <!--  Search Results  -->
+        <Label
+            x:Name="SearchNothingFound"
+            Grid.Row="2"
+            Grid.Column="0"
+            BackgroundColor="Accent"
+            IsVisible="{Binding SearchNothingFound, Mode=OneWay}"
+            Text="{i18n:Translate SearchPage_NothingFound}" />
 
         <ScrollView
             x:Name="SearchViewBox"
             Grid.Row="3"
             Grid.Column="0">
-
             <ucon:FlexMultiGroupMultiCard x:Name="BaseHeader" FsctSource="{Binding BaseDetail}" />
         </ScrollView>
     </Grid>
