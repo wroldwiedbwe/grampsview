@@ -2,7 +2,6 @@
 {
     using Android;
     using Android.App;
-    using Android.Content;
     using Android.Content.PM;
     using Android.OS;
     using Android.Runtime;
@@ -11,7 +10,6 @@
 
     using FFImageLoading.Forms.Platform;
 
-    using GrampsView.Common;
     using GrampsView.Common.CustomClasses;
     using GrampsView.Data.Repository;
     using GrampsView.Droid.Common;
@@ -63,34 +61,11 @@
     [Activity(MainLauncher = false, Label = "GrampsView", Icon = "@mipmap/icon", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.UiMode | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.FullSensor)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        /// <summary>
-        /// Called when system configuration is changed.
-        /// </summary>
-        /// <param name="argNewConfig">
-        /// The new configuration.
-        /// </param>
-        public override void OnConfigurationChanged(Android.Content.Res.Configuration argNewConfig)
-        {
-            if (!(argNewConfig is null))
-            {
-                CommonTheming.SetAppTheme();
-            }
-
-            base.OnConfigurationChanged(argNewConfig);
-        }
-
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-        {
-            base.OnActivityResult(requestCode, resultCode, data);
-
-            //Connector.SetAuthenticationContinuationEventArgs(requestCode, resultCode, data);
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -125,7 +100,6 @@
             Distribute.SetEnabledForDebuggableBuild(true);
 
             // FFImageLoading Init
-
             CachedImageRenderer.Init(enableFastRenderer: false);
 
             CachedImageRenderer.InitImageViewHandler();
@@ -137,29 +111,8 @@
 
             //GrampsView.UserControls.Droid.Renderers.BorderlessEntryRenderer.Init();
 
-            //Connector.Init(this);
-
             // Load the app
             LoadApplication(new App(new AndroidInitializer()));
-        }
-
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
-            UnregisterManagers();
-        }
-
-        protected override void OnPause()
-        {
-            base.OnPause();
-            UnregisterManagers();
-        }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-
-            //CrashManager.Register(this, GrampsView.Common.CommonConstants.HockeyAppId);
         }
 
         private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
@@ -172,11 +125,6 @@
         {
             var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
             DataStore.CN.NotifyException("TaskSchedulerOnUnobservedTaskException", newExc);
-        }
-
-        private void UnregisterManagers()
-        {
-            //UpdateManager.Unregister();
         }
     }
 }

@@ -271,8 +271,6 @@ namespace GrampsView
 
             Distribute.SetEnabledAsync(true);
 
-            //var t = Distribute.UpdateTrack;
-
             Distribute.CheckForUpdate();
         }
 
@@ -286,22 +284,8 @@ namespace GrampsView
                 // TODO Is this needed?
                 ea.GetEvent<OrientationChanged>().Publish(e.DisplayInfo.Orientation);
 
-                // TODO fu because seems to be one rotation behind
+                // TODO fu because seems to be one rotation behind on emulator
                 DataStore.AD.CurrentOrientation = e.DisplayInfo.Orientation;
-
-                //switch (e.DisplayInfo.Orientation)
-                //{
-                //    case DisplayOrientation.Landscape:
-                //        DataStore.AD.CurrentOrientation = DisplayOrientation.Portrait;
-                //        break;
-
-                // case DisplayOrientation.Portrait: DataStore.AD.CurrentOrientation =
-                // DisplayOrientation.Landscape; break;
-
-                //    default:
-                //        DataStore.AD.CurrentOrientation = DisplayOrientation.Portrait;
-                //        break;
-                //}
 
                 // Fake set to reset them
                 CardWidths.Current.CardSmallWidth = 0;

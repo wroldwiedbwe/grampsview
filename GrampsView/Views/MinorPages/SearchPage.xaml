@@ -56,13 +56,10 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Label
-            x:Name="SearchPage_Instructions"
-            x:Uid="SearchPage_Instructions"
+        <ucon:InstructionCardLarge
             Grid.Row="0"
             Grid.Column="0"
-            Style="{DynamicResource GVLabelStyleInstructions}"
-            Text="{i18n:Translate SearchPage_Instructions}" />
+            BindingContext="{i18n:Translate SearchPage_Instructions}" />
 
         <SearchBar
             x:Name="SearchBar"
