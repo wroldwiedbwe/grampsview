@@ -89,10 +89,8 @@ namespace GrampsView.Data.DataView
 
             foreach (var item in argReadOnlyList)
             {
-                t.Cards.Add(item);
+                t.Add(item);
             }
-
-            //t.Cards.AddRange(new ObservableCollection<TB>(argReadOnlyList));
 
             return t;
         }

@@ -23,6 +23,11 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<HLinkPersonModel>))]
     public class HLinkPersonModelCollection : HLinkBaseCollection<HLinkPersonModel>
     {
+        public HLinkPersonModelCollection()
+        {
+            Title = "People Collection";
+        }
+
         /// <summary>
         /// Gets the dereferenced person models.
         /// </summary>
@@ -42,11 +47,6 @@ namespace GrampsView.Data.Collections
 
                 return t;
             }
-        }
-
-        public CardGroup GetCardGroup()
-        {
-            return base.GetCardGroup("People Collection");
         }
 
         /// <summary>

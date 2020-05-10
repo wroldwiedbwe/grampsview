@@ -19,8 +19,13 @@ namespace GrampsView.Data.Collections
     /// <seealso cref="System.Collections.ObjectViewModel.ObservableCollection{GrampsView.Data.ViewModel.AttributeModel}"/>
     [CollectionDataContract]
     [KnownType(typeof(ObservableCollection<PersonNameModel>))]
-    public class PersonNameModelCollection : ModelBaseCollection<PersonNameModel>
+    public class PersonNameModelCollection : CardGroupBase<PersonNameModel>
     {
+        public PersonNameModelCollection()
+        {
+            Title = "Person Names";
+        }
+
         public PersonNameModel GetPrimaryName
         {
             get
@@ -34,14 +39,16 @@ namespace GrampsView.Data.Collections
                 // Return the primary name if it exists
                 if (Items.Count > 0)
                 {
-                    return Items[0];
+                    return this.Items[0] as PersonNameModel;
                 }
 
                 return new PersonNameModel();
             }
         }
 
-        public override CardGroup GetCardGroup()
+        // TODO Fix this so that it is returned without calling the routine
+
+        public CardGroup GetCardGroup1()
         {
             CardGroup t = new CardGroup
             {

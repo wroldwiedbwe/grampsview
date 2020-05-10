@@ -423,6 +423,12 @@ namespace GrampsView.Common
         /// </returns>
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
+            //// Handle BackLinks
+            //if (item is HLinkBackLink)
+            //{
+            //    item = (item as HLinkBackLink).HLink();
+            //}
+
             if (item is AddressModel)
             {
                 return AddressTemplate;

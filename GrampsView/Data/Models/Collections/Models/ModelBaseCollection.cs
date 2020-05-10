@@ -19,24 +19,8 @@ namespace GrampsView.Data.Model
     /// GRAMPS $$(Hlink)$$ element class.
     /// </summary>
     [CollectionDataContract]
-    public class ModelBaseCollection<T> : ObservableCollection<T>
+    public class ModelBaseCollection<T> : CardGroup
          where T : ModelBase, new()
     {
-        public virtual CardGroup GetCardGroup(string argTitle)
-        {
-            CardGroup t = new CardGroup
-            {
-                Title = argTitle,
-            };
-
-            t.Cards.AddRange(new ObservableCollection<object>(Items));
-
-            return t;
-        }
-
-        public virtual CardGroup GetCardGroup()
-        {
-            return GetCardGroup("");
-        }
     }
 }

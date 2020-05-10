@@ -6,11 +6,10 @@
 /// </summary>
 namespace GrampsView.Data.Collections
 {
+    using GrampsView.Data.Model;
+
     using System.Collections.ObjectModel;
     using System.Runtime.Serialization;
-
-    using GrampsView.Common;
-    using GrampsView.Data.Model;
 
     /// <summary>
     /// </summary>
@@ -18,9 +17,9 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<HLinkCitationModel>))]
     public class HLinkNameMapModelCollection : HLinkBaseCollection<HLinkNameMapModel>
     {
-        public CardGroup GetCardGroup()
+        public HLinkNameMapModelCollection()
         {
-            return base.GetCardGroup("NameMap Collection");
+            Title = "NameMap Collection";
         }
     }
 }

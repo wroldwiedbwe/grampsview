@@ -28,7 +28,6 @@
                 x:Name="flexer"
                 Grid.Row="1"
                 BindableLayout.ItemsSource="{Binding DisplayList, Mode=OneWay}"
-                IsEnabled="{Binding FlexSingleCardVisible, Mode=OneWay}"
                 Style="{DynamicResource FlexLayoutCards}" />
         </Grid>
     </ScrollView>

@@ -25,6 +25,11 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<HLinkEventModel>))]
     public class HLinkEventModelCollection : HLinkBaseCollection<HLinkEventModel>
     {
+        public HLinkEventModelCollection()
+        {
+            Title = "Event Collection";
+        }
+
         /// <summary>
         /// Gets the de reference.
         /// </summary>
@@ -44,11 +49,6 @@ namespace GrampsView.Data.Collections
 
                 return t;
             }
-        }
-
-        public CardGroup GetCardGroup()
-        {
-            return base.GetCardGroup("Event Collection");
         }
 
         /// <summary>

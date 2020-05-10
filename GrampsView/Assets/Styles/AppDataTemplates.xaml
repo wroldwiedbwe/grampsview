@@ -41,7 +41,7 @@
     <!--  Card Group data template  -->
     <DataTemplate x:Key="CardGroupTemplate" x:Name="CardGroupTemplate">
 
-        <Frame IsEnabled="{Binding CardGroupVisible}" Style="{StaticResource CardGroupStyle}">
+        <Frame IsVisible="{Binding Visible, Mode=OneWay}" Style="{StaticResource CardGroupStyle}">
             <Grid x:Name="daGrid">
 
                 <Grid.RowDefinitions>
@@ -58,7 +58,7 @@
                     x:Name="CardGroupTemplateFlexer"
                     Grid.Row="1"
                     BindableLayout.ItemTemplateSelector="{StaticResource CardGroupTemplateSelectorSmall}"
-                    BindableLayout.ItemsSource="{Binding Cards, Mode=OneWay}"
+                    BindableLayout.ItemsSource="{Binding ., Mode=OneWay}"
                     Style="{StaticResource FlexLayoutCards}" />
             </Grid>
         </Frame>

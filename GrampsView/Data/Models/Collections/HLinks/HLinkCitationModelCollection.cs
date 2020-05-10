@@ -22,9 +22,9 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<HLinkCitationModel>))]
     public class HLinkCitationModelCollection : HLinkBaseCollection<HLinkCitationModel>
     {
-        public CardGroup GetCardGroup()
+        public HLinkCitationModelCollection()
         {
-            return base.GetCardGroup("Citation Collection");
+            Title = "Citation Collection";
         }
 
         /// <summary>

@@ -212,7 +212,7 @@ namespace GrampsView.Data.DataView
 
             foreach (PersonModel item in tt)
             {
-                returnCardGroup.Cards.Add(item.HLink);
+                returnCardGroup.Add(item.HLink);
             }
 
             returnCardGroup.Title = "Latest Person Changes";

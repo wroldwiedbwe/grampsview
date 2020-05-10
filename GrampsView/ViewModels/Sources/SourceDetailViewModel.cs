@@ -92,11 +92,11 @@ namespace GrampsView.ViewModels
                 BaseHeader.Add(t);
 
                 // Add bulk items
-                BaseDetail.Add(SourceObject.GMediaRefCollection.GetCardGroup());
-                BaseDetail.Add(SourceObject.GNoteRefCollection.GetCardGroup());
-                BaseDetail.Add(SourceObject.GTagRefCollection.GetCardGroup());
-                BaseDetail.Add(SourceObject.GRepositoryRefCollection.GetCardGroup());
-                BaseDetail.Add(SourceObject.GSourceAttributeCollection.GetCardGroup());
+                BaseDetail.Add(SourceObject.GMediaRefCollection);
+                BaseDetail.Add(SourceObject.GNoteRefCollection);
+                BaseDetail.Add(SourceObject.GTagRefCollection);
+                BaseDetail.Add(SourceObject.GRepositoryRefCollection);
+                BaseDetail.Add(SourceObject.GSourceAttributeCollection);
                 BaseBackLinks.Add(SourceObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }

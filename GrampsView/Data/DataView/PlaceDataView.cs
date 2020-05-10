@@ -119,7 +119,7 @@ namespace GrampsView.Data.DataView
 
             foreach (PlaceModel item in tt)
             {
-                returnCardGroup.Cards.Add(item.HLink);
+                returnCardGroup.Add(item.HLink);
             }
 
             returnCardGroup.Title = "Latest Place Changes";

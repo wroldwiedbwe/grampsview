@@ -22,6 +22,11 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<HLinkNoteModel>))]
     public class HLinkNoteModelCollection : HLinkBaseCollection<HLinkNoteModel>
     {
+        public HLinkNoteModelCollection()
+        {
+            Title = "Note Collection";
+        }
+
         public HLinkNoteModel GetBio
         {
             get
@@ -80,11 +85,6 @@ namespace GrampsView.Data.Collections
                     return this[0].DeRef.GText;
                 }
             }
-        }
-
-        public CardGroup GetCardGroup()
-        {
-            return base.GetCardGroup("Note Collection");
         }
 
         /// <summary>

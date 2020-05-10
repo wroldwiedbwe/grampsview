@@ -176,24 +176,24 @@ namespace GrampsView.ViewModels
                 if (PersonObject.GPersonNamesCollection.Count > 1)
                 {
                     // Add extra name details
-                    BaseHeader.Add(PersonObject.GPersonNamesCollection.GetCardGroup());
+                    BaseHeader.Add(PersonObject.GPersonNamesCollection.GetCardGroup1());
                 }
 
                 // Add details
-                BaseDetail.Add(PersonObject.GParentInRefCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GEventRefCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GCitationRefCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GNoteRefCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GMediaRefCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GAttributeCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GAddress.GetCardGroup());
-                BaseDetail.Add(PersonObject.GTagRefCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GURLCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GLDSCollection.GetCardGroup());
-                BaseDetail.Add(PersonObject.GPersonRefCollection.GetCardGroup());
+                BaseDetail.Add(PersonObject.GParentInRefCollection);
+                BaseDetail.Add(PersonObject.GEventRefCollection);
+                BaseDetail.Add(PersonObject.GCitationRefCollection);
+                BaseDetail.Add(PersonObject.GNoteRefCollection);
+                BaseDetail.Add(PersonObject.GMediaRefCollection);
+                BaseDetail.Add(PersonObject.GAttributeCollection);
+                BaseDetail.Add(PersonObject.GAddress);
+                BaseDetail.Add(PersonObject.GTagRefCollection);
+                BaseDetail.Add(PersonObject.GURLCollection);
+                BaseDetail.Add(PersonObject.GLDSCollection);
+                BaseDetail.Add(PersonObject.GPersonRefCollection);
 
-                BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GCitationRefCollection.GetCardGroup("Name Citations"));
-                BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GNoteReferenceCollection.GetCardGroup("Name Notes"));
+                BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GCitationRefCollection); // .("Name Citations"));
+                BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GNoteReferenceCollection); //.GetCardGroup("Name Notes"));
 
                 BaseBackLinks.Add(PersonObject.BackHLinkReferenceCollection.GetCardGroup());
 

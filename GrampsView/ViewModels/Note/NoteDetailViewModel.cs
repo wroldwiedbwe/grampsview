@@ -112,7 +112,7 @@ namespace GrampsView.ViewModels
 
                 HLinkNote = NoteObject.HLink;
 
-                BaseDetail.Add(NoteObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Add(NoteObject.GTagRefCollection);
 
                 BaseBackLinks.Add(NoteObject.BackHLinkReferenceCollection.GetCardGroup());
             }

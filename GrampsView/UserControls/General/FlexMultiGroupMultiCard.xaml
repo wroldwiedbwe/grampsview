@@ -30,7 +30,6 @@
                 x:Name="multiflexer"
                 Grid.Row="1"
                 BindableLayout.ItemsSource="{Binding DisplayMultiList, Mode=OneWay}"
-                IsEnabled="{Binding FlexMultiCardVisible, Mode=OneWay}"
                 Style="{DynamicResource FlexLayoutCards}" />
         </Grid>
     </ScrollView>

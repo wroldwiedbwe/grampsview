@@ -6,11 +6,11 @@
 /// </summary>
 namespace GrampsView.Data.Collections
 {
-    using System.Collections.ObjectModel;
-    using System.Runtime.Serialization;
-
     using GrampsView.Common;
     using GrampsView.Data.Model;
+
+    using System.Collections.ObjectModel;
+    using System.Runtime.Serialization;
 
     /// <summary>
     /// Attribute model collection.
@@ -18,8 +18,13 @@ namespace GrampsView.Data.Collections
     /// <seealso cref="System.Collections.ObjectViewModel.ObservableCollection{GrampsView.Data.ViewModel.AttributeModel}"/>
     [CollectionDataContract]
     [KnownType(typeof(ObservableCollection<SurnameModel>))]
-    public class SurnameModelCollection : ModelBaseCollection<SurnameModel>
+    public class SurnameModelCollection : CardGroupBase<SurnameModel>
     {
+        public SurnameModelCollection()
+        {
+            Title = "Surname Model Collection";
+        }
+
         public string GetPrimarySurname
         {
             get
@@ -28,16 +33,11 @@ namespace GrampsView.Data.Collections
 
                 if (Items.Count > 0)
                 {
-                    return Items[0].GText;
+                    return (Items[0] as SurnameModel).GText;
                 }
 
                 return string.Empty;
             }
-        }
-
-        public override CardGroup GetCardGroup()
-        {
-            return base.GetCardGroup("Surname Model Collection");
         }
     }
 }

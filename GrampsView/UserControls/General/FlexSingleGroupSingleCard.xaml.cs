@@ -22,21 +22,6 @@
             InitializeComponent();
         }
 
-        public bool FlexSingleCardVisible
-        {
-            get
-            {
-                if (!(FsctSource is null) && (FsctSource.Cards.Count > 0))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
-
         public override CardGroup FsctSource
         {
             get { return (CardGroup)GetValue(FsctSourceProperty); }

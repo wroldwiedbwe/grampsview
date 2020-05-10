@@ -23,6 +23,11 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<HLinkFamilyModel>))]
     public class HLinkFamilyModelCollection : HLinkBaseCollection<HLinkFamilyModel>
     {
+        public HLinkFamilyModelCollection()
+        {
+            Title = "Family Collection";
+        }
+
         /// <summary>
         /// Gets the dereferenced Family Models.
         /// </summary>
@@ -42,11 +47,6 @@ namespace GrampsView.Data.Collections
 
                 return t;
             }
-        }
-
-        public CardGroup GetCardGroup()
-        {
-            return base.GetCardGroup("Family Collection");
         }
 
         /// <summary>

@@ -15,21 +15,6 @@
             InitializeComponent();
         }
 
-        public bool FlexMultiCardVisible
-        {
-            get
-            {
-                if (!(FsctSource is null) && (FsctSource.Cards.Count > 0))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
-
         public override CardGroup FsctSource
         {
             get { return (CardGroup)GetValue(FsctSourceProperty); }
@@ -50,7 +35,7 @@
 
             this.multiflexer.Children.Clear();
 
-            foreach (CardGroup item in DisplayList)
+            foreach (var item in DisplayList)
             {
                 this.multiflexer.Children.Add(CreateChildView(item));
             }

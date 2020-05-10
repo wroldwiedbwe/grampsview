@@ -21,8 +21,7 @@ namespace GrampsView.Data.Repository
     /// Static Data Store.
     /// </summary>
     [DataContract]
-    [KnownType(typeof(ObservableCollection<HLinkBackLink>))]
-    [KnownType(typeof(HLinkBackLink))]
+    [KnownType(typeof(ObservableCollection<object>))]
     public class DataInstance : CommonBindableBase
     {
         private HLinkBackLinkModelCollection _BookMarkCollection = new HLinkBackLinkModelCollection();

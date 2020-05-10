@@ -49,10 +49,6 @@ namespace GrampsView.ViewModels
         {
             get
             {
-                //CardGroup t = new CardGroup();
-
-                //t.Cards.AddRange<HLinkPersonModelCollection>(DV.PersonDV.GetAllAsHLink());
-
                 return DV.PersonDV.GetAllAsCardGroup();
             }
         }

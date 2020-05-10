@@ -25,8 +25,8 @@ namespace GrampsView.Data.Model
     /// /// ///
     /// <seealso cref="GrampsView.Data.ViewModel.IModelBase"/>
     [DataContract]
-    [KnownType(typeof(ObservableCollection<HLinkBackLink>))]
-    [KnownType(typeof(HLinkBackLink))]
+    [KnownType(typeof(ObservableCollection<object>))]
+
     //[KnownType(typeof(HLinkBookMarkModel))]
     [KnownType(typeof(HLinkCitationModel))]
     [KnownType(typeof(HLinkEventModel))]

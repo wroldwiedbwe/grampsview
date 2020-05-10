@@ -109,14 +109,14 @@ namespace GrampsView.ViewModels
                 BaseHeader.Add(t);
 
                 // Detail reference
-                BaseDetail.Add(FamilyObject.GEventRefCollection.GetCardGroup());
-                BaseDetail.Add(FamilyObject.GChildRefCollection.GetCardGroup(), "Children");
+                BaseDetail.Add(FamilyObject.GEventRefCollection);
+                BaseDetail.Add(FamilyObject.GChildRefCollection); // TODO , "Children");
 
-                BaseDetail.Add(FamilyObject.GCitationRefCollection.GetCardGroup());
-                BaseDetail.Add(FamilyObject.GMediaRefCollection.GetCardGroup());
-                BaseDetail.Add(FamilyObject.GNoteRefCollection.GetCardGroup());
-                BaseDetail.Add(FamilyObject.GAttributeCollection.GetCardGroup());
-                BaseDetail.Add(FamilyObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Add(FamilyObject.GCitationRefCollection);
+                BaseDetail.Add(FamilyObject.GMediaRefCollection);
+                BaseDetail.Add(FamilyObject.GNoteRefCollection);
+                BaseDetail.Add(FamilyObject.GAttributeCollection);
+                BaseDetail.Add(FamilyObject.GTagRefCollection);
 
                 BaseBackLinks.Add(FamilyObject.BackHLinkReferenceCollection.GetCardGroup());
 

@@ -18,9 +18,9 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<HLinkSourceModel>))]
     public class HLinkSourceModelCollection : HLinkBaseCollection<HLinkSourceModel>
     {
-        public CardGroup GetCardGroup()
+        public HLinkSourceModelCollection()
         {
-            return base.GetCardGroup("Source Collection");
+            Title = "Source Collection";
         }
     }
 }

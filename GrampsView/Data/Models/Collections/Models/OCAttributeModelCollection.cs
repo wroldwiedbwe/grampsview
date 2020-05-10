@@ -18,11 +18,11 @@ namespace GrampsView.Data.Collections
     /// <seealso cref="System.Collections.ObjectViewModel.ObservableCollection{GrampsView.Data.ViewModel.AttributeModel}"/>
     [CollectionDataContract]
     [KnownType(typeof(ObservableCollection<AttributeModel>))]
-    public class OCAttributeModelCollection : ModelBaseCollection<AttributeModel>
+    public class OCAttributeModelCollection : CardGroupBase<AttributeModel>
     {
-        public override CardGroup GetCardGroup()
+        public OCAttributeModelCollection()
         {
-            return base.GetCardGroup("Attribute Collection");
+            Title = "Attribute Collection";
         }
     }
 }

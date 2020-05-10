@@ -19,62 +19,25 @@ namespace GrampsView.Data.Model
     /// GRAMPS $$(Hlink)$$ element class.
     /// </summary>
     [CollectionDataContract]
-    public class HLinkBaseCollection<T> : ObservableCollection<T>, IHLinkCollectionBase<T>   // , IEnumerable, IEnumerator
+    public class HLinkBaseCollection<T> : CardGroupBase<T>, IHLinkCollectionBase<T>
          where T : HLinkBase, new()
     {
         // TODO Handle HLink collections properly by handling all their data
 
-        //private int Position = -1;
-
-        //public object Current
-        //{
-        //    get
-        //    {
-        //        return this[Position];
-        //    }
-        //}
-
         /// <summary>
-        /// Gets or sets the first image h link.
+        /// Gets or sets the first image hlink.
         /// </summary>
         public HLinkHomeImageModel FirstHLinkHomeImage { get; set; } = new HLinkHomeImageModel();
 
-        public virtual CardGroup GetCardGroup(string argTitle = "")
-        {
-            CardGroup t = new CardGroup();
-
-            if (!string.IsNullOrEmpty(argTitle))
-            {
-                t.Title = argTitle;
-            };
-
-            foreach (T item in Items)
-            {
-                t.Add(item);
-            }
-
-            return t;
-        }
-
-        //public IEnumerator GetCardGroupEnumerator()
+        //public virtual CardGroup GetCardGroup(string argTitle = "")
         //{
-        //    return (IEnumerator)this;
-        //}
+        //    CardGroup t = new CardGroup();
 
-        //public bool MoveNext()
-        //{
-        //    if (Position < this.Count - 1)
-        //    {
-        //        ++Position;
-        //        return true;
-        //    }
+        // if (!string.IsNullOrEmpty(argTitle)) { t.Title = argTitle; };
 
-        //    return false;
-        //}
+        // foreach (T item in Items) { t.Add(item); }
 
-        //public void Reset()
-        //{
-        //    Position = -1;
+        //    return t;
         //}
     }
 }

@@ -19,9 +19,9 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<HLinkTagModel>))]
     public class HLinkTagModelCollection : HLinkBaseCollection<HLinkTagModel>
     {
-        public CardGroup GetCardGroup()
+        public HLinkTagModelCollection()
         {
-            return base.GetCardGroup("Tag Collection");
+            Title = "Tag Collection";
         }
     }
 }

@@ -86,12 +86,12 @@ namespace GrampsView.ViewModels
                 BaseHeader.Add(t);
 
                 // Details
-                BaseDetail.Add(PlaceObject.GPlaceRefCollection.GetCardGroup("Enclosing Place"));
-                BaseDetail.Add(PlaceObject.PlaceChildCollection.GetCardGroup("Enclosed Places"));
+                BaseDetail.Add(PlaceObject.GPlaceRefCollection); // TODO .GetCardGroup("Enclosing Place"));
+                BaseDetail.Add(PlaceObject.PlaceChildCollection); // TODO .GetCardGroup("Enclosed Places"));
 
-                BaseDetail.Add(PlaceObject.GCitationRefCollection.GetCardGroup());
-                BaseDetail.Add(PlaceObject.GTagRefCollection.GetCardGroup());
-                BaseDetail.Add(PlaceObject.GURLCollection.GetCardGroup());
+                BaseDetail.Add(PlaceObject.GCitationRefCollection);
+                BaseDetail.Add(PlaceObject.GTagRefCollection);
+                BaseDetail.Add(PlaceObject.GURLCollection);
 
                 BaseBackLinks.Add(PlaceObject.BackHLinkReferenceCollection.GetCardGroup());
             }

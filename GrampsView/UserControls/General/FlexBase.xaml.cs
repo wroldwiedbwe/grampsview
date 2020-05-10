@@ -2,21 +2,22 @@
 {
     using GrampsView.Common;
 
-    using System.Collections.ObjectModel;
     using System.Collections.Specialized;
+    using System.ComponentModel;
     using System.Linq;
-
+    using System.Runtime.CompilerServices;
     using Xamarin.Forms;
-    using Xamarin.Forms.Internals;
 
     /// <summary>
     /// Base class for the Flex User Controls.
     /// </summary>
-    public partial class FlexBase : Frame
+    public partial class FlexBase : Frame, INotifyPropertyChanged
     {
         internal static int startItemGet = 0;
 
         internal static int virtualItemGet = 5;
+
+        private bool _Visible = false;
 
         public FlexBase()
         {
@@ -35,7 +36,7 @@
             IndexLength = startItemGet;
         }
 
-        public ObservableCollection<object> DisplayList { get; } = new ObservableCollection<object>();
+        public CardGroupBase<object> DisplayList { get; } = new CardGroupBase<object>();
 
         public virtual CardGroup FsctSource { get; set; }
 
@@ -44,6 +45,28 @@
         public int IndexLength { get; set; }  // Gota start with enough so scrollbar is visible on the desktop
 
         public int IndexStart { get; set; } = 0;
+
+        public bool Visible
+        {
+            get
+            {
+                return _Visible;
+            }
+            set
+            {
+                _Visible = value;
+                OnPropertyChanged(nameof(Visible));
+            }
+        }
+
+        //private void FlexOnPropertyChanged<T>([CallerMemberName]string caller = null)
+        //{
+        //    // make sure only to call this if the value actually changes
+
+        //    FlexBasePropertyChanged?.Invoke(this, new PropertyChangedEventArgs(caller));
+        //}
+
+        //public event PropertyChangedEventHandler FlexBasePropertyChanged;
 
         public static void OnItemsSourceChanged(BindableObject argSource, object oldValue, object newValue)
         {
@@ -80,12 +103,12 @@
         {
             //Debug.WriteLine("GetIt");
 
-            if (DisplayList.Count == FsctSource.Cards.Count)
+            if (DisplayList.Count == FsctSource.Count)
             {
                 return;
             }
 
-            foreach (var item in FsctSource.Cards.Skip(IndexStart).Take(IndexLength).ToList())
+            foreach (var item in FsctSource.Skip(IndexStart).Take(IndexLength).ToList())
             {
                 DisplayList.Add(item);
                 IndexStart += 1;
@@ -108,6 +131,7 @@
             {
                 // Items cleared TODO Should this be FSource?
                 this.DisplayList.Clear();
+                IndexStart = 0;
             }
 
             if (e.OldItems != null)
@@ -120,6 +144,8 @@
                 AddToDisplay();
                 BuildLayout();
             }
+
+            Visible = (!(FsctSource is null) && (FsctSource.Count > 0)) ? true : false;
         }
 
         /// <summary>

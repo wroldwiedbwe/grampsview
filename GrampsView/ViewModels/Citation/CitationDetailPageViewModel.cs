@@ -128,10 +128,10 @@ namespace GrampsView.ViewModels
                 }
 
                 // Add remaining details
-                BaseDetail.Add(CitationObject.GMediaRefCollection.GetCardGroup());
-                BaseDetail.Add(CitationObject.GNoteRefCollection.GetCardGroup());
-                BaseDetail.Add(CitationObject.GTagRef.GetCardGroup());
-                BaseDetail.Add(CitationObject.GSourceAttributeCollection.GetCardGroup());
+                BaseDetail.Add(CitationObject.GMediaRefCollection);
+                BaseDetail.Add(CitationObject.GNoteRefCollection);
+                BaseDetail.Add(CitationObject.GTagRef);
+                BaseDetail.Add(CitationObject.GSourceAttributeCollection);
 
                 BaseBackLinks.Add(CitationObject.BackHLinkReferenceCollection.GetCardGroup());
             }

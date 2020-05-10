@@ -93,7 +93,7 @@
             x:Name="SearchViewBox"
             Grid.Row="3"
             Grid.Column="0">
-            <ucon:FlexMultiGroupMultiCard x:Name="BaseHeader" FsctSource="{Binding BaseDetail}" />
+            <ucon:FlexMultiGroupMultiCard x:Name="BaseHeader" FsctSource="{Binding BaseDetail, Mode=OneWay}" />
         </ScrollView>
     </Grid>
 </ContentPage>

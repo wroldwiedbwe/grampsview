@@ -44,6 +44,8 @@
     <Compile Remove="Behaviours\ListViewAutoSizeBehaviour.cs" />
     <Compile Remove="Behaviours\RadioButtonBehaviour.cs" />
     <Compile Remove="Common\AppExtension.cs" />
+    <Compile Remove="Common\Card Group\CardGroupHLink.cs" />
+    <Compile Remove="Common\Card Group\CardGroupModelBase.cs" />
     <Compile Remove="Common\CardGroupCollection.cs" />
     <Compile Remove="Common\CardGroupTemplateSelectorRefLarge.cs" />
     <Compile Remove="Common\CommonCropBitmap.cs" />
@@ -77,6 +79,7 @@
     <Compile Remove="Common\Interfaces\ICommonCircularLog.cs" />
     <Compile Remove="Common\NavigationHelper.cs" />
     <Compile Remove="Converters\GetGyyph.cs" />
+    <Compile Remove="Converters\NewtonSoftOSCOBJConverter.cs" />
     <Compile Remove="Data\DataView\BookMarkDataView.cs" />
     <Compile Remove="Data\DataView\Interfaces\IBookMarkDataView.cs" />
     <Compile Remove="Data\External\StoreFile\IStoreFileDirectory.cs" />
@@ -84,7 +87,9 @@
     <Compile Remove="Data\External\StorePostLoad\StoreImagePostLoad.cs" />
     <Compile Remove="Data\External\StorePostLoad\StorePostLoadHomeImage.cs" />
     <Compile Remove="Data\External\StorePostLoad\StorePostLoadImageSource.cs" />
+    <Compile Remove="Data\Models\Collections\HLinks\HLinkBLModelCollection.cs" />
     <Compile Remove="Data\Models\Collections\HLinks\HLinkBookMarkModelCollection.cs" />
+    <Compile Remove="Data\Models\Collections\Models\ModelBaseCollection.cs" />
     <Compile Remove="Data\Models\DataModels\BookMarkModel.cs" />
     <Compile Remove="Data\Models\DataModels\Interfaces\IBookMarkModel.cs" />
     <Compile Remove="Data\Models\HLinks\HLinkBookMarkModel.cs" />

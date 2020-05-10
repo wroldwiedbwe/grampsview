@@ -18,11 +18,11 @@ namespace GrampsView.Data.Collections
     /// <seealso cref="System.Collections.ObjectViewModel.ObservableCollection{GrampsView.Data.ViewModel.AttributeModel}"/>
     [CollectionDataContract]
     [KnownType(typeof(ObservableCollection<SurnameModel>))]
-    public class PersonRefModelCollection : ModelBaseCollection<PersonRefModel>
+    public class PersonRefModelCollection : CardGroupBase<PersonRefModel>
     {
-        public override CardGroup GetCardGroup()
+        public PersonRefModelCollection()
         {
-            return base.GetCardGroup("Person Reference Model Collection");
+            Title = "Person Reference Model Collection";
         }
     }
 }

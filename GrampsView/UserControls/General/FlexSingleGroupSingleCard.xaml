@@ -29,7 +29,6 @@
                 Grid.Row="1"
                 BindableLayout.ItemTemplate="{Binding FsctTemplate, Mode=OneWay}"
                 BindableLayout.ItemsSource="{Binding DisplayList, Mode=OneWay}"
-                IsEnabled="{Binding FlexSingleCardVisible, Mode=OneWay}"
                 Style="{DynamicResource FlexLayoutCards}" />
         </Grid>
     </ScrollView>

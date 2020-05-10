@@ -164,14 +164,14 @@ namespace GrampsView.ViewModels
                     BaseHeader.Add(t);
 
                     // Add HLink Details
-                    BaseDetail.Add(CurrentHLinkMedia.GAttributeRefCollection.GetCardGroup("Hlink Attributes"));
-                    BaseDetail.Add(CurrentHLinkMedia.GCitationRefCollection.GetCardGroup("HLink Citations"));
-                    BaseDetail.Add(CurrentHLinkMedia.GNoteRefCollection.GetCardGroup("HLink Notes"));
+                    BaseDetail.Add(CurrentHLinkMedia.GAttributeRefCollection);
+                    BaseDetail.Add(CurrentHLinkMedia.GCitationRefCollection); // TODO .GetCardGroup("HLink Citations"));
+                    BaseDetail.Add(CurrentHLinkMedia.GNoteRefCollection); // TODO .GetCardGroup("HLink Notes"));
 
                     // Add Model details
-                    BaseDetail.Add(CurrentMediaObject.GCitationRefCollection.GetCardGroup());
-                    BaseDetail.Add(CurrentMediaObject.GNoteRefCollection.GetCardGroup());
-                    BaseDetail.Add(CurrentMediaObject.GTagRefCollection.GetCardGroup());
+                    BaseDetail.Add(CurrentMediaObject.GCitationRefCollection);
+                    BaseDetail.Add(CurrentMediaObject.GNoteRefCollection);
+                    BaseDetail.Add(CurrentMediaObject.GTagRefCollection);
 
                     BaseBackLinks.Add(CurrentMediaObject.BackHLinkReferenceCollection.GetCardGroup());
                 }

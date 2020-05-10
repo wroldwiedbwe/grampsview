@@ -139,7 +139,7 @@ namespace GrampsView.ViewModels
 
                 foreach (SearchItem item in DV.PersonDV.Search(SearchText))
                 {
-                    if (SearchCards.Cards.Count < argLimit)
+                    if (SearchCards.Count < argLimit)
                     {
                         SearchCards.Add(item.HLink);
                     }
@@ -154,7 +154,7 @@ namespace GrampsView.ViewModels
 
                 foreach (SearchItem item in DV.FamilyDV.Search(SearchText))
                 {
-                    if (SearchCards.Cards.Count < argLimit)
+                    if (SearchCards.Count < argLimit)
                     {
                         SearchCards.Add(item.HLink);
                     }
@@ -169,7 +169,7 @@ namespace GrampsView.ViewModels
 
                 foreach (SearchItem item in DV.EventDV.Search(SearchText))
                 {
-                    if (SearchCards.Cards.Count < argLimit)
+                    if (SearchCards.Count < argLimit)
                     {
                         SearchCards.Add(item.HLink);
                     }
@@ -184,7 +184,7 @@ namespace GrampsView.ViewModels
 
                 foreach (SearchItem item in DV.NoteDV.Search(SearchText))
                 {
-                    if (SearchCards.Cards.Count < argLimit)
+                    if (SearchCards.Count < argLimit)
                     {
                         SearchCards.Add(item.HLink);
                     }
@@ -199,7 +199,7 @@ namespace GrampsView.ViewModels
 
                 foreach (SearchItem item in DV.CitationDV.Search(SearchText))
                 {
-                    if (SearchCards.Cards.Count < argLimit)
+                    if (SearchCards.Count < argLimit)
                     {
                         SearchCards.Add(item.HLink);
                     }
@@ -214,7 +214,7 @@ namespace GrampsView.ViewModels
 
                 foreach (SearchItem item in DV.MediaDV.Search(SearchText))
                 {
-                    if (SearchCards.Cards.Count < argLimit)
+                    if (SearchCards.Count < argLimit)
                     {
                         SearchCards.Add(item.HLink);
                     }
@@ -229,7 +229,7 @@ namespace GrampsView.ViewModels
 
                 foreach (SearchItem item in DV.PlaceDV.Search(SearchText))
                 {
-                    if (SearchCards.Cards.Count < argLimit)
+                    if (SearchCards.Count < argLimit)
                     {
                         SearchCards.Add(item.HLink);
                     }
@@ -237,7 +237,7 @@ namespace GrampsView.ViewModels
                 BaseDetail.Add(SearchCards);
             }
 
-            if (BaseDetail.Cards.Count == 0)
+            if (BaseDetail.Count == 0)
             {
                 SearchNothingFound = true;
             }

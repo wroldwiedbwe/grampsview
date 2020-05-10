@@ -18,11 +18,11 @@ namespace GrampsView.Data.Collections
     /// <seealso cref="System.Collections.ObjectViewModel.ObservableCollection{GrampsView.Data.ViewModel.AttributeModel}"/>
     [CollectionDataContract]
     [KnownType(typeof(ObservableCollection<URLModel>))]
-    public class OCURLModelCollection : ModelBaseCollection<URLModel>
+    public class OCURLModelCollection : CardGroupBase<URLModel>
     {
-        public override CardGroup GetCardGroup()
+        public OCURLModelCollection()
         {
-            return base.GetCardGroup("URL Model Collection");
+            Title = "URL Model Collection";
         }
     }
 }

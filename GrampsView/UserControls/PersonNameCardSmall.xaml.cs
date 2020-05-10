@@ -42,23 +42,6 @@
                 PersonNameCards.Add(new CardListLine("Priv:", tt.GPriv));
                 PersonNameCards.Add(new CardListLine("Sort:", tt.GSort));
 
-                //// Get extra name details
-                //if (PersonObject.GPersonNamesCollection.GetPrimaryName.GSurName.Count > 0)
-                //{
-                //    foreach (SurnameModel item in PersonObject.GPersonNamesCollection.GetPrimaryName.GSurName)
-                //    {
-                //        CardListLineCollection extraNameDetails = new CardListLineCollection
-                //        {
-                //            new CardListLine("Surname:", item.GText),
-                //            new CardListLine("Surname Connector:", item.GConnector),
-                //            new CardListLine("Surname Derivation:", item.GDerivation),
-                //            new CardListLine("Surname Prefix:", item.GPrefix),
-                //            new CardListLine("Surname Primary:", item.GPrim)
-                //        };
-
-                //        t.Cards.Add(extraNameDetails);
-                //    }
-                //}
                 this.BindingContext = PersonNameCards;
             }
         }

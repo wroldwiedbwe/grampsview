@@ -19,11 +19,11 @@ namespace GrampsView.Data.Collections
     /// </summary>
     [CollectionDataContract]
     [KnownType(typeof(ObservableCollection<AddressModel>))]
-    public class OCAddressModelCollection : ModelBaseCollection<AddressModel>
+    public class OCAddressModelCollection : CardGroupBase<AddressModel>
     {
-        public override CardGroup GetCardGroup()
+        public OCAddressModelCollection()
         {
-            return base.GetCardGroup("Address Collection");
+            Title = "Address Collection";
         }
     }
 }

@@ -126,7 +126,7 @@ namespace GrampsView.Data.DataView
 
             foreach (NoteModel item in tt)
             {
-                returnCardGroup.Cards.Add(item.HLink);
+                returnCardGroup.Add(item.HLink);
             }
 
             returnCardGroup.Title = "Latest Note Changes";
