@@ -44,24 +44,22 @@ namespace GrampsView.ViewModels
         {
         }
 
-        /// <summary>
-        /// Gets or sets collection of BackLink models.
-        /// </summary>
-        public SortedObservableCollection<ModelBase> BackLinkModel { get; set; }
+        ///// <summary>
+        ///// Gets or sets collection of BackLink models.
+        ///// </summary>
+        //public SortedObservableCollection<ModelBase> BackLinkModel { get; set; } = new SortedObservableCollection<ModelBase>();
 
-                            = new SortedObservableCollection<ModelBase>();
-
-        /// <summary>
-        /// Gets or sets the note detail list.
-        /// </summary>
-        /// <value>
-        /// The note detail list.
-        /// </value>
-        // [RestorableState]
-        public CardListLineCollection NoteDetailList
-        {
-            get; set;
-        }
+        ///// <summary>
+        ///// Gets or sets the note detail list.
+        ///// </summary>
+        ///// <value>
+        ///// The note detail list.
+        ///// </value>
+        //// [RestorableState]
+        //public CardListLineCollection NoteDetailList
+        //{
+        //    get; set;
+        //}
 
         /// <summary>
         /// Gets or sets the tag object.

@@ -132,6 +132,8 @@
                 // Items cleared TODO Should this be FSource?
                 this.DisplayList.Clear();
                 IndexStart = 0;
+
+                BuildLayout();
             }
 
             if (e.OldItems != null)

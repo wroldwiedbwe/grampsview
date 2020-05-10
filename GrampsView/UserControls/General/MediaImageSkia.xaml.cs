@@ -19,10 +19,6 @@ namespace GrampsView.UserControls
         public static readonly BindableProperty UConHideSymbolProperty
                = BindableProperty.Create(returnType: typeof(bool), declaringType: typeof(MediaImageSkia), propertyName: nameof(UConHideSymbol), defaultValue: false, propertyChanged: MediaImage_UConPropertyChanged);
 
-        // private bool disposedValue = false;
-
-        //private SKBitmap resourceBitmap = new SKBitmap();
-
         private MediaModel theMediaModel = new MediaModel();
 
         public MediaImageSkia()
@@ -37,31 +33,6 @@ namespace GrampsView.UserControls
         }
 
         private HLinkHomeImageModel HLinkMedia { get; set; }
-
-        // This code added to correctly implement the disposable pattern.
-        //public void Dispose()
-        //{
-        //    // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-        //    Dispose(true);
-        //    // TODO: uncomment the following line if the finalizer is overridden above. GC.SuppressFinalize(this);
-        //}
-
-        //protected virtual void Dispose(bool disposing)
-        //{
-        //    if (!disposedValue)
-        //    {
-        //        if (disposing)
-        //        {
-        //            // TODO: dispose managed state (managed objects).
-        //            resourceBitmap.Dispose();
-        //        }
-
-        // // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below. //
-        // TODO: set large fields to null.
-
-        //        disposedValue = true;
-        //    }
-        //}
 
         private static void MediaImage_UConPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -123,7 +94,6 @@ namespace GrampsView.UserControls
                 }
 
                 this.daSymbol.Source = tt;
-                //this.daImage.IsVisible = false;
 
                 if (UConHideSymbol)
                 {
@@ -134,14 +104,14 @@ namespace GrampsView.UserControls
             }
 
             // Have a media image to display
-
             theMediaModel = HLinkMedia.DeRef;
 
-            if (theMediaModel.Id == "O0003")
-            {
-            }
+            ////if (theMediaModel.Id == "O0003")
+            ////{
+            ////}
 
-            Debug.WriteLine(HLinkMedia.DeRef.MediaStorageFilePath, "MediaImageSkia");
+            //Debug.WriteLine(HLinkMedia.DeRef.MediaStorageFilePath, "MediaImageSkia");
+
             if (string.IsNullOrEmpty(HLinkMedia.DeRef.MediaStorageFilePath))
             {
                 DataStore.CN.NotifyError("The media file path is null for Id:" + HLinkMedia.DeRef.Id);
@@ -154,10 +124,5 @@ namespace GrampsView.UserControls
             this.daImage.DownsampleToViewSize = true;
             this.daImage.Source = theMediaModel.MediaStorageFilePath;
         }
-
-        // To detect redundant calls
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        // ~MediaImageSkia() { // Do not change this code. Put cleanup code in Dispose(bool
-        // disposing) above. Dispose(false); }
     }
 }

@@ -18,7 +18,7 @@ namespace GrampsView.ViewModels
     /// Search ViewModel class.
     /// </summary>
     /// <seealso cref="GrampsView.ViewModels.ViewModelBase"/>
-    public class SearchViewModel : ViewModelBase
+    public class SearchPageViewModel : ViewModelBase
     {
         /// <summary>
         /// The search command backing store.
@@ -32,6 +32,8 @@ namespace GrampsView.ViewModels
         /// </summary>
         private string _SearchText;
 
+        private string lastArg = string.Empty;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchViewModel"/> class.
         /// </summary>
@@ -44,7 +46,7 @@ namespace GrampsView.ViewModels
         /// <param name="iocNavigationService">
         /// NavigationService
         /// </param>
-        public SearchViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
+        public SearchPageViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitle = "Search Page";
@@ -250,7 +252,13 @@ namespace GrampsView.ViewModels
         /// </param>
         public void SearchProcessQuery(string argSearch)
         {
-            ProcessQuery(argSearch, int.MaxValue);
+            // Handle issues with bounce onf EventToCommand
+            if (lastArg != argSearch)
+            {
+                ProcessQuery(argSearch, int.MaxValue);
+            }
+
+            lastArg = argSearch;
         }
     }
 }

@@ -43,7 +43,7 @@
                     case TargetIdiom.Unsupported:
 
                     case TargetIdiom.Desktop:
-                        outVal = 540;
+                        outVal = 640;
                         break;
 
                     case TargetIdiom.Tablet:
@@ -77,6 +77,12 @@
                         outVal = CardLargeWidthDefault;
                         break;
                 };
+
+                // Check size
+                if (outVal > DeviceDisplay.MainDisplayInfo.Width)
+                {
+                    outVal = DeviceDisplay.MainDisplayInfo.Width;
+                }
 
                 _CardLargeWidth = outVal;
 
@@ -134,6 +140,12 @@
                         break;
                 };
 
+                // Check size
+                if (outVal > DeviceDisplay.MainDisplayInfo.Width)
+                {
+                    outVal = DeviceDisplay.MainDisplayInfo.Width;
+                }
+
                 _CardMediumWidth = outVal;
 
                 OnPropertyChanged(nameof(CardMediumWidth));
@@ -185,6 +197,12 @@
                         outVal = CardSmallWidthDefault;
                         break;
                 };
+
+                // Check size
+                if (outVal > DeviceDisplay.MainDisplayInfo.Width)
+                {
+                    outVal = DeviceDisplay.MainDisplayInfo.Width;
+                }
 
                 Debug.WriteLine("Card Width changed to " + outVal.ToString(System.Globalization.CultureInfo.CurrentCulture));
                 _CardSmallWidth = outVal;

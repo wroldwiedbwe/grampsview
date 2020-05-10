@@ -74,6 +74,7 @@
     <Compile Remove="Common\External\PluginStorage.cs" />
     <Compile Remove="Common\External\PluginStorageFolder.cs" />
     <Compile Remove="Common\External\ScrollViewerUtilities.cs" />
+    <Compile Remove="Common\External\SortedObservableCollection.cs" />
     <Compile Remove="Common\External\SuspensionManager.cs" />
     <Compile Remove="Common\External\ValidatableBindableBase.cs" />
     <Compile Remove="Common\Interfaces\ICommonCircularLog.cs" />
@@ -353,6 +354,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Common\External\" />
     <Folder Include="ViewModels\Test\" />
   </ItemGroup>
 

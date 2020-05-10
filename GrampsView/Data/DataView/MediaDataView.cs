@@ -154,15 +154,11 @@ namespace GrampsView.Data.DataView
                 t.Add(item.HLink);
             }
 
-            // Sort TODO Sort t = HLinkCollectionSort(t);
-
             return t;
         }
 
         /// <summary>
         /// Gets all as hlink.
-        ///
-        /// Skip first few which are HLink Defaults.
         /// </summary>
         /// <returns>
         /// </returns>
