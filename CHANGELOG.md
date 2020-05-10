@@ -1,3 +1,12 @@
+## [5.5.15](https://github.com/phandcock/grampsview/compare/v5.5.14...v5.5.15) (2020-05-10)
+
+
+### Bug Fixes
+
+* reset Flex if source collection reset ([f67647d](https://github.com/phandcock/grampsview/commit/f67647d86b4e11b913cdd82143de62a80c035c85))
+
+
+
 ## [5.5.14](https://github.com/phandcock/grampsview/compare/v5.5.13...v5.5.14) (2020-05-10)
 
 
@@ -26,15 +35,6 @@
 ### Bug Fixes
 
 * update card width on startup ([0370837](https://github.com/phandcock/grampsview/commit/03708376acdeaf33c271cf20392d048bb71a68f1))
-
-
-
-## [5.5.10](https://github.com/phandcock/grampsview/compare/v5.5.9...v5.5.10) (2020-05-03)
-
-
-### Bug Fixes
-
-* ErrorDialog Ok Button style and text ([938bb43](https://github.com/phandcock/grampsview/commit/938bb433aa829cad12183ede90be5d4d21f48626))
 
 
 
