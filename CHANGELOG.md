@@ -1,3 +1,12 @@
+## [5.5.14](https://github.com/phandcock/grampsview/compare/v5.5.13...v5.5.14) (2020-05-10)
+
+
+### Bug Fixes
+
+* reset Index in FlexBase so updates flow through ([2e4a759](https://github.com/phandcock/grampsview/commit/2e4a759434b4ef6becb131dfe24f9be6539682a1))
+
+
+
 ## [5.5.13](https://github.com/phandcock/grampsview/compare/v5.5.12...v5.5.13) (2020-05-07)
 
 
@@ -26,15 +35,6 @@
 ### Bug Fixes
 
 * ErrorDialog Ok Button style and text ([938bb43](https://github.com/phandcock/grampsview/commit/938bb433aa829cad12183ede90be5d4d21f48626))
-
-
-
-## [5.5.9](https://github.com/phandcock/grampsview/compare/v5.5.8...v5.5.9) (2020-05-03)
-
-
-### Bug Fixes
-
-* Fix FlexCode to not require a templete before layout ([d97e759](https://github.com/phandcock/grampsview/commit/d97e75923dce119cd6e137b2ddd374ae2067468f))
 
 
 
