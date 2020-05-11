@@ -1,3 +1,7 @@
+## [5.5.16](https://github.com/phandcock/grampsview/compare/v5.5.15...v5.5.16) (2020-05-11)
+
+
+
 ## [5.5.15](https://github.com/phandcock/grampsview/compare/v5.5.14...v5.5.15) (2020-05-10)
 
 
@@ -26,15 +30,6 @@
 ### Bug Fixes
 
 * redundant code in Android theming ([2f82bd2](https://github.com/phandcock/grampsview/commit/2f82bd2d734d54c13f791807f5ca137e01ce3055))
-
-
-
-## [5.5.11](https://github.com/phandcock/grampsview/compare/v5.5.10...v5.5.11) (2020-05-05)
-
-
-### Bug Fixes
-
-* update card width on startup ([0370837](https://github.com/phandcock/grampsview/commit/03708376acdeaf33c271cf20392d048bb71a68f1))
 
 
 
