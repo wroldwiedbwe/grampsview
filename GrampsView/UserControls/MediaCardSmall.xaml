@@ -63,7 +63,7 @@
                     <FontImageSource
                         FontFamily="{DynamicResource MaterialFontFamily}"
                         Glyph="{Binding DeRef.HomeImageHLink.HomeSymbol}"
-                        Color="{Binding DeRef.HomeImageHLink.HomeSymbolColour}" />
+                        Color="{StaticResource CardBackGroundMedia}" />
                 </Image.Source>
             </Image>
         </Grid>

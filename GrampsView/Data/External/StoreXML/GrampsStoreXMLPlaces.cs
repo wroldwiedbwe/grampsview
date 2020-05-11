@@ -71,6 +71,10 @@ namespace GrampsView.Data.ExternalStorageNS
                             {
                             }
 
+                            if (loadPlace.Id == "P0018")
+                            {
+                            }
+
                             loadPlace.GCode = GetElement(placeData, "code");
 
                             loadPlace.GType = (string)placeData.Attribute("type");

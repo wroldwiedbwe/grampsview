@@ -295,19 +295,26 @@ namespace GrampsView.Data.DataView
         /// <summary>
         /// Searches the items.
         /// </summary>
-        /// <param name="queryString">
+        /// <param name="argQueryString">
         /// The query string.
         /// </param>
         /// <returns>
         /// List of Serch HLinks.
         /// </returns>
-        public override List<SearchItem> Search(string queryString)
+        public override List<SearchItem> Search(string argQueryString)
         {
+            if ( argQueryString is null)
+            {
+                throw new ArgumentNullException(nameof(argQueryString));
+            }
+
             List<SearchItem> itemsFound = new List<SearchItem>();
-            queryString = queryString.ToLower(CultureInfo.CurrentCulture);
+            argQueryString = argQueryString.ToLower(CultureInfo.CurrentCulture);
+
+            // TODO Search on FullName collection
 
             // Search by Full Name
-            var temp = DataViewData.Where(x => x.GPersonNamesCollection.GetPrimaryName.FullName.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            var temp = DataViewData.Where(x => x.GPersonNamesCollection.GetPrimaryName.FullName.ToLower(CultureInfo.CurrentCulture).Contains(argQueryString));
 
             foreach (PersonModel tempMO in temp)
             {
@@ -319,7 +326,7 @@ namespace GrampsView.Data.DataView
             }
 
             // Search by Called By
-            temp = DataViewData.Where(x => x.GPersonNamesCollection.GetPrimaryName.GCall.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            temp = DataViewData.Where(x => x.GPersonNamesCollection.GetPrimaryName.GCall.ToLower(CultureInfo.CurrentCulture).Contains(argQueryString));
 
             foreach (PersonModel tempMO in temp)
             {
@@ -331,7 +338,7 @@ namespace GrampsView.Data.DataView
             }
 
             // Search by Nick Name
-            temp = DataViewData.Where(x => x.GPersonNamesCollection.GetPrimaryName.GNick.ToLower(CultureInfo.CurrentCulture).Contains(queryString));
+            temp = DataViewData.Where(x => x.GPersonNamesCollection.GetPrimaryName.GNick.ToLower(CultureInfo.CurrentCulture).Contains(argQueryString));
 
             foreach (PersonModel tempMO in temp)
             {

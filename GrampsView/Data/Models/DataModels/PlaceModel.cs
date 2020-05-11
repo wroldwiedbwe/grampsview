@@ -114,14 +114,14 @@ namespace GrampsView.Data.Model
     [DataContract]
     public sealed class PlaceModel : ModelBase, IPlaceModel, IComparable, IComparer
     {
-        private HLinkPlaceModelCollection _PlaceChildCollection = new HLinkPlaceModelCollection();
-
         /// <summary>
         /// The local g code field.
         /// </summary>
-        private string localGCodeField;
+        private string _GCodeField;
 
-        private string localGNameField = string.Empty;
+        private string _GNameField = string.Empty;
+
+        private HLinkPlaceModelCollection _PlaceChildCollection = new HLinkPlaceModelCollection();
 
         /// <summary>
         /// The local media collection.
@@ -153,6 +153,8 @@ namespace GrampsView.Data.Model
         /// </summary>
         public PlaceModel()
         {
+            PlaceChildCollection.Title = "Enclosed Places";
+            GPlaceRefCollection.Title = "Enclosing Place";
         }
 
         /// <summary>
@@ -178,12 +180,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGCodeField;
+                return _GCodeField;
             }
 
             set
             {
-                SetProperty(ref localGCodeField, value);
+                SetProperty(ref _GCodeField, value);
             }
         }
 
@@ -231,12 +233,12 @@ namespace GrampsView.Data.Model
         {
             get
             {
-                return localGNameField;
+                return _GNameField;
             }
 
             set
             {
-                SetProperty(ref localGNameField, value);
+                SetProperty(ref _GNameField, value);
             }
         }
 

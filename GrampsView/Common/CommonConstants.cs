@@ -158,7 +158,7 @@ namespace GrampsView.Common
         /// <summary>
         /// The symbol Places.
         /// </summary>
-        public const string IconPlace = IconFont.ViewStream;
+        public const string IconPlace = IconFont.HomeCircle;
 
         /// <summary>
         /// The symbol Repository.

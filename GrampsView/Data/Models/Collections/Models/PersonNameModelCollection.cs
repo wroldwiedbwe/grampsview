@@ -6,6 +6,7 @@
 /// </summary>
 namespace GrampsView.Data.Collections
 {
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Runtime.Serialization;
