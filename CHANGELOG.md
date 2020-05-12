@@ -1,3 +1,7 @@
+## [5.5.18](https://github.com/phandcock/grampsview/compare/v5.5.17...v5.5.18) (2020-05-12)
+
+
+
 ## [5.5.17](https://github.com/phandcock/grampsview/compare/v5.5.16...v5.5.17) (2020-05-12)
 
 
@@ -21,10 +25,6 @@
 ### Bug Fixes
 
 * reset Index in FlexBase so updates flow through ([2e4a759](https://github.com/phandcock/grampsview/commit/2e4a759434b4ef6becb131dfe24f9be6539682a1))
-
-
-
-## [5.5.13](https://github.com/phandcock/grampsview/compare/v5.5.12...v5.5.13) (2020-05-07)
 
 
 
