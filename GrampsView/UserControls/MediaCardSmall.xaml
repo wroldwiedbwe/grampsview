@@ -1,13 +1,15 @@
-﻿<Frame
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
     x:Class="GrampsView.UserControls.MediaCardSmall"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
+    x:Name="MediaCardSmallRoot"
     Style="{DynamicResource FrameSmallFixedCardStyle}">
     <Frame.Content>
 
-        <Grid x:Name="controlRoot" RowSpacing="3">
+        <Grid x:Name="controlRoot">
 
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{prism:NavigateTo 'MediaDetailPage'}">

@@ -85,7 +85,7 @@ namespace GrampsView.Data.ExternalStorageNS
 
                 default:
                     {
-                        argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
+                        argModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeSymbol;
                         argModel.HomeImageHLink.HomeSymbol = CommonConstants.IconMedia;
                         break;
                     }
@@ -220,7 +220,7 @@ namespace GrampsView.Data.ExternalStorageNS
                             Change = GetDateTime(GetAttribute(pname, "change")),
                         };
 
-                        if (loadObject.Id == "O0200")
+                        if (loadObject.Id == "O0049")
                         {
                         }
 

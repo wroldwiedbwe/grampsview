@@ -48,81 +48,88 @@ namespace GrampsView.UserControls
 
         private void MediaImageSkia_BindingContextChanged(object sender, EventArgs e)
         {
-            HLinkHomeImageModel newHLinkMedia = this.BindingContext as HLinkHomeImageModel;
-
-            if (newHLinkMedia is null)
+            try
             {
-                //DataStore.CN.NotifyError("Bad HlinkMediaModel (is null) passed to MediaImage");
-                return;
-            }
+                HLinkHomeImageModel newHLinkMedia = this.BindingContext as HLinkHomeImageModel;
 
-            if (!newHLinkMedia.Valid)
-            {
-                //DataStore.CN.NotifyError("Invalid HlinkMediaModel (" + HLinkMedia.HLinkKey + ") passed to MediaImage");
-                return;
-            }
-
-            if (newHLinkMedia == HLinkMedia)
-            {
-                return;
-            }
-
-            // Input valid so start work
-            this.daSymbol.IsVisible = false;
-            this.daImage.IsVisible = false;
-            this.daImage.Source = null;
-
-            HLinkMedia = newHLinkMedia;
-
-            if (!HLinkMedia.Valid || !HLinkMedia.LinkToImage)
-            {
-                this.daSymbol.IsVisible = true;
-
-                // Set symbol
-                FontImageSource tt = this.daSymbol.Source as FontImageSource;
-                tt.Glyph = HLinkMedia.HomeSymbol;
-                tt.Color = HLinkMedia.HomeSymbolColour;
-
-                if (tt.Glyph == null)
+                if (newHLinkMedia is null)
                 {
-                    DataStore.CN.NotifyError("MediaImageSkia (" + HLinkMedia.HLinkKey + ") Null Glyph");
+                    //DataStore.CN.NotifyError("Bad HlinkMediaModel (is null) passed to MediaImage");
+                    return;
                 }
 
-                if (tt.Color == null)
+                if (!newHLinkMedia.Valid)
                 {
-                    DataStore.CN.NotifyError("MediaImageSkia (" + HLinkMedia.HLinkKey + ") Null Colour");
+                    //DataStore.CN.NotifyError("Invalid HlinkMediaModel (" + HLinkMedia.HLinkKey + ") passed to MediaImage");
+                    return;
                 }
 
-                this.daSymbol.Source = tt;
+                if (newHLinkMedia == HLinkMedia)
+                {
+                    return;
+                }
 
-                if (UConHideSymbol)
+                // Input valid so start work
+                this.daSymbol.IsVisible = false;
+                this.daImage.IsVisible = false;
+                this.daImage.Source = null;
+
+                HLinkMedia = newHLinkMedia;
+
+                if (!HLinkMedia.Valid || !HLinkMedia.LinkToImage)
                 {
                     this.daSymbol.IsVisible = true;
+
+                    // Set symbol
+                    FontImageSource tt = this.daSymbol.Source as FontImageSource;
+                    tt.Glyph = HLinkMedia.HomeSymbol;
+                    tt.Color = HLinkMedia.HomeSymbolColour;
+
+                    if (tt.Glyph == null)
+                    {
+                        DataStore.CN.NotifyError("MediaImageSkia (" + HLinkMedia.HLinkKey + ") Null Glyph");
+                    }
+
+                    if (tt.Color == null)
+                    {
+                        DataStore.CN.NotifyError("MediaImageSkia (" + HLinkMedia.HLinkKey + ") Null Colour");
+                    }
+
+                    this.daSymbol.Source = tt;
+
+                    if (UConHideSymbol)
+                    {
+                        this.daSymbol.IsVisible = true;
+                    }
+
+                    return;
                 }
 
-                return;
+                // Have a media image to display
+                theMediaModel = HLinkMedia.DeRef;
+
+                ////if (theMediaModel.Id == "O0003")
+                ////{
+                ////}
+
+                //Debug.WriteLine(HLinkMedia.DeRef.MediaStorageFilePath, "MediaImageSkia");
+
+                if (string.IsNullOrEmpty(HLinkMedia.DeRef.MediaStorageFilePath))
+                {
+                    DataStore.CN.NotifyError("The media file path is null for Id:" + HLinkMedia.DeRef.Id);
+                    return;
+                }
+
+                this.daSymbol.IsVisible = false;
+
+                this.daImage.IsVisible = true;
+                this.daImage.DownsampleToViewSize = true;
+                this.daImage.Source = theMediaModel.MediaStorageFilePath;
             }
-
-            // Have a media image to display
-            theMediaModel = HLinkMedia.DeRef;
-
-            ////if (theMediaModel.Id == "O0003")
-            ////{
-            ////}
-
-            //Debug.WriteLine(HLinkMedia.DeRef.MediaStorageFilePath, "MediaImageSkia");
-
-            if (string.IsNullOrEmpty(HLinkMedia.DeRef.MediaStorageFilePath))
+            catch (Exception ex)
             {
-                DataStore.CN.NotifyError("The media file path is null for Id:" + HLinkMedia.DeRef.Id);
-                return;
+                throw;
             }
-
-            this.daSymbol.IsVisible = false;
-
-            this.daImage.IsVisible = true;
-            this.daImage.DownsampleToViewSize = true;
-            this.daImage.Source = theMediaModel.MediaStorageFilePath;
         }
     }
 }

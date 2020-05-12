@@ -36,11 +36,16 @@
     </NavigationPage.TitleView>
 
     <!--  Content  -->
-    <Grid>
+    <ScrollView>
 
-        <ucon:FlexSingleGroupSingleCard
+        <FlexLayout
+            BindableLayout.ItemTemplate="{StaticResource FamilyCardSmallDT}"
+            BindableLayout.ItemsSource="{Binding FamilySource, Mode=OneWay}"
+            Style="{StaticResource FlexLayoutCards}" />
+
+        <!--<ucon:FlexSingleGroupSingleCard
             x:Name="flexLayout"
             FsctSource="{Binding FamilySource, Mode=OneWay}"
-            FsctTemplate="{StaticResource FamilyCardSmallDT}" />
-    </Grid>
+            FsctTemplate="{StaticResource FamilyCardSmallDT}" />-->
+    </ScrollView>
 </ContentPage>
