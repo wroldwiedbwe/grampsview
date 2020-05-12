@@ -2,7 +2,7 @@
 
 fix(*): fix this thing
 
-Fixing the thing 
+Fixing the thing
 
 
 #Coding Rules#
