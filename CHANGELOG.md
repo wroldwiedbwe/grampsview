@@ -1,3 +1,7 @@
+## [5.5.17](https://github.com/phandcock/grampsview/compare/v5.5.16...v5.5.17) (2020-05-12)
+
+
+
 ## [5.5.16](https://github.com/phandcock/grampsview/compare/v5.5.15...v5.5.16) (2020-05-11)
 
 
@@ -21,15 +25,6 @@
 
 
 ## [5.5.13](https://github.com/phandcock/grampsview/compare/v5.5.12...v5.5.13) (2020-05-07)
-
-
-
-## [5.5.12](https://github.com/phandcock/grampsview/compare/v5.5.11...v5.5.12) (2020-05-07)
-
-
-### Bug Fixes
-
-* redundant code in Android theming ([2f82bd2](https://github.com/phandcock/grampsview/commit/2f82bd2d734d54c13f791807f5ca137e01ce3055))
 
 
 
