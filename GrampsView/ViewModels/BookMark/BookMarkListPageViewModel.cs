@@ -11,7 +11,6 @@ namespace GrampsView.ViewModels
 {
     using GrampsView.Common;
     using GrampsView.Data.DataView;
-    using GrampsView.Data.Model;
 
     using Prism.Events;
     using Prism.Navigation;
@@ -44,11 +43,7 @@ namespace GrampsView.ViewModels
         {
             get
             {
-                CardGroup t = new CardGroup();
-
-                t.Add(DV.BookMarkCollection.GetCardGroup());
-
-                return t;
+                return DV.BookMarkCollection.GetCardGroup();
             }
         }
     }

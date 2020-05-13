@@ -10,13 +10,10 @@
 namespace GrampsView.ViewModels
 {
     using GrampsView.Common;
-    using GrampsView.Data.Collections;
     using GrampsView.Data.DataView;
 
     using Prism.Events;
     using Prism.Navigation;
-
-    using System.Collections.ObjectModel;
 
     /// <summary>
     /// People Page View ViewModel.
