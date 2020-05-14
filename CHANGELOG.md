@@ -1,3 +1,12 @@
+## [5.5.21](https://github.com/phandcock/grampsview/compare/v5.5.20...v5.5.21) (2020-05-14)
+
+
+### Bug Fixes
+
+* tweak performance ([cfa7c44](https://github.com/phandcock/grampsview/commit/cfa7c4403d7e0db0048893e37f6692fcdd2d2f2a))
+
+
+
 ## [5.5.20](https://github.com/phandcock/grampsview/compare/v5.5.19...v5.5.20) (2020-05-14)
 
 
@@ -16,10 +25,6 @@
 
 
 ## [5.5.17](https://github.com/phandcock/grampsview/compare/v5.5.16...v5.5.17) (2020-05-12)
-
-
-
-## [5.5.16](https://github.com/phandcock/grampsview/compare/v5.5.15...v5.5.16) (2020-05-11)
 
 
 
