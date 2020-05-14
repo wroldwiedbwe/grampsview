@@ -38,50 +38,47 @@
         </Grid>
     </NavigationPage.TitleView>
 
-    <StackLayout>
+    <Grid>
+        <StackLayout>
 
-        <ucon:MediaCardLarge
-            Grid.Row="0"
-            BindingContext="{Binding PersonObject.HomeImageHLink.DeRef.HLink, Mode=OneWay}"
-            HorizontalOptions="Center" />
+            <ucon:MediaCardLarge BindingContext="{Binding PersonObject.HomeImageHLink.DeRef.HLink, Mode=OneWay}" HorizontalOptions="Center" />
 
-        <FlexLayout
-            Grid.Row="1"
-            BindableLayout.ItemTemplate="{StaticResource CardGroupTemplate}"
-            BindableLayout.ItemsSource="{Binding BaseHeader}"
-            HorizontalOptions="Start"
-            Style="{StaticResource FlexLayoutCards}" />
+            <FlexLayout
+                Grid.Row="1"
+                BindableLayout.ItemTemplate="{StaticResource CardGroupTemplate}"
+                BindableLayout.ItemsSource="{Binding BaseHeader}"
+                HorizontalOptions="Start"
+                Style="{StaticResource FlexLayoutCards}" />
 
-        <!--<ucon:FlexMultiGroupMultiCard
+            <!--<ucon:FlexMultiGroupMultiCard
             x:Name="BaseHeader"
             Grid.Row="1"
             FsctSource="{Binding BaseHeader}" />-->
 
-        <ucon:NoteCardFull Grid.Row="2" BindingContext="{Binding PersonBio}" />
+            <ucon:NoteCardFull BindingContext="{Binding PersonBio}" />
 
-        <FlexLayout
-            Grid.Row="3"
-            BindableLayout.ItemTemplate="{StaticResource CardGroupTemplate}"
-            BindableLayout.ItemsSource="{Binding BaseDetail}"
-            HorizontalOptions="Start"
-            Style="{StaticResource FlexLayoutCards}" />
+            <FlexLayout
+                BindableLayout.ItemTemplate="{StaticResource CardGroupTemplate}"
+                BindableLayout.ItemsSource="{Binding BaseDetail}"
+                HorizontalOptions="Start"
+                Style="{StaticResource FlexLayoutCards}" />
 
-        <!--<ucon:FlexMultiGroupMultiCard
+            <!--<ucon:FlexMultiGroupMultiCard
             x:Name="BaseDetail"
             Grid.Row="3"
             FsctSource="{Binding BaseDetail}" />-->
 
-        <FlexLayout
-            Grid.Row="4"
-            BindableLayout.ItemTemplate="{StaticResource CardGroupTemplate}"
-            BindableLayout.ItemsSource="{Binding BaseBackLinks}"
-            HorizontalOptions="Start"
-            Style="{StaticResource FlexLayoutCards}" />
+            <FlexLayout
+                BindableLayout.ItemTemplate="{StaticResource CardGroupTemplate}"
+                BindableLayout.ItemsSource="{Binding BaseBackLinks}"
+                HorizontalOptions="Start"
+                Style="{StaticResource FlexLayoutCards}" />
 
-        <!--<ucon:FlexMultiGroupMultiCard
+            <!--<ucon:FlexMultiGroupMultiCard
             x:Name="BaseBackLinks"
             Grid.Row="4"
             FsctSource="{Binding BaseBackLinks}"
             Style="{DynamicResource BackLinkCollection}" />-->
-    </StackLayout>
+        </StackLayout>
+    </Grid>
 </ContentPage>
