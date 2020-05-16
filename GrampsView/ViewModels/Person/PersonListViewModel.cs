@@ -15,6 +15,8 @@ namespace GrampsView.ViewModels
     using Prism.Events;
     using Prism.Navigation;
 
+    using System;
+
     /// <summary>
     /// People Page View ViewModel.
     /// </summary>

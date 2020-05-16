@@ -6,27 +6,28 @@
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="HeaderCardLargeRoot"
     Padding="0"
-    BindingContextChanged="HeaderCardLargeRoot_BindingContextChanged"
-    Style="{DynamicResource FrameLargeVariableCardStyleNS}">
-    <Frame.Content>
+    BindingContextChanged="HeaderCardLargeRoot_BindingContextChanged">
+    <Frame Style="{DynamicResource FrameLargeVariableCardStyleNS}">
+        <Frame.Content>
 
-        <Grid
-            x:Name="controlRoot"
-            Margin="0"
-            Padding="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+            <Grid
+                x:Name="controlRoot"
+                Margin="0"
+                Padding="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <ucon:ListLineCardLarge
-                x:Name="LLCL"
-                Grid.Row="0"
-                Padding="0"
-                BorderColor="Transparent" />
-        </Grid>
-    </Frame.Content>
+                <ucon:ListLineCardLarge
+                    x:Name="LLCL"
+                    Grid.Row="0"
+                    Padding="0"
+                    BorderColor="Transparent" />
+            </Grid>
+        </Frame.Content>
+    </Frame>
 </Frame>

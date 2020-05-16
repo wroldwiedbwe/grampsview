@@ -6,11 +6,13 @@ namespace GrampsView.UserControls
 {
     using Xamarin.Forms;
 
-    /// <summary>Code behind for Source Card.</summary>
-    public partial class SourceCardSmall : Frame
+    /// <summary>
+    /// Code behind for Source Card.
+    /// </summary>
+    public partial class SourceCardSmall : Grid
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SourceCardSmall" /> class.
+        /// Initializes a new instance of the <see cref="SourceCardSmall"/> class.
         /// </summary>
         public SourceCardSmall()
         {

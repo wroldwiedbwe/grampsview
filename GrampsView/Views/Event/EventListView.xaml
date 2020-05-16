@@ -3,7 +3,7 @@
     x:Class="GrampsView.Views.EventListPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:userControls="clr-namespace:GrampsView.UserControls"
+    xmlns:ucon="clr-namespace:GrampsView.UserControls"
     ControlTemplate="{StaticResource ListPageTemplate}"
     Style="{DynamicResource GVBaseContentPage}">
 
@@ -36,16 +36,20 @@
     </NavigationPage.TitleView>
 
     <!--  Content  -->
-    <ScrollView>
+    <ucon:CollectionSingleCard FsctSource="{Binding EventSource, Mode=OneWay}" FsctTemplate="{StaticResource EventCardSmallDT}" />
+
+    <!--<ScrollView>
 
         <FlexLayout
             BindableLayout.ItemTemplate="{StaticResource EventCardSmallDT}"
             BindableLayout.ItemsSource="{Binding EventSource, Mode=OneWay}"
             Style="{StaticResource FlexLayoutCards}" />
 
-        <!--<userControls:FlexSingleGroupSingleCard
+    -->
+    <!--<userControls:FlexSingleGroupSingleCard
             x:Name="flexLayout"
             FsctSource="{Binding EventSource, Mode=OneWay}"
             FsctTemplate="{StaticResource EventCardSmallDT}" />-->
-    </ScrollView>
+    <!--
+    </ScrollView>-->
 </ContentPage>

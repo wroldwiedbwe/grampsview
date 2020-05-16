@@ -8,15 +8,15 @@ namespace GrampsView.UserControls
 
     /// <summary>
     /// </summary>
-    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector" />
+    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector"/>
     /// /// ///
-    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector2" />
+    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector2"/>
     /// /// ///
-    /// <seealso cref="Windows.UI.Xaml.Controls.UserControl" />
-    public partial class AttributeCardSmall : Frame
+    /// <seealso cref="Windows.UI.Xaml.Controls.UserControl"/>
+    public partial class AttributeCardSmall : Grid
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AttributeCardSmall" /> class.
+        /// Initializes a new instance of the <see cref="AttributeCardSmall"/> class.
         /// </summary>
         public AttributeCardSmall()
         {

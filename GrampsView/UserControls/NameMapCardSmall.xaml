@@ -1,67 +1,68 @@
-﻿<Frame
+﻿<Grid
     x:Class="GrampsView.UserControls.NameMapCardSmall"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
-    xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    Style="{DynamicResource FrameSmallFixedCardStyle}">
-    <Frame.Content>
-
-        <Grid
-            x:Name="controlRoot"
-            FlexLayout.AlignSelf="Start"
-            FlexLayout.Basis="{OnIdiom Phone='50%',
-                                       Tablet='33%',
-                                       Desktop='33%'}">
-
-            <Grid.GestureRecognizers>
-                <TapGestureRecognizer Command="{prism:NavigateTo 'NameMapDetailPage'}">
-                    <TapGestureRecognizer.CommandParameter>
-                        <prism:NavigationParameter Key="hlink" Value="{Binding HLink}" />
-                    </TapGestureRecognizer.CommandParameter>
-                </TapGestureRecognizer>
-            </Grid.GestureRecognizers>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+    xmlns:ucon="clr-namespace:GrampsView.UserControls">
+    <Frame Style="{DynamicResource FrameSmallFixedCardStyle}">
+        <Frame.Content>
 
             <Grid
-                Grid.Row="0"
-                Grid.RowSpan="2"
-                Grid.Column="0"
-                Style="{DynamicResource CardImageBackground}">
+                x:Name="controlRoot"
+                FlexLayout.AlignSelf="Start"
+                FlexLayout.Basis="{OnIdiom Phone='50%',
+                                           Tablet='33%',
+                                           Desktop='33%'}">
 
-                <ucon:MediaImageSkia
-                    x:Name="AnchorImage"
-                    BindingContext="{Binding HomeImageHLink, Mode=OneWay}"
-                    Style="{DynamicResource MediaImageStyle}" />
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{prism:NavigateTo 'NameMapDetailPage'}">
+                        <TapGestureRecognizer.CommandParameter>
+                            <prism:NavigationParameter Key="hlink" Value="{Binding HLink}" />
+                        </TapGestureRecognizer.CommandParameter>
+                    </TapGestureRecognizer>
+                </Grid.GestureRecognizers>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    x:Name="NameTextBlock"
+                    Grid.Column="1"
+                    Style="{DynamicResource GVLabelStyleLarge}"
+                    Text="{Binding HLinkKey, Mode=OneWay}"
+                    TextColor="{DynamicResource OnSecondaryColor}" />
+
+                <Grid
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="0"
+                    Style="{DynamicResource CardImageBackground}">
+
+                    <ucon:MediaImageSkia
+                        x:Name="AnchorImage"
+                        BindingContext="{Binding HomeImageHLink, Mode=OneWay}"
+                        Style="{DynamicResource MediaImageStyle}" />
+                </Grid>
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Style="{DynamicResource GVSymbolIconSmallCardType}">
+                    <Image.Source>
+                        <FontImageSource
+                            FontFamily="{DynamicResource MaterialFontFamily}"
+                            Glyph="{Binding HomeImageHLink.HomeSymbol}"
+                            Color="{Binding HomeImageHLink.HomeSymbolColour}" />
+                    </Image.Source>
+                </Image>
             </Grid>
-
-            <Label
-                x:Name="NameTextBlock"
-                Grid.Column="1"
-                Style="{DynamicResource GVLabelStyleLarge}"
-                Text="{Binding HLinkKey, Mode=OneWay}"
-                TextColor="{DynamicResource OnSecondaryColor}" />
-
-            <Image
-                Grid.Row="1"
-                Grid.Column="2"
-                Style="{DynamicResource GVSymbolIconSmallCardType}">
-                <Image.Source>
-                    <FontImageSource
-                        FontFamily="{DynamicResource MaterialFontFamily}"
-                        Glyph="{Binding HomeImageHLink.HomeSymbol}"
-                        Color="{Binding HomeImageHLink.HomeSymbolColour}" />
-                </Image.Source>
-            </Image>
-        </Grid>
-    </Frame.Content>
-</Frame>
+        </Frame.Content>
+    </Frame>
+</Grid>

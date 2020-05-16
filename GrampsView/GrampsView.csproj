@@ -267,6 +267,9 @@
     <Compile Update="UserControls\General\FlexBase.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <Compile Update="UserControls\General\CollectionSingleCard.xaml.cs">
+      <DependentUpon>CollectionSingleCard.xaml</DependentUpon>
+    </Compile>
     <Compile Update="UserControls\General\TopMenu.xaml.cs">
       <DependentUpon>TopMenu.xaml</DependentUpon>
     </Compile>

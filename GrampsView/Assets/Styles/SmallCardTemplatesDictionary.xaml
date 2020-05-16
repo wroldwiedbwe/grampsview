@@ -5,9 +5,6 @@
     xmlns:common="clr-namespace:GrampsView.Common"
     xmlns:usercontrols="clr-namespace:GrampsView.UserControls">
 
-    <!--
-    -->
-
     <DataTemplate x:Key="AddressCardSmallDT">
         <usercontrols:AddressCardSmall />
     </DataTemplate>
@@ -15,10 +12,6 @@
     <DataTemplate x:Key="AttributeCardSmallDT">
         <usercontrols:AttributeCardSmall />
     </DataTemplate>
-
-    <!--<DataTemplate x:Key="BookMarkCardSmallDT">
-        <usercontrols:BookMarkCardSmall />
-    </DataTemplate>-->
 
     <DataTemplate x:Key="CitationCardSmallDT">
         <usercontrols:CitationCardSmall />
@@ -36,21 +29,9 @@
         <usercontrols:ListLineCardSmall />
     </DataTemplate>
 
-    <!--<DataTemplate x:Key="HLinkCitationCardSmallDT">
-        <usercontrols:HLinkCitationCardSmall />
-    </DataTemplate>
-
-    <DataTemplate x:Key="HLinkEventCardSmallDT">
-        <usercontrols:HLinkEventCardSmall />
-    </DataTemplate>-->
-
     <DataTemplate x:Key="MediaCardSmallDT">
         <usercontrols:MediaCardSmall />
     </DataTemplate>
-
-    <!--<DataTemplate x:Key="NameMapCardSmall" x:DataType="model:NameMapModel">
-        <userControls:NameMapCardSmall />
-    </DataTemplate>-->
 
     <DataTemplate x:Key="NoteCardSmallDT">
         <usercontrols:NoteCardSmall />

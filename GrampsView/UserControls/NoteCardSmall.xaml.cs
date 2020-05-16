@@ -9,15 +9,15 @@ namespace GrampsView.UserControls
     /// <summary>
     /// The Code-Behind for the Note Card.
     /// </summary>
-    /// <seealso cref="Windows.UI.Xaml.Controls.UserControl" />
+    /// <seealso cref="Windows.UI.Xaml.Controls.UserControl"/>
     /// /// /// ///
-    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector" />
+    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector"/>
     /// /// /// ///
-    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector2" />
-    public partial class NoteCardSmall : Frame
+    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector2"/>
+    public partial class NoteCardSmall : Grid
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NoteCardSmall" /> class.
+        /// Initializes a new instance of the <see cref="NoteCardSmall"/> class.
         /// </summary>
         public NoteCardSmall()
         {

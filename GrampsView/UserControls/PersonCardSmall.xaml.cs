@@ -8,7 +8,7 @@ namespace GrampsView.UserControls
     /// <summary>
     /// </summary>
     /// <seealso cref="Xamarin.Forms.Frame"/>
-    public partial class PersonCardSmall : ContentView
+    public partial class PersonCardSmall : Grid
     {
         public PersonCardSmall()
         {

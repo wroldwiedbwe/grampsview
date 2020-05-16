@@ -1,74 +1,75 @@
-﻿<Frame
+﻿<Grid
     x:Class="GrampsView.UserControls.CitationCardSmall"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
-    xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    Style="{DynamicResource FrameSmallFixedCardStyle}">
-    <Frame.Content>
-        <Grid x:Name="controlRoot">
+    xmlns:ucon="clr-namespace:GrampsView.UserControls">
+    <Frame Style="{DynamicResource FrameSmallFixedCardStyle}">
+        <Frame.Content>
+            <Grid x:Name="controlRoot">
 
-            <Grid.GestureRecognizers>
-                <TapGestureRecognizer Command="{prism:NavigateTo 'CitationDetailPage'}">
-                    <TapGestureRecognizer.CommandParameter>
-                        <prism:NavigationParameter Key="hlink" Value="{Binding}" />
-                    </TapGestureRecognizer.CommandParameter>
-                </TapGestureRecognizer>
-            </Grid.GestureRecognizers>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{prism:NavigateTo 'CitationDetailPage'}">
+                        <TapGestureRecognizer.CommandParameter>
+                            <prism:NavigationParameter Key="hlink" Value="{Binding}" />
+                        </TapGestureRecognizer.CommandParameter>
+                    </TapGestureRecognizer>
+                </Grid.GestureRecognizers>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
 
-            <Grid
-                Grid.Row="0"
-                Grid.RowSpan="2"
-                Grid.Column="0"
-                Style="{DynamicResource CardImageBackground}">
-
-                <ucon:MediaImageSkia
-                    x:Name="AnchorImage"
+                <Grid
                     Grid.Row="0"
                     Grid.RowSpan="2"
                     Grid.Column="0"
-                    BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
-                    Style="{DynamicResource MediaImageStyle}" />
+                    Style="{DynamicResource CardImageBackground}">
+
+                    <ucon:MediaImageSkia
+                        x:Name="AnchorImage"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="0"
+                        BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
+                        Style="{DynamicResource MediaImageStyle}" />
+                </Grid>
+
+                <Label
+                    x:Name="idTextBlock"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Style="{DynamicResource GVCardLabelStyleSmall}"
+                    Text="{Binding DeRef.GetDefaultText, Mode=OneWay}" />
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Style="{DynamicResource GVCardLabelStyleSmall}"
+                    Text="{Binding DeRef.GDateContent.GetShortDateAsString, Mode=OneWay}" />
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Style="{DynamicResource GVSymbolIconSmallCardType}">
+                    <Image.Source>
+                        <FontImageSource
+                            FontFamily="{DynamicResource MaterialFontFamily}"
+                            Glyph="{Binding DeRef.HomeImageHLink.HomeSymbol}"
+                            Color="{Binding DeRef.HomeImageHLink.HomeSymbolColour}" />
+                    </Image.Source>
+                </Image>
             </Grid>
-
-            <Label
-                x:Name="idTextBlock"
-                Grid.Row="0"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                Style="{DynamicResource GVCardLabelStyleSmall}"
-                Text="{Binding DeRef.GetDefaultText, Mode=OneWay}" />
-
-            <Label
-                Grid.Row="1"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                Style="{DynamicResource GVCardLabelStyleSmall}"
-                Text="{Binding DeRef.GDateContent.GetShortDateAsString, Mode=OneWay}" />
-
-            <Image
-                Grid.Row="1"
-                Grid.Column="3"
-                Style="{DynamicResource GVSymbolIconSmallCardType}">
-                <Image.Source>
-                    <FontImageSource
-                        FontFamily="{DynamicResource MaterialFontFamily}"
-                        Glyph="{Binding DeRef.HomeImageHLink.HomeSymbol}"
-                        Color="{Binding DeRef.HomeImageHLink.HomeSymbolColour}" />
-                </Image.Source>
-            </Image>
-        </Grid>
-    </Frame.Content>
-</Frame>
+        </Frame.Content>
+    </Frame>
+</Grid>

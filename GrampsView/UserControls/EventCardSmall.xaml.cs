@@ -10,15 +10,15 @@ namespace GrampsView.UserControls
 
     /// <summary>
     /// </summary>
-    /// <seealso cref="Windows.UI.Xaml.Controls.UserControl" />
+    /// <seealso cref="Windows.UI.Xaml.Controls.UserControl"/>
     /// /// /// /// /// /// ///
-    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector" />
+    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector"/>
     /// /// /// /// /// /// ///
-    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector2" />
-    public partial class EventCardSmall : Frame
+    /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector2"/>
+    public partial class EventCardSmall : Grid
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EventCardLarge" /> class.
+        /// Initializes a new instance of the <see cref="EventCardLarge"/> class.
         /// </summary>
         public EventCardSmall()
         {

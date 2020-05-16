@@ -9,6 +9,8 @@ namespace GrampsView.ViewModels
 
     using Prism.Events;
     using Prism.Navigation;
+    using System;
+    using System.Numerics;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -40,6 +42,14 @@ namespace GrampsView.ViewModels
         {
             BaseTitle = "Person Detail";
             BaseTitleIcon = CommonConstants.IconPeople;
+        }
+
+        public int NumColumns
+        {
+            get
+            {
+                return (int)(Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Width / CardWidths.Current.CardSmallWidth);
+            }
         }
 
         /// <summary>

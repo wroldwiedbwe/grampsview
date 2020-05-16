@@ -6,7 +6,7 @@
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PersonNameCardSmall : Frame
+    public partial class PersonNameCardSmall : Grid
     {
         public PersonNameCardSmall()
         {

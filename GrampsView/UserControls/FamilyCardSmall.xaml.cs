@@ -6,10 +6,10 @@ namespace GrampsView.UserControls
 {
     using Xamarin.Forms;
 
-    public partial class FamilyCardSmall : Frame
+    public partial class FamilyCardSmall : Grid
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FamilyCardSmall" /> class.
+        /// Initializes a new instance of the <see cref="FamilyCardSmall"/> class.
         /// </summary>
         public FamilyCardSmall()
         {

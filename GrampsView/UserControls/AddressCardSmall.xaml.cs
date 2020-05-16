@@ -14,7 +14,7 @@ namespace GrampsView.UserControls
     /// <seealso cref="Windows.UI.Xaml.Markup.IComponentConnector2"/>
     /// /// /// /// /// /// /// /// /// /// /// /// ///
     /// <seealso cref="Windows.UI.Xaml.Controls.UserControl"/>
-    public partial class AddressCardSmall : Frame
+    public partial class AddressCardSmall : Grid
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AddressCardSmall"/> class.

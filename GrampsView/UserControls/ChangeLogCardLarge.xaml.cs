@@ -12,7 +12,7 @@ namespace GrampsView.UserControls
 
     using Xamarin.Forms;
 
-    public partial class ChangeLogCardLarge : Frame
+    public partial class ChangeLogCardLarge : Grid
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="HeaderCardLarge"/> class.

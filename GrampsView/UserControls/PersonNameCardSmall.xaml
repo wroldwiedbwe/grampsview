@@ -1,39 +1,40 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<Frame
+<Grid
     x:Class="GrampsView.UserControls.PersonNameCardSmall"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     BindingContextChanged="Frame_BindingContextChanged"
-    MinimumHeightRequest="{DynamicResource GVDetailCardHeightLarge}"
-    Style="{DynamicResource FrameSmallVariableCardStyleNS}">
-    <Frame.Content>
+    MinimumHeightRequest="{DynamicResource GVDetailCardHeightLarge}">
+    <Frame Style="{DynamicResource FrameSmallVariableCardStyleNS}">
+        <Frame.Content>
 
-        <StackLayout BindableLayout.ItemsSource="{Binding .}">
-            <BindableLayout.ItemTemplate>
+            <StackLayout BindableLayout.ItemsSource="{Binding .}">
+                <BindableLayout.ItemTemplate>
 
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
 
-                        <Label
-                            Grid.Column="0"
-                            HorizontalOptions="StartAndExpand"
-                            Text="{Binding Label}"
-                            TextColor="{DynamicResource OnPrimaryColor}" />
-                        <Label
-                            Grid.Column="1"
-                            HorizontalOptions="EndAndExpand"
-                            HorizontalTextAlignment="End"
-                            LineBreakMode="WordWrap"
-                            Text="{Binding Value}"
-                            TextColor="{DynamicResource OnSecondaryColor}"
-                            VerticalTextAlignment="Start" />
-                    </Grid>
-                </DataTemplate>
-            </BindableLayout.ItemTemplate>
-        </StackLayout>
-    </Frame.Content>
-</Frame>
+                            <Label
+                                Grid.Column="0"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding Label}"
+                                TextColor="{DynamicResource OnPrimaryColor}" />
+                            <Label
+                                Grid.Column="1"
+                                HorizontalOptions="EndAndExpand"
+                                HorizontalTextAlignment="End"
+                                LineBreakMode="WordWrap"
+                                Text="{Binding Value}"
+                                TextColor="{DynamicResource OnSecondaryColor}"
+                                VerticalTextAlignment="Start" />
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </Frame.Content>
+    </Frame>
+</Grid>
