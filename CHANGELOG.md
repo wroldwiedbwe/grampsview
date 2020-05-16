@@ -1,3 +1,7 @@
+## [5.5.23](https://github.com/phandcock/grampsview/compare/v5.5.22...v5.5.23) (2020-05-16)
+
+
+
 ## [5.5.22](https://github.com/phandcock/grampsview/compare/v5.5.21...v5.5.22) (2020-05-15)
 
 
@@ -26,10 +30,6 @@
 
 
 ## [5.5.19](https://github.com/phandcock/grampsview/compare/v5.5.18...v5.5.19) (2020-05-13)
-
-
-
-## [5.5.18](https://github.com/phandcock/grampsview/compare/v5.5.17...v5.5.18) (2020-05-12)
 
 
 
