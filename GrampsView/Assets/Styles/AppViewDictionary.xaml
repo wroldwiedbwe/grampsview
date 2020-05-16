@@ -205,6 +205,13 @@
     </Style>
 
     <Style
+        x:Key="FrameSmallFixedCardStyle"
+        BasedOn="{StaticResource FrameCardSmallStyle}"
+        TargetType="Frame">
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style
         x:Key="FrameSmallVariableCardStyle"
         BasedOn="{StaticResource FrameCardSmallStyle}"
         TargetType="Frame">
@@ -217,14 +224,6 @@
         BasedOn="{StaticResource FrameSmallVariableCardStyle}"
         TargetType="Frame">
         <Setter Property="BorderColor" Value="Transparent" />
-    </Style>
-
-    <Style
-        x:Key="FrameSmallFixedCardStyle"
-        BasedOn="{StaticResource FrameCardSmallStyle}"
-        TargetType="Frame">
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="HeightRequest" Value="{DynamicResource GVDetailCardHeightSmall}" />
     </Style>
 
     <Style
@@ -319,6 +318,12 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryVariantLightColor}" />
     </Style>
+
+    <Style x:Key="GridSmallFixedCardStyle" TargetType="Grid">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HeightRequest" Value="{DynamicResource GVDetailCardHeightSmall}" />
+    </Style>
+
     <!--
         ******************************************************
         Image  Styles

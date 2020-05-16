@@ -44,14 +44,6 @@ namespace GrampsView.ViewModels
             BaseTitleIcon = CommonConstants.IconPeople;
         }
 
-        public int NumColumns
-        {
-            get
-            {
-                return (int)(Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Width / CardWidths.Current.CardSmallWidth);
-            }
-        }
-
         /// <summary>
         /// Gets or sets the person biograqphical details.
         /// </summary>
