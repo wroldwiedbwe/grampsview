@@ -1,3 +1,12 @@
+## [5.5.24](https://github.com/phandcock/grampsview/compare/v5.5.23...v5.5.24) (2020-05-16)
+
+
+### Bug Fixes
+
+* viewDetail pages and FlexLayout height bug ([55754d3](https://github.com/phandcock/grampsview/commit/55754d3b3dd4575b8e74ca2e208ed4d89d31b00b))
+
+
+
 ## [5.5.23](https://github.com/phandcock/grampsview/compare/v5.5.22...v5.5.23) (2020-05-16)
 
 
@@ -26,10 +35,6 @@
 ### Bug Fixes
 
 * fix PersonDetail view widths ([b557658](https://github.com/phandcock/grampsview/commit/b557658796cf129a78ecea830034b16b85d7131a))
-
-
-
-## [5.5.19](https://github.com/phandcock/grampsview/compare/v5.5.18...v5.5.19) (2020-05-13)
 
 
 
