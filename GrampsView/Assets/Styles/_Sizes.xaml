@@ -6,9 +6,9 @@
         ******************************************************
     -->
 
-    <x:Double x:Key="GVPageMargin">
-        10
-    </x:Double>
+    <x:String x:Key="GVPageMargin">
+        2%
+    </x:String>
 
     <x:Double x:Key="GVMarginDSmall">
         1

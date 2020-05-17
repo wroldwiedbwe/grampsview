@@ -10,12 +10,12 @@
 
     <Frame.Content>
 
-        <Grid
-            x:Name="controlRoot"
-            FlexLayout.AlignSelf="Start"
-            FlexLayout.Basis="{OnIdiom Phone='50%',
-                                       Tablet='33%',
-                                       Desktop='33%'}">
+        <Grid x:Name="controlRoot" FlexLayout.AlignSelf="Start">
+            <!--
+                FlexLayout.Basis="{OnIdiom Phone='50%',
+                Tablet='33%',
+                Desktop='33%'}">
+            -->
 
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{prism:NavigateTo 'MediaDetailPage'}">

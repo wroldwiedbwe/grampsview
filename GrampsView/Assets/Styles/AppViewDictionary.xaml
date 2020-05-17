@@ -89,7 +89,7 @@
     -->
     <Style x:Key="CollectionViewBase" TargetType="CollectionView">
         <Setter Property="Margin" Value="1" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDark2Color}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
     </Style>
 
     <!--
