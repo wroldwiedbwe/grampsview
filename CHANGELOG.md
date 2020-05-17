@@ -1,3 +1,12 @@
+## [5.5.26](https://github.com/phandcock/grampsview/compare/v5.5.25...v5.5.26) (2020-05-17)
+
+
+### Bug Fixes
+
+* size of page margins ([d4cddca](https://github.com/phandcock/grampsview/commit/d4cddca1c7da5fb09c4f9d34eae6c68246a07973))
+
+
+
 ## [5.5.25](https://github.com/phandcock/grampsview/compare/v5.5.24...v5.5.25) (2020-05-17)
 
 
@@ -21,15 +30,6 @@
 ### Bug Fixes
 
 * update PFX certificate name ([fd1db65](https://github.com/phandcock/grampsview/commit/fd1db65c172b800b097964bd3a23a4b54b521d09))
-
-
-
-## [5.5.21](https://github.com/phandcock/grampsview/compare/v5.5.20...v5.5.21) (2020-05-14)
-
-
-### Bug Fixes
-
-* tweak performance ([cfa7c44](https://github.com/phandcock/grampsview/commit/cfa7c4403d7e0db0048893e37f6692fcdd2d2f2a))
 
 
 
