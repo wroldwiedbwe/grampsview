@@ -50,6 +50,13 @@ namespace GrampsView.UserControls
             }
         }
 
+        public void ReloadImage()
+        {
+            image.ReloadImage();
+
+            image.LoadingPlaceholder = null;
+        }
+
         private static void HandleVMPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             MediaImageFullCard mifModel = (bindable as MediaImageFullCard);
@@ -58,11 +65,11 @@ namespace GrampsView.UserControls
 
             if (!(imageMediaModel is null) && (imageMediaModel.Valid))
             {
-                mifModel.mediaFull.UCHLinkMediaModel = imageMediaModel;
+                mifModel.image.Source = imageMediaModel.DeRef.MediaStorageFilePath;
             }
 
             // Check if anything to display
-            if (mifModel.mediaFull.IsVisible)
+            if (mifModel.image.IsVisible)
             {
                 mifModel.IsVisible = true;
             }

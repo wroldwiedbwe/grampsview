@@ -209,7 +209,7 @@
         x:Key="FrameCardSmallStyle"
         BasedOn="{StaticResource FrameCardStyle}"
         TargetType="Frame">
-        <Setter Property="WidthRequest" Value="{Binding CardSmallWidth, Source={x:Static common:CardWidths.Current}, Mode=OneWay}" />
+        <Setter Property="WidthRequest" Value="{Binding CardSmallWidth, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
         <Setter Property="Padding" Value="3" />
         <Setter Property="Margin" Value="2" />
     </Style>
@@ -225,7 +225,7 @@
         x:Key="FrameSmallVariableCardStyle"
         BasedOn="{StaticResource FrameCardSmallStyle}"
         TargetType="Frame">
-        <Setter Property="MinimumHeightRequest" Value="{DynamicResource GVDetailCardHeightSmall}" />
+        <Setter Property="MinimumHeightRequest" Value="{Binding CardSmallHeight, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
         <Setter Property="HasShadow" Value="True" />
     </Style>
 
@@ -251,7 +251,7 @@
         x:Key="FrameCardMediumStyle"
         BasedOn="{StaticResource FrameCardStyle}"
         TargetType="Frame">
-        <Setter Property="WidthRequest" Value="{Binding CardMediumWidth, Source={x:Static common:CardWidths.Current}, Mode=OneWay}" />
+        <Setter Property="WidthRequest" Value="{Binding CardMediumWidth, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
         <Setter Property="Padding" Value="4" />
         <Setter Property="Margin" Value="3" />
     </Style>
@@ -264,7 +264,7 @@
         x:Key="FrameCardLargeStyle"
         BasedOn="{StaticResource FrameCardStyle}"
         TargetType="Frame">
-        <Setter Property="WidthRequest" Value="{Binding CardLargeWidth, Source={x:Static common:CardWidths.Current}, Mode=OneWay}" />
+        <Setter Property="WidthRequest" Value="{Binding CardLargeWidth, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
         <Setter Property="Padding" Value="4" />
         <Setter Property="Margin" Value="3" />
     </Style>
@@ -273,8 +273,7 @@
         x:Key="FrameLargeFixedCardStyle"
         BasedOn="{StaticResource FrameCardLargeStyle}"
         TargetType="Frame">
-        <Setter Property="HeightRequest" Value="{DynamicResource GVDetailCardHeightLarge}" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceColor}" />
+        <Setter Property="HeightRequest" Value="{Binding CardLargeHeight, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
     </Style>
 
     <Style
@@ -293,10 +292,11 @@
     </Style>
 
     <Style
-        x:Key="MediaLargeImageStyle"
-        BasedOn="{StaticResource FrameLargeFixedCardStyle}"
+        x:Key="MediaImageFull"
+        BasedOn="{StaticResource FrameCardLargeStyle}"
         TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="{DynamicResource SurfaceVariantDark2Color}" />
+        <Setter Property="WidthRequest" Value="{Binding CardLargeDoubleWidth, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
+        <Setter Property="HeightRequest" Value="{Binding CardLargeDoubleWidth, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
     </Style>
 
     <!--  Create a Variable Height Large Card Style  -->
@@ -305,12 +305,13 @@
         BasedOn="{StaticResource FrameCardLargeStyle}"
         TargetType="Frame">
         <Setter Property="BorderColor" Value="{DynamicResource PrimaryColor}" />
+        <Setter Property="MinimumHeightRequest" Value="{Binding CardLargeHeight, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
     </Style>
 
     <!--  Create a Variable Height Large Card Style - Not Selectable  -->
     <Style
         x:Key="FrameLargeVariableCardStyleNS"
-        BasedOn="{StaticResource FrameCardLargeStyle}"
+        BasedOn="{StaticResource FrameLargeVariableCardStyle}"
         TargetType="Frame">
         <Setter Property="BorderColor" Value="Transparent" />
     </Style>
@@ -331,7 +332,7 @@
 
     <Style x:Key="GridSmallFixedCardStyle" TargetType="Grid">
         <Setter Property="Padding" Value="0" />
-        <Setter Property="HeightRequest" Value="{DynamicResource GVDetailCardHeightSmall}" />
+        <Setter Property="HeightRequest" Value="{Binding CardSmallHeight, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
     </Style>
 
     <!--

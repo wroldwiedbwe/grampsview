@@ -73,7 +73,7 @@
         {
             CollectionSingleCard t = sender as CollectionSingleCard;
 
-            NumColumns = (Int32)(t.Width / CardWidths.Current.CardSmallWidth + 1);  // +1 for padding
+            NumColumns = (Int32)(t.Width / CardSizes.Current.CardSmallWidth + 1);  // +1 for padding
         }
     }
 }

@@ -146,6 +146,9 @@ namespace GrampsView.Data.ExternalStorageNS
                 newMediaModel.HomeImageHLink.HomeImageType = CommonConstants.HomeImageTypeThumbNail;
                 newMediaModel.IsClippedFile = true;
 
+                newMediaModel.MetaDataHeight = cropRect.Height;
+                newMediaModel.MetaDataWidth = cropRect.Width;
+
                 DataStore.DS.MediaData.Add(newMediaModel);
                 //await StorePostLoad.fixMediaFile(newMediaModel).ConfigureAwait(false);
             }

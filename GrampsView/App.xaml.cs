@@ -145,9 +145,7 @@ namespace GrampsView
             //CommonTheming.SetAppTheme();
 
             // Fake set to reset them
-            CardWidths.Current.CardSmallWidth = 0;
-            CardWidths.Current.CardMediumWidth = 0;
-            CardWidths.Current.CardLargeWidth = 0;
+            CardSizes.Current.ReCalculateCardWidths();
 
             IPlatformSpecific ps = Container.Resolve<IPlatformSpecific>();
 
@@ -287,10 +285,8 @@ namespace GrampsView
                 // TODO fu because seems to be one rotation behind on emulator
                 DataStore.AD.CurrentOrientation = e.DisplayInfo.Orientation;
 
-                // Fake set to reset them
-                CardWidths.Current.CardSmallWidth = 0;
-                CardWidths.Current.CardMediumWidth = 0;
-                CardWidths.Current.CardLargeWidth = 0;
+                // Card width reset
+                CardSizes.Current.ReCalculateCardWidths();
             }
         }
     }

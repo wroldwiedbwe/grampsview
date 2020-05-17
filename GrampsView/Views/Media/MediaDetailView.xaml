@@ -56,7 +56,12 @@
             Grid.Row="0"
             FsctSource="{Binding BaseHeader}" />
 
-        <ffimageloading:CachedImage
+        <ucon:MediaImageFullCard
+            Grid.Row="1"
+            HorizontalOptions="CenterAndExpand"
+            UCMedia="{Binding CurrentMediaObject.HomeImageHLink}" />
+
+        <!--<ffimageloading:CachedImage
             x:Name="image"
             Grid.Row="1"
             Aspect="AspectFit"
@@ -64,7 +69,7 @@
             <ffimageloading:CachedImage.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding OpenImageCommand}" NumberOfTapsRequired="2" />
             </ffimageloading:CachedImage.GestureRecognizers>
-        </ffimageloading:CachedImage>
+        </ffimageloading:CachedImage>-->
 
         <ucon:FlexMultiGroupMultiCard
             x:Name="BaseDetail"
