@@ -1,3 +1,7 @@
+## [5.5.27](https://github.com/phandcock/grampsview/compare/v5.5.26...v5.5.27) (2020-05-17)
+
+
+
 ## [5.5.26](https://github.com/phandcock/grampsview/compare/v5.5.25...v5.5.26) (2020-05-17)
 
 
@@ -21,15 +25,6 @@
 
 
 ## [5.5.23](https://github.com/phandcock/grampsview/compare/v5.5.22...v5.5.23) (2020-05-16)
-
-
-
-## [5.5.22](https://github.com/phandcock/grampsview/compare/v5.5.21...v5.5.22) (2020-05-15)
-
-
-### Bug Fixes
-
-* update PFX certificate name ([fd1db65](https://github.com/phandcock/grampsview/commit/fd1db65c172b800b097964bd3a23a4b54b521d09))
 
 
 
