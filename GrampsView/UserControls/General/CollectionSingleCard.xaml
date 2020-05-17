@@ -3,20 +3,21 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Name="CollectionSingleCardRoot"
+    Margin="0"
+    Padding="0"
+    BackgroundColor="Transparent"
     SizeChanged="CollectionSingleCardRoot_SizeChanged">
 
-    <CollectionView x:Name="theCollectionView" ItemsSource="{Binding FsctSource, Source={x:Reference CollectionSingleCardRoot}, Mode=OneWay}">
+    <CollectionView
+        x:Name="theCollectionView"
+        ItemsSource="{Binding FsctSource, Source={x:Reference CollectionSingleCardRoot}, Mode=OneWay}"
+        Style="{StaticResource CollectionViewBase}">
         <CollectionView.ItemsLayout>
             <GridItemsLayout
                 HorizontalItemSpacing="1"
                 Orientation="Vertical"
-                Span="{Binding NumColumns, Source={x:Reference CollectionSingleCardRoot}, Mode=OneWay}" />
+                Span="{Binding NumColumns, Source={x:Reference CollectionSingleCardRoot}, Mode=OneWay}"
+                VerticalItemSpacing="1" />
         </CollectionView.ItemsLayout>
-
-        <!--<CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Grid x:Name="theDataGrid" />
-            </DataTemplate>
-        </CollectionView.ItemTemplate>-->
     </CollectionView>
 </Frame>
