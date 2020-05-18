@@ -122,6 +122,7 @@
     <Compile Remove="UserControls\General\FlexMultiCardEnum.xaml.cs" />
     <Compile Remove="UserControls\General\FlexMultiGroupMultiCard - Copy.xaml.cs" />
     <Compile Remove="UserControls\General\FlexSingleCardGroup.xaml.cs" />
+    <Compile Remove="UserControls\General\FlexSingleGroupSingleCard.xaml.cs" />
     <Compile Remove="UserControls\General\MediaImage.xaml.cs" />
     <Compile Remove="UserControls\General\RadioButtonxExtended .cs" />
     <Compile Remove="UserControls\HLinkCitationCardSmall.xaml.cs" />
@@ -188,6 +189,7 @@
     <EmbeddedResource Remove="UserControls\General\CardGridSingleType.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexMultiCardEnum.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexSingleCardGroup.xaml" />
+    <EmbeddedResource Remove="UserControls\General\FlexSingleGroupSingleCard.xaml" />
     <EmbeddedResource Remove="UserControls\General\MediaImage.xaml" />
     <EmbeddedResource Remove="UserControls\HLinkCitationCardSmall.xaml" />
     <EmbeddedResource Remove="UserControls\HLinkEventCardSmall.xaml" />
@@ -258,6 +260,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="UserControls\General\CollectionMultiCard.xaml.cs">
+      <DependentUpon>CollectionMultiCard.xaml</DependentUpon>
+    </Compile>
     <Compile Update="UserControls\General\FlexMultiGroupMultiCard.xaml.cs">
       <DependentUpon>FlexMultiGroupMultiCard.xaml</DependentUpon>
     </Compile>
@@ -275,9 +280,6 @@
     </Compile>
     <Compile Update="UserControls\General\FlexSingleCardTypeA.xaml.cs">
       <DependentUpon>FlexSingleCardTypeA.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="UserControls\General\FlexSingleGroupSingleCard.xaml.cs">
-      <DependentUpon>FlexSingleGroupSingleCard.xaml</DependentUpon>
     </Compile>
     <Compile Update="UserControls\General\BottomMenu.xaml.cs">
       <DependentUpon>BottomMenu.xaml</DependentUpon>

@@ -92,6 +92,16 @@
         <Setter Property="BackgroundColor" Value="Transparent" />
     </Style>
 
+    <!--  Create a Card Style for a CollectionView Style  -->
+    <Style
+        x:Key="CSCLayoutCards"
+        BasedOn="{StaticResource CollectionViewBase}"
+        TargetType="CollectionView">
+        <Setter Property="ItemsLayout" Value="VerticalList" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+
     <!--
         ******************************************************
         ContentPage Styles
@@ -333,6 +343,11 @@
     <Style x:Key="GridSmallFixedCardStyle" TargetType="Grid">
         <Setter Property="Padding" Value="0" />
         <Setter Property="HeightRequest" Value="{Binding CardSmallHeight, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
+    </Style>
+
+    <Style x:Key="GridLargeFixedCardStyle" TargetType="Grid">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HeightRequest" Value="{Binding CardLargeHeight, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
     </Style>
 
     <!--

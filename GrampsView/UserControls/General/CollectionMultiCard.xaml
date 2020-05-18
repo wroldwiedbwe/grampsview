@@ -1,0 +1,22 @@
+﻿<Frame
+    x:Class="GrampsView.UserControls.CollectionMultiCard"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="CollectionMultiCardRoot"
+    Margin="0"
+    Padding="0"
+    BackgroundColor="Transparent"
+    SizeChanged="CollectionMultiCardRoot_SizeChanged">
+
+    <CollectionView
+        x:Name="theCollectionView"
+        ItemsSource="{Binding FsctSource, Source={x:Reference CollectionMultiCardRoot}, Mode=OneWay}"
+        Style="{StaticResource CollectionViewBase}">
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout
+                HorizontalItemSpacing="1"
+                Orientation="Vertical"
+                VerticalItemSpacing="1" />
+        </CollectionView.ItemsLayout>
+    </CollectionView>
+</Frame>

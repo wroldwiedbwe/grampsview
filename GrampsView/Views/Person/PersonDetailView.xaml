@@ -44,12 +44,12 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <ucon:MediaImageFullCard
@@ -57,31 +57,31 @@
             HorizontalOptions="Center"
             UCMedia="{Binding PersonObject.HomeImageHLink, Mode=OneWay}" />
 
-        <FlexLayout
+        <!--<FlexLayout
             Grid.Row="1"
             BindableLayout.ItemTemplate="{StaticResource CardGroupTemplate}"
             BindableLayout.ItemsSource="{Binding BaseHeader}"
             HorizontalOptions="Start"
-            Style="{StaticResource FlexLayoutCards}" />
+            Style="{StaticResource FlexLayoutCards}" />-->
 
-        <!--<ucon:FlexMultiGroupMultiCard
-                x:Name="BaseHeader"
-                Grid.Row="1"
-                FsctSource="{Binding BaseHeader}" />-->
+        <ucon:FlexMultiGroupMultiCard
+            x:Name="BaseHeader"
+            Grid.Row="1"
+            FsctSource="{Binding BaseHeader}" />
 
         <ucon:NoteCardFull Grid.Row="2" BindingContext="{Binding PersonBio}" />
 
-        <FlexLayout
+        <!--<FlexLayout
             Grid.Row="3"
             BindableLayout.ItemTemplate="{StaticResource CardGroupTemplate}"
             BindableLayout.ItemsSource="{Binding BaseDetail}"
             HorizontalOptions="Start"
-            Style="{StaticResource FlexLayoutCards}" />
+            Style="{StaticResource FlexLayoutCards}" />-->
 
-        <!--<ucon:FlexMultiGroupMultiCard
+        <ucon:FlexMultiGroupMultiCard
             x:Name="BaseDetail"
             Grid.Row="3"
-            FsctSource="{Binding BaseDetail}" />-->
+            FsctSource="{Binding BaseDetail}" />
 
         <FlexLayout
             Grid.Row="4"

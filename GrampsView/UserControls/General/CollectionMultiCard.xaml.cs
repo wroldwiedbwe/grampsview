@@ -5,21 +5,19 @@
     using System;
     using System.Collections;
     using System.ComponentModel;
-    using System.Diagnostics.Contracts;
-
     using Xamarin.Forms;
 
-    public partial class CollectionSingleCard : Frame, INotifyPropertyChanged
+    public partial class CollectionMultiCard : Frame, INotifyPropertyChanged
     {
         public static readonly BindableProperty FsctSourceProperty
-              = BindableProperty.Create(returnType: typeof(IEnumerable), declaringType: typeof(CollectionSingleCard), propertyName: nameof(FsctSource), propertyChanged: OnItemsSourceChanged);
+              = BindableProperty.Create(returnType: typeof(IEnumerable), declaringType: typeof(CollectionMultiCard), propertyName: nameof(FsctSource), propertyChanged: OnItemsSourceChanged);
 
         public static readonly BindableProperty FsctTemplateProperty
-                    = BindableProperty.Create(nameof(FsctTemplate), typeof(DataTemplate), typeof(CollectionSingleCard), propertyChanged: OnItemTemplateChanged);
+                    = BindableProperty.Create(nameof(FsctTemplate), typeof(DataTemplateSelector), typeof(CollectionMultiCard), propertyChanged: OnItemTemplateChanged);
 
         private Int32 _NumColumns = 3;
 
-        public CollectionSingleCard()
+        public CollectionMultiCard()
         {
             InitializeComponent();
         }
@@ -32,9 +30,9 @@
             set { SetValue(FsctSourceProperty, value); }
         }
 
-        public DataTemplate FsctTemplate
+        public DataTemplateSelector FsctTemplate
         {
-            get { return (DataTemplate)GetValue(FsctTemplateProperty); }
+            get { return (DataTemplateSelector)GetValue(FsctTemplateProperty); }
             set { SetValue(FsctTemplateProperty, value); }
         }
 
@@ -54,38 +52,26 @@
 
         public static void OnItemsSourceChanged(BindableObject argSource, object oldValue, object newValue)
         {
-            Contract.Requires(argSource != null);
-            Contract.Requires(newValue != null);
+            var layout = argSource as CollectionMultiCard;
 
-            CollectionSingleCard layout = argSource as CollectionSingleCard;
-
-            IEnumerable iSource = newValue as IEnumerable;
-
-            layout.theCollectionView.ItemsSource = iSource;
+            layout.theCollectionView.ItemsSource = newValue as IEnumerable;
         }
 
         public static void OnItemTemplateChanged(BindableObject argSource, object oldValue, object newValue)
         {
-            Contract.Requires(argSource != null);
-            Contract.Requires(newValue != null);
+            var layout = argSource as CollectionMultiCard;
 
-            CollectionSingleCard layout = argSource as CollectionSingleCard;
-
-            DataTemplate iTemplate = newValue as DataTemplate;
-
-            layout.theCollectionView.ItemTemplate = iTemplate;
+            layout.theCollectionView.ItemTemplate = layout.FsctTemplate;
         }
 
-        protected new void OnPropertyChanged(string propertyName)
+        protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void CollectionSingleCardRoot_SizeChanged(object sender, EventArgs e)
+        private void CollectionMultiCardRoot_SizeChanged(object sender, EventArgs e)
         {
-            Contract.Requires(sender != null);
-
-            CollectionSingleCard t = sender as CollectionSingleCard;
+            CollectionMultiCard t = sender as CollectionMultiCard;
 
             NumColumns = (Int32)(t.Width / CardSizes.Current.CardSmallWidth + 1);  // +1 for padding
         }
