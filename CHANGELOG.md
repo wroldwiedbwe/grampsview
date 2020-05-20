@@ -1,3 +1,12 @@
+## [5.5.29](https://github.com/phandcock/grampsview/compare/v5.5.28...v5.5.29) (2020-05-20)
+
+
+### Bug Fixes
+
+* header card background to transparent ([0ab4c16](https://github.com/phandcock/grampsview/commit/0ab4c163da78091488484744631bb36769fc18ce))
+
+
+
 ## [5.5.28](https://github.com/phandcock/grampsview/compare/v5.5.27...v5.5.28) (2020-05-18)
 
 
@@ -21,15 +30,6 @@
 
 
 ## [5.5.25](https://github.com/phandcock/grampsview/compare/v5.5.24...v5.5.25) (2020-05-17)
-
-
-
-## [5.5.24](https://github.com/phandcock/grampsview/compare/v5.5.23...v5.5.24) (2020-05-16)
-
-
-### Bug Fixes
-
-* viewDetail pages and FlexLayout height bug ([55754d3](https://github.com/phandcock/grampsview/commit/55754d3b3dd4575b8e74ca2e208ed4d89d31b00b))
 
 
 
