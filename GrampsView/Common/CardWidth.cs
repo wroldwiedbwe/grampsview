@@ -142,7 +142,7 @@
 
                 case TargetIdiom.Phone:
 
-                    outVal = CardLargeWidth / 3;
+                    outVal = CardLargeWidth / (3 * DeviceDisplay.MainDisplayInfo.Density);
                     break;
 
                 default:
@@ -228,7 +228,7 @@
 
                 case TargetIdiom.Phone:
 
-                    outVal = CardMediumWidth / 3;
+                    outVal = CardMediumWidth / (3 * DeviceDisplay.MainDisplayInfo.Density);
                     break;
 
                 default:
@@ -304,7 +304,7 @@
                 case TargetIdiom.Unsupported:
 
                 case TargetIdiom.Desktop:
-                    outVal = CardSmallWidth / 3;
+                    outVal = CardSmallWidth / (3 * DeviceDisplay.MainDisplayInfo.Density);
                     break;
 
                 case TargetIdiom.Tablet:
@@ -312,8 +312,7 @@
                     break;
 
                 case TargetIdiom.Phone:
-
-                    outVal = CardSmallWidth / 3;
+                    outVal = CardSmallWidth / (3 * DeviceDisplay.MainDisplayInfo.Density);
                     break;
 
                 default:

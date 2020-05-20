@@ -57,13 +57,6 @@
             HorizontalOptions="Center"
             UCMedia="{Binding PersonObject.HomeImageHLink, Mode=OneWay}" />
 
-        <!--<FlexLayout
-            Grid.Row="1"
-            BindableLayout.ItemTemplate="{StaticResource CardGroupTemplate}"
-            BindableLayout.ItemsSource="{Binding BaseHeader}"
-            HorizontalOptions="Start"
-            Style="{StaticResource FlexLayoutCards}" />-->
-
         <ucon:FlexMultiGroupMultiCard
             x:Name="BaseHeader"
             Grid.Row="1"
@@ -71,29 +64,12 @@
 
         <ucon:NoteCardFull Grid.Row="2" BindingContext="{Binding PersonBio}" />
 
-        <!--<FlexLayout
-            Grid.Row="3"
-            BindableLayout.ItemTemplate="{StaticResource CardGroupTemplate}"
-            BindableLayout.ItemsSource="{Binding BaseDetail}"
-            HorizontalOptions="Start"
-            Style="{StaticResource FlexLayoutCards}" />-->
+        <ucon:FlexMultiGroupMultiCard Grid.Row="3" FsctSource="{Binding BaseDetail}" />
 
         <ucon:FlexMultiGroupMultiCard
-            x:Name="BaseDetail"
-            Grid.Row="3"
-            FsctSource="{Binding BaseDetail}" />
-
-        <FlexLayout
-            Grid.Row="4"
-            BindableLayout.ItemTemplate="{StaticResource CardGroupTemplate}"
-            BindableLayout.ItemsSource="{Binding BaseBackLinks}"
-            HorizontalOptions="Start"
-            Style="{StaticResource FlexLayoutCards}" />
-
-        <!--<ucon:FlexMultiGroupMultiCard
             x:Name="BaseBackLinks"
             Grid.Row="4"
             FsctSource="{Binding BaseBackLinks}"
-            Style="{DynamicResource BackLinkCollection}" />-->
+            Style="{DynamicResource BackLinkCollection}" />
     </Grid>
 </ContentPage>

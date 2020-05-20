@@ -5,11 +5,12 @@
     x:Name="CollectionMultiCardRoot"
     Margin="0"
     Padding="0"
-    BackgroundColor="Transparent"
+    BackgroundColor="SeaGreen"
     SizeChanged="CollectionMultiCardRoot_SizeChanged">
 
     <CollectionView
         x:Name="theCollectionView"
+        ItemTemplate="{StaticResource CardGroupTemplate}"
         ItemsSource="{Binding FsctSource, Source={x:Reference CollectionMultiCardRoot}, Mode=OneWay}"
         Style="{StaticResource CollectionViewBase}">
         <CollectionView.ItemsLayout>

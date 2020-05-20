@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<Frame
+<Grid
     x:Class="GrampsView.UserControls.HeaderCardLarge"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="HeaderCardLargeRoot"
     Padding="0"
-    BindingContextChanged="HeaderCardLargeRoot_BindingContextChanged">
+    BindingContextChanged="HeaderCardLargeRoot_BindingContextChanged"
+    Style="{DynamicResource GridLargeVariableCardStyle}">
     <Frame Style="{DynamicResource FrameLargeVariableCardStyleNS}">
         <Frame.Content>
 
@@ -30,4 +31,4 @@
             </Grid>
         </Frame.Content>
     </Frame>
-</Frame>
+</Grid>

@@ -8,42 +8,53 @@
 
         <ContentPage Title="Menu">
 
-            <ScrollView Orientation="Vertical">
-                <StackLayout
-                    x:Name="List"
-                    Margin="0,0,0,0"
-                    BackgroundColor="Transparent"
-                    BindableLayout.ItemsSource="{Binding MainMenuItems}"
-                    HorizontalOptions="Start">
+            <CollectionView
+                x:Name="List"
+                Margin="0,0,0,0"
+                BackgroundColor="{DynamicResource SurfaceColor}"
+                HorizontalOptions="Start"
+                ItemsSource="{Binding MainMenuItems}">
 
-                    <BindableLayout.ItemTemplate>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        HorizontalItemSpacing="1"
+                        Orientation="Vertical"
+                        VerticalItemSpacing="1" />
+                </CollectionView.ItemsLayout>
 
-                        <DataTemplate>
+                <CollectionView.ItemTemplate>
 
-                            <StackLayout
-                                BackgroundColor="{DynamicResource SecondaryVariantLightColor}"
-                                HorizontalOptions="StartAndExpand"
-                                Orientation="Horizontal">
+                    <DataTemplate>
+                        <Grid BackgroundColor="{DynamicResource SecondaryVariantLightColor}" HorizontalOptions="FillAndExpand">
 
-                                <Image HeightRequest="40" Style="{DynamicResource GVSymbolconPageHeaderType}">
-                                    <Image.Source>
-                                        <FontImageSource
-                                            FontFamily="{DynamicResource MaterialFontFamily}"
-                                            Glyph="{Binding Icon}"
-                                            Size="40"
-                                            Color="{DynamicResource OnSecondaryColor}" />
-                                    </Image.Source>
-                                </Image>
-                                <Button
-                                    Command="{Binding Path=BindingContext.NavigateCommand, Source={x:Reference Name=List}}"
-                                    CommandParameter="{Binding TargetType}"
-                                    Style="{StaticResource GVButtonMenu}"
-                                    Text="{Binding Title}" />
-                            </StackLayout>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </StackLayout>
-            </ScrollView>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image
+                                Grid.Column="0"
+                                HeightRequest="40"
+                                Style="{DynamicResource GVSymbolconPageHeaderType}">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{DynamicResource MaterialFontFamily}"
+                                        Glyph="{Binding Icon}"
+                                        Size="40"
+                                        Color="Black" />
+                                </Image.Source>
+                            </Image>
+
+                            <Button
+                                Grid.Column="1"
+                                Command="{Binding Path=BindingContext.NavigateCommand, Source={x:Reference Name=List}}"
+                                CommandParameter="{Binding TargetType}"
+                                Style="{StaticResource GVButtonMenu}"
+                                Text="{Binding Title}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </ContentPage>
     </MasterDetailPage.Master>
 </MasterDetailPage>

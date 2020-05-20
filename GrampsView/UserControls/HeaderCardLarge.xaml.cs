@@ -8,7 +8,7 @@ namespace GrampsView.UserControls
 
     using Xamarin.Forms;
 
-    public partial class HeaderCardLarge : Frame
+    public partial class HeaderCardLarge : Grid
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="HeaderCardLarge"/> class.

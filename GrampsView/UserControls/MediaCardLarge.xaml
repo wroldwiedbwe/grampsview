@@ -6,7 +6,7 @@
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="MediaCardLargeRoot"
-    Style="{DynamicResource FrameLargeVariableCardStyle}">
+    Style="{DynamicResource FrameLargeFixedCardStyle}">
 
     <Frame.Content>
 
