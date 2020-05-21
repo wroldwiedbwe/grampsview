@@ -18,7 +18,7 @@ namespace GrampsView.ViewModels
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Defines the EVent Detail Page View ViewModel.
+    /// Defines the Tag Detail Page View ViewModel.
     /// </summary>
     public class TagDetailViewModel : ViewModelBase
     {
@@ -43,23 +43,6 @@ namespace GrampsView.ViewModels
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
         }
-
-        ///// <summary>
-        ///// Gets or sets collection of BackLink models.
-        ///// </summary>
-        //public SortedObservableCollection<ModelBase> BackLinkModel { get; set; } = new SortedObservableCollection<ModelBase>();
-
-        ///// <summary>
-        ///// Gets or sets the note detail list.
-        ///// </summary>
-        ///// <value>
-        ///// The note detail list.
-        ///// </value>
-        //// [RestorableState]
-        //public CardListLineCollection NoteDetailList
-        //{
-        //    get; set;
-        //}
 
         /// <summary>
         /// Gets or sets the tag object.
@@ -114,7 +97,7 @@ namespace GrampsView.ViewModels
 
                 BaseHeader.Add(t);
 
-                // Add Details BackHLinkRefNavArgument = localNavigationHelper.HLinkModelCollectionAdd(NoteObject.BackHLinkReferenceCollection);
+                // Add Details
                 BaseBackLinks.Add(TagObject.BackHLinkReferenceCollection.GetCardGroup()); // TODO , "BackLinks");
             }
 

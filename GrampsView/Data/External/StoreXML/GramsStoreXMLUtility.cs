@@ -209,15 +209,6 @@ namespace GrampsView.Data.ExternalStorageNS
             {
                 xmlData = xmlData.Trim();
 
-                if (!Uri.IsWellFormedUriString(xmlData, UriKind.Absolute))
-                {
-                    // Handle sites with no leading http or https ( TODO Assumes they are all http...)
-                    if (!xmlData.StartsWith("http://") && !xmlData.StartsWith("https://"))
-                    {
-                        xmlData = "http://" + xmlData;
-                    }
-                }
-
                 if (Uri.IsWellFormedUriString(xmlData, UriKind.Absolute))
                 {
                     Uri uri = new Uri(xmlData);
@@ -226,6 +217,8 @@ namespace GrampsView.Data.ExternalStorageNS
                 }
                 else
                 {
+                    DataStore.CN.NotifyError("The URI in the Internet address is not correct",
+                        xmlData);
                     return null;
                 }
             }

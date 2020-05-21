@@ -1,21 +1,24 @@
 ﻿namespace GrampsView.Common
 {
     using GrampsView.Data.Repository;
+
     using System.ComponentModel;
     using System.Diagnostics;
+
     using Xamarin.Essentials;
     using Xamarin.Forms;
 
     public class CardSizes : INotifyPropertyChanged
     {
-        private const double CardLargeHeightDefault = 400;
-        private const double CardLargeWidthDefault = 400;
+        //Ratio of Height to width is 3 times
+
+        private const double CardLargeHeightDefault = 420;
+        private const double CardLargeWidthDefault = 420;
         private const double CardMediumHeightDefault = 300;
         private const double CardMediumWidthDefault = 300;
         private const double CardSmallHeightDefault = 270;
         private const double CardSmallWidthDefault = 270;
 
-        private static double _CardLargeDoubleHeight = CardLargeHeightDefault;
         private static double _CardLargeDoubleWidth = CardLargeWidthDefault;
         private static double _CardLargeHeight = CardLargeHeightDefault;
         private static double _CardLargeWidth = CardLargeWidthDefault;
@@ -23,8 +26,6 @@
         private static double _CardMediumWidth = CardMediumWidthDefault;
         private static double _CardSmallHeight = CardSmallHeightDefault;
         private static double _CardSmallWidth = CardSmallWidthDefault;
-
-        //Ratio of Height to width is 3 times
 
         // Singleton
         private static CardSizes _current;
@@ -164,7 +165,7 @@
                 case TargetIdiom.Unsupported:
 
                 case TargetIdiom.Desktop:
-                    outVal = 640;
+                    outVal = 660;
                     break;
 
                 case TargetIdiom.Tablet:

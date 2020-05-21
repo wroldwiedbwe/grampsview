@@ -3,19 +3,16 @@
     x:Class="GrampsView.UserControls.MediaCardLarge"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:common="clr-namespace:GrampsView.Common"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="MediaCardLargeRoot"
-    Style="{DynamicResource FrameLargeFixedCardStyle}">
+    HeightRequest="{Binding CardMediumWidth, Source={x:Static common:CardSizes.Current}, Mode=OneWay}"
+    Style="{DynamicResource FrameMediumFixedCardStyle}">
 
     <Frame.Content>
 
-        <Grid x:Name="controlRoot" FlexLayout.AlignSelf="Start">
-            <!--
-                FlexLayout.Basis="{OnIdiom Phone='50%',
-                Tablet='33%',
-                Desktop='33%'}">
-            -->
+        <Grid x:Name="controlRoot">
 
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{prism:NavigateTo 'MediaDetailPage'}">

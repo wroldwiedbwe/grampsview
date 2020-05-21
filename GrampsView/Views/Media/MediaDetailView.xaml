@@ -61,16 +61,6 @@
             HorizontalOptions="CenterAndExpand"
             UCMedia="{Binding CurrentMediaObject.HomeImageHLink}" />
 
-        <!--<ffimageloading:CachedImage
-            x:Name="image"
-            Grid.Row="1"
-            Aspect="AspectFit"
-            Source="{Binding CurrentMediaObject.MediaStorageFilePath, Mode=OneWay}">
-            <ffimageloading:CachedImage.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding OpenImageCommand}" NumberOfTapsRequired="2" />
-            </ffimageloading:CachedImage.GestureRecognizers>
-        </ffimageloading:CachedImage>-->
-
         <ucon:FlexMultiGroupMultiCard
             x:Name="BaseDetail"
             Grid.Row="2"
@@ -83,7 +73,7 @@
             Style="{DynamicResource BackLinkCollection}" />
     </Grid>
 
-    <!--<Button
+    <!--<Button // TODO finish this
                 x:Name="graphbutton"
                 Background="{StaticResource GVThemeDominantBackground}"
                 ToolTipService.ToolTip="Show Graph">-->

@@ -36,13 +36,9 @@ namespace GrampsView.Common
         /// </summary>
         private readonly IEventAggregator _iocEventAggregator;
 
-        private readonly int maxCount = 8;
-
         private string _MajorStatusMessage = string.Empty;
 
         private string _MinorStatusMessage = string.Empty;
-
-        private int currentIndex = -1;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommonNotifications"/> class.
@@ -307,6 +303,24 @@ namespace GrampsView.Common
         public void NotifyError(string argMessage)
         {
             Dictionary<string, string> argErrorDetail = new Dictionary<string, string>();
+
+            NotifyError(argMessage, argErrorDetail);
+        }
+
+        /// <summary>
+        /// Helper to Notify Error.
+        /// </summary>
+        /// <param name="strMessage">
+        /// The string message.
+        /// </param>
+        /// <param name="argErrorDetail">
+        /// The argument error detail.
+        /// </param>
+        public void NotifyError(string argMessage, string argDetails)
+        {
+            Dictionary<string, string> argErrorDetail = new Dictionary<string, string>();
+
+            argErrorDetail.Add("Details", argDetails);
 
             NotifyError(argMessage, argErrorDetail);
         }

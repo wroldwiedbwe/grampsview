@@ -19,7 +19,7 @@
                 {
                     case Device.Android:
                         {
-                            return 14.0;
+                            return 18.0;
                         }
 
                     case Device.iOS:
@@ -48,7 +48,7 @@
                 {
                     case Device.Android:
                         {
-                            return 14.0;
+                            return 16.0;
                         }
 
                     case Device.iOS:
