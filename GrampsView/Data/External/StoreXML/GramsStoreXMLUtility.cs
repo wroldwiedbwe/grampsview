@@ -205,22 +205,34 @@ namespace GrampsView.Data.ExternalStorageNS
         /// </param>
         private static Uri GetUri(string xmlData)
         {
-            xmlData = xmlData.Trim();
-
-            // Handle sites with no leading http or https ( TODO Assumes they are all http...)
-            if ((xmlData.Substring(0, 7) != "http://") && (xmlData.Substring(0, 8) != "https://"))
+            try
             {
-                xmlData = "http://" + xmlData;
+                xmlData = xmlData.Trim();
+
+                if (!Uri.IsWellFormedUriString(xmlData, UriKind.Absolute))
+                {
+                    // Handle sites with no leading http or https ( TODO Assumes they are all http...)
+                    if (!xmlData.StartsWith("http://") && !xmlData.StartsWith("https://"))
+                    {
+                        xmlData = "http://" + xmlData;
+                    }
+                }
+
+                if (Uri.IsWellFormedUriString(xmlData, UriKind.Absolute))
+                {
+                    Uri uri = new Uri(xmlData);
+
+                    return uri;
+                }
+                else
+                {
+                    return null;
+                }
             }
-
-            if (Uri.IsWellFormedUriString(xmlData, UriKind.Absolute))
+            catch (Exception ex)
             {
-                Uri uri = new Uri(xmlData);
+                DataStore.CN.NotifyException("Exception in GetUri", ex);
 
-                return uri;
-            }
-            else
-            {
                 return null;
             }
         }
