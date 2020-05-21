@@ -1,3 +1,12 @@
+## [5.5.31](https://github.com/phandcock/grampsview/compare/v5.5.30...v5.5.31) (2020-05-21)
+
+
+### Bug Fixes
+
+* minor tweaks ([b2f05c6](https://github.com/phandcock/grampsview/commit/b2f05c66d258b93f9b5074d0a42840fcc6512dbe))
+
+
+
 ## [5.5.30](https://github.com/phandcock/grampsview/compare/v5.5.29...v5.5.30) (2020-05-21)
 
 
@@ -26,15 +35,6 @@
 
 
 ## [5.5.27](https://github.com/phandcock/grampsview/compare/v5.5.26...v5.5.27) (2020-05-17)
-
-
-
-## [5.5.26](https://github.com/phandcock/grampsview/compare/v5.5.25...v5.5.26) (2020-05-17)
-
-
-### Bug Fixes
-
-* size of page margins ([d4cddca](https://github.com/phandcock/grampsview/commit/d4cddca1c7da5fb09c4f9d34eae6c68246a07973))
 
 
 
