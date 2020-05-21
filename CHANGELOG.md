@@ -1,3 +1,12 @@
+## [5.5.30](https://github.com/phandcock/grampsview/compare/v5.5.29...v5.5.30) (2020-05-21)
+
+
+### Bug Fixes
+
+* handle badly formed URIs better ([7ff8fd1](https://github.com/phandcock/grampsview/commit/7ff8fd1ec0eacdc2d974c8e8f16a5c6d27eff02c))
+
+
+
 ## [5.5.29](https://github.com/phandcock/grampsview/compare/v5.5.28...v5.5.29) (2020-05-20)
 
 
@@ -26,10 +35,6 @@
 ### Bug Fixes
 
 * size of page margins ([d4cddca](https://github.com/phandcock/grampsview/commit/d4cddca1c7da5fb09c4f9d34eae6c68246a07973))
-
-
-
-## [5.5.25](https://github.com/phandcock/grampsview/compare/v5.5.24...v5.5.25) (2020-05-17)
 
 
 
