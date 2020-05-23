@@ -1,3 +1,7 @@
+## [5.5.32](https://github.com/phandcock/grampsview/compare/v5.5.31...v5.5.32) (2020-05-23)
+
+
+
 ## [5.5.31](https://github.com/phandcock/grampsview/compare/v5.5.30...v5.5.31) (2020-05-21)
 
 
@@ -31,10 +35,6 @@
 ### Bug Fixes
 
 * work on PersonDetailView layout ([a79378a](https://github.com/phandcock/grampsview/commit/a79378a76cf4dc02493b084a51e83f882437c02c))
-
-
-
-## [5.5.27](https://github.com/phandcock/grampsview/compare/v5.5.26...v5.5.27) (2020-05-17)
 
 
 
