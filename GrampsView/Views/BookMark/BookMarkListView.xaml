@@ -39,15 +39,20 @@
     </NavigationPage.TitleView>
 
     <!--  Content  -->
-    <ScrollView>
+
+    <ucon:CollectionCardList FsctSource="{Binding BookMarkSource, Mode=OneWay}" />
+
+    <!--<ScrollView>
 
         <FlexLayout
             BindableLayout.ItemTemplateSelector="{StaticResource CardTemplateSelector}"
             BindableLayout.ItemsSource="{Binding BookMarkSource, Mode=OneWay}"
             Style="{StaticResource FlexLayoutCards}" />
 
-        <!--<Grid>
+    -->
+    <!--<Grid>
         <ucon:FlexMultiGroupMultiCard x:Name="BaseBackLinks" FsctSource="{Binding BookMarkSource, Mode=OneWay}" />
     </Grid>-->
-    </ScrollView>
+    <!--
+    </ScrollView>-->
 </ContentPage>

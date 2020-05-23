@@ -5,6 +5,7 @@
 namespace GrampsView.Common
 {
     using GrampsView.Data.Model;
+    using GrampsView.Data.Repository;
     using GrampsView.UserControls;
 
     using Xamarin.Forms;
@@ -634,6 +635,11 @@ namespace GrampsView.Common
                 return RepositoryTemplate;
             }
 
+            if (item is SourceCardSmall)
+            {
+                return SourceTemplate;
+            }
+
             if (item is SourceModel)
             {
                 return SourceTemplate;
@@ -649,6 +655,8 @@ namespace GrampsView.Common
                 return URLTemplate;
             }
 
+            // Error
+            DataStore.CN.NotifyError("Bad Data Template: " + nameof(item));
             return null;
         }
     }

@@ -11,8 +11,6 @@ namespace GrampsView.ViewModels
     using Prism.Events;
     using Prism.Navigation;
 
-    using System;
-    using System.Numerics;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -20,8 +18,6 @@ namespace GrampsView.ViewModels
     /// </summary>
     public class PersonDetailViewModel : ViewModelBase
     {
-        private HLinkNoteModel _PersonBio = new HLinkNoteModel();
-
         /// <summary>
         /// The current person.
         /// </summary>
@@ -45,25 +41,6 @@ namespace GrampsView.ViewModels
             BaseTitle = "Person Detail";
             BaseTitleIcon = CommonConstants.IconPeople;
         }
-
-        ///// <summary>
-        ///// Gets or sets the person biograqphical details.
-        ///// </summary>
-        ///// <value>
-        ///// The person bio.
-        ///// </value>
-        //public HLinkNoteModel PersonBio
-        //{
-        //    get
-        //    {
-        //        return _PersonBio;
-        //    }
-
-        //    set
-        //    {
-        //        SetProperty(ref _PersonBio, value);
-        //    }
-        //}
 
         /// <summary>
         /// Gets or sets the View Current Person.
@@ -113,11 +90,7 @@ namespace GrampsView.ViewModels
                 BaseTitle = PersonObject.GPersonNamesCollection.GetPrimaryName.GetDefaultText;
 
                 // Get media image
-                CardGroup mediaImageCardGroup = new CardGroup();
-                MediaImageFullCard personImage = new MediaImageFullCard();
-                personImage.BindingContext = PersonObject.HomeImageHLink;
-                mediaImageCardGroup.Add(personImage);
-                BaseDetail.Add(personImage);
+                BaseDetail.Add(CardGroupUtil.GetMediaImageFullCard(PersonObject.HomeImageHLink));
 
                 // Get Header Details
                 CardGroup headerCardGroup = new CardGroup { Title = "Header Details" };
@@ -190,11 +163,7 @@ namespace GrampsView.ViewModels
                 }
 
                 // Get Bio
-                CardGroup bioCardGroup = new CardGroup();
-                NoteCardFull bioCard = new NoteCardFull();
-                bioCard.BindingContext = PersonObject.GNoteRefCollection.GetBio;
-                bioCardGroup.Add(bioCard);
-                BaseDetail.Add(bioCardGroup);
+                BaseDetail.Add(CardGroupUtil.GetNoteCardFull(PersonObject.GNoteRefCollection.GetBio));
 
                 // Add details
                 BaseDetail.Add(PersonObject.GParentInRefCollection.GetCardGroup());

@@ -20,7 +20,9 @@ namespace GrampsView.Data.Collections
     {
         public override CardGroup GetCardGroup()
         {
-            CardGroup t = base.GetCardGroup();
+            CardGroup t = new CardGroup();
+
+            foreach (HLinkBackLink item in Items) { t.Add(item.HLink()); }
 
             t.Title = "Backlink Collection";
 

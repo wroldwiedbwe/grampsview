@@ -43,7 +43,9 @@ namespace GrampsView.ViewModels
         {
             get
             {
-                return DV.BookMarkCollection.GetCardGroup();
+                CardGroup t = new CardGroup();
+                t.Add(DV.BookMarkCollection.GetCardGroup());
+                return t;
             }
         }
     }

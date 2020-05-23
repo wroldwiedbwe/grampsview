@@ -10,6 +10,7 @@ namespace GrampsView.ViewModels
     using GrampsView.Common;
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
+    using GrampsView.UserControls;
 
     using Prism.Events;
     using Prism.Navigation;
@@ -65,24 +66,6 @@ namespace GrampsView.ViewModels
         }
 
         /// <summary>
-        /// Gets or sets the source object.
-        /// </summary>
-        /// <value>
-        /// The source object.
-        /// </value>
-        public HLinkSourceModel SourceObject
-        {
-            get
-            {
-                return _SourceObject;
-            }
-            set
-            {
-                SetProperty(ref _SourceObject, value);
-            }
-        }
-
-        /// <summary>
         /// Handles navigation in wards and sets up the event model parameter.
         /// </summary>
         /// <param name="e">
@@ -94,13 +77,22 @@ namespace GrampsView.ViewModels
         public override void PopulateViewModel()
         {
             // Handle HLinkKeys
-
             CitationObject = DV.CitationDV.GetModelFromHLinkString(BaseNavParamsHLink.HLinkKey);
 
             if (CitationObject != null)
             {
                 BaseTitle = CitationObject.GetDefaultText;
                 BaseTitleIcon = CommonConstants.IconCitation;
+
+                // Get media image
+                BaseDetail.Add(CardGroupUtil.GetMediaImageFullCard(CitationObject.HomeImageHLink));
+
+                //// Get Note
+                //CardGroup noteCardGroup = new CardGroup();
+                //NoteCardFull noteCard = new NoteCardFull();
+                //noteCard.BindingContext = CitationObject.GetFirstModel;
+                //noteCardGroup.Add(noteCard);
+                //BaseDetail.Add(noteCardGroup);
 
                 // Get basic details
                 CardGroup t = new CardGroup { Title = "Header Details" };
@@ -115,10 +107,11 @@ namespace GrampsView.ViewModels
 
                 t.Add(DV.CitationDV.GetModelInfoFormatted(CitationObject));
 
-                BaseHeader.Add(t);
+                BaseDetail.Add(t);
 
                 // Add Source details
-                SourceObject = CitationObject.GSourceRef;
+                BaseDetail.Add(CardGroupUtil.GetSourceCardSmall(CitationObject.GSourceRef));
+                //SourceObject = CitationObject.GSourceRef;
 
                 // If only one note (the most common case) just display it in a large format,
                 // otherwise setup a list of them.
@@ -128,12 +121,12 @@ namespace GrampsView.ViewModels
                 }
 
                 // Add remaining details
-                BaseDetail.Add(CitationObject.GMediaRefCollection);
-                BaseDetail.Add(CitationObject.GNoteRefCollection);
-                BaseDetail.Add(CitationObject.GTagRef);
+                BaseDetail.Add(CitationObject.GMediaRefCollection.GetCardGroup());
+                BaseDetail.Add(CitationObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Add(CitationObject.GTagRef.GetCardGroup());
                 BaseDetail.Add(CitationObject.GSourceAttributeCollection);
 
-                BaseBackLinks.Add(CitationObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseDetail.Add(CitationObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }
