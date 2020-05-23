@@ -57,24 +57,51 @@
                 <FlexLayout
                     x:Name="CardGroupTemplateFlexer"
                     Grid.Row="1"
-                    BindableLayout.ItemTemplateSelector="{StaticResource CardGroupTemplateSelectorSmall}"
+                    BindableLayout.ItemTemplateSelector="{StaticResource CardTemplateSelector}"
                     BindableLayout.ItemsSource="{Binding ., Mode=OneWay}"
                     Style="{StaticResource FlexLayoutCards}" />
             </Grid>
         </Frame>
     </DataTemplate>
 
+    <!--  Card Group multi data template  -->
+    <!--
+    <DataTemplate x:Key="CardGroupMultiTemplate" x:Name="CardGroupMultiTemplate">
+
+        <Frame IsVisible="{Binding Visible, Mode=OneWay}" Style="{StaticResource CardGroupStyle}">
+            <Grid x:Name="daGrid">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Text="{Binding Title}"
+                    TextColor="{DynamicResource OnSurfaceColor}" />
+
+                <FlexLayout
+                    x:Name="CardGroupTemplateFlexer"
+                    Grid.Row="1"
+                    BindableLayout.ItemTemplateSelector="{StaticResource CardTemplateSelector}"
+                    BindableLayout.ItemsSource="{Binding ., Mode=OneWay}"
+                    Style="{StaticResource FlexLayoutCards}" />
+            </Grid>
+        </Frame>
+    </DataTemplate>-->
+
     <!--  Item Detail data template  large  -->
     <DataTemplate x:Key="GVCardListLineLarge" x:Name="GVCardListLineLarge">
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <Label

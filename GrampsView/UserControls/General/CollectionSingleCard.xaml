@@ -10,6 +10,7 @@
 
     <CollectionView
         x:Name="theCollectionView"
+        ItemSizingStrategy="MeasureAllItems"
         ItemsSource="{Binding FsctSource, Source={x:Reference CollectionSingleCardRoot}, Mode=OneWay}"
         Style="{StaticResource CollectionViewBase}">
         <CollectionView.ItemsLayout>

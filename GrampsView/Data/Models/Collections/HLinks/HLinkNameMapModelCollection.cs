@@ -6,6 +6,7 @@
 /// </summary>
 namespace GrampsView.Data.Collections
 {
+    using GrampsView.Common;
     using GrampsView.Data.Model;
 
     using System.Collections.ObjectModel;
@@ -20,6 +21,15 @@ namespace GrampsView.Data.Collections
         public HLinkNameMapModelCollection()
         {
             Title = "NameMap Collection";
+        }
+
+        public override CardGroup GetCardGroup()
+        {
+            CardGroup t = base.GetCardGroup();
+
+            t.Title = Title;
+
+            return t;
         }
     }
 }

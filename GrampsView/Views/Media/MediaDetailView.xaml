@@ -58,8 +58,8 @@
 
         <ucon:MediaImageFullCard
             Grid.Row="1"
-            HorizontalOptions="CenterAndExpand"
-            UCMedia="{Binding CurrentMediaObject.HomeImageHLink}" />
+            BindingContext="{Binding CurrentMediaObject.HomeImageHLink}"
+            HorizontalOptions="CenterAndExpand" />
 
         <ucon:FlexMultiGroupMultiCard
             x:Name="BaseDetail"

@@ -29,15 +29,22 @@ namespace GrampsView.Data.Model
         /// </summary>
         public HLinkHomeImageModel FirstHLinkHomeImage { get; set; } = new HLinkHomeImageModel();
 
-        //public virtual CardGroup GetCardGroup(string argTitle = "")
-        //{
-        //    CardGroup t = new CardGroup();
+        public virtual CardGroup GetCardGroup(string argTitle = "")
+        {
+            CardGroup t = GetCardGroup();
 
-        // if (!string.IsNullOrEmpty(argTitle)) { t.Title = argTitle; };
+            if (!string.IsNullOrEmpty(argTitle)) { t.Title = argTitle; };
 
-        // foreach (T item in Items) { t.Add(item); }
+            return t;
+        }
 
-        //    return t;
-        //}
+        public virtual CardGroup GetCardGroup()
+        {
+            CardGroup t = new CardGroup();
+
+            foreach (T item in Items) { t.Add(item); }
+
+            return t;
+        }
     }
 }

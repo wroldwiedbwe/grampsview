@@ -9,10 +9,11 @@
 
 namespace GrampsView.Data.Collections
 {
+    using GrampsView.Common;
+    using GrampsView.Data.Model;
+
     using System.Collections.ObjectModel;
     using System.Runtime.Serialization;
-
-    using GrampsView.Data.Model;
 
     /// <summary>
     /// Collection of EVent $$(HLinks)$$.
@@ -21,5 +22,13 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<HLinkHeaderModel>))]
     public class HLinkHeaderModelCollection : HLinkBaseCollection<HLinkHeaderModel>
     {
+        public override CardGroup GetCardGroup()
+        {
+            CardGroup t = base.GetCardGroup();
+
+            t.Title = Title;
+
+            return t;
+        }
     }
 }

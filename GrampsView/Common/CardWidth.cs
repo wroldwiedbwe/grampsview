@@ -305,7 +305,7 @@
                 case TargetIdiom.Unsupported:
 
                 case TargetIdiom.Desktop:
-                    outVal = CardSmallWidth / (3 * DeviceDisplay.MainDisplayInfo.Density);
+                    outVal = CardSmallWidth / 3;
                     break;
 
                 case TargetIdiom.Tablet:

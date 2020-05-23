@@ -4,12 +4,12 @@
 
 namespace GrampsView.Assets.Styles
 {
-    public partial class SmallCardTemplatesDictionary
+    public partial class CardTemplatesDictionary
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SmallCardTemplatesDictionary"/> class.
+        /// Initializes a new instance of the <see cref="CardTemplatesDictionary"/> class.
         /// </summary>
-        public SmallCardTemplatesDictionary()
+        public CardTemplatesDictionary()
         {
             InitializeComponent();
         }

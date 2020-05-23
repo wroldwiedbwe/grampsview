@@ -1,17 +1,18 @@
-﻿// <copyright file="CardGroupTemplateSelectorSmall.cs" company="PlaceholderCompany">
+﻿// <copyright file="CardTemplateSelector.cs" company="PlaceholderCompany">
 //     Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace GrampsView.Common
 {
     using GrampsView.Data.Model;
+    using GrampsView.UserControls;
 
     using Xamarin.Forms;
 
     /// <summary>
     /// Object Collection Template Selector.
     /// </summary>
-    public class CardGroupTemplateSelectorSmall : DataTemplateSelector
+    public class CardTemplateSelector : DataTemplateSelector
     {
         /// <summary>
         /// Gets or sets the address template.
@@ -48,6 +49,18 @@ namespace GrampsView.Common
         //    get;
         //    set;
         //}
+
+        /// <summary>
+        /// Gets or sets the Card Group template.
+        /// </summary>
+        /// <value>
+        /// The Card Group template.
+        /// </value>
+        public DataTemplate CardGroupTemplate
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Gets or sets the List Line template.
@@ -281,6 +294,12 @@ namespace GrampsView.Common
             set;
         }
 
+        public DataTemplate MediaImageFullTemplate
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Gets or sets the media template.
         /// </summary>
@@ -300,6 +319,12 @@ namespace GrampsView.Common
         /// The name map template.
         /// </value>
         public DataTemplate NameMapTemplate
+        {
+            get;
+            set;
+        }
+
+        public DataTemplate NoteCardFullTemplate
         {
             get;
             set;
@@ -444,6 +469,46 @@ namespace GrampsView.Common
             //    return BookMarkTemplate;
             //}
 
+            if (item is CardGroup)
+            {
+                return CardGroupTemplate;
+            }
+
+            if (item is CardGroupBase<AddressModel>)
+            {
+                return CardGroupTemplate;
+            }
+
+            if (item is CardGroupBase<AttributeModel>)
+            {
+                return CardGroupTemplate;
+            }
+
+            if (item is CardGroupBase<LdsOrdModel>)
+            {
+                return CardGroupTemplate;
+            }
+
+            if (item is CardGroupBase<SrcAttributeModel>)
+            {
+                return CardGroupTemplate;
+            }
+
+            if (item is CardGroupBase<PersonNameModel>)
+            {
+                return CardGroupTemplate;
+            }
+
+            if (item is CardGroupBase<PersonRefModel>)
+            {
+                return CardGroupTemplate;
+            }
+
+            if (item is CardGroupBase<SurnameModel>)
+            {
+                return CardGroupTemplate;
+            }
+
             if (item is ICitationModel)
             {
                 return CitationTemplate;
@@ -524,9 +589,19 @@ namespace GrampsView.Common
                 return MediaTemplate;
             }
 
+            if (item is MediaImageFullCard)
+            {
+                return MediaImageFullTemplate;
+            }
+
             if (item is NameMapModel)
             {
                 return NameMapTemplate;
+            }
+
+            if (item is NoteCardFull)
+            {
+                return NoteCardFullTemplate;
             }
 
             if (item is NoteModel)

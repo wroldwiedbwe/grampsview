@@ -57,8 +57,8 @@
 
         <ucon:ListLineCardLarge
             Grid.Row="1"
-            HorizontalOptions="CenterAndExpand"
-            UCCardListLineCol="{Binding DataDetailList, Mode=OneWay}" />
+            BindingContext="{Binding DataDetailList, Mode=OneWay}"
+            HorizontalOptions="CenterAndExpand" />
 
         <Button
             Grid.Row="2"

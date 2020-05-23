@@ -42,7 +42,7 @@
     <ScrollView>
 
         <FlexLayout
-            BindableLayout.ItemTemplateSelector="{StaticResource CardGroupTemplateSelectorSmall}"
+            BindableLayout.ItemTemplateSelector="{StaticResource CardTemplateSelector}"
             BindableLayout.ItemsSource="{Binding BookMarkSource, Mode=OneWay}"
             Style="{StaticResource FlexLayoutCards}" />
 

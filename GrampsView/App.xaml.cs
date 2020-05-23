@@ -136,16 +136,12 @@ namespace GrampsView
                 return;
             }
 
-            //// Only Start App Center if physical
-            //if (!CommonRoutines.IsEmulator())
-            //{
             AppCenterInit();
-            //}
 
-            //CommonTheming.SetAppTheme();
-
-            // Fake set to reset them
             CardSizes.Current.ReCalculateCardWidths();
+
+            // TODO create platform specific check for allowed rotations until xamarin.essentials
+            // gives me the data
 
             IPlatformSpecific ps = Container.Resolve<IPlatformSpecific>();
 

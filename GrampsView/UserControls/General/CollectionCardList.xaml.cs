@@ -5,16 +5,17 @@
     using System;
     using System.Collections;
     using System.ComponentModel;
+
     using Xamarin.Forms;
 
-    public partial class CollectionMultiCard : Frame, INotifyPropertyChanged
+    public partial class CollectionCardList : Frame, INotifyPropertyChanged
     {
         public static readonly BindableProperty FsctSourceProperty
-              = BindableProperty.Create(returnType: typeof(IEnumerable), declaringType: typeof(CollectionMultiCard), propertyName: nameof(FsctSource), propertyChanged: OnItemsSourceChanged);
+              = BindableProperty.Create(returnType: typeof(IEnumerable), declaringType: typeof(CollectionCardList), propertyName: nameof(FsctSource), propertyChanged: OnItemsSourceChanged);
 
         private Int32 _NumColumns = 3;
 
-        public CollectionMultiCard()
+        public CollectionCardList()
         {
             InitializeComponent();
         }
@@ -43,7 +44,7 @@
 
         public static void OnItemsSourceChanged(BindableObject argSource, object oldValue, object newValue)
         {
-            var layout = argSource as CollectionMultiCard;
+            var layout = argSource as CollectionCardList;
 
             layout.theCollectionView.ItemsSource = newValue as IEnumerable;
         }
@@ -53,11 +54,11 @@
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void CollectionMultiCardRoot_SizeChanged(object sender, EventArgs e)
-        {
-            CollectionMultiCard t = sender as CollectionMultiCard;
+        //private void CollectionCardListRoot_SizeChanged(object sender, EventArgs e)
+        //{
+        //    CollectionCardList t = sender as CollectionCardList;
 
-            NumColumns = (Int32)(t.Width / CardSizes.Current.CardSmallWidth + 1);  // +1 for padding
-        }
+        //    NumColumns = (Int32)(t.Width / CardSizes.Current.CardSmallWidth + 1);  // +1 for padding
+        //}
     }
 }

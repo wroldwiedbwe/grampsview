@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <Compile Remove="Assets\Styles\DarkThemeDictionary.cs" />
+    <Compile Remove="Assets\Styles\LargeCardTemplatesDictionary.cs" />
     <Compile Remove="Assets\Styles\LargeRefCardTemplatesDictionary.cs" />
     <Compile Remove="Assets\Styles\LightThemeDictionary.cs" />
     <Compile Remove="Assets\Styles\SystemThemeDictionary.cs" />
@@ -47,11 +48,13 @@
     <Compile Remove="Common\Card Group\CardGroupHLink.cs" />
     <Compile Remove="Common\Card Group\CardGroupModelBase.cs" />
     <Compile Remove="Common\CardGroupCollection.cs" />
+    <Compile Remove="Common\CardGroupTemplateSelectorLarge.cs" />
     <Compile Remove="Common\CardGroupTemplateSelectorRefLarge.cs" />
     <Compile Remove="Common\CommonCropBitmap.cs" />
     <Compile Remove="Common\CommonLogCircular.cs" />
     <Compile Remove="Common\CommonPropertyDebug.xaml.cs" />
     <Compile Remove="Common\CommonTheming.cs" />
+    <Compile Remove="Common\CustomClasses\BindableStackLayout.cs" />
     <Compile Remove="Common\CustomClasses\BorderlessEditor.cs" />
     <Compile Remove="Common\CustomClasses\BorderlessEntry.cs" />
     <Compile Remove="Common\CustomClasses\CustomCacheKeyFactory .cs" />
@@ -94,6 +97,7 @@
     <Compile Remove="Data\Models\DataModels\BookMarkModel.cs" />
     <Compile Remove="Data\Models\DataModels\Interfaces\IBookMarkModel.cs" />
     <Compile Remove="Data\Models\HLinks\HLinkBookMarkModel.cs" />
+    <Compile Remove="Data\Models\Misc\MediaImageFullModel.cs" />
     <Compile Remove="Data\PluginStorageFile.cs" />
     <Compile Remove="Data\PluginStorageFileSystem.cs" />
     <Compile Remove="Data\PluginStorageFolder.cs" />
@@ -119,6 +123,7 @@
     <Compile Remove="UserControls\General\CardGridMultiType.xaml.cs" />
     <Compile Remove="UserControls\General\CardGridSingleType.xaml.cs" />
     <Compile Remove="UserControls\General\CheckBoxExtended.cs" />
+    <Compile Remove="UserControls\General\CollectionCardGroup.xaml.cs" />
     <Compile Remove="UserControls\General\FlexMultiCardEnum.xaml.cs" />
     <Compile Remove="UserControls\General\FlexMultiGroupMultiCard - Copy.xaml.cs" />
     <Compile Remove="UserControls\General\FlexSingleCardGroup.xaml.cs" />
@@ -172,6 +177,7 @@
 
   <ItemGroup>
     <EmbeddedResource Remove="Assets\Styles\DarkThemeDictionary.xaml" />
+    <EmbeddedResource Remove="Assets\Styles\LargeCardTemplatesDictionary.xaml" />
     <EmbeddedResource Remove="Assets\Styles\LargeRefCardTemplates.xaml" />
     <EmbeddedResource Remove="Assets\Styles\LightThemeDictionary.xaml" />
     <EmbeddedResource Remove="Assets\Styles\SystemThemeDictionary.xaml" />
@@ -187,6 +193,7 @@
     <EmbeddedResource Remove="UserControls\FamilyCardLarge.xaml" />
     <EmbeddedResource Remove="UserControls\General\CardGridMultiType.xaml" />
     <EmbeddedResource Remove="UserControls\General\CardGridSingleType.xaml" />
+    <EmbeddedResource Remove="UserControls\General\CollectionCardGroup.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexMultiCardEnum.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexSingleCardGroup.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexSingleGroupSingleCard.xaml" />
@@ -260,8 +267,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="UserControls\General\CollectionMultiCard.xaml.cs">
-      <DependentUpon>CollectionMultiCard.xaml</DependentUpon>
+    <Compile Update="UserControls\General\CollectionCardList.xaml.cs">
+      <DependentUpon>CollectionCardList.xaml</DependentUpon>
     </Compile>
     <Compile Update="UserControls\General\FlexMultiGroupMultiCard.xaml.cs">
       <DependentUpon>FlexMultiGroupMultiCard.xaml</DependentUpon>

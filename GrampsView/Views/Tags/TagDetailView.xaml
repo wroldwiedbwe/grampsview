@@ -64,6 +64,6 @@
             x:Name="BaseBackLinks"
             Grid.Row="2"
             FsctSource="{Binding BaseBackLinks}"
-            FsctTemplate="{StaticResource CardGroupTemplateSelectorSmall}" />
+            FsctTemplate="{StaticResource CardTemplateSelector}" />
     </Grid>
 </ContentPage>

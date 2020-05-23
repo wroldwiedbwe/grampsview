@@ -36,14 +36,8 @@
     </NavigationPage.TitleView>
 
     <!--  Content  -->
-
     <ucon:CollectionSingleCard
         Margin="0"
         FsctSource="{Binding PersonSource, Mode=OneWay}"
         FsctTemplate="{StaticResource PersonCardSmallDT}" />
-
-    <!--<ucon:FlexSingleGroupSingleCard
-            x:Name="flexLayout"
-            FsctSource="{Binding PersonSource, Mode=OneWay}"
-            FsctTemplate="{StaticResource PersonCardSmallDT}" />-->
 </ContentPage>

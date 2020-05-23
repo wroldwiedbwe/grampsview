@@ -76,7 +76,7 @@
                     VerticalOptions="Center" />
             </StackLayout>
 
-            <ucon:ListLineCardLarge Grid.Row="1" UCCardListLineCol="{Binding ApplicationVersionList, Mode=OneWay}" />
+            <ucon:ListLineCardLarge Grid.Row="1" BindingContext="{Binding ApplicationVersionList, Mode=OneWay}" />
 
             <ucon:HeaderCardLarge Grid.Row="2" BindingContext="{Binding HeaderData, Mode=OneWay}" />
 

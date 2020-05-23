@@ -70,7 +70,7 @@
                 <userControls:CardGridMultiType ControlItemSelectorTemplate="{StaticResource CardGroupTemplateSelectorLarge}" ControlItemSource="{x:Bind ViewModel.BaseHeader}" />
 
                 <tkControls:WrapPanel>
-                    <userControls:CardGridMultiType ControlItemSelectorTemplate="{StaticResource CardGroupTemplateSelectorSmall}" ControlItemSource="{x:Bind ViewModel.BaseDetail}" />
+                    <userControls:CardGridMultiType ControlItemSelectorTemplate="{StaticResource CardTemplateSelector}" ControlItemSource="{x:Bind ViewModel.BaseDetail}" />
                 </tkControls:WrapPanel>
             </StackPanel>
         </ScrollViewer>

@@ -34,7 +34,19 @@ namespace GrampsView.UserControls
                 return;
             }
 
-            HLinkNoteModel t = (card.BindingContext as HLinkNoteModel);
+            HLinkNoteModel t = new HLinkNoteModel();
+
+            if (BindingContext is HLinkNoteModel)
+            {
+                t = this.BindingContext as HLinkNoteModel;
+            }
+
+            if (BindingContext is NoteCardFull)
+            {
+                this.BindingContext = ((this.BindingContext as NoteCardFull).BindingContext) as HLinkNoteModel;
+
+                t = this.BindingContext as HLinkNoteModel;
+            }
 
             if (t is null)
             {

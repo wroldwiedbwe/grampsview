@@ -27,6 +27,15 @@ namespace GrampsView.Data.Collections
             Title = "Citation Collection";
         }
 
+        public override CardGroup GetCardGroup()
+        {
+            CardGroup t = base.GetCardGroup();
+
+            t.Title = Title;
+
+            return t;
+        }
+
         /// <summary>
         /// Helper method to sort and set the firt image link.
         /// </summary>

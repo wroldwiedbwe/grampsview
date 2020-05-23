@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary
-    x:Class="GrampsView.Assets.Styles.SmallCardTemplatesDictionary"
+    x:Class="GrampsView.Assets.Styles.CardTemplatesDictionary"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:common="clr-namespace:GrampsView.Common"
@@ -11,6 +11,30 @@
 
     <DataTemplate x:Key="AttributeCardSmallDT">
         <usercontrols:AttributeCardSmall />
+    </DataTemplate>
+
+    <DataTemplate x:Key="CardGroupDT">
+        <Frame IsVisible="{Binding Visible, Mode=OneWay}" Style="{StaticResource CardGroupStyle}">
+            <Grid x:Name="daGrid">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Text="{Binding Title}"
+                    TextColor="{DynamicResource OnSurfaceColor}" />
+
+                <FlexLayout
+                    x:Name="CardGroupTemplateFlexer"
+                    Grid.Row="1"
+                    BindableLayout.ItemTemplateSelector="{StaticResource CardTemplateSelector}"
+                    BindableLayout.ItemsSource="{Binding ., Mode=OneWay}"
+                    Style="{StaticResource FlexLayoutCards}" />
+            </Grid>
+        </Frame>
     </DataTemplate>
 
     <DataTemplate x:Key="CitationCardSmallDT">
@@ -31,6 +55,14 @@
 
     <DataTemplate x:Key="MediaCardSmallDT">
         <usercontrols:MediaCardSmall />
+    </DataTemplate>
+
+    <DataTemplate x:Key="MediaImageFullDT">
+        <usercontrols:MediaImageFullCard />
+    </DataTemplate>
+
+    <DataTemplate x:Key="NoteCardFullDT">
+        <usercontrols:NoteCardFull />
     </DataTemplate>
 
     <DataTemplate x:Key="NoteCardSmallDT">
@@ -69,15 +101,18 @@
         <usercontrols:URLCardSmall />
     </DataTemplate>
 
-    <common:CardGroupTemplateSelectorSmall
-        x:Key="CardGroupTemplateSelectorSmall"
+    <common:CardTemplateSelector
+        x:Key="CardTemplateSelector"
         AddressTemplate="{StaticResource AddressCardSmallDT}"
         AttributeTemplate="{StaticResource AttributeCardSmallDT}"
+        CardGroupTemplate="{StaticResource CardGroupDT}"
         CardListLineTemplate="{StaticResource CardListLineCardSmallDT}"
         CitationTemplate="{StaticResource CitationCardSmallDT}"
         EventTemplate="{StaticResource EventCardSmallDT}"
         FamilyTemplate="{StaticResource FamilyCardSmallDT}"
+        MediaImageFullTemplate="{StaticResource MediaImageFullDT}"
         MediaTemplate="{StaticResource MediaCardSmallDT}"
+        NoteCardFullTemplate="{StaticResource NoteCardFullDT}"
         NoteTemplate="{StaticResource NoteCardSmallDT}"
         ParentLinkTemplate="{StaticResource ParentLinkCardSmallDT}"
         PersonNameTemplate="{StaticResource PersonNameCardSmallDT}"

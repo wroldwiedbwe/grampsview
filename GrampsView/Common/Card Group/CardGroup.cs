@@ -11,6 +11,8 @@
 /// </summary>
 namespace GrampsView.Common
 {
+    using GrampsView.Data.Model;
+
     using System;
 
     /// <summary>
@@ -19,6 +21,20 @@ namespace GrampsView.Common
     {
         public CardGroup()
         {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CardGroup"/> class with the ModelBase for a
+        /// single card.
+        /// </summary>
+        /// <param name="argCard">
+        /// The argument card.
+        /// </param>
+        public CardGroup(ModelBase argCard)
+        {
+            CardGroup t = new CardGroup();
+            t.Add(argCard);
+            base.Add(t);
         }
 
         public void Add(CardGroup argCardGroup)

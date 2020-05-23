@@ -6,6 +6,8 @@ namespace GrampsView.UserControls
 {
     using GrampsView.Data.Model;
 
+    using System.Linq;
+
     using Xamarin.Forms;
 
     public partial class HeaderCardLarge : Grid
@@ -39,7 +41,7 @@ namespace GrampsView.UserControls
 
             HeaderCard.Title = "Header Details";
 
-            this.LLCL.UCCardListLineCol = HeaderCard;
+            this.LLCL.BindingContext = HeaderCard;
         }
     };
 }

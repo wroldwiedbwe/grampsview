@@ -18,17 +18,11 @@ namespace GrampsView.Data.Collections
     [KnownType(typeof(ObservableCollection<HLinkBackLink>))]
     public class HLinkBackLinkModelCollection : HLinkBaseCollection<HLinkBackLink>
     {
-        public CardGroup GetCardGroup()
+        public override CardGroup GetCardGroup()
         {
-            CardGroup t = new CardGroup
-            {
-                Title = "Backlink Collection"
-            };
+            CardGroup t = base.GetCardGroup();
 
-            foreach (var item in Items)
-            {
-                t.Add(item.HLink());
-            }
+            t.Title = "Backlink Collection";
 
             return t;
         }

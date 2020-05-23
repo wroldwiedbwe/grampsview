@@ -50,7 +50,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ucon:MediaImageFullCard Grid.Row="0" UCMedia="{Binding SourceObject.HomeImageHLink, Mode=OneWay}" />
+        <ucon:MediaImageFullCard Grid.Row="0" BindingContext="{Binding SourceObject.HomeImageHLink, Mode=OneWay}" />
 
         <ucon:FlexMultiGroupMultiCard
             x:Name="BaseHeader"

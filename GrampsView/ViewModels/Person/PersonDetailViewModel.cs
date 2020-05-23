@@ -6,9 +6,11 @@ namespace GrampsView.ViewModels
     using GrampsView.Common;
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
+    using GrampsView.UserControls;
 
     using Prism.Events;
     using Prism.Navigation;
+
     using System;
     using System.Numerics;
     using System.Threading.Tasks;
@@ -44,24 +46,24 @@ namespace GrampsView.ViewModels
             BaseTitleIcon = CommonConstants.IconPeople;
         }
 
-        /// <summary>
-        /// Gets or sets the person biograqphical details.
-        /// </summary>
-        /// <value>
-        /// The person bio.
-        /// </value>
-        public HLinkNoteModel PersonBio
-        {
-            get
-            {
-                return _PersonBio;
-            }
+        ///// <summary>
+        ///// Gets or sets the person biograqphical details.
+        ///// </summary>
+        ///// <value>
+        ///// The person bio.
+        ///// </value>
+        //public HLinkNoteModel PersonBio
+        //{
+        //    get
+        //    {
+        //        return _PersonBio;
+        //    }
 
-            set
-            {
-                SetProperty(ref _PersonBio, value);
-            }
-        }
+        //    set
+        //    {
+        //        SetProperty(ref _PersonBio, value);
+        //    }
+        //}
 
         /// <summary>
         /// Gets or sets the View Current Person.
@@ -110,11 +112,17 @@ namespace GrampsView.ViewModels
             {
                 BaseTitle = PersonObject.GPersonNamesCollection.GetPrimaryName.GetDefaultText;
 
+                // Get media image
+                CardGroup mediaImageCardGroup = new CardGroup();
+                MediaImageFullCard personImage = new MediaImageFullCard();
+                personImage.BindingContext = PersonObject.HomeImageHLink;
+                mediaImageCardGroup.Add(personImage);
+                BaseDetail.Add(personImage);
+
                 // Get Header Details
                 CardGroup headerCardGroup = new CardGroup { Title = "Header Details" };
 
                 // Get the Name Details
-
                 CardListLineCollection nameDetails = new CardListLineCollection
                 {
                     new CardListLine("Card Type:", "Person Detail"),
@@ -172,38 +180,43 @@ namespace GrampsView.ViewModels
                 // Add Standard details
                 headerCardGroup.Add(DV.PersonDV.GetModelInfoFormatted(PersonObject));
 
-                BaseHeader.Add(headerCardGroup);
+                BaseDetail.Add(headerCardGroup);
 
                 // Handle the uncommon case where there is more than one name
                 if (PersonObject.GPersonNamesCollection.Count > 1)
                 {
                     // Add extra name details
-                    BaseHeader.Add(PersonObject.GPersonNamesCollection.GetCardGroup1());
+                    BaseDetail.Add(PersonObject.GPersonNamesCollection.GetCardGroup1());
                 }
 
+                // Get Bio
+                CardGroup bioCardGroup = new CardGroup();
+                NoteCardFull bioCard = new NoteCardFull();
+                bioCard.BindingContext = PersonObject.GNoteRefCollection.GetBio;
+                bioCardGroup.Add(bioCard);
+                BaseDetail.Add(bioCardGroup);
+
                 // Add details
-                BaseDetail.Add(PersonObject.GParentInRefCollection);
-                BaseDetail.Add(PersonObject.GEventRefCollection);
-                BaseDetail.Add(PersonObject.GCitationRefCollection);
-                BaseDetail.Add(PersonObject.GNoteRefCollection);
-                BaseDetail.Add(PersonObject.GMediaRefCollection);
+                BaseDetail.Add(PersonObject.GParentInRefCollection.GetCardGroup());
+                BaseDetail.Add(PersonObject.GEventRefCollection.GetCardGroup());
+                BaseDetail.Add(PersonObject.GCitationRefCollection.GetCardGroup());
+                BaseDetail.Add(PersonObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Add(PersonObject.GMediaRefCollection.GetCardGroup());
                 BaseDetail.Add(PersonObject.GAttributeCollection);
                 BaseDetail.Add(PersonObject.GAddress);
-                BaseDetail.Add(PersonObject.GTagRefCollection);
+                BaseDetail.Add(PersonObject.GTagRefCollection.GetCardGroup());
                 BaseDetail.Add(PersonObject.GURLCollection);
                 BaseDetail.Add(PersonObject.GLDSCollection);
                 BaseDetail.Add(PersonObject.GPersonRefCollection);
 
-                BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GCitationRefCollection); // .("Name Citations"));
-                BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GNoteReferenceCollection); //.GetCardGroup("Name Notes"));
+                BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GCitationRefCollection.GetCardGroup()); // .("Name Citations"));
+                BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GNoteReferenceCollection.GetCardGroup()); //.GetCardGroup("Name Notes"));
 
-                BaseBackLinks.Add(PersonObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseDetail.Add(PersonObject.BackHLinkReferenceCollection.GetCardGroup());
 
                 // TODO localActivitySession = await CommonTimeline.AddToTimeLine("Person",
                 // PersonObject, PersonObject.HomeImageHLink.DeRef.MediaStorageFilePath, "Person: "
                 // + PersonObject.BirthName.FullName, "Born: " + PersonObject.BirthDate.GetShortDateAsString).ConfigureAwait(false);
-
-                PersonBio = PersonObject.GNoteRefCollection.GetBio;
             }
 
             return true;

@@ -10,6 +10,7 @@ namespace GrampsView.Data.Collections
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
+
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -24,6 +25,15 @@ namespace GrampsView.Data.Collections
         public HLinkMediaModelCollection()
         {
             Title = "Media Collection";
+        }
+
+        public override CardGroup GetCardGroup()
+        {
+            CardGroup t = base.GetCardGroup();
+
+            t.Title = Title;
+
+            return t;
         }
 
         /// <summary>

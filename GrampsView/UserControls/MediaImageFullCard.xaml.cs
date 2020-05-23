@@ -12,14 +12,6 @@ namespace GrampsView.UserControls
     /// </summary>
     public partial class MediaImageFullCard : Frame
     {
-        public static readonly BindableProperty UCMediaProperty = BindableProperty.Create(propertyName: nameof(UCMedia),
-                                                                                                returnType: typeof(HLinkHomeImageModel),
-                                                                                                declaringType: typeof(MediaImageFullCard),
-                                                                                                defaultValue: new HLinkHomeImageModel(),
-                                                                                                defaultBindingMode: BindingMode.OneWay,
-                                                                                                propertyChanged: HandleVMPropertyChanged
-                                                                                                );
-
         /// <summary>
         /// Initializes a new instance of the <see cref="MediaImageFullCard"/> class.
         /// </summary>
@@ -30,26 +22,6 @@ namespace GrampsView.UserControls
             this.IsVisible = false;
         }
 
-        public HLinkHomeImageModel UCMedia
-        {
-            get
-            {
-                if (base.GetValue(UCMediaProperty) != null)
-                {
-                }
-
-                return (HLinkHomeImageModel)base.GetValue(UCMediaProperty);
-            }
-
-            set
-            {
-                if (this.UCMedia != value)
-                {
-                    base.SetValue(UCMediaProperty, value);
-                }
-            }
-        }
-
         public void ReloadImage()
         {
             image.ReloadImage();
@@ -57,11 +29,21 @@ namespace GrampsView.UserControls
             image.LoadingPlaceholder = null;
         }
 
-        private static void HandleVMPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        private void MediaImageFullCardRoot_BindingContextChanged(object sender, System.EventArgs e)
         {
-            MediaImageFullCard mifModel = (bindable as MediaImageFullCard);
+            MediaImageFullCard mifModel = (sender as MediaImageFullCard);
 
-            HLinkHomeImageModel imageMediaModel = newValue as HLinkHomeImageModel;
+            HLinkHomeImageModel imageMediaModel = new HLinkHomeImageModel();
+
+            if (BindingContext is HLinkHomeImageModel)
+            {
+                imageMediaModel = this.BindingContext as HLinkHomeImageModel;
+            }
+
+            if (BindingContext is MediaImageFullCard)
+            {
+                imageMediaModel = ((this.BindingContext as MediaImageFullCard).BindingContext) as HLinkHomeImageModel;
+            }
 
             if (!(imageMediaModel is null) && (imageMediaModel.Valid))
             {

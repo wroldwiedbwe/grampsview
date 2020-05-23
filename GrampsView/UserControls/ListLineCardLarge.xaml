@@ -30,15 +30,37 @@
                 <Label
                     x:Name="LLCardLargeTitle"
                     Margin="3,0,3,0"
-                    Style="{DynamicResource GVHeaderStyleLarge}" />
+                    Style="{DynamicResource GVHeaderStyleLarge}"
+                    Text="{Binding .Title, Mode=OneWay}" />
             </Frame>
 
-            <ucon:BindableStackLayout
-                x:Name="largeDetailList"
-                Grid.Row="1"
-                Grid.Column="0"
-                Margin="3"
-                ItemDataTemplate="{DynamicResource GVCardListLineLarge}" />
+            <StackLayout Grid.Row="1" BindableLayout.ItemsSource="{Binding .}">
+                <BindableLayout.ItemTemplate>
+
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label
+                                Grid.Column="0"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding Label}"
+                                TextColor="{DynamicResource OnPrimaryColor}" />
+                            <Label
+                                Grid.Column="1"
+                                HorizontalOptions="EndAndExpand"
+                                HorizontalTextAlignment="End"
+                                LineBreakMode="WordWrap"
+                                Text="{Binding Value}"
+                                TextColor="{DynamicResource OnSecondaryColor}"
+                                VerticalTextAlignment="Start" />
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
         </Grid>
     </Frame.Content>
 </Frame>

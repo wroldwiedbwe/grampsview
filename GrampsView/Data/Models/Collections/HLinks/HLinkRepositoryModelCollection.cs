@@ -22,5 +22,14 @@ namespace GrampsView.Data.Collections
         {
             Title = "Repository Collection";
         }
+
+        public override CardGroup GetCardGroup()
+        {
+            CardGroup t = base.GetCardGroup();
+
+            t.Title = Title;
+
+            return t;
+        }
     }
 }
