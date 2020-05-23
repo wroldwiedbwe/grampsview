@@ -1,3 +1,7 @@
+## [5.5.33](https://github.com/phandcock/grampsview/compare/v5.5.32...v5.5.33) (2020-05-23)
+
+
+
 ## [5.5.32](https://github.com/phandcock/grampsview/compare/v5.5.31...v5.5.32) (2020-05-23)
 
 
@@ -26,15 +30,6 @@
 ### Bug Fixes
 
 * header card background to transparent ([0ab4c16](https://github.com/phandcock/grampsview/commit/0ab4c163da78091488484744631bb36769fc18ce))
-
-
-
-## [5.5.28](https://github.com/phandcock/grampsview/compare/v5.5.27...v5.5.28) (2020-05-18)
-
-
-### Bug Fixes
-
-* work on PersonDetailView layout ([a79378a](https://github.com/phandcock/grampsview/commit/a79378a76cf4dc02493b084a51e83f882437c02c))
 
 
 
