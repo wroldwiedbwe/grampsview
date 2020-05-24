@@ -90,15 +90,20 @@
             <ucon:InstructionCardLarge x:Name="SearchNothingFound" BindingContext="{i18n:Translate SearchPage_NothingFound}" />
         </Frame>
 
+        <ucon:CollectionCardList
+            Grid.Row="3"
+            Grid.Column="0"
+            FsctSource="{Binding BaseDetail, Mode=OneWay}" />
+
         <!--<ScrollView
             x:Name="SearchViewBox"
             Grid.Row="3"
             Grid.Column="0">-->
-        <ucon:FlexMultiGroupMultiCard
+        <!--<ucon:FlexMultiGroupMultiCard
             x:Name="BaseHeader"
             Grid.Row="3"
             Grid.Column="0"
-            FsctSource="{Binding BaseDetail, Mode=OneWay}" />
+            FsctSource="{Binding BaseDetail, Mode=OneWay}" />-->
         <!--</ScrollView>-->
     </Grid>
 </ContentPage>

@@ -39,34 +39,8 @@
     </DataTemplate>
 
     <!--  Card Group data template  -->
-    <DataTemplate x:Key="CardGroupTemplate" x:Name="CardGroupTemplate">
-
-        <Frame IsVisible="{Binding Visible, Mode=OneWay}" Style="{StaticResource CardGroupStyle}">
-            <Grid x:Name="daGrid">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-
-                <Label
-                    Grid.Row="0"
-                    Text="{Binding Title}"
-                    TextColor="{DynamicResource OnSurfaceColor}" />
-
-                <FlexLayout
-                    x:Name="CardGroupTemplateFlexer"
-                    Grid.Row="1"
-                    BindableLayout.ItemTemplateSelector="{StaticResource CardTemplateSelector}"
-                    BindableLayout.ItemsSource="{Binding ., Mode=OneWay}"
-                    Style="{StaticResource FlexLayoutCards}" />
-            </Grid>
-        </Frame>
-    </DataTemplate>
-
-    <!--  Card Group multi data template  -->
     <!--
-    <DataTemplate x:Key="CardGroupMultiTemplate" x:Name="CardGroupMultiTemplate">
+    <DataTemplate x:Key="CardGroupTemplate" x:Name="CardGroupTemplate">
 
         <Frame IsVisible="{Binding Visible, Mode=OneWay}" Style="{StaticResource CardGroupStyle}">
             <Grid x:Name="daGrid">

@@ -59,9 +59,6 @@
 
         <ucon:HeaderCardLarge Grid.Row="2" BindingContext="{Binding HeaderData, Mode=OneWay}" />
 
-        <ucon:FlexMultiGroupMultiCard
-            x:Name="LatestChangesCards"
-            Grid.Row="3"
-            FsctSource="{Binding LatestChanges, Mode=OneWay}" />
+        <ucon:CollectionCardList Grid.Row="3" FsctSource="{Binding LatestChanges, Mode=OneWay}" />
     </Grid>
 </ContentPage>

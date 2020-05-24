@@ -130,8 +130,10 @@
     <Compile Remove="UserControls\General\CardGridSingleType.xaml.cs" />
     <Compile Remove="UserControls\General\CheckBoxExtended.cs" />
     <Compile Remove="UserControls\General\CollectionCardGroup.xaml.cs" />
+    <Compile Remove="UserControls\General\FlexBase.xaml.cs" />
     <Compile Remove="UserControls\General\FlexMultiCardEnum.xaml.cs" />
     <Compile Remove="UserControls\General\FlexMultiGroupMultiCard - Copy.xaml.cs" />
+    <Compile Remove="UserControls\General\FlexMultiGroupMultiCard.xaml.cs" />
     <Compile Remove="UserControls\General\FlexSingleCardGroup.xaml.cs" />
     <Compile Remove="UserControls\General\FlexSingleGroupMultiCard.xaml.cs" />
     <Compile Remove="UserControls\General\FlexSingleGroupSingleCard.xaml.cs" />
@@ -202,6 +204,7 @@
     <EmbeddedResource Remove="UserControls\General\CardGridSingleType.xaml" />
     <EmbeddedResource Remove="UserControls\General\CollectionCardGroup.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexMultiCardEnum.xaml" />
+    <EmbeddedResource Remove="UserControls\General\FlexMultiGroupMultiCard.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexSingleCardGroup.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexSingleGroupMultiCard.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexSingleGroupSingleCard.xaml" />
@@ -277,12 +280,6 @@
   <ItemGroup>
     <Compile Update="UserControls\General\CollectionCardList.xaml.cs">
       <DependentUpon>CollectionCardList.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="UserControls\General\FlexMultiGroupMultiCard.xaml.cs">
-      <DependentUpon>FlexMultiGroupMultiCard.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="UserControls\General\FlexBase.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
     <Compile Update="UserControls\General\CollectionSingleCard.xaml.cs">
       <DependentUpon>CollectionSingleCard.xaml</DependentUpon>
