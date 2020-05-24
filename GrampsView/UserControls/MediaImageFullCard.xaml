@@ -1,20 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<Frame
+<Grid
     x:Class="GrampsView.UserControls.MediaImageFullCard"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="MediaImageFullCardRoot"
-    BindingContextChanged="MediaImageFullCardRoot_BindingContextChanged"
-    Style="{DynamicResource FrameLargeVariableCardStyle}">
-    <Frame.Content>
+    BindingContextChanged="MediaImageFullCardRoot_BindingContextChanged">
 
-        <Frame
-            Margin="5"
-            Padding="5"
-            BackgroundColor="{DynamicResource CardImageBackground}">
-
-            <ucon:MediaImageSkia x:Name="image" Grid.Row="1" />
-        </Frame>
-    </Frame.Content>
-</Frame>
+    <Frame BackgroundColor="{DynamicResource CardImageBackground}" Style="{DynamicResource FrameLargeVariableCardStyle}">
+        <Frame.Content>
+            <ucon:MediaImageSkia x:Name="image" />
+        </Frame.Content>
+    </Frame>
+</Grid>

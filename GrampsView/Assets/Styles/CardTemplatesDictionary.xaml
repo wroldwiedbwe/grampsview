@@ -19,7 +19,7 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Label
@@ -55,6 +55,10 @@
 
     <DataTemplate x:Key="MediaCardSmallDT">
         <usercontrols:MediaCardSmall />
+    </DataTemplate>
+
+    <DataTemplate x:Key="MediaCardLargeDT">
+        <usercontrols:MediaCardLarge />
     </DataTemplate>
 
     <DataTemplate x:Key="MediaImageFullDT">
@@ -110,6 +114,7 @@
         CitationTemplate="{StaticResource CitationCardSmallDT}"
         EventTemplate="{StaticResource EventCardSmallDT}"
         FamilyTemplate="{StaticResource FamilyCardSmallDT}"
+        MediaCardLargeTemplate="{StaticResource MediaCardLargeDT}"
         MediaImageFullTemplate="{StaticResource MediaImageFullDT}"
         MediaTemplate="{StaticResource MediaCardSmallDT}"
         NoteCardFullTemplate="{StaticResource NoteCardFullDT}"

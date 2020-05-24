@@ -20,10 +20,11 @@ namespace GrampsView.Common
 
     public enum DisplayFormat
     {
-        SourceCardSmall,
         Default,
+        MediaCardLarge,
         MediaImageFullCard,
-        NoteCardFull
+        NoteCardFull,
+        SourceCardSmall
     }
 
     public static class CommonRoutines

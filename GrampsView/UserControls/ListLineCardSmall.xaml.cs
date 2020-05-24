@@ -4,7 +4,7 @@
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ListLineCardSmall : Frame
+    public partial class ListLineCardSmall : Grid
     {
         public ListLineCardSmall()
         {

@@ -271,6 +271,12 @@ namespace GrampsView.Common
             set;
         }
 
+        public DataTemplate MediaCardLargeTemplate
+        {
+            get;
+            set;
+        }
+
         public DataTemplate MediaImageFullTemplate
         {
             get;
@@ -567,7 +573,14 @@ namespace GrampsView.Common
 
             if (item is HLinkHomeImageModel)
             {
-                return MediaImageFullTemplate;
+                switch ((item as HLinkHomeImageModel).CardType)
+                {
+                    case DisplayFormat.MediaCardLarge:
+                        return MediaCardLargeTemplate;
+
+                    case DisplayFormat.MediaImageFullCard:
+                        return MediaImageFullTemplate;
+                }
             }
 
             if (item is NameMapModel)

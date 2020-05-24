@@ -314,8 +314,8 @@
         x:Key="MediaImageFull"
         BasedOn="{StaticResource FrameCardLargeStyle}"
         TargetType="Frame">
-        <Setter Property="WidthRequest" Value="{Binding CardLargeDoubleWidth, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
-        <Setter Property="HeightRequest" Value="{Binding CardLargeDoubleWidth, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
+        <Setter Property="WidthRequest" Value="{Binding CardLargeWidth, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
+        <Setter Property="HeightRequest" Value="{Binding CardLargeWidth, Source={x:Static common:CardSizes.Current}, Mode=OneWay}" />
     </Style>
 
     <!--  Create a Variable Height Large Card Style  -->

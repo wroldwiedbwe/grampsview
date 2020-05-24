@@ -90,12 +90,6 @@ namespace GrampsView.ViewModels
             {
                 BaseTitle = PersonObject.GPersonNamesCollection.GetPrimaryName.GetDefaultText;
 
-                // Get media image
-                HLinkHomeImageModel personImage = PersonObject.HomeImageHLink;
-                Contract.Assert(PersonObject.HomeImageHLink != null, PersonObject.Id);
-                personImage.CardType = DisplayFormat.MediaImageFullCard;
-                BaseDetail.Add(personImage);
-
                 // Get Header Details
                 CardGroup headerCardGroup = new CardGroup { Title = "Header Details" };
 
@@ -159,6 +153,12 @@ namespace GrampsView.ViewModels
 
                 BaseDetail.Add(headerCardGroup);
 
+                // Get media image
+                HLinkHomeImageModel personImage = PersonObject.HomeImageHLink;
+                Contract.Assert(PersonObject.HomeImageHLink != null, PersonObject.Id);
+                personImage.CardType = DisplayFormat.MediaCardLarge;
+                BaseDetail.Add(personImage);
+
                 // Handle the uncommon case where there is more than one name
                 if (PersonObject.GPersonNamesCollection.Count > 1)
                 {
@@ -184,8 +184,8 @@ namespace GrampsView.ViewModels
                 BaseDetail.Add(PersonObject.GLDSCollection);
                 BaseDetail.Add(PersonObject.GPersonRefCollection);
 
-                BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GCitationRefCollection.GetCardGroup()); // .("Name Citations"));
-                BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GNoteReferenceCollection.GetCardGroup()); //.GetCardGroup("Name Notes"));
+                BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GCitationRefCollection.GetCardGroup("Name Citations"));
+                BaseDetail.Add(PersonObject.GPersonNamesCollection.GetPrimaryName.GNoteReferenceCollection.GetCardGroup("Name Notes"));
 
                 BaseDetail.Add(PersonObject.BackHLinkReferenceCollection.GetCardGroup());
 
