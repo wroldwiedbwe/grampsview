@@ -4,24 +4,17 @@
 
 namespace GrampsView.ViewModels
 {
-    using System;
-    using System.Collections.Generic;
-
-    using FFImageLoading.Forms;
-    using FFImageLoading.Transformations;
-    using FFImageLoading.Work;
-
     using GrampsView.Common;
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
-    using System.Diagnostics.Contracts;
 
     using Prism.Commands;
     using Prism.Events;
     using Prism.Navigation;
 
+    using System.Diagnostics.Contracts;
+
     using Xamarin.Essentials;
-    using Xamarin.Forms;
 
     /// <summary>
     /// Defines the EVent Detail Page View ViewModel.

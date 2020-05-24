@@ -4,15 +4,14 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     Margin="0"
     Padding="0"
     BackgroundColor="Transparent"
     BindingContextChanged="MediaImageSkia_BindingContextChanged"
     BorderColor="Transparent"
-    HeightRequest="100"
     HorizontalOptions="FillAndExpand"
-    VerticalOptions="FillAndExpand"
-    WidthRequest="100">
+    VerticalOptions="FillAndExpand">
 
     <Frame.Content>
 
@@ -46,7 +45,15 @@
                 LoadingPlaceholder="ic_launcher.png"
                 RetryCount="3"
                 RetryDelay="1000"
-                VerticalOptions="FillAndExpand" />
+                VerticalOptions="FillAndExpand">
+                <ffimageloading:CachedImage.GestureRecognizers>
+                    <TapGestureRecognizer Command="{prism:NavigateTo 'MediaDetailPage'}">
+                        <TapGestureRecognizer.CommandParameter>
+                            <prism:NavigationParameter Key="hlink" Value="{Binding .DeRef.HLink}" />
+                        </TapGestureRecognizer.CommandParameter>
+                    </TapGestureRecognizer>
+                </ffimageloading:CachedImage.GestureRecognizers>
+            </ffimageloading:CachedImage>
         </Grid>
     </Frame.Content>
 </Frame>

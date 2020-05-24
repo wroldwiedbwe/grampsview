@@ -3,7 +3,7 @@
     x:Class="GrampsView.UserControls.MediaImageFullCard"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ucon="clr-namespace:GrampsView.UserControls"
     x:Name="MediaImageFullCardRoot"
     BindingContextChanged="MediaImageFullCardRoot_BindingContextChanged"
     Style="{DynamicResource FrameLargeVariableCardStyle}">
@@ -14,14 +14,7 @@
             Padding="5"
             BackgroundColor="{DynamicResource CardImageBackground}">
 
-            <ffimageloading:CachedImage
-                x:Name="image"
-                Grid.Row="1"
-                Aspect="AspectFit">
-                <ffimageloading:CachedImage.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding OpenImageCommand}" NumberOfTapsRequired="2" />
-                </ffimageloading:CachedImage.GestureRecognizers>
-            </ffimageloading:CachedImage>
+            <ucon:MediaImageSkia x:Name="image" Grid.Row="1" />
         </Frame>
     </Frame.Content>
 </Frame>

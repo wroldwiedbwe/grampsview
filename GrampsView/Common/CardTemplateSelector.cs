@@ -41,18 +41,6 @@ namespace GrampsView.Common
             set;
         }
 
-        ///// <summary>
-        ///// Gets or sets the book mark template.
-        ///// </summary>
-        ///// <value>
-        ///// The book mark template.
-        ///// </value>
-        //public DataTemplate BookMarkTemplate
-        //{
-        //    get;
-        //    set;
-        //}
-
         /// <summary>
         /// Gets or sets the Card Group template.
         /// </summary>
@@ -89,13 +77,6 @@ namespace GrampsView.Common
             set;
         }
 
-        ///// <summary>
-        ///// Gets or sets the citation template.
-        ///// </summary>
-        ///// <value>
-        ///// The citation template.
-        ///// </value>
-        // public DataTemplate CitationRefTemplate { get; set; }
         /// <summary>
         /// Gets or sets the event template.
         /// </summary>
@@ -156,13 +137,6 @@ namespace GrampsView.Common
             set;
         }
 
-        ///// <summary>
-        ///// Gets or sets the citation template.
-        ///// </summary>
-        ///// <value>
-        ///// The citation template.
-        ///// </value>
-        // public DataTemplate CitationRefTemplate { get; set; }
         /// <summary>
         /// Gets or sets the event template.
         /// </summary>
@@ -451,12 +425,6 @@ namespace GrampsView.Common
         /// </returns>
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            //// Handle BackLinks
-            //if (item is HLinkBackLink)
-            //{
-            //    item = (item as HLinkBackLink).HLink();
-            //}
-
             if (item is AddressModel)
             {
                 return AddressTemplate;
@@ -466,11 +434,6 @@ namespace GrampsView.Common
             {
                 return AttributeTemplate;
             }
-
-            //if (item is BookMarkModel)
-            //{
-            //    return BookMarkTemplate;
-            //}
 
             if (item is CardGroup)
             {
@@ -531,11 +494,6 @@ namespace GrampsView.Common
             {
                 return CardListLineTemplate;
             }
-
-            //if (item is HLinkBookMarkModel)
-            //{
-            //    return BookMarkTemplate;
-            //}
 
             if (item is HLinkCitationModel)
             {

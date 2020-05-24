@@ -7,11 +7,11 @@ namespace GrampsView.UserControls
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
 
-    using SkiaSharp;
+    using Prism.Commands;
 
     using System;
-    using System.Diagnostics;
 
+    using Xamarin.Essentials;
     using Xamarin.Forms;
 
     public partial class MediaImageSkia : Frame // , IDisposable
@@ -33,6 +33,13 @@ namespace GrampsView.UserControls
         }
 
         private HLinkHomeImageModel HLinkMedia { get; set; }
+
+        public void ReloadImage()
+        {
+            this.daImage.ReloadImage();
+
+            this.daImage.LoadingPlaceholder = null;
+        }
 
         private static void MediaImage_UConPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {

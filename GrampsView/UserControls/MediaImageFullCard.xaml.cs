@@ -24,13 +24,6 @@ namespace GrampsView.UserControls
             this.IsVisible = false;
         }
 
-        public void ReloadImage()
-        {
-            image.ReloadImage();
-
-            image.LoadingPlaceholder = null;
-        }
-
         private void MediaImageFullCardRoot_BindingContextChanged(object sender, System.EventArgs e)
         {
             MediaImageFullCard mifModel = (sender as MediaImageFullCard);
@@ -43,7 +36,7 @@ namespace GrampsView.UserControls
 
             if (imageMediaModel.Valid)
             {
-                mifModel.image.Source = imageMediaModel.DeRef.MediaStorageFilePath;
+                mifModel.image.BindingContext = imageMediaModel;
             }
 
             // Check if anything to display

@@ -44,6 +44,7 @@
                 <ucon:MediaImageSkia
                     x:Name="AnchorImage1"
                     BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
+                    IsEnabled="False"
                     Style="{DynamicResource MediaImageStyle}" />
             </Grid>
 
