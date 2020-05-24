@@ -85,7 +85,9 @@ namespace GrampsView.ViewModels
                 BaseTitleIcon = CommonConstants.IconCitation;
 
                 // Get media image
-                BaseDetail.Add(CardGroupUtil.GetMediaImageFullCard(CitationObject.HomeImageHLink));
+                HLinkHomeImageModel mediaImage = CitationObject.HomeImageHLink;
+                mediaImage.CardType = DisplayFormat.MediaImageFullCard;
+                BaseDetail.Add(mediaImage);
 
                 //// Get Note
                 //CardGroup noteCardGroup = new CardGroup();
@@ -110,14 +112,15 @@ namespace GrampsView.ViewModels
                 BaseDetail.Add(t);
 
                 // Add Source details
-                BaseDetail.Add(CardGroupUtil.GetSourceCardSmall(CitationObject.GSourceRef));
-                //SourceObject = CitationObject.GSourceRef;
+                HLinkSourceModel sourceCard = CitationObject.GSourceRef;
+                sourceCard.CardType = DisplayFormat.SourceCardSmall;
+                BaseDetail.Add(sourceCard);
 
                 // If only one note (the most common case) just display it in a large format,
                 // otherwise setup a list of them.
                 if (CitationObject.GNoteRefCollection.Count > 0)
                 {
-                    // NoteObject = CitationObject.GNoteRefCollection[0].DeRef;
+                    // TODO Fix this NoteObject = CitationObject.GNoteRefCollection[0].DeRef;
                 }
 
                 // Add remaining details

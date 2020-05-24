@@ -21,11 +21,6 @@ namespace GrampsView.ViewModels
     /// </summary>
     public class NoteDetailViewModel : ViewModelBase
     {
-        /// <summary>
-        /// Holds the Note ViewModel.
-        /// </summary>
-        private HLinkNoteModel _HLinkNote;
-
         private NoteModel _NoteObject = new NoteModel();
 
         /// <summary>
@@ -43,25 +38,6 @@ namespace GrampsView.ViewModels
             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
         {
             BaseTitleIcon = CommonConstants.IconNotes;
-        }
-
-        /// <summary>
-        /// Gets or sets the note object.
-        /// </summary>
-        /// <value>
-        /// The note object.
-        /// </value>
-        public HLinkNoteModel HLinkNote
-        {
-            get
-            {
-                return _HLinkNote;
-            }
-
-            set
-            {
-                SetProperty(ref _HLinkNote, value);
-            }
         }
 
         /// <summary>
@@ -108,13 +84,16 @@ namespace GrampsView.ViewModels
                 // Add Model details
                 basicHeaderDetails.Add(DV.NoteDV.GetModelInfoFormatted(NoteObject));
 
-                BaseHeader.Add(basicHeaderDetails);
+                BaseDetail.Add(basicHeaderDetails);
 
-                HLinkNote = NoteObject.HLink;
+                // Get Bio
+                HLinkNoteModel noteCard = NoteObject.HLink;
+                noteCard.CardType = DisplayFormat.NoteCardFull;
+                BaseDetail.Add(noteCard);
 
-                BaseDetail.Add(NoteObject.GTagRefCollection);
+                BaseDetail.Add(NoteObject.GTagRefCollection.GetCardGroup());
 
-                BaseBackLinks.Add(NoteObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseDetail.Add(NoteObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

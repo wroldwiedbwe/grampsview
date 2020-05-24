@@ -6,6 +6,8 @@ namespace GrampsView.UserControls
 {
     using GrampsView.Data.Model;
 
+    using System.Diagnostics.Contracts;
+
     using Xam.Forms.Markdown;
 
     using Xamarin.Forms;
@@ -34,19 +36,9 @@ namespace GrampsView.UserControls
                 return;
             }
 
-            HLinkNoteModel t = new HLinkNoteModel();
+            Contract.Requires(BindingContext is HLinkNoteModel);
 
-            if (BindingContext is HLinkNoteModel)
-            {
-                t = this.BindingContext as HLinkNoteModel;
-            }
-
-            if (BindingContext is NoteCardFull)
-            {
-                this.BindingContext = ((this.BindingContext as NoteCardFull).BindingContext) as HLinkNoteModel;
-
-                t = this.BindingContext as HLinkNoteModel;
-            }
+            HLinkNoteModel t = this.BindingContext as HLinkNoteModel;
 
             if (t is null)
             {

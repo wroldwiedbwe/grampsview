@@ -201,8 +201,8 @@ namespace GrampsView
             container.RegisterForNavigation<TagDetailPage, TagDetailViewModel>();
             container.RegisterForNavigation<TagListPage, TagListViewModel>();
 
-            container.RegisterForNavigation<NameMapDetailView, NameMapDetailViewModel>();
-            container.RegisterForNavigation<NameMapListView, NameMapListViewModel>();
+            //container.RegisterForNavigation<NameMapDetailView, NameMapDetailViewModel>();
+            //container.RegisterForNavigation<NameMapListView, NameMapListViewModel>();
 
             container.RegisterForNavigation<NavigationPage>();
 

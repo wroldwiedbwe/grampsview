@@ -38,35 +38,6 @@
         </Grid>
     </NavigationPage.TitleView>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <!--  Content  -->
-        <ucon:FlexMultiGroupMultiCard
-            x:Name="BaseHeader"
-            Grid.Row="0"
-            FsctSource="{Binding BaseHeader}" />
-
-        <ucon:NoteCardFull Grid.Row="1" BindingContext="{Binding HLinkNote, Mode=OneWay}" />
-
-        <ucon:FlexMultiGroupMultiCard
-            x:Name="BaseDetail"
-            Grid.Row="2"
-            FsctSource="{Binding BaseDetail}" />
-
-        <ucon:FlexMultiGroupMultiCard
-            x:Name="BaseBackLinks"
-            Grid.Row="3"
-            FsctSource="{Binding BaseBackLinks}"
-            Style="{DynamicResource BackLinkCollection}" />
-    </Grid>
+    <!--  Content  -->
+    <ucon:CollectionCardList FsctSource="{Binding BaseDetail, Mode=OneWay}" />
 </ContentPage>

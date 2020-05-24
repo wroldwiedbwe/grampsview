@@ -37,6 +37,8 @@ namespace GrampsView.Data.Model
         {
         }
 
+        public DisplayFormat CardType { get; set; } = DisplayFormat.Default;
+
         [DataMember]
         public bool GPriv
         {

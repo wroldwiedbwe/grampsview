@@ -6,6 +6,7 @@ namespace GrampsView.ViewModels
 {
     using System;
     using System.Collections.Generic;
+
     using FFImageLoading.Forms;
     using FFImageLoading.Transformations;
     using FFImageLoading.Work;
@@ -13,9 +14,12 @@ namespace GrampsView.ViewModels
     using GrampsView.Common;
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
+    using System.Diagnostics.Contracts;
+
     using Prism.Commands;
     using Prism.Events;
     using Prism.Navigation;
+
     using Xamarin.Essentials;
     using Xamarin.Forms;
 
@@ -30,13 +34,6 @@ namespace GrampsView.ViewModels
         /// The local media object.
         /// </summary>
         private MediaModel _MediaObject;
-
-        private List<ITransformation> _Trans = new List<ITransformation>();
-
-        /// <summary>
-        /// My bit map image.
-        /// </summary>
-        private Image localBitMapImage = null;
 
         //private double mX = 0f;
 
@@ -161,19 +158,25 @@ namespace GrampsView.ViewModels
                     // Add standard details
                     t.Add(DV.MediaDV.GetModelInfoFormatted(CurrentMediaObject));
 
-                    BaseHeader.Add(t);
+                    BaseDetail.Add(t);
+
+                    // Get media image
+                    HLinkHomeImageModel personImage = CurrentMediaObject.HomeImageHLink;
+                    Contract.Assert(CurrentMediaObject.HomeImageHLink != null, CurrentMediaObject.Id);
+                    personImage.CardType = DisplayFormat.MediaImageFullCard;
+                    BaseDetail.Add(personImage);
 
                     // Add HLink Details
                     BaseDetail.Add(CurrentHLinkMedia.GAttributeRefCollection);
-                    BaseDetail.Add(CurrentHLinkMedia.GCitationRefCollection); // TODO .GetCardGroup("HLink Citations"));
-                    BaseDetail.Add(CurrentHLinkMedia.GNoteRefCollection); // TODO .GetCardGroup("HLink Notes"));
+                    BaseDetail.Add(CurrentHLinkMedia.GCitationRefCollection.GetCardGroup()); // TODO .GetCardGroup("HLink Citations"));
+                    BaseDetail.Add(CurrentHLinkMedia.GNoteRefCollection.GetCardGroup()); // TODO .GetCardGroup("HLink Notes"));
 
                     // Add Model details
-                    BaseDetail.Add(CurrentMediaObject.GCitationRefCollection);
-                    BaseDetail.Add(CurrentMediaObject.GNoteRefCollection);
-                    BaseDetail.Add(CurrentMediaObject.GTagRefCollection);
+                    BaseDetail.Add(CurrentMediaObject.GCitationRefCollection.GetCardGroup());
+                    BaseDetail.Add(CurrentMediaObject.GNoteRefCollection.GetCardGroup());
+                    BaseDetail.Add(CurrentMediaObject.GTagRefCollection.GetCardGroup());
 
-                    BaseBackLinks.Add(CurrentMediaObject.BackHLinkReferenceCollection.GetCardGroup());
+                    BaseDetail.Add(CurrentMediaObject.BackHLinkReferenceCollection.GetCardGroup());
                 }
 
                 BaseCL.LogRoutineExit("MediaDetailViewModel OnNavigatedTo");

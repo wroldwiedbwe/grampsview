@@ -15,6 +15,7 @@ namespace GrampsView.ViewModels
 
     using Prism.Events;
     using Prism.Navigation;
+
     using System.Threading.Tasks;
 
     /// <summary>
@@ -95,10 +96,10 @@ namespace GrampsView.ViewModels
 
                 t.Add(DV.TagDV.GetModelInfoFormatted(TagObject));
 
-                BaseHeader.Add(t);
+                BaseDetail.Add(t);
 
                 // Add Details
-                BaseBackLinks.Add(TagObject.BackHLinkReferenceCollection.GetCardGroup()); // TODO , "BackLinks");
+                BaseDetail.Add(TagObject.BackHLinkReferenceCollection.GetCardGroup()); // TODO , "BackLinks");
             }
 
             return true;

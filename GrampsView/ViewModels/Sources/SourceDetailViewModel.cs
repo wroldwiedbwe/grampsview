@@ -9,6 +9,7 @@ namespace GrampsView.ViewModels
     using GrampsView.Common;
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
+    using System.Diagnostics.Contracts;
 
     using Prism.Events;
     using Prism.Navigation;
@@ -74,6 +75,12 @@ namespace GrampsView.ViewModels
                 BaseTitle = SourceObject.GetDefaultText;
                 BaseTitleIcon = CommonConstants.IconSource;
 
+                // Get media image
+                HLinkHomeImageModel personImage = SourceObject.HomeImageHLink;
+                personImage.CardType = DisplayFormat.MediaImageFullCard;
+                Contract.Assert(SourceObject.HomeImageHLink != null, SourceObject.Id);
+                BaseDetail.Add(personImage);
+
                 // Header Card
                 CardGroup t = new CardGroup { Title = "Header Details" };
 
@@ -89,15 +96,16 @@ namespace GrampsView.ViewModels
                 // Add Model details
                 t.Add(DV.SourceDV.GetModelInfoFormatted(SourceObject));
 
-                BaseHeader.Add(t);
+                BaseDetail.Add(t);
 
                 // Add bulk items
-                BaseDetail.Add(SourceObject.GMediaRefCollection);
-                BaseDetail.Add(SourceObject.GNoteRefCollection);
-                BaseDetail.Add(SourceObject.GTagRefCollection);
-                BaseDetail.Add(SourceObject.GRepositoryRefCollection);
+                BaseDetail.Add(SourceObject.GMediaRefCollection.GetCardGroup());
+                BaseDetail.Add(SourceObject.GNoteRefCollection.GetCardGroup());
+                BaseDetail.Add(SourceObject.GTagRefCollection.GetCardGroup());
+                BaseDetail.Add(SourceObject.GRepositoryRefCollection.GetCardGroup());
                 BaseDetail.Add(SourceObject.GSourceAttributeCollection);
-                BaseBackLinks.Add(SourceObject.BackHLinkReferenceCollection.GetCardGroup());
+
+                BaseDetail.Add(SourceObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

@@ -102,15 +102,15 @@ namespace GrampsView.ViewModels
 
                     t.Add(EventObject.GPlace);
 
-                    BaseHeader.Add(t);
+                    BaseDetail.Add(t);
 
                     BaseDetail.Add(EventObject.GAttribute);
-                    BaseDetail.Add(EventObject.GCitationRefCollection);
-                    BaseDetail.Add(EventObject.GMediaRefCollection);
-                    BaseDetail.Add(EventObject.GNoteRefCollection);
-                    BaseDetail.Add(EventObject.GTagRefCollection);
+                    BaseDetail.Add(EventObject.GCitationRefCollection.GetCardGroup());
+                    BaseDetail.Add(EventObject.GMediaRefCollection.GetCardGroup());
+                    BaseDetail.Add(EventObject.GNoteRefCollection.GetCardGroup());
+                    BaseDetail.Add(EventObject.GTagRefCollection.GetCardGroup());
 
-                    BaseBackLinks.Add(EventObject.BackHLinkReferenceCollection.GetCardGroup());
+                    BaseDetail.Add(EventObject.BackHLinkReferenceCollection.GetCardGroup());
                 }
             }
         }

@@ -26,14 +26,20 @@
     <Compile Remove="Data\External\StoreCache\**" />
     <Compile Remove="UserControls\FormsRadioButton\**" />
     <Compile Remove="UserControls\Handy Controls\**" />
+    <Compile Remove="ViewModels\NameMap\**" />
+    <Compile Remove="Views\NameMap\**" />
     <EmbeddedResource Remove="Common\ExtDLL\**" />
     <EmbeddedResource Remove="Data\External\StoreCache\**" />
     <EmbeddedResource Remove="UserControls\FormsRadioButton\**" />
     <EmbeddedResource Remove="UserControls\Handy Controls\**" />
+    <EmbeddedResource Remove="ViewModels\NameMap\**" />
+    <EmbeddedResource Remove="Views\NameMap\**" />
     <None Remove="Common\ExtDLL\**" />
     <None Remove="Data\External\StoreCache\**" />
     <None Remove="UserControls\FormsRadioButton\**" />
     <None Remove="UserControls\Handy Controls\**" />
+    <None Remove="ViewModels\NameMap\**" />
+    <None Remove="Views\NameMap\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -127,6 +133,7 @@
     <Compile Remove="UserControls\General\FlexMultiCardEnum.xaml.cs" />
     <Compile Remove="UserControls\General\FlexMultiGroupMultiCard - Copy.xaml.cs" />
     <Compile Remove="UserControls\General\FlexSingleCardGroup.xaml.cs" />
+    <Compile Remove="UserControls\General\FlexSingleGroupMultiCard.xaml.cs" />
     <Compile Remove="UserControls\General\FlexSingleGroupSingleCard.xaml.cs" />
     <Compile Remove="UserControls\General\MediaImage.xaml.cs" />
     <Compile Remove="UserControls\General\RadioButtonxExtended .cs" />
@@ -196,6 +203,7 @@
     <EmbeddedResource Remove="UserControls\General\CollectionCardGroup.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexMultiCardEnum.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexSingleCardGroup.xaml" />
+    <EmbeddedResource Remove="UserControls\General\FlexSingleGroupMultiCard.xaml" />
     <EmbeddedResource Remove="UserControls\General\FlexSingleGroupSingleCard.xaml" />
     <EmbeddedResource Remove="UserControls\General\MediaImage.xaml" />
     <EmbeddedResource Remove="UserControls\HLinkCitationCardSmall.xaml" />
@@ -272,9 +280,6 @@
     </Compile>
     <Compile Update="UserControls\General\FlexMultiGroupMultiCard.xaml.cs">
       <DependentUpon>FlexMultiGroupMultiCard.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="UserControls\General\FlexSingleGroupMultiCard.xaml.cs">
-      <DependentUpon>FlexSingleGroupMultiCard.xaml</DependentUpon>
     </Compile>
     <Compile Update="UserControls\General\FlexBase.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>

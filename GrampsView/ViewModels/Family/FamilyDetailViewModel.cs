@@ -14,6 +14,7 @@ namespace GrampsView.ViewModels
     using GrampsView.Common;
     using GrampsView.Data.DataView;
     using GrampsView.Data.Model;
+    using System.Diagnostics.Contracts;
 
     using Prism.Events;
     using Prism.Navigation;
@@ -85,6 +86,12 @@ namespace GrampsView.ViewModels
                 BaseTitle = FamilyObject.FamilyDisplayName;
                 BaseTitleIcon = CommonConstants.IconFamilies;
 
+                // Get media image
+                HLinkHomeImageModel personImage = FamilyObject.HomeImageHLink;
+                Contract.Assert(FamilyObject.HomeImageHLink != null, FamilyObject.Id);
+                personImage.CardType = DisplayFormat.MediaImageFullCard;
+                BaseDetail.Add(personImage);
+
                 // Get basic details
                 CardGroup t = new CardGroup { Title = "Header Details" };
 
@@ -106,23 +113,24 @@ namespace GrampsView.ViewModels
                     Parents = localFamilyModel,
                 });
 
-                BaseHeader.Add(t);
+                BaseDetail.Add(t);
 
                 // Detail reference
-                BaseDetail.Add(FamilyObject.GEventRefCollection);
-                BaseDetail.Add(FamilyObject.GChildRefCollection); // TODO , "Children");
+                BaseDetail.Add(FamilyObject.GEventRefCollection.GetCardGroup());
+                BaseDetail.Add(FamilyObject.GChildRefCollection.GetCardGroup()); // TODO , "Children");
 
-                BaseDetail.Add(FamilyObject.GCitationRefCollection);
-                BaseDetail.Add(FamilyObject.GMediaRefCollection);
-                BaseDetail.Add(FamilyObject.GNoteRefCollection);
+                BaseDetail.Add(FamilyObject.GCitationRefCollection.GetCardGroup());
+                BaseDetail.Add(FamilyObject.GMediaRefCollection.GetCardGroup());
+                BaseDetail.Add(FamilyObject.GNoteRefCollection.GetCardGroup());
                 BaseDetail.Add(FamilyObject.GAttributeCollection);
-                BaseDetail.Add(FamilyObject.GTagRefCollection);
+                BaseDetail.Add(FamilyObject.GTagRefCollection.GetCardGroup());
 
-                BaseBackLinks.Add(FamilyObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseDetail.Add(FamilyObject.BackHLinkReferenceCollection.GetCardGroup());
 
                 string outFamEvent = string.Empty;
                 if (FamilyObject.GEventRefCollection.Count > 0)
                 {
+                    // TODO Handle this
                     outFamEvent = FamilyObject.GEventRefCollection.FirstOrDefault().DeRef.GType + ": " + FamilyObject.GEventRefCollection.FirstOrDefault().DeRef.GDate.GetShortDateAsString;
                 }
 

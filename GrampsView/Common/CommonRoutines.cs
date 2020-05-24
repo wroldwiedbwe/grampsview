@@ -18,6 +18,14 @@ namespace GrampsView.Common
     /// Various common routines.
     /// </summary>
 
+    public enum DisplayFormat
+    {
+        SourceCardSmall,
+        Default,
+        MediaImageFullCard,
+        NoteCardFull
+    }
+
     public static class CommonRoutines
     {
         public static bool IsEmulator()

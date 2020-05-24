@@ -5,6 +5,8 @@ namespace GrampsView.UserControls
 {
     using GrampsView.Data.Model;
 
+    using System.Diagnostics.Contracts;
+
     using Xamarin.Forms;
 
     /// <summary>
@@ -33,19 +35,13 @@ namespace GrampsView.UserControls
         {
             MediaImageFullCard mifModel = (sender as MediaImageFullCard);
 
-            HLinkHomeImageModel imageMediaModel = new HLinkHomeImageModel();
+            Contract.Requires(BindingContext is HLinkHomeImageModel);
 
-            if (BindingContext is HLinkHomeImageModel)
-            {
-                imageMediaModel = this.BindingContext as HLinkHomeImageModel;
-            }
+            HLinkHomeImageModel imageMediaModel = this.BindingContext as HLinkHomeImageModel;
 
-            if (BindingContext is MediaImageFullCard)
-            {
-                imageMediaModel = ((this.BindingContext as MediaImageFullCard).BindingContext) as HLinkHomeImageModel;
-            }
+            Contract.Assert(imageMediaModel != null);
 
-            if (!(imageMediaModel is null) && (imageMediaModel.Valid))
+            if (imageMediaModel.Valid)
             {
                 mifModel.image.Source = imageMediaModel.DeRef.MediaStorageFilePath;
             }

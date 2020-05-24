@@ -83,17 +83,17 @@ namespace GrampsView.ViewModels
 
                 t.Add(DV.PlaceDV.GetModelInfoFormatted(PlaceObject));
 
-                BaseHeader.Add(t);
+                BaseDetail.Add(t);
 
                 // Details
-                BaseDetail.Add(PlaceObject.GPlaceRefCollection);
-                BaseDetail.Add(PlaceObject.PlaceChildCollection);
+                BaseDetail.Add(PlaceObject.GPlaceRefCollection.GetCardGroup());
+                BaseDetail.Add(PlaceObject.PlaceChildCollection.GetCardGroup());
 
-                BaseDetail.Add(PlaceObject.GCitationRefCollection);
-                BaseDetail.Add(PlaceObject.GTagRefCollection);
+                BaseDetail.Add(PlaceObject.GCitationRefCollection.GetCardGroup());
+                BaseDetail.Add(PlaceObject.GTagRefCollection.GetCardGroup());
                 BaseDetail.Add(PlaceObject.GURLCollection);
 
-                BaseBackLinks.Add(PlaceObject.BackHLinkReferenceCollection.GetCardGroup());
+                BaseDetail.Add(PlaceObject.BackHLinkReferenceCollection.GetCardGroup());
             }
         }
     }

@@ -11,6 +11,7 @@ namespace GrampsView.ViewModels
     using Prism.Events;
     using Prism.Navigation;
 
+    using System.Diagnostics.Contracts;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -90,7 +91,10 @@ namespace GrampsView.ViewModels
                 BaseTitle = PersonObject.GPersonNamesCollection.GetPrimaryName.GetDefaultText;
 
                 // Get media image
-                BaseDetail.Add(CardGroupUtil.GetMediaImageFullCard(PersonObject.HomeImageHLink));
+                HLinkHomeImageModel personImage = PersonObject.HomeImageHLink;
+                Contract.Assert(PersonObject.HomeImageHLink != null, PersonObject.Id);
+                personImage.CardType = DisplayFormat.MediaImageFullCard;
+                BaseDetail.Add(personImage);
 
                 // Get Header Details
                 CardGroup headerCardGroup = new CardGroup { Title = "Header Details" };
@@ -163,7 +167,9 @@ namespace GrampsView.ViewModels
                 }
 
                 // Get Bio
-                BaseDetail.Add(CardGroupUtil.GetNoteCardFull(PersonObject.GNoteRefCollection.GetBio));
+                HLinkNoteModel bioCard = PersonObject.GNoteRefCollection.GetBio;
+                bioCard.CardType = DisplayFormat.NoteCardFull;
+                BaseDetail.Add(bioCard);
 
                 // Add details
                 BaseDetail.Add(PersonObject.GParentInRefCollection.GetCardGroup());

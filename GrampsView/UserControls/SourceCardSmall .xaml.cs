@@ -6,6 +6,8 @@ namespace GrampsView.UserControls
 {
     using GrampsView.Data.Model;
 
+    using System.Diagnostics.Contracts;
+
     using Xamarin.Forms;
 
     /// <summary>
@@ -31,19 +33,7 @@ namespace GrampsView.UserControls
                 return;
             }
 
-            HLinkSourceModel t = new HLinkSourceModel();
-
-            if (BindingContext is HLinkSourceModel)
-            {
-                t = this.BindingContext as HLinkSourceModel;
-            }
-
-            if (BindingContext is SourceCardSmall)
-            {
-                this.BindingContext = ((this.BindingContext as SourceCardSmall).BindingContext) as HLinkSourceModel;
-
-                t = this.BindingContext as HLinkSourceModel;
-            }
+            Contract.Requires(BindingContext is HLinkSourceModel);
         }
     }
 }

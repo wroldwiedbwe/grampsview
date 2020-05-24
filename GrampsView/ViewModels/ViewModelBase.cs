@@ -6,6 +6,7 @@ using Nito.AsyncEx.Synchronous;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
+
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -14,13 +15,6 @@ namespace GrampsView.ViewModels
 {
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible, IInitialize
     {
-        private CardGroup _BaseBackLinks = new CardGroup();
-
-        /// <summary>
-        /// The local base header
-        /// </summary>
-        private CardGroup _BaseHeader = new CardGroup();
-
         private bool _BaseIsLoading;
 
         private HLinkBase _BaseNavParamsHLink = null;
@@ -68,19 +62,6 @@ namespace GrampsView.ViewModels
             BaseCL = iocCommonLogging;
             BaseEventAggregator = iocEventAggregator;
             BaseNavigationService = iocNavigationService;
-        }
-
-        public CardGroup BaseBackLinks
-        {
-            get
-            {
-                return _BaseBackLinks;
-            }
-
-            set
-            {
-                SetProperty(ref _BaseBackLinks, value);
-            }
         }
 
         /// <summary>
@@ -140,25 +121,6 @@ namespace GrampsView.ViewModels
             private set
             {
                 SetProperty(ref _EventAggregator, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the base header collection.
-        /// </summary>
-        /// <value>
-        /// The base header collection.
-        /// </value>
-        public CardGroup BaseHeader
-        {
-            get
-            {
-                return _BaseHeader;
-            }
-
-            set
-            {
-                SetProperty(ref _BaseHeader, value);
             }
         }
 

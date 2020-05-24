@@ -8,6 +8,8 @@ namespace GrampsView.Common
     using GrampsView.Data.Repository;
     using GrampsView.UserControls;
 
+    using System.Diagnostics.Contracts;
+
     using Xamarin.Forms;
 
     /// <summary>
@@ -510,6 +512,11 @@ namespace GrampsView.Common
                 return CardGroupTemplate;
             }
 
+            if (item is CardGroupBase<URLModel>)
+            {
+                return CardGroupTemplate;
+            }
+
             if (item is ICitationModel)
             {
                 return CitationTemplate;
@@ -557,7 +564,17 @@ namespace GrampsView.Common
 
             if (item is HLinkNoteModel)
             {
-                return NoteTemplate;
+                switch ((item as HLinkNoteModel).CardType)
+                {
+                    case DisplayFormat.Default:
+                        return NoteTemplate;
+
+                    case DisplayFormat.NoteCardFull:
+                        return NoteCardFullTemplate;
+
+                    default:
+                        return NoteTemplate;
+                }
             }
 
             if (item is HLinkPersonModel)
@@ -590,7 +607,7 @@ namespace GrampsView.Common
                 return MediaTemplate;
             }
 
-            if (item is MediaImageFullCard)
+            if (item is HLinkHomeImageModel)
             {
                 return MediaImageFullTemplate;
             }
@@ -656,7 +673,7 @@ namespace GrampsView.Common
             }
 
             // Error
-            DataStore.CN.NotifyError("Bad Data Template: " + nameof(item));
+            Contract.Assert(false, "Bad Data Template: " + item.GetType().ToString());
             return null;
         }
     }
