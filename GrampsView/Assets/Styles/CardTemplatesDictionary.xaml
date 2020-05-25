@@ -24,6 +24,7 @@
 
                 <Label
                     Grid.Row="0"
+                    Margin="5,2,2,2"
                     Text="{Binding Title}"
                     TextColor="{DynamicResource OnSurfaceColor}" />
 

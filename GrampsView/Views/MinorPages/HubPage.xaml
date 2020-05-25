@@ -55,8 +55,6 @@
 
         <ucon:InstructionCardLarge Grid.Row="0" BindingContext="{i18n:Translate HubPage_IntroductionText}" />
 
-        <ucon:MediaCardLarge Grid.Row="1" BindingContext="{Binding HeroImage, Mode=OneWay}" />
-
         <ucon:HeaderCardLarge Grid.Row="2" BindingContext="{Binding HeaderData, Mode=OneWay}" />
 
         <ucon:CollectionCardList Grid.Row="3" FsctSource="{Binding LatestChanges, Mode=OneWay}" />

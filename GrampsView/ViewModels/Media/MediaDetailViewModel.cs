@@ -156,13 +156,13 @@ namespace GrampsView.ViewModels
                     // Get media image
                     HLinkHomeImageModel personImage = CurrentMediaObject.HomeImageHLink;
                     Contract.Assert(CurrentMediaObject.HomeImageHLink != null, CurrentMediaObject.Id);
-                    personImage.CardType = DisplayFormat.MediaImageFullCard;
+                    personImage.CardType = DisplayFormat.MediaCardLarge;
                     BaseDetail.Add(personImage);
 
                     // Add HLink Details
                     BaseDetail.Add(CurrentHLinkMedia.GAttributeRefCollection);
-                    BaseDetail.Add(CurrentHLinkMedia.GCitationRefCollection.GetCardGroup()); // TODO .GetCardGroup("HLink Citations"));
-                    BaseDetail.Add(CurrentHLinkMedia.GNoteRefCollection.GetCardGroup()); // TODO .GetCardGroup("HLink Notes"));
+                    BaseDetail.Add(CurrentHLinkMedia.GCitationRefCollection.GetCardGroup("HLink Citations"));
+                    BaseDetail.Add(CurrentHLinkMedia.GNoteRefCollection.GetCardGroup("HLink Notes"));
 
                     // Add Model details
                     BaseDetail.Add(CurrentMediaObject.GCitationRefCollection.GetCardGroup());

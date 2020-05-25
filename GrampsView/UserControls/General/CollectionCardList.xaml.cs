@@ -5,6 +5,7 @@
     using System;
     using System.Collections;
     using System.ComponentModel;
+    using System.Diagnostics.Contracts;
 
     using Xamarin.Forms;
 
@@ -44,21 +45,26 @@
 
         public static void OnItemsSourceChanged(BindableObject argSource, object oldValue, object newValue)
         {
+            // Xamarin sets to null as the parent page is destroyed
+            if (newValue is null)
+            {
+                return;
+            }
+
             var layout = argSource as CollectionCardList;
 
-            layout.theCollectionView.ItemsSource = newValue as IEnumerable;
+            Contract.Assert(layout != null);
+
+            IEnumerable newVal = newValue as IEnumerable;
+
+            Contract.Assert(newVal != null, "CollectionCardList source should not be null");
+
+            layout.theCollectionView.ItemsSource = newVal;
         }
 
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        //private void CollectionCardListRoot_SizeChanged(object sender, EventArgs e)
-        //{
-        //    CollectionCardList t = sender as CollectionCardList;
-
-        //    NumColumns = (Int32)(t.Width / CardSizes.Current.CardSmallWidth + 1);  // +1 for padding
-        //}
     }
 }

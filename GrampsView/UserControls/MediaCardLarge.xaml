@@ -35,8 +35,9 @@
             <ucon:MediaImageSkia
                 x:Name="AnchorImage"
                 BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
-                HorizontalOptions="FillAndExpand"
-                Style="{DynamicResource MediaImageStyle}" />
+                HorizontalOptions="Center"
+                Style="{DynamicResource MediaImageStyle}"
+                VerticalOptions="Center" />
 
             <Label
                 x:Name="MediaObjectTitle"

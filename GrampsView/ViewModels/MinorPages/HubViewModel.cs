@@ -14,10 +14,14 @@ namespace GrampsView.ViewModels
     using GrampsView.Data.Model;
     using GrampsView.Data.Repository;
     using GrampsView.Events;
+
     using Prism.Events;
     using Prism.Navigation;
+
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Diagnostics.Contracts;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// View model for the Hub Page.
@@ -81,7 +85,6 @@ namespace GrampsView.ViewModels
         /// <value>
         /// The hero image.
         /// </value>
-        // [RestorableState]
         public HLinkMediaModel HeroImage
         {
             get
@@ -122,16 +125,18 @@ namespace GrampsView.ViewModels
         /// <summary>
         /// Populate the Hub View.
         /// </summary>
-        public override void PopulateViewModel()
+        public override async Task<bool> PopulateViewModelAsync()
         {
             HeaderData = DV.HeaderDV.HeaderDataModel;
 
-            // Load the full bitmap
-            HeroImage = DV.MediaDV.GetRandomFromCollection(null);
+            // Get media image
+            HLinkMediaModel HeroImage = DV.MediaDV.GetRandomFromCollection(null);
+            HeroImage.CardType = DisplayFormat.MediaCardLarge;
+            LatestChanges.Add(HeroImage);
 
             if (HeroImage == null)
             {
-                DataStore.CN.MajorStatusAdd("No images found in this data.  Consider adding some.");
+                DataStore.CN.NotifyAlert("No images found in this data.  Consider adding some.");
             }
 
             // Setup ToDo list
@@ -168,6 +173,8 @@ namespace GrampsView.ViewModels
             LatestChanges.Add(DV.SourceDV.GetLatestChanges());
 
             LatestChanges.Add(DV.TagDV.GetLatestChanges());
+
+            return true;
         }
     }
 }

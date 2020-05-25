@@ -28,7 +28,13 @@ namespace GrampsView.UserControls
         {
             MediaImageFullCard mifModel = (sender as MediaImageFullCard);
 
-            Contract.Requires(BindingContext is HLinkHomeImageModel);
+            // Xamarin sets to null as the parent page is destroyed
+            if (this.BindingContext is null)
+            {
+                return;
+            }
+
+            Contract.Assert(BindingContext is HLinkHomeImageModel);
 
             HLinkHomeImageModel imageMediaModel = this.BindingContext as HLinkHomeImageModel;
 

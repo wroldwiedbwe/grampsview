@@ -518,7 +518,17 @@ namespace GrampsView.Common
 
             if (item is HLinkMediaModel)
             {
-                return MediaTemplate;
+                switch ((item as HLinkMediaModel).CardType)
+                {
+                    case DisplayFormat.MediaCardLarge:
+                        return MediaCardLargeTemplate;
+
+                    case DisplayFormat.MediaImageFullCard:
+                        return MediaImageFullTemplate;
+
+                    case DisplayFormat.Default:
+                        return MediaTemplate;
+                }
             }
 
             if (item is HLinkNameMapModel)
@@ -580,6 +590,9 @@ namespace GrampsView.Common
 
                     case DisplayFormat.MediaImageFullCard:
                         return MediaImageFullTemplate;
+
+                    case DisplayFormat.Default:
+                        return MediaTemplate;
                 }
             }
 
