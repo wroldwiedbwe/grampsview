@@ -21,6 +21,8 @@ namespace GrampsView.Common
     public enum DisplayFormat
     {
         Default,
+        HeaderCardLarge,
+        InstructionCardLarge,
         MediaCardLarge,
         MediaImageFullCard,
         NoteCardFull,

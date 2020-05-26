@@ -6,6 +6,7 @@ namespace GrampsView.UserControls
 {
     using GrampsView.Data.Model;
 
+    using System.Diagnostics.Contracts;
     using System.Linq;
 
     using Xamarin.Forms;
@@ -24,19 +25,27 @@ namespace GrampsView.UserControls
 
         private void HeaderCardLargeRoot_BindingContextChanged(object sender, System.EventArgs e)
         {
-            if (this.BindingContext is HeaderModel HeaderData)
+            if (this.BindingContext is null)
+            {
+                return;
+            }
+
+            HLinkHeaderModel HeaderData = this.BindingContext as HLinkHeaderModel;
+
+            Contract.Assert(HeaderData != null);
+
+            if (HeaderData.Valid)
             {
                 HeaderCard = new CardListLineCollection
                     {
-                        new CardListLine("Created using version:", HeaderData.GCreatedVersion),
-                        new CardListLine("Created on:", HeaderData.GCreatedDate),
-                        new CardListLine("Researcher Name:", HeaderData.GResearcherName),
-                        new CardListLine("Researcher State:", HeaderData.GResearcherState),
-                        new CardListLine("Researcher Country:", HeaderData.GResearcherCountry),
-                        new CardListLine("Researcher Email:", HeaderData.GResearcherEmail),
-                        new CardListLine("MediaPath:", HeaderData.GMediaPath),
-                    }
-                ;
+                        new CardListLine("Created using version:", HeaderData.DeRef.GCreatedVersion),
+                        new CardListLine("Created on:", HeaderData.DeRef.GCreatedDate),
+                        new CardListLine("Researcher Name:", HeaderData.DeRef.GResearcherName),
+                        new CardListLine("Researcher State:", HeaderData.DeRef.GResearcherState),
+                        new CardListLine("Researcher Country:", HeaderData.DeRef.GResearcherCountry),
+                        new CardListLine("Researcher Email:", HeaderData.DeRef.GResearcherEmail),
+                        new CardListLine("MediaPath:", HeaderData.DeRef.GMediaPath),
+                    };
             }
 
             HeaderCard.Title = "Header Details";

@@ -143,7 +143,7 @@
 
                 case TargetIdiom.Phone:
 
-                    outVal = CardLargeWidth / (3 * DeviceDisplay.MainDisplayInfo.Density);
+                    outVal = CardLargeWidth / (2 * DeviceDisplay.MainDisplayInfo.Density);
                     break;
 
                 default:

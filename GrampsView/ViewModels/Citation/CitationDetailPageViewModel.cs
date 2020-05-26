@@ -86,7 +86,7 @@ namespace GrampsView.ViewModels
 
                 // Get media image
                 HLinkHomeImageModel mediaImage = CitationObject.HomeImageHLink;
-                mediaImage.CardType = DisplayFormat.MediaImageFullCard;
+                mediaImage.CardType = DisplayFormat.MediaCardLarge;
                 BaseDetail.Add(mediaImage);
 
                 //// Get Note

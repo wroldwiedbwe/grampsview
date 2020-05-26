@@ -149,7 +149,7 @@ namespace GrampsView.Data.Model
         private string _GResearcherState = string.Empty;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HeaderModel" /> class.
+        /// Initializes a new instance of the <see cref="HeaderModel"/> class.
         /// </summary>
         public HeaderModel()
         {
@@ -376,6 +376,19 @@ namespace GrampsView.Data.Model
             set
             {
                 SetProperty(ref _GResearcherState, value);
+            }
+        }
+
+        public HLinkHeaderModel HLink
+        {
+            get
+            {
+                HLinkHeaderModel t = new HLinkHeaderModel
+                {
+                    HLinkKey = HLinkKey,
+                };
+
+                return t;
             }
         }
     }

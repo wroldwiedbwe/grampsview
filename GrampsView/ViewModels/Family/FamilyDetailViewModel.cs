@@ -89,7 +89,7 @@ namespace GrampsView.ViewModels
                 // Get media image
                 HLinkHomeImageModel personImage = FamilyObject.HomeImageHLink;
                 Contract.Assert(FamilyObject.HomeImageHLink != null, FamilyObject.Id);
-                personImage.CardType = DisplayFormat.MediaImageFullCard;
+                personImage.CardType = DisplayFormat.MediaCardLarge;
                 BaseDetail.Add(personImage);
 
                 // Get basic details

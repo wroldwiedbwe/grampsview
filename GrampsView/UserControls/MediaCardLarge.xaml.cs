@@ -8,7 +8,7 @@ namespace GrampsView.UserControls
     /// <summary>
     /// Media Control large code behind.
     /// </summary>
-    public partial class MediaCardLarge : Frame
+    public partial class MediaCardLarge : Grid
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MediaCardLarge"/> class.

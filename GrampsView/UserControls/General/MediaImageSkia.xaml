@@ -9,21 +9,27 @@
     Padding="0"
     BackgroundColor="Transparent"
     BindingContextChanged="MediaImageSkia_BindingContextChanged"
-    BorderColor="Transparent"
-    HorizontalOptions="FillAndExpand"
-    VerticalOptions="FillAndExpand">
+    BorderColor="Transparent">
 
     <Frame.Content>
 
         <Grid
             x:Name="skiaHostControl"
             Margin="0"
-            Padding="3"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
+            Padding="3">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
             <Image
                 x:Name="daSymbol"
+                Grid.Row="0"
+                Grid.Column="0"
                 Margin="5"
                 Aspect="AspectFit"
                 BackgroundColor="Transparent"
@@ -36,16 +42,19 @@
 
             <ffimageloading:CachedImage
                 x:Name="daImage"
+                Grid.Row="0"
+                Grid.Column="0"
                 Aspect="AspectFit"
-                BackgroundColor="Transparent"
+                BackgroundColor="PaleVioletRed"
                 CacheType="All"
                 Error="DaImage_Error"
-                HorizontalOptions="FillAndExpand"
+                Finish="daImage_Finish"
                 IsVisible="False"
                 LoadingPlaceholder="ic_launcher.png"
+                MinimumHeightRequest="50"
+                MinimumWidthRequest="50"
                 RetryCount="3"
-                RetryDelay="1000"
-                VerticalOptions="FillAndExpand">
+                RetryDelay="1000">
                 <ffimageloading:CachedImage.GestureRecognizers>
                     <TapGestureRecognizer Command="{prism:NavigateTo 'MediaDetailPage'}">
                         <TapGestureRecognizer.CommandParameter>

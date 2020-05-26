@@ -5,18 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:ucon="clr-namespace:GrampsView.UserControls"
-    Style="{DynamicResource FrameCardStyle}"
-    WidthRequest="100">
+    MinimumHeightRequest="100"
+    Style="{DynamicResource FrameCardStyle}">
 
     <Frame.Content>
 
-        <Grid
-            x:Name="controlRoot"
-            FlexLayout.AlignSelf="Start"
-            FlexLayout.Basis="{OnIdiom Phone='50%',
-                                       Tablet='33%',
-                                       Desktop='33%'}"
-            IsEnabled="{Binding Valid, Mode=OneWay}">
+        <Grid x:Name="controlRoot" IsEnabled="{Binding Valid, Mode=OneWay}">
 
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer prism:Navigation.CanNavigate="{Binding Valid, Mode=OneWay}" Command="{prism:NavigateTo 'PersonDetailPage'}">
@@ -31,26 +25,23 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Grid
+            <ucon:MediaImageSkia
+                x:Name="AnchorImage1"
                 Grid.Row="0"
                 Grid.Column="0"
-                Style="{DynamicResource CardImageBackground}">
-
-                <ucon:MediaImageSkia
-                    x:Name="AnchorImage1"
-                    BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
-                    IsEnabled="False"
-                    Style="{DynamicResource MediaImageStyle}" />
-            </Grid>
+                BackgroundColor="{DynamicResource SecondaryVariantLightColor}"
+                BindingContext="{Binding DeRef.HomeImageHLink, Mode=OneWay}"
+                IsEnabled="False"
+                Style="{DynamicResource MediaImageStyle}" />
 
             <Label
                 Grid.Row="1"
                 Grid.Column="0"
+                IsEnabled="false"
                 Style="{DynamicResource GVCardLabelStyleSmall}"
                 Text="{Binding DeRef.GetDefaultText}" />
         </Grid>

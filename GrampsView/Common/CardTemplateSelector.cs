@@ -101,6 +101,12 @@ namespace GrampsView.Common
             set;
         }
 
+        public DataTemplate HeaderTemplate
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Gets or sets the book mark template.
         /// </summary>
@@ -514,6 +520,11 @@ namespace GrampsView.Common
             if (item is HLinkFamilyModel)
             {
                 return FamilyTemplate;
+            }
+
+            if (item is HLinkHeaderModel)
+            {
+                return HeaderTemplate;
             }
 
             if (item is HLinkMediaModel)

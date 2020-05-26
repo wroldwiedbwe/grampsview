@@ -30,11 +30,9 @@ namespace GrampsView.ViewModels
     {
         private CardListLineCollection _ApplicationVersionList = new CardListLineCollection();
 
-        private string _DaText = string.Empty;
-
         private CardGroup _HeaderDetailList = new CardGroup();
 
-        private HeaderModel _HeaderModel = null;
+        private HLinkHeaderModel _HeaderModel = new HLinkHeaderModel();
 
         public AboutViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
                                             : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
@@ -78,7 +76,7 @@ namespace GrampsView.ViewModels
         /// The header data.
         /// </value>
         // [RestorableState]
-        public HeaderModel HeaderData
+        public HLinkHeaderModel HeaderData
         {
             get
             {
@@ -126,7 +124,7 @@ namespace GrampsView.ViewModels
         public override async Task<bool> PopulateViewModelAsync()
         {
             // cache Header Data record
-            HeaderData = DV.HeaderDV.HeaderDataModel;
+            HeaderData = DV.HeaderDV.HeaderDataModel.HLink;
 
             // Assembly level stuff
             var assembly = GetType().GetTypeInfo().Assembly;

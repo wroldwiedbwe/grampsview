@@ -50,6 +50,10 @@
         <usercontrols:FamilyCardSmall />
     </DataTemplate>
 
+    <DataTemplate x:Key="HederCardLargeDT">
+        <usercontrols:HeaderCardLarge />
+    </DataTemplate>
+
     <DataTemplate x:Key="CardListLineCardSmallDT">
         <usercontrols:ListLineCardSmall />
     </DataTemplate>
@@ -115,6 +119,7 @@
         CitationTemplate="{StaticResource CitationCardSmallDT}"
         EventTemplate="{StaticResource EventCardSmallDT}"
         FamilyTemplate="{StaticResource FamilyCardSmallDT}"
+        HeaderTemplate="{StaticResource HederCardLargeDT}"
         MediaCardLargeTemplate="{StaticResource MediaCardLargeDT}"
         MediaImageFullTemplate="{StaticResource MediaImageFullDT}"
         MediaTemplate="{StaticResource MediaCardSmallDT}"

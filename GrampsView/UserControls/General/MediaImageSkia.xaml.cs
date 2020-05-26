@@ -24,6 +24,13 @@ namespace GrampsView.UserControls
         public MediaImageSkia()
         {
             InitializeComponent();
+
+            // Handle IsEnabled on the control and pass to the image Tap event
+            this.daImage.IsEnabled = true;
+            if (!this.IsEnabled)
+            {
+                this.daImage.IsEnabled = false;
+            }
         }
 
         public bool UConHideSymbol
@@ -51,6 +58,10 @@ namespace GrampsView.UserControls
 
             (sender as FFImageLoading.Forms.CachedImage).Cancel();
             (sender as FFImageLoading.Forms.CachedImage).Source = null;
+        }
+
+        private void daImage_Finish(object sender, FFImageLoading.Forms.CachedImageEvents.FinishEventArgs e)
+        {
         }
 
         private void MediaImageSkia_BindingContextChanged(object sender, EventArgs e)
@@ -131,6 +142,8 @@ namespace GrampsView.UserControls
 
                 this.daImage.IsVisible = true;
                 this.daImage.DownsampleToViewSize = true;
+                //this.daImage.HeightRequest = theMediaModel.MetaDataHeight;
+                //this.daImage.WidthRequest = theMediaModel.MetaDataWidth;
                 this.daImage.Source = theMediaModel.MediaStorageFilePath;
             }
             catch (Exception ex)

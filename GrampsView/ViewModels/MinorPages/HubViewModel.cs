@@ -33,13 +33,6 @@ namespace GrampsView.ViewModels
         /// </summary>
         private HLinkMediaModel _HeroImage = new HLinkMediaModel();
 
-        private CardGroup _LatestChanges = new CardGroup();
-
-        /// <summary>
-        /// The local header ViewModel.
-        /// </summary>
-        private HeaderModel localHeaderModel = new HeaderModel();
-
         /// <summary>
         /// Initializes a new instance of the <see cref="HubViewModel"/> class.
         /// </summary>
@@ -61,25 +54,6 @@ namespace GrampsView.ViewModels
         }
 
         /// <summary>
-        /// Gets or sets the header data.
-        /// </summary>
-        /// <value>
-        /// The header data.
-        /// </value>
-        public HeaderModel HeaderData
-        {
-            get
-            {
-                return localHeaderModel;
-            }
-
-            set
-            {
-                SetProperty(ref localHeaderModel, value);
-            }
-        }
-
-        /// <summary>
         /// Gets or sets the hero image.
         /// </summary>
         /// <value>
@@ -95,14 +69,6 @@ namespace GrampsView.ViewModels
             set
             {
                 SetProperty(ref _HeroImage, value);
-            }
-        }
-
-        public CardGroup LatestChanges
-        {
-            get
-            {
-                return _LatestChanges;
             }
         }
 
@@ -127,12 +93,14 @@ namespace GrampsView.ViewModels
         /// </summary>
         public override async Task<bool> PopulateViewModelAsync()
         {
-            HeaderData = DV.HeaderDV.HeaderDataModel;
+            // Get Header CardLarge
+            HLinkHeaderModel HeaderCard = DV.HeaderDV.HeaderDataModel.HLink;
+            HeaderCard.CardType = DisplayFormat.HeaderCardLarge;
+            BaseDetail.Add(HeaderCard);
 
-            // Get media image
             HLinkMediaModel HeroImage = DV.MediaDV.GetRandomFromCollection(null);
             HeroImage.CardType = DisplayFormat.MediaCardLarge;
-            LatestChanges.Add(HeroImage);
+            BaseDetail.Add(HeroImage);
 
             if (HeroImage == null)
             {
@@ -150,29 +118,29 @@ namespace GrampsView.ViewModels
             }
 
             temp.Title = "ToDo list";
-            LatestChanges.Add(temp);
+            BaseDetail.Add(temp);
 
             // Setup Latest Changes list
 
             // TODO fix this LatestChanges.Add(DV.BookMarkDV.GetLatestChanges());
 
-            LatestChanges.Add(DV.CitationDV.GetLatestChanges());
+            BaseDetail.Add(DV.CitationDV.GetLatestChanges());
 
-            LatestChanges.Add(DV.EventDV.GetLatestChanges());
+            BaseDetail.Add(DV.EventDV.GetLatestChanges());
 
-            LatestChanges.Add(DV.FamilyDV.GetLatestChanges());
+            BaseDetail.Add(DV.FamilyDV.GetLatestChanges());
 
-            LatestChanges.Add(DV.MediaDV.GetLatestChanges());
+            BaseDetail.Add(DV.MediaDV.GetLatestChanges());
 
-            LatestChanges.Add(DV.NoteDV.GetLatestChanges());
+            BaseDetail.Add(DV.NoteDV.GetLatestChanges());
 
-            LatestChanges.Add(DV.PersonDV.GetLatestChanges());
+            BaseDetail.Add(DV.PersonDV.GetLatestChanges());
 
-            LatestChanges.Add(DV.PlaceDV.GetLatestChanges());
+            BaseDetail.Add(DV.PlaceDV.GetLatestChanges());
 
-            LatestChanges.Add(DV.SourceDV.GetLatestChanges());
+            BaseDetail.Add(DV.SourceDV.GetLatestChanges());
 
-            LatestChanges.Add(DV.TagDV.GetLatestChanges());
+            BaseDetail.Add(DV.TagDV.GetLatestChanges());
 
             return true;
         }
