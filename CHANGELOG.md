@@ -1,3 +1,12 @@
+## [5.5.40](https://github.com/phandcock/grampsview/compare/v5.5.39...v5.5.40) (2020-05-26)
+
+
+### Bug Fixes
+
+* ttweak mediaimageskia and hubdetailpage ([cbe8497](https://github.com/phandcock/grampsview/commit/cbe8497fc4ab660252498ed1f90f15ee34d66029))
+
+
+
 ## [5.5.39](https://github.com/phandcock/grampsview/compare/v5.5.38...v5.5.39) (2020-05-25)
 
 
@@ -11,10 +20,6 @@
 
 
 ## [5.5.36](https://github.com/phandcock/grampsview/compare/v5.5.35...v5.5.36) (2020-05-24)
-
-
-
-## [5.5.35](https://github.com/phandcock/grampsview/compare/v5.5.34...v5.5.35) (2020-05-24)
 
 
 
