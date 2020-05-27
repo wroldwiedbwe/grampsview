@@ -19,8 +19,6 @@ namespace GrampsView.UserControls
         public static readonly BindableProperty UConHideSymbolProperty
                = BindableProperty.Create(returnType: typeof(bool), declaringType: typeof(MediaImageSkia), propertyName: nameof(UConHideSymbol), defaultValue: false, propertyChanged: MediaImage_UConPropertyChanged);
 
-        private MediaModel theMediaModel = new MediaModel();
-
         public MediaImageSkia()
         {
             InitializeComponent();
@@ -39,7 +37,7 @@ namespace GrampsView.UserControls
             set { SetValue(UConHideSymbolProperty, value); }
         }
 
-        private HLinkHomeImageModel HLinkMedia { get; set; }
+        private HLinkHomeImageModel ExistingHLinkMedia { get; set; }
 
         public void ReloadImage()
         {
@@ -82,7 +80,7 @@ namespace GrampsView.UserControls
                     return;
                 }
 
-                if (newHLinkMedia == HLinkMedia)
+                if (newHLinkMedia == ExistingHLinkMedia)
                 {
                     return;
                 }
@@ -92,63 +90,74 @@ namespace GrampsView.UserControls
                 this.daImage.IsVisible = false;
                 this.daImage.Source = null;
 
-                HLinkMedia = newHLinkMedia;
+                // Save the HLink so can check for duplicate chanegs later
+                ExistingHLinkMedia = newHLinkMedia;
 
-                if (!HLinkMedia.Valid || !HLinkMedia.LinkToImage)
+                if (!ExistingHLinkMedia.Valid || !ExistingHLinkMedia.LinkToImage)
                 {
-                    this.daSymbol.IsVisible = true;
-
-                    // Set symbol
-                    FontImageSource tt = this.daSymbol.Source as FontImageSource;
-                    tt.Glyph = HLinkMedia.HomeSymbol;
-                    tt.Color = HLinkMedia.HomeSymbolColour;
-
-                    if (tt.Glyph == null)
-                    {
-                        DataStore.CN.NotifyError("MediaImageSkia (" + HLinkMedia.HLinkKey + ") Null Glyph");
-                    }
-
-                    if (tt.Color == null)
-                    {
-                        DataStore.CN.NotifyError("MediaImageSkia (" + HLinkMedia.HLinkKey + ") Null Colour");
-                    }
-
-                    this.daSymbol.Source = tt;
-
-                    if (UConHideSymbol)
-                    {
-                        this.daSymbol.IsVisible = true;
-                    }
-
+                    ShowSymbol();
                     return;
                 }
-
-                // Have a media image to display
-                theMediaModel = HLinkMedia.DeRef;
-
-                ////if (theMediaModel.Id == "O0003")
-                ////{
-                ////}
-
-                //Debug.WriteLine(HLinkMedia.DeRef.MediaStorageFilePath, "MediaImageSkia");
-
-                if (string.IsNullOrEmpty(HLinkMedia.DeRef.MediaStorageFilePath))
+                else
                 {
-                    DataStore.CN.NotifyError("The media file path is null for Id:" + HLinkMedia.DeRef.Id);
-                    return;
+                    ShowImage();
                 }
-
-                this.daSymbol.IsVisible = false;
-
-                this.daImage.IsVisible = true;
-                this.daImage.DownsampleToViewSize = true;
-                //this.daImage.HeightRequest = theMediaModel.MetaDataHeight;
-                //this.daImage.WidthRequest = theMediaModel.MetaDataWidth;
-                this.daImage.Source = theMediaModel.MediaStorageFilePath;
             }
             catch (Exception ex)
             {
                 throw;
+            }
+        }
+
+        private void ShowImage()
+        {
+            MediaModel theMediaModel = ExistingHLinkMedia.DeRef;
+
+            ////if (theMediaModel.Id == "O0003")
+            ////{
+            ////}
+
+            //Debug.WriteLine(HLinkMedia.DeRef.MediaStorageFilePath, "MediaImageSkia");
+
+            if (string.IsNullOrEmpty(theMediaModel.MediaStorageFilePath))
+            {
+                DataStore.CN.NotifyError("The media file path is null for Id:" + theMediaModel.Id);
+                return;
+            }
+
+            this.daSymbol.IsVisible = false;
+
+            this.daImage.IsVisible = true;
+            this.daImage.DownsampleToViewSize = true;
+            //this.daImage.HeightRequest = theMediaModel.MetaDataHeight;
+            //this.daImage.WidthRequest = theMediaModel.MetaDataWidth;
+            this.daImage.Source = theMediaModel.MediaStorageFilePath;
+        }
+
+        private void ShowSymbol()
+        {
+            this.daSymbol.IsVisible = true;
+
+            // Set symbol
+            FontImageSource tt = this.daSymbol.Source as FontImageSource;
+            tt.Glyph = ExistingHLinkMedia.HomeSymbol;
+            tt.Color = ExistingHLinkMedia.HomeSymbolColour;
+
+            if (tt.Glyph == null)
+            {
+                DataStore.CN.NotifyError("MediaImageSkia (" + ExistingHLinkMedia.HLinkKey + ") Null Glyph");
+            }
+
+            if (tt.Color == null)
+            {
+                DataStore.CN.NotifyError("MediaImageSkia (" + ExistingHLinkMedia.HLinkKey + ") Null Colour");
+            }
+
+            this.daSymbol.Source = tt;
+
+            if (UConHideSymbol)
+            {
+                this.daSymbol.IsVisible = true;
             }
         }
     }

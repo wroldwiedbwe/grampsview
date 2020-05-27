@@ -64,6 +64,11 @@ namespace GrampsView.ViewModels
             BaseNavigationService = iocNavigationService;
         }
 
+        public ViewModelBase(ICommonLogging iocCommonLogging)
+        {
+            BaseCL = iocCommonLogging;
+        }
+
         /// <summary>
         /// Gets or sets the base common logger.
         /// </summary>

@@ -45,7 +45,7 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 Aspect="AspectFit"
-                BackgroundColor="PaleVioletRed"
+                BackgroundColor="Transparent"
                 CacheType="All"
                 Error="DaImage_Error"
                 Finish="daImage_Finish"

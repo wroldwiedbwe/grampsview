@@ -36,8 +36,8 @@ namespace GrampsView.ViewModels
         /// <param name="iocNavigationService">
         /// Prism Navigation Service
         /// </param>
-        public PersonDetailViewModel(ICommonLogging iocCommonLogging, IEventAggregator iocEventAggregator, INavigationService iocNavigationService)
-            : base(iocCommonLogging, iocEventAggregator, iocNavigationService)
+        public PersonDetailViewModel(ICommonLogging iocCommonLogging)
+            : base(iocCommonLogging)
         {
             BaseTitle = "Person Detail";
             BaseTitleIcon = CommonConstants.IconPeople;
@@ -89,6 +89,12 @@ namespace GrampsView.ViewModels
             if (!(PersonObject is null))
             {
                 BaseTitle = PersonObject.GPersonNamesCollection.GetPrimaryName.GetDefaultText;
+
+                // Get media image
+                HLinkHomeImageModel personImage = PersonObject.HomeImageHLink;
+                Contract.Assert(PersonObject.HomeImageHLink != null, PersonObject.Id);
+                personImage.CardType = DisplayFormat.MediaCardLarge;
+                BaseDetail.Add(personImage);
 
                 // Get Header Details
                 CardGroup headerCardGroup = new CardGroup { Title = "Header Details" };
@@ -152,12 +158,6 @@ namespace GrampsView.ViewModels
                 headerCardGroup.Add(DV.PersonDV.GetModelInfoFormatted(PersonObject));
 
                 BaseDetail.Add(headerCardGroup);
-
-                // Get media image
-                HLinkHomeImageModel personImage = PersonObject.HomeImageHLink;
-                Contract.Assert(PersonObject.HomeImageHLink != null, PersonObject.Id);
-                personImage.CardType = DisplayFormat.MediaCardLarge;
-                BaseDetail.Add(personImage);
 
                 // Handle the uncommon case where there is more than one name
                 if (PersonObject.GPersonNamesCollection.Count > 1)
